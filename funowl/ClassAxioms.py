@@ -15,11 +15,12 @@ disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 from dataclasses import dataclass
 from typing import List
 
+from funowl.base.list_support import empty_list
+from funowl.writers import FunctionalWriter
 from funowl.Annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression, Class
 from funowl.Declarations import ObjectPropertyExpression, DataPropertyExpression
-from funowl.FunOwlBase import empty_list
 
 
 class ClassAxiom(Axiom):
@@ -28,48 +29,46 @@ class ClassAxiom(Axiom):
 
 @dataclass
 class SubClassOf(ClassAxiom):
-    sub: ClassExpression
-    super: ClassExpression
+    subClassExpression: ClassExpression
+    superClassExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.sub.as_owl() + ' ' + self.super.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.subClassExpression + ' ' +  self.superClassExpression)
 
 
 @dataclass
 class EquivalentClasses(ClassAxiom):
-    exprs: List[ClassExpression]
+    classExpressions: List[ClassExpression]
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.classExpressions, 'exprs', 2)
+        return self.annots(w, lambda: w.iter(self.classExpressions))
 
 
 @dataclass
 class DisjointClasses(ClassAxiom):
-    exprs: List[ClassExpression]
+    classExpressions: List[ClassExpression]
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.classExpressions, 'exprs', 2)
+        return self.annots(w, lambda: w.iter(self.classExpressions))
 
 
 @dataclass
 class DisjointUnion(ClassAxiom):
     cls: Class
-    exprs: List[ClassExpression]
+    disjointClassExpressions: List[ClassExpression]
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).\
-            annots(indent, lambda i1: self.cls.as_owl(i1) + ' ' + self.iter(i1, self.exprs))
-
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.disjointClassExpressions, 'exprs', 2)
+        return self.annots(w, lambda: (w + self.cls).iter(self.classExpressions))
 
 
 class HasKey(Axiom):
-    classexpr: ClassExpression
-    objexprs: List[ObjectPropertyExpression] = empty_list()
-    propexprs: List[DataPropertyExpression] = empty_list()
+    classExpression: ClassExpression
+    objectPropertyExpressions: List[ObjectPropertyExpression] = empty_list()
+    dataPropertyExpressions: List[DataPropertyExpression] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.classexpr.as_owl() +
-                           '\n' + self.i(i1+1) + '( ' + self.iter(i1+1, self.objexprs) + ' )' +
-                           '\n' + self.i(i1+1) + '( ' + self.iter(i1+1, self.propexprs) + ' )')
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: (w + self.classExpression + '(').iter(self.objectPropertyExpressions) + ')')

@@ -1,4 +1,3 @@
-from abc import ABC
 from dataclasses import dataclass
 from typing import List
 
@@ -7,8 +6,9 @@ from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
 from funowl.DataRanges import DataRange
 from funowl.Declarations import DataPropertyExpression
-from funowl.FunOwlBase import FunOwlBase, empty_list
-from funowl.Literals import DataType
+from funowl.base.fun_owl_base import empty_list
+from funowl.writers.FunctionalWriter import FunctionalWriter
+from funowl.Literals import Datatype
 
 """
 DataPropertyAxiom :=
@@ -33,74 +33,75 @@ DatatypeDefinition := 'DatatypeDefinition' '(' axiomAnnotations Datatype DataRan
 """
 
 
+@dataclass
 class DataPropertyAxiom(Axiom):
     pass
 
 
 @dataclass
 class SubDataPropertyOf(DataPropertyAxiom):
-    sub: DataPropertyExpression
-    super: DataPropertyExpression
+    subDataPropertyExpression: DataPropertyExpression
+    superDataPropertyExpression: DataPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.sub.as_owl() + ' ' + self.super.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.subDataPropertyExpression + self.superDataPropertyExpression)
 
 
 @dataclass
 class EquivalentDataProperties(DataPropertyAxiom):
-    exprs: List[DataPropertyExpression]
+    dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
+        return self.annots(w, lambda: w.iter(self.dataPropertyExpressions))
 
 
 @dataclass
 class DisjointDataProperties(DataPropertyAxiom):
-    exprs: List[DataPropertyExpression]
+    dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
+        return self.annots(w, lambda: w.iter(self.dataPropertyExpressions))
 
 
 @dataclass
 class DataPropertyDomain(DataPropertyAxiom):
-    prop_expr: DataPropertyExpression
-    class_expr: ClassExpression
+    dataPropertyExpression: DataPropertyExpression
+    classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.prop_expr.as_owl() + ' ' + self.class_expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.dataPropertyExpression + ' ' + self.classExpression)
 
 
 @dataclass
 class DataPropertyRange(DataPropertyAxiom):
-    prop_expr: DataPropertyExpression
-    class_expr: ClassExpression
+    dataPropertyExpression: DataPropertyExpression
+    dataRange: DataRange
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.prop_expr.as_owl() + ' ' + self.class_expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.dataPropertyExpression + ' ' + self.dataRange)
 
 
 @dataclass
 class FunctionalDataProperty(DataPropertyAxiom):
-    expr: DataPropertyExpression
+    dataPropertyExpression: DataPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
-
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.dataPropertyExpression)
 
 
 @dataclass
 class DataTypeDefinition(DataPropertyAxiom):
-    datatype: DataType
+    datatype: Datatype
     datarange: DataRange
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.datatype.as_owl() + ' ' + self.datarange.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.datatype + ' ' + self.datarange)

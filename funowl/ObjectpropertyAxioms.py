@@ -44,7 +44,8 @@ from funowl.Annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
 from funowl.Declarations import ObjectPropertyExpression
-from funowl.FunOwlBase import FunOwlBase, FunOwlChoice, empty_list
+from funowl.base.fun_owl_base import FunOwlBase, FunOwlChoice, empty_list
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 class ObjectPropertyAxiom(Axiom):
@@ -53,12 +54,11 @@ class ObjectPropertyAxiom(Axiom):
 
 @dataclass
 class ObjectPropertyChain(FunOwlBase):
-    exprs: List[ObjectPropertyExpression]
+    objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.list_cardinality(self.exprs, 'exprs', 2).\
-            func_name(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
 
 
 @dataclass
@@ -68,120 +68,118 @@ class SubObjectPropertyExpression(FunOwlChoice):
 
 @dataclass
 class SubObjectPropertyOf(ObjectPropertyAxiom):
-    sub: SubObjectPropertyExpression
-    super: ObjectPropertyExpression
+    subObjectPropertyExpression: SubObjectPropertyExpression
+    superObjectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.sub.as_owl(i1) + ' ' + self.super.as_owl(i1))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: (w + self.subObjectPropertyExpression + self.superObjectPropertyExpression))
 
 
 @dataclass
 class EquivalentObjectProperties(ObjectPropertyAxiom):
-    exprs: List[ObjectPropertyExpression]
+    objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
 
 @dataclass
 class DisjointObjectProperties(ObjectPropertyAxiom):
-    exprs: List[ObjectPropertyExpression]
+    objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.iter(i1, self.exprs))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
 
 @dataclass
 class ObjectPropertyDomain(ObjectPropertyAxiom):
-    propexpr: ObjectPropertyExpression
-    classexpr: ClassExpression
+    objectPropertyExpression: ObjectPropertyExpression
+    classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.propexpr.as_owl() + ' ' + self.classexpr.as_owl())
-
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
 @dataclass
 class ObjectPropertyRange(ObjectPropertyAxiom):
-    propexpr: ObjectPropertyExpression
-    classexpr: ClassExpression
+    objectPropertyExpression: ObjectPropertyExpression
+    classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.propexpr.as_owl() + ' ' + self.classexpr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
 
 @dataclass
 class InverseObjectProperties(ObjectPropertyAxiom):
-    expr1: ObjectPropertyExpression
-    expr2: ObjectPropertyExpression
+    objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr1.as_owl() + ' ' + self.expr2.as_owl())
-
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.objectPropertyExpressions, 'expressions', 2, 2)
+        return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
 
 @dataclass
 class FunctionalObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class InverseFunctionalObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class ReflexiveObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class IrreflexiveObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class SymmetricObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class AsyymetricObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
 class TransitiveObjectProperty(ObjectPropertyAxiom):
-    expr: ObjectPropertyExpression
+    objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.objectPropertyExpression)

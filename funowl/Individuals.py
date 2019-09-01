@@ -5,20 +5,26 @@ NamedIndividual := IRI
 
 AnonymousIndividual := nodeID
 """
-from typing import Union
+from dataclasses import dataclass
+from typing import Union, ClassVar
 
-from funowl.FunOwlBase import FunOwlChoice
+from rdflib import OWL, URIRef
+
 from funowl.GeneralDefinitions import NodeID
-from funowl.Identifiers import IRIType
+from funowl.Identifiers import IRI
+from funowl.base.fun_owl_choice import FunOwlChoice
 
 
-class NamedIndividual(IRIType):
-    pass
+@dataclass
+class NamedIndividual(IRI):
+    rdf_type: ClassVar[URIRef] = OWL.NamedIndividual
 
 
 class AnonymousIndividual(NodeID):
     pass
 
 
+@dataclass
 class Individual(FunOwlChoice):
     v: Union[NamedIndividual, AnonymousIndividual]
+

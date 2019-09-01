@@ -14,55 +14,68 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 
 DataPropertyExpression := DataProperty
 """
-from typing import Union
+from dataclasses import dataclass
+from typing import Union, ClassVar, Tuple
 
-from funowl.Annotations import Annotatable, AnnotationProperty
+from rdflib import Graph, OWL, URIRef
+
+from funowl.Annotations import AnnotationProperty
 from funowl.Axioms import Axiom
-from funowl.FunOwlBase import FunOwlChoice, FunOwlBase
-from funowl.Identifiers import IRIType, IRI
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.writers.FunctionalWriter import FunctionalWriter
+from funowl.Identifiers import IRI
 from funowl.Individuals import NamedIndividual
+from funowl.Literals import Datatype
 
 
+@dataclass
 class Class(IRI):
-    pass
+    rdf_type: ClassVar[URIRef] = OWL.Class
 
 
-class Datatype(IRI):
-    pass
+# Datatype is defined in Literals.py
 
 
+@dataclass
 class ObjectProperty(IRI):
-    pass
+    rdf_type = OWL.ObjectProperty
 
 
-class InverseObjectProperty(FunOwlBase):
-    v : ObjectProperty
+@dataclass
+class DataProperty(IRI):
+    rdf_type = OWL.DatatypeProperty
 
-    def __init__(self, v) -> None:
-        self.v = v
+# AnnotationProperty is defined in Annotations.py
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.i(indent) + self.v.as_owl()
+# NamedIndividual is defined in Individuals.py
 
+@dataclass
+class ObjectInverseOf(FunOwlChoice):
+    v: Union[ObjectProperty]
 
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.func(self, lambda: w + self.v)
+
+@dataclass
 class ObjectPropertyExpression(FunOwlChoice):
-    v : Union[ObjectProperty, InverseObjectProperty]
+    # The order below is important
+    v: Union[ObjectProperty, ObjectInverseOf]
+    coercion_allowed = False
 
 
-class DataProperty(IRIType):
-    pass
-
-
+# DataPropertyExpression is just a synonym for dataproperty
+@dataclass
 class DataPropertyExpression(DataProperty):
     pass
 
 
-class Declaration(Axiom):
+@dataclass
+class Declaration(Axiom, FunOwlChoice):
     v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]
+    coercion_allowed = False
 
-    def __init__(self,
-                 v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]) -> None:
-        self.v = v
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w)))
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.v.as_owl(indent))
+    def to_rdf(self, g: Graph) -> None:
+        self.v.to_rdf(g)

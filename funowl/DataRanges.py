@@ -19,15 +19,20 @@ DatatypeRestriction := 'DatatypeRestriction' '(' Datatype constrainingFacet rest
 constrainingFacet := IRI
 restrictionValue := Literal
 """
-
-
 from dataclasses import dataclass
 from typing import Union, List
 
 from funowl.Declarations import Datatype
-from funowl.FunOwlBase import FunOwlChoice, FunOwlBase
+from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.Identifiers import IRI
 from funowl.Literals import Literal
+
+
+# A DataRange can be a DataType or any child of DataRange_
+class DataRange_(FunOwlBase):
+    pass
 
 
 @dataclass
@@ -35,34 +40,30 @@ class DataRange(FunOwlChoice):
     v : Union[Datatype, "DataRange_"]
 
 
-class DataRange_(FunOwlBase):
-    pass
-
-
 @dataclass
 class DataIntersectionOf(DataRange_):
-    elements: List[DataRange]
+    dataRanges: List[DataRange]
 
-    def as_owl(self, indent: int = 0) -> str:
-        self.list_cardinality(self.elements, 'elements', 2)
-        self.func_name(indent, lambda i1: self.iter(i1, self.elements))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.dataRanges, 'dataRange', 2)
+        return w.func(self, lambda: w.iter(self.dataRanges))
 
 
 @dataclass
 class DataUnionOf(DataRange_):
-    elements: List[DataRange]
+    dataRanges: List[DataRange]
 
-    def as_owl(self, indent: int = 0) -> str:
-        self.list_cardinality(self.elements, 'elements', 2)
-        self.func_name(indent, lambda i1: self.iter(i1, self.elements))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.dataRanges, 'dataRange', 2)
+        return w.func(self, lambda: w.iter(self.dataRanges))
 
 
 @dataclass
 class DataComplementOf(DataRange_):
-    element: DataRange
+    dataRange: DataRange
 
-    def as_owl(self, indent: int = 0) -> str:
-        self.func_name(indent, lambda i1: self.element.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.func(self, lambda: w + self.dataRange)
 
 
 @dataclass
@@ -70,8 +71,8 @@ class FacetRestriction(FunOwlBase):
     constrainingFacet: IRI
     restrictionValue: Literal
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.i(indent) + self.constrainingFacet.as_owl() + ' ' + self.restrictionValue.as_owl()
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w + self.constrainingFacet + self.restrictionValue
 
 
 @dataclass
@@ -79,6 +80,5 @@ class DatatypeRestriction(DataRange_):
     datatype: Datatype
     restrictions: List[FacetRestriction]
 
-    def as_owl(self, indent: int = 0) -> str:
-        self.list_cardinality(self.restrictions, 'restrictions', 1)
-        self.func_name(indent, lambda i1: self.datatype.as_owl() + '\n' + self.iter(i1, self.restrictions))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.func(self, lambda: (w + self.datatype).iter(self.restrictions))

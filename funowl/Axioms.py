@@ -3,10 +3,12 @@ Axiom := Declaration | ClassAxiom | ObjectPropertyAxiom | DataPropertyAxiom | Da
          HasKey | Assertion | AnnotationAxiom
 
 """
+from abc import ABC
+from dataclasses import dataclass
 
 from funowl.Annotations import Annotatable
 
-
-class Axiom(Annotatable):
+@dataclass
+class Axiom(Annotatable, ABC):
     pass
 

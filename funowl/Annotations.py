@@ -17,13 +17,25 @@ AnnotationPropertyDomain := 'AnnotationPropertyDomain' '(' axiomAnnotations Anno
 
 AnnotationPropertyRange := 'AnnotationPropertyRange' '(' axiomAnnotations AnnotationProperty IRI ')'
 """
+from abc import ABC
 from dataclasses import dataclass
-from typing import Union, List, Callable, Optional
+from typing import Union, List, Callable, ClassVar
 
-from funowl.FunOwlBase import FunOwlBase, empty_list, FunOwlChoice
+from rdflib import URIRef
+from rdflib.namespace import OWL
+
+from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.base.list_support import empty_list
+from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.Identifiers import IRI
 from funowl.Individuals import AnonymousIndividual
 from funowl.Literals import Literal
+
+
+@dataclass
+class AnnotationProperty(IRI):
+    rdf_type: ClassVar[URIRef] = OWL.AnnotationProperty
 
 
 @dataclass
@@ -36,22 +48,40 @@ class AnnotationValue(FunOwlChoice):
     v: Union[AnonymousIndividual, IRI, Literal]
 
 
-class AnnotationProperty(IRI):
-    pass
+# Placeholder to prevent recursive definitions
+class Annotation(object):
+    rdf_type = OWL.AnnotationProperty
 
 
-class Annotatable(FunOwlBase):
-    """ Annotatable must declare annotations after the required fields """
+@dataclass
+class Annotatable(FunOwlBase, ABC):
+    """ Annotatable must redeclare annotations after the required fields """
 
-    def __init__(self, annotations: Optional[List["Annotation"]] = None):
-        self.annotations = [] if annotations is None else self._cast(List[Annotation], annotations)
+    def _add_annotations(self, w: FunctionalWriter, f: Callable[[], FunctionalWriter] = None) -> FunctionalWriter:
+        """
+        Emit annotations at the beginnng of a functional declaration.  On entry, we've emitted "Func(" and
+        need to emit zero or more "    Annotation( ... )" entries - one for each annotation
+        :param w: FunctionalWriter to append output to
+        :param f: function to generate everything within "func" after the annotations
+        :return: FunctionalWriter instance
+        """
+        if self.annotations:
+            w.br()
+            w.iter(self.annotations, indent=False)
+            w.br().indent()
+        f()
+        if self.annotations:
+            w.outdent()
+        return w
 
-    def annots(self, indent: int, f: Callable[[int], str]) -> str:
-        return self.func_name(indent, lambda i1: self.iter(i1, self.annotations) + f(indent))
-
-    def list_cardinality(self, els: List["FunOwlBase"], list_name: str, min_: int = 1) -> "Annotatable":
-        super().list_cardinality(els, list_name, min_)
-        return self
+    def annots(self, w: FunctionalWriter, f: Callable[[], FunctionalWriter]) -> FunctionalWriter:
+        """
+        Emit the declaration of an annotatable function
+        :param w: FunctionWriter
+        :param f: function to generate post annotation function content
+        :return: FUnctionWriter instance
+        """
+        return w.func(self, lambda: self._add_annotations(w, f))
 
 
 @dataclass
@@ -60,8 +90,9 @@ class Annotation(Annotatable):
     value: AnnotationValue
     annotations: List["Annotation"] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.property.as_owl() + ' ' + self.value.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        # Annotated annotations get special handling
+        return self.annots(w, lambda: w + self.property + self.value)
 
 
 class AnnotationAxiom(Annotatable):
@@ -75,9 +106,8 @@ class AnnotationAssertion(AnnotationAxiom):
     value: AnnotationValue
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.property.as_owl(i1) + self.subject.as_owl(i1) + self.value.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.property + self.subject + self.value)
 
 
 @dataclass
@@ -86,9 +116,8 @@ class SubAnnotationPropertyOf(AnnotationAxiom):
     super: AnnotationProperty
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.sub.as_owl(i1) + self.super.as_owl(i1))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.sub + self.super)
 
 
 @dataclass
@@ -97,9 +126,8 @@ class AnnotationPropertyDomain(AnnotationAxiom):
     domain: IRI
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.property.as_owl(i1) + self.domain.as_owl(i1))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.property + self.domain)
 
 
 @dataclass
@@ -108,6 +136,5 @@ class AnnotationPropertyRange(AnnotationAxiom):
     range: IRI
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent,
-                           lambda i1: self.property.as_owl(i1) + self.range.as_owl(i1))
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.property + self.range)

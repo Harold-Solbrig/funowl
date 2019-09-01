@@ -11,20 +11,22 @@ abbreviatedIRI := a finite sequence of characters matching the PNAME_LN producti
 import re
 from typing import Optional
 
-from rdflib import BNode
+from rdflib import BNode, URIRef
+from rdflib.namespace import is_ncname
 
-from funowl.FunOwlBase import FunOwlBase, FunOwlRoot
-from funowl.Terminals import PNAME_NS, PNAME_LN, LANGTAG, BLANK_NODE_LABEL
+from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
+from funowl.writers.FunctionalWriter import FunctionalWriter
+from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, LANGTAG, BLANK_NODE_LABEL, QUOTED_STRING
 
 
+# Note - super class warning is ok
 class NonNegativeInteger(int, FunOwlBase):
     """ a nonempty finite sequence of digits between 0 and 9 """
     def __init__(self, v: int) -> None:
         if not isinstance(v, self.__class__):
             raise TypeError(f"{v}: invalid non-negative integer")
 
-    @classmethod
-    def _is_valid(cls, instance) -> bool:
+    def _is_valid(self, instance) -> bool:
         try:
             return int(instance) >= 0
         except TypeError:
@@ -33,20 +35,16 @@ class NonNegativeInteger(int, FunOwlBase):
             return False
 
 
-class QuotedString(str, FunOwlBase):
-    def __init__(self, v: str) -> None:
-        if v is None:
-            raise TypeError(f"None value not allowed for type: {type(self)}")
+class QuotedString(QUOTED_STRING, FunOwlRoot):
 
-
-    def as_owl(self, indent: int=0) -> str:
-        return self.i(indent) + '"' + self.replace('\\', '\\\\').replace('"', '\\"') + '"'
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w + ('"' + self.replace('\\', '\\\\').replace('"', '\\"') + '"')
 
 
 class LanguageTag(LANGTAG, FunOwlRoot):
     """ @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47] """
-    def as_owl(self, indent: int=0) -> str:
-        return self.i(indent) + '@' + str(self)
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w + ('@' + str(self))
 
 
 class NodeID(BLANK_NODE_LABEL, FunOwlRoot):
@@ -70,14 +68,17 @@ class FullIRI(str, FunOwlBase):
         if v is None or not self._is_valid(v):
             raise TypeError(f"{v} is not a valid {type(self)}")
 
-    def as_owl(self, indent: int=0) -> str:
-        return self.i(indent) + '<' + str(self) + '>'
-
     def _is_valid(self, instance) -> bool:
         # We're going to be a bit loose here -- if we've got a scheme (rfc3987.txt)
         # Also note that we aren't supporting I18N (the 'I' in IRI)
         # TODO: I18N
-        return instance is not None and re.match(r'[a-zA-Z][a-zA-Z-9+-.]*://', str(instance))
+        return instance is not None and (issubclass(type(instance), FullIRI) or
+                                         isinstance(instance, URIRef) or
+                                         re.match(r'[a-zA-Z][a-zA-Z-9+-.]*://', str(instance)))
+
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        v = w.g.namespace_manager.absolutize(str(self))
+        return w.concat('<', str(self), '>', sep='')
 
 
 class PrefixName(PNAME_NS, FunOwlRoot):
@@ -89,11 +90,13 @@ class PrefixName(PNAME_NS, FunOwlRoot):
         return PNAME_NS.__new__(cls, v)
 
     def __init__(self, v: Optional[str] = None) -> None:
-        pass
+        super().__init__(v)
+        if not is_ncname(v):
+            raise ValueError(f"{v} is not a valid NCNAME according to rdflib")
 
     """ a finite sequence of characters matching the as PNAME_NS production of [SPARQL] """
-    def as_owl(self, indent: int=0) -> str:
-        return self.i(indent) + str(self) + ':'
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return w.concat(str(self), sep='')
 
 
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):

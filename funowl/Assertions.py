@@ -23,38 +23,49 @@ DataPropertyAssertion := 'DataPropertyAssertion' '(' axiomAnnotations DataProper
 NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion' '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')' 
 """
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
+from funowl.base.list_support import empty_list
+from funowl.writers import FunctionalWriter
 from funowl.Annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
 from funowl.Declarations import ObjectPropertyExpression, DataPropertyExpression
-from funowl.FunOwlBase import empty_list
 from funowl.Individuals import Individual
+from funowl.Literals import Literal
 
 
+@dataclass
 class Assertion(Axiom):
     pass
 
 
-@dataclass
+@dataclass(init=False)
 class SameIndividual(Assertion):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
+    def __init__(self, *individuals: Individual, annotations: Optional[List[Annotation]] = None ) -> None:
+        self.individuals = individuals
+        self.annotations = annotations
+
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
-            annots(indent, lambda i1: self.iter(i1, self.individuals))
+            annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
 
-@dataclass
+@dataclass(init=False)
 class DifferentIndividuals(Assertion):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
+    def __init__(self, *individuals: Individual,  annotations: Optional[List[Annotation]] = None ) -> None:
+        self.individuals = individuals
+        self.annotations = annotations
+
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
-            annots(indent, lambda i1: self.iter(i1, self.individuals))
+            annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
 
 @dataclass
@@ -63,53 +74,49 @@ class ClassAssertion(Assertion):
     individual: Individual
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.expr.as_owl() + ' ' + self.individual.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.expr + self.individual)
 
 
 @dataclass
 class ObjectPropertyAssertion(Assertion):
-    objexpr: ObjectPropertyExpression
-    source: Individual
-    target: Individual
+    expr: ObjectPropertyExpression
+    sourceIndividual: Individual
+    targetIndividual: Individual
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.objexpr.as_owl() + ' ' +
-                                              self.source.as_owl() + ' ' + self.target.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetIndividual)
 
 
 @dataclass
 class NegativeObjectPropertyAssertion(Assertion):
-    objexpr: ObjectPropertyExpression
-    source: Individual
-    target: Individual
+    expr: ObjectPropertyExpression
+    sourceIndividual: Individual
+    targetIndividual: Individual
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.objexpr.as_owl() + ' ' +
-                                              self.source.as_owl() + ' ' + self.target.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetIndividual)
 
 
 @dataclass
 class DataPropertyAssertion(Assertion):
-    propexpr: DataPropertyExpression
-    source: Individual
-    target: Individual
+    expr: DataPropertyExpression
+    sourceIndividual: Individual
+    targetValue: Literal
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.propexpr.as_owl() +
-                                              ' ' + self.source.as_owl() + ' ' + self.target.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetValue)
 
 
 @dataclass
 class NegativeDataPropertyAssertion(Assertion):
-    propexpr: DataPropertyAssertion
-    source: Individual
-    target: Individual
+    expr: DataPropertyExpression
+    sourceIndividual: Individual
+    targetValue: Literal
     annotations: List[Annotation] = empty_list()
 
-    def as_owl(self, indent: int = 0) -> str:
-        return self.annots(indent, lambda i1: self.propexpr.as_owl() + ' ' +
-                                              self.source.as_owl() + ' ' + self.target.as_owl())
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetValue)
