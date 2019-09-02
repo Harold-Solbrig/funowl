@@ -98,6 +98,10 @@ class FunctionalWriterTestCase(TestBase):
         self.w.reset()
         self.assertEqual('Foo( )', str(self.w.opt(Foo())))
 
+    def test_error_check(self):
+        """ Make sure FunctionalWriter error check catches what we are expecting """
+        with self.assertRaises(ValueError):
+            self.w + self.w.indent()
 
 if __name__ == '__main__':
     unittest.main()

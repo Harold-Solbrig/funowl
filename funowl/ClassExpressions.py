@@ -44,63 +44,68 @@ DataExactCardinality := 'DataExactCardinality' '(' nonNegativeInteger DataProper
 HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpression } ')' '(' { DataPropertyExpression } ')' ')'
 """
 from dataclasses import dataclass
-from typing import List, Union
+from typing import List, ClassVar, Union, Optional
 
-from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.writers import FunctionalWriter
+from rdflib import URIRef, OWL
+
 from funowl.DataRanges import DataRange
-from funowl.Declarations import ObjectPropertyExpression, DataPropertyExpression, Class
-from funowl.base.fun_owl_base import FunOwlBase
+from funowl.DatapropertyExpressions import DataPropertyExpression
 from funowl.GeneralDefinitions import NonNegativeInteger
+from funowl.Identifiers import IRI
 from funowl.Individuals import Individual
 from funowl.Literals import Literal
+from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
+from funowl.base.fun_owl_base import FunOwlBase
+from funowl.writers import FunctionalWriter
 
 
-# A Class expression can be a class or any subclass of ClassExpression_
-class ClassExpression_(FunOwlBase):
-    pass
+
+
+class Class(IRI):
+    rdf_type: ClassVar[URIRef] = OWL.Class
+
+
+@dataclass(init=False)
+class ObjectIntersectionOf(FunOwlBase):
+    classExpressions: List["ClassExpression"]
+
+    def __init__(self, *classExpression: "ClassExpression") -> None:
+        self.classExpressions = list(classExpression)
+        super().__init__()
+
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.classExpressions, 'exprs', 2)
+        return w.func(self, lambda: w.iter(self.classExpressions))
 
 
 @dataclass
-class ClassExpression(FunOwlChoice):
-    v: Union[Class, ClassExpression_]
-    coercion_allowed = False            # Have to be explicitly declared
+class ObjectUnionOf(FunOwlBase):
+    classExpressions: List["ClassExpression"]
 
-
-class ObjectIntersectionOf(ClassExpression_):
-    classExpressions: List[ClassExpression]
-
-    def __init__(self, *classExpressions: ClassExpression) -> None:
-        self.classExpressions = list(classExpressions)
+    def __init__(self, *classExpression: "ClassExpression") -> None:
+        self.classExpressions = list(classExpression)
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
 
-class ObjectUnionOf(ClassExpression_):
-    classExpressions: List[ClassExpression]
-
-    def __init__(self, *classExpressions: ClassExpression) -> None:
-        self.classExpressions = list(classExpressions)
-
-    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.classExpressions, 'exprs', 2)
-        return w.func(self, lambda: w.iter(self.classExpressions))
-
-
-class ObjectComplementOf(ClassExpression_):
-    classExpression: ClassExpression
+@dataclass
+class ObjectComplementOf(FunOwlBase):
+    classExpression: "ClassExpression"
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.classExpression)
 
 
-class ObjectOneOf(ClassExpression_):
+@dataclass(init=False)
+class ObjectOneOf(FunOwlBase):
     individuals: List[Individual]
 
-    def __init__(self, *individuals: Individual) -> None:
-        self.individuals = list(individuals)
+    def __init__(self, *individual: Individual) -> None:
+        self.individuals = list(individual)
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.exprs, 'exprs', 2)
@@ -108,135 +113,134 @@ class ObjectOneOf(ClassExpression_):
 
 
 @dataclass
-class ObjectSomeValuesFrom(ClassExpression_):
+class ObjectSomeValuesFrom(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: ClassExpression
+    classExpression: "ClassExpression"
+    coercion_allowed: ClassVar[bool] = True
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
 
 @dataclass
-class ObjectAllValuesFrom(ClassExpression_):
+class ObjectAllValuesFrom(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: ClassExpression
+    classExpression: "ClassExpression"
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
 
 @dataclass
-class ObjectHasValue(ClassExpression_):
+class ObjectHasValue(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
     individual: Individual
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: w + self.objectPropertyExpression + self.individual)
 
 
 @dataclass
-class ObjectHasSelf(ClassExpression_):
+class ObjectHasSelf(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: w + self.objectPropertyExpression)
 
 
 @dataclass
-class ObjectMinCardinality(ClassExpression_):
+class ObjectMinCardinality(FunOwlBase):
     min_: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpressions: List[ClassExpression]
+    classExpression: Optional["ClassExpression"]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.min_ + self.objectPropertyExpression).iter(self.classExpressions))
+        return w.func(self, lambda: (w + self.min_ + self.objectPropertyExpression).opt(self.classExpression))
 
 
 @dataclass
-class ObjectMaxCardinality(ClassExpression_):
+class ObjectMaxCardinality(FunOwlBase):
     max_: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpressions: List[ClassExpression]
+    classExpression: Optional["ClassExpression"]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.max_ + self.objectPropertyExpression).iter(self.classExpressions))
+        return w.func(self, lambda: (w + self.max_ + self.objectPropertyExpression).opt(self.classExpression))
 
 
 @dataclass
-class ObjectExactCardinality(ClassExpression_):
+class ObjectExactCardinality(FunOwlBase):
     card: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpressions: List[ClassExpression]
+    classExpression: Optional["ClassExpression"]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).iter(self.classExpressions))
+        return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
 
 
 @dataclass
-class DataSomeValuesFrom(ClassExpression_):
+class DataSomeValuesFrom(FunOwlBase):
     dataPropertyExpression: DataPropertyExpression
     dataRange: DataRange
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRanged))
+        return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRange))
 
 
 @dataclass
-class DataAllValuesFrom(ClassExpression_):
+class DataAllValuesFrom(FunOwlBase):
     dataPropertyExpression: DataPropertyExpression
     dataRange: DataRange
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRanged))
 
 
 @dataclass
-class DataHasValue(ClassExpression_):
+class DataHasValue(FunOwlBase):
     dataPropertyExpression: DataPropertyExpression
     literal: Literal
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.literal))
 
 
 @dataclass
-class DataMinCardinality(ClassExpression_):
+class DataMinCardinality(FunOwlBase):
     min_: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: List[DataRange]
+    dataRange: Optional[DataRange]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).iter(self.dataRange))
+        return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).opt(self.dataRange))
 
 
 @dataclass
-class DataMaxCardinality(ClassExpression_):
+class DataMaxCardinality(FunOwlBase):
     max_: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: List[DataRange]
+    dataRange: Optional[DataRange]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.max_ + self.dataPropertyExpression).iter(self.dataRange))
+        return w.func(self, lambda: (w + self.max_ + self.dataPropertyExpression).opt(self.dataRange))
 
 
 @dataclass
-class DataExactCardinality(ClassExpression_):
+class DataExactCardinality(FunOwlBase):
     card: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: List[DataRange]
+    dataRange: Optional[DataRange]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.exprs, 'exprs', 2)
-        return w.func(self, lambda: (w + self.card + self.dataPropertyExpression).iter(self.dataRange))
+        return w.func(self, lambda: (w + self.card + self.dataPropertyExpression).opt(self.dataRange))
+
+
+# A Class expression can be a class or any subclass of ClassExpression
+# @dataclass
+# class ClassExpression(FunOwlBase):
+ClassExpression = Union[Class, ObjectIntersectionOf, ObjectUnionOf, ObjectComplementOf, ObjectOneOf,
+    ObjectSomeValuesFrom, ObjectAllValuesFrom, ObjectHasValue, ObjectHasSelf,
+    ObjectMinCardinality, ObjectMaxCardinality, ObjectExactCardinality,
+    DataSomeValuesFrom, DataAllValuesFrom, DataHasValue,
+    DataMinCardinality, DataMaxCardinality, DataExactCardinality]

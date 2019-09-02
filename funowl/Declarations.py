@@ -15,58 +15,32 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 DataPropertyExpression := DataProperty
 """
 from dataclasses import dataclass
-from typing import Union, ClassVar, Tuple
+from typing import Union
 
-from rdflib import Graph, OWL, URIRef
+from rdflib import Graph
 
 from funowl.Annotations import AnnotationProperty
 from funowl.Axioms import Axiom
-from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Identifiers import IRI
+from funowl.ClassExpressions import Class
+from funowl.DatapropertyExpressions import DataProperty
 from funowl.Individuals import NamedIndividual
 from funowl.Literals import Datatype
+from funowl.ObjectpropertyExpressions import ObjectProperty
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-@dataclass
-class Class(IRI):
-    rdf_type: ClassVar[URIRef] = OWL.Class
-
+# Class is defined in ClassExpressions.py
 
 # Datatype is defined in Literals.py
 
+# ObjectProperty is defined in ObjectpropertyExpressions.py
 
-@dataclass
-class ObjectProperty(IRI):
-    rdf_type = OWL.ObjectProperty
-
-
-@dataclass
-class DataProperty(IRI):
-    rdf_type = OWL.DatatypeProperty
+# DaataProperty is defined in DatapropertyExpressions.py
 
 # AnnotationProperty is defined in Annotations.py
 
 # NamedIndividual is defined in Individuals.py
-
-@dataclass
-class ObjectInverseOf(FunOwlChoice):
-    v: Union[ObjectProperty]
-
-    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: w + self.v)
-
-@dataclass
-class ObjectPropertyExpression(FunOwlChoice):
-    # The order below is important
-    v: Union[ObjectProperty, ObjectInverseOf]
-    coercion_allowed = False
-
-
-# DataPropertyExpression is just a synonym for dataproperty
-@dataclass
-class DataPropertyExpression(DataProperty):
-    pass
 
 
 @dataclass

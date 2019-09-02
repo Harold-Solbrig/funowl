@@ -22,12 +22,12 @@ restrictionValue := Literal
 from dataclasses import dataclass
 from typing import Union, List
 
-from funowl.Declarations import Datatype
+from funowl.Identifiers import IRI
+from funowl.Literals import Datatype
+from funowl.Literals import Literal
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Identifiers import IRI
-from funowl.Literals import Literal
 
 
 # A DataRange can be a DataType or any child of DataRange_

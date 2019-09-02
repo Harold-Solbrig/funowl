@@ -3,8 +3,9 @@ import unittest
 from rdflib import OWL, RDFS, Graph
 
 from funowl.Annotations import AnnotationProperty
-from funowl.Declarations import Datatype, Class, ObjectProperty, DataProperty, Declaration, ObjectInverseOf, \
+from funowl.Declarations import Datatype, ObjectProperty, DataProperty, Declaration, ObjectInverseOf, \
     ObjectPropertyExpression, DataPropertyExpression
+from funowl.ClassExpressions import Class
 from funowl.Individuals import NamedIndividual
 from tests.utils.base import TestBase, A
 

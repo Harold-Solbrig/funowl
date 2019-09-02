@@ -26,7 +26,7 @@ def cast(typ: Type, v: Any, coercion_allowed: Optional[bool] = None) -> Any:
         for t in get_args(typ):
             if type(v) is t:
                 return v
-            elif coercion_allowed is not False and isinstance(v, t):
+            elif coercion_allowed is not False and isinstance_(v, t):
                 return cast(t, v)
         raise TypeError(f"Type mismatch between {v} (type: {type(v)} and {typ}")
 
