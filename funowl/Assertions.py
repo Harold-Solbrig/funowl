@@ -14,23 +14,28 @@ DifferentIndividuals := 'DifferentIndividuals' '(' axiomAnnotations Individual I
 
 ClassAssertion := 'ClassAssertion' '(' axiomAnnotations ClassExpression Individual ')'
 
-ObjectPropertyAssertion := 'ObjectPropertyAssertion' '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
+ObjectPropertyAssertion := 'ObjectPropertyAssertion'
+                            '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
 
-NegativeObjectPropertyAssertion := 'NegativeObjectPropertyAssertion' '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
+NegativeObjectPropertyAssertion := 'NegativeObjectPropertyAssertion'
+                            '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
 
-DataPropertyAssertion := 'DataPropertyAssertion' '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'
+DataPropertyAssertion := 'DataPropertyAssertion'
+                            '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'
 
-NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion' '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')' 
+NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion'
+                            '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'
 """
 from dataclasses import dataclass
 from typing import List, Optional
 
+from funowl.DatapropertyExpressions import DataPropertyExpression
+from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
 from funowl.base.list_support import empty_list
 from funowl.writers import FunctionalWriter
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
-from funowl.Declarations import ObjectPropertyExpression, DataPropertyExpression
 from funowl.Individuals import Individual
 from funowl.Literals import Literal
 
@@ -45,8 +50,8 @@ class SameIndividual(Assertion):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
-    def __init__(self, *individuals: Individual, annotations: Optional[List[Annotation]] = None ) -> None:
-        self.individuals = individuals
+    def __init__(self, *individuals: Individual, annotations: Optional[List[Annotation]] = None) -> None:
+        self.individuals = list(individuals)
         self.annotations = annotations
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
@@ -59,8 +64,8 @@ class DifferentIndividuals(Assertion):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
-    def __init__(self, *individuals: Individual,  annotations: Optional[List[Annotation]] = None ) -> None:
-        self.individuals = individuals
+    def __init__(self, *individuals: Individual,  annotations: Optional[List[Annotation]] = None) -> None:
+        self.individuals = list(individuals)
         self.annotations = annotations
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:

@@ -15,7 +15,7 @@ from typing import Optional, List, Union, Dict
 from rdflib import URIRef
 from rdflib.extras.infixowl import Ontology
 
-from funowl.Annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
+from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.Axioms import Axiom
 from funowl.ClassAxioms import SubClassOf
 from funowl.ClassExpressions import Class

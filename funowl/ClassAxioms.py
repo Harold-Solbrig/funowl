@@ -19,7 +19,7 @@ from funowl.DatapropertyExpressions import DataPropertyExpression
 from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
 from funowl.base.list_support import empty_list
 from funowl.writers import FunctionalWriter
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression, Class
 

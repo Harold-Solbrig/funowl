@@ -6,9 +6,9 @@ Axiom := Declaration | ClassAxiom | ObjectPropertyAxiom | DataPropertyAxiom | Da
 from abc import ABC
 from dataclasses import dataclass
 
-from funowl.Annotations import Annotatable
+from funowl.annotations import Annotatable
+
 
 @dataclass
 class Axiom(Annotatable, ABC):
     pass
-

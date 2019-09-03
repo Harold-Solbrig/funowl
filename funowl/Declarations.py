@@ -19,7 +19,7 @@ from typing import Union
 
 from rdflib import Graph
 
-from funowl.Annotations import AnnotationProperty
+from funowl.annotations import AnnotationProperty
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import Class
 from funowl.DatapropertyExpressions import DataProperty
@@ -38,7 +38,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 # DaataProperty is defined in DatapropertyExpressions.py
 
-# AnnotationProperty is defined in Annotations.py
+# AnnotationProperty is defined in annotations.py
 
 # NamedIndividual is defined in Individuals.py
 

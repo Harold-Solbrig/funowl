@@ -40,7 +40,7 @@ TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations Obje
 from dataclasses import dataclass
 from typing import List, Union
 
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
 from funowl.Declarations import ObjectPropertyExpression

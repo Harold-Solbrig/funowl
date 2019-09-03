@@ -4,7 +4,7 @@ from typing import List
 from rdflib import OWL, RDF, RDFS
 from rdflib.namespace import SKOS
 
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.OntologyDocument import Ontology
 from tests.utils.base import TestBase
 

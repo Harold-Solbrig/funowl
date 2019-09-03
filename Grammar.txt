@@ -1,0 +1,219 @@
+
+
+# GeneralDefinitions.py
+nonNegativeInteger	a nonempty finite sequence of digits between 0 and 9
+quotedString := a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
+languageTag := @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47]
+nodeID := a finite sequence of characters matching the BLANK_NODE_LABEL production of [SPARQL]
+fullIRI := an IRI as defined in [RFC3987], enclosed in a pair of < (U+3C) and > (U+3E) characters
+prefixName := a finite sequence of characters matching the as PNAME_NS production of [SPARQL]
+abbreviatedIRI := a finite sequence of characters matching the PNAME_LN production of [SPARQL]
+
+# Identifiers.py
+IRI := fullIRI | abbreviatedIRI
+
+
+# OntologyDocument.py
+ontologyDocument := { prefixDeclaration } Ontology
+# Prefix ( ... )
+prefixDeclaration := 'Prefix' '(' prefixName '=' fullIRI ')'
+# Ontology ( ... )
+Ontology :=
+    'Ontology' '(' [ ontologyIRI [ versionIRI ] ]
+       directlyImportsDocuments
+       ontologyAnnotations
+       axioms
+    ')'
+ontologyIRI := IRI
+versionIRI := IRI
+# Import ( ... )
+directlyImportsDocuments := { 'Import' '(' IRI ')' }
+ontologyAnnotations := { Annotation }
+axioms := { Axiom }
+
+# Declarations.py
+Class := IRI
+ObjectProperty := IRI
+DataProperty := IRI
+ObjectPropertyExpression := ObjectProperty | InverseObjectProperty
+InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
+DataPropertyExpression := DataProperty
+Declaration := 'Declaration' '(' axiomAnnotations Entity ')'
+Entity :=
+    'Class' '(' Class ')' |
+    'Datatype' '(' Datatype ')' |
+    'ObjectProperty' '(' ObjectProperty ')' |
+    'DataProperty' '(' DataProperty ')' |
+    'AnnotationProperty' '(' AnnotationProperty ')' |
+    'NamedIndividual' '(' NamedIndividual ')'
+
+
+
+# Annotations.py
+axiomAnnotations := { Annotation }
+annotationAnnotations  := { Annotation }
+subAnnotationProperty := AnnotationProperty
+superAnnotationProperty := AnnotationProperty
+subAnnotationProperty := AnnotationProperty
+superAnnotationProperty := AnnotationProperty
+-------------------
+AnnotationProperty := IRI
+AnnotationSubject := IRI | AnonymousIndividual
+AnnotationValue := AnonymousIndividual | IRI | Literal
+Annotation := 'Annotation' '(' annotationAnnotations AnnotationProperty AnnotationValue ')'
+AnnotationAxiom := AnnotationAssertion | SubAnnotationPropertyOf | AnnotationPropertyDomain | AnnotationPropertyRange
+AnnotationAssertion := 'AnnotationAssertion' '(' axiomAnnotations AnnotationProperty AnnotationSubject AnnotationValue ')'
+SubAnnotationPropertyOf := 'SubAnnotationPropertyOf' '(' axiomAnnotations subAnnotationProperty superAnnotationProperty ')'
+AnnotationPropertyDomain := 'AnnotationPropertyDomain' '(' axiomAnnotations AnnotationProperty IRI ')'
+AnnotationPropertyRange := 'AnnotationPropertyRange' '(' axiomAnnotations AnnotationProperty IRI ')'
+
+# Terminals.py
+LANGTAG
+HEX
+UCHAR
+IRIREF
+PN_CHARS_BASE
+PN_CHARS_U
+PN_CHARS
+PNAME_NS
+PNAME_LOCAL
+BLANK_NODE_LABEL
+PNAME_LN
+
+# Individuals.py
+Individual := NamedIndividual | AnonymousIndividual
+NamedIndividual := IRI
+AnonymousIndividual := nodeID
+
+# Literals.py
+Datatype := IRI
+stringLiteralNoLanguage := quotedString
+stringLiteralWithLanguage := quotedString languageTag
+Literal := typedLiteral | stringLiteralNoLanguage | stringLiteralWithLanguage
+typedLiteral := lexicalForm '^^' Datatype
+lexicalForm := quotedString
+
+
+# DataRanges.py
+constrainingFacet := IRI
+restrictionValue := Literal
+-----
+DataRange :=
+    Datatype |
+    DataIntersectionOf |
+    DataUnionOf |
+    DataComplementOf |
+    DataOneOf |
+    DatatypeRestriction
+DataIntersectionOf := 'DataIntersectionOf' '(' DataRange DataRange { DataRange } ')'
+DataUnionOf := 'DataUnionOf' '(' DataRange DataRange { DataRange } ')'
+DataComplementOf := 'DataComplementOf' '(' DataRange ')'
+DataOneOf := 'DataOneOf' '(' Literal { Literal } ')'
+DatatypeRestriction := 'DatatypeRestriction' '(' Datatype constrainingFacet restrictionValue { constrainingFacet restrictionValue } ')'
+
+
+
+## ClassExpressions.py
+ClassExpression :=
+    Class |
+    ObjectIntersectionOf | ObjectUnionOf | ObjectComplementOf | ObjectOneOf |
+    ObjectSomeValuesFrom | ObjectAllValuesFrom | ObjectHasValue | ObjectHasSelf |
+    ObjectMinCardinality | ObjectMaxCardinality | ObjectExactCardinality |
+    DataSomeValuesFrom | DataAllValuesFrom | DataHasValue |
+    DataMinCardinality | DataMaxCardinality | DataExactCardinality
+
+ObjectIntersectionOf := 'ObjectIntersectionOf' '(' ClassExpression ClassExpression { ClassExpression } ')'
+ObjectUnionOf := 'ObjectUnionOf' '(' ClassExpression ClassExpression { ClassExpression } ')'
+ObjectComplementOf := 'ObjectComplementOf' '(' ClassExpression ')'
+ObjectOneOf := 'ObjectOneOf' '(' Individual { Individual }')'
+ObjectSomeValuesFrom := 'ObjectSomeValuesFrom' '(' ObjectPropertyExpression ClassExpression ')'
+ObjectAllValuesFrom := 'ObjectAllValuesFrom' '(' ObjectPropertyExpression ClassExpression ')'
+ObjectHasValue := 'ObjectHasValue' '(' ObjectPropertyExpression Individual ')'
+ObjectHasSelf := 'ObjectHasSelf' '(' ObjectPropertyExpression ')'
+ObjectMinCardinality := 'ObjectMinCardinality' '(' nonNegativeInteger ObjectPropertyExpression [ ClassExpression ] ')'
+ObjectMaxCardinality := 'ObjectMaxCardinality' '(' nonNegativeInteger ObjectPropertyExpression [ ClassExpression ] ')'
+ObjectExactCardinality := 'ObjectExactCardinality' '(' nonNegativeInteger ObjectPropertyExpression [ ClassExpression ] ')'
+DataSomeValuesFrom := 'DataSomeValuesFrom' '(' DataPropertyExpression { DataPropertyExpression } DataRange ')'
+DataAllValuesFrom := 'DataAllValuesFrom' '(' DataPropertyExpression { DataPropertyExpression } DataRange ')'
+DataHasValue := 'DataHasValue' '(' DataPropertyExpression Literal ')'
+DataMinCardinality := 'DataMinCardinality' '(' nonNegativeInteger DataPropertyExpression [ DataRange ] ')'
+DataMaxCardinality := 'DataMaxCardinality' '(' nonNegativeInteger DataPropertyExpression [ DataRange ] ')'
+DataExactCardinality := 'DataExactCardinality' '(' nonNegativeInteger DataPropertyExpression [ DataRange ] ')'
+
+
+# Axioms.py (only defines Axiom)
+Axiom := Declaration | ClassAxiom | ObjectPropertyAxiom | DataPropertyAxiom | DatatypeDefinition | HasKey | Assertion | AnnotationAxiom
+
+# ClassAxioms.py
+subClassExpression := ClassExpression
+superClassExpression := ClassExpression
+disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
+----------
+ClassAxiom := SubClassOf | EquivalentClasses | DisjointClasses | DisjointUnion
+SubClassOf := 'SubClassOf' '(' axiomAnnotations subClassExpression superClassExpression ')'
+EquivalentClasses := 'EquivalentClasses' '(' axiomAnnotations ClassExpression ClassExpression { ClassExpression } ')'
+DisjointClasses := 'DisjointClasses' '(' axiomAnnotations ClassExpression ClassExpression { ClassExpression } ')'
+DisjointUnion := 'DisjointUnion' '(' axiomAnnotations Class disjointClassExpressions ')'
+HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpression } ')' '(' { DataPropertyExpression } ')' ')'
+
+
+# ObjectPropertyAxioms.py
+ObjectPropertyAxiom :=
+    SubObjectPropertyOf | EquivalentObjectProperties |
+    DisjointObjectProperties | InverseObjectProperties |
+    ObjectPropertyDomain | ObjectPropertyRange |
+    FunctionalObjectProperty | InverseFunctionalObjectProperty |
+    ReflexiveObjectProperty | IrreflexiveObjectProperty |
+    SymmetricObjectProperty | AsymmetricObjectProperty |
+    TransitiveObjectProperty
+propertyExpressionChain := 'ObjectPropertyChain' '(' ObjectPropertyExpression ObjectPropertyExpression { ObjectPropertyExpression } ')'
+subObjectPropertyExpression := ObjectPropertyExpression | propertyExpressionChain
+superObjectPropertyExpression := ObjectPropertyExpression
+SubObjectPropertyOf := 'SubObjectPropertyOf' '(' axiomAnnotations subObjectPropertyExpression superObjectPropertyExpression ')'
+EquivalentObjectProperties := 'EquivalentObjectProperties' '(' axiomAnnotations ObjectPropertyExpression ObjectPropertyExpression { ObjectPropertyExpression } ')'
+DisjointObjectProperties := 'DisjointObjectProperties' '(' axiomAnnotations ObjectPropertyExpression ObjectPropertyExpression { ObjectPropertyExpression } ')'
+ObjectPropertyDomain := 'ObjectPropertyDomain' '(' axiomAnnotations ObjectPropertyExpression ClassExpression ')'
+ObjectPropertyRange := 'ObjectPropertyRange' '(' axiomAnnotations ObjectPropertyExpression ClassExpression ')'
+InverseObjectProperties := 'InverseObjectProperties' '(' axiomAnnotations ObjectPropertyExpression ObjectPropertyExpression ')'
+FunctionalObjectProperty := 'FunctionalObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+InverseFunctionalObjectProperty := 'InverseFunctionalObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+ReflexiveObjectProperty := 'ReflexiveObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+IrreflexiveObjectProperty := 'IrreflexiveObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+SymmetricObjectProperty := 'SymmetricObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+AsymmetricObjectProperty := 'AsymmetricObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
+
+
+# DataPropertyAxioms.py
+subDataPropertyExpression := DataPropertyExpression
+superDataPropertyExpression := DataPropertyExpression
+DataPropertyAxiom :=
+    SubDataPropertyOf | EquivalentDataProperties | DisjointDataProperties |
+    DataPropertyDomain | DataPropertyRange | FunctionalDataProperty
+SubDataPropertyOf := 'SubDataPropertyOf' '(' axiomAnnotations subDataPropertyExpression superDataPropertyExpression ')'
+EquivalentDataProperties := 'EquivalentDataProperties' '(' axiomAnnotations DataPropertyExpression DataPropertyExpression { DataPropertyExpression } ')'
+DisjointDataProperties := 'DisjointDataProperties' '(' axiomAnnotations DataPropertyExpression DataPropertyExpression { DataPropertyExpression } ')'
+DataPropertyDomain := 'DataPropertyDomain' '(' axiomAnnotations DataPropertyExpression ClassExpression ')'
+DataPropertyRange := 'DataPropertyRange' '(' axiomAnnotations DataPropertyExpression DataRange ')'
+FunctionalDataProperty := 'FunctionalDataProperty' '(' axiomAnnotations DataPropertyExpression ')'
+DatatypeDefinition := 'DatatypeDefinition' '(' axiomAnnotations Datatype DataRange ')'
+
+
+
+# Assertions.py
+sourceIndividual := Individual
+targetIndividual := Individual
+targetValue := Literal
+--------
+Assertion :=
+    SameIndividual | DifferentIndividuals | ClassAssertion |
+    ObjectPropertyAssertion | NegativeObjectPropertyAssertion |
+    DataPropertyAssertion | NegativeDataPropertyAssertion
+
+SameIndividual := 'SameIndividual' '(' axiomAnnotations Individual Individual { Individual } ')'
+DifferentIndividuals := 'DifferentIndividuals' '(' axiomAnnotations Individual Individual { Individual } ')'
+ClassAssertion := 'ClassAssertion' '(' axiomAnnotations ClassExpression Individual ')'
+ObjectPropertyAssertion := 'ObjectPropertyAssertion' '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
+NegativeObjectPropertyAssertion := 'NegativeObjectPropertyAssertion' '(' axiomAnnotations ObjectPropertyExpression sourceIndividual targetIndividual ')'
+DataPropertyAssertion := 'DataPropertyAssertion' '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'
+NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion' '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'

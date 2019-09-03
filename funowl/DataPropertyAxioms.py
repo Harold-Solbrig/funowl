@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.Axioms import Axiom
 from funowl.ClassExpressions import ClassExpression
 from funowl.DataRanges import DataRange

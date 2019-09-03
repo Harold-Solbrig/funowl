@@ -2,7 +2,7 @@ import unittest
 
 from rdflib import RDFS, Namespace
 
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.ClassAxioms import SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion, HasKey
 from funowl.ClassExpressions import ObjectIntersectionOf, ObjectSomeValuesFrom
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -70,7 +70,15 @@ class ClassAxiomsTestCase(TestBase):
             DisjointUnion(SCT['12345'], SCT['303394007'], SCT['45189000']).to_functional(self.sw)
 
     def test_haskey(self):
-        self.assertEqual('', HasKey(SCT['12345'], objectPropertyExpressions=[SCT['23456'], SCT['23457']], dataPropertyExpressions=[SCT['23458'], SCT['23459']]).to_functional(self.sw.reset()))
+        self.assertEqual('''HasKey( <http://snomed.info/id/12345> (
+    <http://snomed.info/id/23456>
+    <http://snomed.info/id/23457>
+) (
+    <http://snomed.info/id/23458>
+    <http://snomed.info/id/23459>
+)''', str(HasKey(SCT['12345'],
+                 objectPropertyExpressions=[SCT['23456'], SCT['23457']],
+                 dataPropertyExpressions=[SCT['23458'], SCT['23459']]).to_functional(self.sw.reset())))
 
 
 if __name__ == '__main__':

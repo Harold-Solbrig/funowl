@@ -4,7 +4,7 @@ from typing import List
 
 from rdflib import RDFS, RDF, XSD, Namespace, OWL
 
-from funowl.Annotations import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
+from funowl.annotations import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
     SubAnnotationPropertyOf, Annotatable
 from funowl.base.list_support import empty_list
 from funowl.Identifiers import IRI

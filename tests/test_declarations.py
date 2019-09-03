@@ -2,9 +2,10 @@ import unittest
 
 from rdflib import OWL, RDFS, Graph
 
-from funowl.Annotations import AnnotationProperty
-from funowl.Declarations import Datatype, ObjectProperty, DataProperty, Declaration, ObjectInverseOf, \
-    ObjectPropertyExpression, DataPropertyExpression
+from funowl.DatapropertyExpressions import DataPropertyExpression
+from funowl.ObjectpropertyExpressions import ObjectInverseOf, ObjectPropertyExpression
+from funowl.annotations import AnnotationProperty
+from funowl.Declarations import Datatype, ObjectProperty, DataProperty, Declaration
 from funowl.ClassExpressions import Class
 from funowl.Individuals import NamedIndividual
 from tests.utils.base import TestBase, A
@@ -83,6 +84,7 @@ ObjectInverseOf( a:father )""", self.wa.getvalue())
     def test_datapropertyexpression(self):
         DataPropertyExpression(A.SSN).to_functional(self.wa).br()
         self.assertEqual('a:SSN', self.wa.getvalue())
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,7 +2,7 @@ import unittest
 
 from rdflib import Namespace, RDFS, XSD
 
-from funowl.Annotations import Annotation
+from funowl.annotations import Annotation
 from funowl.Assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
 from funowl.writers.FunctionalWriter import FunctionalWriter
