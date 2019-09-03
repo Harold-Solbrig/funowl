@@ -2,13 +2,13 @@ from dataclasses import dataclass
 from typing import List
 
 from funowl.annotations import Annotation
-from funowl.Axioms import Axiom
-from funowl.ClassExpressions import ClassExpression
-from funowl.DataRanges import DataRange
-from funowl.Declarations import DataPropertyExpression
+from funowl.axioms import Axiom
+from funowl.class_expressions import ClassExpression
+from funowl.dataranges import DataRange
+from funowl.declarations import DataPropertyExpression
 from funowl.base.fun_owl_base import empty_list
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Literals import Datatype
+from funowl.literals import Datatype
 
 """
 DataPropertyAxiom :=

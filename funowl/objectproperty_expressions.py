@@ -3,7 +3,7 @@ from typing import Union
 
 from rdflib import OWL
 
-from funowl.Identifiers import IRI
+from funowl.identifiers import IRI
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers import FunctionalWriter
 

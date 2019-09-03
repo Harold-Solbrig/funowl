@@ -28,9 +28,9 @@ from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Identifiers import IRI
-from funowl.Individuals import AnonymousIndividual
-from funowl.Literals import Literal
+from funowl.identifiers import IRI
+from funowl.individuals import AnonymousIndividual
+from funowl.literals import Literal
 
 
 @dataclass

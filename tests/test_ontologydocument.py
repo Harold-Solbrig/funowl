@@ -1,6 +1,6 @@
 import unittest
 
-from funowl.OntologyDocument import Ontology
+from funowl.ontology_document import Ontology
 from tests.utils.base import TestBase
 
 
@@ -10,7 +10,7 @@ class UseCaseTestCase(TestBase):
 
         EX = Namespace("http://www.example.com/ontology1#")
 
-        o = Ontology(iri=EX)
+        o = Ontology(iri="http://www.example.com/ontology1")
         o.prefixes(EX)
         o.imports("http://www.example.com/ontology2")
         o.annotation(RDFS.label, "An example")

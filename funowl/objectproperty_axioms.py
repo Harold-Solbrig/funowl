@@ -41,9 +41,9 @@ from dataclasses import dataclass
 from typing import List, Union
 
 from funowl.annotations import Annotation
-from funowl.Axioms import Axiom
-from funowl.ClassExpressions import ClassExpression
-from funowl.Declarations import ObjectPropertyExpression
+from funowl.axioms import Axiom
+from funowl.class_expressions import ClassExpression
+from funowl.declarations import ObjectPropertyExpression
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlChoice, empty_list
 from funowl.writers.FunctionalWriter import FunctionalWriter
 

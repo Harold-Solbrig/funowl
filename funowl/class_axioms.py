@@ -15,13 +15,13 @@ disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 from dataclasses import dataclass
 from typing import List, Any, Optional
 
-from funowl.DatapropertyExpressions import DataPropertyExpression
-from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.base.list_support import empty_list
 from funowl.writers import FunctionalWriter
 from funowl.annotations import Annotation
-from funowl.Axioms import Axiom
-from funowl.ClassExpressions import ClassExpression, Class
+from funowl.axioms import Axiom
+from funowl.class_expressions import ClassExpression, Class
 
 
 class ClassAxiom(Axiom):

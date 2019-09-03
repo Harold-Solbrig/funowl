@@ -4,7 +4,7 @@ from rdflib import Namespace
 
 from funowl.base.fun_owl_base import FunOwlRoot, FunOwlBase
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Identifiers import IRI
+from funowl.identifiers import IRI
 from tests.utils.base import TestBase
 
 EX = Namespace("http://example.org/ex/")

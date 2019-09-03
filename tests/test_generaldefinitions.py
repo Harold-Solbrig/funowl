@@ -2,8 +2,8 @@ import unittest
 
 from rdflib import URIRef
 
-from funowl.GeneralDefinitions import NonNegativeInteger, QuotedString, LanguageTag, NodeID, FullIRI, PrefixName
-from funowl.OntologyDocument import Ontology
+from funowl.general_definitions import NonNegativeInteger, QuotedString, LanguageTag, NodeID, FullIRI, PrefixName
+from funowl.ontology_document import Ontology
 from tests.utils.base import TestBase
 
 

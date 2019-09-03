@@ -10,8 +10,8 @@ from typing import Union, ClassVar
 
 from rdflib import OWL, URIRef
 
-from funowl.GeneralDefinitions import NodeID
-from funowl.Identifiers import IRI
+from funowl.general_definitions import NodeID
+from funowl.identifiers import IRI
 from funowl.base.fun_owl_choice import FunOwlChoice
 
 

@@ -48,13 +48,13 @@ from typing import List, ClassVar, Union, Optional
 
 from rdflib import URIRef, OWL
 
-from funowl.DataRanges import DataRange
-from funowl.DatapropertyExpressions import DataPropertyExpression
-from funowl.GeneralDefinitions import NonNegativeInteger
-from funowl.Identifiers import IRI
-from funowl.Individuals import Individual
-from funowl.Literals import Literal
-from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
+from funowl.dataranges import DataRange
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.general_definitions import NonNegativeInteger
+from funowl.identifiers import IRI
+from funowl.individuals import Individual
+from funowl.literals import Literal
+from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.writers import FunctionalWriter
 

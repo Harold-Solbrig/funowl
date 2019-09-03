@@ -16,15 +16,15 @@ from rdflib import URIRef
 from rdflib.extras.infixowl import Ontology
 
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
-from funowl.Axioms import Axiom
-from funowl.ClassAxioms import SubClassOf
-from funowl.ClassExpressions import Class
+from funowl.axioms import Axiom
+from funowl.class_axioms import SubClassOf
+from funowl.class_expressions import Class
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.list_support import empty_list
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.GeneralDefinitions import PrefixName, FullIRI
-from funowl.Identifiers import IRI
-from funowl.PrefixDeclarations import PrefixDeclarations, Prefix
+from funowl.general_definitions import PrefixName, FullIRI
+from funowl.identifiers import IRI
+from funowl.prefix_declarations import PrefixDeclarations, Prefix
 
 
 @dataclass

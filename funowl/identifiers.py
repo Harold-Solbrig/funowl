@@ -7,7 +7,7 @@ from rdflib import URIRef, Namespace, Graph, RDF
 
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.GeneralDefinitions import FullIRI, AbbreviatedIRI
+from funowl.general_definitions import FullIRI, AbbreviatedIRI
 
 
 @dataclass

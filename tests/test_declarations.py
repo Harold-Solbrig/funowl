@@ -2,12 +2,12 @@ import unittest
 
 from rdflib import OWL, RDFS, Graph
 
-from funowl.DatapropertyExpressions import DataPropertyExpression
-from funowl.ObjectpropertyExpressions import ObjectInverseOf, ObjectPropertyExpression
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.objectproperty_expressions import ObjectInverseOf, ObjectPropertyExpression
 from funowl.annotations import AnnotationProperty
-from funowl.Declarations import Datatype, ObjectProperty, DataProperty, Declaration
-from funowl.ClassExpressions import Class
-from funowl.Individuals import NamedIndividual
+from funowl.declarations import Datatype, ObjectProperty, DataProperty, Declaration
+from funowl.class_expressions import Class
+from funowl.individuals import NamedIndividual
 from tests.utils.base import TestBase, A
 
 target_rdf = """@prefix a: <http://example.org/a#> .

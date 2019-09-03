@@ -22,9 +22,9 @@ restrictionValue := Literal
 from dataclasses import dataclass
 from typing import Union, List
 
-from funowl.Identifiers import IRI
-from funowl.Literals import Datatype
-from funowl.Literals import Literal
+from funowl.identifiers import IRI
+from funowl.literals import Datatype
+from funowl.literals import Literal
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter

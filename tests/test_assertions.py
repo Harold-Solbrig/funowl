@@ -3,10 +3,10 @@ import unittest
 from rdflib import Namespace, RDFS, XSD
 
 from funowl.annotations import Annotation
-from funowl.Assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
+from funowl.assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.Literals import Literal, TypedLiteral
+from funowl.literals import Literal, TypedLiteral
 from tests.utils.base import TestBase, A
 
 

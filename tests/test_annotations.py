@@ -7,7 +7,7 @@ from rdflib import RDFS, RDF, XSD, Namespace, OWL
 from funowl.annotations import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
     SubAnnotationPropertyOf, Annotatable
 from funowl.base.list_support import empty_list
-from funowl.Identifiers import IRI
+from funowl.identifiers import IRI
 from funowl.writers import FunctionalWriter
 from tests.utils.base import TestBase
 

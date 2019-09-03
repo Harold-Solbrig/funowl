@@ -7,7 +7,7 @@ from rdflib.namespace import NamespaceManager, OWL
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.GeneralDefinitions import PrefixName, FullIRI
+from funowl.general_definitions import PrefixName, FullIRI
 
 
 @dataclass

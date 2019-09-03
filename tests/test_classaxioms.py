@@ -3,8 +3,8 @@ import unittest
 from rdflib import RDFS, Namespace
 
 from funowl.annotations import Annotation
-from funowl.ClassAxioms import SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion, HasKey
-from funowl.ClassExpressions import ObjectIntersectionOf, ObjectSomeValuesFrom
+from funowl.class_axioms import SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion, HasKey
+from funowl.class_expressions import ObjectIntersectionOf, ObjectSomeValuesFrom
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase
 

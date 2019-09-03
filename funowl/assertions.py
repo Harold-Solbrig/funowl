@@ -29,15 +29,15 @@ NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion'
 from dataclasses import dataclass
 from typing import List, Optional
 
-from funowl.DatapropertyExpressions import DataPropertyExpression
-from funowl.ObjectpropertyExpressions import ObjectPropertyExpression
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.base.list_support import empty_list
 from funowl.writers import FunctionalWriter
 from funowl.annotations import Annotation
-from funowl.Axioms import Axiom
-from funowl.ClassExpressions import ClassExpression
-from funowl.Individuals import Individual
-from funowl.Literals import Literal
+from funowl.axioms import Axiom
+from funowl.class_expressions import ClassExpression
+from funowl.individuals import Individual
+from funowl.literals import Literal
 
 
 @dataclass

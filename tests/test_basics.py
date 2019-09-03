@@ -5,7 +5,7 @@ from rdflib import OWL, RDF, RDFS
 from rdflib.namespace import SKOS
 
 from funowl.annotations import Annotation
-from funowl.OntologyDocument import Ontology
+from funowl.ontology_document import Ontology
 from tests.utils.base import TestBase
 
 

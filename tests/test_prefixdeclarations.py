@@ -2,7 +2,7 @@ import unittest
 
 from rdflib import RDF, URIRef, RDFS
 
-from funowl.PrefixDeclarations import Prefix, PrefixDeclarations
+from funowl.prefix_declarations import Prefix, PrefixDeclarations
 from tests.utils.base import TestBase
 
 

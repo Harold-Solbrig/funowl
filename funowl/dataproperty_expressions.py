@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 from rdflib import OWL
 
-from funowl.Identifiers import IRI
+from funowl.identifiers import IRI
 
 
 @dataclass

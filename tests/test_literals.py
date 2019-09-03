@@ -2,7 +2,7 @@ import unittest
 
 from rdflib import XSD
 
-from funowl.Literals import Literal, TypedLiteral, StringLiteralNoLanguage, StringLiteralWithLanguage
+from funowl.literals import Literal, TypedLiteral, StringLiteralNoLanguage, StringLiteralWithLanguage
 from tests.utils.base import TestBase
 
 

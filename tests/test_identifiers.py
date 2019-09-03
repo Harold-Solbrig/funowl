@@ -2,7 +2,7 @@ import unittest
 
 from rdflib import RDFS, OWL
 
-from funowl.Identifiers import IRI
+from funowl.identifiers import IRI
 from tests.utils.base import TestBase
 
 

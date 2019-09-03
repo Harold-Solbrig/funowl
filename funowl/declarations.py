@@ -20,27 +20,27 @@ from typing import Union
 from rdflib import Graph
 
 from funowl.annotations import AnnotationProperty
-from funowl.Axioms import Axiom
-from funowl.ClassExpressions import Class
-from funowl.DatapropertyExpressions import DataProperty
-from funowl.Individuals import NamedIndividual
-from funowl.Literals import Datatype
-from funowl.ObjectpropertyExpressions import ObjectProperty
+from funowl.axioms import Axiom
+from funowl.class_expressions import Class
+from funowl.dataproperty_expressions import DataProperty
+from funowl.individuals import NamedIndividual
+from funowl.literals import Datatype
+from funowl.objectproperty_expressions import ObjectProperty
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-# Class is defined in ClassExpressions.py
+# Class is defined in class_expressions.py
 
-# Datatype is defined in Literals.py
+# Datatype is defined in literals.py
 
-# ObjectProperty is defined in ObjectpropertyExpressions.py
+# ObjectProperty is defined in objectproperty_expressions.py
 
-# DaataProperty is defined in DatapropertyExpressions.py
+# DaataProperty is defined in dataproperty_expressions.py
 
 # AnnotationProperty is defined in annotations.py
 
-# NamedIndividual is defined in Individuals.py
+# NamedIndividual is defined in individuals.py
 
 
 @dataclass

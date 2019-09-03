@@ -16,8 +16,8 @@ from rdflib.plugins.parsers.notation3 import BadSyntax
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.GeneralDefinitions import QuotedString, LanguageTag
-from funowl.Identifiers import IRI
+from funowl.general_definitions import QuotedString, LanguageTag
+from funowl.identifiers import IRI
 
 
 @dataclass
