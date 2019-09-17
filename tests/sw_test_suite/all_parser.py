@@ -22,6 +22,9 @@ class TestCases:
     def __next__(self):
         return self.next()
 
+    def rdf_to_functional(self, content: str) -> str:
+        print(content)
+
     def next(self) -> Tuple[URIRef, str]:
         while(1):
             subj = next(self._iter)
@@ -29,8 +32,7 @@ class TestCases:
                 if syntax == TEST.FUNCTIONAL:
                     return subj, self.g.value(subj, TEST.fsPremiseOntology, any=False)
                 elif syntax == TEST.RDFXML:
-                    # return subj, self.rdf_to_functional(self.g.value(subj, TEST.fsPremiseOntology, any=False))
-                    pass
+                    return subj, self.rdf_to_functional(self.g.value(subj, TEST.rdfXmlPremiseOntology, any=False))
 
 
 ncases = 0

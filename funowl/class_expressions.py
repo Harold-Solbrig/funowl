@@ -65,7 +65,7 @@ class Class(IRI):
     rdf_type: ClassVar[URIRef] = OWL.Class
 
 
-@dataclass(init=False)
+@dataclass
 class ObjectIntersectionOf(FunOwlBase):
     classExpressions: List["ClassExpression"]
 
