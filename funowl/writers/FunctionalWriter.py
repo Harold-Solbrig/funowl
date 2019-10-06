@@ -101,13 +101,15 @@ class FunctionalWriter:
             self.br().add(line)
         return self.br()
 
-    def br(self) -> "FunctionalWriter":
+    def br(self, cond: bool = True) -> "FunctionalWriter":
         """ Output a line break if not at the beginning of the line and then indent
+        :param cond: If false, act as a no-op
         :return: FunctionWriter instance
         """
-        if not self.bol():
-            self.output.append(self._line.rstrip())
-        self._line = self.tab * self._indent
+        if cond:
+            if not self.bol():
+                self.output.append(self._line.rstrip())
+            self._line = self.tab * self._indent
         return self
 
     def hardbr(self) -> "FunctionalWriter":
@@ -134,23 +136,24 @@ class FunctionalWriter:
         self._indent = max(self._indent - 1, 0)
         return self.br().add(line)
 
-    def func(self, func_name: Union[str, Any], contents: Callable[[], "FunctionalWriter"]) -> "FunctionalWriter":
+    def func(self, func_name: Union[str, Any], contents: Callable[[], "FunctionalWriter"], indent: bool = True) -> "FunctionalWriter":
         """
         Generate a functional method in the form of "func( ... )"
         
         :param func_name: Function name or object.  If object, the class name is used
         :param contents: Invoked to generate function contents
+        :param indent: Put interior on the same line if False
         :return: FunctionWriter instance
         """
         if not isinstance(func_name, str):
             func_name = type(func_name).__name__
         inside = self._inside_function
         self._inside_function = True
-        (self.indent() if inside else self) + (func_name + '(')
+        (self.indent() if inside and indent else self) + (func_name + '(')
         contents()
         self + ')'
         self._inside_function = inside
-        return self.outdent() if inside else self
+        return self.outdent() if inside and indent else self
 
     def iter(self, *objs: List[Any], f: Optional[Callable[[Any], "FunctionalWriter"]] = None, indent: bool=True) \
             -> "FunctionalWriter":

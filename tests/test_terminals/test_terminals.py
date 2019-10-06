@@ -1,8 +1,7 @@
 import unittest
 from typing import Any, Type
 
-from funowl.terminals.Terminals import PN_CHARS_BASE, PNAME_LN, LANGTAG, HEX, UCHAR, QUOTED_STRING
-
+from funowl.terminals.Terminals import PN_CHARS_BASE, PNAME_LN, HEX, QUOTED_STRING
 # class IRIREF(jsg.JSGString):
 #     pattern = jsg.JSGPattern(r'([^\u0000-\u0020\u005C\u007B\u007D<>"|^`]|({UCHAR}))*'.format(UCHAR=UCHAR.pattern))
 #
@@ -48,18 +47,6 @@ class TerminalsTestCase(TestBase):
             self.assertFalse(isinstance(v, t))
             with self.assertRaises(ValueError):
                 t(v)
-
-    def test_langtag(self):
-        self.eval('en', LANGTAG)
-        self.eval('EN-US', LANGTAG)
-        self.eval('EN-US1', LANGTAG)
-        self.eval('2en', LANGTAG, fail=True)
-
-        class C:
-            def __str__(self):
-                return 'en'
-        # TODO: should we consider making this legit?
-        self.eval(C(), LANGTAG, fail=True)
 
     def test_hex(self):
         self.eval('F', HEX)

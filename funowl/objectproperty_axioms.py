@@ -42,9 +42,11 @@ from typing import List, Union
 
 from funowl.annotations import Annotation
 from funowl.axioms import Axiom
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
-from funowl.declarations import ObjectPropertyExpression
-from funowl.base.fun_owl_base import FunOwlBase, FunOwlChoice, empty_list
+from funowl.base.fun_owl_base import FunOwlBase
+from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -63,13 +65,13 @@ class ObjectPropertyChain(FunOwlBase):
 
 @dataclass
 class SubObjectPropertyExpression(FunOwlChoice):
-    v: Union[ObjectPropertyExpression, ObjectPropertyChain]
+    v: Union[ObjectPropertyExpression.types(), ObjectPropertyChain]
 
 
 @dataclass
 class SubObjectPropertyOf(ObjectPropertyAxiom):
-    subObjectPropertyExpression: SubObjectPropertyExpression
-    superObjectPropertyExpression: ObjectPropertyExpression
+    subObjectPropertyExpression: SubObjectPropertyExpression.types()
+    superObjectPropertyExpression: ObjectPropertyExpression.types()
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
@@ -118,9 +120,14 @@ class InverseObjectProperties(ObjectPropertyAxiom):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression, annotations: List[Annotation] = None) \
+            -> None:
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations or []
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.objectPropertyExpressions, 'expressions', 2, 2)
-        return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
+        return w.func(self, lambda: w + self.objectPropertyExpressions[0] + self.objectPropertyExpressions[1])
 
 @dataclass
 class FunctionalObjectProperty(ObjectPropertyAxiom):

@@ -38,24 +38,12 @@ class DeclarationsTestCase(TestBase):
         Declaration(DataProperty(OWL.topDataProperty)).to_functional(self.wa).br()
         Declaration(AnnotationProperty(RDFS.label)).to_functional(self.wa).br()
         Declaration(NamedIndividual(A.Peter)).to_functional(self.wa).br()
-        self.assertEqual("""Declaration(
-    Datatype( a:SSN )
-)
-Declaration(
-    Class( a:Person )
-)
-Declaration(
-    ObjectProperty( owl:topObjectProperty )
-)
-Declaration(
-    DataProperty( owl:topDataProperty )
-)
-Declaration(
-    AnnotationProperty( rdfs:label )
-)
-Declaration(
-    NamedIndividual( a:Peter )
-)""", self.wa.getvalue())
+        self.assertEqual("""Declaration( Datatype( a:SSN ) )
+Declaration( Class( a:Person ) )
+Declaration( ObjectProperty( owl:topObjectProperty ) )
+Declaration( DataProperty( owl:topDataProperty ) )
+Declaration( AnnotationProperty( rdfs:label ) )
+Declaration( NamedIndividual( a:Peter ) )""", self.wa.getvalue())
 
     def test_rdf_decls(self):
         g = Graph()

@@ -50,8 +50,9 @@ Prefix( owl := <http://www.w3.org/2002/07/owl#> )
 Prefix(  := <http://www.w3.org/2000/01/rdf-schema#> )
 
 Ontology( <http://snomed.info/sct/> <http://snomed.info/sct/version/201802017>
-        Import( <http://www.w3.org/2004/02/skos/core#> )
-        Import( <http://example.org/dep> )
+    Import( <http://www.w3.org/2004/02/skos/core#> )
+    Import( <http://example.org/dep> )
+    Annotation( rdfs:label "foo" )
 )''', str(doc.to_functional()))
 
 

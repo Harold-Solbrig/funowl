@@ -13,15 +13,15 @@ DisjointUnion := 'DisjointUnion' '(' axiomAnnotations Class disjointClassExpress
 disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 """
 from dataclasses import dataclass
-from typing import List, Any, Optional
+from typing import List, Optional
 
-from funowl.dataproperty_expressions import DataPropertyExpression
-from funowl.objectproperty_expressions import ObjectPropertyExpression
-from funowl.base.list_support import empty_list
-from funowl.writers import FunctionalWriter
 from funowl.annotations import Annotation
 from funowl.axioms import Axiom
+from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression, Class
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.objectproperty_expressions import ObjectPropertyExpression
+from funowl.writers import FunctionalWriter
 
 
 class ClassAxiom(Axiom):

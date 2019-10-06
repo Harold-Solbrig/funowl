@@ -59,8 +59,6 @@ from funowl.base.fun_owl_base import FunOwlBase
 from funowl.writers import FunctionalWriter
 
 
-
-
 class Class(IRI):
     rdf_type: ClassVar[URIRef] = OWL.Class
 

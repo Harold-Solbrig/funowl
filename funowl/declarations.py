@@ -49,7 +49,7 @@ class Declaration(Axiom, FunOwlChoice):
     coercion_allowed = False
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w)))
+        return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w), indent=False))
 
     def to_rdf(self, g: Graph) -> None:
         self.v.to_rdf(g)

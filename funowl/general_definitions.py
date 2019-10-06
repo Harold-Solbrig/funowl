@@ -9,14 +9,16 @@ prefixName := a finite sequence of characters matching the as PNAME_NS productio
 abbreviatedIRI := a finite sequence of characters matching the PNAME_LN production of [SPARQL]
 """
 import re
-from typing import Optional
+from typing import Optional, ClassVar, Set
 
-from rdflib import BNode, URIRef
+import rfc3987
+import bcp47
+from rdflib import BNode
 from rdflib.namespace import is_ncname
 
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, LANGTAG, BLANK_NODE_LABEL, QUOTED_STRING
+from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, QUOTED_STRING
 
 
 # Note - super class warning is ok
@@ -36,13 +38,23 @@ class NonNegativeInteger(int, FunOwlBase):
 
 
 class QuotedString(QUOTED_STRING, FunOwlRoot):
-
+    """  finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form
+     \" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
+     """
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + ('"' + self.replace('\\', '\\\\').replace('"', '\\"') + '"')
 
 
-class LanguageTag(LANGTAG, FunOwlRoot):
+class LanguageTag(str, FunOwlBase):
+    languages: ClassVar[Set[str]] = set(bcp47.languages.values())
     """ @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47] """
+    def __init__(self, v: str) -> None:
+        if not isinstance(v, self.__class__):
+            raise TypeError(f"{v}: invalid language tag")
+
+    def _is_valid(self, instance) -> bool:
+        return instance in self.languages
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + ('@' + str(self))
 
@@ -63,18 +75,14 @@ class NodeID(BLANK_NODE_LABEL, FunOwlRoot):
 
 
 class FullIRI(str, FunOwlBase):
+    """ fullIRI := an IRI as defined in [RFC3987], enclosed in a pair of < (U+3C) and > (U+3E) characters """
 
     def __init__(self, v: str) -> None:
         if v is None or not self._is_valid(v):
             raise TypeError(f"{v} is not a valid {type(self)}")
 
     def _is_valid(self, instance) -> bool:
-        # We're going to be a bit loose here -- if we've got a scheme (rfc3987.txt)
-        # Also note that we aren't supporting I18N (the 'I' in IRI)
-        # TODO: I18N
-        return instance is not None and (issubclass(type(instance), FullIRI) or
-                                         isinstance(instance, URIRef) or
-                                         re.match(r'[a-zA-Z][a-zA-Z-9+-.]*://', str(instance)))
+        return instance is not None and rfc3987.match(str(instance), 'IRI')
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         v = w.g.namespace_manager.absolutize(str(self))

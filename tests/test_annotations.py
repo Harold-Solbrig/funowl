@@ -1,3 +1,4 @@
+import logging
 import unittest
 from dataclasses import dataclass
 from typing import List
@@ -71,7 +72,7 @@ class AnnotationsTestCase(TestBase):
     def test_annotation_assertions(self):
         self.assertEqual('AnnotationAssertion( rdfs:comment <http://example.org/ex#peter> '
                          '"The father of the Griffin family from Quahog." )',
-                         AnnotationAssertion(RDFS.comment,
+                         AnnotationAssertion("rdfs:comment",
                                              EX.peter, "The father of the Griffin family from Quahog.").
                          to_functional(self.w).getvalue())
         self.w.reset()

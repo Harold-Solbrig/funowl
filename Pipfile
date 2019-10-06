@@ -8,6 +8,9 @@ verify_ssl = true
 [packages]
 rdflib = "*"
 pyjsg = "*"
+jupyter = "*"
+rfc3987 = "*"
+bcp47 = "*"
 
 [requires]
 python_version = "3.7"

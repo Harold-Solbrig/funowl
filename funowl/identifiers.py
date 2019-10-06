@@ -1,7 +1,7 @@
 """ IRI := fullIRI | abbreviatedIRI """
 import logging
 from dataclasses import dataclass
-from typing import Union, ClassVar, Optional
+from typing import Union, ClassVar, Optional, Type
 
 from rdflib import URIRef, Namespace, Graph, RDF
 
@@ -12,13 +12,13 @@ from funowl.general_definitions import FullIRI, AbbreviatedIRI
 
 @dataclass
 class IRI(FunOwlChoice):
-    v: Union[FullIRI, AbbreviatedIRI]
+    """ IRI := fullIRI | abbreviatedIRI """
+    v: Union[AbbreviatedIRI, FullIRI, str]
     rdf_type: ClassVar[URIRef] = None
+    input_type: ClassVar[Type] = str
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:
-        if isinstance(self.v, FullIRI):
-            return URIRef(self.v)
-        else:
+        if isinstance(self.v, AbbreviatedIRI):
             # TODO: find the code in rdflib that does this
             ns, local = self.v.split(':', 1)
             for ns1, uri in g.namespaces():
@@ -26,6 +26,8 @@ class IRI(FunOwlChoice):
                     return(Namespace(uri)[local])
             logging.warning(f"IRI: {self.v} - {ns} not a valid prefix")
             return None
+        if isinstance(self.v, FullIRI):
+            return URIRef(self.v)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         fulluri = self.full_uri(w.g)

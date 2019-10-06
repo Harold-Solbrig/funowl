@@ -1,6 +1,6 @@
 import logging
 from dataclasses import dataclass
-from typing import Any, ClassVar, get_type_hints, List, Type
+from typing import Any, ClassVar, get_type_hints, List, Type, Tuple
 
 from rdflib import Graph
 
@@ -19,15 +19,26 @@ class FunOwlChoice(FunOwlBase):
       True means try to make it fit
     """
     v: Any
-    coercion_allowed: ClassVar[bool] = True       # True means you can't cast to the underlying type
+    coercion_allowed: ClassVar[bool] = True       # False means type has to be exact coming in
+    input_type: ClassVar[Type] = None             # Type hint for IDE's.  Not actually included in cooercion
+
+    @classmethod
+    def types(cls) -> List[Type]:
+        """
+        Return the allowed types for value v
+        """
+        return get_type_hints(cls)['v']
 
     @classmethod
     def hints(cls) -> List[Type]:
         """
-        Return the allowed types for value v
+        Return the allowed types for value v, removing the input_type hint
         """
-        hints = get_type_hints(cls)['v']
-        return get_args(hints) if is_union(hints) else [hints]
+        hints = cls.types()
+        t = list(get_args(hints)) if is_union(hints) else [hints]
+        if cls.input_type:
+            t.remove(cls.input_type)
+        return t
 
     def set_v(self, value: Any) -> bool:
         """ Default setter -- can be invoked from more elaborate coercion routines

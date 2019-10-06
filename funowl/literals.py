@@ -96,6 +96,7 @@ class Literal(FunOwlChoice):
     def _to_n3(v: Any) -> Optional[rdflib.Literal]:
         if not isinstance(v, str):
             v = str(v)
+        v = v.replace("\n", "\\n")
 
         # Add quotes if necessary
         if v[0] not in ['"', "'"]:

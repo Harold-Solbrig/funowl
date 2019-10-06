@@ -24,8 +24,8 @@ class LiteralsTestCase(TestBase):
                                       "http://example.org/types/indigo").to_functional(self.w).getvalue())
 
     def test_stringliteralwithlanguage(self):
-        self.assertEqual(r'"\"AB\\\\\"\\\\C\\\"\""@gb-en',
-                         StringLiteralWithLanguage(r'"AB\\"\\C\""', 'gb-en').to_functional(self.w).getvalue())
+        self.assertEqual(r'"\"AB\\\\\"\\\\C\\\"\""@en-GB',
+                         StringLiteralWithLanguage(r'"AB\\"\\C\""', 'en-GB').to_functional(self.w).getvalue())
 
     def test_literal(self):
         self.assertEqual('"testing"', Literal("testing").to_functional(self.w).getvalue())
@@ -45,7 +45,9 @@ class LiteralsTestCase(TestBase):
         self.assertTrue(isinstance('"42"^^xsd:integer', Literal))
         self.assertFalse(isinstance('"123"^^xsd.integer', Literal))
         self.w.reset()
-        self.assertEqual('"abc"@en-gb', Literal('"abc"@en-gb').to_functional(self.w).getvalue())
+        self.assertEqual('"abc"@en-GB', Literal('"abc"@en-GB').to_functional(self.w).getvalue())
+        with self.assertRaises(TypeError):
+            Literal('"abc"@en-gb')
 
     def test_literal_type(self):
         """ Subclasses of Literal are instances of literal """

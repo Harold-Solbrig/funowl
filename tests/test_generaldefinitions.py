@@ -43,8 +43,8 @@ class TestGeneralDefinitons(TestBase):
         self.assertTrue(type(LanguageTag('en')) is LanguageTag)
         self.assertFalse(isinstance('1n', LanguageTag))
         self.assertFalse(isinstance('en-', LanguageTag))
-        self.assertEqual('@en-us', str(LanguageTag('en-us').to_functional(self.w)))
-        with self.assertRaises(ValueError):
+        self.assertEqual('@en-US', str(LanguageTag('en-US').to_functional(self.w)))
+        with self.assertRaises(TypeError):
             LanguageTag('1')
 
     def test_nodeid(self):

@@ -27,10 +27,10 @@ from rdflib.namespace import OWL
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
 from funowl.literals import Literal
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass
@@ -45,7 +45,8 @@ class AnnotationSubject(FunOwlChoice):
 
 @dataclass
 class AnnotationValue(FunOwlChoice):
-    v: Union[AnonymousIndividual, IRI, Literal]
+    v: Union[AnonymousIndividual, IRI, Literal, str]
+    input_type = str
 
 
 # Placeholder to prevent recursive definitions
@@ -95,15 +96,11 @@ class Annotation(Annotatable):
         return self.annots(w, lambda: w + self.property + self.value)
 
 
-class AnnotationAxiom(Annotatable):
-    pass
-
-
 @dataclass
-class AnnotationAssertion(AnnotationAxiom):
-    property: AnnotationProperty
-    subject: AnnotationSubject
-    value: AnnotationValue
+class AnnotationAssertion(Annotatable):
+    property: AnnotationProperty.types()
+    subject: AnnotationSubject.types()
+    value: AnnotationValue.types()
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
@@ -111,7 +108,7 @@ class AnnotationAssertion(AnnotationAxiom):
 
 
 @dataclass
-class SubAnnotationPropertyOf(AnnotationAxiom):
+class SubAnnotationPropertyOf(Annotatable):
     sub: AnnotationProperty
     super: AnnotationProperty
     annotations: List[Annotation] = empty_list()
@@ -121,7 +118,7 @@ class SubAnnotationPropertyOf(AnnotationAxiom):
 
 
 @dataclass
-class AnnotationPropertyDomain(AnnotationAxiom):
+class AnnotationPropertyDomain(Annotatable):
     property: AnnotationProperty
     domain: IRI
     annotations: List[Annotation] = empty_list()
@@ -131,10 +128,13 @@ class AnnotationPropertyDomain(AnnotationAxiom):
 
 
 @dataclass
-class AnnotationPropertyRange(AnnotationAxiom):
+class AnnotationPropertyRange(Annotatable):
     property: AnnotationProperty
     range: IRI
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.range)
+
+
+AnnotationAxiom = Union[AnnotationAssertion, SubAnnotationPropertyOf, AnnotationPropertyDomain, AnnotationPropertyRange]

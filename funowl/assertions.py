@@ -116,6 +116,7 @@ class DataPropertyAssertion(Assertion):
         return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetValue)
 
 
+
 @dataclass
 class NegativeDataPropertyAssertion(Assertion):
     expr: DataPropertyExpression

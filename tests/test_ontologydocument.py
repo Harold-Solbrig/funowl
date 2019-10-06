@@ -23,10 +23,10 @@ Prefix( owl := <http://www.w3.org/2002/07/owl#> )
 Prefix(  := <http://www.example.com/ontology1#> )
 
 Ontology( <http://www.example.com/ontology1>
-        Import( <http://www.example.com/ontology2> )
-        SubClassOf( <http://www.example.com/ontology1#Child>   owl:Thing )
+    Import( <http://www.example.com/ontology2> )
+    Annotation( rdfs:label "An example" )
+    SubClassOf( <http://www.example.com/ontology1#Child>   owl:Thing )
 )""", str(o.to_functional(self.w)))
-
 
 
 if __name__ == '__main__':

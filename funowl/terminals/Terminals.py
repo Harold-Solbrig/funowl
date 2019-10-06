@@ -6,11 +6,6 @@ from typing import Union, Any
 from funowl.terminals.Patterns import String, Pattern
 
 
-class LANGTAG(String):
-    pattern = Pattern(r'[a-zA-Z]+(\-([a-zA-Z0-9])+)*')
-    python_type = str
-
-
 class HEX(String):
     pattern = Pattern(r'[0-9]|[A-F]|[a-f]')
     python_type = Union[int, str]
