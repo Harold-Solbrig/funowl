@@ -3,9 +3,9 @@ from typing import Optional, List
 
 from rdflib import Graph
 from rdflib.namespace import NamespaceManager, OWL
+from rdflib.term import Node, URIRef
 
-
-from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.general_definitions import PrefixName, FullIRI
 
@@ -16,7 +16,17 @@ class Prefix(FunOwlBase):
     fullIRI: FullIRI
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: w.concat(self.prefixName or '', ':=', self.fullIRI, sep=' '))
+        return w.func(self, lambda: w.concat(self.prefixName or '', ':=',
+                                             URIRef(str(self.fullIRI)).n3(), sep=' '))
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        """
+        Add the prefix binding to the graph
+        :param g: Graph to add binding to
+        :return: None -- no corresponding node
+        """
+        g.bind(self.prefixName, self.fullIRI.as_rdf())
+        return None
 
 
 class PrefixDeclarations(NamespaceManager):
@@ -48,3 +58,5 @@ class PrefixDeclarations(NamespaceManager):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.iter(self.pdlist(), indent=False)
+
+

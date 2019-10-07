@@ -15,6 +15,9 @@ disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 from dataclasses import dataclass
 from typing import List, Optional
 
+from rdflib import Graph, RDFS
+from rdflib.term import Node
+
 from funowl.annotations import Annotation
 from funowl.axioms import Axiom
 from funowl.base.list_support import empty_list
@@ -36,6 +39,15 @@ class SubClassOf(ClassAxiom):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.subClassExpression + ' ' +  self.superClassExpression)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        """
+        Add subclass representation to graph
+        :param g: Graph to add representation to
+        :return: None -
+        """
+        g.add((self.subClassExpression.to_rdf(g), RDFS.subClassOf, self.superClassExpression.to_rdf(g)))
+        return None
 
 
 @dataclass

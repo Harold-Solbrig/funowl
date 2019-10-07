@@ -1,8 +1,9 @@
 import logging
 from dataclasses import dataclass
-from typing import Any, ClassVar, get_type_hints, List, Type, Tuple
+from typing import Any, ClassVar, get_type_hints, List, Type, Tuple, Optional
 
 from rdflib import Graph
+from rdflib.term import Node
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.cast_function import cast
@@ -65,12 +66,13 @@ class FunOwlChoice(FunOwlBase):
         """
         return w + self.v
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph) -> Optional[Node]:
         """
-        Add value of self to graph g
+        Add value of self to graph g and return the node (if any) that represents the element
         :param g: Target graph
+        :return Node that represents graph entry, if appropriate
         """
-        self.v.to_rdf(g)
+        return self.v.to_rdf(g)
 
     def _is_valid(cls: Type["FunOwlChoice"], v: Any) -> bool:
         """

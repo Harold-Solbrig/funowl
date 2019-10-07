@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from typing import Union, ClassVar, Optional, Type
 
 from rdflib import URIRef, Namespace, Graph, RDF
+from rdflib.term import Node
 
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -33,7 +34,7 @@ class IRI(FunOwlChoice):
         fulluri = self.full_uri(w.g)
         return w + (fulluri.n3(w.g.namespace_manager) if fulluri else self.v)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph) -> Optional[Node]:
         if self.rdf_type is None:
             raise ValueError(f"IRI type not specified for class {type(self).__name__}")
         fulluri = self.full_uri(g)

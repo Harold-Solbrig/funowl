@@ -12,11 +12,13 @@ Ontology :=
 from dataclasses import dataclass, field
 from typing import Optional, List, Union, Dict
 
+from rdflib import Graph, RDF, OWL, URIRef
 from rdflib.extras.infixowl import Ontology
+from rdflib.term import Node
 
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.axioms import Axiom
-from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
 from funowl.base.list_support import empty_list
 from funowl.class_axioms import SubClassOf
 from funowl.class_expressions import Class, ClassExpression
@@ -84,6 +86,9 @@ class Ontology(Annotatable):
         self.prefixDeclarations.append(pd)
         self._prefixmanager.append(pd)
 
+    # =======================
+    # Syntactic sugar
+    # =======================
     def prefixes(self, base: Optional[FullIRI] = None,
                  **namedprefix: Dict[str, str]) -> "Ontology":
         if base is not None:
@@ -145,7 +150,12 @@ class Ontology(Annotatable):
             Import(import_.iri if isinstance(import_, Ontology) else IRI(str(import_))))
         return self
 
+    # ====================
+    # Conversion functions
+    # ====================
+
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
+        """ Return a FunctionalWriter instance with the representation of the ontology in functional syntax """
         if self.version and not self.iri:
             raise ValueError(f"Ontology cannot have a versionIRI ({self.version} without an ontologyIRI")
         w = w or FunctionalWriter()
@@ -153,3 +163,17 @@ class Ontology(Annotatable):
             func(self, lambda: w.opt(self.iri).opt(self.version).br(bool(self.directlyImportsDocuments)).
                  iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
                  iter(self.axioms, indent=False), indent=False)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        for p in self.prefixDeclarations:
+            p.to_rdf(g)
+        ontology_uri = self.iri.as_rdf()
+        g.add((ontology_uri, RDF.type, OWL.Ontology))
+        if self.version:
+            g.add((ontology_uri, OWL.versionIRI, URIRef(self.version.full_uri(g))))
+        for imp in self.directlyImportsDocuments:
+            g.add((ontology_uri, OWL.imports, imp.to_rdf()))
+        for axiom in self.axioms:
+            axiom.to_rdf(g)
+        super().to_rdf(g)
+        return ontology_uri

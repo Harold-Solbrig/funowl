@@ -46,8 +46,10 @@ HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpr
 from dataclasses import dataclass
 from typing import List, ClassVar, Union, Optional
 
-from rdflib import URIRef, OWL
+from rdflib import URIRef, OWL, Graph, RDF
+from rdflib.term import Node, BNode
 
+from funowl.converters.rdf_converter import SEQ
 from funowl.dataranges import DataRange
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.general_definitions import NonNegativeInteger
@@ -74,6 +76,12 @@ class ObjectIntersectionOf(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        subj = BNode()
+        g.add((subj, RDF.type, OWL.Class))
+        g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
+        return subj
 
 
 @dataclass

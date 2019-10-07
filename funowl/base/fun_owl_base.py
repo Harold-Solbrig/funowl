@@ -2,9 +2,10 @@ import logging
 from abc import ABCMeta
 from dataclasses import dataclass
 from inspect import getmodule
-from typing import List, Any, get_type_hints, Tuple, Type
+from typing import List, Any, get_type_hints, Tuple, Type, Optional
 
 from rdflib import Graph
+from rdflib.term import Node
 
 from funowl.base.cast_function import cast
 from funowl.base.list_support import ListWrapper
@@ -40,9 +41,9 @@ class FunOwlRoot:
         """
         return w + str(self)
 
-    def to_rdf(self, g: Graph()) -> "FunOwlRoot":
-        """ Add RDF representation of self to graph g """
-        return self
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        """ Add RDF representation of self to graph g and return node representing representation if applicable """
+        return None
 
     def list_cardinality(self, els: List, list_name: str, min_: int = 1, max_: int = None) -> "FunOwlRoot":
         """ Validate the cardinality of a list element """

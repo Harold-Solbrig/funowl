@@ -15,9 +15,10 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 DataPropertyExpression := DataProperty
 """
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, Optional
 
 from rdflib import Graph
+from rdflib.term import Node
 
 from funowl.annotations import AnnotationProperty
 from funowl.axioms import Axiom
@@ -51,5 +52,5 @@ class Declaration(Axiom, FunOwlChoice):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w), indent=False))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph) -> Optional[Node]:
         self.v.to_rdf(g)

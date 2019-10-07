@@ -29,6 +29,7 @@ NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion'
 from dataclasses import dataclass
 from typing import List, Optional
 
+from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.base.list_support import empty_list

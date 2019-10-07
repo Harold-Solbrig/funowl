@@ -13,7 +13,7 @@ from typing import Optional, ClassVar, Set
 
 import rfc3987
 import bcp47
-from rdflib import BNode
+from rdflib import BNode, URIRef, Graph
 from rdflib.namespace import is_ncname
 
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
@@ -73,6 +73,9 @@ class NodeID(BLANK_NODE_LABEL, FunOwlRoot):
             raise TypeError(f"{v} is not a valid {type(self)}")
         BLANK_NODE_LABEL.__init__(self, self)
 
+    def as_rdf(self, g) -> BNode:
+        return BNode()
+
 
 class FullIRI(str, FunOwlBase):
     """ fullIRI := an IRI as defined in [RFC3987], enclosed in a pair of < (U+3C) and > (U+3E) characters """
@@ -85,8 +88,10 @@ class FullIRI(str, FunOwlBase):
         return instance is not None and rfc3987.match(str(instance), 'IRI')
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        v = w.g.namespace_manager.absolutize(str(self))
-        return w.concat('<', str(self), '>', sep='')
+        return w + w.g.namespace_manager.normalizeUri(str(self))
+
+    def as_rdf(self, _: Graph) -> URIRef:
+        return URIRef(str(self))
 
 
 class PrefixName(PNAME_NS, FunOwlRoot):
@@ -108,4 +113,5 @@ class PrefixName(PNAME_NS, FunOwlRoot):
 
 
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):
-    pass
+    def as_rdf(self, g: Graph) -> URIRef:
+        return URIRef(g.namespace_manager.normalizeUri(str(self)))
