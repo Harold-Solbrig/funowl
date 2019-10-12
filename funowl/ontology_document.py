@@ -42,6 +42,9 @@ class Import(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.iri))
 
+    def to_rdf(self, _: Graph) -> Optional[Node]:
+        return URIRef(str(self.ontology_iri()))
+
 
 @dataclass
 class Ontology(Annotatable):
@@ -167,12 +170,12 @@ class Ontology(Annotatable):
     def to_rdf(self, g: Graph) -> Optional[Node]:
         for p in self.prefixDeclarations:
             p.to_rdf(g)
-        ontology_uri = self.iri.as_rdf()
+        ontology_uri = self.iri.as_rdf(g)
         g.add((ontology_uri, RDF.type, OWL.Ontology))
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, URIRef(self.version.full_uri(g))))
         for imp in self.directlyImportsDocuments:
-            g.add((ontology_uri, OWL.imports, imp.to_rdf()))
+            g.add((ontology_uri, OWL.imports, imp.to_rdf(g)))
         for axiom in self.axioms:
             axiom.to_rdf(g)
         super().to_rdf(g)

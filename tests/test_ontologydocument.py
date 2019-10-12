@@ -1,10 +1,21 @@
 import unittest
 
-from funowl.ontology_document import Ontology
+from funowl.ontology_document import Ontology, Import
 from tests.utils.base import TestBase
+from rdflib import Graph, URIRef
+
+
+class ImportTestCase(TestBase):
+
+    def test_import_to_rdf(self):
+        g = Graph()
+        imp = Import('http://www.example.com/ontology')
+        self.assertIsInstance(imp.to_rdf(g), URIRef)
+        self.assertEqual('http://www.example.com/ontology', str(imp.to_rdf(g)))
 
 
 class UseCaseTestCase(TestBase):
+
     def test_use_case_one(self):
         from rdflib import RDFS, OWL, Namespace
 
