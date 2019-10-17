@@ -41,3 +41,4 @@ class IRI(FunOwlChoice):
         if g is None:
             raise ValueError(f"Unknown prefix: {self.v}")
         g.add((fulluri, RDF.type, self.rdf_type))
+        return fulluri

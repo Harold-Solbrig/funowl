@@ -145,6 +145,18 @@ class ObjectHasValue(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.individual)
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        """
+        _:x rdf:type owl:Restriction .
+        _:x owl:onProperty T(OPE) .
+        _:x owl:hasValue T(a) .
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Restriction))
+        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((rval, OWL.hasValue, self.individual.to_rdf(g)))
+        return rval
+
 
 @dataclass
 class ObjectHasSelf(FunOwlBase):
@@ -182,6 +194,16 @@ class ObjectExactCardinality(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        """
+        _:x rdf:type owl:Restriction .
+        _:x owl:onProperty T(OPE) .
+        _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
+        """
+        rval = BNode()
+        ...
+        return rval
 
 
 @dataclass

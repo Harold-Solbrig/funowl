@@ -5,7 +5,7 @@ from inspect import getmodule
 from typing import List, Any, get_type_hints, Tuple, Type, Optional
 
 from rdflib import Graph
-from rdflib.term import Node
+from rdflib.term import Node, URIRef
 
 from funowl.base.cast_function import cast
 from funowl.base.list_support import ListWrapper
@@ -43,7 +43,7 @@ class FunOwlRoot:
 
     def to_rdf(self, g: Graph) -> Optional[Node]:
         """ Add RDF representation of self to graph g and return node representing representation if applicable """
-        return None
+        return URIRef(f"http://notimplemented.org/{self.__class__.__name}")
 
     def list_cardinality(self, els: List, list_name: str, min_: int = 1, max_: int = None) -> "FunOwlRoot":
         """ Validate the cardinality of a list element """
