@@ -32,8 +32,12 @@ class PN_CHARS(String):
 
 
 class PNAME_NS(String):
-    pattern = Pattern(r'({PN_CHARS_BASE})((({PN_CHARS})|\.)*({PN_CHARS}))?'.format(PN_CHARS=PN_CHARS.pattern, PN_CHARS_BASE=PN_CHARS_BASE.pattern))
+    pattern = Pattern(r'({PN_CHARS_BASE})((({PN_CHARS})|\.)*({PN_CHARS}))?'
+                      .format(PN_CHARS=PN_CHARS.pattern, PN_CHARS_BASE=PN_CHARS_BASE.pattern))
 
+class OPT_PNAME_NS(String):
+    pattern = Pattern(r'(({PN_CHARS_BASE})((({PN_CHARS})|\.)*({PN_CHARS}))?)?'
+                      .format(PN_CHARS=PN_CHARS.pattern, PN_CHARS_BASE=PN_CHARS_BASE.pattern))
 
 class PNAME_LOCAL(String):
     pattern = Pattern(r'(({PN_CHARS_U})|[0-9])((({PN_CHARS})|\.)*({PN_CHARS}))?'.format(PN_CHARS_U=PN_CHARS_U.pattern, PN_CHARS=PN_CHARS.pattern))

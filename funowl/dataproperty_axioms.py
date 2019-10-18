@@ -3,10 +3,10 @@ from typing import List
 
 from funowl.annotations import Annotation
 from funowl.axioms import Axiom
+from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
+from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.dataranges import DataRange
-from funowl.declarations import DataPropertyExpression
-from funowl.base.fun_owl_base import empty_list
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.literals import Datatype
 

@@ -1,10 +1,15 @@
+import logging
 import re
 from dataclasses import dataclass
-from typing import Union, List, Tuple, Match
+from typing import Union, List, Tuple, Match, cast
 
 import rdflib
 
-prefix_re = re.compile(r'\s*Prefix\s*\(\s*([^)]*)\s*\)', flags=re.DOTALL)
+import funowl
+from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiteralNoLanguage
+
 ontology_re = re.compile(r'\s*Ontology\s*\((.*)\s*\)\s*$', flags=re.DOTALL)
 
 
@@ -67,6 +72,37 @@ class OWLFunc:
     def __str__(self):
         body_str = ', '.join([str(b) for b in self.body])
         return f"{self.function}({body_str})"
+
+    def _eval_body(self, arg: Union["OWLFunc", rdflib.Literal, str, List[Union["OWLFunc", rdflib.Literal, str]]]) -> \
+            Union[str, FunOwlBase, List[FunOwlBase]]:
+        if isinstance(arg, str):
+            return arg
+        if isinstance(arg, OWLFunc):
+            return arg.eval()
+        elif isinstance(arg, rdflib.Literal):
+            if arg.datatype:
+                return TypedLiteral(arg.value, arg.datatype)
+            elif arg.language:
+                return StringLiteralWithLanguage(arg.value, arg.language)
+            else:
+                return FunOwlChoice(StringLiteralNoLanguage(arg))
+        else:
+            return [self._eval_body(b) for b in arg]
+
+    def eval(self) -> FunOwlBase:
+        method_to_call = getattr(funowl, self.function, None)
+        args = []
+        # Flatten nested lists
+        for b in self.body:
+            arg = self._eval_body(b)
+            args += arg if isinstance(arg, list) else [arg]
+
+        if method_to_call is None:
+            logging.getLogger().error(f"Unknown function: {self.str}")
+            raise NotImplemented("Create an instance of FunOwlBase that reflects what is written to it ")
+        # TODO: Address flattened arguments
+        return method_to_call(*args)
+
 
 
 def m_rem(m: Match) -> str:
@@ -149,6 +185,11 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
 
 
 def fparse(s: str) -> List[OWLFunc]:
+    """
+     Parse functional syntax string and list of OWL Functions
+    :param s: OWL string to parse
+    :return: list of OWLFunc entries
+    """
     rval: List[OWLFunc] = []
     unparsed = s
     while unparsed:
@@ -162,3 +203,13 @@ def fparse(s: str) -> List[OWLFunc]:
 
 tree = fparse(func)
 print('\n'.join([repr(e) for e in tree]))
+
+prefixes: List[FunOwlBase] = []
+for e in tree:
+    decl = e.eval()
+    if isinstance(decl, funowl.Prefix):
+        prefixes.append(decl)
+    else:
+        decl = cast(funowl.Ontology, decl)
+        decl.prefixDeclarations = prefixes
+print(decl.to_functional().getvalue())

@@ -65,6 +65,14 @@ class DataComplementOf(DataRange_):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.dataRange)
 
+@dataclass
+class DataOneOf(DataRange_):
+    literal: List[Literal]
+
+    def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
+        self.list_cardinality(self.literal, "literal", 2)
+        return w.func(self, w.iter(self.literal))
+
 
 @dataclass
 class FacetRestriction(FunOwlBase):

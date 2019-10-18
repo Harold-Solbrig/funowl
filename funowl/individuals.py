@@ -6,9 +6,10 @@ NamedIndividual := IRI
 AnonymousIndividual := nodeID
 """
 from dataclasses import dataclass
-from typing import Union, ClassVar
+from typing import Union, ClassVar, Optional
 
-from rdflib import OWL, URIRef
+from rdflib import OWL, URIRef, Graph
+from rdflib.term import Node
 
 from funowl.general_definitions import NodeID
 from funowl.identifiers import IRI
@@ -27,4 +28,7 @@ class AnonymousIndividual(NodeID):
 @dataclass
 class Individual(FunOwlChoice):
     v: Union[NamedIndividual, AnonymousIndividual]
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        return URIRef("http://example.org/notimplemented")
 

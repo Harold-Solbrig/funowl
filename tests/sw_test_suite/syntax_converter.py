@@ -1,5 +1,9 @@
+"""
+OWL format conversion tool.
 
-
+This converter uses them Linked Data Finland server to convert OWL in any of a variety of format.
+"""
+import logging
 from enum import Enum, auto
 from typing import Optional
 
@@ -21,6 +25,7 @@ def convert(content: str, output_format: OWLFormat=OWLFormat.func) -> Optional[s
                          params=dict(onto=content, to=output_format.name))
     if resp.ok:
         return resp.text
+    logging.getLogger().error(resp.msg)
 
 
 print(convert("""<rdf:RDF

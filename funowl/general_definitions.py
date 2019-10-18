@@ -18,7 +18,7 @@ from rdflib.namespace import is_ncname
 
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
 from funowl.writers.FunctionalWriter import FunctionalWriter
-from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, QUOTED_STRING
+from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, QUOTED_STRING, OPT_PNAME_NS
 
 
 # Note - super class warning is ok
@@ -94,17 +94,17 @@ class FullIRI(str, FunOwlBase):
         return URIRef(str(self))
 
 
-class PrefixName(PNAME_NS, FunOwlRoot):
+class PrefixName(OPT_PNAME_NS, FunOwlRoot):
     def __new__(cls, v: Optional[str] = None) -> object:
         if v is None:
             v = ''
-        elif not isinstance(v, PNAME_NS):
+        elif not isinstance(v, OPT_PNAME_NS):
             raise TypeError(f"{v} is not a valid {cls}")
         return PNAME_NS.__new__(cls, v)
 
     def __init__(self, v: Optional[str] = None) -> None:
         super().__init__(v)
-        if not is_ncname(v):
+        if v and not is_ncname(v):
             raise ValueError(f"{v} is not a valid NCNAME according to rdflib")
 
     """ a finite sequence of characters matching the as PNAME_NS production of [SPARQL] """

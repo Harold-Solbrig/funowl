@@ -1,7 +1,8 @@
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, Optional
 
-from rdflib import OWL
+from rdflib import OWL, Graph
+from rdflib.term import Node
 
 from funowl.identifiers import IRI
 from funowl.base.fun_owl_choice import FunOwlChoice
@@ -28,3 +29,4 @@ class ObjectPropertyExpression(FunOwlChoice):
     v: Union[ObjectProperty, ObjectInverseOf, str]
     coercion_allowed = False
     input_type = str
+
