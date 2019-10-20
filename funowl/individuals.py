@@ -30,5 +30,5 @@ class Individual(FunOwlChoice):
     v: Union[NamedIndividual, AnonymousIndividual]
 
     def to_rdf(self, g: Graph) -> Optional[Node]:
-        return URIRef("http://example.org/notimplemented")
+        return self.v.to_rdf(g)
 

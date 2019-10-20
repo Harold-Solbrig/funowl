@@ -38,7 +38,7 @@ Ontology(
 # )
 #
 # Generic Syntax:
-#   FunctIon ( args )
+#   Function ( args )
 #   args = FunctIon | literal | embedded list
 #   literal = URIRef | Literal
 #   embedded list FunctIon|embedded list "(" args ")"
@@ -50,7 +50,7 @@ prefix_re = re.compile(r'(\S*):=\s*(\S*)', flags=re.DOTALL)
 # '<' 1:uri '>
 abs_uri = re.compile(r'<([^>]+)>', flags=re.DOTALL)
 # 1: rel-url
-rel_uri = re.compile(r'([A-Za-z_]?:\S+)', flags=re.DOTALL)
+rel_uri = re.compile(r'(([A-Za-z_]).*?:\S+)', flags=re.DOTALL)
 # 1: literal
 literal_re = re.compile(r'("[^"]*"|\S+)', flags=re.DOTALL)
 # 1: lang

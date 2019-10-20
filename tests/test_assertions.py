@@ -1,18 +1,17 @@
 import unittest
 
-from rdflib import Namespace, RDFS, XSD
+from rdflib import RDFS, XSD, Graph, OWL
 
 from funowl.annotations import Annotation
 from funowl.assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.literals import Literal, TypedLiteral
 from tests.utils.base import TestBase, A
 
 
 class AssertionsTestCase(TestBase):
 
-    def test_sameindividual(self) -> object:
+    def test_sameindividual(self):
         self.assertEqual('SameIndividual( a:Peter a:Peter_Griffin )',
                          SameIndividual(A.Peter, A.Peter_Griffin).to_functional(self.wa).getvalue())
         with self.assertRaises(ValueError):
@@ -24,6 +23,12 @@ class AssertionsTestCase(TestBase):
     a:Alex a:Bob a:Charlie
 )""", SameIndividual(A.Alex, A.Bob, A.Charlie,
                      annotations=Annotation(RDFS.comment, "Many aliases")).to_functional(self.wa).getvalue())
+
+    def test_sameindividual_rdf(self):
+        g = Graph()
+        g.bind('owl', str(OWL))
+        SameIndividual(A.Peter, A.Peter_Griffin).to_rdf(g)
+        print(g.serialize(format="turtle").decode())
 
     def test_differentindividuals(self):
         self.assertEqual('DifferentIndividuals( a:Peter a:Peter_Griffin )',

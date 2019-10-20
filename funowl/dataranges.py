@@ -22,6 +22,7 @@ restrictionValue := Literal
 from dataclasses import dataclass
 from typing import Union, List
 
+from funowl.annotations import Annotation
 from funowl.identifiers import IRI
 from funowl.literals import Datatype
 from funowl.literals import Literal
@@ -87,6 +88,12 @@ class FacetRestriction(FunOwlBase):
 class DatatypeRestriction(DataRange_):
     datatype: Datatype
     restrictions: List[FacetRestriction]
+
+    def __init__(self, datatype: Datatype, *restrictions: FacetRestriction, annotations: List[Annotation] = None) \
+            -> None:
+        self.datatype = datatype
+        self.restrictions = [FacetRestriction(r[0], r[1]) for r in zip(*[restrictions[i::2] for i in range(2)])]
+        self.annotations = annotations or []
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.datatype).iter(self.restrictions))
