@@ -29,8 +29,8 @@ NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion'
 from dataclasses import dataclass
 from typing import List, Optional
 
-from rdflib import Graph, OWL
-from rdflib.term import Node
+from rdflib import Graph, OWL, RDF
+from rdflib.term import Node, BNode
 
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -83,6 +83,16 @@ class DifferentIndividuals(Assertion):
         return self.list_cardinality(self.individuals, 'individuals', 2).\
             annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        # for annotation in self.annotations:
+        #     annotation.to_rdf(g)
+        if len(self.individuals) == 2:
+            g.add((self.individuals[0].to_rdf(g), OWL.differentFrom, self.individuals[1].to_rdf(g)))
+        elif len(self.individuals) > 2:
+            subj = BNode()
+            g.add((subj, RDF.type, OWL.ALLDifferent))
+            g.add((subj, OWL.memebers, SEQ(g, self.individuals)))
+        return None
 
 @dataclass
 class ClassAssertion(Assertion):

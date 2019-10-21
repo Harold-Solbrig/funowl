@@ -43,6 +43,12 @@ class AssertionsTestCase(TestBase):
 )""", DifferentIndividuals(A.Alex, A.Bob, A.Charlie,
                      annotations=Annotation(RDFS.comment, "We know better")).to_functional(self.wa).getvalue())
 
+    def test_differentindividuals_rdf(self):
+        g = Graph()
+        g.bind('owl', str(OWL))
+        DifferentIndividuals(A.Alex, A.Bob).to_rdf(g)
+        print(g.serialize(format="turtle").decode())
+
     def test_classassertion(self):
         self.assertEqual('ClassAssertion( a:GriffinFamilyMember a:Peter_Griffin )',
                          ClassAssertion( A.GriffinFamilyMember, A.Peter_Griffin).to_functional(self.wa).getvalue())

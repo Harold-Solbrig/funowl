@@ -96,6 +96,15 @@ class ObjectUnionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
+    # def to_rdf(self, g: Graph) -> Optional[Node]:
+    #     """
+    #     _:x rdf:type owl:Class .
+    #     _:x owl:unionOf T(SEQ CE1 ... CEn) .
+    #     """
+    #     rval = BNode()
+    #     g.add((rval, RDF.type, OWL.Class))
+    #     g.add((rval, OWL.unionOf, SEQ(g, self.classExpressions)))
+    #     return rval
 
 @dataclass
 class ObjectComplementOf(FunOwlBase):
