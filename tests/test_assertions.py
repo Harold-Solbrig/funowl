@@ -48,6 +48,9 @@ class AssertionsTestCase(TestBase):
         g.bind('owl', str(OWL))
         DifferentIndividuals(A.Alex, A.Bob).to_rdf(g)
         print(g.serialize(format="turtle").decode())
+        g = Graph(namespace_manager=g.namespace_manager)
+        DifferentIndividuals(A.Alex, A.Bob, A.Fred, A.Joe).to_rdf(g)
+        print(g.serialize(format="turtle").decode())
 
     def test_classassertion(self):
         self.assertEqual('ClassAssertion( a:GriffinFamilyMember a:Peter_Griffin )',
