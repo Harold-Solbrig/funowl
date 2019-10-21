@@ -10,6 +10,9 @@ from tests.utils.base import TestBase, A
 
 class ClassExpressions(TestBase):
 
+    def test_ObjectIntersectionOf(self):
+        pass
+
     def test_ObjectHasValue(self):
         t = ObjectHasValue(ObjectPropertyExpression(A.foo), Individual(A.bar))
         print(t.to_functional(self.w).getvalue())
