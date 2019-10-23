@@ -19,14 +19,16 @@ AnnotationPropertyRange := 'AnnotationPropertyRange' '(' axiomAnnotations Annota
 """
 from abc import ABC
 from dataclasses import dataclass
-from typing import Union, List, Callable, ClassVar
+from typing import Union, List, Callable, ClassVar, Optional, Tuple
 
-from rdflib import URIRef
-from rdflib.namespace import OWL
+from rdflib import URIRef, Graph
+from rdflib.namespace import OWL, RDF, RDFS
+from rdflib.term import Node, BNode
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
+from funowl.base.rdftriple import SUBJ, TRIPLE
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
 from funowl.literals import Literal
@@ -56,7 +58,7 @@ class Annotation(object):
 
 @dataclass
 class Annotatable(FunOwlBase, ABC):
-    """ Annotatable must redeclare annotations after the required fields """
+    """ Annotatable must declare annotations after the required fields """
 
     def _add_annotations(self, w: FunctionalWriter, f: Callable[[], FunctionalWriter] = None) -> FunctionalWriter:
         """
@@ -84,6 +86,31 @@ class Annotatable(FunOwlBase, ABC):
         """
         return w.func(self, lambda: self._add_annotations(w, f))
 
+    def TANN(self, g: Graph, subj: Union[SUBJ, TRIPLE]) -> None:
+        """
+        TANN function as defined in https://www.w3.org/TR/2012/REC-owl2-mapping-to-rdf-20121211/#Translation_of_Annotations
+        """
+        # Tuple form means that we are annotating a triple:
+        #  T(y) T(AP) T(av) .
+        # _:x rdf:type owl:Annotation .
+        # _:x owl:annotatedSource T(y) .
+        # _:x owl:annotatedProperty T(AP) .
+        # _:x owl:annotatedTarget T(av) .
+        # TANN(annotation1, _:x)
+        # ...
+        # TANN(annotationn, _:x)
+        if self.annotations:
+            if isinstance(subj, Tuple):
+                # Subj is a triple -- reify it
+                x = BNode()
+                g.add((x, RDF.type, OWL.Annotation))
+                g.add((x, OWL.annotatedSource, subj[0]))
+                g.add((x, OWL.annotatedProperty, subj[1]))
+                g.add((x, OWL.annotatedTarget, subj[2]))
+                subj = x
+
+            for annotation in self.annotations:
+                annotation.TANN(g, subj)
 
 @dataclass
 class Annotation(Annotatable):
@@ -94,6 +121,11 @@ class Annotation(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         # Annotated annotations get special handling
         return self.annots(w, lambda: w + self.property + self.value)
+
+    def TANN(self, g: Graph, y: Union[SUBJ, TRIPLE]) -> None:
+        t = (y, self.property.to_rdf(g), self.value.to_rdf(g))
+        g.add(t)
+        super().TANN(g, t)
 
 
 @dataclass
@@ -106,6 +138,12 @@ class AnnotationAssertion(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.subject + self.value)
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        t = (self.subject.to_rdf(g), self.property.to_rdf(g), self.value.to_rdf(g))
+        g.add(t)
+        self.TANN(g, t)
+        return None
+
 
 @dataclass
 class SubAnnotationPropertyOf(Annotatable):
@@ -115,6 +153,12 @@ class SubAnnotationPropertyOf(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.sub + self.super)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        t = (self.sub.to_rdf(g), RDFS.subPropertOf, self.super.to_rdf(g))
+        g.add(t)
+        self.TANN(g, t)
+        return None
 
 
 @dataclass
@@ -126,6 +170,12 @@ class AnnotationPropertyDomain(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.domain)
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        t = (self.property.to_rdf(g), RDFS.domain, self.domain.to_rdf(g))
+        g.add(t)
+        self.TANN(g, t)
+        return None
+
 
 @dataclass
 class AnnotationPropertyRange(Annotatable):
@@ -135,6 +185,12 @@ class AnnotationPropertyRange(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.range)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        t = (self.property.to_rdf(g), RDFS.range, self.range.to_rdf(g))
+        g.add(t)
+        self.TANN(g, t)
+        return None
 
 
 AnnotationAxiom = Union[AnnotationAssertion, SubAnnotationPropertyOf, AnnotationPropertyDomain, AnnotationPropertyRange]

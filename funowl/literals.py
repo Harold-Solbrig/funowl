@@ -12,6 +12,7 @@ import rdflib
 from rdflib import Graph
 from rdflib.namespace import RDFS, XSD, RDF
 from rdflib.plugins.parsers.notation3 import BadSyntax
+from rdflib.term import Node
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
@@ -26,7 +27,8 @@ class Datatype(IRI):
 
 
 class StringLiteralNoLanguage(QuotedString):
-    pass
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        return rdflib.Literal(self)
 
 
 @dataclass

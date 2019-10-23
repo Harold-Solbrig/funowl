@@ -84,14 +84,15 @@ class DifferentIndividuals(Assertion):
             annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
     def to_rdf(self, g: Graph) -> Optional[Node]:
-        # for annotation in self.annotations:
-        #     annotation.to_rdf(g)
         if len(self.individuals) == 2:
-            g.add((self.individuals[0].to_rdf(g), OWL.differentFrom, self.individuals[1].to_rdf(g)))
+            triple = (self.individuals[0].to_rdf(g), OWL.differentFrom, self.individuals[1].to_rdf(g))
+            g.add(triple)
+            self.TANN(g, triple)
         elif len(self.individuals) > 2:
             subj = BNode()
-            g.add((subj, RDF.type, OWL.ALLDifferent))
+            g.add((subj, RDF.type, OWL.AllDifferent))
             g.add((subj, OWL.memebers, SEQ(g, self.individuals)))
+            self.TANN(g, subj)
         return None
 
 @dataclass

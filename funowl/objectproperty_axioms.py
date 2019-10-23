@@ -38,7 +38,7 @@ AsymmetricObjectProperty := 'AsymmetricObjectProperty' '(' axiomAnnotations Obje
 TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations ObjectPropertyExpression ')'
 """
 from dataclasses import dataclass
-from typing import List, Union
+from typing import List, Union, Optional
 
 from funowl.annotations import Annotation
 from funowl.axioms import Axiom
@@ -83,9 +83,16 @@ class EquivalentObjectProperties(ObjectPropertyAxiom):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
+                 annotations: Optional[List[Annotation]] = None) -> None:
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
+    def f(self, a, b, c, d=12, e=32):
+        pass
 
 @dataclass
 class DisjointObjectProperties(ObjectPropertyAxiom):
