@@ -1,4 +1,7 @@
+![Owl in a bucket](images/owlinbucket.jpg)
+
 # FunOwl - Functional OWL syntax for Python
+
 While we would be happy to be corrected, to the best of our knowledge there is to be minimal support for OWL in python.
 [OwlReady2](https://owlready2.readthedocs.io/en/latest/) appears to be the closest thing to what we are 
 looking for, but, as described in this [paper](http://www.lesfleursdunormal.fr/static/_downloads/article_owlready_aim_2017.pdf)
