@@ -104,9 +104,13 @@ class ClassAssertion(Assertion):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.expr + self.individual)
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        g.add((self.individual.to_rdf(g), RDF.type, self.expr.to_rdf(g)))
+
 
 @dataclass
 class ObjectPropertyAssertion(Assertion):
+    # Should be ObjectProperty instead of ObjectPropertyExpression
     expr: ObjectPropertyExpression
     sourceIndividual: Individual
     targetIndividual: Individual
@@ -114,6 +118,10 @@ class ObjectPropertyAssertion(Assertion):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetIndividual)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        # ObjectInverseOf version not implemented yet
+        g.add((self.sourceIndividual.to_rdf(g), self.expr, self.targetIndividual.to_rdf(g)))
 
 
 @dataclass
@@ -126,6 +134,13 @@ class NegativeObjectPropertyAssertion(Assertion):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetIndividual)
 
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        subj = BNode()
+        g.add((subj, RDF.type, OWL.NegativePropertyAssertion))
+        g.add((subj, OWL.sourceIndividual, self.sourceIndividual.to_rdf(g)))
+        g.add((subj, OWL.assertionProperty, self.expr.to_rdf(g)))
+        g.add((subj, OWL.targetIndividual, self.targetIndividual.to_rdf(g)))
+
 
 @dataclass
 class DataPropertyAssertion(Assertion):
@@ -136,6 +151,9 @@ class DataPropertyAssertion(Assertion):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetValue)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        g.add((self.sourceIndividual.to_rdf(g), self.expr.to_rdf(g), self.targetValue.to_rdf(g)))
 
 
 
@@ -148,3 +166,10 @@ class NegativeDataPropertyAssertion(Assertion):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.expr + self.sourceIndividual + self.targetValue)
+
+    def to_rdf(self, g: Graph) -> Optional[Node]:
+        subj = BNode()
+        g.add((subj, RDF.type, OWL.NegativePropertyAssertion))
+        g.add((subj, OWL.sourceIndividual, self.sourceIndividual.to_rdf(g)))
+        g.add((subj, OWL.assertionProperty, self.expr.to_rdf(g)))
+        g.add((subj, OWL.targetValue, self.targetValue.to_rdf(g)))

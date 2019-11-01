@@ -41,7 +41,7 @@ class AssertionsTestCase(TestBase):
     Annotation( rdfs:comment "We know better" )
     a:Alex a:Bob a:Charlie
 )""", DifferentIndividuals(A.Alex, A.Bob, A.Charlie,
-                     annotations=Annotation(RDFS.comment, "We know better")).to_functional(self.wa).getvalue())
+                           annotations=Annotation(RDFS.comment, "We know better")).to_functional(self.wa).getvalue())
 
     def test_differentindividuals_rdf(self):
         g = Graph()
@@ -67,22 +67,42 @@ class AssertionsTestCase(TestBase):
 
     def test_classassertion(self):
         self.assertEqual('ClassAssertion( a:GriffinFamilyMember a:Peter_Griffin )',
-                         ClassAssertion( A.GriffinFamilyMember, A.Peter_Griffin).to_functional(self.wa).getvalue())
+                         ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin).to_functional(self.wa).getvalue())
         self.wa.reset()
         self.assertEqual("""ClassAssertion(
     Annotation( rdfs:comment "It runs in..." )
     a:GriffinFamilyMember a:Peter_Griffin
-)""", ClassAssertion( A.GriffinFamilyMember, A.Peter_Griffin,
-                      Annotation(RDFS.comment, "It runs in...")).to_functional(self.wa).getvalue())
+)""", ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin,
+                     Annotation(RDFS.comment, "It runs in...")).to_functional(self.wa).getvalue())
+
+    def test_classassertion_rdf(self):
+        g = Graph()
+        ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin).to_rdf(g)
+        print('test_classassertion_rdf')
+        print(g.serialize(format='turtle').decode())
 
     def test_objectpropertyassertion(self):
         self.assertEqual('ObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
                          ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_functional(self.wa).getvalue())
 
+    # def test_objectpropertyassertion_rdf(self):
+    #     g = Graph()
+    #     ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
+    #     print('test_objectpropertyassertion_rdf')
+    #     print(g.serialize(format='turtle').decode())
+
     def test_negativeobjectpropertyassertion(self):
         self.assertEqual('NegativeObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
                          NegativeObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).
                          to_functional(self.wa).getvalue())
+
+    def test_negativeobjectpropertyassertion_rdf(self):
+        g = Graph()
+        g.bind('owl', str(OWL))
+        NegativeObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
+        print('test_negativeobejctpropertyassertion_rdf')
+        print(g.serialize(format='turtle').decode())
+
 
     def test_datapropertyassertion(self):
         x = Literal('"17"^^xsd:integer')
@@ -91,12 +111,23 @@ class AssertionsTestCase(TestBase):
                          DataPropertyAssertion(A.hasAge, A.Meg, Literal('"17"^^xsd:integer')).
                          to_functional(self.wa).getvalue())
 
+    # def test_datapropertyassertion_rdf(self):
+    #     x = Literal('"17"^^xsd:integer')
+    #     g = Graph()
+    #     DataPropertyAssertion(A.hasAge, A.Meg, x).to_rdf(g)
+    #     print('test_datapropertyassertion_rdf')
+    #     print(g.serialize(format='turtle').decode())
+
     def test_negativedatapropertyassertion(self):
         TypedLiteral(5, XSD.integer)
         self.assertEqual('NegativeDataPropertyAssertion( a:hasBrother a:Meg "5"^^xsd:integer )',
                          NegativeDataPropertyAssertion(A.hasBrother, A.Meg, TypedLiteral(5, XSD.integer)).
                          to_functional(self.wa).getvalue())
 
+    # def test_negativedatapropertyassertion_rdf(self):
+    #     g = Graph()
+    #     NegativeDataPropertyAssertion(A.hasBrother, A.Meg, TypedLiteral(5, XSD.integer)).to_rdf(g)
+    #     print(g.serialize(format='turtle').decode())
 
 if __name__ == '__main__':
     unittest.main()
