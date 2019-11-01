@@ -1,0 +1,38 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/Ontology/premises003#>)
+
+
+Ontology(
+Declaration(Class(first:Automobile))
+Declaration(Class(first:Car))
+Declaration(NamedIndividual(first:auto))
+Declaration(NamedIndividual(first:car))
+############################
+#   Classes
+############################
+
+# Class: first:Automobile (first:Automobile)
+
+EquivalentClasses(first:Automobile first:Car)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:auto (first:auto)
+
+ClassAssertion(first:Automobile first:auto)
+ClassAssertion(owl:Thing first:auto)
+
+# Individual: first:car (first:car)
+
+ClassAssertion(first:Car first:car)
+ClassAssertion(owl:Thing first:car)
+
+
+)

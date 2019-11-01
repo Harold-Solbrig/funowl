@@ -1,0 +1,43 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001#>)
+
+
+Ontology(
+Declaration(ObjectProperty(first:prop))
+Declaration(NamedIndividual(first:object))
+Declaration(NamedIndividual(first:subject1))
+Declaration(NamedIndividual(first:subject2))
+############################
+#   Object Properties
+############################
+
+# Object Property: first:prop (first:prop)
+
+InverseFunctionalObjectProperty(first:prop)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:object (first:object)
+
+ClassAssertion(owl:Thing first:object)
+
+# Individual: first:subject1 (first:subject1)
+
+ClassAssertion(owl:Thing first:subject1)
+ObjectPropertyAssertion(first:prop first:subject1 first:object)
+
+# Individual: first:subject2 (first:subject2)
+
+ClassAssertion(owl:Thing first:subject2)
+ObjectPropertyAssertion(first:prop first:subject2 first:object)
+
+
+)

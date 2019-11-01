@@ -1,0 +1,12 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/Thing/inconsistent003" >
+
+  <owl:Ontology/>
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+    <owl:equivalentClass rdf:resource
+       ="http://www.w3.org/2002/07/owl#Nothing"/>
+  </owl:Class>
+
+</rdf:RDF>

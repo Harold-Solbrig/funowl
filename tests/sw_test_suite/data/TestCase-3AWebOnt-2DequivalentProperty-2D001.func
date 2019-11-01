@@ -1,0 +1,38 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/equivalentProperty/premises001#>)
+
+
+Ontology(
+Declaration(ObjectProperty(first:hasHead))
+Declaration(ObjectProperty(first:hasLeader))
+Declaration(NamedIndividual(first:X))
+Declaration(NamedIndividual(first:Y))
+############################
+#   Object Properties
+############################
+
+# Object Property: first:hasHead (first:hasHead)
+
+EquivalentObjectProperties(first:hasHead first:hasLeader)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:X (first:X)
+
+ClassAssertion(owl:Thing first:X)
+ObjectPropertyAssertion(first:hasLeader first:X first:Y)
+
+# Individual: first:Y (first:Y)
+
+ClassAssertion(owl:Thing first:Y)
+
+
+)

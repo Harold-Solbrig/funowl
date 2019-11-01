@@ -1,0 +1,22 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/complementOf/premises001#>)
+Prefix(second:=<http://www.w3.org/2002/03owlt/complementOf/conclusions001#>)
+
+
+Ontology(
+Declaration(Class(first:A))
+Declaration(Class(first:B))
+############################
+#   Classes
+############################
+
+# Class: first:A (first:A)
+
+EquivalentClasses(first:A ObjectComplementOf(first:B))
+
+
+)

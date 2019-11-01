@@ -1,0 +1,20 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:first="http://www.w3.org/2002/03owlt/miscellaneous/inconsistent204#"
+    xml:base="http://www.w3.org/2002/03owlt/miscellaneous/inconsistent204" >
+   <owl:Ontology/>
+   <owl:FunctionalProperty rdf:ID="fp"/>
+   <owl:DatatypeProperty rdf:about="#fp"/>
+   <owl:Thing>
+     <first:fp rdf:parseType="Literal"
+     ><span xml:lang='en'>
+        <b>Good!</b></span
+     ></first:fp>
+     <first:fp rdf:parseType="Literal"
+     ><span xml:lang='en'>
+        <b>Bad!</b></span
+     ></first:fp>
+   </owl:Thing>
+</rdf:RDF>

@@ -1,0 +1,36 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:Woman))
+Declaration(ObjectProperty(:fatherOf))
+Declaration(NamedIndividual(:Meg))
+Declaration(NamedIndividual(:Peter))
+Declaration(NamedIndividual(:Stewie))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Meg (:Meg)
+
+ClassAssertion(:Woman :Meg)
+
+# Individual: :Peter (:Peter)
+
+ClassAssertion(ObjectMaxCardinality(1 :fatherOf :Woman) :Peter)
+ObjectPropertyAssertion(:fatherOf :Peter :Meg)
+ObjectPropertyAssertion(:fatherOf :Peter :Stewie)
+
+# Individual: :Stewie (:Stewie)
+
+
+
+DifferentIndividuals(:Meg :Stewie)
+)

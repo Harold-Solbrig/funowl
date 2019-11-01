@@ -1,0 +1,385 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/premises201#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/premises201>
+
+Declaration(Class(<http://oiled.man.example.net/test#C10>))
+Declaration(Class(<http://oiled.man.example.net/test#C100>))
+Declaration(Class(<http://oiled.man.example.net/test#C102>))
+Declaration(Class(<http://oiled.man.example.net/test#C104>))
+Declaration(Class(<http://oiled.man.example.net/test#C106>))
+Declaration(Class(<http://oiled.man.example.net/test#C108>))
+Declaration(Class(<http://oiled.man.example.net/test#C110>))
+Declaration(Class(<http://oiled.man.example.net/test#C112>))
+Declaration(Class(<http://oiled.man.example.net/test#C114>))
+Declaration(Class(<http://oiled.man.example.net/test#C116>))
+Declaration(Class(<http://oiled.man.example.net/test#C118>))
+Declaration(Class(<http://oiled.man.example.net/test#C12>))
+Declaration(Class(<http://oiled.man.example.net/test#C120>))
+Declaration(Class(<http://oiled.man.example.net/test#C122>))
+Declaration(Class(<http://oiled.man.example.net/test#C124>))
+Declaration(Class(<http://oiled.man.example.net/test#C126>))
+Declaration(Class(<http://oiled.man.example.net/test#C128>))
+Declaration(Class(<http://oiled.man.example.net/test#C130>))
+Declaration(Class(<http://oiled.man.example.net/test#C132>))
+Declaration(Class(<http://oiled.man.example.net/test#C134>))
+Declaration(Class(<http://oiled.man.example.net/test#C136>))
+Declaration(Class(<http://oiled.man.example.net/test#C138>))
+Declaration(Class(<http://oiled.man.example.net/test#C14>))
+Declaration(Class(<http://oiled.man.example.net/test#C140>))
+Declaration(Class(<http://oiled.man.example.net/test#C16>))
+Declaration(Class(<http://oiled.man.example.net/test#C18>))
+Declaration(Class(<http://oiled.man.example.net/test#C2>))
+Declaration(Class(<http://oiled.man.example.net/test#C20>))
+Declaration(Class(<http://oiled.man.example.net/test#C22>))
+Declaration(Class(<http://oiled.man.example.net/test#C24>))
+Declaration(Class(<http://oiled.man.example.net/test#C26>))
+Declaration(Class(<http://oiled.man.example.net/test#C28>))
+Declaration(Class(<http://oiled.man.example.net/test#C30>))
+Declaration(Class(<http://oiled.man.example.net/test#C32>))
+Declaration(Class(<http://oiled.man.example.net/test#C34>))
+Declaration(Class(<http://oiled.man.example.net/test#C36>))
+Declaration(Class(<http://oiled.man.example.net/test#C38>))
+Declaration(Class(<http://oiled.man.example.net/test#C4>))
+Declaration(Class(<http://oiled.man.example.net/test#C40>))
+Declaration(Class(<http://oiled.man.example.net/test#C42>))
+Declaration(Class(<http://oiled.man.example.net/test#C44>))
+Declaration(Class(<http://oiled.man.example.net/test#C46>))
+Declaration(Class(<http://oiled.man.example.net/test#C48>))
+Declaration(Class(<http://oiled.man.example.net/test#C50>))
+Declaration(Class(<http://oiled.man.example.net/test#C52>))
+Declaration(Class(<http://oiled.man.example.net/test#C54>))
+Declaration(Class(<http://oiled.man.example.net/test#C56>))
+Declaration(Class(<http://oiled.man.example.net/test#C58>))
+Declaration(Class(<http://oiled.man.example.net/test#C6>))
+Declaration(Class(<http://oiled.man.example.net/test#C60>))
+Declaration(Class(<http://oiled.man.example.net/test#C62>))
+Declaration(Class(<http://oiled.man.example.net/test#C64>))
+Declaration(Class(<http://oiled.man.example.net/test#C66>))
+Declaration(Class(<http://oiled.man.example.net/test#C68>))
+Declaration(Class(<http://oiled.man.example.net/test#C70>))
+Declaration(Class(<http://oiled.man.example.net/test#C72>))
+Declaration(Class(<http://oiled.man.example.net/test#C74>))
+Declaration(Class(<http://oiled.man.example.net/test#C76>))
+Declaration(Class(<http://oiled.man.example.net/test#C78>))
+Declaration(Class(<http://oiled.man.example.net/test#C8>))
+Declaration(Class(<http://oiled.man.example.net/test#C80>))
+Declaration(Class(<http://oiled.man.example.net/test#C82>))
+Declaration(Class(<http://oiled.man.example.net/test#C84>))
+Declaration(Class(<http://oiled.man.example.net/test#C86>))
+Declaration(Class(<http://oiled.man.example.net/test#C88>))
+Declaration(Class(<http://oiled.man.example.net/test#C90>))
+Declaration(Class(<http://oiled.man.example.net/test#C92>))
+Declaration(Class(<http://oiled.man.example.net/test#C94>))
+Declaration(Class(<http://oiled.man.example.net/test#C96>))
+Declaration(Class(<http://oiled.man.example.net/test#C98>))
+Declaration(Class(<http://oiled.man.example.net/test#TEST>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#R1>))
+Declaration(NamedIndividual(<http://oiled.man.example.net/test#V822576>))
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#C100> (<http://oiled.man.example.net/test#C100>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C100> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C98>))
+
+# Class: <http://oiled.man.example.net/test#C102> (<http://oiled.man.example.net/test#C102>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C102> ObjectIntersectionOf(<http://oiled.man.example.net/test#C100> <http://oiled.man.example.net/test#C34>))
+
+# Class: <http://oiled.man.example.net/test#C104> (<http://oiled.man.example.net/test#C104>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C104> ObjectIntersectionOf(<http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C4>))
+
+# Class: <http://oiled.man.example.net/test#C106> (<http://oiled.man.example.net/test#C106>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C106> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C104>))
+
+# Class: <http://oiled.man.example.net/test#C108> (<http://oiled.man.example.net/test#C108>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C108> ObjectIntersectionOf(<http://oiled.man.example.net/test#C106> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#C110> (<http://oiled.man.example.net/test#C110>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C110> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C102>) ObjectComplementOf(<http://oiled.man.example.net/test#C108>)))
+
+# Class: <http://oiled.man.example.net/test#C112> (<http://oiled.man.example.net/test#C112>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C112> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C110>)))
+
+# Class: <http://oiled.man.example.net/test#C114> (<http://oiled.man.example.net/test#C114>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C114> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C112>) ObjectComplementOf(<http://oiled.man.example.net/test#C96>)))
+
+# Class: <http://oiled.man.example.net/test#C116> (<http://oiled.man.example.net/test#C116>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C116> ObjectIntersectionOf(<http://oiled.man.example.net/test#C114> <http://oiled.man.example.net/test#C80>))
+
+# Class: <http://oiled.man.example.net/test#C118> (<http://oiled.man.example.net/test#C118>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C118> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C10>)))
+
+# Class: <http://oiled.man.example.net/test#C12> (<http://oiled.man.example.net/test#C12>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C12> ObjectIntersectionOf(<http://oiled.man.example.net/test#C10> ObjectComplementOf(<http://oiled.man.example.net/test#C4>)))
+
+# Class: <http://oiled.man.example.net/test#C120> (<http://oiled.man.example.net/test#C120>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C120> ObjectIntersectionOf(<http://oiled.man.example.net/test#C118> <http://oiled.man.example.net/test#C34>))
+
+# Class: <http://oiled.man.example.net/test#C122> (<http://oiled.man.example.net/test#C122>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C122> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C120>))
+
+# Class: <http://oiled.man.example.net/test#C124> (<http://oiled.man.example.net/test#C124>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C124> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C10>)))
+
+# Class: <http://oiled.man.example.net/test#C126> (<http://oiled.man.example.net/test#C126>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C126> ObjectIntersectionOf(<http://oiled.man.example.net/test#C124> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#C128> (<http://oiled.man.example.net/test#C128>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C128> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C126>))
+
+# Class: <http://oiled.man.example.net/test#C130> (<http://oiled.man.example.net/test#C130>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C130> ObjectIntersectionOf(<http://oiled.man.example.net/test#C122> <http://oiled.man.example.net/test#C128>))
+
+# Class: <http://oiled.man.example.net/test#C132> (<http://oiled.man.example.net/test#C132>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C132> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C4>)))
+
+# Class: <http://oiled.man.example.net/test#C134> (<http://oiled.man.example.net/test#C134>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C134> ObjectIntersectionOf(<http://oiled.man.example.net/test#C132> ObjectComplementOf(<http://oiled.man.example.net/test#C130>)))
+
+# Class: <http://oiled.man.example.net/test#C136> (<http://oiled.man.example.net/test#C136>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C136> ObjectIntersectionOf(<http://oiled.man.example.net/test#C116> ObjectComplementOf(<http://oiled.man.example.net/test#C134>)))
+
+# Class: <http://oiled.man.example.net/test#C138> (<http://oiled.man.example.net/test#C138>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C138> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> ObjectComplementOf(<http://oiled.man.example.net/test#C136>)))
+
+# Class: <http://oiled.man.example.net/test#C14> (<http://oiled.man.example.net/test#C14>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C14> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C12>) ObjectComplementOf(<http://oiled.man.example.net/test#C8>)))
+
+# Class: <http://oiled.man.example.net/test#C140> (<http://oiled.man.example.net/test#C140>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C140> ObjectIntersectionOf(<http://oiled.man.example.net/test#C74> ObjectComplementOf(<http://oiled.man.example.net/test#C138>)))
+
+# Class: <http://oiled.man.example.net/test#C18> (<http://oiled.man.example.net/test#C18>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C18> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C16>)))
+
+# Class: <http://oiled.man.example.net/test#C20> (<http://oiled.man.example.net/test#C20>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C20> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C18>))
+
+# Class: <http://oiled.man.example.net/test#C22> (<http://oiled.man.example.net/test#C22>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C22> ObjectIntersectionOf(<http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C20>))
+
+# Class: <http://oiled.man.example.net/test#C24> (<http://oiled.man.example.net/test#C24>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C24> ObjectIntersectionOf(<http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C2>))
+
+# Class: <http://oiled.man.example.net/test#C26> (<http://oiled.man.example.net/test#C26>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C26> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C24>))
+
+# Class: <http://oiled.man.example.net/test#C28> (<http://oiled.man.example.net/test#C28>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C28> ObjectIntersectionOf(<http://oiled.man.example.net/test#C26> ObjectComplementOf(<http://oiled.man.example.net/test#C16>)))
+
+# Class: <http://oiled.man.example.net/test#C30> (<http://oiled.man.example.net/test#C30>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C30> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C22>) ObjectComplementOf(<http://oiled.man.example.net/test#C28>)))
+
+# Class: <http://oiled.man.example.net/test#C32> (<http://oiled.man.example.net/test#C32>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C32> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C30>)))
+
+# Class: <http://oiled.man.example.net/test#C36> (<http://oiled.man.example.net/test#C36>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C36> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#C38> (<http://oiled.man.example.net/test#C38>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C38> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C36>))
+
+# Class: <http://oiled.man.example.net/test#C40> (<http://oiled.man.example.net/test#C40>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C40> ObjectIntersectionOf(<http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C38>))
+
+# Class: <http://oiled.man.example.net/test#C42> (<http://oiled.man.example.net/test#C42>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C42> ObjectIntersectionOf(<http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C4>))
+
+# Class: <http://oiled.man.example.net/test#C44> (<http://oiled.man.example.net/test#C44>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C44> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C42>))
+
+# Class: <http://oiled.man.example.net/test#C46> (<http://oiled.man.example.net/test#C46>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C46> ObjectIntersectionOf(<http://oiled.man.example.net/test#C44> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#C48> (<http://oiled.man.example.net/test#C48>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C48> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C40>) ObjectComplementOf(<http://oiled.man.example.net/test#C46>)))
+
+# Class: <http://oiled.man.example.net/test#C50> (<http://oiled.man.example.net/test#C50>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C50> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C48>)))
+
+# Class: <http://oiled.man.example.net/test#C52> (<http://oiled.man.example.net/test#C52>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C52> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C32>) ObjectComplementOf(<http://oiled.man.example.net/test#C50>)))
+
+# Class: <http://oiled.man.example.net/test#C54> (<http://oiled.man.example.net/test#C54>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C54> ObjectIntersectionOf(<http://oiled.man.example.net/test#C14> <http://oiled.man.example.net/test#C52>))
+
+# Class: <http://oiled.man.example.net/test#C56> (<http://oiled.man.example.net/test#C56>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C56> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C10>)))
+
+# Class: <http://oiled.man.example.net/test#C58> (<http://oiled.man.example.net/test#C58>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C58> ObjectIntersectionOf(<http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C56>))
+
+# Class: <http://oiled.man.example.net/test#C6> (<http://oiled.man.example.net/test#C6>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C6> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C4>)))
+
+# Class: <http://oiled.man.example.net/test#C60> (<http://oiled.man.example.net/test#C60>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C60> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C58>))
+
+# Class: <http://oiled.man.example.net/test#C62> (<http://oiled.man.example.net/test#C62>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C62> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C10>)))
+
+# Class: <http://oiled.man.example.net/test#C64> (<http://oiled.man.example.net/test#C64>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C64> ObjectIntersectionOf(<http://oiled.man.example.net/test#C62> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#C66> (<http://oiled.man.example.net/test#C66>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C66> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C64>))
+
+# Class: <http://oiled.man.example.net/test#C68> (<http://oiled.man.example.net/test#C68>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C68> ObjectIntersectionOf(<http://oiled.man.example.net/test#C60> <http://oiled.man.example.net/test#C66>))
+
+# Class: <http://oiled.man.example.net/test#C70> (<http://oiled.man.example.net/test#C70>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C70> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C4>)))
+
+# Class: <http://oiled.man.example.net/test#C72> (<http://oiled.man.example.net/test#C72>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C72> ObjectIntersectionOf(<http://oiled.man.example.net/test#C70> ObjectComplementOf(<http://oiled.man.example.net/test#C68>)))
+
+# Class: <http://oiled.man.example.net/test#C74> (<http://oiled.man.example.net/test#C74>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C74> ObjectIntersectionOf(<http://oiled.man.example.net/test#C54> ObjectComplementOf(<http://oiled.man.example.net/test#C72>)))
+
+# Class: <http://oiled.man.example.net/test#C76> (<http://oiled.man.example.net/test#C76>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C76> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C2>)))
+
+# Class: <http://oiled.man.example.net/test#C78> (<http://oiled.man.example.net/test#C78>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C78> ObjectIntersectionOf(<http://oiled.man.example.net/test#C10> ObjectComplementOf(<http://oiled.man.example.net/test#C4>)))
+
+# Class: <http://oiled.man.example.net/test#C8> (<http://oiled.man.example.net/test#C8>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C8> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C2>)))
+
+# Class: <http://oiled.man.example.net/test#C80> (<http://oiled.man.example.net/test#C80>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C80> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C76>) ObjectComplementOf(<http://oiled.man.example.net/test#C78>)))
+
+# Class: <http://oiled.man.example.net/test#C82> (<http://oiled.man.example.net/test#C82>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C82> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C16>)))
+
+# Class: <http://oiled.man.example.net/test#C84> (<http://oiled.man.example.net/test#C84>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C84> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C82>))
+
+# Class: <http://oiled.man.example.net/test#C86> (<http://oiled.man.example.net/test#C86>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C86> ObjectIntersectionOf(<http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C84>))
+
+# Class: <http://oiled.man.example.net/test#C88> (<http://oiled.man.example.net/test#C88>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C88> ObjectIntersectionOf(<http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C2>))
+
+# Class: <http://oiled.man.example.net/test#C90> (<http://oiled.man.example.net/test#C90>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C90> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#R1> <http://oiled.man.example.net/test#C88>))
+
+# Class: <http://oiled.man.example.net/test#C92> (<http://oiled.man.example.net/test#C92>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C92> ObjectIntersectionOf(<http://oiled.man.example.net/test#C90> ObjectComplementOf(<http://oiled.man.example.net/test#C16>)))
+
+# Class: <http://oiled.man.example.net/test#C94> (<http://oiled.man.example.net/test#C94>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C94> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#C86>) ObjectComplementOf(<http://oiled.man.example.net/test#C92>)))
+
+# Class: <http://oiled.man.example.net/test#C96> (<http://oiled.man.example.net/test#C96>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C96> ObjectIntersectionOf(<http://oiled.man.example.net/test#C2> ObjectComplementOf(<http://oiled.man.example.net/test#C94>)))
+
+# Class: <http://oiled.man.example.net/test#C98> (<http://oiled.man.example.net/test#C98>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#C98> ObjectIntersectionOf(<http://oiled.man.example.net/test#C4> ObjectComplementOf(<http://oiled.man.example.net/test#C34>)))
+
+# Class: <http://oiled.man.example.net/test#TEST> (<http://oiled.man.example.net/test#TEST>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#TEST> ObjectIntersectionOf(<http://oiled.man.example.net/test#C140> <http://oiled.man.example.net/test#C6>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://oiled.man.example.net/test#V822576> (<http://oiled.man.example.net/test#V822576>)
+
+ClassAssertion(<http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(<http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(<http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(<http://oiled.man.example.net/test#C4> <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(owl:Thing <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C10>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C100>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C102>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C108>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C112>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C132>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C134>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C18>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C76>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C78>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C84>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C86>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C90>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C92>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectComplementOf(<http://oiled.man.example.net/test#C96>) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectAllValuesFrom(<http://oiled.man.example.net/test#R1> ObjectComplementOf(<http://oiled.man.example.net/test#C82>)) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectAllValuesFrom(<http://oiled.man.example.net/test#R1> ObjectComplementOf(<http://oiled.man.example.net/test#C88>)) <http://oiled.man.example.net/test#V822576>)
+ClassAssertion(ObjectAllValuesFrom(<http://oiled.man.example.net/test#R1> ObjectComplementOf(<http://oiled.man.example.net/test#C98>)) <http://oiled.man.example.net/test#V822576>)
+
+
+)

@@ -1,0 +1,57 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:c2))
+Declaration(Class(:c3))
+Declaration(Class(:c4))
+Declaration(Class(:c5))
+Declaration(Class(:c6))
+Declaration(DataProperty(:p1))
+Declaration(DataProperty(:p2))
+Declaration(DataProperty(:p3))
+Declaration(DataProperty(:p4))
+Declaration(DataProperty(:p5))
+Declaration(DataProperty(:p6))
+############################
+#   Object Properties
+############################
+
+# Object Property: :p3 (:p3)
+
+ObjectPropertyRange(:p3 :c3)
+
+# Object Property: :p6 (:p6)
+
+ObjectPropertyRange(:p6 :c6)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :p1 (:p1)
+
+DataPropertyRange(:p1 rdf:PlainLiteral)
+
+# Data Property: :p2 (:p2)
+
+DataPropertyDomain(:p2 :c2)
+
+# Data Property: :p4 (:p4)
+
+DataPropertyDomain(:p4 :c4)
+
+# Data Property: :p5 (:p5)
+
+DataPropertyDomain(:p5 :c5)
+
+
+
+
+)

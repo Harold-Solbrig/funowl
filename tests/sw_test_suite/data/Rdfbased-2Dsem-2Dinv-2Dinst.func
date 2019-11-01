@@ -1,0 +1,38 @@
+Prefix(ex:=<http://www.example.org#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(ex:p))
+Declaration(ObjectProperty(ex:q))
+Declaration(NamedIndividual(ex:o1))
+Declaration(NamedIndividual(ex:o2))
+Declaration(NamedIndividual(ex:s1))
+Declaration(NamedIndividual(ex:s2))
+############################
+#   Object Properties
+############################
+
+# Object Property: ex:p (ex:p)
+
+InverseObjectProperties(ex:p ex:q)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: ex:s1 (ex:s1)
+
+ObjectPropertyAssertion(ex:p ex:s1 ex:o1)
+
+# Individual: ex:s2 (ex:s2)
+
+ObjectPropertyAssertion(ex:q ex:s2 ex:o2)
+
+
+)

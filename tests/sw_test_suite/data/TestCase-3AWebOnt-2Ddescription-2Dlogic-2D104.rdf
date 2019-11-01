@@ -1,0 +1,49 @@
+<rdf:RDF
+    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent104"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+    <owl:Ontology rdf:about=""/>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
+        <owl:equivalentClass>
+            <owl:Class rdf:about="http://oiled.man.example.net/test#c1"/>
+        </owl:equivalentClass>
+    </owl:Class>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#c">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#f">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#c1">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://oiled.man.example.net/test#d1"/>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Class rdf:about="http://oiled.man.example.net/test#d1"/>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#d1"/>
+    <owl:Class rdf:about="http://oiled.man.example.net/test#e3">
+        <rdfs:subClassOf>
+            <owl:Class rdf:about="http://oiled.man.example.net/test#c"/>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://oiled.man.example.net/test#Unsatisfiable"/>
+    </rdf:Description>
+</rdf:RDF>

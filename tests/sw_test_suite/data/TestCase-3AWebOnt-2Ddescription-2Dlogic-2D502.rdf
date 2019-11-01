@@ -1,0 +1,547 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/description-logic/inconsistent502#"
+    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent502" >
+<owl:Ontology/>
+<owl:Class rdf:ID='TorF'> 
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:ID='T'>
+        <owl:differentFrom rdf:resource='#F'/>
+     </owl:Thing>
+     <owl:Thing rdf:ID='F'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus1'/>
+     <owl:Thing rdf:about='#minus1'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus2'/>
+     <owl:Thing rdf:about='#minus2'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus3'/>
+     <owl:Thing rdf:about='#minus3'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus4'/>
+     <owl:Thing rdf:about='#minus4'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus5'/>
+     <owl:Thing rdf:about='#minus5'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus6'/>
+     <owl:Thing rdf:about='#minus6'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus7'/>
+     <owl:Thing rdf:about='#minus7'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus8'/>
+     <owl:Thing rdf:about='#minus8'/>
+  </owl:oneOf>
+  <owl:oneOf rdf:parseType='Collection'>
+     <owl:Thing rdf:about='#plus9'/>
+     <owl:Thing rdf:about='#minus9'/>
+  </owl:oneOf>
+</owl:Class>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#plus2'/>
+            <rdf:Description rdf:about='#minus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus9'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus5'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#minus6'/>
+            <rdf:Description rdf:about='#minus2'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus2'/>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#plus1'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#plus7'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus8'/>
+            <rdf:Description rdf:about='#minus2'/>
+            <rdf:Description rdf:about='#plus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus7'/>
+            <rdf:Description rdf:about='#minus6'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#minus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus8'/>
+            <rdf:Description rdf:about='#minus5'/>
+            <rdf:Description rdf:about='#minus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#plus3'/>
+            <rdf:Description rdf:about='#plus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus2'/>
+            <rdf:Description rdf:about='#minus1'/>
+            <rdf:Description rdf:about='#plus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#plus2'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus2'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus7'/>
+            <rdf:Description rdf:about='#minus9'/>
+            <rdf:Description rdf:about='#minus2'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus2'/>
+            <rdf:Description rdf:about='#minus5'/>
+            <rdf:Description rdf:about='#minus7'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus5'/>
+            <rdf:Description rdf:about='#plus2'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus2'/>
+            <rdf:Description rdf:about='#minus7'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus9'/>
+            <rdf:Description rdf:about='#plus3'/>
+            <rdf:Description rdf:about='#minus2'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#plus7'/>
+            <rdf:Description rdf:about='#plus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus2'/>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#minus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus7'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus5'/>
+            <rdf:Description rdf:about='#plus3'/>
+            <rdf:Description rdf:about='#minus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus9'/>
+            <rdf:Description rdf:about='#minus8'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#plus3'/>
+            <rdf:Description rdf:about='#plus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus7'/>
+            <rdf:Description rdf:about='#plus9'/>
+            <rdf:Description rdf:about='#plus5'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#plus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus5'/>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#plus7'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#minus7'/>
+            <rdf:Description rdf:about='#plus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#minus8'/>
+            <rdf:Description rdf:about='#plus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus5'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus6'/>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#minus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus1'/>
+            <rdf:Description rdf:about='#plus9'/>
+            <rdf:Description rdf:about='#minus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus9'/>
+            <rdf:Description rdf:about='#minus8'/>
+            <rdf:Description rdf:about='#plus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#plus3'/>
+            <rdf:Description rdf:about='#minus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus6'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#plus5'/>
+            <rdf:Description rdf:about='#minus8'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus9'/>
+            <rdf:Description rdf:about='#plus4'/>
+            <rdf:Description rdf:about='#plus3'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus8'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#plus2'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus5'/>
+            <rdf:Description rdf:about='#minus2'/>
+            <rdf:Description rdf:about='#minus9'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus7'/>
+            <rdf:Description rdf:about='#minus3'/>
+            <rdf:Description rdf:about='#minus4'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#minus9'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#minus8'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus4'/>
+            <rdf:Description rdf:about='#minus1'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+<rdf:Description rdf:about='#T'>
+   <rdf:type>
+      <owl:Class>
+        <owl:oneOf rdf:parseType='Collection'>
+            <rdf:Description rdf:about='#plus6'/>
+            <rdf:Description rdf:about='#minus7'/>
+            <rdf:Description rdf:about='#minus8'/>
+        </owl:oneOf>
+      </owl:Class>
+   </rdf:type>
+</rdf:Description>
+</rdf:RDF>

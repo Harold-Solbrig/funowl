@@ -1,0 +1,41 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#>)
+
+
+Ontology(
+Declaration(ObjectProperty(first:prop))
+Declaration(NamedIndividual(first:ob1))
+Declaration(NamedIndividual(first:ob2))
+Declaration(NamedIndividual(first:ob3))
+Declaration(NamedIndividual(first:sb1))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:ob1 (first:ob1)
+
+
+# Individual: first:ob2 (first:ob2)
+
+
+# Individual: first:ob3 (first:ob3)
+
+
+# Individual: first:sb1 (first:sb1)
+
+ClassAssertion(ObjectMaxCardinality(2 first:prop) first:sb1)
+ObjectPropertyAssertion(first:prop first:sb1 first:ob1)
+ObjectPropertyAssertion(first:prop first:sb1 first:ob2)
+ObjectPropertyAssertion(first:prop first:sb1 first:ob3)
+
+
+DifferentIndividuals(first:ob1 first:ob2)
+DifferentIndividuals(first:ob1 first:ob3)
+DifferentIndividuals(first:ob2 first:ob3)
+)

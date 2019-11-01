@@ -1,0 +1,96 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/premises205#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/premises205>
+
+Declaration(Class(oiled:C10))
+Declaration(Class(oiled:C12))
+Declaration(Class(oiled:C14))
+Declaration(Class(oiled:C16))
+Declaration(Class(oiled:C18))
+Declaration(Class(oiled:C2))
+Declaration(Class(oiled:C4))
+Declaration(Class(oiled:C6))
+Declaration(Class(oiled:C8))
+Declaration(Class(oiled:TEST))
+Declaration(Class(oiled:TOP))
+Declaration(ObjectProperty(oiled:R1))
+Declaration(NamedIndividual(oiled:V16560))
+Declaration(NamedIndividual(oiled:V16561))
+Declaration(NamedIndividual(oiled:V16562))
+
+############################
+#   Classes
+############################
+
+# Class: oiled:C10 (oiled:C10)
+
+EquivalentClasses(oiled:C10 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C12 (oiled:C12)
+
+EquivalentClasses(oiled:C12 ObjectIntersectionOf(ObjectComplementOf(oiled:C10) ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C14 (oiled:C14)
+
+EquivalentClasses(oiled:C14 ObjectSomeValuesFrom(oiled:R1 oiled:C12))
+
+# Class: oiled:C16 (oiled:C16)
+
+EquivalentClasses(oiled:C16 ObjectIntersectionOf(oiled:C14 oiled:C8))
+
+# Class: oiled:C18 (oiled:C18)
+
+EquivalentClasses(oiled:C18 ObjectIntersectionOf(oiled:C16 oiled:TOP))
+
+# Class: oiled:C4 (oiled:C4)
+
+EquivalentClasses(oiled:C4 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C6 (oiled:C6)
+
+EquivalentClasses(oiled:C6 ObjectIntersectionOf(ObjectComplementOf(oiled:C2) ObjectComplementOf(oiled:C4)))
+
+# Class: oiled:C8 (oiled:C8)
+
+EquivalentClasses(oiled:C8 ObjectSomeValuesFrom(oiled:R1 oiled:C6))
+
+# Class: oiled:TEST (oiled:TEST)
+
+EquivalentClasses(oiled:TEST ObjectIntersectionOf(oiled:C18 oiled:TOP))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: oiled:V16560 (oiled:V16560)
+
+ClassAssertion(oiled:TEST oiled:V16560)
+ClassAssertion(oiled:TOP oiled:V16560)
+ClassAssertion(owl:Thing oiled:V16560)
+ObjectPropertyAssertion(oiled:R1 oiled:V16560 oiled:V16561)
+ObjectPropertyAssertion(oiled:R1 oiled:V16560 oiled:V16562)
+
+# Individual: oiled:V16561 (oiled:V16561)
+
+ClassAssertion(owl:Thing oiled:V16561)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V16561)
+ClassAssertion(ObjectComplementOf(oiled:C4) oiled:V16561)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C2) oiled:V16561)
+
+# Individual: oiled:V16562 (oiled:V16562)
+
+ClassAssertion(owl:Thing oiled:V16562)
+ClassAssertion(ObjectComplementOf(oiled:C10) oiled:V16562)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V16562)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C2) oiled:V16562)
+
+
+)

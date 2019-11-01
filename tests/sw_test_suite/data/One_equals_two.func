@@ -1,0 +1,146 @@
+Prefix(:=<http://example.com/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://example.com/>
+
+Declaration(Class(:a))
+Declaration(Class(:b))
+Declaration(Class(:b-and-c))
+Declaration(Class(:c))
+Declaration(Class(<http://example.com/2a>))
+Declaration(ObjectProperty(<http://example.com/2a=a>))
+Declaration(ObjectProperty(<http://example.com/2a=b-and-c>))
+Declaration(ObjectProperty(<http://example.com/a=b>))
+Declaration(ObjectProperty(<http://example.com/a=2a'>))
+Declaration(ObjectProperty(<http://example.com/b-and-c=2a'>))
+Declaration(ObjectProperty(<http://example.com/b=c>))
+Declaration(ObjectProperty(<http://example.com/b=a'>))
+Declaration(ObjectProperty(<http://example.com/c=b'>))
+Declaration(NamedIndividual(:i))
+Declaration(NamedIndividual(:j))
+Declaration(NamedIndividual(:k))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://example.com/2a=a> (2a-to-a)
+
+AnnotationAssertion(rdfs:label <http://example.com/2a=a> "2a-to-a"^^xsd:string)
+InverseObjectProperties(<http://example.com/2a=a> <http://example.com/a=2a'>)
+FunctionalObjectProperty(<http://example.com/2a=a>)
+InverseFunctionalObjectProperty(<http://example.com/2a=a>)
+
+# Object Property: <http://example.com/2a=b-and-c> (2a-to-b-and-c)
+
+AnnotationAssertion(rdfs:label <http://example.com/2a=b-and-c> "2a-to-b-and-c"^^xsd:string)
+InverseObjectProperties(<http://example.com/2a=b-and-c> <http://example.com/b-and-c=2a'>)
+FunctionalObjectProperty(<http://example.com/2a=b-and-c>)
+InverseFunctionalObjectProperty(<http://example.com/2a=b-and-c>)
+
+# Object Property: <http://example.com/a=b> (a-to-b)
+
+AnnotationAssertion(rdfs:label <http://example.com/a=b> "a-to-b"^^xsd:string)
+InverseObjectProperties(<http://example.com/a=b> <http://example.com/b=a'>)
+FunctionalObjectProperty(<http://example.com/a=b>)
+InverseFunctionalObjectProperty(<http://example.com/a=b>)
+
+# Object Property: <http://example.com/a=2a'> (a-to-2a')
+
+AnnotationAssertion(rdfs:label <http://example.com/a=2a'> "a-to-2a'"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/a=2a'>)
+InverseFunctionalObjectProperty(<http://example.com/a=2a'>)
+
+# Object Property: <http://example.com/b-and-c=2a'> (b-and-c-to-2a')
+
+AnnotationAssertion(rdfs:label <http://example.com/b-and-c=2a'> "b-and-c-to-2a'"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/b-and-c=2a'>)
+InverseFunctionalObjectProperty(<http://example.com/b-and-c=2a'>)
+
+# Object Property: <http://example.com/b=c> (b-to-c)
+
+AnnotationAssertion(rdfs:label <http://example.com/b=c> "b-to-c"^^xsd:string)
+InverseObjectProperties(<http://example.com/b=c> <http://example.com/c=b'>)
+FunctionalObjectProperty(<http://example.com/b=c>)
+InverseFunctionalObjectProperty(<http://example.com/b=c>)
+
+# Object Property: <http://example.com/b=a'> (b-to-a')
+
+AnnotationAssertion(rdfs:label <http://example.com/b=a'> "b-to-a'"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/b=a'>)
+InverseFunctionalObjectProperty(<http://example.com/b=a'>)
+
+# Object Property: <http://example.com/c=b'> (c-to-b')
+
+AnnotationAssertion(rdfs:label <http://example.com/c=b'> "c-to-b'"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/c=b'>)
+InverseFunctionalObjectProperty(<http://example.com/c=b'>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :a (a)
+
+AnnotationAssertion(rdfs:label :a "a"^^xsd:string)
+EquivalentClasses(:a ObjectOneOf(:i :j :k))
+SubClassOf(:a ObjectSomeValuesFrom(<http://example.com/a=b> :b))
+SubClassOf(:a ObjectSomeValuesFrom(<http://example.com/a=2a'> <http://example.com/2a>))
+DisjointClasses(:a :b)
+DisjointClasses(:a :c)
+DisjointClasses(:a <http://example.com/2a>)
+
+# Class: :b (b)
+
+AnnotationAssertion(rdfs:label :b "b"^^xsd:string)
+SubClassOf(:b ObjectSomeValuesFrom(<http://example.com/b=c> :c))
+SubClassOf(:b ObjectSomeValuesFrom(<http://example.com/b=a'> :a))
+DisjointClasses(:b :c)
+DisjointClasses(:b <http://example.com/2a>)
+
+# Class: :b-and-c (b-and-c)
+
+AnnotationAssertion(rdfs:label :b-and-c "b-and-c"^^xsd:string)
+EquivalentClasses(:b-and-c ObjectUnionOf(:b :c))
+SubClassOf(:b-and-c ObjectSomeValuesFrom(<http://example.com/b-and-c=2a'> <http://example.com/2a>))
+DisjointClasses(:b-and-c <http://example.com/2a>)
+
+# Class: :c (c)
+
+AnnotationAssertion(rdfs:label :c "c"^^xsd:string)
+SubClassOf(:c ObjectSomeValuesFrom(<http://example.com/c=b'> :b))
+DisjointClasses(:c <http://example.com/2a>)
+
+# Class: <http://example.com/2a> (2a)
+
+AnnotationAssertion(rdfs:label <http://example.com/2a> "2a"^^xsd:string)
+SubClassOf(<http://example.com/2a> ObjectSomeValuesFrom(<http://example.com/2a=a> :a))
+SubClassOf(<http://example.com/2a> ObjectSomeValuesFrom(<http://example.com/2a=b-and-c> :b-and-c))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :i (i)
+
+AnnotationAssertion(rdfs:label :i "i")
+
+# Individual: :j (j)
+
+AnnotationAssertion(rdfs:label :j "j")
+
+# Individual: :k (k)
+
+AnnotationAssertion(rdfs:label :k "k")
+
+
+DifferentIndividuals(:i :j :k)
+)

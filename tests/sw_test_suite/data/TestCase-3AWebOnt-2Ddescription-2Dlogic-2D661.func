@@ -1,0 +1,676 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/premises661#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/premises661>
+
+Declaration(Class(oiled:C10))
+Declaration(Class(oiled:C10.comp))
+Declaration(Class(oiled:C100))
+Declaration(Class(oiled:C100.comp))
+Declaration(Class(oiled:C102))
+Declaration(Class(oiled:C102.comp))
+Declaration(Class(oiled:C104))
+Declaration(Class(oiled:C106))
+Declaration(Class(oiled:C108))
+Declaration(Class(oiled:C108.comp))
+Declaration(Class(oiled:C110))
+Declaration(Class(oiled:C110.comp))
+Declaration(Class(oiled:C112))
+Declaration(Class(oiled:C112.comp))
+Declaration(Class(oiled:C114))
+Declaration(Class(oiled:C116))
+Declaration(Class(oiled:C118))
+Declaration(Class(oiled:C12))
+Declaration(Class(oiled:C12.comp))
+Declaration(Class(oiled:C120))
+Declaration(Class(oiled:C122))
+Declaration(Class(oiled:C124))
+Declaration(Class(oiled:C126))
+Declaration(Class(oiled:C128))
+Declaration(Class(oiled:C130))
+Declaration(Class(oiled:C130.comp))
+Declaration(Class(oiled:C132))
+Declaration(Class(oiled:C132.comp))
+Declaration(Class(oiled:C134))
+Declaration(Class(oiled:C134.comp))
+Declaration(Class(oiled:C136))
+Declaration(Class(oiled:C136.comp))
+Declaration(Class(oiled:C138))
+Declaration(Class(oiled:C138.comp))
+Declaration(Class(oiled:C14))
+Declaration(Class(oiled:C140))
+Declaration(Class(oiled:C16))
+Declaration(Class(oiled:C16.comp))
+Declaration(Class(oiled:C18))
+Declaration(Class(oiled:C18.comp))
+Declaration(Class(oiled:C2))
+Declaration(Class(oiled:C2.comp))
+Declaration(Class(oiled:C20))
+Declaration(Class(oiled:C22))
+Declaration(Class(oiled:C22.comp))
+Declaration(Class(oiled:C24))
+Declaration(Class(oiled:C26))
+Declaration(Class(oiled:C28))
+Declaration(Class(oiled:C28.comp))
+Declaration(Class(oiled:C30))
+Declaration(Class(oiled:C30.comp))
+Declaration(Class(oiled:C32))
+Declaration(Class(oiled:C32.comp))
+Declaration(Class(oiled:C34))
+Declaration(Class(oiled:C34.comp))
+Declaration(Class(oiled:C36))
+Declaration(Class(oiled:C38))
+Declaration(Class(oiled:C4))
+Declaration(Class(oiled:C4.comp))
+Declaration(Class(oiled:C40))
+Declaration(Class(oiled:C40.comp))
+Declaration(Class(oiled:C42))
+Declaration(Class(oiled:C44))
+Declaration(Class(oiled:C46))
+Declaration(Class(oiled:C46.comp))
+Declaration(Class(oiled:C48))
+Declaration(Class(oiled:C48.comp))
+Declaration(Class(oiled:C50))
+Declaration(Class(oiled:C50.comp))
+Declaration(Class(oiled:C52))
+Declaration(Class(oiled:C54))
+Declaration(Class(oiled:C56))
+Declaration(Class(oiled:C58))
+Declaration(Class(oiled:C6))
+Declaration(Class(oiled:C60))
+Declaration(Class(oiled:C62))
+Declaration(Class(oiled:C64))
+Declaration(Class(oiled:C66))
+Declaration(Class(oiled:C68))
+Declaration(Class(oiled:C68.comp))
+Declaration(Class(oiled:C70))
+Declaration(Class(oiled:C72))
+Declaration(Class(oiled:C72.comp))
+Declaration(Class(oiled:C74))
+Declaration(Class(oiled:C76))
+Declaration(Class(oiled:C76.comp))
+Declaration(Class(oiled:C78))
+Declaration(Class(oiled:C78.comp))
+Declaration(Class(oiled:C8))
+Declaration(Class(oiled:C8.comp))
+Declaration(Class(oiled:C80))
+Declaration(Class(oiled:C82))
+Declaration(Class(oiled:C82.comp))
+Declaration(Class(oiled:C84))
+Declaration(Class(oiled:C84.comp))
+Declaration(Class(oiled:C86))
+Declaration(Class(oiled:C86.comp))
+Declaration(Class(oiled:C88))
+Declaration(Class(oiled:C88.comp))
+Declaration(Class(oiled:C90))
+Declaration(Class(oiled:C90.comp))
+Declaration(Class(oiled:C92))
+Declaration(Class(oiled:C92.comp))
+Declaration(Class(oiled:C94))
+Declaration(Class(oiled:C94.comp))
+Declaration(Class(oiled:C96))
+Declaration(Class(oiled:C96.comp))
+Declaration(Class(oiled:C98))
+Declaration(Class(oiled:C98.comp))
+Declaration(Class(oiled:TEST))
+Declaration(ObjectProperty(oiled:R1))
+Declaration(ObjectProperty(:P.12))
+Declaration(ObjectProperty(:P.14))
+Declaration(ObjectProperty(:P.16))
+Declaration(ObjectProperty(:P.2))
+Declaration(ObjectProperty(:P.20))
+Declaration(ObjectProperty(:P.22))
+Declaration(ObjectProperty(:P.24))
+Declaration(ObjectProperty(:P.28))
+Declaration(ObjectProperty(:P.30))
+Declaration(ObjectProperty(:P.36))
+Declaration(ObjectProperty(:P.38))
+Declaration(ObjectProperty(:P.4))
+Declaration(ObjectProperty(:P.44))
+Declaration(ObjectProperty(:P.46))
+Declaration(ObjectProperty(:P.48))
+Declaration(ObjectProperty(:P.52))
+Declaration(ObjectProperty(:P.56))
+Declaration(ObjectProperty(:P.6))
+Declaration(ObjectProperty(:P.64))
+Declaration(ObjectProperty(:P.8))
+Declaration(DataProperty(:P.1))
+Declaration(DataProperty(:P.11))
+Declaration(DataProperty(:P.13))
+Declaration(DataProperty(:P.15))
+Declaration(DataProperty(:P.21))
+Declaration(DataProperty(:P.25))
+Declaration(DataProperty(:P.29))
+Declaration(DataProperty(:P.3))
+Declaration(DataProperty(:P.35))
+Declaration(DataProperty(:P.37))
+Declaration(DataProperty(:P.39))
+Declaration(DataProperty(:P.45))
+Declaration(DataProperty(:P.47))
+Declaration(DataProperty(:P.49))
+Declaration(DataProperty(:P.53))
+Declaration(DataProperty(:P.63))
+Declaration(DataProperty(:P.65))
+Declaration(DataProperty(:P.7))
+Declaration(DataProperty(:P.9))
+Declaration(NamedIndividual(oiled:V822576))
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:C10 (oiled:C10)
+
+EquivalentClasses(oiled:C10 ObjectMaxCardinality(0 :P.16))
+
+# Class: oiled:C10.comp (oiled:C10.comp)
+
+EquivalentClasses(oiled:C10.comp ObjectMinCardinality(1 :P.16))
+
+# Class: oiled:C100 (oiled:C100)
+
+EquivalentClasses(oiled:C100 ObjectSomeValuesFrom(oiled:R1 oiled:C98))
+EquivalentClasses(oiled:C100 DataExactCardinality(0 :P.49))
+
+# Class: oiled:C100.comp (oiled:C100.comp)
+
+EquivalentClasses(oiled:C100.comp DataMinCardinality(1 :P.49))
+
+# Class: oiled:C102 (oiled:C102)
+
+EquivalentClasses(oiled:C102 ObjectIntersectionOf(oiled:C100 oiled:C34))
+EquivalentClasses(oiled:C102 DataMinCardinality(1 :P.35))
+
+# Class: oiled:C102.comp (oiled:C102.comp)
+
+EquivalentClasses(oiled:C102.comp DataExactCardinality(0 :P.35))
+
+# Class: oiled:C104 (oiled:C104)
+
+EquivalentClasses(oiled:C104 ObjectIntersectionOf(oiled:C34 oiled:C4))
+
+# Class: oiled:C106 (oiled:C106)
+
+EquivalentClasses(oiled:C106 ObjectSomeValuesFrom(oiled:R1 oiled:C104))
+
+# Class: oiled:C108 (oiled:C108)
+
+EquivalentClasses(oiled:C108 ObjectIntersectionOf(oiled:C106 oiled:C34.comp))
+EquivalentClasses(oiled:C108 ObjectMinCardinality(1 :P.36))
+
+# Class: oiled:C108.comp (oiled:C108.comp)
+
+EquivalentClasses(oiled:C108.comp ObjectMaxCardinality(0 :P.36))
+
+# Class: oiled:C110 (oiled:C110)
+
+EquivalentClasses(oiled:C110 ObjectIntersectionOf(oiled:C102.comp oiled:C108.comp))
+EquivalentClasses(oiled:C110 DataExactCardinality(0 :P.37))
+
+# Class: oiled:C110.comp (oiled:C110.comp)
+
+EquivalentClasses(oiled:C110.comp DataMinCardinality(1 :P.37))
+
+# Class: oiled:C112 (oiled:C112)
+
+EquivalentClasses(oiled:C112 ObjectIntersectionOf(oiled:C110.comp oiled:C4))
+EquivalentClasses(oiled:C112 DataMinCardinality(1 :P.39))
+
+# Class: oiled:C112.comp (oiled:C112.comp)
+
+EquivalentClasses(oiled:C112.comp DataExactCardinality(0 :P.39))
+
+# Class: oiled:C114 (oiled:C114)
+
+EquivalentClasses(oiled:C114 ObjectIntersectionOf(oiled:C112.comp oiled:C96.comp))
+
+# Class: oiled:C116 (oiled:C116)
+
+EquivalentClasses(oiled:C116 ObjectIntersectionOf(oiled:C114 oiled:C80))
+
+# Class: oiled:C118 (oiled:C118)
+
+EquivalentClasses(oiled:C118 ObjectIntersectionOf(oiled:C10.comp oiled:C4))
+
+# Class: oiled:C12 (oiled:C12)
+
+EquivalentClasses(oiled:C12 ObjectIntersectionOf(oiled:C10 oiled:C4.comp))
+EquivalentClasses(oiled:C12 DataMinCardinality(1 :P.3))
+
+# Class: oiled:C12.comp (oiled:C12.comp)
+
+EquivalentClasses(oiled:C12.comp DataExactCardinality(0 :P.3))
+
+# Class: oiled:C120 (oiled:C120)
+
+EquivalentClasses(oiled:C120 ObjectIntersectionOf(oiled:C118 oiled:C34))
+
+# Class: oiled:C122 (oiled:C122)
+
+EquivalentClasses(oiled:C122 ObjectSomeValuesFrom(oiled:R1 oiled:C120))
+
+# Class: oiled:C124 (oiled:C124)
+
+EquivalentClasses(oiled:C124 ObjectIntersectionOf(oiled:C10.comp oiled:C4))
+
+# Class: oiled:C126 (oiled:C126)
+
+EquivalentClasses(oiled:C126 ObjectIntersectionOf(oiled:C124 oiled:C34.comp))
+
+# Class: oiled:C128 (oiled:C128)
+
+EquivalentClasses(oiled:C128 ObjectSomeValuesFrom(oiled:R1 oiled:C126))
+
+# Class: oiled:C130 (oiled:C130)
+
+EquivalentClasses(oiled:C130 ObjectIntersectionOf(oiled:C122 oiled:C128))
+EquivalentClasses(oiled:C130 ObjectMinCardinality(1 :P.44))
+
+# Class: oiled:C130.comp (oiled:C130.comp)
+
+EquivalentClasses(oiled:C130.comp ObjectExactCardinality(0 :P.44))
+
+# Class: oiled:C132 (oiled:C132)
+
+EquivalentClasses(oiled:C132 ObjectIntersectionOf(oiled:C2 oiled:C4.comp))
+EquivalentClasses(oiled:C132 ObjectMinCardinality(1 :P.48))
+
+# Class: oiled:C132.comp (oiled:C132.comp)
+
+EquivalentClasses(oiled:C132.comp ObjectExactCardinality(0 :P.48))
+
+# Class: oiled:C134 (oiled:C134)
+
+EquivalentClasses(oiled:C134 ObjectIntersectionOf(oiled:C130.comp oiled:C132))
+EquivalentClasses(oiled:C134 DataMinCardinality(1 :P.45))
+
+# Class: oiled:C134.comp (oiled:C134.comp)
+
+EquivalentClasses(oiled:C134.comp DataExactCardinality(0 :P.45))
+
+# Class: oiled:C136 (oiled:C136)
+
+EquivalentClasses(oiled:C136 ObjectIntersectionOf(oiled:C116 oiled:C134.comp))
+EquivalentClasses(oiled:C136 ObjectMaxCardinality(0 :P.46))
+
+# Class: oiled:C136.comp (oiled:C136.comp)
+
+EquivalentClasses(oiled:C136.comp ObjectMinCardinality(1 :P.46))
+
+# Class: oiled:C138 (oiled:C138)
+
+EquivalentClasses(oiled:C138 ObjectSomeValuesFrom(oiled:R1 oiled:C136.comp))
+EquivalentClasses(oiled:C138 DataMinCardinality(1 :P.47))
+
+# Class: oiled:C138.comp (oiled:C138.comp)
+
+EquivalentClasses(oiled:C138.comp DataExactCardinality(0 :P.47))
+
+# Class: oiled:C14 (oiled:C14)
+
+EquivalentClasses(oiled:C14 ObjectIntersectionOf(oiled:C12.comp oiled:C8.comp))
+
+# Class: oiled:C140 (oiled:C140)
+
+EquivalentClasses(oiled:C140 ObjectIntersectionOf(oiled:C138.comp oiled:C74))
+
+# Class: oiled:C16 (oiled:C16)
+
+EquivalentClasses(oiled:C16 ObjectExactCardinality(0 :P.4))
+
+# Class: oiled:C16.comp (oiled:C16.comp)
+
+EquivalentClasses(oiled:C16.comp ObjectMinCardinality(1 :P.4))
+
+# Class: oiled:C18 (oiled:C18)
+
+EquivalentClasses(oiled:C18 ObjectIntersectionOf(oiled:C16.comp oiled:C2))
+EquivalentClasses(oiled:C18 ObjectMinCardinality(1 :P.56))
+
+# Class: oiled:C18.comp (oiled:C18.comp)
+
+EquivalentClasses(oiled:C18.comp ObjectMaxCardinality(0 :P.56))
+
+# Class: oiled:C2 (oiled:C2)
+
+EquivalentClasses(oiled:C2 ObjectExactCardinality(0 :P.22))
+
+# Class: oiled:C2.comp (oiled:C2.comp)
+
+EquivalentClasses(oiled:C2.comp ObjectMinCardinality(1 :P.22))
+
+# Class: oiled:C20 (oiled:C20)
+
+EquivalentClasses(oiled:C20 ObjectSomeValuesFrom(oiled:R1 oiled:C18))
+
+# Class: oiled:C22 (oiled:C22)
+
+EquivalentClasses(oiled:C22 ObjectIntersectionOf(oiled:C16 oiled:C20))
+EquivalentClasses(oiled:C22 ObjectMinCardinality(1 :P.6))
+
+# Class: oiled:C22.comp (oiled:C22.comp)
+
+EquivalentClasses(oiled:C22.comp ObjectMaxCardinality(0 :P.6))
+
+# Class: oiled:C24 (oiled:C24)
+
+EquivalentClasses(oiled:C24 ObjectIntersectionOf(oiled:C16 oiled:C2))
+
+# Class: oiled:C26 (oiled:C26)
+
+EquivalentClasses(oiled:C26 ObjectSomeValuesFrom(oiled:R1 oiled:C24))
+
+# Class: oiled:C28 (oiled:C28)
+
+EquivalentClasses(oiled:C28 ObjectIntersectionOf(oiled:C16.comp oiled:C26))
+EquivalentClasses(oiled:C28 DataExactCardinality(0 :P.7))
+
+# Class: oiled:C28.comp (oiled:C28.comp)
+
+EquivalentClasses(oiled:C28.comp DataMinCardinality(1 :P.7))
+
+# Class: oiled:C30 (oiled:C30)
+
+EquivalentClasses(oiled:C30 ObjectIntersectionOf(oiled:C22.comp oiled:C28.comp))
+EquivalentClasses(oiled:C30 ObjectMinCardinality(1 :P.8))
+
+# Class: oiled:C30.comp (oiled:C30.comp)
+
+EquivalentClasses(oiled:C30.comp ObjectExactCardinality(0 :P.8))
+
+# Class: oiled:C32 (oiled:C32)
+
+EquivalentClasses(oiled:C32 ObjectIntersectionOf(oiled:C2 oiled:C30.comp))
+EquivalentClasses(oiled:C32 ObjectMinCardinality(1 :P.14))
+
+# Class: oiled:C32.comp (oiled:C32.comp)
+
+EquivalentClasses(oiled:C32.comp ObjectExactCardinality(0 :P.14))
+
+# Class: oiled:C34 (oiled:C34)
+
+EquivalentClasses(oiled:C34 DataMinCardinality(1 :P.9))
+
+# Class: oiled:C34.comp (oiled:C34.comp)
+
+EquivalentClasses(oiled:C34.comp DataExactCardinality(0 :P.9))
+
+# Class: oiled:C36 (oiled:C36)
+
+EquivalentClasses(oiled:C36 ObjectIntersectionOf(oiled:C34.comp oiled:C4))
+
+# Class: oiled:C38 (oiled:C38)
+
+EquivalentClasses(oiled:C38 ObjectSomeValuesFrom(oiled:R1 oiled:C36))
+
+# Class: oiled:C4 (oiled:C4)
+
+EquivalentClasses(oiled:C4 DataMaxCardinality(0 :P.1))
+
+# Class: oiled:C4.comp (oiled:C4.comp)
+
+EquivalentClasses(oiled:C4.comp DataMinCardinality(1 :P.1))
+
+# Class: oiled:C40 (oiled:C40)
+
+EquivalentClasses(oiled:C40 ObjectIntersectionOf(oiled:C34 oiled:C38))
+EquivalentClasses(oiled:C40 DataMinCardinality(1 :P.11))
+
+# Class: oiled:C40.comp (oiled:C40.comp)
+
+EquivalentClasses(oiled:C40.comp DataMaxCardinality(0 :P.11))
+
+# Class: oiled:C42 (oiled:C42)
+
+EquivalentClasses(oiled:C42 ObjectIntersectionOf(oiled:C34 oiled:C4))
+
+# Class: oiled:C44 (oiled:C44)
+
+EquivalentClasses(oiled:C44 ObjectSomeValuesFrom(oiled:R1 oiled:C42))
+
+# Class: oiled:C46 (oiled:C46)
+
+EquivalentClasses(oiled:C46 ObjectIntersectionOf(oiled:C34.comp oiled:C44))
+EquivalentClasses(oiled:C46 ObjectMinCardinality(1 :P.12))
+
+# Class: oiled:C46.comp (oiled:C46.comp)
+
+EquivalentClasses(oiled:C46.comp ObjectExactCardinality(0 :P.12))
+
+# Class: oiled:C48 (oiled:C48)
+
+EquivalentClasses(oiled:C48 ObjectIntersectionOf(oiled:C40.comp oiled:C46.comp))
+EquivalentClasses(oiled:C48 DataExactCardinality(0 :P.13))
+
+# Class: oiled:C48.comp (oiled:C48.comp)
+
+EquivalentClasses(oiled:C48.comp DataMinCardinality(1 :P.13))
+
+# Class: oiled:C50 (oiled:C50)
+
+EquivalentClasses(oiled:C50 ObjectIntersectionOf(oiled:C4 oiled:C48.comp))
+EquivalentClasses(oiled:C50 DataMinCardinality(1 :P.15))
+
+# Class: oiled:C50.comp (oiled:C50.comp)
+
+EquivalentClasses(oiled:C50.comp DataExactCardinality(0 :P.15))
+
+# Class: oiled:C52 (oiled:C52)
+
+EquivalentClasses(oiled:C52 ObjectIntersectionOf(oiled:C32.comp oiled:C50.comp))
+
+# Class: oiled:C54 (oiled:C54)
+
+EquivalentClasses(oiled:C54 ObjectIntersectionOf(oiled:C14 oiled:C52))
+
+# Class: oiled:C56 (oiled:C56)
+
+EquivalentClasses(oiled:C56 ObjectIntersectionOf(oiled:C10.comp oiled:C4))
+
+# Class: oiled:C58 (oiled:C58)
+
+EquivalentClasses(oiled:C58 ObjectIntersectionOf(oiled:C34 oiled:C56))
+
+# Class: oiled:C6 (oiled:C6)
+
+EquivalentClasses(oiled:C6 ObjectIntersectionOf(oiled:C2 oiled:C4.comp))
+
+# Class: oiled:C60 (oiled:C60)
+
+EquivalentClasses(oiled:C60 ObjectSomeValuesFrom(oiled:R1 oiled:C58))
+
+# Class: oiled:C62 (oiled:C62)
+
+EquivalentClasses(oiled:C62 ObjectIntersectionOf(oiled:C10.comp oiled:C4))
+
+# Class: oiled:C64 (oiled:C64)
+
+EquivalentClasses(oiled:C64 ObjectIntersectionOf(oiled:C34.comp oiled:C62))
+
+# Class: oiled:C66 (oiled:C66)
+
+EquivalentClasses(oiled:C66 ObjectSomeValuesFrom(oiled:R1 oiled:C64))
+
+# Class: oiled:C68 (oiled:C68)
+
+EquivalentClasses(oiled:C68 ObjectIntersectionOf(oiled:C60 oiled:C66))
+EquivalentClasses(oiled:C68 ObjectMinCardinality(1 :P.20))
+
+# Class: oiled:C68.comp (oiled:C68.comp)
+
+EquivalentClasses(oiled:C68.comp ObjectExactCardinality(0 :P.20))
+
+# Class: oiled:C70 (oiled:C70)
+
+EquivalentClasses(oiled:C70 ObjectIntersectionOf(oiled:C2 oiled:C4.comp))
+
+# Class: oiled:C72 (oiled:C72)
+
+EquivalentClasses(oiled:C72 ObjectIntersectionOf(oiled:C68.comp oiled:C70))
+EquivalentClasses(oiled:C72 DataMinCardinality(1 :P.21))
+
+# Class: oiled:C72.comp (oiled:C72.comp)
+
+EquivalentClasses(oiled:C72.comp DataMaxCardinality(0 :P.21))
+
+# Class: oiled:C74 (oiled:C74)
+
+EquivalentClasses(oiled:C74 ObjectIntersectionOf(oiled:C54 oiled:C72.comp))
+
+# Class: oiled:C76 (oiled:C76)
+
+EquivalentClasses(oiled:C76 ObjectIntersectionOf(oiled:C2.comp oiled:C4))
+EquivalentClasses(oiled:C76 ObjectMinCardinality(1 :P.24))
+
+# Class: oiled:C76.comp (oiled:C76.comp)
+
+EquivalentClasses(oiled:C76.comp ObjectExactCardinality(0 :P.24))
+
+# Class: oiled:C78 (oiled:C78)
+
+EquivalentClasses(oiled:C78 ObjectIntersectionOf(oiled:C10 oiled:C4.comp))
+EquivalentClasses(oiled:C78 DataExactCardinality(0 :P.25))
+
+# Class: oiled:C78.comp (oiled:C78.comp)
+
+EquivalentClasses(oiled:C78.comp DataMinCardinality(1 :P.25))
+
+# Class: oiled:C8 (oiled:C8)
+
+EquivalentClasses(oiled:C8 ObjectIntersectionOf(oiled:C2.comp oiled:C4))
+EquivalentClasses(oiled:C8 ObjectMinCardinality(1 :P.2))
+
+# Class: oiled:C8.comp (oiled:C8.comp)
+
+EquivalentClasses(oiled:C8.comp ObjectExactCardinality(0 :P.2))
+
+# Class: oiled:C80 (oiled:C80)
+
+EquivalentClasses(oiled:C80 ObjectIntersectionOf(oiled:C76.comp oiled:C78.comp))
+
+# Class: oiled:C82 (oiled:C82)
+
+EquivalentClasses(oiled:C82 ObjectIntersectionOf(oiled:C16.comp oiled:C2))
+EquivalentClasses(oiled:C82 DataMinCardinality(1 :P.65))
+
+# Class: oiled:C82.comp (oiled:C82.comp)
+
+EquivalentClasses(oiled:C82.comp DataExactCardinality(0 :P.65))
+
+# Class: oiled:C84 (oiled:C84)
+
+EquivalentClasses(oiled:C84 ObjectSomeValuesFrom(oiled:R1 oiled:C82))
+EquivalentClasses(oiled:C84 DataMinCardinality(1 :P.53))
+
+# Class: oiled:C84.comp (oiled:C84.comp)
+
+EquivalentClasses(oiled:C84.comp DataExactCardinality(0 :P.53))
+
+# Class: oiled:C86 (oiled:C86)
+
+EquivalentClasses(oiled:C86 ObjectIntersectionOf(oiled:C16 oiled:C84))
+EquivalentClasses(oiled:C86 ObjectExactCardinality(0 :P.28))
+
+# Class: oiled:C86.comp (oiled:C86.comp)
+
+EquivalentClasses(oiled:C86.comp ObjectMinCardinality(1 :P.28))
+
+# Class: oiled:C88 (oiled:C88)
+
+EquivalentClasses(oiled:C88 ObjectIntersectionOf(oiled:C16 oiled:C2))
+EquivalentClasses(oiled:C88 ObjectExactCardinality(0 :P.64))
+
+# Class: oiled:C88.comp (oiled:C88.comp)
+
+EquivalentClasses(oiled:C88.comp ObjectMinCardinality(1 :P.64))
+
+# Class: oiled:C90 (oiled:C90)
+
+EquivalentClasses(oiled:C90 ObjectSomeValuesFrom(oiled:R1 oiled:C88))
+EquivalentClasses(oiled:C90 ObjectExactCardinality(0 :P.52))
+
+# Class: oiled:C90.comp (oiled:C90.comp)
+
+EquivalentClasses(oiled:C90.comp ObjectMinCardinality(1 :P.52))
+
+# Class: oiled:C92 (oiled:C92)
+
+EquivalentClasses(oiled:C92 ObjectIntersectionOf(oiled:C16.comp oiled:C90))
+EquivalentClasses(oiled:C92 DataMinCardinality(1 :P.29))
+
+# Class: oiled:C92.comp (oiled:C92.comp)
+
+EquivalentClasses(oiled:C92.comp DataExactCardinality(0 :P.29))
+
+# Class: oiled:C94 (oiled:C94)
+
+EquivalentClasses(oiled:C94 ObjectIntersectionOf(oiled:C86.comp oiled:C92.comp))
+EquivalentClasses(oiled:C94 ObjectMinCardinality(1 :P.30))
+
+# Class: oiled:C94.comp (oiled:C94.comp)
+
+EquivalentClasses(oiled:C94.comp ObjectExactCardinality(0 :P.30))
+
+# Class: oiled:C96 (oiled:C96)
+
+EquivalentClasses(oiled:C96 ObjectIntersectionOf(oiled:C2 oiled:C94.comp))
+EquivalentClasses(oiled:C96 ObjectMinCardinality(1 :P.38))
+
+# Class: oiled:C96.comp (oiled:C96.comp)
+
+EquivalentClasses(oiled:C96.comp ObjectExactCardinality(0 :P.38))
+
+# Class: oiled:C98 (oiled:C98)
+
+EquivalentClasses(oiled:C98 ObjectIntersectionOf(oiled:C34.comp oiled:C4))
+EquivalentClasses(oiled:C98 DataMinCardinality(1 :P.63))
+
+# Class: oiled:C98.comp (oiled:C98.comp)
+
+EquivalentClasses(oiled:C98.comp DataExactCardinality(0 :P.63))
+
+# Class: oiled:TEST (oiled:TEST)
+
+EquivalentClasses(oiled:TEST ObjectIntersectionOf(oiled:C140 oiled:C6))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: oiled:V822576 (oiled:V822576)
+
+ClassAssertion(oiled:C10.comp oiled:V822576)
+ClassAssertion(oiled:C100.comp oiled:V822576)
+ClassAssertion(oiled:C102.comp oiled:V822576)
+ClassAssertion(oiled:C108.comp oiled:V822576)
+ClassAssertion(oiled:C112.comp oiled:V822576)
+ClassAssertion(oiled:C132.comp oiled:V822576)
+ClassAssertion(oiled:C134.comp oiled:V822576)
+ClassAssertion(oiled:C16 oiled:V822576)
+ClassAssertion(oiled:C18.comp oiled:V822576)
+ClassAssertion(oiled:C2 oiled:V822576)
+ClassAssertion(oiled:C34 oiled:V822576)
+ClassAssertion(oiled:C4 oiled:V822576)
+ClassAssertion(oiled:C76.comp oiled:V822576)
+ClassAssertion(oiled:C78.comp oiled:V822576)
+ClassAssertion(oiled:C84.comp oiled:V822576)
+ClassAssertion(oiled:C86.comp oiled:V822576)
+ClassAssertion(oiled:C90.comp oiled:V822576)
+ClassAssertion(oiled:C92.comp oiled:V822576)
+ClassAssertion(oiled:C96.comp oiled:V822576)
+ClassAssertion(owl:Thing oiled:V822576)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C82.comp) oiled:V822576)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C88.comp) oiled:V822576)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C98.comp) oiled:V822576)
+
+
+)

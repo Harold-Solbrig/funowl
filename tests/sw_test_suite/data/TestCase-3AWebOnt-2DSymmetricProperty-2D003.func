@@ -1,0 +1,37 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/SymmetricProperty/premises003#>)
+
+
+Ontology(
+Declaration(ObjectProperty(first:path))
+Declaration(NamedIndividual(first:Antwerp))
+Declaration(NamedIndividual(first:Ghent))
+############################
+#   Object Properties
+############################
+
+# Object Property: first:path (first:path)
+
+SymmetricObjectProperty(first:path)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:Antwerp (first:Antwerp)
+
+ClassAssertion(owl:Thing first:Antwerp)
+
+# Individual: first:Ghent (first:Ghent)
+
+ClassAssertion(owl:Thing first:Ghent)
+ObjectPropertyAssertion(first:path first:Ghent first:Antwerp)
+
+
+)

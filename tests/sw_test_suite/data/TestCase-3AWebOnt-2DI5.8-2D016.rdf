@@ -1,0 +1,16 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:eg="http://example.org/user/data#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/I5.8/consistent016#"
+    xml:base="http://www.w3.org/2002/03owlt/I5.8/consistent016" >
+
+    <owl:DatatypeProperty rdf:ID="prop"/>
+
+    <owl:Thing>
+      <first:prop rdf:datatype="http://example.org/user/data#type"
+      >foo</first:prop>
+    </owl:Thing>
+
+</rdf:RDF>

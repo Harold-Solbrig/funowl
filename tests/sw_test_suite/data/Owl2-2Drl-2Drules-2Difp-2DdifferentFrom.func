@@ -1,0 +1,38 @@
+Prefix(j.0:=<http://owl2.test/rules/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(j.0:ifp))
+Declaration(NamedIndividual(j.0:X1))
+Declaration(NamedIndividual(j.0:X2))
+Declaration(NamedIndividual(j.0:Y1))
+Declaration(NamedIndividual(j.0:Y2))
+############################
+#   Object Properties
+############################
+
+# Object Property: j.0:ifp (j.0:ifp)
+
+InverseFunctionalObjectProperty(j.0:ifp)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: j.0:Y1 (j.0:Y1)
+
+ObjectPropertyAssertion(j.0:ifp j.0:Y1 j.0:X1)
+
+# Individual: j.0:Y2 (j.0:Y2)
+
+ObjectPropertyAssertion(j.0:ifp j.0:Y2 j.0:X2)
+
+
+DifferentIndividuals(j.0:Y1 j.0:Y2)
+)

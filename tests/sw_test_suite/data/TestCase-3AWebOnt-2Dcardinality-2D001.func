@@ -1,0 +1,21 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/cardinality/premises001#c>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/cardinality/premises001#p>))
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/cardinality/premises001#c> (<http://www.w3.org/2002/03owlt/cardinality/premises001#c>)
+
+SubClassOf(<http://www.w3.org/2002/03owlt/cardinality/premises001#c> ObjectExactCardinality(1 <http://www.w3.org/2002/03owlt/cardinality/premises001#p>))
+
+
+)

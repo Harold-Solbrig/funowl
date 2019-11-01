@@ -1,0 +1,179 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#F>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#T>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>))
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#F> <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#F> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#F>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#F>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#T> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+ClassAssertion(ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>) <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8>)
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> (<http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9>)
+
+
+DifferentIndividuals(<http://www.w3.org/2002/03owlt/description-logic/consistent501#F> <http://www.w3.org/2002/03owlt/description-logic/consistent501#T>)
+)

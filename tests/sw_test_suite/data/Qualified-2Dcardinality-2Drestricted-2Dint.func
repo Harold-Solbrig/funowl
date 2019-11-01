@@ -1,0 +1,18 @@
+Prefix( : = <http://example.org/test#>)
+Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+Ontology(<http://owl.semanticweb.org/page/Special:GetOntology/Qualified-cardinality-restricted-int?m=p>
+  Declaration(NamedIndividual(:a))
+  Declaration(Class(:A))
+  Declaration(DataProperty(:dp))
+
+  SubClassOf(:A 
+    DataExactCardinality(3 :dp 
+      DatatypeRestriction( xsd:integer
+        xsd:minInclusive "1"^^xsd:integer
+        xsd:maxInclusive "3"^^xsd:integer
+      )
+    )
+  )
+
+  ClassAssertion(:A :a)
+)

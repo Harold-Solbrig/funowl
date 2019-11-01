@@ -1,0 +1,24 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/imports/premises011#>)
+Prefix(ont:=<http://www.w3.org/2002/03owlt/imports/support011-A#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/imports/premises011>
+Import(<http://www.w3.org/2002/03owlt/imports/support011-A>)
+
+Declaration(NamedIndividual(<http://example.org/data#Socrates>))
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://example.org/data#Socrates> (<http://example.org/data#Socrates>)
+
+ClassAssertion(ont:Man <http://example.org/data#Socrates>)
+
+
+)

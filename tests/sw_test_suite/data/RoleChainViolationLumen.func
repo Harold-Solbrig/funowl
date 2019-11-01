@@ -1,0 +1,100 @@
+Prefix(:=<http://purl.org/science/ontology/example/lumen.owl#>)
+Prefix(obo:=<http://purl.obolibrary.org/obo/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(example:=<http://purl.org/science/ontology/example/>)
+Prefix(owl2xml:=<http://www.w3.org/2006/12/owl2-xml#>)
+
+
+Ontology(<http://purl.org/science/ontology/example/lumen.owl>
+Annotation(rdfs:comment "http://groups.google.com/group/fma-owl-2009/browse_thread/thread/4643f80187bf9327")
+
+Declaration(Class(example:LUME0000001))
+Declaration(Class(example:LUME0000002))
+Declaration(Class(example:LUME0000007))
+Declaration(Class(example:LUME0000008))
+Declaration(Class(example:LUME0000009))
+Declaration(Class(example:LUME0000011))
+Declaration(Class(example:LUME0000012))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(example:LUME0000003))
+Declaration(ObjectProperty(example:LUME0000004))
+Declaration(ObjectProperty(example:LUME0000005))
+Declaration(ObjectProperty(example:LUME0000006))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: example:LUME0000003 (has part)
+
+AnnotationAssertion(rdfs:label example:LUME0000003 "has part")
+
+# Object Property: example:LUME0000004 (LumenSelf)
+
+AnnotationAssertion(rdfs:label example:LUME0000004 "LumenSelf")
+
+# Object Property: example:LUME0000005 (ArterySelf)
+
+AnnotationAssertion(rdfs:label example:LUME0000005 "ArterySelf")
+
+# Object Property: example:LUME0000006 (is continuous with)
+
+AnnotationAssertion(rdfs:comment example:LUME0000006 "Then the following axiom 
+(3) SubProperty(SubPropertyChain( LumenSelf InverseOf(hasPart1)   
+isContinuousWith ArterySelf hasPart1 LumenSelf) isContinuousWith)")
+AnnotationAssertion(rdfs:label example:LUME0000006 "is continuous with")
+
+
+
+############################
+#   Classes
+############################
+
+# Class: example:LUME0000001 (Lumen)
+
+AnnotationAssertion(rdfs:label example:LUME0000001 "Lumen")
+SubClassOf(example:LUME0000001 ObjectHasSelf(example:LUME0000004))
+
+# Class: example:LUME0000002 (Artery)
+
+AnnotationAssertion(rdfs:label example:LUME0000002 "Artery")
+SubClassOf(example:LUME0000002 ObjectHasSelf(example:LUME0000005))
+
+# Class: example:LUME0000007 (SubClavianArtery)
+
+AnnotationAssertion(rdfs:comment example:LUME0000007 "SubClavianArtery SubClassOf 
+  (Artery and 
+   (hasPart1 some Lumen) and 
+   (hasPart1 some Wall) and 
+   (isContinuousWith some RadialArtery))")
+AnnotationAssertion(rdfs:label example:LUME0000007 "SubClavianArtery")
+SubClassOf(example:LUME0000007 ObjectIntersectionOf(example:LUME0000002 ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000001) ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000008) ObjectSomeValuesFrom(example:LUME0000006 example:LUME0000009)))
+
+# Class: example:LUME0000008 (Wall)
+
+AnnotationAssertion(rdfs:label example:LUME0000008 "Wall")
+
+# Class: example:LUME0000009 (RadialArtery)
+
+AnnotationAssertion(rdfs:label example:LUME0000009 "RadialArtery")
+SubClassOf(example:LUME0000009 example:LUME0000002)
+SubClassOf(example:LUME0000009 ObjectIntersectionOf(example:LUME0000002 ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000001) ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000008) ObjectSomeValuesFrom(example:LUME0000006 example:LUME0000007)))
+
+# Class: example:LUME0000011 (Lumen of SubClavian Artery)
+
+AnnotationAssertion(rdfs:label example:LUME0000011 "Lumen of SubClavian Artery")
+EquivalentClasses(example:LUME0000011 ObjectIntersectionOf(example:LUME0000001 ObjectSomeValuesFrom(ObjectInverseOf(example:LUME0000003) example:LUME0000007)))
+
+# Class: example:LUME0000012 (Continuous with the Lumen of Radial Artery)
+
+AnnotationAssertion(rdfs:label example:LUME0000012 "Continuous with the Lumen of Radial Artery")
+EquivalentClasses(example:LUME0000012 ObjectSomeValuesFrom(example:LUME0000006 ObjectIntersectionOf(example:LUME0000001 ObjectSomeValuesFrom(ObjectInverseOf(example:LUME0000003) example:LUME0000009))))
+SubClassOf(example:LUME0000012 owl:Thing)
+
+
+SubObjectPropertyOf(ObjectPropertyChain(example:LUME0000004 ObjectInverseOf(example:LUME0000003) example:LUME0000006 example:LUME0000005 example:LUME0000003 example:LUME0000004) example:LUME0000006)
+)

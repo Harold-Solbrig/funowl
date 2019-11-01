@@ -1,0 +1,33 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/someValuesFrom/premises001#>)
+
+
+Ontology(
+Declaration(Class(first:c))
+Declaration(Class(first:r))
+Declaration(ObjectProperty(first:p))
+Declaration(NamedIndividual(first:i))
+
+############################
+#   Classes
+############################
+
+# Class: first:r (first:r)
+
+SubClassOf(first:r ObjectSomeValuesFrom(first:p first:c))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:i (first:i)
+
+ClassAssertion(first:r first:i)
+
+
+)

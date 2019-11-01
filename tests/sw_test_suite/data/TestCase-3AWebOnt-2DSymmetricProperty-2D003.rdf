@@ -1,0 +1,17 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/SymmetricProperty/premises003#"
+    xml:base="http://www.w3.org/2002/03owlt/SymmetricProperty/premises003" >
+
+    <owl:Ontology/>
+
+    <owl:Thing rdf:about="premises003#Ghent">
+        <first:path>
+           <owl:Thing rdf:about="premises003#Antwerp"/>
+        </first:path>
+    </owl:Thing>
+
+    <owl:SymmetricProperty rdf:about="premises003#path"/>
+
+</rdf:RDF>

@@ -1,0 +1,46 @@
+Prefix(:=<http://example.org/>)
+Prefix(ex:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(owl2xml:=<http://www.w3.org/2006/12/owl2-xml#>)
+
+
+Ontology(<http://example.org/>
+
+Declaration(Class(ex:footnote))
+Declaration(ObjectProperty(ex:about))
+Declaration(NamedIndividual(ex:footenote1))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: ex:about (about)
+
+AnnotationAssertion(rdfs:label ex:about "about")
+
+
+
+############################
+#   Classes
+############################
+
+# Class: ex:footnote (ex:footnote)
+
+DisjointClasses(ex:footnote ObjectHasSelf(ex:about))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: ex:footenote1 (ex:footenote1)
+
+ClassAssertion(ex:footnote ex:footenote1)
+ObjectPropertyAssertion(ex:about ex:footenote1 ex:footenote1)
+
+
+)

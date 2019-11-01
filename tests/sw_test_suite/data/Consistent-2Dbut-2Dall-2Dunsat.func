@@ -1,0 +1,131 @@
+Prefix(:=<http://owl.semanticweb.org/page/Special:GetOntology/Consistent-but-all-unsat?m=p#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(example:=<http://example.com/>)
+Prefix(owl2xml:=<http://www.w3.org/2006/12/owl2-xml#>)
+
+
+Ontology(<http://owl.semanticweb.org/page/Special:GetOntology/Consistent-but-all-unsat?m=p>
+
+Declaration(Class(example:a))
+Declaration(Class(example:b))
+Declaration(Class(example:bUNIONc))
+Declaration(Class(example:c))
+Declaration(Class(<http://example.com/2a>))
+Declaration(ObjectProperty(example:aTO2a))
+Declaration(ObjectProperty(example:aTOb))
+Declaration(ObjectProperty(example:bTOa))
+Declaration(ObjectProperty(example:bTOc))
+Declaration(ObjectProperty(example:bUNIONcTO2a))
+Declaration(ObjectProperty(example:cTOb))
+Declaration(ObjectProperty(<http://example.com/2aTOa>))
+Declaration(ObjectProperty(<http://example.com/2aTObUNIONc>))
+Declaration(NamedIndividual(example:i1))
+Declaration(NamedIndividual(example:i2))
+Declaration(NamedIndividual(example:i3))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: example:aTO2a (a<=>2a)
+
+AnnotationAssertion(rdfs:label example:aTO2a "a<=>2a"^^xsd:string)
+InverseObjectProperties(example:aTO2a <http://example.com/2aTOa>)
+FunctionalObjectProperty(example:aTO2a)
+InverseFunctionalObjectProperty(example:aTO2a)
+
+# Object Property: example:aTOb (a<=>b)
+
+AnnotationAssertion(rdfs:label example:aTOb "a<=>b"^^xsd:string)
+InverseObjectProperties(example:aTOb example:bTOa)
+FunctionalObjectProperty(example:aTOb)
+InverseFunctionalObjectProperty(example:aTOb)
+
+# Object Property: example:bTOa (b<=>a)
+
+AnnotationAssertion(rdfs:label example:bTOa "b<=>a"^^xsd:string)
+FunctionalObjectProperty(example:bTOa)
+InverseFunctionalObjectProperty(example:bTOa)
+
+# Object Property: example:bTOc (b<=>c)
+
+AnnotationAssertion(rdfs:label example:bTOc "b<=>c"^^xsd:string)
+InverseObjectProperties(example:bTOc example:cTOb)
+FunctionalObjectProperty(example:bTOc)
+InverseFunctionalObjectProperty(example:bTOc)
+
+# Object Property: example:bUNIONcTO2a (bUNIONc<=>2a)
+
+AnnotationAssertion(rdfs:label example:bUNIONcTO2a "bUNIONc<=>2a"^^xsd:string)
+InverseObjectProperties(example:bUNIONcTO2a <http://example.com/2aTObUNIONc>)
+FunctionalObjectProperty(example:bUNIONcTO2a)
+InverseFunctionalObjectProperty(example:bUNIONcTO2a)
+
+# Object Property: example:cTOb (c<=>b)
+
+AnnotationAssertion(rdfs:label example:cTOb "c<=>b"^^xsd:string)
+FunctionalObjectProperty(example:cTOb)
+InverseFunctionalObjectProperty(example:cTOb)
+
+# Object Property: <http://example.com/2aTOa> (2a<=>a)
+
+AnnotationAssertion(rdfs:label <http://example.com/2aTOa> "2a<=>a"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/2aTOa>)
+InverseFunctionalObjectProperty(<http://example.com/2aTOa>)
+
+# Object Property: <http://example.com/2aTObUNIONc> (2a<=>bUNIONc)
+
+AnnotationAssertion(rdfs:label <http://example.com/2aTObUNIONc> "2a<=>bUNIONc"^^xsd:string)
+FunctionalObjectProperty(<http://example.com/2aTObUNIONc>)
+InverseFunctionalObjectProperty(<http://example.com/2aTObUNIONc>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: example:a (a)
+
+AnnotationAssertion(rdfs:label example:a "a"^^xsd:string)
+SubClassOf(example:a ObjectUnionOf(ObjectOneOf(example:i1) ObjectOneOf(example:i2) ObjectOneOf(example:i3)))
+SubClassOf(example:a ObjectSomeValuesFrom(example:aTO2a <http://example.com/2a>))
+SubClassOf(example:a ObjectSomeValuesFrom(example:aTOb example:b))
+DisjointClasses(example:a example:b)
+DisjointClasses(example:a example:c)
+DisjointClasses(example:a <http://example.com/2a>)
+
+# Class: example:b (b)
+
+AnnotationAssertion(rdfs:label example:b "b"^^xsd:string)
+SubClassOf(example:b ObjectSomeValuesFrom(example:bTOa example:a))
+SubClassOf(example:b ObjectSomeValuesFrom(example:bTOc example:c))
+DisjointClasses(example:b example:c)
+DisjointClasses(example:b <http://example.com/2a>)
+
+# Class: example:bUNIONc (bUNIONc)
+
+AnnotationAssertion(rdfs:label example:bUNIONc "bUNIONc"^^xsd:string)
+EquivalentClasses(example:bUNIONc ObjectUnionOf(example:b example:c))
+SubClassOf(example:bUNIONc ObjectSomeValuesFrom(example:bUNIONcTO2a <http://example.com/2a>))
+DisjointClasses(example:bUNIONc <http://example.com/2a>)
+
+# Class: example:c (c)
+
+AnnotationAssertion(rdfs:label example:c "c"^^xsd:string)
+SubClassOf(example:c ObjectSomeValuesFrom(example:cTOb example:b))
+DisjointClasses(example:c <http://example.com/2a>)
+
+# Class: <http://example.com/2a> (2a)
+
+AnnotationAssertion(rdfs:label <http://example.com/2a> "2a"^^xsd:string)
+SubClassOf(<http://example.com/2a> ObjectSomeValuesFrom(<http://example.com/2aTOa> example:a))
+SubClassOf(<http://example.com/2a> ObjectSomeValuesFrom(<http://example.com/2aTObUNIONc> example:bUNIONc))
+
+
+
+)

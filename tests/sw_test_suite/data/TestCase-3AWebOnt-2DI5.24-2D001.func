@@ -1,0 +1,30 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.24/premises001#A>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.24/premises001#B>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.24/premises001#prop>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/I5.24/premises001#prop> (<http://www.w3.org/2002/03owlt/I5.24/premises001#prop>)
+
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/I5.24/premises001#prop> <http://www.w3.org/2002/03owlt/I5.24/premises001#A>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/I5.24/premises001#A> (<http://www.w3.org/2002/03owlt/I5.24/premises001#A>)
+
+SubClassOf(<http://www.w3.org/2002/03owlt/I5.24/premises001#A> <http://www.w3.org/2002/03owlt/I5.24/premises001#B>)
+
+
+)

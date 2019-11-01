@@ -1,0 +1,53 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/SymmetricProperty/premises002#>)
+
+
+Ontology(
+Declaration(Class(first:A))
+Declaration(ObjectProperty(first:equalityOnA))
+Declaration(NamedIndividual(first:a))
+Declaration(NamedIndividual(first:b))
+Declaration(NamedIndividual(first:c))
+############################
+#   Object Properties
+############################
+
+# Object Property: first:equalityOnA (first:equalityOnA)
+
+InverseFunctionalObjectProperty(first:equalityOnA)
+ObjectPropertyRange(first:equalityOnA first:A)
+
+
+############################
+#   Classes
+############################
+
+# Class: first:A (first:A)
+
+EquivalentClasses(first:A ObjectOneOf(first:a first:b))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:a (first:a)
+
+ClassAssertion(owl:Thing first:a)
+ObjectPropertyAssertion(first:equalityOnA first:a first:a)
+
+# Individual: first:b (first:b)
+
+ClassAssertion(owl:Thing first:b)
+ObjectPropertyAssertion(first:equalityOnA first:b first:b)
+
+# Individual: first:c (first:c)
+
+ClassAssertion(owl:Thing first:c)
+
+
+)

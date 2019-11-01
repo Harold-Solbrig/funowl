@@ -1,0 +1,21 @@
+Prefix(ex:=<http://www.example.org#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(AnnotationProperty(ex:p1))
+Declaration(AnnotationProperty(ex:p2))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: ex:p1 (ex:p1)
+
+SubAnnotationPropertyOf(ex:p1 ex:p2)
+
+
+)

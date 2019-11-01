@@ -1,0 +1,22 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:j.0="http://owl2.test/rules#">
+  <owl:Ontology rdf:about="http://org.semanticweb.ontologies/Ontology1232054810511161000"/>
+  <owl:Class rdf:about="http://owl2.test/rules#C">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
+        >1</owl:minCardinality>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="http://owl2.test/rules#OP"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+  <j.0:C rdf:about="http://owl2.test/rules#c">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </j.0:C>
+</rdf:RDF>

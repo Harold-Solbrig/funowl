@@ -21,14 +21,20 @@ class OWLFormat(Enum):
 
 
 def convert(content: str, output_format: OWLFormat=OWLFormat.func) -> Optional[str]:
-    resp = requests.get('http://www.ldf.fi/service/owl-converter',
-                         params=dict(onto=content, to=output_format.name))
+    try:
+        resp = requests.post('http://www.ldf.fi/service/owl-converter/',
+                             data=dict(onto=content, to=output_format.name))
+    except ConnectionError as e:
+        logging.getLogger().error(str(e))
+        return None
+
     if resp.ok:
         return resp.text
-    logging.getLogger().error(resp.msg)
+    logging.getLogger().error(str(resp))
 
 
-print(convert("""<rdf:RDF
+if __name__ == '__main__':
+    print(convert("""<rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
     xmlns:owl="http://www.w3.org/2002/07/owl#"

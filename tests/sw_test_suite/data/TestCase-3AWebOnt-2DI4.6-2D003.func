@@ -1,0 +1,23 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/I4.6/premises003#C1>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I4.6/premises003#C2>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/I4.6/premises003#C1>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/I4.6/premises003#C2>))
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/I4.6/premises003#C1> (<http://www.w3.org/2002/03owlt/I4.6/premises003#C1>)
+
+SameIndividual(<http://www.w3.org/2002/03owlt/I4.6/premises003#C1> <http://www.w3.org/2002/03owlt/I4.6/premises003#C2>)
+
+
+)

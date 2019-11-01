@@ -1,0 +1,7 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xml:base="http://www.w3.org/2002/03owlt/equivalentClass/premises007" >
+   <rdfs:Class rdf:ID="A"/>
+   <rdfs:Class rdf:ID="B"/>
+</rdf:RDF>

@@ -1,0 +1,22 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl ="http://www.w3.org/2002/07/owl#"
+  xmlns:first="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001#" 
+  xml:base="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001" >
+    <owl:Ontology/>
+    <owl:InverseFunctionalProperty rdf:ID="prop"/>
+    <rdf:Description rdf:ID="subject1">
+      <first:prop rdf:resource="#object" />
+    </rdf:Description>
+    <rdf:Description rdf:ID="subject2">
+      <first:prop rdf:resource="#object" />
+    </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001#object">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001#subject2">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises001#subject1">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  </rdf:Description>
+</rdf:RDF>

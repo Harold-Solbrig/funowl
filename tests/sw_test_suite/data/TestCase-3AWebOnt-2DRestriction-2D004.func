@@ -1,0 +1,29 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/Restriction/consistent004#C>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/Restriction/consistent004#D>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/Restriction/consistent004#superC>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/Restriction/consistent004#superD>))
+Declaration(DataProperty(<http://www.w3.org/2002/03owlt/Restriction/consistent004#dp>))
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/Restriction/consistent004#C> (<http://www.w3.org/2002/03owlt/Restriction/consistent004#C>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/Restriction/consistent004#C> ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/Restriction/consistent004#superC> DataSomeValuesFrom(<http://www.w3.org/2002/03owlt/Restriction/consistent004#dp> xsd:byte)))
+
+# Class: <http://www.w3.org/2002/03owlt/Restriction/consistent004#D> (<http://www.w3.org/2002/03owlt/Restriction/consistent004#D>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/Restriction/consistent004#D> ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/Restriction/consistent004#superD> DataSomeValuesFrom(<http://www.w3.org/2002/03owlt/Restriction/consistent004#dp> xsd:byte)))
+
+
+)

@@ -1,0 +1,38 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/differentFrom/premises002#>)
+
+
+Ontology(
+Declaration(Class(first:Person))
+Declaration(NamedIndividual(first:Barney))
+Declaration(NamedIndividual(first:Betty))
+Declaration(NamedIndividual(first:Fred))
+Declaration(NamedIndividual(first:Wilma))
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:Barney (first:Barney)
+
+ClassAssertion(first:Person first:Barney)
+
+# Individual: first:Betty (first:Betty)
+
+ClassAssertion(first:Person first:Betty)
+
+# Individual: first:Fred (first:Fred)
+
+ClassAssertion(first:Person first:Fred)
+
+# Individual: first:Wilma (first:Wilma)
+
+ClassAssertion(first:Person first:Wilma)
+
+
+DifferentIndividuals(first:Barney first:Betty first:Fred first:Wilma)
+)

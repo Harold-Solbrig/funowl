@@ -1,0 +1,34 @@
+Prefix(dc:=<http://purl.org/dc/elements/1.0/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/Class/premises004#>)
+
+
+Ontology(
+Declaration(Class(rdfs:Class))
+Declaration(Class(first:WorkingGroup))
+Declaration(NamedIndividual(<http://www.w3.org/RDF/Group/Schema/members>))
+Declaration(AnnotationProperty(dc:creator))
+
+############################
+#   Classes
+############################
+
+# Class: rdfs:Class (rdfs:Class)
+
+AnnotationAssertion(dc:creator rdfs:Class <http://www.w3.org/RDF/Group/Schema/members>)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/RDF/Group/Schema/members> (<http://www.w3.org/RDF/Group/Schema/members>)
+
+ClassAssertion(first:WorkingGroup <http://www.w3.org/RDF/Group/Schema/members>)
+
+
+)

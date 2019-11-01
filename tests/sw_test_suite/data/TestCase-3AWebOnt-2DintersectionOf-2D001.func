@@ -1,0 +1,37 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/intersectionOf/premises001#>)
+
+
+Ontology(
+Declaration(Class(first:B))
+Declaration(Class(first:C))
+Declaration(Class(first:Employee))
+Declaration(Class(first:Student))
+Declaration(NamedIndividual(first:John))
+############################
+#   Classes
+############################
+
+# Class: first:B (first:B)
+
+EquivalentClasses(first:B ObjectIntersectionOf(first:Employee first:Student))
+
+# Class: first:C (first:C)
+
+EquivalentClasses(first:C ObjectIntersectionOf(first:Employee first:Student))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:John (first:John)
+
+ClassAssertion(first:B first:John)
+
+
+)

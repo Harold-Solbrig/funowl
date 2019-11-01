@@ -1,0 +1,26 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#B>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#C>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#D>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>))
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A> (<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>)
+
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#C> ObjectOneOf(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#B> ObjectOneOf(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>))
+EquivalentClasses(ObjectComplementOf(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#D>) ObjectOneOf(<http://www.w3.org/2002/03owlt/equivalentClass/consistent009#A>))
+)

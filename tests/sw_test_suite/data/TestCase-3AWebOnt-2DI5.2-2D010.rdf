@@ -1,0 +1,17 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/I5.2/consistent010" >
+  <owl:Class rdf:about=
+ "http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag" >
+    <rdfs:comment>The class of unordered containers.</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about=
+ "http://www.w3.org/1999/02/22-rdf-syntax-ns#_1" />
+  <rdf:Bag>
+    <rdf:_1>
+       <owl:Thing />
+    </rdf:_1>
+  </rdf:Bag>
+</rdf:RDF>

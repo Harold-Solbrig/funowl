@@ -1,0 +1,33 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/unionOf/premises001#>)
+Prefix(second:=<http://www.w3.org/2002/03owlt/unionOf/conclusions001#>)
+
+
+Ontology(
+Declaration(Class(first:A))
+Declaration(Class(first:Animal))
+Declaration(Class(first:Human))
+Declaration(NamedIndividual(first:John))
+############################
+#   Classes
+############################
+
+# Class: first:A (first:A)
+
+EquivalentClasses(first:A ObjectUnionOf(first:Animal first:Human))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:John (first:John)
+
+ClassAssertion(first:Human first:John)
+
+
+)

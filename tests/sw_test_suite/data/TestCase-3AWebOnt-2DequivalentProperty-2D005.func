@@ -1,0 +1,24 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(AnnotationProperty(<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#p>))
+Declaration(AnnotationProperty(<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#q>))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: <http://www.w3.org/2002/03owlt/equivalentProperty/premises005#p> (<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#p>)
+
+AnnotationPropertyDomain(<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#p> <_:genid-nodeid-d>)
+
+# Annotation Property: <http://www.w3.org/2002/03owlt/equivalentProperty/premises005#q> (<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#q>)
+
+AnnotationPropertyDomain(<http://www.w3.org/2002/03owlt/equivalentProperty/premises005#q> <_:genid-nodeid-d>)
+
+
+)

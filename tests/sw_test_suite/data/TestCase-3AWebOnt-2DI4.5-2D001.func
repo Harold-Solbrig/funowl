@@ -1,0 +1,80 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/I4.5/premises001#>)
+
+
+Ontology(
+Declaration(Class(first:EUCountry))
+Declaration(Class(first:EuroMP))
+Declaration(Class(first:EuropeanCountry))
+Declaration(Class(first:Person))
+Declaration(ObjectProperty(first:hasEuroMP))
+Declaration(ObjectProperty(first:isEuroMPFrom))
+Declaration(NamedIndividual(first:BE))
+Declaration(NamedIndividual(first:ES))
+Declaration(NamedIndividual(first:FR))
+Declaration(NamedIndividual(first:Kinnock))
+Declaration(NamedIndividual(first:NL))
+Declaration(NamedIndividual(first:PT))
+Declaration(NamedIndividual(first:UK))
+############################
+#   Object Properties
+############################
+
+# Object Property: first:hasEuroMP (first:hasEuroMP)
+
+InverseObjectProperties(first:hasEuroMP first:isEuroMPFrom)
+ObjectPropertyDomain(first:hasEuroMP first:EUCountry)
+
+
+############################
+#   Classes
+############################
+
+# Class: first:EUCountry (first:EUCountry)
+
+EquivalentClasses(first:EUCountry ObjectOneOf(first:BE first:ES first:FR first:NL first:PT first:UK))
+
+# Class: first:EuroMP (first:EuroMP)
+
+EquivalentClasses(first:EuroMP ObjectSomeValuesFrom(first:isEuroMPFrom owl:Thing))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:BE (first:BE)
+
+ClassAssertion(first:EuropeanCountry first:BE)
+
+# Individual: first:ES (first:ES)
+
+ClassAssertion(first:EuropeanCountry first:ES)
+
+# Individual: first:FR (first:FR)
+
+ClassAssertion(first:EuropeanCountry first:FR)
+
+# Individual: first:Kinnock (first:Kinnock)
+
+ClassAssertion(first:Person first:Kinnock)
+
+# Individual: first:NL (first:NL)
+
+ClassAssertion(first:EuropeanCountry first:NL)
+
+# Individual: first:PT (first:PT)
+
+ClassAssertion(first:EuropeanCountry first:PT)
+
+# Individual: first:UK (first:UK)
+
+ClassAssertion(first:EuropeanCountry first:UK)
+ObjectPropertyAssertion(first:hasEuroMP first:UK first:Kinnock)
+
+
+)

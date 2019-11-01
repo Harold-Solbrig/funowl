@@ -1,0 +1,36 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/I5.2/premises004#>)
+Prefix(second:=<http://www.w3.org/2002/03owlt/I5.2/conclusions004#>)
+
+
+Ontology(
+Declaration(Class(first:A))
+Declaration(Class(first:Nothing))
+Declaration(Class(first:notA))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(first:p))
+Declaration(ObjectProperty(first:q))
+
+############################
+#   Classes
+############################
+
+# Class: first:A (first:A)
+
+EquivalentClasses(first:A ObjectSomeValuesFrom(first:q owl:Thing))
+
+# Class: first:Nothing (first:Nothing)
+
+SubClassOf(first:Nothing ObjectMinCardinality(1 first:p))
+SubClassOf(first:Nothing ObjectMaxCardinality(0 first:p))
+
+# Class: first:notA (first:notA)
+
+EquivalentClasses(first:notA ObjectAllValuesFrom(first:q first:Nothing))
+
+
+)

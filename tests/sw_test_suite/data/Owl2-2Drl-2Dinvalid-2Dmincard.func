@@ -1,0 +1,36 @@
+Prefix(:=<http://org.semanticweb.ontologies/Ontology1232054810511161000#>)
+Prefix(j.0:=<http://owl2.test/rules#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://org.semanticweb.ontologies/Ontology1232054810511161000>
+
+Declaration(Class(j.0:C))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(j.0:OP))
+Declaration(NamedIndividual(j.0:c))
+
+############################
+#   Classes
+############################
+
+# Class: j.0:C (j.0:C)
+
+SubClassOf(j.0:C ObjectMinCardinality(1 j.0:OP))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: j.0:c (j.0:c)
+
+ClassAssertion(j.0:C j.0:c)
+ClassAssertion(owl:Thing j.0:c)
+
+
+)

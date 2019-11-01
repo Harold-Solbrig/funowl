@@ -1,0 +1,35 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(:parentOf))
+Declaration(NamedIndividual(:Peter))
+Declaration(NamedIndividual(:Stewie))
+############################
+#   Object Properties
+############################
+
+# Object Property: :parentOf (:parentOf)
+
+AsymmetricObjectProperty(:parentOf)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Peter (:Peter)
+
+ObjectPropertyAssertion(:parentOf :Peter :Stewie)
+
+# Individual: :Stewie (:Stewie)
+
+ObjectPropertyAssertion(:parentOf :Stewie :Peter)
+
+
+)

@@ -1,0 +1,99 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K>)
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N> ObjectExactCardinality(3 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M>))
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>))
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> ObjectExactCardinality(2 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> ObjectExactCardinality(5 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1>))
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d> ObjectOneOf(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d> ObjectMaxCardinality(1000000000 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d> (<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d>)
+
+
+EquivalentClasses(ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1> <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d>) ObjectExactCardinality(5 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1>))
+)

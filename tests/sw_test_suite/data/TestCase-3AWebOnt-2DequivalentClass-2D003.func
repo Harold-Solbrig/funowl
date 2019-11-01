@@ -1,0 +1,24 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Automobile>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Car>))
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Automobile> (<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Automobile>)
+
+SubClassOf(<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Automobile> <http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Car>)
+
+# Class: <http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Car> (<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Car>)
+
+SubClassOf(<http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Car> <http://www.w3.org/2002/03owlt/equivalentClass/conclusions003#Automobile>)
+
+
+)

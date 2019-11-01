@@ -1,0 +1,10 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl ="http://www.w3.org/2002/07/owl#"
+  xmlns:first="http://www.w3.org/2002/03owlt/FunctionalProperty/premises001#" 
+  xml:base="http://www.w3.org/2002/03owlt/FunctionalProperty/premises001" >
+    <owl:FunctionalProperty rdf:ID="prop"/>
+    <rdf:Description rdf:ID="subject">
+      <first:prop rdf:resource="#object1" />
+      <first:prop rdf:resource="#object2" />
+    </rdf:Description>
+</rdf:RDF>

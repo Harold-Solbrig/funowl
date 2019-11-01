@@ -1,0 +1,23 @@
+Prefix(eg:=<http://example.org/user/data#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(eg:type))
+Declaration(DataProperty(<http://www.w3.org/2002/03owlt/I5.8/consistent014#prop>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/I5.8/consistent014#prop> (<http://www.w3.org/2002/03owlt/I5.8/consistent014#prop>)
+
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/I5.8/consistent014#prop> eg:type)
+
+
+
+
+)

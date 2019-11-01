@@ -1,0 +1,43 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(DataProperty(:hasAddress))
+Declaration(DataProperty(:hasName))
+Declaration(DataProperty(:hasZip))
+Declaration(NamedIndividual(:Peter))
+Declaration(NamedIndividual(:Peter_Griffin))
+Declaration(NamedIndividual(:Petre))
+############################
+#   Data Properties
+############################
+
+# Data Property: :hasAddress (:hasAddress)
+
+DisjointDataProperties(:hasAddress :hasName :hasZip)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Peter (:Peter)
+
+DataPropertyAssertion(:hasName :Peter "Peter Griffin")
+
+# Individual: :Peter_Griffin (:Peter_Griffin)
+
+DataPropertyAssertion(:hasAddress :Peter_Griffin "Peter Griffin")
+
+# Individual: :Petre (:Petre)
+
+DataPropertyAssertion(:hasZip :Petre "Peter Griffin")
+
+
+)

@@ -1,0 +1,338 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/premises202#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/premises202>
+
+Declaration(Class(oiled:C10))
+Declaration(Class(oiled:C12))
+Declaration(Class(oiled:C14))
+Declaration(Class(oiled:C16))
+Declaration(Class(oiled:C18))
+Declaration(Class(oiled:C2))
+Declaration(Class(oiled:C20))
+Declaration(Class(oiled:C22))
+Declaration(Class(oiled:C24))
+Declaration(Class(oiled:C26))
+Declaration(Class(oiled:C28))
+Declaration(Class(oiled:C30))
+Declaration(Class(oiled:C32))
+Declaration(Class(oiled:C34))
+Declaration(Class(oiled:C36))
+Declaration(Class(oiled:C38))
+Declaration(Class(oiled:C4))
+Declaration(Class(oiled:C40))
+Declaration(Class(oiled:C42))
+Declaration(Class(oiled:C44))
+Declaration(Class(oiled:C46))
+Declaration(Class(oiled:C48))
+Declaration(Class(oiled:C50))
+Declaration(Class(oiled:C52))
+Declaration(Class(oiled:C54))
+Declaration(Class(oiled:C56))
+Declaration(Class(oiled:C58))
+Declaration(Class(oiled:C6))
+Declaration(Class(oiled:C60))
+Declaration(Class(oiled:C62))
+Declaration(Class(oiled:C64))
+Declaration(Class(oiled:C66))
+Declaration(Class(oiled:C68))
+Declaration(Class(oiled:C70))
+Declaration(Class(oiled:C72))
+Declaration(Class(oiled:C74))
+Declaration(Class(oiled:C76))
+Declaration(Class(oiled:C78))
+Declaration(Class(oiled:C8))
+Declaration(Class(oiled:C80))
+Declaration(Class(oiled:C82))
+Declaration(Class(oiled:C84))
+Declaration(Class(oiled:C86))
+Declaration(Class(oiled:C88))
+Declaration(Class(oiled:C90))
+Declaration(Class(oiled:C92))
+Declaration(Class(oiled:C94))
+Declaration(Class(oiled:TEST))
+Declaration(Class(oiled:TOP))
+Declaration(ObjectProperty(oiled:R1))
+Declaration(NamedIndividual(oiled:V8467))
+Declaration(NamedIndividual(oiled:V8468))
+Declaration(NamedIndividual(oiled:V8469))
+Declaration(NamedIndividual(oiled:V8470))
+Declaration(NamedIndividual(oiled:V8471))
+Declaration(NamedIndividual(oiled:V8472))
+Declaration(NamedIndividual(oiled:V8473))
+Declaration(NamedIndividual(oiled:V8474))
+Declaration(NamedIndividual(oiled:V8475))
+Declaration(NamedIndividual(oiled:V8476))
+
+############################
+#   Classes
+############################
+
+# Class: oiled:C10 (oiled:C10)
+
+EquivalentClasses(oiled:C10 ObjectIntersectionOf(oiled:C4 oiled:C8))
+
+# Class: oiled:C12 (oiled:C12)
+
+EquivalentClasses(oiled:C12 ObjectSomeValuesFrom(oiled:R1 oiled:C10))
+
+# Class: oiled:C14 (oiled:C14)
+
+EquivalentClasses(oiled:C14 ObjectSomeValuesFrom(oiled:R1 oiled:TOP))
+
+# Class: oiled:C16 (oiled:C16)
+
+EquivalentClasses(oiled:C16 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C14)))
+
+# Class: oiled:C18 (oiled:C18)
+
+EquivalentClasses(oiled:C18 ObjectIntersectionOf(oiled:C12 ObjectComplementOf(oiled:C16)))
+
+# Class: oiled:C20 (oiled:C20)
+
+EquivalentClasses(oiled:C20 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C22 (oiled:C22)
+
+EquivalentClasses(oiled:C22 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C24 (oiled:C24)
+
+EquivalentClasses(oiled:C24 ObjectSomeValuesFrom(oiled:R1 oiled:C22))
+
+# Class: oiled:C26 (oiled:C26)
+
+EquivalentClasses(oiled:C26 ObjectIntersectionOf(oiled:C24 ObjectComplementOf(oiled:C20)))
+
+# Class: oiled:C28 (oiled:C28)
+
+EquivalentClasses(oiled:C28 ObjectSomeValuesFrom(oiled:R1 oiled:C26))
+
+# Class: oiled:C30 (oiled:C30)
+
+EquivalentClasses(oiled:C30 ObjectIntersectionOf(oiled:C18 ObjectComplementOf(oiled:C28)))
+
+# Class: oiled:C32 (oiled:C32)
+
+EquivalentClasses(oiled:C32 ObjectSomeValuesFrom(oiled:R1 oiled:C2))
+
+# Class: oiled:C34 (oiled:C34)
+
+EquivalentClasses(oiled:C34 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C32)))
+
+# Class: oiled:C36 (oiled:C36)
+
+EquivalentClasses(oiled:C36 ObjectSomeValuesFrom(oiled:R1 oiled:C2))
+
+# Class: oiled:C38 (oiled:C38)
+
+EquivalentClasses(oiled:C38 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C36)))
+
+# Class: oiled:C4 (oiled:C4)
+
+EquivalentClasses(oiled:C4 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C40 (oiled:C40)
+
+EquivalentClasses(oiled:C40 ObjectSomeValuesFrom(oiled:R1 oiled:C38))
+
+# Class: oiled:C42 (oiled:C42)
+
+EquivalentClasses(oiled:C42 ObjectIntersectionOf(oiled:C40 ObjectComplementOf(oiled:C34)))
+
+# Class: oiled:C44 (oiled:C44)
+
+EquivalentClasses(oiled:C44 ObjectSomeValuesFrom(oiled:R1 oiled:C42))
+
+# Class: oiled:C46 (oiled:C46)
+
+EquivalentClasses(oiled:C46 ObjectIntersectionOf(oiled:C30 ObjectComplementOf(oiled:C44)))
+
+# Class: oiled:C48 (oiled:C48)
+
+EquivalentClasses(oiled:C48 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C50 (oiled:C50)
+
+EquivalentClasses(oiled:C50 ObjectSomeValuesFrom(oiled:R1 oiled:C2))
+
+# Class: oiled:C52 (oiled:C52)
+
+EquivalentClasses(oiled:C52 ObjectIntersectionOf(ObjectComplementOf(oiled:C48) ObjectComplementOf(oiled:C50)))
+
+# Class: oiled:C54 (oiled:C54)
+
+EquivalentClasses(oiled:C54 ObjectSomeValuesFrom(oiled:R1 oiled:C52))
+
+# Class: oiled:C56 (oiled:C56)
+
+EquivalentClasses(oiled:C56 ObjectIntersectionOf(oiled:C46 ObjectComplementOf(oiled:C54)))
+
+# Class: oiled:C58 (oiled:C58)
+
+EquivalentClasses(oiled:C58 ObjectSomeValuesFrom(oiled:R1 oiled:C2))
+
+# Class: oiled:C6 (oiled:C6)
+
+EquivalentClasses(oiled:C6 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C60 (oiled:C60)
+
+EquivalentClasses(oiled:C60 ObjectIntersectionOf(oiled:C58 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C62 (oiled:C62)
+
+EquivalentClasses(oiled:C62 ObjectSomeValuesFrom(oiled:R1 oiled:C60))
+
+# Class: oiled:C64 (oiled:C64)
+
+EquivalentClasses(oiled:C64 ObjectSomeValuesFrom(oiled:R1 oiled:C2))
+
+# Class: oiled:C66 (oiled:C66)
+
+EquivalentClasses(oiled:C66 ObjectIntersectionOf(oiled:C64 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C68 (oiled:C68)
+
+EquivalentClasses(oiled:C68 ObjectSomeValuesFrom(oiled:R1 oiled:C66))
+
+# Class: oiled:C70 (oiled:C70)
+
+EquivalentClasses(oiled:C70 ObjectSomeValuesFrom(oiled:R1 oiled:C68))
+
+# Class: oiled:C72 (oiled:C72)
+
+EquivalentClasses(oiled:C72 ObjectIntersectionOf(oiled:C70 ObjectComplementOf(oiled:C62)))
+
+# Class: oiled:C74 (oiled:C74)
+
+EquivalentClasses(oiled:C74 ObjectSomeValuesFrom(oiled:R1 oiled:C72))
+
+# Class: oiled:C76 (oiled:C76)
+
+EquivalentClasses(oiled:C76 ObjectIntersectionOf(oiled:C56 ObjectComplementOf(oiled:C74)))
+
+# Class: oiled:C78 (oiled:C78)
+
+EquivalentClasses(oiled:C78 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C8 (oiled:C8)
+
+EquivalentClasses(oiled:C8 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C6)))
+
+# Class: oiled:C80 (oiled:C80)
+
+EquivalentClasses(oiled:C80 ObjectIntersectionOf(ObjectComplementOf(oiled:C2) ObjectComplementOf(oiled:C78)))
+
+# Class: oiled:C82 (oiled:C82)
+
+EquivalentClasses(oiled:C82 ObjectSomeValuesFrom(oiled:R1 oiled:C80))
+
+# Class: oiled:C84 (oiled:C84)
+
+EquivalentClasses(oiled:C84 ObjectSomeValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C86 (oiled:C86)
+
+EquivalentClasses(oiled:C86 ObjectIntersectionOf(ObjectComplementOf(oiled:C2) ObjectComplementOf(oiled:C84)))
+
+# Class: oiled:C88 (oiled:C88)
+
+EquivalentClasses(oiled:C88 ObjectSomeValuesFrom(oiled:R1 oiled:C86))
+
+# Class: oiled:C90 (oiled:C90)
+
+EquivalentClasses(oiled:C90 ObjectSomeValuesFrom(oiled:R1 oiled:C88))
+
+# Class: oiled:C92 (oiled:C92)
+
+EquivalentClasses(oiled:C92 ObjectIntersectionOf(oiled:C90 ObjectComplementOf(oiled:C82)))
+
+# Class: oiled:C94 (oiled:C94)
+
+EquivalentClasses(oiled:C94 ObjectSomeValuesFrom(oiled:R1 oiled:C92))
+
+# Class: oiled:TEST (oiled:TEST)
+
+EquivalentClasses(oiled:TEST ObjectIntersectionOf(oiled:C76 ObjectComplementOf(oiled:C94)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: oiled:V8467 (oiled:V8467)
+
+ClassAssertion(owl:Thing oiled:V8467)
+ClassAssertion(ObjectComplementOf(oiled:C26) oiled:V8467)
+ClassAssertion(ObjectComplementOf(oiled:C42) oiled:V8467)
+ClassAssertion(ObjectComplementOf(oiled:C52) oiled:V8467)
+ClassAssertion(ObjectComplementOf(oiled:C72) oiled:V8467)
+ClassAssertion(ObjectComplementOf(oiled:C92) oiled:V8467)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8468)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8469)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8470)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8471)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8472)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8473)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8474)
+ObjectPropertyAssertion(oiled:R1 oiled:V8467 oiled:V8475)
+
+# Individual: oiled:V8468 (oiled:V8468)
+
+ClassAssertion(owl:Thing oiled:V8468)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V8468)
+
+# Individual: oiled:V8469 (oiled:V8469)
+
+ClassAssertion(owl:Thing oiled:V8469)
+ClassAssertion(ObjectComplementOf(oiled:C6) oiled:V8469)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C2) oiled:V8469)
+
+# Individual: oiled:V8470 (oiled:V8470)
+
+ClassAssertion(oiled:TOP oiled:V8470)
+ClassAssertion(owl:Thing oiled:V8470)
+
+# Individual: oiled:V8471 (oiled:V8471)
+
+ClassAssertion(owl:Thing oiled:V8471)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V8471)
+ClassAssertion(ObjectComplementOf(oiled:C78) oiled:V8471)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 oiled:C2) oiled:V8471)
+
+# Individual: oiled:V8472 (oiled:V8472)
+
+ClassAssertion(owl:Thing oiled:V8472)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V8472)
+ObjectPropertyAssertion(oiled:R1 oiled:V8472 oiled:V8476)
+
+# Individual: oiled:V8473 (oiled:V8473)
+
+ClassAssertion(owl:Thing oiled:V8473)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V8473)
+
+# Individual: oiled:V8474 (oiled:V8474)
+
+ClassAssertion(owl:Thing oiled:V8474)
+ClassAssertion(ObjectComplementOf(oiled:C32) oiled:V8474)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 ObjectComplementOf(oiled:C2)) oiled:V8474)
+
+# Individual: oiled:V8475 (oiled:V8475)
+
+ClassAssertion(owl:Thing oiled:V8475)
+ClassAssertion(ObjectComplementOf(oiled:C2) oiled:V8475)
+
+# Individual: oiled:V8476 (oiled:V8476)
+
+ClassAssertion(oiled:C2 oiled:V8476)
+ClassAssertion(owl:Thing oiled:V8476)
+
+
+)

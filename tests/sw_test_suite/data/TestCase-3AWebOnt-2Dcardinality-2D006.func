@@ -1,0 +1,27 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error17>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error18>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c>))
+Declaration(AnnotationProperty(owl:maxCardinality))
+Declaration(AnnotationProperty(owl:minCardinality))
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> (<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> ObjectIntersectionOf(<http://org.semanticweb.owlapi/error#Error17> <http://org.semanticweb.owlapi/error#Error18>))
+
+
+AnnotationAssertion(owl:maxCardinality _:genid6782 "1"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:minCardinality _:genid6783 "1"^^xsd:nonNegativeInteger)
+)

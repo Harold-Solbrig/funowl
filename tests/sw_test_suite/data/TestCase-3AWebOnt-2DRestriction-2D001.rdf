@@ -1,0 +1,30 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/Restriction/inconsistent001#"
+    xml:base="http://www.w3.org/2002/03owlt/Restriction/inconsistent001" >
+   <owl:Ontology/>
+   <owl:ObjectProperty rdf:ID="op"/>
+   <rdf:Description rdf:ID="a">
+     <rdf:type>
+        <owl:Restriction>
+           <owl:onProperty rdf:resource="#op"/>
+           <owl:someValuesFrom rdf:resource=
+     "http://www.w3.org/2002/07/owl#Nothing" />
+        </owl:Restriction>
+     </rdf:type>
+   </rdf:Description>
+   <rdf:Description rdf:ID="b">
+     <rdf:type>
+        <owl:Restriction>
+           <owl:onProperty rdf:resource="#op"/>
+           <owl:someValuesFrom rdf:resource=
+     "http://www.w3.org/2002/07/owl#Nothing" />
+        </owl:Restriction>
+     </rdf:type>
+   </rdf:Description>
+               
+
+
+</rdf:RDF>

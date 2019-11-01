@@ -1,0 +1,44 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/unionOf/premises003#A>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/unionOf/premises003#A-and-B>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/unionOf/premises003#B>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/unionOf/premises003#a>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/unionOf/premises003#b>))
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/unionOf/premises003#A> (<http://www.w3.org/2002/03owlt/unionOf/premises003#A>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/unionOf/premises003#A> ObjectOneOf(<http://www.w3.org/2002/03owlt/unionOf/premises003#a>))
+
+# Class: <http://www.w3.org/2002/03owlt/unionOf/premises003#A-and-B> (<http://www.w3.org/2002/03owlt/unionOf/premises003#A-and-B>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/unionOf/premises003#A-and-B> ObjectOneOf(<http://www.w3.org/2002/03owlt/unionOf/premises003#a> <http://www.w3.org/2002/03owlt/unionOf/premises003#b>))
+
+# Class: <http://www.w3.org/2002/03owlt/unionOf/premises003#B> (<http://www.w3.org/2002/03owlt/unionOf/premises003#B>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/unionOf/premises003#B> ObjectOneOf(<http://www.w3.org/2002/03owlt/unionOf/premises003#b>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/unionOf/premises003#a> (<http://www.w3.org/2002/03owlt/unionOf/premises003#a>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/unionOf/premises003#a>)
+
+# Individual: <http://www.w3.org/2002/03owlt/unionOf/premises003#b> (<http://www.w3.org/2002/03owlt/unionOf/premises003#b>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/unionOf/premises003#b>)
+
+
+)

@@ -1,0 +1,57 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#A>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#AorB>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#B>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#notA>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.2/premises006#notB>))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.2/premises006#p>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.2/premises006#q>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.2/premises006#r>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.2/premises006#s>))
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#A> (<http://www.w3.org/2002/03owlt/I5.2/premises006#A>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#A> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#q> owl:Thing))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#AorB> (<http://www.w3.org/2002/03owlt/I5.2/premises006#AorB>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#AorB> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#s> owl:Thing))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#B> (<http://www.w3.org/2002/03owlt/I5.2/premises006#B>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#B> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#r> owl:Thing))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> (<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing>)
+
+SubClassOf(<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ObjectMinCardinality(1 <http://www.w3.org/2002/03owlt/I5.2/premises006#p>))
+SubClassOf(<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ObjectMaxCardinality(0 <http://www.w3.org/2002/03owlt/I5.2/premises006#p>))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> (<http://www.w3.org/2002/03owlt/I5.2/premises006#notA>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#notA> ObjectAllValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#q> <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing>))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> (<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/I5.2/premises006#notA> <http://www.w3.org/2002/03owlt/I5.2/premises006#notB>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> ObjectAllValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#s> <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing>))
+
+# Class: <http://www.w3.org/2002/03owlt/I5.2/premises006#notB> (<http://www.w3.org/2002/03owlt/I5.2/premises006#notB>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.2/premises006#notB> ObjectAllValuesFrom(<http://www.w3.org/2002/03owlt/I5.2/premises006#r> <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing>))
+
+
+)

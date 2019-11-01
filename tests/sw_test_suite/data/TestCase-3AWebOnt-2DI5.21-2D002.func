@@ -1,0 +1,95 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/I5.21/premises002#>)
+
+
+Ontology(
+Declaration(Class(first:Agamidae))
+Declaration(Class(first:Amphisbaenidae))
+Declaration(Class(first:Anomalepidae))
+Declaration(Class(first:Bipedidae))
+Declaration(Class(first:Cordylidae))
+Declaration(Class(first:Crocodylidae))
+Declaration(Class(first:Emydidae))
+Declaration(Class(first:Gekkonidae))
+Declaration(Class(first:Leptotyphlopidae))
+Declaration(Class(first:Loxocemidae))
+Declaration(Class(first:Reptile))
+Declaration(Class(first:Sphenodontidae))
+Declaration(Class(first:Xantusiidae))
+Declaration(DataProperty(first:family-name))
+
+
+############################
+#   Classes
+############################
+
+# Class: first:Agamidae (first:Agamidae)
+
+SubClassOf(first:Agamidae first:Reptile)
+SubClassOf(first:Agamidae DataHasValue(first:family-name "Agamidae"))
+
+# Class: first:Amphisbaenidae (first:Amphisbaenidae)
+
+SubClassOf(first:Amphisbaenidae first:Reptile)
+SubClassOf(first:Amphisbaenidae DataHasValue(first:family-name "Amphisbaenidae"))
+
+# Class: first:Anomalepidae (first:Anomalepidae)
+
+SubClassOf(first:Anomalepidae first:Reptile)
+SubClassOf(first:Anomalepidae DataHasValue(first:family-name "Anomalepidae"))
+
+# Class: first:Bipedidae (first:Bipedidae)
+
+SubClassOf(first:Bipedidae first:Reptile)
+SubClassOf(first:Bipedidae DataHasValue(first:family-name "Bipedidae"))
+
+# Class: first:Cordylidae (first:Cordylidae)
+
+SubClassOf(first:Cordylidae first:Reptile)
+SubClassOf(first:Cordylidae DataHasValue(first:family-name "Cordylidae"))
+
+# Class: first:Crocodylidae (first:Crocodylidae)
+
+SubClassOf(first:Crocodylidae first:Reptile)
+SubClassOf(first:Crocodylidae DataHasValue(first:family-name "Crocodylidae"))
+
+# Class: first:Emydidae (first:Emydidae)
+
+SubClassOf(first:Emydidae first:Reptile)
+SubClassOf(first:Emydidae DataHasValue(first:family-name "Emydidae"))
+
+# Class: first:Gekkonidae (first:Gekkonidae)
+
+SubClassOf(first:Gekkonidae first:Reptile)
+SubClassOf(first:Gekkonidae DataHasValue(first:family-name "Gekkonidae"))
+
+# Class: first:Leptotyphlopidae (first:Leptotyphlopidae)
+
+SubClassOf(first:Leptotyphlopidae first:Reptile)
+SubClassOf(first:Leptotyphlopidae DataHasValue(first:family-name "Leptotyphlopidae"))
+
+# Class: first:Loxocemidae (first:Loxocemidae)
+
+SubClassOf(first:Loxocemidae first:Reptile)
+SubClassOf(first:Loxocemidae DataHasValue(first:family-name "Loxocemidae"))
+
+# Class: first:Reptile (first:Reptile)
+
+SubClassOf(first:Reptile DataExactCardinality(1 first:family-name))
+
+# Class: first:Sphenodontidae (first:Sphenodontidae)
+
+SubClassOf(first:Sphenodontidae first:Reptile)
+SubClassOf(first:Sphenodontidae DataHasValue(first:family-name "Sphenodontidae"))
+
+# Class: first:Xantusiidae (first:Xantusiidae)
+
+SubClassOf(first:Xantusiidae first:Reptile)
+SubClassOf(first:Xantusiidae DataHasValue(first:family-name "Xantusiidae"))
+
+
+)

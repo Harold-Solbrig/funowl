@@ -1,0 +1,38 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/premises902#A>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/description-logic/premises902#B>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/premises902#p>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/premises902#q>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/description-logic/premises902#r>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/premises902#p> (<http://www.w3.org/2002/03owlt/description-logic/premises902#p>)
+
+SubObjectPropertyOf(<http://www.w3.org/2002/03owlt/description-logic/premises902#p> <http://www.w3.org/2002/03owlt/description-logic/premises902#r>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/premises902#p> <http://www.w3.org/2002/03owlt/description-logic/premises902#A>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/description-logic/premises902#q> (<http://www.w3.org/2002/03owlt/description-logic/premises902#q>)
+
+SubObjectPropertyOf(<http://www.w3.org/2002/03owlt/description-logic/premises902#q> <http://www.w3.org/2002/03owlt/description-logic/premises902#r>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/description-logic/premises902#q> <http://www.w3.org/2002/03owlt/description-logic/premises902#B>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://www.w3.org/2002/03owlt/description-logic/premises902#A> (<http://www.w3.org/2002/03owlt/description-logic/premises902#A>)
+
+DisjointClasses(<http://www.w3.org/2002/03owlt/description-logic/premises902#A> <http://www.w3.org/2002/03owlt/description-logic/premises902#B>)
+
+
+)

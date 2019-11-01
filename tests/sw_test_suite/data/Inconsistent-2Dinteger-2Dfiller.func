@@ -1,0 +1,10 @@
+Prefix(:=<http://example.org/>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Ontology(
+  Declaration(NamedIndividual(:a))
+  Declaration(DataProperty(:hasAge))
+  Declaration(Class(:Eighteen))
+  SubClassOf(DataHasValue(:hasAge "18"^^xsd:integer) :Eighteen) 
+  ClassAssertion(DataHasValue(:hasAge "18"^^xsd:integer) :a) 
+  ClassAssertion(ObjectComplementOf(:Eighteen) :a)
+)

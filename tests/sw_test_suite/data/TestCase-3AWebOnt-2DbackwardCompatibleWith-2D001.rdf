@@ -1,0 +1,13 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/backwardCompatibleWith/consistent001#"
+    xml:base="http://www.w3.org/2002/03owlt/backwardCompatibleWith/consistent001" >
+   <owl:Ontology>
+      <owl:backwardCompatibleWith>
+        <owl:Ontology rdf:about="http://www.example.org/"/>
+      </owl:backwardCompatibleWith>
+   </owl:Ontology>
+
+</rdf:RDF>

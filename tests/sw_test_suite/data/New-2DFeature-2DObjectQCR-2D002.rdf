@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:ObjectProperty rdf:about="fatherOf" />
+<owl:Class rdf:about="Woman" />
+
+<rdf:Description rdf:about="Peter">
+  <fatherOf rdf:resource="Stewie" />
+  <fatherOf rdf:resource="Meg" />
+</rdf:Description>
+
+<Woman rdf:about="Meg" />
+
+<rdf:Description rdf:about="Peter">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="fatherOf" />
+      <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+      <owl:onClass rdf:resource="Woman" />
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+<rdf:Description rdf:about="Stewie">
+  <owl:differentFrom rdf:resource="Meg" />
+</rdf:Description>
+
+</rdf:RDF>

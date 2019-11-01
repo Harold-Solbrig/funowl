@@ -1,0 +1,17 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/equivalentProperty/premises005" >
+   <owl:FunctionalProperty rdf:about="#q">
+      <rdfs:domain rdf:nodeID="d"/>
+   </owl:FunctionalProperty>
+   <owl:FunctionalProperty rdf:about="#p">
+      <rdfs:domain rdf:nodeID="d"/>
+   </owl:FunctionalProperty>
+   <owl:Restriction rdf:nodeID="d">
+     <owl:onProperty rdf:resource="#p"/>
+     <owl:onProperty rdf:resource="#q"/>
+     <owl:hasValue rdf:resource="#v"/>
+   </owl:Restriction>
+</rdf:RDF>

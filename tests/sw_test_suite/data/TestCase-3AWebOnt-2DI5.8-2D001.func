@@ -1,0 +1,31 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/I5.8/inconsistent001#>)
+
+
+Ontology(
+Declaration(DataProperty(first:p))
+Declaration(NamedIndividual(first:john))
+############################
+#   Data Properties
+############################
+
+# Data Property: first:p (first:p)
+
+DataPropertyRange(first:p xsd:byte)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:john (first:john)
+
+ClassAssertion(DataExactCardinality(257 first:p) first:john)
+
+
+)

@@ -1,0 +1,31 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:Class rdf:about="http://example.org/c5"/>
+  <owl:Class rdf:about="http://example.org/c2"/>
+  <owl:Class rdf:about="http://example.org/c3"/>
+  <owl:Class rdf:about="http://example.org/c6"/>
+  <owl:Class rdf:about="http://example.org/c4"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/p1">
+    <rdfs:range rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p5">
+    <rdfs:domain rdf:resource="http://example.org/c5"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p3">
+    <rdfs:range rdf:resource="http://example.org/c3"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p6">
+    <rdfs:range rdf:resource="http://example.org/c6"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p2">
+    <rdfs:domain rdf:resource="http://example.org/c2"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p4">
+    <rdfs:domain rdf:resource="http://example.org/c4"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>

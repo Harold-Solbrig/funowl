@@ -1,0 +1,34 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/oneOf/premises004#>)
+
+
+Ontology(
+Declaration(DataProperty(first:p))
+Declaration(NamedIndividual(first:i))
+############################
+#   Data Properties
+############################
+
+# Data Property: first:p (first:p)
+
+DataPropertyRange(first:p DataOneOf("1"^^xsd:integer "2"^^xsd:integer "3"^^xsd:integer "4"^^xsd:integer))
+DataPropertyRange(first:p DataOneOf("4"^^xsd:integer "5"^^xsd:integer "6"^^xsd:integer))
+
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:i (first:i)
+
+ClassAssertion(owl:Thing first:i)
+ClassAssertion(DataMinCardinality(1 first:p) first:i)
+
+
+)

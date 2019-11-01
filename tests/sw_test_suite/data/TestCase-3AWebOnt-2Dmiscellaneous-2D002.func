@@ -1,0 +1,760 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/miscellaneous/consistent002#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(vin:=<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(food:=<http://www.w3.org/2002/03owlt/miscellaneous/consistent002#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/miscellaneous/consistent002>
+Import(<http://www.w3.org/2002/03owlt/miscellaneous/consistent001>)
+Annotation(rdfs:comment "
+      Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially modified.
+    ")
+
+Declaration(Class(food:BlandFish))
+Declaration(Class(food:BlandFishCourse))
+Declaration(Class(food:CheeseNutsDessert))
+Declaration(Class(food:CheeseNutsDessertCourse))
+Declaration(Class(food:ConsumableThing))
+Declaration(Class(food:DarkMeatFowl))
+Declaration(Class(food:DarkMeatFowlCourse))
+Declaration(Class(food:Dessert))
+Declaration(Class(food:DessertCourse))
+Declaration(Class(food:EatingGrape))
+Declaration(Class(food:EdibleThing))
+Declaration(Class(food:Fish))
+Declaration(Class(food:FishCourse))
+Declaration(Class(food:Fowl))
+Declaration(Class(food:Fruit))
+Declaration(Class(food:FruitCourse))
+Declaration(Class(food:Grape))
+Declaration(Class(food:Juice))
+Declaration(Class(food:LightMeatFowl))
+Declaration(Class(food:LightMeatFowlCourse))
+Declaration(Class(food:Meal))
+Declaration(Class(food:MealCourse))
+Declaration(Class(food:Meat))
+Declaration(Class(food:NonBlandFish))
+Declaration(Class(food:NonBlandFishCourse))
+Declaration(Class(food:NonConsumableThing))
+Declaration(Class(food:NonOysterShellfish))
+Declaration(Class(food:NonOysterShellfishCourse))
+Declaration(Class(food:NonRedMeat))
+Declaration(Class(food:NonRedMeatCourse))
+Declaration(Class(food:NonSpicyRedMeat))
+Declaration(Class(food:NonSpicyRedMeatCourse))
+Declaration(Class(food:NonSweetFruit))
+Declaration(Class(food:NonSweetFruitCourse))
+Declaration(Class(food:OtherTomatoBasedFood))
+Declaration(Class(food:OtherTomatoBasedFoodCourse))
+Declaration(Class(food:OysterShellfish))
+Declaration(Class(food:OysterShellfishCourse))
+Declaration(Class(food:Pasta))
+Declaration(Class(food:PastaWithHeavyCreamCourse))
+Declaration(Class(food:PastaWithHeavyCreamSauce))
+Declaration(Class(food:PastaWithLightCreamCourse))
+Declaration(Class(food:PastaWithLightCreamSauce))
+Declaration(Class(food:PastaWithNonSpicyRedSauce))
+Declaration(Class(food:PastaWithNonSpicyRedSauceCourse))
+Declaration(Class(food:PastaWithRedSauce))
+Declaration(Class(food:PastaWithSpicyRedSauce))
+Declaration(Class(food:PastaWithSpicyRedSauceCourse))
+Declaration(Class(food:PastaWithWhiteSauce))
+Declaration(Class(food:PotableLiquid))
+Declaration(Class(food:RedMeat))
+Declaration(Class(food:RedMeatCourse))
+Declaration(Class(food:Seafood))
+Declaration(Class(food:SeafoodCourse))
+Declaration(Class(food:Shellfish))
+Declaration(Class(food:ShellfishCourse))
+Declaration(Class(food:SpicyRedMeat))
+Declaration(Class(food:SpicyRedMeatCourse))
+Declaration(Class(food:SweetDessert))
+Declaration(Class(food:SweetDessertCourse))
+Declaration(Class(food:SweetFruit))
+Declaration(Class(food:SweetFruitCourse))
+Declaration(Class(food:Wine))
+Declaration(ObjectProperty(food:course))
+Declaration(ObjectProperty(food:hasDrink))
+Declaration(ObjectProperty(food:hasFood))
+Declaration(ObjectProperty(food:madeFromFruit))
+Declaration(NamedIndividual(vin:Delicate))
+Declaration(NamedIndividual(vin:Dry))
+Declaration(NamedIndividual(vin:Full))
+Declaration(NamedIndividual(vin:Light))
+Declaration(NamedIndividual(vin:Medium))
+Declaration(NamedIndividual(vin:Moderate))
+Declaration(NamedIndividual(vin:OffDry))
+Declaration(NamedIndividual(vin:Red))
+Declaration(NamedIndividual(vin:Rose))
+Declaration(NamedIndividual(vin:Strong))
+Declaration(NamedIndividual(vin:Sweet))
+Declaration(NamedIndividual(vin:White))
+Declaration(NamedIndividual(food:Bananas))
+Declaration(NamedIndividual(food:BeefCurry))
+Declaration(NamedIndividual(food:Cake))
+Declaration(NamedIndividual(food:Cheese))
+Declaration(NamedIndividual(food:Chicken))
+Declaration(NamedIndividual(food:Clams))
+Declaration(NamedIndividual(food:Crab))
+Declaration(NamedIndividual(food:Delicate))
+Declaration(NamedIndividual(food:Dry))
+Declaration(NamedIndividual(food:Duck))
+Declaration(NamedIndividual(food:FettucineAlfRedo))
+Declaration(NamedIndividual(food:Flounder))
+Declaration(NamedIndividual(food:FraDiavolo))
+Declaration(NamedIndividual(food:Full))
+Declaration(NamedIndividual(food:GarlickyRoast))
+Declaration(NamedIndividual(food:Goose))
+Declaration(NamedIndividual(food:Halibut))
+Declaration(NamedIndividual(food:Light))
+Declaration(NamedIndividual(food:Lobster))
+Declaration(NamedIndividual(food:Medium))
+Declaration(NamedIndividual(food:MixedFruit))
+Declaration(NamedIndividual(food:Moderate))
+Declaration(NamedIndividual(food:Mussels))
+Declaration(NamedIndividual(food:Nuts))
+Declaration(NamedIndividual(food:OffDry))
+Declaration(NamedIndividual(food:Oysters))
+Declaration(NamedIndividual(food:PastaWithWhiteClamSauce))
+Declaration(NamedIndividual(food:Peaches))
+Declaration(NamedIndividual(food:Pie))
+Declaration(NamedIndividual(food:Pizza))
+Declaration(NamedIndividual(food:Pork))
+Declaration(NamedIndividual(food:Red))
+Declaration(NamedIndividual(food:RoastBeef))
+Declaration(NamedIndividual(food:Rose))
+Declaration(NamedIndividual(food:Scrod))
+Declaration(NamedIndividual(food:SpaghettiWithTomatoSauce))
+Declaration(NamedIndividual(food:Steak))
+Declaration(NamedIndividual(food:Strong))
+Declaration(NamedIndividual(food:Sweet))
+Declaration(NamedIndividual(food:Swordfish))
+Declaration(NamedIndividual(food:ThompsonSeedless))
+Declaration(NamedIndividual(food:Tuna))
+Declaration(NamedIndividual(food:Turkey))
+Declaration(NamedIndividual(food:Veal))
+Declaration(NamedIndividual(food:White))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: food:course (food:course)
+
+ObjectPropertyDomain(food:course food:Meal)
+ObjectPropertyRange(food:course food:MealCourse)
+
+# Object Property: food:hasDrink (food:hasDrink)
+
+ObjectPropertyDomain(food:hasDrink food:MealCourse)
+ObjectPropertyRange(food:hasDrink food:PotableLiquid)
+
+# Object Property: food:hasFood (food:hasFood)
+
+ObjectPropertyDomain(food:hasFood food:MealCourse)
+ObjectPropertyRange(food:hasFood food:EdibleThing)
+
+# Object Property: food:madeFromFruit (food:madeFromFruit)
+
+ObjectPropertyDomain(food:madeFromFruit food:ConsumableThing)
+ObjectPropertyRange(food:madeFromFruit food:Fruit)
+
+
+############################
+#   Classes
+############################
+
+# Class: vin:Wine (wine)
+
+EquivalentClasses(vin:Wine food:Wine)
+
+# Class: food:BlandFish (food:BlandFish)
+
+SubClassOf(food:BlandFish food:Fish)
+DisjointClasses(food:BlandFish food:NonBlandFish)
+
+# Class: food:BlandFishCourse (food:BlandFishCourse)
+
+EquivalentClasses(food:BlandFishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:BlandFish)))
+SubClassOf(food:BlandFishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Delicate)))
+
+# Class: food:CheeseNutsDessert (food:CheeseNutsDessert)
+
+SubClassOf(food:CheeseNutsDessert food:Dessert)
+DisjointClasses(food:CheeseNutsDessert food:SweetDessert)
+
+# Class: food:CheeseNutsDessertCourse (food:CheeseNutsDessertCourse)
+
+EquivalentClasses(food:CheeseNutsDessertCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:CheeseNutsDessert)))
+SubClassOf(food:CheeseNutsDessertCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+
+# Class: food:DarkMeatFowl (food:DarkMeatFowl)
+
+SubClassOf(food:DarkMeatFowl food:Fowl)
+DisjointClasses(food:DarkMeatFowl food:LightMeatFowl)
+
+# Class: food:DarkMeatFowlCourse (food:DarkMeatFowlCourse)
+
+EquivalentClasses(food:DarkMeatFowlCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:DarkMeatFowl)))
+SubClassOf(food:DarkMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Light)))
+SubClassOf(food:DarkMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:DarkMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Delicate)))
+SubClassOf(food:DarkMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:Dessert (food:Dessert)
+
+SubClassOf(food:Dessert food:EdibleThing)
+DisjointClasses(food:Dessert food:Fowl)
+DisjointClasses(food:Dessert food:Fruit)
+DisjointClasses(food:Dessert food:Meat)
+DisjointClasses(food:Dessert food:OtherTomatoBasedFood)
+DisjointClasses(food:Dessert food:Pasta)
+DisjointClasses(food:Dessert food:Seafood)
+
+# Class: food:DessertCourse (food:DessertCourse)
+
+EquivalentClasses(food:DessertCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:Dessert)))
+SubClassOf(food:DessertCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Full)))
+SubClassOf(food:DessertCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Strong)))
+SubClassOf(food:DessertCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Sweet)))
+
+# Class: food:EatingGrape (food:EatingGrape)
+
+SubClassOf(food:EatingGrape food:Grape)
+
+# Class: food:EdibleThing (food:EdibleThing)
+
+SubClassOf(food:EdibleThing food:ConsumableThing)
+DisjointClasses(food:EdibleThing food:Meal)
+DisjointClasses(food:EdibleThing food:MealCourse)
+DisjointClasses(food:EdibleThing food:PotableLiquid)
+
+# Class: food:Fish (food:Fish)
+
+SubClassOf(food:Fish food:Seafood)
+DisjointClasses(food:Fish food:Shellfish)
+
+# Class: food:FishCourse (food:FishCourse)
+
+EquivalentClasses(food:FishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:Fish)))
+SubClassOf(food:FishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:FishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:Fowl (food:Fowl)
+
+SubClassOf(food:Fowl food:EdibleThing)
+DisjointClasses(food:Fowl food:Fruit)
+DisjointClasses(food:Fowl food:Meat)
+DisjointClasses(food:Fowl food:OtherTomatoBasedFood)
+DisjointClasses(food:Fowl food:Pasta)
+DisjointClasses(food:Fowl food:Seafood)
+
+# Class: food:Fruit (food:Fruit)
+
+EquivalentClasses(food:Fruit ObjectUnionOf(food:NonSweetFruit food:SweetFruit))
+DisjointClasses(food:Fruit food:Meat)
+DisjointClasses(food:Fruit food:OtherTomatoBasedFood)
+DisjointClasses(food:Fruit food:Pasta)
+DisjointClasses(food:Fruit food:Seafood)
+
+# Class: food:FruitCourse (food:FruitCourse)
+
+EquivalentClasses(food:FruitCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:Fruit)))
+SubClassOf(food:FruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:FruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+
+# Class: food:Grape (food:Grape)
+
+SubClassOf(food:Grape food:SweetFruit)
+
+# Class: food:Juice (food:Juice)
+
+SubClassOf(food:Juice food:PotableLiquid)
+SubClassOf(food:Juice ObjectMinCardinality(1 food:madeFromFruit))
+
+# Class: food:LightMeatFowl (food:LightMeatFowl)
+
+SubClassOf(food:LightMeatFowl food:Fowl)
+
+# Class: food:LightMeatFowlCourse (food:LightMeatFowlCourse)
+
+EquivalentClasses(food:LightMeatFowlCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:LightMeatFowl)))
+SubClassOf(food:LightMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:LightMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+SubClassOf(food:LightMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:LightMeatFowlCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:Meal (food:Meal)
+
+SubClassOf(food:Meal food:ConsumableThing)
+SubClassOf(food:Meal ObjectAllValuesFrom(food:course food:MealCourse))
+SubClassOf(food:Meal ObjectMinCardinality(1 food:course))
+DisjointClasses(food:Meal food:MealCourse)
+DisjointClasses(food:Meal food:PotableLiquid)
+
+# Class: food:MealCourse (food:MealCourse)
+
+SubClassOf(food:MealCourse food:ConsumableThing)
+SubClassOf(food:MealCourse ObjectAllValuesFrom(food:hasDrink food:Wine))
+SubClassOf(food:MealCourse ObjectMinCardinality(1 food:hasDrink))
+SubClassOf(food:MealCourse ObjectMinCardinality(1 food:hasFood))
+DisjointClasses(food:MealCourse food:PotableLiquid)
+
+# Class: food:Meat (food:Meat)
+
+SubClassOf(food:Meat food:EdibleThing)
+DisjointClasses(food:Meat food:OtherTomatoBasedFood)
+DisjointClasses(food:Meat food:Pasta)
+DisjointClasses(food:Meat food:Seafood)
+
+# Class: food:NonBlandFish (food:NonBlandFish)
+
+SubClassOf(food:NonBlandFish food:Fish)
+
+# Class: food:NonBlandFishCourse (food:NonBlandFishCourse)
+
+EquivalentClasses(food:NonBlandFishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:NonBlandFish)))
+SubClassOf(food:NonBlandFishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+
+# Class: food:NonConsumableThing (food:NonConsumableThing)
+
+EquivalentClasses(food:NonConsumableThing ObjectComplementOf(food:ConsumableThing))
+
+# Class: food:NonOysterShellfish (food:NonOysterShellfish)
+
+SubClassOf(food:NonOysterShellfish food:Shellfish)
+DisjointClasses(food:NonOysterShellfish food:OysterShellfish)
+
+# Class: food:NonOysterShellfishCourse (food:NonOysterShellfishCourse)
+
+EquivalentClasses(food:NonOysterShellfishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:NonOysterShellfish)))
+SubClassOf(food:NonOysterShellfishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:NonRedMeat (food:NonRedMeat)
+
+SubClassOf(food:NonRedMeat food:Meat)
+DisjointClasses(food:NonRedMeat food:RedMeat)
+
+# Class: food:NonRedMeatCourse (food:NonRedMeatCourse)
+
+EquivalentClasses(food:NonRedMeatCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:NonRedMeat)))
+SubClassOf(food:NonRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:NonRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+SubClassOf(food:NonRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Strong)))
+SubClassOf(food:NonRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:NonSpicyRedMeat (food:NonSpicyRedMeat)
+
+SubClassOf(food:NonSpicyRedMeat food:RedMeat)
+DisjointClasses(food:NonSpicyRedMeat food:SpicyRedMeat)
+
+# Class: food:NonSpicyRedMeatCourse (food:NonSpicyRedMeatCourse)
+
+EquivalentClasses(food:NonSpicyRedMeatCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:NonSpicyRedMeat)))
+SubClassOf(food:NonSpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectAllValuesFrom(vin:hasFlavor ObjectOneOf(food:Moderate food:Strong))))
+SubClassOf(food:NonSpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:NonSpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:NonSpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:NonSweetFruit (food:NonSweetFruit)
+
+SubClassOf(food:NonSweetFruit food:EdibleThing)
+DisjointClasses(food:NonSweetFruit food:SweetFruit)
+
+# Class: food:NonSweetFruitCourse (food:NonSweetFruitCourse)
+
+EquivalentClasses(food:NonSweetFruitCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:NonSweetFruit)))
+SubClassOf(food:NonSweetFruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Delicate)))
+SubClassOf(food:NonSweetFruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:OffDry)))
+
+# Class: food:OtherTomatoBasedFood (food:OtherTomatoBasedFood)
+
+SubClassOf(food:OtherTomatoBasedFood food:EdibleThing)
+DisjointClasses(food:OtherTomatoBasedFood food:Pasta)
+DisjointClasses(food:OtherTomatoBasedFood food:Seafood)
+
+# Class: food:OtherTomatoBasedFoodCourse (food:OtherTomatoBasedFoodCourse)
+
+EquivalentClasses(food:OtherTomatoBasedFoodCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:OtherTomatoBasedFood)))
+SubClassOf(food:OtherTomatoBasedFoodCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:OtherTomatoBasedFoodCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:OtherTomatoBasedFoodCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:OtherTomatoBasedFoodCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:OysterShellfish (food:OysterShellfish)
+
+SubClassOf(food:OysterShellfish food:Shellfish)
+
+# Class: food:OysterShellfishCourse (food:OysterShellfishCourse)
+
+EquivalentClasses(food:OysterShellfishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:OysterShellfish)))
+SubClassOf(food:OysterShellfishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Sweet)))
+
+# Class: food:Pasta (food:Pasta)
+
+SubClassOf(food:Pasta food:EdibleThing)
+DisjointClasses(food:Pasta food:Seafood)
+
+# Class: food:PastaWithHeavyCreamCourse (food:PastaWithHeavyCreamCourse)
+
+EquivalentClasses(food:PastaWithHeavyCreamCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:PastaWithHeavyCreamSauce)))
+SubClassOf(food:PastaWithHeavyCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:PastaWithHeavyCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+SubClassOf(food:PastaWithHeavyCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:PastaWithHeavyCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:PastaWithHeavyCreamSauce (food:PastaWithHeavyCreamSauce)
+
+SubClassOf(food:PastaWithHeavyCreamSauce food:PastaWithWhiteSauce)
+DisjointClasses(food:PastaWithHeavyCreamSauce food:PastaWithLightCreamSauce)
+
+# Class: food:PastaWithLightCreamCourse (food:PastaWithLightCreamCourse)
+
+EquivalentClasses(food:PastaWithLightCreamCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:PastaWithLightCreamSauce)))
+SubClassOf(food:PastaWithLightCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Light)))
+SubClassOf(food:PastaWithLightCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+SubClassOf(food:PastaWithLightCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Delicate)))
+SubClassOf(food:PastaWithLightCreamCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:PastaWithLightCreamSauce (food:PastaWithLightCreamSauce)
+
+SubClassOf(food:PastaWithLightCreamSauce food:PastaWithWhiteSauce)
+
+# Class: food:PastaWithNonSpicyRedSauce (food:PastaWithNonSpicyRedSauce)
+
+SubClassOf(food:PastaWithNonSpicyRedSauce food:PastaWithRedSauce)
+DisjointClasses(food:PastaWithNonSpicyRedSauce food:PastaWithSpicyRedSauce)
+
+# Class: food:PastaWithNonSpicyRedSauceCourse (food:PastaWithNonSpicyRedSauceCourse)
+
+EquivalentClasses(food:PastaWithNonSpicyRedSauceCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:PastaWithNonSpicyRedSauce)))
+SubClassOf(food:PastaWithNonSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Medium)))
+SubClassOf(food:PastaWithNonSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:PastaWithNonSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:PastaWithNonSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:PastaWithRedSauce (food:PastaWithRedSauce)
+
+SubClassOf(food:PastaWithRedSauce food:Pasta)
+DisjointClasses(food:PastaWithRedSauce food:PastaWithWhiteSauce)
+
+# Class: food:PastaWithSpicyRedSauce (food:PastaWithSpicyRedSauce)
+
+SubClassOf(food:PastaWithSpicyRedSauce food:PastaWithRedSauce)
+
+# Class: food:PastaWithSpicyRedSauceCourse (food:PastaWithSpicyRedSauceCourse)
+
+EquivalentClasses(food:PastaWithSpicyRedSauceCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:PastaWithSpicyRedSauce)))
+SubClassOf(food:PastaWithSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Full)))
+SubClassOf(food:PastaWithSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:PastaWithSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Strong)))
+SubClassOf(food:PastaWithSpicyRedSauceCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:PastaWithWhiteSauce (food:PastaWithWhiteSauce)
+
+SubClassOf(food:PastaWithWhiteSauce food:Pasta)
+
+# Class: food:PotableLiquid (food:PotableLiquid)
+
+SubClassOf(food:PotableLiquid food:ConsumableThing)
+
+# Class: food:RedMeat (food:RedMeat)
+
+SubClassOf(food:RedMeat food:Meat)
+
+# Class: food:RedMeatCourse (food:RedMeatCourse)
+
+EquivalentClasses(food:RedMeatCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:RedMeat)))
+SubClassOf(food:RedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+
+# Class: food:Seafood (food:Seafood)
+
+SubClassOf(food:Seafood food:EdibleThing)
+
+# Class: food:SeafoodCourse (food:SeafoodCourse)
+
+EquivalentClasses(food:SeafoodCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:Seafood)))
+SubClassOf(food:SeafoodCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+
+# Class: food:Shellfish (food:Shellfish)
+
+SubClassOf(food:Shellfish food:Seafood)
+
+# Class: food:ShellfishCourse (food:ShellfishCourse)
+
+EquivalentClasses(food:ShellfishCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:Shellfish)))
+SubClassOf(food:ShellfishCourse ObjectAllValuesFrom(food:hasDrink ObjectAllValuesFrom(vin:hasFlavor ObjectOneOf(food:Moderate food:Strong))))
+SubClassOf(food:ShellfishCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Full)))
+
+# Class: food:SpicyRedMeat (food:SpicyRedMeat)
+
+SubClassOf(food:SpicyRedMeat food:RedMeat)
+
+# Class: food:SpicyRedMeatCourse (food:SpicyRedMeatCourse)
+
+EquivalentClasses(food:SpicyRedMeatCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:SpicyRedMeat)))
+SubClassOf(food:SpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasBody food:Full)))
+SubClassOf(food:SpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:Red)))
+SubClassOf(food:SpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:SpicyRedMeatCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Dry)))
+
+# Class: food:SweetDessert (food:SweetDessert)
+
+SubClassOf(food:SweetDessert food:Dessert)
+
+# Class: food:SweetDessertCourse (food:SweetDessertCourse)
+
+EquivalentClasses(food:SweetDessertCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:SweetDessert)))
+SubClassOf(food:SweetDessertCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasColor food:White)))
+
+# Class: food:SweetFruit (food:SweetFruit)
+
+SubClassOf(food:SweetFruit food:EdibleThing)
+
+# Class: food:SweetFruitCourse (food:SweetFruitCourse)
+
+EquivalentClasses(food:SweetFruitCourse ObjectIntersectionOf(food:MealCourse ObjectAllValuesFrom(food:hasFood food:SweetFruit)))
+SubClassOf(food:SweetFruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasFlavor food:Moderate)))
+SubClassOf(food:SweetFruitCourse ObjectAllValuesFrom(food:hasDrink ObjectHasValue(vin:hasSugar food:Sweet)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: vin:Delicate (vin:Delicate)
+
+SameIndividual(vin:Delicate food:Delicate)
+
+# Individual: vin:Dry (vin:Dry)
+
+SameIndividual(vin:Dry food:Dry)
+
+# Individual: vin:Full (vin:Full)
+
+SameIndividual(vin:Full food:Full)
+
+# Individual: vin:Light (vin:Light)
+
+SameIndividual(vin:Light food:Light)
+
+# Individual: vin:Medium (vin:Medium)
+
+SameIndividual(vin:Medium food:Medium)
+
+# Individual: vin:Moderate (vin:Moderate)
+
+SameIndividual(vin:Moderate food:Moderate)
+
+# Individual: vin:OffDry (vin:OffDry)
+
+SameIndividual(vin:OffDry food:OffDry)
+
+# Individual: vin:Red (vin:Red)
+
+SameIndividual(vin:Red food:Red)
+
+# Individual: vin:Rose (vin:Rose)
+
+SameIndividual(vin:Rose food:Rose)
+
+# Individual: vin:Strong (vin:Strong)
+
+SameIndividual(vin:Strong food:Strong)
+
+# Individual: vin:Sweet (vin:Sweet)
+
+SameIndividual(vin:Sweet food:Sweet)
+
+# Individual: vin:White (vin:White)
+
+SameIndividual(vin:White food:White)
+
+# Individual: food:Bananas (food:Bananas)
+
+ClassAssertion(food:SweetFruit food:Bananas)
+
+# Individual: food:BeefCurry (food:BeefCurry)
+
+ClassAssertion(food:SpicyRedMeat food:BeefCurry)
+
+# Individual: food:Cake (food:Cake)
+
+ClassAssertion(food:SweetDessert food:Cake)
+
+# Individual: food:Cheese (food:Cheese)
+
+ClassAssertion(food:CheeseNutsDessert food:Cheese)
+
+# Individual: food:Chicken (food:Chicken)
+
+ClassAssertion(food:LightMeatFowl food:Chicken)
+
+# Individual: food:Clams (food:Clams)
+
+ClassAssertion(food:NonOysterShellfish food:Clams)
+
+# Individual: food:Crab (food:Crab)
+
+ClassAssertion(food:NonOysterShellfish food:Crab)
+
+# Individual: food:Delicate (food:Delicate)
+
+ClassAssertion(owl:Thing food:Delicate)
+
+# Individual: food:Dry (food:Dry)
+
+ClassAssertion(owl:Thing food:Dry)
+
+# Individual: food:Duck (food:Duck)
+
+ClassAssertion(food:DarkMeatFowl food:Duck)
+
+# Individual: food:FettucineAlfRedo (food:FettucineAlfRedo)
+
+ClassAssertion(food:PastaWithHeavyCreamSauce food:FettucineAlfRedo)
+
+# Individual: food:Flounder (food:Flounder)
+
+ClassAssertion(food:BlandFish food:Flounder)
+
+# Individual: food:FraDiavolo (food:FraDiavolo)
+
+ClassAssertion(food:PastaWithSpicyRedSauce food:FraDiavolo)
+
+# Individual: food:Full (food:Full)
+
+ClassAssertion(owl:Thing food:Full)
+
+# Individual: food:GarlickyRoast (food:GarlickyRoast)
+
+ClassAssertion(food:SpicyRedMeat food:GarlickyRoast)
+
+# Individual: food:Goose (food:Goose)
+
+ClassAssertion(food:DarkMeatFowl food:Goose)
+
+# Individual: food:Halibut (food:Halibut)
+
+ClassAssertion(food:BlandFish food:Halibut)
+
+# Individual: food:Light (food:Light)
+
+ClassAssertion(owl:Thing food:Light)
+
+# Individual: food:Lobster (food:Lobster)
+
+ClassAssertion(food:NonOysterShellfish food:Lobster)
+
+# Individual: food:Medium (food:Medium)
+
+ClassAssertion(owl:Thing food:Medium)
+
+# Individual: food:MixedFruit (food:MixedFruit)
+
+ClassAssertion(food:SweetFruit food:MixedFruit)
+
+# Individual: food:Moderate (food:Moderate)
+
+ClassAssertion(owl:Thing food:Moderate)
+
+# Individual: food:Mussels (food:Mussels)
+
+ClassAssertion(food:NonOysterShellfish food:Mussels)
+
+# Individual: food:Nuts (food:Nuts)
+
+ClassAssertion(food:CheeseNutsDessert food:Nuts)
+
+# Individual: food:OffDry (food:OffDry)
+
+ClassAssertion(owl:Thing food:OffDry)
+
+# Individual: food:Oysters (food:Oysters)
+
+ClassAssertion(food:OysterShellfish food:Oysters)
+
+# Individual: food:PastaWithWhiteClamSauce (food:PastaWithWhiteClamSauce)
+
+ClassAssertion(food:PastaWithLightCreamSauce food:PastaWithWhiteClamSauce)
+
+# Individual: food:Peaches (food:Peaches)
+
+ClassAssertion(food:SweetFruit food:Peaches)
+
+# Individual: food:Pie (food:Pie)
+
+ClassAssertion(food:SweetDessert food:Pie)
+
+# Individual: food:Pizza (food:Pizza)
+
+ClassAssertion(food:OtherTomatoBasedFood food:Pizza)
+
+# Individual: food:Pork (food:Pork)
+
+ClassAssertion(food:NonRedMeat food:Pork)
+
+# Individual: food:Red (food:Red)
+
+ClassAssertion(owl:Thing food:Red)
+
+# Individual: food:RoastBeef (food:RoastBeef)
+
+ClassAssertion(food:NonSpicyRedMeat food:RoastBeef)
+
+# Individual: food:Rose (food:Rose)
+
+ClassAssertion(owl:Thing food:Rose)
+
+# Individual: food:Scrod (food:Scrod)
+
+ClassAssertion(food:BlandFish food:Scrod)
+
+# Individual: food:SpaghettiWithTomatoSauce (food:SpaghettiWithTomatoSauce)
+
+ClassAssertion(food:PastaWithNonSpicyRedSauce food:SpaghettiWithTomatoSauce)
+
+# Individual: food:Steak (food:Steak)
+
+ClassAssertion(food:NonSpicyRedMeat food:Steak)
+
+# Individual: food:Strong (food:Strong)
+
+ClassAssertion(owl:Thing food:Strong)
+
+# Individual: food:Sweet (food:Sweet)
+
+ClassAssertion(owl:Thing food:Sweet)
+
+# Individual: food:Swordfish (food:Swordfish)
+
+ClassAssertion(food:NonBlandFish food:Swordfish)
+
+# Individual: food:ThompsonSeedless (food:ThompsonSeedless)
+
+ClassAssertion(food:EatingGrape food:ThompsonSeedless)
+
+# Individual: food:Tuna (food:Tuna)
+
+ClassAssertion(food:NonBlandFish food:Tuna)
+
+# Individual: food:Turkey (food:Turkey)
+
+ClassAssertion(food:LightMeatFowl food:Turkey)
+
+# Individual: food:Veal (food:Veal)
+
+ClassAssertion(food:NonSpicyRedMeat food:Veal)
+
+# Individual: food:White (food:White)
+
+ClassAssertion(owl:Thing food:White)
+
+
+)

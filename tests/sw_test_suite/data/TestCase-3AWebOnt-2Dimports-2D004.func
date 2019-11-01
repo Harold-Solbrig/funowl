@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>OWL Syntax Converter</title>
+<!-- <link rel="stylesheet" media="screen" href="/assets/css/main.css"> -->
+<link rel="stylesheet" media="screen" href="assets/css/main.css">
+<!-- <script src="/assets/js/helpers.js" type="text/javascript"></script> -->
+<script src="assets/js/helpers.js" type="text/javascript"></script>
+</head>
+<body>
+
+<!-- header -->
+<div id="header">
+    <a href="http://www.ldf.fi"><img border="0" width="100px" src="http://www.ldf.fi/img/ldf-logo.png" alt="Linked Data Finland" id="logo"></a>
+</div>
+
+<div id="body">
+
+<h1>OWL Syntax Converter</h1>
+
+<p>OWL syntax converter is a web service for converting OWL ontologies from one syntax to another.</p>
+
+<p>The service is based on <a href="http://owlapi.sourceforge.net/">OWL API</a>.</p>
+
+<p>Supported OWL syntax formats: Turtle, RDF/XML, OWL Functional Syntax, Manchester OWL Syntax, OWL/XML, Latex, and KRSS2.</p>
+
+<p>
+Usage:
+<br/>
+<!-- <tt>http://www.ldf.fi/service/owl-converter?onto=ONTOLOGY_CONTENT_OR_URI&amp;to=FORMAT</tt> -->
+<tt>http://www.ldf.fi/service/owl-converter?onto=ONTOLOGY_CONTENT&amp;to=FORMAT</tt>
+</p>
+
+<p>GET/POST parameters:</p>
+<table>
+    <!-- <tr><td><tt>onto</tt></td><td>OWL ontology content or URI</td></tr> -->
+    <tr><td><tt>onto</tt></td><td>OWL ontology content</td></tr>
+    <tr><td><tt>to</tt></td><td>output serialization format (<tt>ttl</tt>, <tt>rdfxml</tt>, <tt>func</tt>, <tt>manc</tt>, <tt>owlxml</tt>, <tt>latex</tt>, <tt>krss2</tt>), default: <tt>ttl</tt></td></tr>
+</table>
+
+<p>
+Examples:
+<br/>
+<tt>http://www.ldf.fi/service/owl-converter?onto=&lt;http://example.com/s&gt;+&lt;a&gt;+&lt;http://example.com/o&gt;+.&amp;to=func</tt>
+<!-- <br/><br/>
+<tt>http://www.ldf.fi/service/owl-converter?onto=URI-TODO&amp;to=func</tt> -->
+</p>
+
+<h2>Try the service:</h2>
+
+<form name="form" action="" accept-charset="utf-8" onsubmit="determineMethod();">
+
+<!-- OWL ontology content or URI: -->
+OWL ontology content: 
+<br/>
+<textarea name="onto" cols="100" rows="20">
+@prefix ex: <http://example.com/> .
+
+ex:s a ex:o .
+</textarea>
+<br/>
+
+To format:
+<select name="to">
+    <option value="ttl">Turtle</option>
+    <option value="rdfxml">RDF/XML</option>
+    <option value="func">OWL Functional Syntax</option>
+    <option value="manc">Manchester OWL Syntax</option>
+    <option value="owlxml">OWL/XML</option>            
+    <option value="latex">Latex</option>
+    <option value="krss2">KRSS2</option>
+</select> 
+<br/>
+
+View result in browser (accept header = <tt>text/plain</tt>):
+<input type="checkbox" name="force-accept" value="text/plain" checked="checked"/>
+<br/>
+
+Send form as HTTP POST (needed for large OWL ontology):
+<input type="checkbox" id="method-post"/>
+<br/><br/>
+
+<input type="submit" value="Convert"/>
+</form>
+
+</div>
+
+<!-- footer -->
+<div id="footer">
+    <hr/>
+    <a href="http://www.seco.tkk.fi/" style="border:0px"><img id="seco" alt="Semantic Computing Research Group" src="http://www.ldf.fi/img/seco-logo.png" height="50px"/></a>
+    <a href="http://www.aalto.fi/"><img id="aalto" alt="Aalto University" src="http://www.ldf.fi/img/aalto-logo.png" height="50px"/></a>
+    <a href="http://www.cs.helsinki.fi/"><img id="uh" alt="University of Helsinki" src="http://www.ldf.fi/img/hy-logo.gif" height="60px"/></a>
+    <a href="http://www.tekes.fi/" alt="Tekes"><img id="tekes" src="http://www.ldf.fi/img/tekes-logo.gif" height="30px"/></a>
+</div>
+
+</body>
+</html>

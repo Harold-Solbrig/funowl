@@ -1,0 +1,19 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/equivalentClass/premises001#"
+    xml:base="http://www.w3.org/2002/03owlt/equivalentClass/premises001" >
+   <owl:Ontology/>
+   <owl:Class rdf:ID="Car">
+     <owl:equivalentClass>
+       <owl:Class rdf:ID="Automobile"/>
+     </owl:equivalentClass>
+  </owl:Class>
+  <first:Car rdf:ID="car">
+     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </first:Car>
+  <first:Automobile rdf:ID="auto">
+     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+  </first:Automobile>
+</rdf:RDF>

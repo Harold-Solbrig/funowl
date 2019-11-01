@@ -1,0 +1,15 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/disjointWith/premises002#"
+    xml:base="http://www.w3.org/2002/03owlt/disjointWith/premises002" >
+
+   <rdf:Description rdf:ID="A">
+      <owl:disjointWith>
+           <rdf:Description rdf:ID="B"/>
+      </owl:disjointWith>
+   </rdf:Description>
+   <first:A rdf:ID="a"/>
+   <first:B rdf:ID="b"/>
+
+</rdf:RDF>

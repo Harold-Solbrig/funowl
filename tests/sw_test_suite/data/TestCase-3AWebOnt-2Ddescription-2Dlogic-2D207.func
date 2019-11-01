@@ -1,0 +1,68 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/premises207#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/premises207>
+
+Declaration(Class(oiled:C10))
+Declaration(Class(oiled:C12))
+Declaration(Class(oiled:C2))
+Declaration(Class(oiled:C4))
+Declaration(Class(oiled:C6))
+Declaration(Class(oiled:C8))
+Declaration(Class(oiled:TEST))
+Declaration(ObjectProperty(oiled:R1))
+Declaration(NamedIndividual(oiled:V21080))
+Declaration(NamedIndividual(oiled:V21081))
+
+############################
+#   Classes
+############################
+
+# Class: oiled:C10 (oiled:C10)
+
+EquivalentClasses(oiled:C10 ObjectIntersectionOf(oiled:C2 oiled:C4))
+
+# Class: oiled:C12 (oiled:C12)
+
+EquivalentClasses(oiled:C12 ObjectSomeValuesFrom(oiled:R1 oiled:C10))
+
+# Class: oiled:C6 (oiled:C6)
+
+EquivalentClasses(oiled:C6 ObjectIntersectionOf(oiled:C4 ObjectComplementOf(oiled:C2)))
+
+# Class: oiled:C8 (oiled:C8)
+
+EquivalentClasses(oiled:C8 ObjectSomeValuesFrom(oiled:R1 oiled:C6))
+
+# Class: oiled:TEST (oiled:TEST)
+
+EquivalentClasses(oiled:TEST ObjectIntersectionOf(oiled:C12 ObjectComplementOf(oiled:C8)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: oiled:V21080 (oiled:V21080)
+
+ClassAssertion(oiled:TEST oiled:V21080)
+ClassAssertion(owl:Thing oiled:V21080)
+ClassAssertion(ObjectComplementOf(oiled:C8) oiled:V21080)
+ClassAssertion(ObjectAllValuesFrom(oiled:R1 ObjectComplementOf(oiled:C6)) oiled:V21080)
+ObjectPropertyAssertion(oiled:R1 oiled:V21080 oiled:V21081)
+
+# Individual: oiled:V21081 (oiled:V21081)
+
+ClassAssertion(oiled:C2 oiled:V21081)
+ClassAssertion(oiled:C4 oiled:V21081)
+ClassAssertion(owl:Thing oiled:V21081)
+ClassAssertion(ObjectComplementOf(oiled:C6) oiled:V21081)
+
+
+)

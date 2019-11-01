@@ -1,0 +1,180 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent502#>)
+
+
+Ontology(
+Declaration(Class(first:TorF))
+Declaration(NamedIndividual(first:F))
+Declaration(NamedIndividual(first:T))
+Declaration(NamedIndividual(first:minus1))
+Declaration(NamedIndividual(first:minus2))
+Declaration(NamedIndividual(first:minus3))
+Declaration(NamedIndividual(first:minus4))
+Declaration(NamedIndividual(first:minus5))
+Declaration(NamedIndividual(first:minus6))
+Declaration(NamedIndividual(first:minus7))
+Declaration(NamedIndividual(first:minus8))
+Declaration(NamedIndividual(first:minus9))
+Declaration(NamedIndividual(first:plus1))
+Declaration(NamedIndividual(first:plus2))
+Declaration(NamedIndividual(first:plus3))
+Declaration(NamedIndividual(first:plus4))
+Declaration(NamedIndividual(first:plus5))
+Declaration(NamedIndividual(first:plus6))
+Declaration(NamedIndividual(first:plus7))
+Declaration(NamedIndividual(first:plus8))
+Declaration(NamedIndividual(first:plus9))
+############################
+#   Classes
+############################
+
+# Class: first:TorF (first:TorF)
+
+EquivalentClasses(first:TorF ObjectOneOf(first:F first:T))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus1 first:plus1))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus2 first:plus2))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus3 first:plus3))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus4 first:plus4))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus5 first:plus5))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus6 first:plus6))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus7 first:plus7))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus8 first:plus8))
+EquivalentClasses(first:TorF ObjectOneOf(first:minus9 first:plus9))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: first:F (first:F)
+
+ClassAssertion(owl:Thing first:F)
+
+# Individual: first:T (first:T)
+
+ClassAssertion(owl:Thing first:T)
+ClassAssertion(ObjectOneOf(first:minus1 first:minus4 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus1 first:plus2 first:plus4) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus3 first:plus1) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus5 first:minus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus6 first:plus4) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus7 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus8 first:plus3) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus9 first:plus3) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:minus9 first:plus7) first:T)
+ClassAssertion(ObjectOneOf(first:minus2 first:plus6 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:minus4 first:minus7) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:minus4 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:minus5 first:minus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:minus8 first:plus5) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:plus2 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus3 first:plus7 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:minus6 first:plus1) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:minus8 first:minus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:minus8 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus1 first:plus2) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus1 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus2 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus3 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus5 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus6 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus4 first:plus7 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus5 first:minus7 first:plus2) first:T)
+ClassAssertion(ObjectOneOf(first:minus5 first:minus9 first:plus3) first:T)
+ClassAssertion(ObjectOneOf(first:minus5 first:plus4 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus5 first:plus7 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus6 first:minus7 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus6 first:minus9 first:plus1) first:T)
+ClassAssertion(ObjectOneOf(first:minus6 first:plus1 first:plus2) first:T)
+ClassAssertion(ObjectOneOf(first:minus6 first:plus1 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus7 first:minus8 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus7 first:plus3 first:plus8) first:T)
+ClassAssertion(ObjectOneOf(first:minus7 first:plus5 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus8 first:plus3 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:minus8 first:plus4 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:minus9 first:plus3 first:plus4) first:T)
+ClassAssertion(ObjectOneOf(first:plus1 first:plus3 first:plus4) first:T)
+ClassAssertion(ObjectOneOf(first:plus1 first:plus4 first:plus7) first:T)
+ClassAssertion(ObjectOneOf(first:plus2 first:plus5 first:plus9) first:T)
+ClassAssertion(ObjectOneOf(first:plus3 first:plus4 first:plus6) first:T)
+ClassAssertion(ObjectOneOf(first:plus3 first:plus4 first:plus9) first:T)
+
+# Individual: first:minus1 (first:minus1)
+
+ClassAssertion(owl:Thing first:minus1)
+
+# Individual: first:minus2 (first:minus2)
+
+ClassAssertion(owl:Thing first:minus2)
+
+# Individual: first:minus3 (first:minus3)
+
+ClassAssertion(owl:Thing first:minus3)
+
+# Individual: first:minus4 (first:minus4)
+
+ClassAssertion(owl:Thing first:minus4)
+
+# Individual: first:minus5 (first:minus5)
+
+ClassAssertion(owl:Thing first:minus5)
+
+# Individual: first:minus6 (first:minus6)
+
+ClassAssertion(owl:Thing first:minus6)
+
+# Individual: first:minus7 (first:minus7)
+
+ClassAssertion(owl:Thing first:minus7)
+
+# Individual: first:minus8 (first:minus8)
+
+ClassAssertion(owl:Thing first:minus8)
+
+# Individual: first:minus9 (first:minus9)
+
+ClassAssertion(owl:Thing first:minus9)
+
+# Individual: first:plus1 (first:plus1)
+
+ClassAssertion(owl:Thing first:plus1)
+
+# Individual: first:plus2 (first:plus2)
+
+ClassAssertion(owl:Thing first:plus2)
+
+# Individual: first:plus3 (first:plus3)
+
+ClassAssertion(owl:Thing first:plus3)
+
+# Individual: first:plus4 (first:plus4)
+
+ClassAssertion(owl:Thing first:plus4)
+
+# Individual: first:plus5 (first:plus5)
+
+ClassAssertion(owl:Thing first:plus5)
+
+# Individual: first:plus6 (first:plus6)
+
+ClassAssertion(owl:Thing first:plus6)
+
+# Individual: first:plus7 (first:plus7)
+
+ClassAssertion(owl:Thing first:plus7)
+
+# Individual: first:plus8 (first:plus8)
+
+ClassAssertion(owl:Thing first:plus8)
+
+# Individual: first:plus9 (first:plus9)
+
+ClassAssertion(owl:Thing first:plus9)
+
+
+DifferentIndividuals(first:F first:T)
+)

@@ -1,0 +1,27 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#op>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#a>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#b>))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/Restriction/inconsistent002#a> (<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#a>)
+
+ClassAssertion(ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#op> owl:Nothing) <http://www.w3.org/2002/03owlt/Restriction/inconsistent002#a>)
+
+# Individual: <http://www.w3.org/2002/03owlt/Restriction/inconsistent002#b> (<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#b>)
+
+ClassAssertion(ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#op> owl:Nothing) <http://www.w3.org/2002/03owlt/Restriction/inconsistent002#b>)
+
+
+)

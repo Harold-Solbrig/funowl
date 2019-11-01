@@ -1,0 +1,49 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.1/consistent010#p>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/I5.1/consistent010#q>))
+Declaration(DataProperty(<http://www.w3.org/2002/03owlt/I5.1/consistent010#p>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/I5.1/consistent010#spy>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ> (<http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ> <http://www.w3.org/2002/03owlt/I5.1/consistent010#q>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/I5.1/consistent010#p> (<http://www.w3.org/2002/03owlt/I5.1/consistent010#p>)
+
+InverseFunctionalObjectProperty(<http://www.w3.org/2002/03owlt/I5.1/consistent010#p>)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <http://www.w3.org/2002/03owlt/I5.1/consistent010#p> (<http://www.w3.org/2002/03owlt/I5.1/consistent010#p>)
+
+DataPropertyRange(<http://www.w3.org/2002/03owlt/I5.1/consistent010#p> xsd:byte)
+
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy> (<http://www.w3.org/2002/03owlt/I5.1/consistent010#spy>)
+
+ClassAssertion(owl:Thing <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy>)
+ClassAssertion(ObjectExactCardinality(127 <http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ>) <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy>)
+
+
+EquivalentClasses(ObjectHasValue(<http://www.w3.org/2002/03owlt/I5.1/consistent010#q> <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy>) DataSomeValuesFrom(<http://www.w3.org/2002/03owlt/I5.1/consistent010#p> xsd:unsignedInt))
+)

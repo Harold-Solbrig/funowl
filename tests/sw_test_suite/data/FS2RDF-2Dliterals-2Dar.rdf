@@ -1,0 +1,91 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:DatatypeProperty rdf:about="http://example.org/dp"/>
+  <owl:Axiom>
+    <owl:annotatedSource rdf:resource="http://example.org/dp"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+    <owl:annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:comment>No range so any literal is fine</rdfs:comment>
+  </owl:Axiom>
+  <owl:NamedIndividual rdf:about="http://example.org/holder">
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#datetime"
+    >2007-09-01T12:00:01</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >string</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#int">13</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedint"
+    >12</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#negativeinteger"
+    >-11</dp>
+    <dp rdf:datatype="http://www.w3.org/2002/07/owl#rational"
+    >1/2</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#long">6666666666</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"
+    >12.25</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"
+    >1</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#anyuri"
+    >http://www.w3.org/2007/OWL/wiki/Syntax</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedshort"
+    >17</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#base64binary"
+    >b3ds</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#nmtoken"
+    >token</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#name">_12345</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+    >1.1e6</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#hexbinary"
+    >C010</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#short"
+    >14</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#byte">15</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#ncname"
+    >non-hyphenated</dp>
+    <dp rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#xmlliteral"
+    ><rdf:RDF
+    xmlns:ex="http://example.org/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    >
+  <owl:Ontology></owl:Ontology>
+  <rdf:Description rdf:about="http://example.org/a">
+    <owl:differentFrom rdf:resource="http://example.org/b"/>
+  </rdf:Description>
+ </rdf:RDF>
+ </dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#token"
+    >there is only one space between each word</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+    >1.1e6</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#normalizedstring"
+    >Normalized string can't have carriage return (#xD), line feed (#xA) or tab (#x9) characters in them</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
+    >1</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#language"
+    >en</dp>
+    <dp>1</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedlong"
+    >6666666666</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#datetimestamp"
+    >2007-09-01T12:00:01-05:00</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#nonnegativeinteger"
+    >0</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#nonpositiveinteger"
+    >0</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedbyte"
+    >28</dp>
+    <dp rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#plainliteral"
+    >No use of rdf:plainLiteral in old rdf serializations@en</dp>
+    <dp rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveinteger"
+    >12</dp>
+  </owl:NamedIndividual>
+</rdf:RDF>

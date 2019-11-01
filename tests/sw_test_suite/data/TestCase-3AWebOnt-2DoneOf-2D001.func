@@ -1,0 +1,17 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/oneOf/consistent001#>)
+
+
+Ontology(
+Declaration(NamedIndividual(first:amy))
+Declaration(NamedIndividual(first:bob))
+Declaration(NamedIndividual(first:caroline))
+Declaration(NamedIndividual(first:yolanda))
+Declaration(NamedIndividual(first:zebedee))
+
+EquivalentClasses(ObjectOneOf(first:amy first:bob first:caroline) ObjectOneOf(first:yolanda first:zebedee))
+)

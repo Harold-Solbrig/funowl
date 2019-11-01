@@ -1,0 +1,60 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(:a))
+Declaration(ObjectProperty(:b))
+Declaration(ObjectProperty(:c))
+Declaration(ObjectProperty(:d))
+Declaration(ObjectProperty(:e))
+Declaration(ObjectProperty(:f))
+Declaration(ObjectProperty(:g))
+Declaration(DataProperty(:h))
+############################
+#   Object Properties
+############################
+
+# Object Property: :a (:a)
+
+TransitiveObjectProperty(:a)
+
+# Object Property: :b (:b)
+
+ReflexiveObjectProperty(:b)
+
+# Object Property: :c (:c)
+
+IrreflexiveObjectProperty(:c)
+
+# Object Property: :d (:d)
+
+SymmetricObjectProperty(:d)
+
+# Object Property: :e (:e)
+
+AsymmetricObjectProperty(:e)
+
+# Object Property: :f (:f)
+
+FunctionalObjectProperty(:f)
+
+# Object Property: :g (:g)
+
+InverseFunctionalObjectProperty(:g)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :h (:h)
+
+FunctionalDataProperty(:h)
+
+
+)

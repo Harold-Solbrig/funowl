@@ -1,0 +1,6 @@
+Prefix( : = <http://example.org/> )
+
+Ontology(
+  Declaration( Class( :Person ) )
+  SubClassOf( ObjectOneOf( :Lois ) :Person )
+)
