@@ -12,38 +12,8 @@ from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiteralNoLanguage
 
+# Ontology definition
 ontology_re = re.compile(r'\s*Ontology\s*\((.*)\s*\)\s*$', flags=re.DOTALL)
-
-func = """Prefix (  := <http://example.org/> )
-Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
-Ontology(
-  Declaration(NamedIndividual(:a))
-  Declaration(DataProperty(:dp))
-  Declaration(Class(:A))
-  SubClassOf(:A 
-    DataHasValue(:dp "2007-10-08T20:44:11.656+01:00"^^xsd:dateTime)) 
-  SubClassOf(:A 
-    DataAllValuesFrom(:dp DatatypeRestriction(
-      xsd:dateTime 
-      xsd:minInclusive "2008-07-08T20:44:11.656+01:00"^^xsd:dateTime 
-      xsd:maxInclusive "2008-10-08T20:44:11.656+01:00"^^xsd:dateTime)
-    )
-  ) 
-  ClassAssertion(:A :a)
-)"""
-
-# Target:
-# Prefix(' := <....>')
-# Ontology(
-#     Declaration(NamedIndividual(":a")), Declaration(Dataproperty(":dp"))
-# )
-#
-# Generic Syntax:
-#   Function ( args )
-#   args = FunctIon | literal | embedded list
-#   literal = URIRef | Literal
-#   embedded list FunctIon|embedded list "(" args ")"
-
 # 1: Function '('
 function_re = re.compile(r'([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
 # 1: Prefix ':=' 2: URI
