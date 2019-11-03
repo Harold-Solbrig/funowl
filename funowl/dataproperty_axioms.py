@@ -53,6 +53,11 @@ class EquivalentDataProperties(DataPropertyAxiom):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
+    def __init__(self, *dataPropertyExpressions: DataPropertyExpression, annotations: List[Annotation] = None) -> None:
+        self.dataPropertyExpressions = list(dataPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
         return self.annots(w, lambda: w.iter(self.dataPropertyExpressions))
@@ -62,6 +67,11 @@ class EquivalentDataProperties(DataPropertyAxiom):
 class DisjointDataProperties(DataPropertyAxiom):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *dataPropertyExpressions: DataPropertyExpression, annotations: List[Annotation] = None) -> None:
+        self.dataPropertyExpressions = list(dataPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)

@@ -38,7 +38,7 @@ class SubClassOf(ClassAxiom):
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return self.annots(w, lambda: w + self.subClassExpression + ' ' +  self.superClassExpression)
+        return self.annots(w, lambda: (w + self.subClassExpression + self.superClassExpression))
 
     def to_rdf(self, g: Graph) -> Optional[Node]:
         """
@@ -76,7 +76,10 @@ class DisjointClasses(ClassAxiom):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'classExpressions', 2)
-        return self.annots(w, lambda: w.iter(self.classExpressions))
+        if len(self.classExpressions) == 2:
+            return self.annots(w, lambda: w + self.classExpressions[0] + self.classExpressions[1])
+        else:
+            return self.annots(w, lambda: w.iter(self.classExpressions, indent=False))
 
 
 @dataclass
@@ -93,7 +96,7 @@ class DisjointUnion(ClassAxiom):
         super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 3)
+        self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 2)
         return self.annots(w, lambda: (w + self.cls).iter(self.disjointClassExpressions))
 
 

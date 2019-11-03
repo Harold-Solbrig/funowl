@@ -16,7 +16,7 @@ class Prefix(FunOwlBase):
     fullIRI: FullIRI
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: w.concat(self.prefixName or '', ':=',
+        return w.func(self, lambda: w.concat((self.prefixName or '') + ':', '=',
                                              URIRef(str(self.fullIRI)).n3(), sep=' '))
 
     def to_rdf(self, g: Graph) -> Optional[Node]:

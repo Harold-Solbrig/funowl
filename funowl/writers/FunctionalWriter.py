@@ -32,6 +32,7 @@ class FunctionalWriter:
         self.output: List[str] = []
         self._line = ''
         self._inside_function = False
+        self._outside_at_bol = None
         return self
 
     def bind(self, localname: str, namespace: Union[str, URIRef]) -> "FunctionalWriter":
@@ -70,7 +71,7 @@ class FunctionalWriter:
         return self
 
     def bol(self) -> bool:
-        """ Return True if at the beginning of a line """
+        """ Return True if at the beginning of a line and NOT the beginning of a "document" """
         return not bool(self._line.strip())
 
     def getvalue(self) -> str:
@@ -149,7 +150,8 @@ class FunctionalWriter:
             func_name = type(func_name).__name__
         inside = self._inside_function
         self._inside_function = True
-        (self.indent() if inside and indent else self) + (func_name + '(')
+        (self.indent() if inside and indent and self.bol() else self) + (func_name + '(')
+        self._outside_at_bol = False
         contents()
         self + ')'
         self._inside_function = inside

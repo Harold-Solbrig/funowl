@@ -1,6 +1,6 @@
 import unittest
 
-from tests.sw_test_suite.syntax_converter import convert
+from tests.test_owl2_test_suite.syntax_converter import convert
 
 
 class SyntaxConverterTestCase(unittest.TestCase):

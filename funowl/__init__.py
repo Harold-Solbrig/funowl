@@ -14,7 +14,7 @@ from . class_axioms import SubClassOf, EquivalentClasses, DisjointClasses, Disjo
 from . objectproperty_axioms import SubObjectPropertyOf, ObjectPropertyChain, EquivalentObjectProperties, \
     DisjointObjectProperties, ObjectPropertyDomain, ObjectPropertyRange, InverseObjectProperties, \
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ReflexiveObjectProperty, IrreflexiveObjectProperty, \
-    SymmetricObjectProperty, AsyymetricObjectProperty, TransitiveObjectProperty
+    SymmetricObjectProperty, AsymmetricObjectProperty, TransitiveObjectProperty
 from . dataproperty_axioms import SubDataPropertyOf, EquivalentDataProperties, DisjointDataProperties, \
     DataPropertyDomain, DataPropertyRange, FunctionalDataProperty, DataTypeDefinition
 from . assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \

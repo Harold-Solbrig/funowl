@@ -123,7 +123,6 @@ class ObjectOneOf(FunOwlBase):
         super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.individuals))
 
 
@@ -179,7 +178,7 @@ class ObjectHasSelf(FunOwlBase):
 class ObjectMinCardinality(FunOwlBase):
     min_: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: Optional["ClassExpression"]
+    classExpression: Optional["ClassExpression"] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.objectPropertyExpression).opt(self.classExpression))
@@ -189,7 +188,7 @@ class ObjectMinCardinality(FunOwlBase):
 class ObjectMaxCardinality(FunOwlBase):
     max_: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: Optional["ClassExpression"]
+    classExpression: Optional["ClassExpression"] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.objectPropertyExpression).opt(self.classExpression))
@@ -199,7 +198,7 @@ class ObjectMaxCardinality(FunOwlBase):
 class ObjectExactCardinality(FunOwlBase):
     card: NonNegativeInteger
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: Optional["ClassExpression"]
+    classExpression: Optional["ClassExpression"] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
@@ -230,7 +229,7 @@ class DataAllValuesFrom(FunOwlBase):
     dataRange: DataRange
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRanged))
+        return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRange))
 
 
 @dataclass
@@ -246,7 +245,7 @@ class DataHasValue(FunOwlBase):
 class DataMinCardinality(FunOwlBase):
     min_: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: Optional[DataRange]
+    dataRange: Optional[DataRange] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).opt(self.dataRange))
@@ -256,7 +255,7 @@ class DataMinCardinality(FunOwlBase):
 class DataMaxCardinality(FunOwlBase):
     max_: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: Optional[DataRange]
+    dataRange: Optional[DataRange] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.dataPropertyExpression).opt(self.dataRange))
@@ -266,7 +265,7 @@ class DataMaxCardinality(FunOwlBase):
 class DataExactCardinality(FunOwlBase):
     card: NonNegativeInteger
     dataPropertyExpression: DataPropertyExpression
-    dataRange: Optional[DataRange]
+    dataRange: Optional[DataRange] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.exprs, 'exprs', 2)

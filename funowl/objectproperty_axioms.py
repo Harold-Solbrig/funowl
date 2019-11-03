@@ -59,6 +59,11 @@ class ObjectPropertyChain(FunOwlBase):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression, annotations: List[Annotation] = None):
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations if annotations else []
+        super().__init__()
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
 
@@ -86,7 +91,8 @@ class EquivalentObjectProperties(ObjectPropertyAxiom):
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
                  annotations: Optional[List[Annotation]] = None) -> None:
         self.objectPropertyExpressions = list(objectPropertyExpressions)
-        self.annotations = annotations
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
@@ -98,6 +104,12 @@ class EquivalentObjectProperties(ObjectPropertyAxiom):
 class DisjointObjectProperties(ObjectPropertyAxiom):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
+                 annotations: Optional[List[Annotation]] = None) -> None:
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
@@ -182,7 +194,7 @@ class SymmetricObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class AsyymetricObjectProperty(ObjectPropertyAxiom):
+class AsymmetricObjectProperty(ObjectPropertyAxiom):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 

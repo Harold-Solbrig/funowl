@@ -56,7 +56,8 @@ class SameIndividual(Assertion):
 
     def __init__(self, *individuals: Individual, annotations: Optional[List[Annotation]] = None) -> None:
         self.individuals = list(individuals)
-        self.annotations = annotations if annotations else []
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
@@ -77,7 +78,8 @@ class DifferentIndividuals(Assertion):
 
     def __init__(self, *individuals: Individual,  annotations: Optional[List[Annotation]] = None) -> None:
         self.individuals = list(individuals)
-        self.annotations = annotations
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
