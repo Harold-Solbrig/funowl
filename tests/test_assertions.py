@@ -85,11 +85,11 @@ class AssertionsTestCase(TestBase):
         self.assertEqual('ObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
                          ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_functional(self.wa).getvalue())
 
-    # def test_objectpropertyassertion_rdf(self):
-    #     g = Graph()
-    #     ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
-    #     print('test_objectpropertyassertion_rdf')
-    #     print(g.serialize(format='turtle').decode())
+    def test_objectpropertyassertion_rdf(self):
+        g = Graph()
+        ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
+        print('test_objectpropertyassertion_rdf')
+        print(g.serialize(format='turtle').decode())
 
     def test_negativeobjectpropertyassertion(self):
         self.assertEqual('NegativeObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
