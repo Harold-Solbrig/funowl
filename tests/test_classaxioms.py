@@ -5,6 +5,8 @@ from rdflib import RDFS, Namespace
 from funowl.annotations import Annotation
 from funowl.class_axioms import SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion, HasKey
 from funowl.class_expressions import ObjectIntersectionOf, ObjectSomeValuesFrom
+from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase
 
@@ -66,8 +68,8 @@ class ClassAxiomsTestCase(TestBase):
     <http://snomed.info/id/609096000>
 )""", str(DisjointUnion(SCT['12345'], SCT['303394007'], SCT['45189000'], SCT['609096000']).
           to_functional(self.sw.reset())))
-        with self.assertRaises(ValueError, msg="Have to have at least 3 expressions"):
-            DisjointUnion(SCT['12345'], SCT['303394007'], SCT['45189000']).to_functional(self.sw)
+        with self.assertRaises(ValueError, msg="Have to have at least 2 expressions"):
+            DisjointUnion(SCT['12345'], SCT['303394007']).to_functional(self.sw)
 
     def test_haskey(self):
         self.assertEqual('''HasKey( <http://snomed.info/id/12345> (
@@ -76,9 +78,8 @@ class ClassAxiomsTestCase(TestBase):
 ) (
     <http://snomed.info/id/23458>
     <http://snomed.info/id/23459>
-)''', str(HasKey(SCT['12345'],
-                 objectPropertyExpressions=[SCT['23456'], SCT['23457']],
-                 dataPropertyExpressions=[SCT['23458'], SCT['23459']]).to_functional(self.sw.reset())))
+) )''', str(HasKey(SCT['12345'], ObjectPropertyExpression(SCT['23456']), ObjectPropertyExpression(SCT['23457']),
+                 DataPropertyExpression(SCT['23458']), DataPropertyExpression(SCT['23459'])).to_functional(self.sw.reset())))
 
 
 if __name__ == '__main__':

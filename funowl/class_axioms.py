@@ -46,7 +46,7 @@ class SubClassOf(Annotatable):
 
 
 @dataclass
-class EquivalentClasses((Annotatable)):
+class EquivalentClasses(Annotatable):
     classExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -60,7 +60,7 @@ class EquivalentClasses((Annotatable)):
 
 
 @dataclass
-class DisjointClasses((Annotatable)):
+class DisjointClasses(Annotatable):
     classExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -74,11 +74,11 @@ class DisjointClasses((Annotatable)):
         if len(self.classExpressions) == 2:
             return self.annots(w, lambda: w + self.classExpressions[0] + self.classExpressions[1])
         else:
-            return self.annots(w, lambda: w.iter(self.classExpressions, indent=False))
+            return self.annots(w, lambda: w.iter(self.classExpressions))
 
 
 @dataclass
-class DisjointUnion((Annotatable)):
+class DisjointUnion(Annotatable):
     cls: Class
     disjointClassExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
