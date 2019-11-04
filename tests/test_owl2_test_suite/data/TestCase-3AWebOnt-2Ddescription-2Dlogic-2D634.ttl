@@ -1,0 +1,57 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634> a owl:Ontology .
+
+oiled:Satisfiable a owl:Class ;
+    owl:intersectionOf ( [ a owl:Restriction ;
+                owl:onProperty oiled:r ;
+                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.4> ] [ a owl:Restriction ;
+                owl:onProperty oiled:r ;
+                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.5> ] ) .
+
+oiled:p a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> ] .
+
+oiled:p.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.2> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom oiled:p ;
+            owl:onProperty oiled:r1 ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.3> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom oiled:p.comp ;
+            owl:onProperty oiled:r1 ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.4> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.2> ;
+            owl:onProperty oiled:invR ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.5> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.3> ;
+            owl:onProperty oiled:invR ] .
+
+oiled:invR a owl:ObjectProperty ;
+    owl:inverseOf oiled:r .
+
+oiled:r1 a owl:ObjectProperty .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> a owl:DatatypeProperty .
+
+oiled:r a owl:ObjectProperty .
+
+[] a oiled:Satisfiable .
+

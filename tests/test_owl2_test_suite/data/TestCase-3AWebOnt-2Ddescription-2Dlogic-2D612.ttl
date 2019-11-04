@@ -1,0 +1,54 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oiled:invF a owl:ObjectProperty ;
+    owl:inverseOf oiled:f .
+
+oiled:invF1 a owl:ObjectProperty ;
+    owl:inverseOf oiled:f1 .
+
+oiled:invS a owl:ObjectProperty ;
+    owl:inverseOf oiled:s .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent612> a owl:Ontology .
+
+oiled:Unsatisfiable a owl:Class ;
+    owl:intersectionOf ( [ a owl:Restriction ;
+                owl:onProperty oiled:f ;
+                owl:someValuesFrom oiled:p ] [ a owl:Restriction ;
+                owl:onProperty oiled:s ;
+                owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
+                owl:onProperty oiled:f1 ;
+                owl:someValuesFrom oiled:p.comp ] ) .
+
+oiled:p a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent612#P.1> ] .
+
+oiled:p.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent612#P.1> ] .
+
+owl:Thing a owl:Class .
+
+oiled:s a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf oiled:f,
+        oiled:f1 .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent612#P.1> a owl:DatatypeProperty .
+
+oiled:f a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+oiled:f1 a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+[] a oiled:Unsatisfiable .
+

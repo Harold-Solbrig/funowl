@@ -1,0 +1,22 @@
+@prefix : <http://owl.semanticweb.org/page/Special:GetOntology/Qualified-cardinality-restricted-int?m=p#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/test#a> a <http://example.org/test#A>,
+        owl:NamedIndividual .
+
+<http://owl.semanticweb.org/page/Special:GetOntology/Qualified-cardinality-restricted-int?m=p> a owl:Ontology .
+
+<http://example.org/test#A> a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:integer ;
+                    owl:withRestrictions ( [ xsd:minInclusive 1 ] [ xsd:maxInclusive 3 ] ) ] ;
+            owl:onProperty <http://example.org/test#dp> ;
+            owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ] .
+
+<http://example.org/test#dp> a owl:DatatypeProperty .
+

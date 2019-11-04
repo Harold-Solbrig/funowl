@@ -17,5 +17,5 @@ Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent002#B>))
 EquivalentClasses(<http://www.w3.org/2002/03owlt/I5.26/consistent002#A> <http://www.w3.org/2002/03owlt/I5.26/consistent002#B>)
 
 
-ClassAssertion(<http://www.w3.org/2002/03owlt/I5.26/consistent002#B> _:genid5783)
+ClassAssertion(<http://www.w3.org/2002/03owlt/I5.26/consistent002#B> _:genid21165)
 )

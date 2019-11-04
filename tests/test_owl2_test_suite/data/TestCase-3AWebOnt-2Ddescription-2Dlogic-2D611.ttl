@@ -1,0 +1,55 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oiled:invF a owl:ObjectProperty ;
+    owl:inverseOf oiled:f .
+
+oiled:invF1 a owl:ObjectProperty ;
+    owl:inverseOf oiled:f1 .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent611> a owl:Ontology .
+
+oiled:Unsatisfiable a owl:Class ;
+    owl:intersectionOf ( [ a owl:Restriction ;
+                owl:allValuesFrom oiled:p.comp ;
+                owl:onProperty oiled:s ] [ a owl:Restriction ;
+                owl:onProperty oiled:s ;
+                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#A.2> ] ) .
+
+oiled:invS a owl:ObjectProperty ;
+    owl:inverseOf oiled:s .
+
+oiled:p.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent611#A.2> a owl:Class ;
+    owl:intersectionOf ( oiled:p [ a owl:Restriction ;
+                owl:onProperty oiled:invS ;
+                owl:someValuesFrom oiled:p ] ) .
+
+oiled:f a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+oiled:f1 a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+oiled:p a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> a owl:DatatypeProperty .
+
+oiled:s a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf oiled:f,
+        oiled:f1 .
+
+[] a oiled:Unsatisfiable .
+

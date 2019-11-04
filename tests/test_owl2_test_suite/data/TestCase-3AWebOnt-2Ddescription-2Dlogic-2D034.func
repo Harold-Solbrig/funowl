@@ -31,5 +31,5 @@ InverseObjectProperties(<http://oiled.man.example.net/test#invR> <http://oiled.m
 EquivalentClasses(<http://oiled.man.example.net/test#Satisfiable> ObjectIntersectionOf(ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invR> ObjectAllValuesFrom(<http://oiled.man.example.net/test#r1> <http://oiled.man.example.net/test#p>))) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invR> ObjectAllValuesFrom(<http://oiled.man.example.net/test#r1> ObjectComplementOf(<http://oiled.man.example.net/test#p>))))))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid5979)
+ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid19796)
 )

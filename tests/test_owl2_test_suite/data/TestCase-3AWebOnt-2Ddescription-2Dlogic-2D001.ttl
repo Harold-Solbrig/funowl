@@ -1,0 +1,28 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent001> a owl:Ontology .
+
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( [ a owl:Class ;
+                        owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#b> ) ] [ a owl:Class ;
+                        owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#c> ) ] [ a owl:Class ;
+                        owl:intersectionOf ( <http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c> ) ] ) ] .
+
+<http://oiled.man.example.net/test#a> a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:complementOf [ a owl:Class ;
+                    owl:unionOf ( <http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c> ) ] ] .
+
+<http://oiled.man.example.net/test#b> a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#c> ] .
+
+<http://oiled.man.example.net/test#c> a owl:Class .
+
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
+

@@ -10,16 +10,16 @@ Ontology :=
    ')'
 """
 from dataclasses import dataclass, field, MISSING
-from typing import Optional, List, Union, Dict, cast
+from typing import Optional, List, Union, Dict
 
-from rdflib import Graph, RDF, OWL, URIRef
+from rdflib import Graph, RDF, OWL, URIRef, BNode
 from rdflib.extras.infixowl import Ontology
-from rdflib.term import Node
 
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.axioms import Axiom
-from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
+from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.list_support import empty_list
+from funowl.base.rdftriple import NODE, SUBJ
 from funowl.class_axioms import SubClassOf
 from funowl.class_expressions import Class, ClassExpression
 from funowl.declarations import Declaration
@@ -43,7 +43,7 @@ class Import(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.iri))
 
-    def to_rdf(self, _: Graph) -> Optional[Node]:
+    def to_rdf(self, _: Graph) -> Optional[NODE]:
         return URIRef(str(self.ontology_iri()))
 
 
@@ -200,11 +200,11 @@ class Ontology(Annotatable):
                  iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
                  iter(self.axioms, indent=False), indent=False)
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> SUBJ:
         for p in self.prefixDeclarations:
             g.bind(p.prefixName, p.fullIRI)
             p.to_rdf(g)
-        ontology_uri = self.iri.as_rdf(g)
+        ontology_uri = self.iri.as_rdf(g) if self.iri else BNode()
         g.add((ontology_uri, RDF.type, OWL.Ontology))
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, URIRef(self.version.full_uri(g))))

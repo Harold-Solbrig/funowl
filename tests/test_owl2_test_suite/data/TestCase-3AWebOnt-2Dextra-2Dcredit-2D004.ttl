@@ -1,0 +1,54 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#N-times-M> owl:sameAs "929136997"^^xsd:int .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> a owl:FunctionalProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> ;
+    owl:inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> a owl:FunctionalProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> ;
+    owl:inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> a owl:FunctionalProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> ;
+    owl:inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> ;
+            owl:someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> ;
+            owl:someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> ] .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N> a owl:ObjectProperty .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M> a owl:ObjectProperty .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M> a owl:ObjectProperty .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality <http://www.w3.org/2002/03owlt/extra-credit/premises004#M> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> ;
+            owl:someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> ] .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality <http://www.w3.org/2002/03owlt/extra-credit/premises004#N-times-M> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M> ],
+        [ a owl:Restriction ;
+            owl:cardinality <http://www.w3.org/2002/03owlt/extra-credit/premises004#N> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N> ] ;
+    owl:oneOf ( <http://www.w3.org/2002/03owlt/extra-credit/premises004#d> ) .
+

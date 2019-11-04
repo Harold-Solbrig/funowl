@@ -23,7 +23,7 @@ ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/InverseFunctionalProperty/pr
 
 # Class: <http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises004#Singleton> (<http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises004#Singleton>)
 
-EquivalentClasses(<http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises004#Singleton> ObjectOneOf(_:genid8132))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises004#Singleton> ObjectOneOf(_:genid17346))
 
 
 )

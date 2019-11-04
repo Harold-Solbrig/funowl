@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from typing import Optional, Union, Any, Tuple
 
 import rdflib
-from rdflib import Graph
+from rdflib import Graph, Literal
 from rdflib.namespace import RDFS, XSD, RDF
 from rdflib.plugins.parsers.notation3 import BadSyntax
 from rdflib.term import Node
@@ -27,7 +27,7 @@ class Datatype(IRI):
 
 
 class StringLiteralNoLanguage(QuotedString):
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> Literal:
         return rdflib.Literal(self)
 
 

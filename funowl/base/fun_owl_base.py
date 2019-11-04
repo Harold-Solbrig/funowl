@@ -41,9 +41,9 @@ class FunOwlRoot:
         """
         return w + str(self)
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> URIRef:
         """ Add RDF representation of self to graph g and return node representing representation if applicable """
-        return URIRef(f"http://notimplemented.org/{self.__class__.__name}")
+        return URIRef(f"http://notimplemented.org/{self.__class__.__name__}")
 
     def list_cardinality(self, els: List, list_name: str, min_: int = 1, max_: int = None) -> "FunOwlRoot":
         """ Validate the cardinality of a list element """

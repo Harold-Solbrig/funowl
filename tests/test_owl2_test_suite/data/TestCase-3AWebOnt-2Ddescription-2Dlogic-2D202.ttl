@@ -1,0 +1,330 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oiled:TEST a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C76 [ a owl:Class ;
+                        owl:complementOf oiled:C94 ] ) ] .
+
+oiled:V8467 a [ a owl:Class ;
+            owl:complementOf oiled:C52 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C26 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C42 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C72 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C92 ],
+        owl:Thing ;
+    oiled:R1 oiled:V8468,
+        oiled:V8469,
+        oiled:V8470,
+        oiled:V8471,
+        oiled:V8472,
+        oiled:V8473,
+        oiled:V8474,
+        oiled:V8475 .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises202> a owl:Ontology .
+
+oiled:C10 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C4 oiled:C8 ) ] .
+
+oiled:C12 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C10 ] .
+
+oiled:C14 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:TOP ] .
+
+oiled:C16 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C14 ] ] .
+
+oiled:C18 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C12 [ a owl:Class ;
+                        owl:complementOf oiled:C16 ] ) ] .
+
+oiled:C20 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C22 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C24 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C22 ] .
+
+oiled:C28 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C26 ] .
+
+oiled:C30 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C18 [ a owl:Class ;
+                        owl:complementOf oiled:C28 ] ) ] .
+
+oiled:C34 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C32 ] ] .
+
+oiled:C36 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2 ] .
+
+oiled:C38 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C36 ] ] .
+
+oiled:C4 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C40 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C38 ] .
+
+oiled:C44 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C42 ] .
+
+oiled:C46 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C30 [ a owl:Class ;
+                        owl:complementOf oiled:C44 ] ) ] .
+
+oiled:C48 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C50 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2 ] .
+
+oiled:C54 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C52 ] .
+
+oiled:C56 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C46 [ a owl:Class ;
+                        owl:complementOf oiled:C54 ] ) ] .
+
+oiled:C58 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2 ] .
+
+oiled:C60 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C58 [ a owl:Class ;
+                        owl:complementOf oiled:C2 ] ) ] .
+
+oiled:C62 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C60 ] .
+
+oiled:C64 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2 ] .
+
+oiled:C66 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C64 [ a owl:Class ;
+                        owl:complementOf oiled:C2 ] ) ] .
+
+oiled:C68 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C66 ] .
+
+oiled:C70 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C68 ] .
+
+oiled:C74 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C72 ] .
+
+oiled:C76 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( oiled:C56 [ a owl:Class ;
+                        owl:complementOf oiled:C74 ] ) ] .
+
+oiled:C8 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C6 ] ] .
+
+oiled:C80 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C78 ] [ a owl:Class ;
+                        owl:complementOf oiled:C2 ] ) ] .
+
+oiled:C82 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C80 ] .
+
+oiled:C84 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C86 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C84 ] [ a owl:Class ;
+                        owl:complementOf oiled:C2 ] ) ] .
+
+oiled:C88 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C86 ] .
+
+oiled:C90 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C88 ] .
+
+oiled:C94 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C92 ] .
+
+oiled:V8468 a [ a owl:Class ;
+            owl:complementOf oiled:C2 ],
+        owl:Thing .
+
+oiled:V8469 a [ a owl:Restriction ;
+            owl:allValuesFrom oiled:C2 ;
+            owl:onProperty oiled:R1 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C6 ],
+        owl:Thing .
+
+oiled:V8470 a oiled:TOP,
+        owl:Thing .
+
+oiled:V8471 a [ a owl:Restriction ;
+            owl:allValuesFrom oiled:C2 ;
+            owl:onProperty oiled:R1 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C78 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C2 ],
+        owl:Thing .
+
+oiled:V8472 a [ a owl:Class ;
+            owl:complementOf oiled:C2 ],
+        owl:Thing ;
+    oiled:R1 oiled:V8476 .
+
+oiled:V8473 a [ a owl:Class ;
+            owl:complementOf oiled:C2 ],
+        owl:Thing .
+
+oiled:V8474 a [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ;
+            owl:onProperty oiled:R1 ],
+        [ a owl:Class ;
+            owl:complementOf oiled:C32 ],
+        owl:Thing .
+
+oiled:V8475 a [ a owl:Class ;
+            owl:complementOf oiled:C2 ],
+        owl:Thing .
+
+oiled:V8476 a oiled:C2,
+        owl:Thing .
+
+oiled:C26 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C20 ] oiled:C24 ) ] .
+
+oiled:C32 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2 ] .
+
+oiled:C42 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C34 ] oiled:C40 ) ] .
+
+oiled:C52 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C48 ] [ a owl:Class ;
+                        owl:complementOf oiled:C50 ] ) ] .
+
+oiled:C6 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C72 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C62 ] oiled:C70 ) ] .
+
+oiled:C78 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf oiled:C2 ] ] .
+
+oiled:C92 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf oiled:C82 ] oiled:C90 ) ] .
+
+oiled:TOP a owl:Class .
+
+oiled:C2 a owl:Class .
+
+oiled:R1 a owl:ObjectProperty .
+

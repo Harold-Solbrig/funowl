@@ -7,5 +7,5 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 Ontology(
 
-ClassAssertion(owl:Nothing _:genid5964)
+ClassAssertion(owl:Nothing _:genid17784)
 )

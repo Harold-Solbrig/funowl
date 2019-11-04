@@ -1,0 +1,36 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent034> a owl:Ontology .
+
+<http://oiled.man.example.net/test#Satisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                        owl:someValuesFrom [ a owl:Restriction ;
+                                owl:allValuesFrom [ a owl:Restriction ;
+                                        owl:allValuesFrom <http://oiled.man.example.net/test#p> ;
+                                        owl:onProperty <http://oiled.man.example.net/test#r1> ] ;
+                                owl:onProperty <http://oiled.man.example.net/test#invR> ] ] [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                        owl:someValuesFrom [ a owl:Restriction ;
+                                owl:allValuesFrom [ a owl:Restriction ;
+                                        owl:allValuesFrom [ a owl:Class ;
+                                                owl:complementOf <http://oiled.man.example.net/test#p> ] ;
+                                        owl:onProperty <http://oiled.man.example.net/test#r1> ] ;
+                                owl:onProperty <http://oiled.man.example.net/test#invR> ] ] ) ] .
+
+<http://oiled.man.example.net/test#invR> a owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#r> .
+
+<http://oiled.man.example.net/test#p> a owl:Class .
+
+<http://oiled.man.example.net/test#r1> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#r> a owl:ObjectProperty .
+
+[] a <http://oiled.man.example.net/test#Satisfiable> .
+

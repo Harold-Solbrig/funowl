@@ -1,0 +1,58 @@
+@prefix first: <http://www.w3.org/2002/03owlt/I5.2/consistent005#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+first:A a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty first:q ;
+            owl:someValuesFrom owl:Thing ] .
+
+first:AorB a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty first:s ;
+            owl:someValuesFrom owl:Thing ] .
+
+first:B a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty first:r ;
+            owl:someValuesFrom owl:Thing ] .
+
+first:notAorB a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom first:Nothing ;
+            owl:onProperty first:s ] ;
+    owl:intersectionOf ( first:notA first:notB ) .
+
+first:notA a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom first:Nothing ;
+            owl:onProperty first:q ] .
+
+first:notB a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom first:Nothing ;
+            owl:onProperty first:r ] .
+
+first:p a owl:ObjectProperty .
+
+first:q a owl:ObjectProperty .
+
+first:r a owl:ObjectProperty .
+
+first:s a owl:ObjectProperty .
+
+first:Nothing a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty first:p ],
+        [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty first:p ] .
+
+owl:Thing a owl:Class .
+
+[] a owl:Ontology .
+

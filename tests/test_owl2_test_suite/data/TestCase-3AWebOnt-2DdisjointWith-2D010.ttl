@@ -1,0 +1,17 @@
+@prefix first: <http://www.w3.org/2002/03owlt/disjointWith/inconsistent010#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+first:p a owl:ObjectProperty .
+
+[] a owl:Thing ;
+    first:p [ a owl:Thing ] .
+
+_:N86a1390a88ea482c8eb1d923981f059c a owl:Restriction ;
+    owl:disjointWith _:N86a1390a88ea482c8eb1d923981f059c ;
+    owl:minCardinality "1"^^xsd:int ;
+    owl:onProperty first:p .
+

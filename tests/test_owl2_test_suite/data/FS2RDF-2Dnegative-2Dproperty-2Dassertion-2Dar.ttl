@@ -1,0 +1,90 @@
+@prefix : <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:p1 a owl:ObjectProperty .
+
+:p2 a owl:DatatypeProperty .
+
+:p3 a owl:ObjectProperty .
+
+:p4 a owl:ObjectProperty .
+
+:p5 a owl:DatatypeProperty .
+
+:p6 a owl:ObjectProperty .
+
+:p7 a owl:ObjectProperty .
+
+:p8 a owl:DatatypeProperty .
+
+:p9 a owl:ObjectProperty .
+
+[] a owl:NegativePropertyAssertion ;
+    owl:assertionProperty :p2 ;
+    owl:sourceIndividual :s2 ;
+    owl:targetValue 2 .
+
+[] a owl:NegativePropertyAssertion ;
+    rdfs:comment "I hereby annotate this also" ;
+    owl:assertionProperty [ owl:inverseOf :p6 ] ;
+    owl:sourceIndividual :s6 ;
+    owl:targetIndividual :o6 .
+
+[] a owl:NegativePropertyAssertion ;
+    owl:assertionProperty :p1 ;
+    owl:sourceIndividual :s1 ;
+    owl:targetIndividual :o1 .
+
+[] a owl:NegativePropertyAssertion ;
+    owl:assertionProperty [ owl:inverseOf :p3 ] ;
+    owl:sourceIndividual :s3 ;
+    owl:targetIndividual :o3 .
+
+[] a owl:NegativePropertyAssertion ;
+    rdfs:comment "I hereby annotate this" ;
+    owl:assertionProperty :p4 ;
+    owl:sourceIndividual :s4 ;
+    owl:targetIndividual :o4 .
+
+[] a owl:Ontology .
+
+[] a owl:Annotation ;
+    rdfs:label "on seven" ;
+    owl:annotatedProperty rdfs:comment ;
+    owl:annotatedSource [ a owl:NegativePropertyAssertion ;
+            rdfs:comment "I hereby annotate this" ;
+            owl:assertionProperty :p7 ;
+            owl:sourceIndividual :s7 ;
+            owl:targetIndividual :o7 ] ;
+    owl:annotatedTarget "I hereby annotate this" .
+
+[] a owl:Annotation ;
+    rdfs:label "on eight" ;
+    owl:annotatedProperty rdfs:comment ;
+    owl:annotatedSource [ a owl:NegativePropertyAssertion ;
+            rdfs:comment "I hereby annotate this too" ;
+            owl:assertionProperty :p8 ;
+            owl:sourceIndividual :s8 ;
+            owl:targetValue 8 ] ;
+    owl:annotatedTarget "I hereby annotate this too" .
+
+[] a owl:Annotation ;
+    rdfs:label "on nine" ;
+    owl:annotatedProperty rdfs:comment ;
+    owl:annotatedSource [ a owl:NegativePropertyAssertion ;
+            rdfs:comment "I hereby annotate this also" ;
+            owl:assertionProperty [ owl:inverseOf :p9 ] ;
+            owl:sourceIndividual :s9 ;
+            owl:targetIndividual :o9 ] ;
+    owl:annotatedTarget "I hereby annotate this also" .
+
+[] a owl:NegativePropertyAssertion ;
+    rdfs:comment "I hereby annotate this too" ;
+    owl:assertionProperty :p5 ;
+    owl:sourceIndividual :s5 ;
+    owl:targetValue 5 .
+

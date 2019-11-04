@@ -13,6 +13,6 @@ Declaration(Datatype(eg:type))
 
 
 
-ClassAssertion(owl:Thing _:genid5864)
-DataPropertyAssertion(first:prop _:genid5864 "foo"^^eg:type)
+ClassAssertion(owl:Thing _:genid19836)
+DataPropertyAssertion(first:prop _:genid19836 "foo"^^eg:type)
 )

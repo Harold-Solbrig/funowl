@@ -19,6 +19,8 @@ class IRI(FunOwlChoice):
     input_type: ClassVar[Type] = str
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:
+        if isinstance(self.v, URIRef):
+            return self.v
         if isinstance(self.v, AbbreviatedIRI):
             # TODO: find the code in rdflib that does this
             ns, local = self.v.split(':', 1)
@@ -34,11 +36,10 @@ class IRI(FunOwlChoice):
         fulluri = self.full_uri(w.g)
         return w + (fulluri.n3(w.g.namespace_manager) if fulluri else self.v)
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
-        if self.rdf_type is None:
-            raise ValueError(f"IRI type not specified for class {type(self).__name__}")
+    def to_rdf(self, g: Graph) -> URIRef:
         fulluri = self.full_uri(g)
-        if g is None:
-            raise ValueError(f"Unknown prefix: {self.v}")
-        g.add((fulluri, RDF.type, self.rdf_type))
+        if self.rdf_type is None:
+            logging.warning(f"IRI type not specified for class {type(self).__name__}")
+        else:
+            g.add((fulluri, RDF.type, self.rdf_type))
         return fulluri

@@ -1,0 +1,24 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/I5.26/consistent003#notB> a owl:Class ;
+    owl:complementOf _:N584a740a573a4582b8b3646952e929bd .
+
+<http://www.w3.org/2002/03owlt/I5.26/consistent003#u> a owl:Class ;
+    owl:unionOf ( _:N584a740a573a4582b8b3646952e929bd <http://www.w3.org/2002/03owlt/I5.26/consistent003#A> ) .
+
+<http://www.w3.org/2002/03owlt/I5.26/consistent003#A> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/I5.26/consistent003#B> a owl:Class .
+
+[] a owl:Ontology .
+
+_:N63f6746dae9749f28788e0afc88d5f39 rdf:first <http://www.w3.org/2002/03owlt/I5.26/consistent003#B> ;
+    rdf:rest () .
+
+_:N584a740a573a4582b8b3646952e929bd a owl:Class ;
+    owl:intersectionOf _:N63f6746dae9749f28788e0afc88d5f39 .
+

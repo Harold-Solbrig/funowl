@@ -77,7 +77,7 @@ class ObjectIntersectionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> BNode:
         subj = BNode()
         g.add((subj, RDF.type, OWL.Class))
         g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
@@ -96,7 +96,7 @@ class ObjectUnionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    # def to_rdf(self, g: Graph) -> Optional[Node]:
+    # def to_rdf(self, g: Graph) -> Optional[NODE]:
     #     """
     #     _:x rdf:type owl:Class .
     #     _:x owl:unionOf T(SEQ CE1 ... CEn) .
@@ -153,7 +153,7 @@ class ObjectHasValue(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.individual)
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> BNode:
         """
         _:x rdf:type owl:Restriction .
         _:x owl:onProperty T(OPE) .
@@ -203,7 +203,7 @@ class ObjectExactCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> BNode:
         """
         _:x rdf:type owl:Restriction .
         _:x owl:onProperty T(OPE) .

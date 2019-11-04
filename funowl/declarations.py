@@ -15,18 +15,15 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 DataPropertyExpression := DataProperty
 """
 from dataclasses import dataclass
-from typing import Union, Optional
-
-from rdflib import Graph
-from rdflib.term import Node
+from typing import Union
 
 from funowl.annotations import AnnotationProperty
+from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.class_expressions import Class
 from funowl.dataproperty_expressions import DataProperty
 from funowl.individuals import NamedIndividual
 from funowl.literals import Datatype
 from funowl.objectproperty_expressions import ObjectProperty
-from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -50,6 +47,3 @@ class Declaration(FunOwlChoice):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w), indent=False))
-
-    def to_rdf(self, g: Graph) -> Optional[Node]:
-        self.v.to_rdf(g)

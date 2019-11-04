@@ -1,0 +1,52 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent004#A> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent004#B> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent004#C> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent004#D> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent004#E> a owl:Class .
+
+[] a owl:Ontology .
+
+_:N04b31bebd5c640059b58d2caaf8b68f8 a owl:Class ;
+    owl:disjointWith _:N4409b259beb449438151e905db08aa8e,
+        _:N61ce658171df467386b59ef849f0e777 ;
+    owl:intersectionOf ( <http://www.w3.org/2002/03owlt/disjointWith/consistent004#D> ) .
+
+_:N56fe200fec1c4486b0208a48b174c6b9 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent004#B> ;
+    rdf:rest () .
+
+_:N6127d9f803454311b7eb721b9a73549a a owl:Class ;
+    owl:disjointWith _:N3f8a397d3bd347fdb5b65e15ed29bd38,
+        _:N4409b259beb449438151e905db08aa8e ;
+    owl:intersectionOf ( <http://www.w3.org/2002/03owlt/disjointWith/consistent004#C> ) .
+
+_:N9f48a5eaad5140239e703d037e9759d8 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent004#E> ;
+    rdf:rest () .
+
+_:Na864196b5bbd4b8bb4b2e053e4178ebb rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent004#A> ;
+    rdf:rest () .
+
+_:N3f8a397d3bd347fdb5b65e15ed29bd38 a owl:Class ;
+    owl:disjointWith _:N04b31bebd5c640059b58d2caaf8b68f8,
+        _:N4409b259beb449438151e905db08aa8e,
+        _:N61ce658171df467386b59ef849f0e777 ;
+    owl:intersectionOf _:Na864196b5bbd4b8bb4b2e053e4178ebb .
+
+_:N61ce658171df467386b59ef849f0e777 a owl:Class ;
+    owl:disjointWith _:N3f8a397d3bd347fdb5b65e15ed29bd38,
+        _:N4409b259beb449438151e905db08aa8e,
+        _:N6127d9f803454311b7eb721b9a73549a ;
+    owl:intersectionOf _:N56fe200fec1c4486b0208a48b174c6b9 .
+
+_:N4409b259beb449438151e905db08aa8e a owl:Class ;
+    owl:intersectionOf _:N9f48a5eaad5140239e703d037e9759d8 .
+

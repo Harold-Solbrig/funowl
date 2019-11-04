@@ -35,14 +35,13 @@ class SubClassOf(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: (w + self.subClassExpression + self.superClassExpression))
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> None:
         """
         Add subclass representation to graph
         :param g: Graph to add representation to
         :return: None -
         """
-        g.add((self.subClassExpression.to_rdf(g), RDFS.subClassOf, self.superClassExpression.to_rdf(g)))
-        return None
+        self.add_triple(g, self.subClassExpression.to_rdf(g), RDFS.subClassOf, self.superClassExpression.to_rdf(g))
 
 
 @dataclass

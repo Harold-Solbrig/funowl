@@ -1,0 +1,28 @@
+@prefix : <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:p a owl:ObjectProperty ;
+    owl:propertyChainAxiom _:Nc8e5c1b411b94c4aa91b1a86783cb8ea .
+
+:q a owl:ObjectProperty .
+
+:r a owl:ObjectProperty .
+
+[] a owl:Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    owl:annotatedProperty owl:propertyChainAxiom ;
+    owl:annotatedSource :p ;
+    owl:annotatedTarget _:Nc8e5c1b411b94c4aa91b1a86783cb8ea .
+
+[] a owl:Ontology .
+
+_:N8b94a7daf8dc4bb891ef4312d41cc50b rdf:first :r ;
+    rdf:rest () .
+
+_:Nc8e5c1b411b94c4aa91b1a86783cb8ea rdf:first :q ;
+    rdf:rest _:N8b94a7daf8dc4bb891ef4312d41cc50b .
+

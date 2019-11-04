@@ -11,6 +11,6 @@ Declaration(DataProperty(first:dp))
 
 
 
-ClassAssertion(owl:Thing _:genid6786)
-DataPropertyAssertion(first:dp _:genid6786 "value")
+ClassAssertion(owl:Thing _:genid17521)
+DataPropertyAssertion(first:dp _:genid17521 "value")
 )

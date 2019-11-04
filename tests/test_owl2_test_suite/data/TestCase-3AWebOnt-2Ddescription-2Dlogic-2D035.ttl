@@ -1,0 +1,37 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent035> a owl:Ontology ;
+    rdfs:comment """An ontology illustrating the use of a spy point that
+limits the cardinality of the interpretation domain to having only two
+objects.""" .
+
+oiled:Unsatisfiable a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "3"^^xsd:nonNegativeInteger ;
+            owl:onProperty oiled:r ] .
+
+oiled:p a owl:ObjectProperty ;
+    owl:inverseOf oiled:invP .
+
+oiled:r a owl:ObjectProperty .
+
+oiled:spy a [ a owl:Restriction ;
+            owl:maxCardinality "2"^^xsd:nonNegativeInteger ;
+            owl:onProperty oiled:invP ],
+        owl:Thing .
+
+owl:Thing a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty oiled:p ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:oneOf ( oiled:spy ) ] ] .
+
+oiled:invP a owl:ObjectProperty .
+
+[] a oiled:Unsatisfiable .
+

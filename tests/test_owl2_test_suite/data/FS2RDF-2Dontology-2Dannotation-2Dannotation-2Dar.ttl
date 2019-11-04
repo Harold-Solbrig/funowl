@@ -1,0 +1,24 @@
+@prefix : <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:a a owl:Class ;
+    owl:equivalentClass :b .
+
+:b a owl:Class ;
+    owl:equivalentClass :c .
+
+:c a owl:Class .
+
+[] a owl:Annotation ;
+    :member :a,
+        :b,
+        :c ;
+    owl:annotatedProperty :for ;
+    owl:annotatedSource [ a owl:Ontology ;
+            :for :eqc ] ;
+    owl:annotatedTarget :eqc .
+

@@ -1,0 +1,16 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/I5.8/premises004#john> a [ a owl:Restriction ;
+            owl:cardinality "128"^^xsd:nonNegativeInteger ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/I5.8/premises004#p> ] .
+
+<http://www.w3.org/2002/03owlt/I5.8/premises004#p> a owl:DatatypeProperty ;
+    rdfs:range xsd:byte,
+        xsd:unsignedInt .
+
+[] a owl:Ontology .
+

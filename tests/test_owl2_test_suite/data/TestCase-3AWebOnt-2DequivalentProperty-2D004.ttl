@@ -1,0 +1,26 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/equivalentProperty/premises004#p> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#d> .
+
+<http://www.w3.org/2002/03owlt/equivalentProperty/premises004#q> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#d> .
+
+<http://www.w3.org/2002/03owlt/equivalentProperty/premises004#d> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#q> ],
+        [ a owl:Restriction ;
+            owl:hasValue <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#p> ] .
+
+<http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> a owl:Thing .
+
+[] a owl:Ontology .
+

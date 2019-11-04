@@ -1,9 +1,24 @@
-Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
-Prefix( : = <http://example.org/> )
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
 
 Ontology(
-  Declaration( DataProperty( :hasAge ) )
+Declaration(DataProperty(:hasAge))
+Declaration(NamedIndividual(:Meg))
 
-  NegativeDataPropertyAssertion( :hasAge :Meg "5"^^xsd:integer )
-  DataPropertyAssertion( :hasAge :Meg "5"^^xsd:integer )
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Meg (:Meg)
+
+DataPropertyAssertion(:hasAge :Meg "5"^^xsd:integer)
+NegativeDataPropertyAssertion(:hasAge :Meg "5"^^xsd:integer)
+
+
 )

@@ -1,0 +1,21 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises003#A> a owl:Class ;
+    owl:oneOf ( <http://www.w3.org/2002/03owlt/unionOf/premises003#a> ) .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises003#A-and-B> a owl:Class ;
+    owl:oneOf ( <http://www.w3.org/2002/03owlt/unionOf/premises003#a> <http://www.w3.org/2002/03owlt/unionOf/premises003#b> ) .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises003#B> a owl:Class ;
+    owl:oneOf ( <http://www.w3.org/2002/03owlt/unionOf/premises003#b> ) .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises003#a> a owl:Thing .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises003#b> a owl:Thing .
+
+[] a owl:Ontology .
+

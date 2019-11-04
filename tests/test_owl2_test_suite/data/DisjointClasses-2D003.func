@@ -1,10 +1,38 @@
-Prefix( : = <http://example.org/> )
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
 
 Ontology(
-  Declaration( Class( :Boy ) )
-  Declaration( Class( :Girl ) )
-  Declaration( Class( :Dog ) )
+Declaration(Class(:Boy))
+Declaration(Class(:Dog))
+Declaration(Class(:Girl))
+Declaration(NamedIndividual(:Stewie))
+############################
+#   Classes
+############################
 
-  DisjointClasses( :Boy :Girl :Dog )
-  ClassAssertion( :Boy :Stewie )
+# Class: :Boy (:Boy)
+
+
+# Class: :Dog (:Dog)
+
+
+# Class: :Girl (:Girl)
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Stewie (:Stewie)
+
+ClassAssertion(:Boy :Stewie)
+
+
+DisjointClasses(:Boy :Dog :Girl)
 )

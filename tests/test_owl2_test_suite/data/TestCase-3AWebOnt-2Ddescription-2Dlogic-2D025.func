@@ -42,5 +42,5 @@ TransitiveObjectProperty(<http://oiled.man.example.net/test#r>)
 EquivalentClasses(<http://oiled.man.example.net/test#Satisfiable> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#a>) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#invF> <http://oiled.man.example.net/test#a>) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#invR> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#invF> <http://oiled.man.example.net/test#a>))))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid4243)
+ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid16726)
 )

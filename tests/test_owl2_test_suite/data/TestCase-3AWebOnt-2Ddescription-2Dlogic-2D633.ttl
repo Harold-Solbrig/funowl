@@ -1,0 +1,50 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oiled:invR a owl:ObjectProperty ;
+    owl:inverseOf oiled:r .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent633> a owl:Ontology .
+
+oiled:Unsatisfiable a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:f ;
+            owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent633#A.2> ] .
+
+oiled:invF a owl:ObjectProperty ;
+    owl:inverseOf oiled:f .
+
+oiled:p1 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent633#P.1> ] .
+
+oiled:p1.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent633#P.1> ] .
+
+oiled:r a owl:ObjectProperty,
+        owl:TransitiveProperty .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent633#A.2> a owl:Class ;
+    owl:intersectionOf ( oiled:p1 [ a owl:Restriction ;
+                owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent633#V.3> ;
+                owl:onProperty oiled:invF ] ) .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent633#V.3> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:f ;
+            owl:someValuesFrom oiled:p1.comp ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent633#P.1> a owl:DatatypeProperty .
+
+oiled:f a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+[] a oiled:Unsatisfiable .
+

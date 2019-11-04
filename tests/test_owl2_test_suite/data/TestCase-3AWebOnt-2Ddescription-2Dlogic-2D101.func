@@ -43,5 +43,5 @@ SubClassOf(<http://oiled.man.example.net/test#e3> <http://oiled.man.example.net/
 SubClassOf(<http://oiled.man.example.net/test#f> <http://oiled.man.example.net/test#d>)
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid8156)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid19948)
 )

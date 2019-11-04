@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from typing import Union
 
-from rdflib import OWL
+from rdflib import OWL, Graph
+from rdflib.term import Node, BNode
 
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.identifiers import IRI
@@ -21,6 +22,12 @@ class ObjectInverseOf(FunOwlChoice):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.v)
 
+    def to_rdf(self, g: Graph) -> Node:
+        x = BNode()
+        assert isinstance(self.v, ObjectProperty)
+        g.add((x, OWL.inverseOf, self.v.to_rdf(g)))
+        return x
+
 
 @dataclass
 class ObjectPropertyExpression(FunOwlChoice):
@@ -28,4 +35,3 @@ class ObjectPropertyExpression(FunOwlChoice):
     v: Union[ObjectProperty, ObjectInverseOf, str]
     coercion_allowed = False
     input_type = str
-

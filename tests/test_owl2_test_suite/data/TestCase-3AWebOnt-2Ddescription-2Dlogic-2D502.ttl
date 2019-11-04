@@ -1,0 +1,152 @@
+@prefix first: <http://www.w3.org/2002/03owlt/description-logic/inconsistent502#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+first:TorF a owl:Class ;
+    owl:oneOf ( first:T first:F ),
+        ( first:plus2 first:minus2 ),
+        ( first:plus4 first:minus4 ),
+        ( first:plus9 first:minus9 ),
+        ( first:plus1 first:minus1 ),
+        ( first:plus7 first:minus7 ),
+        ( first:plus8 first:minus8 ),
+        ( first:plus5 first:minus5 ),
+        ( first:plus6 first:minus6 ),
+        ( first:plus3 first:minus3 ) .
+
+first:T a [ a owl:Class ;
+            owl:oneOf ( first:minus7 first:minus6 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus4 first:plus9 first:minus8 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus6 first:plus1 first:minus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus4 first:plus1 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus6 first:minus2 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus3 first:plus8 first:plus2 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus1 first:plus7 first:plus4 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus8 first:minus7 first:plus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus6 first:minus4 first:minus1 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus5 first:plus3 first:minus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus7 first:minus9 first:minus2 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus2 first:minus5 first:minus7 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus8 first:minus2 first:plus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus8 first:minus5 first:minus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus9 first:minus4 first:minus8 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:plus3 first:plus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus9 first:plus3 first:minus2 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus3 first:plus8 first:plus7 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus2 first:minus1 first:plus4 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus5 first:minus2 first:minus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus5 first:plus8 first:plus7 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus3 first:plus6 first:minus4 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:minus8 first:plus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus6 first:plus3 first:minus4 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus1 first:plus9 first:minus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus8 first:minus4 first:plus2 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus2 first:minus3 first:plus1 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus1 first:plus2 first:minus4 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus9 first:minus8 first:plus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus1 first:minus4 first:minus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus6 first:minus7 first:minus8 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus3 first:plus5 first:minus8 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:plus1 first:plus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus7 first:plus9 first:plus5 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus9 first:minus4 first:plus5 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:minus6 first:minus2 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus6 first:minus2 first:minus7 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus2 first:plus1 first:minus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus7 first:minus4 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus9 first:plus4 first:plus3 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus5 first:plus2 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:plus6 first:minus5 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus4 first:plus3 first:plus9 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:plus8 first:minus4 first:plus6 ) ],
+        [ a owl:Class ;
+            owl:oneOf ( first:minus7 first:minus3 first:minus4 ) ],
+        owl:Thing ;
+    owl:differentFrom first:F .
+
+first:F a owl:Thing .
+
+first:minus1 a owl:Thing .
+
+first:plus5 a owl:Thing .
+
+first:plus7 a owl:Thing .
+
+first:minus5 a owl:Thing .
+
+first:minus6 a owl:Thing .
+
+first:plus8 a owl:Thing .
+
+first:minus3 a owl:Thing .
+
+first:minus7 a owl:Thing .
+
+first:minus9 a owl:Thing .
+
+first:plus2 a owl:Thing .
+
+first:minus2 a owl:Thing .
+
+first:minus8 a owl:Thing .
+
+first:plus1 a owl:Thing .
+
+first:plus4 a owl:Thing .
+
+first:plus3 a owl:Thing .
+
+first:plus6 a owl:Thing .
+
+first:plus9 a owl:Thing .
+
+first:minus4 a owl:Thing .
+
+[] a owl:Ontology .
+

@@ -20,7 +20,7 @@ Declaration(ObjectProperty(rdf:_1))
 AnnotationAssertion(rdfs:comment rdf:Bag "The class of unordered containers.")
 
 
-ClassAssertion(owl:Thing _:genid7350)
-ClassAssertion(rdf:Bag _:genid7351)
-ObjectPropertyAssertion(rdf:_1 _:genid7351 _:genid7350)
+ClassAssertion(owl:Thing _:genid17524)
+ClassAssertion(rdf:Bag _:genid17525)
+ObjectPropertyAssertion(rdf:_1 _:genid17525 _:genid17524)
 )

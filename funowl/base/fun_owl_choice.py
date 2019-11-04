@@ -7,6 +7,7 @@ from rdflib.term import Node
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.cast_function import cast
+from funowl.base.rdftriple import NODE
 from funowl.terminals.TypingHelper import get_args, isinstance_, is_union
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
@@ -66,7 +67,7 @@ class FunOwlChoice(FunOwlBase):
         """
         return w + self.v
 
-    def to_rdf(self, g: Graph) -> Optional[Node]:
+    def to_rdf(self, g: Graph) -> Optional[NODE]:
         """
         Add value of self to graph g and return the node (if any) that represents the element
         :param g: Target graph

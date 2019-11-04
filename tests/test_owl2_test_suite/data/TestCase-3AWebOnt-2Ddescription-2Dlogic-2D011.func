@@ -50,5 +50,5 @@ FunctionalObjectProperty(<http://oiled.man.example.net/test#s>)
 EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectIntersectionOf(ObjectSomeValuesFrom(<http://oiled.man.example.net/test#s> ObjectIntersectionOf(<http://oiled.man.example.net/test#p> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#invS> <http://oiled.man.example.net/test#p>))) ObjectAllValuesFrom(<http://oiled.man.example.net/test#s> ObjectComplementOf(<http://oiled.man.example.net/test#p>))))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid5904)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid21868)
 )

@@ -1,0 +1,211 @@
+@prefix eg: <http://example.org/factkb#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent040> a owl:Ontology .
+
+eg:A0 a owl:Class .
+
+eg:A1 a owl:Class .
+
+eg:A10 a owl:Class .
+
+eg:A11 a owl:Class .
+
+eg:A12 a owl:Class .
+
+eg:A13 a owl:Class .
+
+eg:A14 a owl:Class .
+
+eg:A15 a owl:Class .
+
+eg:A16 a owl:Class .
+
+eg:A17 a owl:Class .
+
+eg:A18 a owl:Class .
+
+eg:A19 a owl:Class .
+
+eg:A2 a owl:Class .
+
+eg:A20 a owl:Class .
+
+eg:A21 a owl:Class .
+
+eg:A22 a owl:Class .
+
+eg:A23 a owl:Class .
+
+eg:A24 a owl:Class .
+
+eg:A25 a owl:Class .
+
+eg:A26 a owl:Class .
+
+eg:A27 a owl:Class .
+
+eg:A28 a owl:Class .
+
+eg:A29 a owl:Class .
+
+eg:A3 a owl:Class .
+
+eg:A30 a owl:Class .
+
+eg:A31 a owl:Class .
+
+eg:A4 a owl:Class .
+
+eg:A5 a owl:Class .
+
+eg:A6 a owl:Class .
+
+eg:A7 a owl:Class .
+
+eg:A8 a owl:Class .
+
+eg:A9 a owl:Class .
+
+eg:B0 a owl:Class .
+
+eg:B1 a owl:Class .
+
+eg:B10 a owl:Class .
+
+eg:B11 a owl:Class .
+
+eg:B12 a owl:Class .
+
+eg:B13 a owl:Class .
+
+eg:B14 a owl:Class .
+
+eg:B15 a owl:Class .
+
+eg:B16 a owl:Class .
+
+eg:B17 a owl:Class .
+
+eg:B18 a owl:Class .
+
+eg:B19 a owl:Class .
+
+eg:B2 a owl:Class .
+
+eg:B20 a owl:Class .
+
+eg:B21 a owl:Class .
+
+eg:B22 a owl:Class .
+
+eg:B23 a owl:Class .
+
+eg:B24 a owl:Class .
+
+eg:B25 a owl:Class .
+
+eg:B26 a owl:Class .
+
+eg:B27 a owl:Class .
+
+eg:B28 a owl:Class .
+
+eg:B29 a owl:Class .
+
+eg:B3 a owl:Class .
+
+eg:B30 a owl:Class .
+
+eg:B31 a owl:Class .
+
+eg:B4 a owl:Class .
+
+eg:B5 a owl:Class .
+
+eg:B6 a owl:Class .
+
+eg:B7 a owl:Class .
+
+eg:B8 a owl:Class .
+
+eg:B9 a owl:Class .
+
+eg:C1 a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:unionOf ( eg:A0 eg:B0 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A1 eg:B1 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A2 eg:B2 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A3 eg:B3 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A4 eg:B4 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A5 eg:B5 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A6 eg:B6 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A7 eg:B7 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A8 eg:B8 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A9 eg:B9 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A10 eg:B10 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A11 eg:B11 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A12 eg:B12 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A13 eg:B13 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A14 eg:B14 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A15 eg:B15 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A16 eg:B16 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A17 eg:B17 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A18 eg:B18 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A19 eg:B19 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A20 eg:B20 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A21 eg:B21 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A22 eg:B22 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A23 eg:B23 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A24 eg:B24 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A25 eg:B25 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A26 eg:B26 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A27 eg:B27 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A28 eg:B28 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A29 eg:B29 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A30 eg:B30 ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A31 eg:B31 ) ] ) ] .
+
+eg:C2 a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:unionOf ( eg:A eg:B ) ] [ a owl:Class ;
+                        owl:unionOf ( eg:A [ a owl:Class ;
+                                    owl:complementOf eg:B ] ) ] ) ] .
+
+eg:C3 a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:unionOf ( [ a owl:Class ;
+                                    owl:complementOf eg:A ] eg:B ) ] [ a owl:Class ;
+                        owl:unionOf ( [ a owl:Class ;
+                                    owl:complementOf eg:A ] [ a owl:Class ;
+                                    owl:complementOf eg:B ] ) ] ) ] .
+
+eg:C4 a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty eg:R ;
+            owl:someValuesFrom eg:C2 ] .
+
+eg:C5 a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom eg:C3 ;
+            owl:onProperty eg:R ] .
+
+eg:TEST a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
+            owl:intersectionOf ( eg:C1 eg:C4 eg:C5 ) ] .
+
+eg:R a owl:ObjectProperty .
+
+eg:A a owl:Class .
+
+eg:B a owl:Class .
+
+[] a eg:TEST .
+

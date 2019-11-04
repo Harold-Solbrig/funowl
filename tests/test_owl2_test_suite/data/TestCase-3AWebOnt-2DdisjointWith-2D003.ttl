@@ -1,0 +1,60 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent003#A> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent003#B> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent003#C> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent003#D> a owl:Class .
+
+<http://www.w3.org/2002/03owlt/disjointWith/consistent003#E> a owl:Class .
+
+[] a owl:Ontology .
+
+_:N5b54b18361314473b100d7f701164475 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent003#A> ;
+    rdf:rest () .
+
+_:N9aa58866570146d298fba974ed452018 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent003#E> ;
+    rdf:rest () .
+
+_:Nc0b33f0d8eca4161bffd52db28ac5d42 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent003#B> ;
+    rdf:rest () .
+
+_:Nea11953c76a84b169915ab052737e310 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent003#C> ;
+    rdf:rest () .
+
+_:Nfe408cc283e240579047fd17fa92bbbe rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent003#D> ;
+    rdf:rest () .
+
+_:N27a763fb9ac240d9b50afea4acb0234a a owl:Class ;
+    owl:disjointWith _:N978a81058eda4973b47ff8d2bbb62925,
+        _:Nd81678c927e249a187b8028aca426815,
+        _:Nfc16793d13ec403882c8095f3e6f23ed ;
+    owl:intersectionOf _:Nfe408cc283e240579047fd17fa92bbbe .
+
+_:Nc094e131e0154e779366c495c3bf75ea a owl:Class ;
+    owl:disjointWith _:N27a763fb9ac240d9b50afea4acb0234a,
+        _:N978a81058eda4973b47ff8d2bbb62925,
+        _:Nfc16793d13ec403882c8095f3e6f23ed ;
+    owl:intersectionOf _:N5b54b18361314473b100d7f701164475 .
+
+_:Nd81678c927e249a187b8028aca426815 a owl:Class ;
+    owl:disjointWith _:N27a763fb9ac240d9b50afea4acb0234a,
+        _:N978a81058eda4973b47ff8d2bbb62925,
+        _:Nc094e131e0154e779366c495c3bf75ea ;
+    owl:intersectionOf _:Nea11953c76a84b169915ab052737e310 .
+
+_:Nfc16793d13ec403882c8095f3e6f23ed a owl:Class ;
+    owl:disjointWith _:N978a81058eda4973b47ff8d2bbb62925,
+        _:Nc094e131e0154e779366c495c3bf75ea,
+        _:Nd81678c927e249a187b8028aca426815 ;
+    owl:intersectionOf _:Nc0b33f0d8eca4161bffd52db28ac5d42 .
+
+_:N978a81058eda4973b47ff8d2bbb62925 a owl:Class ;
+    owl:intersectionOf _:N9aa58866570146d298fba974ed452018 .
+

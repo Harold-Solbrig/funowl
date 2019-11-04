@@ -25,6 +25,6 @@ AnnotationAssertion(rdfs:comment eg:type "
 
 
 
-ClassAssertion(owl:Thing _:genid6323)
-DataPropertyAssertion(first:prop _:genid6323 "foo"^^eg:type)
+ClassAssertion(owl:Thing _:genid17680)
+DataPropertyAssertion(first:prop _:genid17680 "foo"^^eg:type)
 )

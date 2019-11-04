@@ -1,0 +1,34 @@
+@prefix first: <http://www.w3.org/2002/03owlt/I5.2/premises004#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix second: <http://www.w3.org/2002/03owlt/I5.2/conclusions004#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+first:A a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty first:q ;
+            owl:someValuesFrom owl:Thing ] .
+
+first:notA a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:allValuesFrom first:Nothing ;
+            owl:onProperty first:q ] .
+
+first:Nothing a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty first:p ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty first:p ] .
+
+owl:Thing a owl:Class .
+
+first:p a owl:ObjectProperty .
+
+first:q a owl:ObjectProperty .
+
+[] a owl:Ontology .
+

@@ -1,0 +1,27 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/I5.1/consistent010#p> a owl:DatatypeProperty,
+        owl:InverseFunctionalProperty ;
+    rdfs:range xsd:byte .
+
+<http://www.w3.org/2002/03owlt/I5.1/consistent010#q> a owl:ObjectProperty ;
+    owl:inverseOf <http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ> .
+
+<http://www.w3.org/2002/03owlt/I5.1/consistent010#spy> a [ a owl:Restriction ;
+            owl:cardinality "127"^^xsd:nonNegativeInteger ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ> ],
+        owl:Thing .
+
+<http://www.w3.org/2002/03owlt/I5.1/consistent010#invQ> a owl:ObjectProperty .
+
+[] a owl:Restriction ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:hasValue <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/I5.1/consistent010#q> ] ;
+    owl:onProperty <http://www.w3.org/2002/03owlt/I5.1/consistent010#p> ;
+    owl:someValuesFrom xsd:unsignedInt .
+

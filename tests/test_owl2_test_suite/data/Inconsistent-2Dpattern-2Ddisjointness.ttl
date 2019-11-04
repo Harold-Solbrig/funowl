@@ -1,0 +1,26 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+example:a a example:A,
+        :NamedIndividual ;
+    example:dp1 "ab"^^xsd:string,
+        "ac"^^xsd:string .
+
+example:dp1 a :DatatypeProperty ;
+    :propertyDisjointWith example:dp2 .
+
+example:A a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :onProperty example:dp2 ;
+            :someValuesFrom [ a rdfs:Datatype ;
+                    :onDatatype xsd:string ;
+                    :withRestrictions ( [ xsd:pattern "a(b|c)"^^xsd:string ] ) ] ] .
+
+example:dp2 a :DatatypeProperty .
+
+[] a :Ontology .
+

@@ -1,0 +1,18 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#a> a _:N2c586b0fae814e4eb90965a9bbd9119a .
+
+<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#b> a _:N2c586b0fae814e4eb90965a9bbd9119a .
+
+<http://www.w3.org/2002/03owlt/Restriction/inconsistent002#op> a owl:ObjectProperty .
+
+[] a owl:Ontology .
+
+_:N2c586b0fae814e4eb90965a9bbd9119a a owl:Restriction ;
+    owl:onProperty <http://www.w3.org/2002/03owlt/Restriction/inconsistent002#op> ;
+    owl:someValuesFrom owl:Nothing .
+

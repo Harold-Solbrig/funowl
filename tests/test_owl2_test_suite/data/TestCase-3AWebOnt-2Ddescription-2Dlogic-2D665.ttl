@@ -1,0 +1,100 @@
+@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oiled:C10 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2.comp ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#unsignedByte> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.3> ] .
+
+oiled:C4 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C2.comp ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#byte> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.6> ] .
+
+oiled:V16560 a oiled:TEST,
+        oiled:TOP,
+        owl:Thing ;
+    oiled:R1 oiled:V16561,
+        oiled:V16562 .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises665> a owl:Ontology .
+
+oiled:C12 a owl:Class ;
+    owl:intersectionOf ( oiled:C2.comp oiled:C10.comp ) .
+
+oiled:C14 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C12 ] .
+
+oiled:C16 a owl:Class ;
+    owl:intersectionOf ( oiled:C8 oiled:C14 ) .
+
+oiled:C18 a owl:Class ;
+    owl:intersectionOf ( oiled:TOP oiled:C16 ) .
+
+oiled:C6 a owl:Class ;
+    owl:intersectionOf ( oiled:C2.comp oiled:C4.comp ) .
+
+oiled:C8 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty oiled:R1 ;
+            owl:someValuesFrom oiled:C6 ] .
+
+oiled:TEST a owl:Class ;
+    owl:intersectionOf ( oiled:C18 oiled:TOP ) .
+
+oiled:V16561 a [ a owl:Restriction ;
+            owl:allValuesFrom oiled:C2 ;
+            owl:onProperty oiled:R1 ],
+        oiled:C2.comp,
+        oiled:C4.comp,
+        owl:Thing .
+
+oiled:V16562 a [ a owl:Restriction ;
+            owl:allValuesFrom oiled:C2 ;
+            owl:onProperty oiled:R1 ],
+        oiled:C10.comp,
+        oiled:C2.comp,
+        owl:Thing .
+
+oiled:C10.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^</2001/XMLSchema#unsignedByte> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.3> ] .
+
+oiled:C2 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.1> ] .
+
+oiled:C4.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^</2001/XMLSchema#byte> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.6> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises665#P.1> a owl:DatatypeProperty .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises665#P.3> a owl:DatatypeProperty .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises665#P.6> a owl:ObjectProperty .
+
+oiled:TOP a owl:Class .
+
+oiled:C2.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
+            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/premises665#P.1> ] .
+
+oiled:R1 a owl:ObjectProperty .
+

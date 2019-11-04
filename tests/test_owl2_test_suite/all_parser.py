@@ -3,12 +3,24 @@ from typing import Generator, Union, Tuple, Optional
 from urllib.parse import urlsplit
 
 from rdflib import Graph, Namespace, RDF, URIRef
+from rdflib.exceptions import ParserError
 
 from tests import datadir
-from tests.sw_test_suite.syntax_converter import convert, OWLFormat
+from tests.test_owl2_test_suite.syntax_converter import convert, OWLFormat
 
 TEST = Namespace("http://www.w3.org/2007/OWL/testOntology#")
 SW = Namespace("http://owl.semanticweb.org/id/")
+
+files_to_process = [
+    "TestCase-3AWebOnt-2Dimports-2D013",
+    "TestCase-3AWebOnt-2Dimports-2D004",
+    "TestCase-3AWebOnt-2Dimports-2D014",
+    "TestCase-3AWebOnt-2Dimports-2D008",
+    "TestCase-3AWebOnt-2Dimports-2D007",
+    "FS2RDF-2Dliterals-2Dar",
+    "TestCase-3AWebOnt-2Dimports-2D005",
+    "TestCase-3AWebOnt-2Dimports-2D006"
+]
 
 
 class TestCases:
@@ -34,6 +46,10 @@ class TestCases:
         """ Return the URI, the Functional Syntax and the RDF syntax"""
         while(1):
             subj = next(self._iter)
+            if files_to_process:
+                fname = os.path.basename(subj)
+                if fname not in files_to_process:
+                    continue
             for syntax in self.g.objects(subj, TEST.normativeSyntax):
                 if syntax == TEST.FUNCTIONAL:
                     func_val = self.g.value(subj, TEST.fsPremiseOntology, any=False)
@@ -48,7 +64,7 @@ outputdir = os.path.join(os.path.dirname(__file__), 'data')
 def write_conversion(subj: str, txt: Optional[str], fmt: str) -> bool:
     fpath = urlsplit(subj).path
     fname = os.path.basename(fpath)
-    fdir = os.path.join(outputdir, *os.path.dirname(fpath).split('/'), "func")
+    fdir = os.path.join(outputdir, *os.path.dirname(fpath).split('/')[:-1])     # Remove the 'id' part of the name
     os.makedirs(fdir, exist_ok=True)
     if txt:
         outfile = os.path.join(outputdir, fdir, fname + '.' + fmt)
@@ -62,10 +78,23 @@ def write_conversion(subj: str, txt: Optional[str], fmt: str) -> bool:
 
 
 ncases = 0
+errors = dict()     # File name / error text
 for subj, func_txt, rdf_txt in TestCases(os.path.join(datadir, 'all.rdf')):
     write_conversion(subj, func_txt, "func")
     write_conversion(subj, rdf_txt, "rdf")
+    if rdf_txt:
+        g = Graph()
+        try:
+            g.parse(data=rdf_txt)
+            write_conversion(subj, g.serialize(format="turtle").decode(), 'ttl')
+        except ParserError as e:
+            errors[subj] = str(e)
+    else:
+        errors[subj] = "Functional to RDF failure"
     ncases += 1
 
 
 print(f"Number of test cases: {ncases}")
+print(f"Number of conversion errors: {len(errors)}")
+for k, v in errors.items():
+    print(f"\t{k}: {v}")

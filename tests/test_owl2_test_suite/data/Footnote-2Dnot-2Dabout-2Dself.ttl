@@ -1,0 +1,21 @@
+@prefix : <http://example.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix owl2xml: <http://www.w3.org/2006/12/owl2-xml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+: a owl:Ontology .
+
+:about a owl:ObjectProperty ;
+    rdfs:label "about" .
+
+:footenote1 a :footnote ;
+    :about :footenote1 .
+
+:footnote a owl:Class ;
+    owl:disjointWith [ a owl:Restriction ;
+            owl:hasSelf true ;
+            owl:onProperty :about ] .
+

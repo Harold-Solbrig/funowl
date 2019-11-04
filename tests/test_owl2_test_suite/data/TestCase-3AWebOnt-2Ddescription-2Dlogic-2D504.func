@@ -115,5 +115,5 @@ DisjointClasses(first:minus8 first:plus8)
 DisjointClasses(first:minus9 first:plus9)
 
 
-ClassAssertion(first:Test _:genid5239)
+ClassAssertion(first:Test _:genid16494)
 )
