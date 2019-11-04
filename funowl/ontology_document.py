@@ -29,6 +29,7 @@ from funowl.objectproperty_axioms import SubObjectPropertyOf, SubObjectPropertyE
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ObjectPropertyDomain, ObjectPropertyRange
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.prefix_declarations import PrefixDeclarations, Prefix
+from funowl.terminals.TypingHelper import isinstance_
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -60,9 +61,9 @@ class Ontology(Annotatable):
 
     def __init__(self, *args: FunOwlBase, **kwargs: Dict[str, FunOwlBase]) -> None:
         args = list(args)
-        if args and isinstance(args[0], IRI):
+        if args and isinstance(args[0], IRI) and not isinstance_(args[0], Axiom):
             self.iri = args.pop(0)
-        if args and isinstance(args[0], IRI):
+        if args and isinstance(args[0], IRI) and not isinstance_(args[0], Axiom):
             self.version = args.pop(0)
         self.prefixDeclarations = []
         while args and isinstance(args[0], Prefix):
@@ -71,7 +72,7 @@ class Ontology(Annotatable):
         while args and isinstance(args[0], Import):
             self.directlyImportsDocuments.append(args.pop(0))
         self.axioms = []
-        while args and isinstance(args[0], Axiom):
+        while args and isinstance_(args[0], Axiom):
             self.axioms.append(args.pop(0))
         self.annotations = kwargs.get('annotations', [])
         for k, v in kwargs.items():
@@ -82,6 +83,9 @@ class Ontology(Annotatable):
                 setattr(self, k, v)
             elif k != 'annotations':
                 setattr(self, k, cur_v + v)
+
+        if args:
+            raise ValueError(f"Unrecognized arguments ot Ontology: {args}")
 
         for pd in self._prefixmanager.pdlist():
             if not self._has_prefix(pd.prefixName):

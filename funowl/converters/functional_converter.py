@@ -10,9 +10,12 @@ import funowl
 from funowl import Ontology, Prefix, Annotation
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiteralNoLanguage
 
 # Ontology definition
+from funowl.objectproperty_expressions import ObjectPropertyExpression
+
 ontology_re = re.compile(r'\s*Ontology\s*\((.*)\s*\)\s*$', flags=re.DOTALL)
 # 1: Function '('
 function_re = re.compile(r'([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
@@ -21,15 +24,16 @@ prefix_re = re.compile(r'(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
 # '<' 1:uri '>
 abs_uri = re.compile(r'<([^>]+)>', flags=re.DOTALL)
 # 1: rel-url
-rel_uri = re.compile(r'(([A-Za-z_]).*?:\S+)', flags=re.DOTALL)
+rel_uri = re.compile(r'((([A-Za-z_]).*?)?:\S+)', flags=re.DOTALL)
 # 1: literal
-literal_re = re.compile(r'("[^"]*"|\S+)', flags=re.DOTALL)
+literal_re = re.compile(r'("(?:\\.|[^"\\])*"|\S+)', flags=re.DOTALL)
 # 1: lang
 literal_lang = re.compile(r'@(\S+)')
 # 1: datatype
 literal_datatype = re.compile(r'\^\^(\S+)')
 # '(' 1:
 nested_re = re.compile(r'\(\s*(.+\s*\))', flags=re.DOTALL)
+
 # TODO: Where is this defined and how do we deal with different EOL's?
 comments_re = re.compile(r'#[^\n]*\n?', flags=re.DOTALL)
 
@@ -58,6 +62,8 @@ class OWLFunc:
                 return StringLiteralWithLanguage(arg.value, arg.language)
             else:
                 return FunOwlChoice(StringLiteralNoLanguage(arg))
+        elif isinstance(arg, FunOwlBase):
+            return arg
         else:
             return [self._eval_body(b) for b in arg]
 
@@ -74,7 +80,7 @@ class OWLFunc:
                 args += arg if isinstance(arg, list) else [arg]
 
         if method_to_call is None:
-            logging.getLogger().error(f"Unknown function: {self.str}")
+            logging.getLogger().error(f"Unknown function: {self.function}")
             raise NotImplemented("Create an instance of FunOwlBase that reflects what is written to it ")
         # TODO: Address flattened arguments
         try:
@@ -162,7 +168,12 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
         m = nested_re.match(unparsed)
         if m:
             body, unparsed = nested(m.group(1).strip())
-            rval.append(parse_args(body))
+            rval.extend([ObjectPropertyExpression(e) for e in parse_args(body)])
+            m = nested_re.match(unparsed.strip())
+            if not m:
+                raise ValueError(f"HasKey DataPropertyExpressions clause missing: {unparsed}")
+            body, unparsed = nested(m.group(1).strip())
+            rval.extend([DataPropertyExpression(e) for e in parse_args(body)])
             continue
         m = literal_re.match(unparsed)
         if m:

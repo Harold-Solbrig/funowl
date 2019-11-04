@@ -268,7 +268,6 @@ class DataExactCardinality(FunOwlBase):
     dataRange: Optional[DataRange] = None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.exprs, 'exprs', 2)
         return w.func(self, lambda: (w + self.card + self.dataPropertyExpression).opt(self.dataRange))
 
 

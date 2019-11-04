@@ -26,4 +26,8 @@ class ListWrapper(UserList):
         super().__setitem__(key, cast(self._typ, value))
 
     def append(self, item) -> None:
-        super().append(cast(self._typ, item))
+        v = cast(self._typ, item)
+        if isinstance(v, list):
+            super().extend(v)
+        else:
+            super().append(v)
