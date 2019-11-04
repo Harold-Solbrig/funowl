@@ -22,13 +22,10 @@ class NamedIndividual(IRI):
 
 
 class AnonymousIndividual(NodeID):
-    pass
+    def to_rdf(self, g: Graph) -> BNode:
+        return BNode()
 
 
 @dataclass
 class Individual(FunOwlChoice):
     v: Union[NamedIndividual, AnonymousIndividual]
-
-    def to_rdf(self, g: Graph) -> Union[URIRef, BNode]:
-        return self.v.to_rdf(g)
-

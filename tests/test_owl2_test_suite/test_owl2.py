@@ -21,7 +21,7 @@ class OWL2ValidationTestCase(ValidationTestCase):
     file_suffix = '.func'
 
     # Starting point in directory
-    start_at = 'Bnode2somevaluesfrom.func'
+    start_at = ''
 
     # True means do exactly one file
     single_file = bool(start_at)
@@ -47,8 +47,7 @@ def validate_owl2(fileloc: str) -> bool:
     #    Ontology = f(functional_repr)
     with open(fileloc) as f:
         func_repr = f.read()
-    logging.info('\n' + func_repr)
-    print(func_repr)
+    logging.info('\n===== Input =====\n' + func_repr)
     ontology = to_python(func_repr)
 
     if not ontology:
@@ -60,10 +59,9 @@ def validate_owl2(fileloc: str) -> bool:
     expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
     actual_rdf = Graph()
     ontology.to_rdf(actual_rdf)
-    print('='* 40)
-    print_triples(expected_rdf)
-    print('-'*40)
-    print_triples(actual_rdf)
+    logging.info('\n========== Functional ==========\n' + ontology.to_functional().getvalue())
+    logging.info('\n========== RDF =================\n' + actual_rdf.serialize(format="turtle").decode())
+    logging.info('\n---------- expected ------------\n' + expected_rdf.serialize(format="turtle").decode())
     rslts = compare_rdf(expected_rdf, actual_rdf)
     if rslts:
         print(rslts)
