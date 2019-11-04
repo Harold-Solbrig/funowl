@@ -1,5 +1,5 @@
 """
-ClassAxiom := SubClassOf | EquivalentClasses | DisjointClasses | DisjointUnion
+(Annotatable) := SubClassOf | EquivalentClasses | DisjointClasses | DisjointUnion
 
 SubClassOf := 'SubClassOf' '(' axiomAnnotations subClassExpression superClassExpression ')'
 subClassExpression := ClassExpression
@@ -13,13 +13,12 @@ DisjointUnion := 'DisjointUnion' '(' axiomAnnotations Class disjointClassExpress
 disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 """
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from rdflib import Graph, RDFS
 from rdflib.term import Node
 
-from funowl.annotations import Annotation
-from funowl.axioms import Axiom
+from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression, Class
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -27,18 +26,14 @@ from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers import FunctionalWriter
 
 
-class ClassAxiom(Axiom):
-    pass
-
-
 @dataclass
-class SubClassOf(ClassAxiom):
+class SubClassOf(Annotatable):
     subClassExpression: ClassExpression
     superClassExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return self.annots(w, lambda: w + self.subClassExpression + ' ' +  self.superClassExpression)
+        return self.annots(w, lambda: (w + self.subClassExpression + self.superClassExpression))
 
     def to_rdf(self, g: Graph) -> Optional[Node]:
         """
@@ -51,7 +46,7 @@ class SubClassOf(ClassAxiom):
 
 
 @dataclass
-class EquivalentClasses(ClassAxiom):
+class EquivalentClasses(Annotatable):
     classExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -65,7 +60,7 @@ class EquivalentClasses(ClassAxiom):
 
 
 @dataclass
-class DisjointClasses(ClassAxiom):
+class DisjointClasses(Annotatable):
     classExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -76,11 +71,14 @@ class DisjointClasses(ClassAxiom):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'classExpressions', 2)
-        return self.annots(w, lambda: w.iter(self.classExpressions))
+        if len(self.classExpressions) == 2:
+            return self.annots(w, lambda: w + self.classExpressions[0] + self.classExpressions[1])
+        else:
+            return self.annots(w, lambda: w.iter(self.classExpressions))
 
 
 @dataclass
-class DisjointUnion(ClassAxiom):
+class DisjointUnion(Annotatable):
     cls: Class
     disjointClassExpressions: List[ClassExpression]
     annotations: List[Annotation] = empty_list()
@@ -93,19 +91,36 @@ class DisjointUnion(ClassAxiom):
         super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 3)
+        self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 2)
         return self.annots(w, lambda: (w + self.cls).iter(self.disjointClassExpressions))
 
 
 @dataclass
-class HasKey(Axiom):
+class HasKey(Annotatable):
     classExpression: ClassExpression
     objectPropertyExpressions: Optional[List[ObjectPropertyExpression]] = empty_list()
     dataPropertyExpressions: Optional[List[DataPropertyExpression]] = empty_list()
     annotations: List[Annotation] = empty_list()
 
+    def __init__(self, classExpression: ClassExpression,
+                 *exprs: Union[ObjectPropertyExpression, DataPropertyExpression],
+                 annotations: List[Annotation] = None):
+        self.classExpression = classExpression
+        self.objectPropertyExpressions = []
+        self.dataPropertyExpressions = []
+        for expr in exprs:
+            if isinstance(expr, ObjectPropertyExpression):
+                self.objectPropertyExpressions.append(expr)
+            else:
+                self.dataPropertyExpressions.append(expr)
+        self.annotations = annotations or []
+        super().__init__()
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w,
                            lambda: ((w + self.classExpression +
                                     '(').iter(self.objectPropertyExpressions) + ')' +
-                                    '(').iter(self.dataPropertyExpressions))
+                                    '(').iter(self.dataPropertyExpressions) + ')')
+
+
+ClassAxiom = Union[SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion]

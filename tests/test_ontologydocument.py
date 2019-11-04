@@ -26,17 +26,17 @@ class UseCaseTestCase(TestBase):
         o.imports("http://www.example.com/ontology2")
         o.annotation(RDFS.label, "An example")
         o.subClassOf(EX.Child, OWL.Thing)
-        self.assertEqual("""Prefix( xml := <http://www.w3.org/XML/1998/namespace> )
-Prefix( rdf := <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
-Prefix( rdfs := <http://www.w3.org/2000/01/rdf-schema#> )
-Prefix( xsd := <http://www.w3.org/2001/XMLSchema#> )
-Prefix( owl := <http://www.w3.org/2002/07/owl#> )
-Prefix(  := <http://www.example.com/ontology1#> )
+        self.assertEqual("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+Prefix( : = <http://www.example.com/ontology1#> )
 
 Ontology( <http://www.example.com/ontology1>
     Import( <http://www.example.com/ontology2> )
     Annotation( rdfs:label "An example" )
-    SubClassOf( <http://www.example.com/ontology1#Child>   owl:Thing )
+    SubClassOf( <http://www.example.com/ontology1#Child> owl:Thing )
 )""", str(o.to_functional(self.w)))
 
 

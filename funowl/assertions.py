@@ -27,36 +27,31 @@ NegativeDataPropertyAssertion := 'NegativeDataPropertyAssertion'
                             '(' axiomAnnotations DataPropertyExpression sourceIndividual targetValue ')'
 """
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from rdflib import Graph, OWL, RDF
 from rdflib.term import Node, BNode
 
+from funowl.annotations import Annotation, Annotatable
+from funowl.base.list_support import empty_list
+from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
-from funowl.objectproperty_expressions import ObjectPropertyExpression
-from funowl.base.list_support import empty_list
-from funowl.writers import FunctionalWriter
-from funowl.annotations import Annotation
-from funowl.axioms import Axiom
-from funowl.class_expressions import ClassExpression
 from funowl.individuals import Individual
 from funowl.literals import Literal
+from funowl.objectproperty_expressions import ObjectPropertyExpression
+from funowl.writers import FunctionalWriter
 
 
 @dataclass
-class Assertion(Axiom):
-    pass
-
-
-@dataclass(init=False)
-class SameIndividual(Assertion):
+class SameIndividual(Annotatable):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
     def __init__(self, *individuals: Individual, annotations: Optional[List[Annotation]] = None) -> None:
         self.individuals = list(individuals)
-        self.annotations = annotations if annotations else []
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
@@ -70,14 +65,15 @@ class SameIndividual(Assertion):
         return None
 
 
-@dataclass(init=False)
-class DifferentIndividuals(Assertion):
+@dataclass
+class DifferentIndividuals(Annotatable):
     individuals: List[Individual]
     annotations: List[Annotation] = empty_list()
 
     def __init__(self, *individuals: Individual,  annotations: Optional[List[Annotation]] = None) -> None:
         self.individuals = list(individuals)
-        self.annotations = annotations
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.list_cardinality(self.individuals, 'individuals', 2).\
@@ -96,7 +92,7 @@ class DifferentIndividuals(Assertion):
         return None
 
 @dataclass
-class ClassAssertion(Assertion):
+class ClassAssertion(Annotatable):
     expr: ClassExpression
     individual: Individual
     annotations: List[Annotation] = empty_list()
@@ -109,7 +105,7 @@ class ClassAssertion(Assertion):
 
 
 @dataclass
-class ObjectPropertyAssertion(Assertion):
+class ObjectPropertyAssertion(Annotatable):
     # Should be ObjectProperty instead of ObjectPropertyExpression
     expr: ObjectPropertyExpression
     sourceIndividual: Individual
@@ -125,7 +121,7 @@ class ObjectPropertyAssertion(Assertion):
 
 
 @dataclass
-class NegativeObjectPropertyAssertion(Assertion):
+class NegativeObjectPropertyAssertion(Annotatable):
     expr: ObjectPropertyExpression
     sourceIndividual: Individual
     targetIndividual: Individual
@@ -143,7 +139,7 @@ class NegativeObjectPropertyAssertion(Assertion):
 
 
 @dataclass
-class DataPropertyAssertion(Assertion):
+class DataPropertyAssertion(Annotatable):
     expr: DataPropertyExpression
     sourceIndividual: Individual
     targetValue: Literal
@@ -158,7 +154,7 @@ class DataPropertyAssertion(Assertion):
 
 
 @dataclass
-class NegativeDataPropertyAssertion(Assertion):
+class NegativeDataPropertyAssertion(Annotatable):
     expr: DataPropertyExpression
     sourceIndividual: Individual
     targetValue: Literal
@@ -173,3 +169,7 @@ class NegativeDataPropertyAssertion(Assertion):
         g.add((subj, OWL.sourceIndividual, self.sourceIndividual.to_rdf(g)))
         g.add((subj, OWL.assertionProperty, self.expr.to_rdf(g)))
         g.add((subj, OWL.targetValue, self.targetValue.to_rdf(g)))
+
+        
+Assertion = Union[SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion,
+                  NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion]

@@ -3,12 +3,14 @@ Axiom := Declaration | ClassAxiom | ObjectPropertyAxiom | DataPropertyAxiom | Da
          HasKey | Assertion | AnnotationAxiom
 
 """
-from abc import ABC
-from dataclasses import dataclass
+from typing import Union
 
-from funowl.annotations import Annotatable
+from funowl.annotations import AnnotationAxiom
+from funowl.assertions import Assertion
+from funowl.class_axioms import ClassAxiom, HasKey
+from funowl.dataproperty_axioms import DataPropertyAxiom, DatatypeDefinition
+from funowl.declarations import Declaration
+from funowl.objectproperty_axioms import ObjectPropertyAxiom
 
-
-@dataclass
-class Axiom(Annotatable, ABC):
-    pass
+Axiom = Union[Declaration, ClassAxiom, ObjectPropertyAxiom, DataPropertyAxiom, DatatypeDefinition, HasKey, Assertion,
+              AnnotationAxiom]

@@ -1,8 +1,7 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Union
 
-from funowl.annotations import Annotation
-from funowl.axioms import Axiom
+from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -11,7 +10,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.literals import Datatype
 
 """
-DataPropertyAxiom :=
+(Annotatable) :=
     SubDataPropertyOf | EquivalentDataProperties | DisjointDataProperties |
     DataPropertyDomain | DataPropertyRange | FunctionalDataProperty
 
@@ -34,12 +33,7 @@ DatatypeDefinition := 'DatatypeDefinition' '(' axiomAnnotations Datatype DataRan
 
 
 @dataclass
-class DataPropertyAxiom(Axiom):
-    pass
-
-
-@dataclass
-class SubDataPropertyOf(DataPropertyAxiom):
+class SubDataPropertyOf(Annotatable):
     subDataPropertyExpression: DataPropertyExpression
     superDataPropertyExpression: DataPropertyExpression
     annotations: List[Annotation] = empty_list()
@@ -49,9 +43,14 @@ class SubDataPropertyOf(DataPropertyAxiom):
 
 
 @dataclass
-class EquivalentDataProperties(DataPropertyAxiom):
+class EquivalentDataProperties((Annotatable)):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *dataPropertyExpressions: DataPropertyExpression, annotations: List[Annotation] = None) -> None:
+        self.dataPropertyExpressions = list(dataPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
@@ -59,9 +58,14 @@ class EquivalentDataProperties(DataPropertyAxiom):
 
 
 @dataclass
-class DisjointDataProperties(DataPropertyAxiom):
+class DisjointDataProperties((Annotatable)):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *dataPropertyExpressions: DataPropertyExpression, annotations: List[Annotation] = None) -> None:
+        self.dataPropertyExpressions = list(dataPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
@@ -69,7 +73,7 @@ class DisjointDataProperties(DataPropertyAxiom):
 
 
 @dataclass
-class DataPropertyDomain(DataPropertyAxiom):
+class DataPropertyDomain((Annotatable)):
     dataPropertyExpression: DataPropertyExpression
     classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
@@ -79,7 +83,7 @@ class DataPropertyDomain(DataPropertyAxiom):
 
 
 @dataclass
-class DataPropertyRange(DataPropertyAxiom):
+class DataPropertyRange((Annotatable)):
     dataPropertyExpression: DataPropertyExpression
     dataRange: DataRange
     annotations: List[Annotation] = empty_list()
@@ -89,7 +93,7 @@ class DataPropertyRange(DataPropertyAxiom):
 
 
 @dataclass
-class FunctionalDataProperty(DataPropertyAxiom):
+class FunctionalDataProperty((Annotatable)):
     dataPropertyExpression: DataPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -98,10 +102,14 @@ class FunctionalDataProperty(DataPropertyAxiom):
 
 
 @dataclass
-class DataTypeDefinition(DataPropertyAxiom):
+class DatatypeDefinition((Annotatable)):
     datatype: Datatype
     datarange: DataRange
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.datatype + ' ' + self.datarange)
+
+
+DataPropertyAxiom = Union[SubDataPropertyOf, EquivalentDataProperties, DisjointDataProperties, DataPropertyDomain,
+                          DataPropertyRange, FunctionalDataProperty]

@@ -70,7 +70,7 @@ class FunctionalWriter:
         return self
 
     def bol(self) -> bool:
-        """ Return True if at the beginning of a line """
+        """ Return True if at the beginning of a line and NOT the beginning of a "document" """
         return not bool(self._line.strip())
 
     def getvalue(self) -> str:

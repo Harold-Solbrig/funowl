@@ -31,19 +31,13 @@ from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-# A DataRange can be a DataType or any child of DataRange_
-class DataRange_(FunOwlBase):
-    pass
-
-
 @dataclass
-class DataRange(FunOwlChoice):
-    v : Union[Datatype, "DataRange_"]
+class DataIntersectionOf(FunOwlBase):
+    dataRanges: List["DataRange"]
 
-
-@dataclass
-class DataIntersectionOf(DataRange_):
-    dataRanges: List[DataRange]
+    def __init__(self, *dataRanges: List["DataRange"]) -> None:
+        self.dataRanges = list(dataRanges)
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataRanges, 'dataRange', 2)
@@ -51,8 +45,12 @@ class DataIntersectionOf(DataRange_):
 
 
 @dataclass
-class DataUnionOf(DataRange_):
-    dataRanges: List[DataRange]
+class DataUnionOf(FunOwlBase):
+    dataRanges: List["DataRange"]
+
+    def __init__(self, *dataRanges: List["DataRange"]) -> None:
+        self.dataRanges = list(dataRanges)
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataRanges, 'dataRange', 2)
@@ -60,19 +58,22 @@ class DataUnionOf(DataRange_):
 
 
 @dataclass
-class DataComplementOf(DataRange_):
-    dataRange: DataRange
+class DataComplementOf(FunOwlBase):
+    dataRange: "DataRange"
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.dataRange)
 
 @dataclass
-class DataOneOf(DataRange_):
+class DataOneOf(FunOwlBase):
     literal: List[Literal]
 
+    def __init__(self, *literal: List[Literal]) -> None:
+        self.literal = list(literal)
+        super().__init__()
+
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        self.list_cardinality(self.literal, "literal", 2)
-        return w.func(self, w.iter(self.literal))
+        return w.func(self, lambda: w.iter(self.literal))
 
 
 @dataclass
@@ -85,7 +86,7 @@ class FacetRestriction(FunOwlBase):
 
 
 @dataclass
-class DatatypeRestriction(DataRange_):
+class DatatypeRestriction(FunOwlBase):
     datatype: Datatype
     restrictions: List[FacetRestriction]
 
@@ -94,6 +95,10 @@ class DatatypeRestriction(DataRange_):
         self.datatype = datatype
         self.restrictions = [FacetRestriction(r[0], r[1]) for r in zip(*[restrictions[i::2] for i in range(2)])]
         self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.datatype).iter(self.restrictions))
+
+
+DataRange = Union[Datatype, DataIntersectionOf, DataUnionOf, DataComplementOf, DataOneOf, DatatypeRestriction]

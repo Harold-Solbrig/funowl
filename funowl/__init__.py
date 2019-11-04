@@ -1,5 +1,5 @@
 from . prefix_declarations import Prefix
-from . ontology_document import Ontology
+from . ontology_document import Ontology, Import
 from . declarations import Declaration, Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, \
     NamedIndividual
 from . annotations import Annotation, AnnotationAssertion, SubAnnotationPropertyOf, AnnotationPropertyDomain, \
@@ -14,8 +14,8 @@ from . class_axioms import SubClassOf, EquivalentClasses, DisjointClasses, Disjo
 from . objectproperty_axioms import SubObjectPropertyOf, ObjectPropertyChain, EquivalentObjectProperties, \
     DisjointObjectProperties, ObjectPropertyDomain, ObjectPropertyRange, InverseObjectProperties, \
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ReflexiveObjectProperty, IrreflexiveObjectProperty, \
-    SymmetricObjectProperty, AsyymetricObjectProperty, TransitiveObjectProperty
+    SymmetricObjectProperty, AsymmetricObjectProperty, TransitiveObjectProperty
 from . dataproperty_axioms import SubDataPropertyOf, EquivalentDataProperties, DisjointDataProperties, \
-    DataPropertyDomain, DataPropertyRange, FunctionalDataProperty, DataTypeDefinition
+    DataPropertyDomain, DataPropertyRange, FunctionalDataProperty, DatatypeDefinition
 from . assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion

@@ -21,7 +21,6 @@ from rdflib import Graph
 from rdflib.term import Node
 
 from funowl.annotations import AnnotationProperty
-from funowl.axioms import Axiom
 from funowl.class_expressions import Class
 from funowl.dataproperty_expressions import DataProperty
 from funowl.individuals import NamedIndividual
@@ -45,7 +44,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass
-class Declaration(Axiom, FunOwlChoice):
+class Declaration(FunOwlChoice):
     v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]
     coercion_allowed = False
 

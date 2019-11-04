@@ -40,8 +40,7 @@ TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations Obje
 from dataclasses import dataclass
 from typing import List, Union, Optional
 
-from funowl.annotations import Annotation
-from funowl.axioms import Axiom
+from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
@@ -50,14 +49,15 @@ from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-class ObjectPropertyAxiom(Axiom):
-    pass
-
-
 @dataclass
-class ObjectPropertyChain(FunOwlBase):
+class ObjectPropertyChain(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression, annotations: List[Annotation] = None):
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations if annotations else []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
@@ -69,7 +69,7 @@ class SubObjectPropertyExpression(FunOwlChoice):
 
 
 @dataclass
-class SubObjectPropertyOf(ObjectPropertyAxiom):
+class SubObjectPropertyOf(Annotatable):
     subObjectPropertyExpression: SubObjectPropertyExpression.types()
     superObjectPropertyExpression: ObjectPropertyExpression.types()
     annotations: List[Annotation] = empty_list()
@@ -79,14 +79,15 @@ class SubObjectPropertyOf(ObjectPropertyAxiom):
 
 
 @dataclass
-class EquivalentObjectProperties(ObjectPropertyAxiom):
+class EquivalentObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
                  annotations: Optional[List[Annotation]] = None) -> None:
         self.objectPropertyExpressions = list(objectPropertyExpressions)
-        self.annotations = annotations
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
@@ -95,16 +96,22 @@ class EquivalentObjectProperties(ObjectPropertyAxiom):
         pass
 
 @dataclass
-class DisjointObjectProperties(ObjectPropertyAxiom):
+class DisjointObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
+
+    def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
+                 annotations: Optional[List[Annotation]] = None) -> None:
+        self.objectPropertyExpressions = list(objectPropertyExpressions)
+        self.annotations = annotations or []
+        super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
 
 @dataclass
-class ObjectPropertyDomain(ObjectPropertyAxiom):
+class ObjectPropertyDomain(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
@@ -113,7 +120,7 @@ class ObjectPropertyDomain(ObjectPropertyAxiom):
         return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
 @dataclass
-class ObjectPropertyRange(ObjectPropertyAxiom):
+class ObjectPropertyRange(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
@@ -123,7 +130,7 @@ class ObjectPropertyRange(ObjectPropertyAxiom):
 
 
 @dataclass
-class InverseObjectProperties(ObjectPropertyAxiom):
+class InverseObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -137,7 +144,7 @@ class InverseObjectProperties(ObjectPropertyAxiom):
         return w.func(self, lambda: w + self.objectPropertyExpressions[0] + self.objectPropertyExpressions[1])
 
 @dataclass
-class FunctionalObjectProperty(ObjectPropertyAxiom):
+class FunctionalObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -146,7 +153,7 @@ class FunctionalObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class InverseFunctionalObjectProperty(ObjectPropertyAxiom):
+class InverseFunctionalObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -155,7 +162,7 @@ class InverseFunctionalObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class ReflexiveObjectProperty(ObjectPropertyAxiom):
+class ReflexiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -164,7 +171,7 @@ class ReflexiveObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class IrreflexiveObjectProperty(ObjectPropertyAxiom):
+class IrreflexiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -173,7 +180,7 @@ class IrreflexiveObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class SymmetricObjectProperty(ObjectPropertyAxiom):
+class SymmetricObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -182,7 +189,7 @@ class SymmetricObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class AsyymetricObjectProperty(ObjectPropertyAxiom):
+class AsymmetricObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -191,9 +198,17 @@ class AsyymetricObjectProperty(ObjectPropertyAxiom):
 
 
 @dataclass
-class TransitiveObjectProperty(ObjectPropertyAxiom):
+class TransitiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
+
+
+
+ObjectPropertyAxiom = Union[SubObjectPropertyOf, EquivalentObjectProperties, DisjointObjectProperties,
+                            InverseObjectProperties, ObjectPropertyDomain, ObjectPropertyRange,
+                            FunctionalObjectProperty, InverseFunctionalObjectProperty, ReflexiveObjectProperty,
+                            IrreflexiveObjectProperty, SymmetricObjectProperty, AsymmetricObjectProperty,
+                            TransitiveObjectProperty ]

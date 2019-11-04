@@ -72,8 +72,6 @@ class TestGeneralDefinitons(TestBase):
         with self.assertRaises(ValueError):
             PrefixName(None)
         with self.assertRaises(TypeError):
-            PrefixName('')
-        with self.assertRaises(TypeError):
             PrefixName('1bc')
         self.assertEqual('abc_', str(PrefixName('abc_').to_functional(self.w.reset())))
 

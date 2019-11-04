@@ -1,58 +1,32 @@
 import logging
 import re
 from dataclasses import dataclass
-from typing import Union, List, Tuple, Match, cast
+from pprint import pformat
+from typing import Union, List, Tuple, Match, cast, Optional
 
 import rdflib
 
 import funowl
+from funowl import Ontology, Prefix, Annotation
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiteralNoLanguage
 
+# Ontology definition
+from funowl.objectproperty_expressions import ObjectPropertyExpression
+
 ontology_re = re.compile(r'\s*Ontology\s*\((.*)\s*\)\s*$', flags=re.DOTALL)
-
-
-func = """Prefix (  := <http://example.org/> )
-Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
-Ontology(
-  Declaration(NamedIndividual(:a))
-  Declaration(DataProperty(:dp))
-  Declaration(Class(:A))
-  SubClassOf(:A 
-    DataHasValue(:dp "2007-10-08T20:44:11.656+01:00"^^xsd:dateTime)) 
-  SubClassOf(:A 
-    DataAllValuesFrom(:dp DatatypeRestriction(
-      xsd:dateTime 
-      xsd:minInclusive "2008-07-08T20:44:11.656+01:00"^^xsd:dateTime 
-      xsd:maxInclusive "2008-10-08T20:44:11.656+01:00"^^xsd:dateTime)
-    )
-  ) 
-  ClassAssertion(:A :a)
-)"""
-
-# Target:
-# Prefix(' := <....>')
-# Ontology(
-#     Declaration(NamedIndividual(":a")), Declaration(Dataproperty(":dp"))
-# )
-#
-# Generic Syntax:
-#   Function ( args )
-#   args = FunctIon | literal | embedded list
-#   literal = URIRef | Literal
-#   embedded list FunctIon|embedded list "(" args ")"
-
 # 1: Function '('
-function_re = re.compile(r'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
+function_re = re.compile(r'([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
 # 1: Prefix ':=' 2: URI
-prefix_re = re.compile(r'(\S*):=\s*(\S*)', flags=re.DOTALL)
+prefix_re = re.compile(r'(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
 # '<' 1:uri '>
 abs_uri = re.compile(r'<([^>]+)>', flags=re.DOTALL)
 # 1: rel-url
-rel_uri = re.compile(r'(([A-Za-z_]).*?:\S+)', flags=re.DOTALL)
+rel_uri = re.compile(r'((([A-Za-z_]).*?)?:\S+)', flags=re.DOTALL)
 # 1: literal
-literal_re = re.compile(r'("[^"]*"|\S+)', flags=re.DOTALL)
+literal_re = re.compile(r'("(?:\\.|[^"\\])*"|\S+)', flags=re.DOTALL)
 # 1: lang
 literal_lang = re.compile(r'@(\S+)')
 # 1: datatype
@@ -60,6 +34,8 @@ literal_datatype = re.compile(r'\^\^(\S+)')
 # '(' 1:
 nested_re = re.compile(r'\(\s*(.+\s*\))', flags=re.DOTALL)
 
+# TODO: Where is this defined and how do we deal with different EOL's?
+comments_re = re.compile(r'#[^\n]*\n?', flags=re.DOTALL)
 
 
 @dataclass
@@ -86,23 +62,36 @@ class OWLFunc:
                 return StringLiteralWithLanguage(arg.value, arg.language)
             else:
                 return FunOwlChoice(StringLiteralNoLanguage(arg))
+        elif isinstance(arg, FunOwlBase):
+            return arg
         else:
             return [self._eval_body(b) for b in arg]
 
     def eval(self) -> FunOwlBase:
         method_to_call = getattr(funowl, self.function, None)
         args = []
-        # Flatten nested lists
+        annotations = []
+        # Flatten nested lists and move annotations to the front
         for b in self.body:
             arg = self._eval_body(b)
-            args += arg if isinstance(arg, list) else [arg]
+            if isinstance(arg, Annotation):
+                annotations.append(arg)
+            else:
+                args += arg if isinstance(arg, list) else [arg]
 
         if method_to_call is None:
-            logging.getLogger().error(f"Unknown function: {self.str}")
+            logging.getLogger().error(f"Unknown function: {self.function}")
             raise NotImplemented("Create an instance of FunOwlBase that reflects what is written to it ")
         # TODO: Address flattened arguments
-        return method_to_call(*args)
-
+        try:
+            if annotations:
+                return method_to_call(*args, annotations=annotations)
+            else:
+                return method_to_call(*args)
+        except TypeError as e:
+            arglist = ', '.join([str(arg) for arg in args])
+            logging.error(f"function {method_to_call.__name__}({arglist})")
+            raise e
 
 
 def m_rem(m: Match) -> str:
@@ -141,6 +130,7 @@ def nested(s: str, depth=1) -> Tuple[str, str]:
 
 ARG_TYPE = Union[OWLFunc, rdflib.Literal, rdflib.URIRef]
 
+
 def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
     """
      Parse an argument list to a function
@@ -150,6 +140,11 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
     rval = []
     unparsed = s
     while unparsed:
+        unparsed =unparsed.strip()                          # Remove all white space
+        m = comments_re.match(unparsed)
+        if m:
+            unparsed = unparsed[len(m.group(0)):]
+            continue
         m = prefix_re.match(unparsed)
         if m:
             rval.append(m.group(1))
@@ -170,15 +165,20 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
             rval.append(rdflib.URIRef(m.group(1)))
             unparsed = m_rem(m)
             continue
+        m = nested_re.match(unparsed)
+        if m:
+            body, unparsed = nested(m.group(1).strip())
+            rval.extend([ObjectPropertyExpression(e) for e in parse_args(body)])
+            m = nested_re.match(unparsed.strip())
+            if not m:
+                raise ValueError(f"HasKey DataPropertyExpressions clause missing: {unparsed}")
+            body, unparsed = nested(m.group(1).strip())
+            rval.extend([DataPropertyExpression(e) for e in parse_args(body)])
+            continue
         m = literal_re.match(unparsed)
         if m:
             lit, unparsed = lit_parser(m.group(1), m_rem(m))
             rval.append(lit)
-            continue
-        m = nested_re.match(unparsed)
-        if m:
-            body, unparsed = nested(m.group(1).strip())
-            rval.append(parse_args(body))
             continue
         raise ValueError(f"Unrecognized content: {unparsed[:20]}")
     return rval
@@ -193,7 +193,8 @@ def fparse(s: str) -> List[OWLFunc]:
     rval: List[OWLFunc] = []
     unparsed = s
     while unparsed:
-        m = function_re.match(unparsed.strip())
+        unparsed = unparsed.strip()
+        m = function_re.match(unparsed)
         if not m:
             raise ValueError("Unrecognized functional syntax string")
         body, unparsed = nested(m_rem(m))
@@ -201,15 +202,21 @@ def fparse(s: str) -> List[OWLFunc]:
     return rval
 
 
-tree = fparse(func)
-print('\n'.join([repr(e) for e in tree]))
+def to_python(defn: str) -> Optional[Ontology]:
+    rval = None
 
-prefixes: List[FunOwlBase] = []
-for e in tree:
-    decl = e.eval()
-    if isinstance(decl, funowl.Prefix):
-        prefixes.append(decl)
-    else:
-        decl = cast(funowl.Ontology, decl)
-        decl.prefixDeclarations = prefixes
-print(decl.to_functional().getvalue())
+    tree = fparse(defn)
+    logging.debug(pformat(defn))
+
+    if tree:
+        prefixes: List[Prefix] = []
+
+        for e in tree:
+            decl = e.eval()
+            if isinstance(decl, funowl.Prefix):
+                prefixes.append(decl)
+            else:
+                rval = cast(funowl.Ontology, decl)
+                prefix_reprs = {prefix.prefixName: prefix.fullIRI for prefix in prefixes}
+                rval.prefixes(None, **prefix_reprs)
+    return rval

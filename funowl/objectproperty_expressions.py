@@ -1,11 +1,10 @@
 from dataclasses import dataclass
-from typing import Union, Optional
+from typing import Union
 
-from rdflib import OWL, Graph
-from rdflib.term import Node
+from rdflib import OWL
 
-from funowl.identifiers import IRI
 from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.identifiers import IRI
 from funowl.writers import FunctionalWriter
 
 
