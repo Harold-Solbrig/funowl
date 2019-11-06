@@ -1,21 +1,26 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Peter :fatherOf :Chris,
-        :Stewie .
+example:Peter a :NamedIndividual ;
+    example:fatherOf example:Chris,
+        example:Stewie .
 
-:fatherOf a owl:ObjectProperty .
+example:fatherOf a :ObjectProperty .
 
-:Stewie a :Man ;
-    owl:differentFrom :Chris .
+example:Chris a example:Man,
+        :NamedIndividual .
 
-:Chris a :Man .
+example:Man a :Class .
 
-:Man a owl:Class .
+example:Stewie a example:Man,
+        :NamedIndividual .
 
-[] a owl:Ontology .
+[] a :Ontology .
+
+[] a :AllDifferent ;
+    :distinctMembers ( example:Chris example:Stewie ) .
 

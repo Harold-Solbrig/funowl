@@ -1,18 +1,22 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Peter :hasSSN "123-45-6789" ;
-    owl:differentFrom :Peter_Griffin .
+:Thing :hasKey ( example:hasSSN ) .
 
-owl:Thing owl:hasKey ( :hasSSN ) .
+example:Peter a :NamedIndividual ;
+    example:hasSSN "123-45-6789" .
 
-:Peter_Griffin :hasSSN "123-45-6789" .
+example:Peter_Griffin a :NamedIndividual ;
+    example:hasSSN "123-45-6789" .
 
-:hasSSN a owl:DatatypeProperty .
+example:hasSSN a :DatatypeProperty .
 
-[] a owl:Ontology .
+[] a :AllDifferent ;
+    :distinctMembers ( example:Peter example:Peter_Griffin ) .
+
+[] a :Ontology .
 

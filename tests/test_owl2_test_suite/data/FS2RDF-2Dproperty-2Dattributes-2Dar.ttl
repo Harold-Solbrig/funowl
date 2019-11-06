@@ -1,33 +1,32 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:a a owl:ObjectProperty,
-        owl:TransitiveProperty .
+<http://example.org/a> a :ObjectProperty,
+        :TransitiveProperty .
 
-:b a owl:ObjectProperty,
-        owl:ReflexiveProperty .
+<http://example.org/b> a :ObjectProperty,
+        :ReflexiveProperty .
 
-:c a owl:IrreflexiveProperty,
-        owl:ObjectProperty .
+<http://example.org/c> a :IrreflexiveProperty,
+        :ObjectProperty .
 
-:d a owl:ObjectProperty,
-        owl:SymmetricProperty .
+<http://example.org/d> a :ObjectProperty,
+        :SymmetricProperty .
 
-:e a owl:AsymmetricProperty,
-        owl:ObjectProperty .
+<http://example.org/e> a :AsymmetricProperty,
+        :ObjectProperty .
 
-:f a owl:FunctionalProperty,
-        owl:ObjectProperty .
+<http://example.org/f> a :FunctionalProperty,
+        :ObjectProperty .
 
-:g a owl:InverseFunctionalProperty,
-        owl:ObjectProperty .
+<http://example.org/g> a :InverseFunctionalProperty,
+        :ObjectProperty .
 
-:h a owl:DatatypeProperty,
-        owl:FunctionalProperty .
+<http://example.org/h> a :DatatypeProperty,
+        :FunctionalProperty .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

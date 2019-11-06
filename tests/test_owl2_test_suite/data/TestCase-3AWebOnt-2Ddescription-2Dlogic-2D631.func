@@ -88,5 +88,5 @@ EquivalentClasses(:C.3.comp DataMinCardinality(1 :P.3))
 EquivalentClasses(:V.5 ObjectSomeValuesFrom(oiled:r :A.4))
 
 
-ClassAssertion(oiled:Satisfiable _:genid17457)
+ClassAssertion(oiled:Satisfiable _:genid24213)
 )

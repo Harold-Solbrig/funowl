@@ -12,14 +12,17 @@ TEST = Namespace("http://www.w3.org/2007/OWL/testOntology#")
 SW = Namespace("http://owl.semanticweb.org/id/")
 
 files_to_process = [
-    "TestCase-3AWebOnt-2Dimports-2D013",
-    "TestCase-3AWebOnt-2Dimports-2D004",
     "TestCase-3AWebOnt-2Dimports-2D014",
-    "TestCase-3AWebOnt-2Dimports-2D008",
-    "TestCase-3AWebOnt-2Dimports-2D007",
-    "FS2RDF-2Dliterals-2Dar",
+    "TestCase-3AWebOnt-2Ddescription-2Dlogic-2D206",
+    "TestCase-3AWebOnt-2Dmiscellaneous-2D001",
+    "TestCase-3AWebOnt-2Dmiscellaneous-2D202",
     "TestCase-3AWebOnt-2Dimports-2D005",
-    "TestCase-3AWebOnt-2Dimports-2D006"
+    "TestCase-3AWebOnt-2Dimports-2D007",
+    "TestCase-3AWebOnt-2Dimports-2D004",
+    "TestCase-3AWebOnt-2Dmiscellaneous-2D203",
+    "TestCase-3AWebOnt-2Dimports-2D013",
+    "TestCase-3AWebOnt-2Dimports-2D008",
+    "TestCase-3AWebOnt-2Dimports-2D006",
 ]
 
 
@@ -55,8 +58,10 @@ class TestCases:
                     func_val = self.g.value(subj, TEST.fsPremiseOntology, any=False)
                     return subj, func_val, self.functional_to_rdf(func_val)
                 elif syntax == TEST.RDFXML:
-                    rdf_val = self.g.value(subj, TEST.rdfXmlPremiseOntology, any=False)
-                    return subj, self.rdf_to_functional(rdf_val), rdf_val
+                    orig_rdf = self.g.value(subj, TEST.rdfXmlPremiseOntology, any=False)
+                    func_val = self.rdf_to_functional(orig_rdf)
+                    rdf_val = self.functional_to_rdf(func_val) if func_val else None
+                    return subj, func_val, rdf_val
 
 
 outputdir = os.path.join(os.path.dirname(__file__), 'data')
@@ -80,17 +85,20 @@ def write_conversion(subj: str, txt: Optional[str], fmt: str) -> bool:
 ncases = 0
 errors = dict()     # File name / error text
 for subj, func_txt, rdf_txt in TestCases(os.path.join(datadir, 'all.rdf')):
-    write_conversion(subj, func_txt, "func")
-    write_conversion(subj, rdf_txt, "rdf")
-    if rdf_txt:
-        g = Graph()
-        try:
-            g.parse(data=rdf_txt)
-            write_conversion(subj, g.serialize(format="turtle").decode(), 'ttl')
-        except ParserError as e:
-            errors[subj] = str(e)
+    if func_txt and rdf_txt:
+        write_conversion(subj, func_txt, "func")
+        write_conversion(subj, rdf_txt, "rdf")
+        if rdf_txt:
+            g = Graph()
+            try:
+                g.parse(data=rdf_txt)
+                write_conversion(subj, g.serialize(format="turtle").decode(), 'ttl')
+            except ParserError as e:
+                errors[subj] = str(e)
+        else:
+            errors[subj] = "Functional to RDF failure"
     else:
-        errors[subj] = "Functional to RDF failure"
+        errors[subj] = "Conversion failure"
     ncases += 1
 
 

@@ -1,17 +1,19 @@
-@prefix first: <http://www.w3.org/2002/03owlt/sameAs/premises001#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix premises001: <http://www.w3.org/2002/03owlt/sameAs/premises001#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:annotate a owl:AnnotationProperty .
+premises001:annotate a :AnnotationProperty .
 
-first:c1 a owl:Class ;
-    first:annotate "description of c1" ;
-    owl:sameAs first:c2 .
+premises001:c1 a :Class,
+        :NamedIndividual ;
+    premises001:annotate "description of c1" ;
+    :sameAs premises001:c2 .
 
-first:c2 a owl:Class .
+premises001:c2 a :Class,
+        :NamedIndividual .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

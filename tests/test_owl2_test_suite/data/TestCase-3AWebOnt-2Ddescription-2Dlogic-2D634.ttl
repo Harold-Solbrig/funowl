@@ -1,4 +1,4 @@
-@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/consistent634#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,51 +7,52 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent634> a owl:Ontology .
 
-oiled:Satisfiable a owl:Class ;
-    owl:intersectionOf ( [ a owl:Restriction ;
-                owl:onProperty oiled:r ;
-                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.4> ] [ a owl:Restriction ;
-                owl:onProperty oiled:r ;
-                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.5> ] ) .
+<http://oiled.man.example.net/test#Satisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                        owl:someValuesFrom :V.4 ] [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                        owl:someValuesFrom :V.5 ] ) ] .
 
-oiled:p a owl:Class ;
+<http://oiled.man.example.net/test#p> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> ] .
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-oiled:p.comp a owl:Class ;
+<http://oiled.man.example.net/test#p.comp> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> ] .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.2> a owl:Class ;
+:V.2 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom oiled:p ;
-            owl:onProperty oiled:r1 ] .
+            owl:allValuesFrom <http://oiled.man.example.net/test#p> ;
+            owl:onProperty <http://oiled.man.example.net/test#r1> ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.3> a owl:Class ;
+:V.3 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom oiled:p.comp ;
-            owl:onProperty oiled:r1 ] .
+            owl:allValuesFrom <http://oiled.man.example.net/test#p.comp> ;
+            owl:onProperty <http://oiled.man.example.net/test#r1> ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.4> a owl:Class ;
+:V.4 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.2> ;
-            owl:onProperty oiled:invR ] .
+            owl:allValuesFrom :V.2 ;
+            owl:onProperty <http://oiled.man.example.net/test#invR> ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/consistent634#V.5> a owl:Class ;
+:V.5 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent634#V.3> ;
-            owl:onProperty oiled:invR ] .
+            owl:allValuesFrom :V.3 ;
+            owl:onProperty <http://oiled.man.example.net/test#invR> ] .
 
-oiled:invR a owl:ObjectProperty ;
-    owl:inverseOf oiled:r .
+<http://oiled.man.example.net/test#invR> a owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#r> .
 
-oiled:r1 a owl:ObjectProperty .
+<http://oiled.man.example.net/test#r1> a owl:ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/consistent634#P.1> a owl:DatatypeProperty .
+:P.1 a owl:DatatypeProperty .
 
-oiled:r a owl:ObjectProperty .
+<http://oiled.man.example.net/test#r> a owl:ObjectProperty .
 
-[] a oiled:Satisfiable .
+[] a <http://oiled.man.example.net/test#Satisfiable> .
 

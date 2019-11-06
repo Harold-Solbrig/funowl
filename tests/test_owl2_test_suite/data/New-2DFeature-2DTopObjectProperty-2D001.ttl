@@ -1,14 +1,14 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:i a [ a owl:Class ;
-            owl:complementOf [ a owl:Restriction ;
-                    owl:onProperty owl:topObjectProperty ;
-                    owl:someValuesFrom owl:Thing ] ] .
+<http://example.org/i> a [ a :Class ;
+            :complementOf [ a :Restriction ;
+                    :onProperty :topObjectProperty ;
+                    :someValuesFrom :Thing ] ],
+        :NamedIndividual .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

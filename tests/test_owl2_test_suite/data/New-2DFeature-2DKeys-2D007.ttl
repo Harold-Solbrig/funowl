@@ -1,28 +1,31 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Lois a [ a owl:Restriction ;
-            owl:onProperty :marriedTo ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:intersectionOf ( :Man [ a owl:Restriction ;
-                                owl:hasValue "123-45-6789" ;
-                                owl:onProperty :hasSSN ] ) ] ] .
+example:Lois a [ a :Restriction ;
+            :onProperty example:marriedTo ;
+            :someValuesFrom [ a :Class ;
+                    :intersectionOf ( example:Man [ a :Restriction ;
+                                :hasValue "123-45-6789" ;
+                                :onProperty example:hasSSN ] ) ] ],
+        :NamedIndividual .
 
-:Peter a :Person ;
-    :hasSSN "123-45-6789" .
+example:Peter a example:Person,
+        :NamedIndividual ;
+    example:hasSSN "123-45-6789" .
 
-:Man a owl:Class .
+example:Man a :Class ;
+    rdfs:subClassOf example:Person .
 
-:Person a owl:Class ;
-    owl:hasKey ( :hasSSN ) .
+example:marriedTo a :ObjectProperty .
 
-:marriedTo a owl:ObjectProperty .
+example:Person a :Class ;
+    :hasKey ( example:hasSSN ) .
 
-:hasSSN a owl:DatatypeProperty .
+example:hasSSN a :DatatypeProperty .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

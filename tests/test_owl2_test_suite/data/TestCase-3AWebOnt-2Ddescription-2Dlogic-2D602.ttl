@@ -1,4 +1,4 @@
-@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent602#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,34 +7,34 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent602> a owl:Ontology .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent602#A.2> a owl:Class ;
-    rdfs:subClassOf oiled:d ;
+:A.2 a owl:Class ;
+    rdfs:subClassOf <http://oiled.man.example.net/test#d> ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom oiled:c ;
-            owl:onProperty oiled:r ] .
+            owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
+            owl:onProperty <http://oiled.man.example.net/test#r> ] .
 
-oiled:Unsatisfiable a owl:Class ;
-    rdfs:subClassOf oiled:c,
-        oiled:d.comp .
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    rdfs:subClassOf <http://oiled.man.example.net/test#c>,
+        <http://oiled.man.example.net/test#d.comp> .
 
-oiled:d a owl:Class ;
+<http://oiled.man.example.net/test#d> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent602#P.1> ] .
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-oiled:d.comp a owl:Class ;
+<http://oiled.man.example.net/test#d.comp> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent602#P.1> ] .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-oiled:r a owl:ObjectProperty .
+<http://oiled.man.example.net/test#r> a owl:ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent602#P.1> a owl:DatatypeProperty .
+:P.1 a owl:DatatypeProperty .
 
-oiled:c a owl:Class ;
+<http://oiled.man.example.net/test#c> a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom oiled:c ;
-            owl:onProperty oiled:r ] .
+            owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
+            owl:onProperty <http://oiled.man.example.net/test#r> ] .
 
-[] a oiled:Unsatisfiable .
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

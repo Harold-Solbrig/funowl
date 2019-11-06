@@ -13,6 +13,6 @@ Declaration(NamedIndividual(first:c))
 
 
 
-ClassAssertion(owl:Thing _:genid19832)
-ObjectPropertyAssertion(first:p _:genid19832 first:c)
+ClassAssertion(owl:Thing _:genid24380)
+ObjectPropertyAssertion(first:p _:genid24380 first:c)
 )

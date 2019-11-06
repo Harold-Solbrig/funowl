@@ -1,13 +1,19 @@
-@prefix first: <http://www.w3.org/2002/03owlt/disjointWith/premises002#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:a a first:A .
+<http://www.w3.org/2002/03owlt/disjointWith/premises002#a> a <http://www.w3.org/2002/03owlt/disjointWith/premises002#A>,
+        :NamedIndividual .
 
-first:b a first:B .
+<http://www.w3.org/2002/03owlt/disjointWith/premises002#b> a <http://www.w3.org/2002/03owlt/disjointWith/premises002#B>,
+        :NamedIndividual .
 
-first:A owl:disjointWith first:B .
+<http://www.w3.org/2002/03owlt/disjointWith/premises002#A> a :Class ;
+    :disjointWith <http://www.w3.org/2002/03owlt/disjointWith/premises002#B> .
+
+<http://www.w3.org/2002/03owlt/disjointWith/premises002#B> a :Class .
+
+[] a :Ontology .
 

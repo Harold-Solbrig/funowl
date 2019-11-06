@@ -1,16 +1,16 @@
-@prefix first: <http://www.w3.org/2002/03owlt/I5.3/consistent011#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix consistent011: <http://www.w3.org/2002/03owlt/I5.3/consistent011#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:p a owl:AnnotationProperty .
+consistent011:p a :AnnotationProperty .
 
-first:c a owl:Class .
+consistent011:c a :Class .
 
-[] a owl:Thing ;
-    first:p first:c .
+[] a :Ontology .
 
-[] a owl:Ontology .
+[] a :Thing ;
+    consistent011:p consistent011:c .
 

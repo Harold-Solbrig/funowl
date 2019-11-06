@@ -1,25 +1,52 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:a owl:equivalentClass :b .
+<http://example.org/a> a :Class ;
+    :equivalentClass <http://example.org/b> .
 
-:b owl:equivalentClass :c .
+<http://example.org/c> a :Class .
 
-[] a owl:Axiom ;
+<http://example.org/b> a :Class ;
+    :equivalentClass <http://example.org/c> .
+
+[] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
-    owl:annotatedProperty owl:equivalentClass ;
-    owl:annotatedSource :a ;
-    owl:annotatedTarget :b .
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/b> ;
+    :annotatedTarget <http://example.org/c> .
 
-[] a owl:Ontology .
-
-[] a owl:Axiom ;
+[] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
-    owl:annotatedProperty owl:equivalentClass ;
-    owl:annotatedSource :b ;
-    owl:annotatedTarget :c .
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/b> ;
+    :annotatedTarget <http://example.org/c> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/b> ;
+    :annotatedTarget <http://example.org/c> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
+
+[] a :Ontology .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
 

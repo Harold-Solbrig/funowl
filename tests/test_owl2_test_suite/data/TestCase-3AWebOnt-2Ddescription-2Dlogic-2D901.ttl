@@ -1,23 +1,23 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2002/03owlt/description-logic/premises901#p> a owl:ObjectProperty ;
+<http://www.w3.org/2002/03owlt/description-logic/premises901#p> a :ObjectProperty ;
     rdfs:range <http://www.w3.org/2002/03owlt/description-logic/premises901#A> ;
     rdfs:subPropertyOf <http://www.w3.org/2002/03owlt/description-logic/premises901#r> .
 
-<http://www.w3.org/2002/03owlt/description-logic/premises901#q> a owl:ObjectProperty ;
+<http://www.w3.org/2002/03owlt/description-logic/premises901#q> a :ObjectProperty ;
     rdfs:range <http://www.w3.org/2002/03owlt/description-logic/premises901#B> ;
     rdfs:subPropertyOf <http://www.w3.org/2002/03owlt/description-logic/premises901#r> .
 
-<http://www.w3.org/2002/03owlt/description-logic/premises901#A> a owl:Class ;
-    owl:disjointWith <http://www.w3.org/2002/03owlt/description-logic/premises901#B> .
+<http://www.w3.org/2002/03owlt/description-logic/premises901#A> a :Class ;
+    :disjointWith <http://www.w3.org/2002/03owlt/description-logic/premises901#B> .
 
-<http://www.w3.org/2002/03owlt/description-logic/premises901#B> a owl:Class .
+<http://www.w3.org/2002/03owlt/description-logic/premises901#B> a :Class .
 
-<http://www.w3.org/2002/03owlt/description-logic/premises901#r> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/description-logic/premises901#r> a :ObjectProperty .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

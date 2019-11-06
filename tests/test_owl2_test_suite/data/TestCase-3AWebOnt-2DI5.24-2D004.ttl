@@ -1,17 +1,17 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-owl:Thing a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/I5.24/conclusions004#A> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.24/conclusions004#prop> ] .
+:Thing a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :allValuesFrom <http://www.w3.org/2002/03owlt/I5.24/conclusions004#A> ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.24/conclusions004#prop> ] .
 
-<http://www.w3.org/2002/03owlt/I5.24/conclusions004#A> a owl:Class .
+<http://www.w3.org/2002/03owlt/I5.24/conclusions004#A> a :Class .
 
-<http://www.w3.org/2002/03owlt/I5.24/conclusions004#prop> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/I5.24/conclusions004#prop> a :ObjectProperty .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

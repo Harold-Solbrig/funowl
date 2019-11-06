@@ -1,54 +1,170 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:first="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#"
-    xml:base="http://www.w3.org/2002/03owlt/I4.5/inconsistent002" >
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:inconsistent002="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
 
-    <owl:Ontology/>
 
-    <owl:Class rdf:ID="EuropeanCountry" />
-    <owl:Class rdf:ID="Person" />
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-    <owl:Class rdf:ID="EUCountry">
-      <owl:oneOf rdf:parseType="Collection">
-         <first:EuropeanCountry rdf:ID="UK"/>
-         <first:EuropeanCountry rdf:ID="BE"/>
-         <first:EuropeanCountry rdf:ID="ES"/>
-         <first:EuropeanCountry rdf:ID="FR"/>
-         <first:EuropeanCountry rdf:ID="NL"/>
-         <first:EuropeanCountry rdf:ID="PT"/>
-      </owl:oneOf>
-    </owl:Class>
+    
 
-    <owl:ObjectProperty rdf:ID="hasEuroMP" >
-      <rdfs:domain rdf:resource="#EUCountry"/>
-    </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:ID="isEuroMPFrom" >
-      <owl:inverseOf rdf:resource="#hasEuroMP"/>
-    </owl:ObjectProperty>
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#hasEuroMP -->
 
-    <owl:Class rdf:ID="EuroMP">
-      <owl:equivalentClass>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="#isEuroMPFrom" />
-          <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
-        </owl:Restriction>
-      </owl:equivalentClass>
-    </owl:Class>
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#hasEuroMP">
+        <inverseOf rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#isEuroMPFrom"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EUCountry"/>
+    </ObjectProperty>
+    
 
-    <first:Person rdf:ID="Kinnock" >
-      <rdf:type>
-         <owl:Class>
-            <owl:complementOf rdf:resource="#EuroMP"/>
-         </owl:Class>
-      </rdf:type>
-    </first:Person>
 
-    <first:EuropeanCountry rdf:about="#UK">
-      <first:hasEuroMP rdf:resource="#Kinnock" />
-    </first:EuropeanCountry>
-  
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#isEuroMPFrom -->
 
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#isEuroMPFrom"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EUCountry -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EUCountry">
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#BE"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#ES"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#FR"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#NL"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#PT"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#UK"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuroMP -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuroMP">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#isEuroMPFrom"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Person -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Person"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#BE -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#BE">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#ES -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#ES">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#FR -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#FR">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Kinnock -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Kinnock">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Person"/>
+        <rdf:type>
+            <Class>
+                <complementOf rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuroMP"/>
+            </Class>
+        </rdf:type>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#NL -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#NL">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#PT -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#PT">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+    </NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I4.5/inconsistent002#UK -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#UK">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#EuropeanCountry"/>
+        <inconsistent002:hasEuroMP rdf:resource="http://www.w3.org/2002/03owlt/I4.5/inconsistent002#Kinnock"/>
+    </NamedIndividual>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

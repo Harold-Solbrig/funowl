@@ -1,23 +1,26 @@
-@prefix first: <http://www.w3.org/2002/03owlt/unionOf/premises004#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix second: <http://www.w3.org/2002/03owlt/unionOf/conclusions004#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:A-and-B a owl:Class ;
-    owl:unionOf ( first:A first:B ) .
+<http://www.w3.org/2002/03owlt/unionOf/premises004#A-and-B> a :Class ;
+    :equivalentClass [ a :Class ;
+            :unionOf ( <http://www.w3.org/2002/03owlt/unionOf/premises004#A> <http://www.w3.org/2002/03owlt/unionOf/premises004#B> ) ] .
 
-first:A a owl:Class ;
-    owl:oneOf ( first:a ) .
+<http://www.w3.org/2002/03owlt/unionOf/premises004#A> a :Class ;
+    :equivalentClass [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/unionOf/premises004#a> ) ] .
 
-first:B a owl:Class ;
-    owl:oneOf ( first:b ) .
+<http://www.w3.org/2002/03owlt/unionOf/premises004#B> a :Class ;
+    :equivalentClass [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/unionOf/premises004#b> ) ] .
 
-first:a a owl:Thing .
+<http://www.w3.org/2002/03owlt/unionOf/premises004#a> a :NamedIndividual,
+        :Thing .
 
-first:b a owl:Thing .
+<http://www.w3.org/2002/03owlt/unionOf/premises004#b> a :NamedIndividual,
+        :Thing .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

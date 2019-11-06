@@ -14,14 +14,14 @@
         :ObjectProperty ;
     rdfs:range <http://example.org/c3> .
 
-<http://example.org/p4> a :DatatypeProperty,
-        :ObjectProperty ;
+<http://example.org/p4> a :DatatypeProperty ;
     rdfs:domain <http://example.org/c4> .
 
 <http://example.org/p5> a :DatatypeProperty ;
     rdfs:domain <http://example.org/c5> .
 
-<http://example.org/p6> a :DatatypeProperty ;
+<http://example.org/p6> a :DatatypeProperty,
+        :ObjectProperty ;
     rdfs:range <http://example.org/c6> .
 
 <http://example.org/c2> a :Class .

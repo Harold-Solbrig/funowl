@@ -22,10 +22,10 @@
 
 <http://example.org/dp> a :DatatypeProperty .
 
+[] a :Ontology .
+
 [] a :NegativePropertyAssertion ;
     :assertionProperty <http://example.org/dp> ;
     :sourceIndividual <http://example.org/a> ;
     :targetValue "0"^^xsd:unsignedInt .
-
-[] a :Ontology .
 

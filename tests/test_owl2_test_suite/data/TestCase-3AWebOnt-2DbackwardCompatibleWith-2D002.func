@@ -10,5 +10,5 @@ Prefix(first:=<http://www.w3.org/2002/03owlt/backwardCompatibleWith/consistent00
 Ontology(<http://www.example.org/>
 
 
-AnnotationAssertion(owl:backwardCompatibleWith _:genid21170 <http://www.example.org/>)
+AnnotationAssertion(owl:backwardCompatibleWith _:genid29632 <http://www.example.org/>)
 )

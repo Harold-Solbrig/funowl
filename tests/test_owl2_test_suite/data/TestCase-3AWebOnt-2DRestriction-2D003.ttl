@@ -1,25 +1,26 @@
-@prefix first: <http://www.w3.org/2002/03owlt/Restriction/consistent003#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:C a owl:Class ;
-    owl:intersectionOf ( first:superC _:N27533deecfd6404b9c5282cb09255cac ) .
+<http://www.w3.org/2002/03owlt/Restriction/consistent003#C> a :Class ;
+    :equivalentClass [ a :Class ;
+            :intersectionOf ( <http://www.w3.org/2002/03owlt/Restriction/consistent003#superC> [ a :Restriction ;
+                        :onProperty <http://www.w3.org/2002/03owlt/Restriction/consistent003#dp> ;
+                        :someValuesFrom xsd:byte ] ) ] .
 
-first:D a owl:Class ;
-    owl:intersectionOf ( first:superD _:N27533deecfd6404b9c5282cb09255cac ) .
+<http://www.w3.org/2002/03owlt/Restriction/consistent003#D> a :Class ;
+    :equivalentClass [ a :Class ;
+            :intersectionOf ( <http://www.w3.org/2002/03owlt/Restriction/consistent003#superD> [ a :Restriction ;
+                        :onProperty <http://www.w3.org/2002/03owlt/Restriction/consistent003#dp> ;
+                        :someValuesFrom xsd:byte ] ) ] .
 
-first:dp a owl:DatatypeProperty .
+<http://www.w3.org/2002/03owlt/Restriction/consistent003#superC> a :Class .
 
-first:superC a owl:Class .
+<http://www.w3.org/2002/03owlt/Restriction/consistent003#superD> a :Class .
 
-first:superD a owl:Class .
+<http://www.w3.org/2002/03owlt/Restriction/consistent003#dp> a :DatatypeProperty .
 
-[] a owl:Ontology .
-
-_:N27533deecfd6404b9c5282cb09255cac a owl:Restriction ;
-    owl:onProperty first:dp ;
-    owl:someValuesFrom xsd:byte .
+[] a :Ontology .
 

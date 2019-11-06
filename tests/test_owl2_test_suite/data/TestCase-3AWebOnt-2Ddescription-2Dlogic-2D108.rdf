@@ -1,9 +1,99 @@
-<rdf:RDF
-    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent108"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-    <owl:Ontology rdf:about=""/>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/description-logic/inconsistent108#"
+     xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent108"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent108"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#r -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#r1 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r1">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#r2 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r2">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#r3 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r3">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#t1 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t1">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#t2 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t2">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#t3 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t3">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#tt -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#tt"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#Unsatisfiable -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
         <owl:equivalentClass>
             <owl:Class>
@@ -12,9 +102,7 @@
                         <owl:complementOf>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="http://oiled.man.example.net/test#r"/>
-                                <owl:minCardinality
- rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-                                >2</owl:minCardinality>
+                                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
                             </owl:Restriction>
                         </owl:complementOf>
                     </owl:Class>
@@ -24,16 +112,12 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
-                                    <owl:maxCardinality
- rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-                                    >1</owl:maxCardinality>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t1"/>
+                                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#c"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t1"/>
-                                    <owl:someValuesFrom>
-                                    <owl:Class rdf:about="http://oiled.man.example.net/test#c"/>
-                                    </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
+                                        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -45,16 +129,12 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
-                                    <owl:maxCardinality
- rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-                                    >1</owl:maxCardinality>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t2"/>
+                                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#d"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t2"/>
-                                    <owl:someValuesFrom>
-                                    <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
-                                    </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
+                                        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -66,16 +146,12 @@
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
-                                    <owl:maxCardinality
- rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-                                    >1</owl:maxCardinality>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t3"/>
+                                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#e"/>
                                     </owl:Restriction>
                                     <owl:Restriction>
-                                    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#t3"/>
-                                    <owl:someValuesFrom>
-                                    <owl:Class rdf:about="http://oiled.man.example.net/test#e"/>
-                                    </owl:someValuesFrom>
+                                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#tt"/>
+                                        <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
                                     </owl:Restriction>
                                 </owl:intersectionOf>
                             </owl:Class>
@@ -85,55 +161,50 @@
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#a -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#a">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <owl:Class rdf:about="http://oiled.man.example.net/test#c"/>
-                    <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#c"/>
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#d"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
-    <owl:Class rdf:about="http://oiled.man.example.net/test#c"/>
-    <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
-    <owl:Class rdf:about="http://oiled.man.example.net/test#e"/>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r1">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r2">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r3">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#r"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t1">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t2">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#t3">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#tt"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#tt"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#c -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#c">
-        <owl:disjointWith>
-            <owl:Class rdf:about="http://oiled.man.example.net/test#d"/>
-        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="http://oiled.man.example.net/test#d"/>
+        <owl:disjointWith rdf:resource="http://oiled.man.example.net/test#e"/>
     </owl:Class>
-    <owl:Class rdf:about="http://oiled.man.example.net/test#c">
-        <owl:disjointWith>
-            <owl:Class rdf:about="http://oiled.man.example.net/test#e"/>
-        </owl:disjointWith>
-    </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#d -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#d">
-        <owl:disjointWith>
-            <owl:Class rdf:about="http://oiled.man.example.net/test#e"/>
-        </owl:disjointWith>
+        <owl:disjointWith rdf:resource="http://oiled.man.example.net/test#e"/>
     </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#e -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#e"/>
     <rdf:Description>
         <rdf:type rdf:resource="http://oiled.man.example.net/test#Unsatisfiable"/>
     </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

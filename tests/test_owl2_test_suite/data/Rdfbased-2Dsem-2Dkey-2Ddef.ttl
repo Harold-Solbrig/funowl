@@ -1,17 +1,22 @@
-@prefix ex: <http://www.example.org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix www: <http://www.example.org#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:x a ex:c ;
-    ex:p1 ex:z ;
-    ex:p2 "data" .
+www:x a www:c,
+        :NamedIndividual ;
+    www:p1 www:z ;
+    www:p2 "data" .
 
-ex:y a ex:c ;
-    ex:p1 ex:z ;
-    ex:p2 "data" .
+www:y a www:c,
+        :NamedIndividual ;
+    www:p1 www:z ;
+    www:p2 "data" .
 
-ex:c owl:hasKey ( ex:p1 ex:p2 ) .
+www:c a :Class ;
+    :hasKey ( www:p1 www:p2 ) .
+
+[] a :Ontology .
 

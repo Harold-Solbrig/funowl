@@ -1,3 +1,4 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/consistent024#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -21,19 +22,19 @@ owl:Thing rdfs:subClassOf [ a owl:Restriction ;
                                 owl:onProperty <http://oiled.man.example.net/test#invF> ;
                                 owl:someValuesFrom <http://oiled.man.example.net/test#a> ] ] ) ] .
 
+<http://oiled.man.example.net/test#f> a owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#r> ;
+    owl:inverseOf <http://oiled.man.example.net/test#invF> .
+
 <http://oiled.man.example.net/test#invR> a owl:ObjectProperty ;
     owl:inverseOf <http://oiled.man.example.net/test#r> .
-
-<http://oiled.man.example.net/test#f> a owl:ObjectProperty ;
-    rdfs:subPropertyOf <http://oiled.man.example.net/test#r> .
-
-<http://oiled.man.example.net/test#invF> a owl:ObjectProperty ;
-    owl:inverseOf <http://oiled.man.example.net/test#f> .
 
 <http://oiled.man.example.net/test#r> a owl:ObjectProperty,
         owl:TransitiveProperty .
 
 <http://oiled.man.example.net/test#a> a owl:Class .
+
+<http://oiled.man.example.net/test#invF> a owl:ObjectProperty .
 
 [] a <http://oiled.man.example.net/test#Satisfiable> .
 

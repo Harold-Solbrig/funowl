@@ -17,8 +17,7 @@
     rdfs:range [ a :Class ;
             :unionOf ( <http://example.org/c2> <http://example.org/u2> ) ] .
 
-<http://example.org/p4> a :DatatypeProperty,
-        :ObjectProperty ;
+<http://example.org/p4> a :DatatypeProperty ;
     rdfs:domain [ a :Class ;
             :unionOf ( <http://example.org/c3> <http://example.org/u3> ) ] .
 
@@ -59,11 +58,11 @@
     rdfs:range <http://example.org/c4> ;
     :inverseOf <http://example.org/p5> .
 
-[] rdfs:range [ a :Class ;
-            :unionOf ( <http://example.org/c6> <http://example.org/u6> ) ] ;
-    :inverseOf <http://example.org/p7> .
-
 [] rdfs:domain [ a :Class ;
             :unionOf ( <http://example.org/c5> <http://example.org/u5> ) ] ;
     :inverseOf <http://example.org/p6> .
+
+[] rdfs:range [ a :Class ;
+            :unionOf ( <http://example.org/c6> <http://example.org/u6> ) ] ;
+    :inverseOf <http://example.org/p7> .
 

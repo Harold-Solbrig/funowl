@@ -1,4 +1,4 @@
-@prefix first: <http://www.w3.org/2002/03owlt/Ontology/premises001#> .
+@prefix : <http://www.w3.org/2002/03owlt/Ontology/premises001#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,14 +7,16 @@
 
 <http://www.w3.org/2002/03owlt/Ontology/premises001> a owl:Ontology .
 
-first:auto a first:Automobile,
+:auto a :Automobile,
+        owl:NamedIndividual,
         owl:Thing .
 
-first:car a first:Car,
+:car a :Car,
+        owl:NamedIndividual,
         owl:Thing .
 
-first:Car a owl:Class ;
-    owl:equivalentClass first:Automobile .
+:Automobile a owl:Class ;
+    owl:equivalentClass :Car .
 
-first:Automobile a owl:Class .
+:Car a owl:Class .
 

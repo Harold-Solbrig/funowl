@@ -9,5 +9,5 @@ Ontology(
 Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent001#B>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent001#C>))
 
-ClassAssertion(<http://www.w3.org/2002/03owlt/I5.26/consistent001#B> _:genid20985)
+ClassAssertion(<http://www.w3.org/2002/03owlt/I5.26/consistent001#B> _:genid23246)
 )

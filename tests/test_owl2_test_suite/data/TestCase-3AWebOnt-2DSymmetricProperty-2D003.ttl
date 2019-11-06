@@ -1,16 +1,19 @@
-@prefix first: <http://www.w3.org/2002/03owlt/SymmetricProperty/premises003#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix premises003: <http://www.w3.org/2002/03owlt/SymmetricProperty/premises003#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:Ghent a owl:Thing ;
-    first:path first:Antwerp .
+premises003:Ghent a :NamedIndividual,
+        :Thing ;
+    premises003:path premises003:Antwerp .
 
-first:path a owl:SymmetricProperty .
+premises003:path a :ObjectProperty,
+        :SymmetricProperty .
 
-first:Antwerp a owl:Thing .
+premises003:Antwerp a :NamedIndividual,
+        :Thing .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

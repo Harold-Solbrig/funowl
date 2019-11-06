@@ -50,5 +50,5 @@ EquivalentClasses(<http://oiled.man.example.net/test#d> ObjectIntersectionOf(<ht
 SubClassOf(owl:Thing ObjectMaxCardinality(1 <http://oiled.man.example.net/test#f>))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid16209)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid25134)
 )

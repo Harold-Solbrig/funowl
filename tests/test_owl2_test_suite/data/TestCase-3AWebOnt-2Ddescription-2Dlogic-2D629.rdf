@@ -1,82 +1,175 @@
-<rdf:RDF
-    xmlns:oiled="http://oiled.man.example.net/test#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
- xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent629">
- <owl:Ontology rdf:about=""/>
- <owl:Class rdf:about="http://oiled.man.example.net/test#p1.comp">
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:DatatypeProperty rdf:ID="P.1"/>
-    </owl:onProperty>
-    <owl:minCardinality rdf:datatype="/2001/XMLSchema#int"
-    >1</owl:minCardinality>
-   </owl:Restriction>
-  </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="V.3">
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
-    </owl:onProperty>
-    <owl:someValuesFrom>
-     <owl:Class rdf:about="#A.2"/>
-    </owl:someValuesFrom>
-   </owl:Restriction>
-  </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="A.2">
-  <owl:intersectionOf rdf:parseType="Collection">
-   <owl:Class rdf:about="http://oiled.man.example.net/test#p1"/>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invR"/>
-    </owl:onProperty>
-    <owl:allValuesFrom rdf:resource="http://oiled.man.example.net/test#p1.comp"/>
-   </owl:Restriction>
-  </owl:intersectionOf>
- </owl:Class>
- <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
-  <owl:intersectionOf rdf:parseType="Collection">
-   <owl:Class rdf:about="http://oiled.man.example.net/test#p1"/>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
-    </owl:onProperty>
-    <owl:someValuesFrom rdf:resource="#V.3"/>
-   </owl:Restriction>
-  </owl:intersectionOf>
- </owl:Class>
- <owl:Class rdf:about="http://oiled.man.example.net/test#p1">
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty rdf:resource="#P.1"/>
-    <owl:maxCardinality rdf:datatype="/2001/XMLSchema#int"
-    >0</owl:maxCardinality>
-   </owl:Restriction>
-  </owl:equivalentClass>
- </owl:Class>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f"/>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF">
-  <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#f"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r">
-  <rdf:type rdf:resource="/2002/07/owl#TransitiveProperty"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invR">
-  <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#r"/>
- </owl:ObjectProperty>
- <oiled:Unsatisfiable/>
- <rdf:Description rdf:about="/2002/07/owl#Thing">
-  <rdfs:subClassOf>
-   <owl:Restriction>
-    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#f"/>
-    <owl:maxCardinality rdf:datatype="/2001/XMLSchema#nonNegativeInteger"
-    >1</owl:maxCardinality>
-   </owl:Restriction>
-  </rdfs:subClassOf>
- </rdf:Description>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#"
+     xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent629"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent629"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#f -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#invF"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#invF -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#invR -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invR">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#r"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#r -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent629#P.1 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#P.1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#Unsatisfiable -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#p1"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#r"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#V.3"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#p1 -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#p1">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#P.1"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#p1.comp -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#p1.comp">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#P.1"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent629#A.2 -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#A.2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#p1"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#invR"/>
+                        <owl:allValuesFrom rdf:resource="http://oiled.man.example.net/test#p1.comp"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent629#V.3 -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#V.3">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#r"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent629#A.2"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#f"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://oiled.man.example.net/test#Unsatisfiable"/>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

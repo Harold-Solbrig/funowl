@@ -35,5 +35,5 @@ SubObjectPropertyOf(<http://oiled.man.example.net/test#s> <http://oiled.man.exam
 EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectIntersectionOf(ObjectComplementOf(<http://oiled.man.example.net/test#p>) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invS> <http://oiled.man.example.net/test#p>)) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#s> <http://oiled.man.example.net/test#p>) ObjectMaxCardinality(1 <http://oiled.man.example.net/test#r>)))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid15893)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid27631)
 )

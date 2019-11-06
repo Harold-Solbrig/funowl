@@ -1,3 +1,4 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent015#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -9,20 +10,20 @@
 <http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                        owl:someValuesFrom [ a owl:Class ;
+                                owl:intersectionOf ( [ a owl:Restriction ;
+                                            owl:onProperty <http://oiled.man.example.net/test#invR> ;
+                                            owl:someValuesFrom [ a owl:Restriction ;
+                                                    owl:allValuesFrom <http://oiled.man.example.net/test#p> ;
+                                                    owl:onProperty <http://oiled.man.example.net/test#s> ] ] [ a owl:Restriction ;
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onProperty <http://oiled.man.example.net/test#invR> ] ) ] ] [ a owl:Restriction ;
                         owl:onProperty <http://oiled.man.example.net/test#s> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:intersectionOf ( [ a owl:Class ;
                                             owl:complementOf <http://oiled.man.example.net/test#p> ] [ a owl:Class ;
-                                            owl:complementOf <http://oiled.man.example.net/test#q> ] ) ] ] [ a owl:Restriction ;
-                        owl:onProperty <http://oiled.man.example.net/test#r> ;
-                        owl:someValuesFrom [ a owl:Class ;
-                                owl:intersectionOf ( [ a owl:Restriction ;
-                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onProperty <http://oiled.man.example.net/test#invR> ] [ a owl:Restriction ;
-                                            owl:onProperty <http://oiled.man.example.net/test#invR> ;
-                                            owl:someValuesFrom [ a owl:Restriction ;
-                                                    owl:allValuesFrom <http://oiled.man.example.net/test#p> ;
-                                                    owl:onProperty <http://oiled.man.example.net/test#s> ] ] ) ] ] ) ] .
+                                            owl:complementOf <http://oiled.man.example.net/test#q> ] ) ] ] ) ] .
 
 <http://oiled.man.example.net/test#q> a owl:Class .
 

@@ -21,7 +21,7 @@ Declaration(ObjectProperty(eg:_1))
 AnnotationAssertion(rdfs:comment eg:Bag "The class of unordered containers.")
 
 
-ClassAssertion(eg:Bag _:genid17066)
-ClassAssertion(owl:Thing _:genid17068)
-ObjectPropertyAssertion(eg:_1 _:genid17066 _:genid17068)
+ClassAssertion(eg:Bag _:genid22907)
+ClassAssertion(owl:Thing _:genid22909)
+ObjectPropertyAssertion(eg:_1 _:genid22907 _:genid22909)
 )

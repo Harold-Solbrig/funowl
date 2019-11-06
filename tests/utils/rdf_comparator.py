@@ -59,11 +59,11 @@ def compare_rdf(expected: Union[Graph, str], actual: Union[Graph, str], fmt: Opt
     if old_len or new_len:
         txt = StringIO()
         with redirect_stdout(txt):
+            print("----- Missing Triples -----")
             if old_len:
-                print("----- Expected graph -----")
                 print_triples(in_old)
+            print("----- Added Triples -----")
             if new_len:
-                print("----- Actual Graph -----")
                 print_triples(in_new)
         return txt.getvalue()
     return None

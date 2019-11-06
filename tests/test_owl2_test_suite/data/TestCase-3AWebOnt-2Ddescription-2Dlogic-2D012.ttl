@@ -1,14 +1,9 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent012#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-<http://oiled.man.example.net/test#invF> a owl:ObjectProperty ;
-    owl:inverseOf <http://oiled.man.example.net/test#f> .
-
-<http://oiled.man.example.net/test#invF1> a owl:ObjectProperty ;
-    owl:inverseOf <http://oiled.man.example.net/test#f1> .
 
 <http://oiled.man.example.net/test#invS> a owl:ObjectProperty ;
     owl:inverseOf <http://oiled.man.example.net/test#s> .
@@ -20,13 +15,25 @@
             owl:intersectionOf ( [ a owl:Restriction ;
                         owl:onProperty <http://oiled.man.example.net/test#f> ;
                         owl:someValuesFrom <http://oiled.man.example.net/test#p> ] [ a owl:Restriction ;
-                        owl:onProperty <http://oiled.man.example.net/test#s> ;
-                        owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
                         owl:onProperty <http://oiled.man.example.net/test#f1> ;
                         owl:someValuesFrom [ a owl:Class ;
-                                owl:complementOf <http://oiled.man.example.net/test#p> ] ] ) ] .
+                                owl:complementOf <http://oiled.man.example.net/test#p> ] ] [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#s> ;
+                        owl:someValuesFrom owl:Thing ] ) ] .
+
+<http://oiled.man.example.net/test#invF> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#invF1> a owl:ObjectProperty .
 
 owl:Thing a owl:Class .
+
+<http://oiled.man.example.net/test#f> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#invF> .
+
+<http://oiled.man.example.net/test#f1> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#invF1> .
 
 <http://oiled.man.example.net/test#p> a owl:Class .
 
@@ -34,12 +41,6 @@ owl:Thing a owl:Class .
         owl:ObjectProperty ;
     rdfs:subPropertyOf <http://oiled.man.example.net/test#f>,
         <http://oiled.man.example.net/test#f1> .
-
-<http://oiled.man.example.net/test#f> a owl:FunctionalProperty,
-        owl:ObjectProperty .
-
-<http://oiled.man.example.net/test#f1> a owl:FunctionalProperty,
-        owl:ObjectProperty .
 
 [] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

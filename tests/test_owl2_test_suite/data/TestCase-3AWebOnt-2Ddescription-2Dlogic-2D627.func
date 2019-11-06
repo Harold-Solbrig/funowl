@@ -65,5 +65,5 @@ EquivalentClasses(oiled:d ObjectIntersectionOf(oiled:c ObjectSomeValuesFrom(oile
 EquivalentClasses(:V.3 ObjectSomeValuesFrom(oiled:invF oiled:d))
 
 
-ClassAssertion(oiled:Unsatisfiable _:genid20026)
+ClassAssertion(oiled:Unsatisfiable _:genid24762)
 )

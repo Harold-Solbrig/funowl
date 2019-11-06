@@ -1,15 +1,19 @@
-@prefix dc: <http://purl.org/dc/elements/1.0/> .
-@prefix first: <http://www.w3.org/2002/03owlt/Class/premises004#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix elements: <http://purl.org/dc/elements/1.0/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-rdfs:Class a owl:Class ;
-    dc:creator <http://www.w3.org/RDF/Group/Schema/members> .
+elements:creator a :AnnotationProperty .
 
-first:WorkingGroup a owl:Class .
+rdfs:Class a :Class ;
+    elements:creator <http://www.w3.org/RDF/Group/Schema/members> .
 
-<http://www.w3.org/RDF/Group/Schema/members> a first:WorkingGroup .
+<http://www.w3.org/2002/03owlt/Class/premises004#WorkingGroup> a :Class .
+
+<http://www.w3.org/RDF/Group/Schema/members> a <http://www.w3.org/2002/03owlt/Class/premises004#WorkingGroup>,
+        :NamedIndividual .
+
+[] a :Ontology .
 

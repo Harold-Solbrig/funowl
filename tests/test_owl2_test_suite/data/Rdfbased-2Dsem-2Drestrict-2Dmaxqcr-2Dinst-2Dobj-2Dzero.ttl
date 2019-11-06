@@ -1,16 +1,25 @@
-@prefix ex: <http://www.example.org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix www: <http://www.example.org#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:w a ex:z ;
-    ex:p ex:x .
+www:p a :AnnotationProperty .
 
-ex:x a ex:c .
+www:w a www:z,
+        :NamedIndividual ;
+    www:p www:x .
 
-ex:z owl:maxQualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-    owl:onClass ex:c ;
-    owl:onProperty ex:p .
+:maxQualifiedCardinality a :AnnotationProperty .
+
+www:c a :Class .
+
+www:x a www:c,
+        :NamedIndividual .
+
+www:z a :Class ;
+    :maxQualifiedCardinality "0"^^xsd:nonNegativeInteger .
+
+[] a :Ontology .
 

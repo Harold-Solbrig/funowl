@@ -1,22 +1,29 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Stewie :hasChild :StewieJr ;
-    :hasFather :Peter ;
-    :hasMother :Lois .
+example:Stewie a :NamedIndividual ;
+    example:hasChild example:StewieJr ;
+    example:hasFather example:Peter ;
+    example:hasMother example:Lois .
 
-:hasChild a owl:ObjectProperty .
+example:Lois a :NamedIndividual .
 
-:hasFather a owl:ObjectProperty .
+example:Peter a :NamedIndividual .
 
-:hasMother a owl:ObjectProperty .
+example:StewieJr a :NamedIndividual .
 
-[] a owl:AllDisjointProperties ;
-    owl:members ( :hasFather :hasMother :hasChild ) .
+example:hasChild a :ObjectProperty .
 
-[] a owl:Ontology .
+example:hasFather a :ObjectProperty .
+
+example:hasMother a :ObjectProperty .
+
+[] a :AllDisjointProperties ;
+    :members ( example:hasChild example:hasFather example:hasMother ) .
+
+[] a :Ontology .
 

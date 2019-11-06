@@ -4,11 +4,11 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://example.org/a> a [ a :Restriction ;
+<http://example.org/a> a [ a :Class ;
+            :complementOf <http://example.org/Eighteen> ],
+        [ a :Restriction ;
             :hasValue 18 ;
             :onProperty <http://example.org/hasAge> ],
-        [ a :Class ;
-            :complementOf <http://example.org/Eighteen> ],
         :NamedIndividual .
 
 <http://example.org/Eighteen> a :Class .

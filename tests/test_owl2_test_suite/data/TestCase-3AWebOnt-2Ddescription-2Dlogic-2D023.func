@@ -53,5 +53,5 @@ SubClassOf(<http://oiled.man.example.net/test#Unsatisfiable> ObjectSomeValuesFro
 EquivalentClasses(<http://oiled.man.example.net/test#c> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invR> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invP> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invS> ObjectComplementOf(<http://oiled.man.example.net/test#a>)))))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid16232)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid27396)
 )

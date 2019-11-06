@@ -1,14 +1,14 @@
-@prefix first: <http://www.w3.org/2002/03owlt/I5.3/consistent008#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix consistent008: <http://www.w3.org/2002/03owlt/I5.3/consistent008#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:dp a owl:DatatypeProperty .
+consistent008:dp a :DatatypeProperty .
 
-[] a owl:Ontology .
+[] a :Thing ;
+    consistent008:dp "value" .
 
-[] a owl:Thing ;
-    first:dp "value" .
+[] a :Ontology .
 

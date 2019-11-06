@@ -29,10 +29,10 @@
     
 
 
-    <!-- http://example.org/p4 -->
+    <!-- http://example.org/p6 -->
 
-    <ObjectProperty rdf:about="http://example.org/p4">
-        <rdfs:domain rdf:resource="http://example.org/c4"/>
+    <ObjectProperty rdf:about="http://example.org/p6">
+        <rdfs:range rdf:resource="http://example.org/c6"/>
     </ObjectProperty>
     
 
@@ -72,7 +72,9 @@
 
     <!-- http://example.org/p4 -->
 
-    <DatatypeProperty rdf:about="http://example.org/p4"/>
+    <DatatypeProperty rdf:about="http://example.org/p4">
+        <rdfs:domain rdf:resource="http://example.org/c4"/>
+    </DatatypeProperty>
     
 
 
@@ -86,9 +88,7 @@
 
     <!-- http://example.org/p6 -->
 
-    <DatatypeProperty rdf:about="http://example.org/p6">
-        <rdfs:range rdf:resource="http://example.org/c6"/>
-    </DatatypeProperty>
+    <DatatypeProperty rdf:about="http://example.org/p6"/>
     
 
 

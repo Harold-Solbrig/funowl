@@ -1,18 +1,21 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Peter :hasSon :Meg .
+example:Peter a :NamedIndividual ;
+    example:hasSon example:Meg .
 
-:hasSon a owl:ObjectProperty .
+example:hasSon a :ObjectProperty .
 
-[] a owl:NegativePropertyAssertion ;
-    owl:assertionProperty :hasSon ;
-    owl:sourceIndividual :Peter ;
-    owl:targetIndividual :Meg .
+example:Meg a :NamedIndividual .
 
-[] a owl:Ontology .
+[] a :NegativePropertyAssertion ;
+    :assertionProperty example:hasSon ;
+    :sourceIndividual example:Peter ;
+    :targetIndividual example:Meg .
+
+[] a :Ontology .
 

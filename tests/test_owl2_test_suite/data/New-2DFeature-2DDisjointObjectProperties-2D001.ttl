@@ -1,17 +1,22 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Stewie :hasFather :Peter ;
-    :hasMother :Lois .
+example:Stewie a :NamedIndividual ;
+    example:hasFather example:Peter ;
+    example:hasMother example:Lois .
 
-:hasFather a owl:ObjectProperty ;
-    owl:propertyDisjointWith :hasMother .
+example:hasFather a :ObjectProperty ;
+    :propertyDisjointWith example:hasMother .
 
-:hasMother a owl:ObjectProperty .
+example:Lois a :NamedIndividual .
 
-[] a owl:Ontology .
+example:Peter a :NamedIndividual .
+
+example:hasMother a :ObjectProperty .
+
+[] a :Ontology .
 

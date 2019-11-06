@@ -1,44 +1,52 @@
-@prefix first: <http://www.w3.org/2002/03owlt/I4.5/inconsistent002#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix inconsistent002: <http://www.w3.org/2002/03owlt/I4.5/inconsistent002#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:BE a first:EuropeanCountry .
+inconsistent002:hasEuroMP a :ObjectProperty ;
+    rdfs:domain inconsistent002:EUCountry ;
+    :inverseOf inconsistent002:isEuroMPFrom .
 
-first:ES a first:EuropeanCountry .
+inconsistent002:BE a inconsistent002:EuropeanCountry,
+        :NamedIndividual .
 
-first:EUCountry a owl:Class ;
-    owl:oneOf ( first:UK first:BE first:ES first:FR first:NL first:PT ) .
+inconsistent002:ES a inconsistent002:EuropeanCountry,
+        :NamedIndividual .
 
-first:EuroMP a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty first:isEuroMPFrom ;
-            owl:someValuesFrom owl:Thing ] .
+inconsistent002:EUCountry a :Class ;
+    :equivalentClass [ a :Class ;
+            :oneOf ( inconsistent002:BE inconsistent002:ES inconsistent002:FR inconsistent002:NL inconsistent002:PT inconsistent002:UK ) ] .
 
-first:FR a first:EuropeanCountry .
+inconsistent002:EuroMP a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty inconsistent002:isEuroMPFrom ;
+            :someValuesFrom :Thing ] .
 
-first:Kinnock a [ a owl:Class ;
-            owl:complementOf first:EuroMP ],
-        first:Person .
+inconsistent002:FR a inconsistent002:EuropeanCountry,
+        :NamedIndividual .
 
-first:NL a first:EuropeanCountry .
+inconsistent002:Kinnock a [ a :Class ;
+            :complementOf inconsistent002:EuroMP ],
+        inconsistent002:Person,
+        :NamedIndividual .
 
-first:PT a first:EuropeanCountry .
+inconsistent002:NL a inconsistent002:EuropeanCountry,
+        :NamedIndividual .
 
-first:Person a owl:Class .
+inconsistent002:PT a inconsistent002:EuropeanCountry,
+        :NamedIndividual .
 
-first:UK a first:EuropeanCountry ;
-    first:hasEuroMP first:Kinnock .
+inconsistent002:Person a :Class .
 
-first:hasEuroMP a owl:ObjectProperty ;
-    rdfs:domain first:EUCountry .
+inconsistent002:UK a inconsistent002:EuropeanCountry,
+        :NamedIndividual ;
+    inconsistent002:hasEuroMP inconsistent002:Kinnock .
 
-first:isEuroMPFrom a owl:ObjectProperty ;
-    owl:inverseOf first:hasEuroMP .
+inconsistent002:isEuroMPFrom a :ObjectProperty .
 
-first:EuropeanCountry a owl:Class .
+inconsistent002:EuropeanCountry a :Class .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

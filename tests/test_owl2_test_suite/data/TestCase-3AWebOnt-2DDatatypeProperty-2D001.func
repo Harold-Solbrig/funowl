@@ -22,6 +22,6 @@ DataPropertyRange(first:convertedAbsoluteValue xsd:nonNegativeInteger)
 
 
 
-DataPropertyAssertion(first:convertedAbsoluteValue _:genid19232 "3"^^xsd:nonNegativeInteger)
-AnnotationAssertion(owl:sameAs _:genid19232 "-3"^^xsd:integer)
+DataPropertyAssertion(first:convertedAbsoluteValue _:genid22628 "3"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:sameAs _:genid22628 "-3"^^xsd:integer)
 )

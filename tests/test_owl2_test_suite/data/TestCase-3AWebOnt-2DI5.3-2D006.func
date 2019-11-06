@@ -10,7 +10,7 @@ Ontology(
 Declaration(ObjectProperty(first:p))
 
 
-ClassAssertion(owl:Thing _:genid17569)
-ClassAssertion(owl:Thing _:genid17571)
-ObjectPropertyAssertion(first:p _:genid17569 _:genid17571)
+ClassAssertion(owl:Thing _:genid23006)
+ClassAssertion(owl:Thing _:genid23008)
+ObjectPropertyAssertion(first:p _:genid23006 _:genid23008)
 )

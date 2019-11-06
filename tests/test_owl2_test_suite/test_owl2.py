@@ -5,15 +5,24 @@ from pprint import pprint
 
 from rdflib import Graph
 
+from funowl.base.rdftriple import TRIPLE
 from funowl.converters.functional_converter import to_python
 from tests.utils.build_test_harness import ValidationTestCase
 from tests.utils.rdf_comparator import compare_rdf, print_triples
 
-logging.getLogger().setLevel(logging.INFO)
+logging.getLogger().setLevel(logging.ERROR)
 
 OBJECT_INVERSE_ISSUE = "ObjectInverseOf declared on data property - test is bad"
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
 DID_NOT_LOAD = "Testcase has issue"
+
+
+orig_add = Graph.add
+
+
+def add(g: Graph, t: TRIPLE) -> None:
+    """ Handy debug point for seeing what is going into a graph """
+    orig_add(g, t)
 
 
 class OWL2ValidationTestCase(ValidationTestCase):
@@ -27,17 +36,7 @@ class OWL2ValidationTestCase(ValidationTestCase):
     single_file = bool(start_at)
 
     # Filenames to skip and reason for skipping it
-    skip = {'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
-            'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
-            'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
-            'TestCase-3AWebOnt-2Dimports-2D004.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D005.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D006.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D007.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D008.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D013.func': DID_NOT_LOAD,
-            'TestCase-3AWebOnt-2Dimports-2D014.func': DID_NOT_LOAD
-            }
+    skip = { }
 
 
 def validate_owl2(fileloc: str) -> bool:
@@ -58,6 +57,7 @@ def validate_owl2(fileloc: str) -> bool:
     expected_rdf = Graph()
     expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
     actual_rdf = Graph()
+    actual_rdf.add = lambda t: add(actual_rdf, t)
     ontology.to_rdf(actual_rdf)
     logging.info('\n========== Functional ==========\n' + ontology.to_functional().getvalue())
     logging.info('\n========== RDF =================\n' + actual_rdf.serialize(format="turtle").decode())
@@ -70,15 +70,23 @@ def validate_owl2(fileloc: str) -> bool:
 
     # 3) convert the ontology back into functional syntax
     #    functional_repr_prime = f**-1(f(functional_repr))
-    print(ontology.to_functional().getvalue())
     ontology_2 = to_python(ontology.to_functional().getvalue())
+    if not ontology_2:
+        logging.error(f"Failed to parse emitted functional syntax")
+        return False
 
     # 4) Convert the functional syntax back into an Ontology
     #    Ontology_prime = f(f**-1(f(functional_repr)))
+    roundtrip_rdf = Graph()
+    ontology_2.to_rdf(roundtrip_rdf)
+    logging.info('\n========== Round Trip RDF =================\n' + roundtrip_rdf.serialize(format="turtle").decode())
 
     # 5) Make sure that the RDF representation stll matches
     #    g(f(functional_repr)) == g(f(f**-1(f(functional_repr))
-    logging.info('\n' + ontology.to_functional().getvalue())
+    rslts = compare_rdf(expected_rdf, roundtrip_rdf)
+    if rslts:
+        print(rslts)
+        return False
     return True
 
 

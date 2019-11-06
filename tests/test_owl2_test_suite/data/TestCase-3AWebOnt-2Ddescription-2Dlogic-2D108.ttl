@@ -1,3 +1,4 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent108#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -19,24 +20,24 @@
                         owl:onProperty <http://oiled.man.example.net/test#r1> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:intersectionOf ( [ a owl:Restriction ;
-                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] [ a owl:Restriction ;
                                             owl:onProperty <http://oiled.man.example.net/test#t1> ;
-                                            owl:someValuesFrom <http://oiled.man.example.net/test#c> ] ) ] ] [ a owl:Restriction ;
+                                            owl:someValuesFrom <http://oiled.man.example.net/test#c> ] [ a owl:Restriction ;
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] ) ] ] [ a owl:Restriction ;
                         owl:onProperty <http://oiled.man.example.net/test#r2> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:intersectionOf ( [ a owl:Restriction ;
-                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] [ a owl:Restriction ;
                                             owl:onProperty <http://oiled.man.example.net/test#t2> ;
-                                            owl:someValuesFrom <http://oiled.man.example.net/test#d> ] ) ] ] [ a owl:Restriction ;
+                                            owl:someValuesFrom <http://oiled.man.example.net/test#d> ] [ a owl:Restriction ;
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] ) ] ] [ a owl:Restriction ;
                         owl:onProperty <http://oiled.man.example.net/test#r3> ;
                         owl:someValuesFrom [ a owl:Class ;
                                 owl:intersectionOf ( [ a owl:Restriction ;
-                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] [ a owl:Restriction ;
                                             owl:onProperty <http://oiled.man.example.net/test#t3> ;
-                                            owl:someValuesFrom <http://oiled.man.example.net/test#e> ] ) ] ] ) ] .
+                                            owl:someValuesFrom <http://oiled.man.example.net/test#e> ] [ a owl:Restriction ;
+                                            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onProperty <http://oiled.man.example.net/test#tt> ] ) ] ] ) ] .
 
 <http://oiled.man.example.net/test#r1> a owl:ObjectProperty ;
     rdfs:subPropertyOf <http://oiled.man.example.net/test#r> .

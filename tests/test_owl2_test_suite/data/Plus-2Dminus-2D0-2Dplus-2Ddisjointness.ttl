@@ -6,8 +6,8 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 example:Meg a :NamedIndividual ;
-    example:numberOfChildren "0.0"^^xsd:float,
-        "-0.0"^^xsd:float .
+    example:numberOfChildren "-0.0"^^xsd:float,
+        "0.0"^^xsd:float .
 
 example:numberOfChildren a :DatatypeProperty,
         :FunctionalProperty .

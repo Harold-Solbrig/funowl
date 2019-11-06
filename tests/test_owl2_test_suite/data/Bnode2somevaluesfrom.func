@@ -18,7 +18,7 @@ Declaration(NamedIndividual(ex:a))
 # Individual: ex:a (ex:a)
 
 ClassAssertion(owl:Thing ex:a)
-ObjectPropertyAssertion(ex:p ex:a _:genid20152)
+ObjectPropertyAssertion(ex:p ex:a _:genid24313)
 
 
 )

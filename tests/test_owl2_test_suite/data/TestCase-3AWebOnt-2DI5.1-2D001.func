@@ -21,8 +21,8 @@ InverseFunctionalObjectProperty(NS0:stateCode)
 
 
 
-AnnotationAssertion(NS0:stateBird _:genid17515 NS0:WesternMeadowlark)
-AnnotationAssertion(NS0:stateCode _:genid17515 "KS")
-AnnotationAssertion(NS0:population _:genid17516 "2688418")
-AnnotationAssertion(NS0:stateCode _:genid17516 "KS")
+AnnotationAssertion(NS0:stateBird _:genid27612 NS0:WesternMeadowlark)
+AnnotationAssertion(NS0:stateCode _:genid27612 "KS")
+AnnotationAssertion(NS0:population _:genid27613 "2688418")
+AnnotationAssertion(NS0:stateCode _:genid27613 "KS")
 )

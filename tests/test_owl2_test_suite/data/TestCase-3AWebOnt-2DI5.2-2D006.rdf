@@ -1,109 +1,172 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xml:base="http://www.w3.org/2002/03owlt/I5.2/premises006" >
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
 
-  <owl:Ontology/>
-  <owl:Class rdf:ID="Nothing">
-       <rdfs:subClassOf>
-         <owl:Restriction>
-            <owl:onProperty>
-                <owl:ObjectProperty rdf:about="#p"/>
-            </owl:onProperty>
-            <owl:minCardinality rdf:datatype=
-"http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-            >1</owl:minCardinality>
-         </owl:Restriction>
-       </rdfs:subClassOf>
-       <rdfs:subClassOf>
-         <owl:Restriction>
-            <owl:onProperty>
-                <owl:ObjectProperty rdf:about="#p"/>
-            </owl:onProperty>
-            <owl:maxCardinality rdf:datatype=
-"http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-            >0</owl:maxCardinality>
-         </owl:Restriction>
-       </rdfs:subClassOf>
-   </owl:Class>
- <owl:Class rdf:ID="A">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#q"/>
-       </owl:onProperty>
-       <owl:someValuesFrom>
-         <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
-       </owl:someValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="notA">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#q"/>
-       </owl:onProperty>
-       <owl:allValuesFrom>
-         <owl:Class rdf:about="#Nothing"/>
-       </owl:allValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="B">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#r"/>
-       </owl:onProperty>
-       <owl:someValuesFrom>
-         <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
-       </owl:someValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="notB">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#r"/>
-       </owl:onProperty>
-       <owl:allValuesFrom>
-         <owl:Class rdf:about="#Nothing"/>
-       </owl:allValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="notAorB">
-   <owl:intersectionOf rdf:parseType="Collection">
-    <owl:Class rdf:about="#notA"/>
-    <owl:Class rdf:about="#notB"/>
-   </owl:intersectionOf>
- </owl:Class>
- 
- <owl:Class rdf:ID="AorB">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#s"/>
-       </owl:onProperty>
-       <owl:someValuesFrom>
-         <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
-       </owl:someValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:about="#notAorB">
-   <owl:equivalentClass>
-     <owl:Restriction>
-       <owl:onProperty>
-         <owl:ObjectProperty rdf:about="#s"/>
-       </owl:onProperty>
-       <owl:allValuesFrom>
-         <owl:Class rdf:about="#Nothing"/>
-       </owl:allValuesFrom>
-     </owl:Restriction>
-   </owl:equivalentClass>
- </owl:Class>
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#p -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#p"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#q -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#q"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#r -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#r"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#s -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#s"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#A -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#A">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#q"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#AorB -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#AorB">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#s"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#B -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#B">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#r"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing">
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#p"/>
+                <minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#p"/>
+                <maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</maxCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#notA -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#notA">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#q"/>
+                <allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB">
+        <equivalentClass>
+            <Class>
+                <intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#notA"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#notB"/>
+                </intersectionOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#s"/>
+                <allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/I5.2/premises006#notB -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/I5.2/premises006#notB">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#r"/>
+                <allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

@@ -1,34 +1,110 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:first="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#"
-    xml:base="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001" >
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:inconsistent001="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
 
-    <owl:Ontology/>
 
-    <rdf:Description rdf:about="inconsistent001#sb1">
-        <rdf:type rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-            <owl:maxCardinality
-              rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"
-             >2</owl:maxCardinality>
-            <owl:onProperty rdf:resource="inconsistent001#prop"/>
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#prop -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#prop"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob1 -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob1"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob2 -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob2"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob3 -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob3"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#sb1 -->
+
+    <NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#sb1">
+        <rdf:type>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#prop"/>
+                <maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</maxCardinality>
+            </Restriction>
         </rdf:type>
-        <first:prop rdf:resource="inconsistent001#ob1"/>
-        <first:prop rdf:resource="inconsistent001#ob2"/>
-        <first:prop rdf:resource="inconsistent001#ob3"/>
+        <inconsistent001:prop rdf:resource="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob1"/>
+        <inconsistent001:prop rdf:resource="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob2"/>
+        <inconsistent001:prop rdf:resource="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob3"/>
+    </NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob1"/>
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob2"/>
+        </distinctMembers>
     </rdf:Description>
-
-    <rdf:Description rdf:about="inconsistent001#ob1">
-        <owl:differentFrom rdf:resource="inconsistent001#ob2"/>
-        <owl:differentFrom rdf:resource="inconsistent001#ob3"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob1"/>
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob3"/>
+        </distinctMembers>
     </rdf:Description>
-
-    <rdf:Description rdf:about="inconsistent001#ob2">
-        <owl:differentFrom rdf:resource="inconsistent001#ob3"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob2"/>
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/maxCardinality/inconsistent001#ob3"/>
+        </distinctMembers>
     </rdf:Description>
-
-    <owl:ObjectProperty rdf:about="inconsistent001#prop"/>
-
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

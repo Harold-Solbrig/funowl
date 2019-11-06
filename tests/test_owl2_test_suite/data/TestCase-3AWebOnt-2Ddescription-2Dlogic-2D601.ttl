@@ -1,104 +1,109 @@
-@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-oiled:Unsatisfiable.comp a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#decimal> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.5> ] ;
-    owl:intersectionOf ( <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.6> <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.7> <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.8> ) .
+<http://oiled.man.example.net/test#Unsatisfiable.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :C.6 :C.7 :C.8 ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.5 ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent601> a owl:Ontology .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.1.comp> a owl:Class ;
+:C.1.comp a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.1> ] .
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.6.comp> a owl:Class ;
+:C.6.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#b> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ] .
+
+:C.7.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#c> ) ],
+        [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ] .
+
+:C.8.comp a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#byte> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.6> ] ;
-    owl:intersectionOf ( oiled:a oiled:b ) .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c> ) ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.7.comp> a owl:Class ;
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^</2001/XMLSchema#integer> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.7> ] ;
-    owl:intersectionOf ( oiled:a oiled:c ) .
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.5 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.8.comp> a owl:Class ;
+<http://oiled.man.example.net/test#b.comp> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.8> ] ;
-    owl:intersectionOf ( oiled:b oiled:c ) .
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
 
-oiled:Unsatisfiable a owl:Class ;
+:C.1 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#b.comp> <http://oiled.man.example.net/test#c.comp> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+:C.6 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^</2001/XMLSchema#decimal> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.5> ] .
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ] .
 
-oiled:b.comp a owl:Class ;
+:C.7 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^</2001/XMLSchema#unsignedByte> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.3> ] .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.1> a owl:Class ;
+:C.8 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.1> ] ;
-    owl:intersectionOf ( oiled:b.comp oiled:c.comp ) .
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.6> a owl:Class ;
+<http://oiled.man.example.net/test#a> a owl:Class ;
+    rdfs:subClassOf :C.1 .
+
+<http://oiled.man.example.net/test#b> a owl:Class ;
+    rdfs:subClassOf <http://oiled.man.example.net/test#c.comp> ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#byte> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.6> ] .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.7> a owl:Class ;
+<http://oiled.man.example.net/test#c> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#integer> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.7> ] .
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.8> a owl:Class ;
+<http://oiled.man.example.net/test#c.comp> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.8> ] .
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
 
-oiled:a a owl:Class ;
-    rdfs:subClassOf <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#C.1> .
+:P.1 a owl:DatatypeProperty .
 
-oiled:b a owl:Class ;
-    rdfs:subClassOf oiled:c.comp ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#unsignedByte> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.3> ] .
+:P.2 a owl:ObjectProperty .
 
-oiled:c a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#short> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.2> ] .
+:P.3 a owl:DatatypeProperty .
 
-oiled:c.comp a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^</2001/XMLSchema#short> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.2> ] .
+:P.5 a owl:DatatypeProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.1> a owl:DatatypeProperty .
+:P.6 a owl:ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.2> a owl:ObjectProperty .
+:P.7 a owl:DatatypeProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.3> a owl:DatatypeProperty .
+:P.8 a owl:ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.5> a owl:DatatypeProperty .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.6> a owl:ObjectProperty .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.7> a owl:DatatypeProperty .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent601#P.8> a owl:ObjectProperty .
-
-[] a oiled:Unsatisfiable .
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

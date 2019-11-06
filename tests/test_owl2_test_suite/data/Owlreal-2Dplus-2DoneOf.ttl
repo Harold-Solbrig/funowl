@@ -9,16 +9,16 @@
 
 <http://example.org/A> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
+            :allValuesFrom :real ;
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
             :onProperty <http://example.org/dp> ;
             :someValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
                             rdf:first "-INF"^^xsd:float ;
                             rdf:rest [ a rdf:List ;
                                     rdf:first 0 ;
-                                    rdf:rest () ] ] ] ],
-        [ a :Restriction ;
-            :allValuesFrom :real ;
-            :onProperty <http://example.org/dp> ] .
+                                    rdf:rest () ] ] ] ] .
 
 <http://example.org/dp> a :DatatypeProperty .
 

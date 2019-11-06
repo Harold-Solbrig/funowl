@@ -1,4 +1,4 @@
-@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent627#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,47 +7,49 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent627> a owl:Ontology .
 
-oiled:Unsatisfiable a owl:Class ;
-    owl:intersectionOf ( oiled:c.comp [ a owl:Restriction ;
-                owl:onProperty oiled:invF ;
-                owl:someValuesFrom oiled:d ] [ a owl:Restriction ;
-                owl:allValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent627#V.3> ;
-                owl:onProperty oiled:invR ] ) .
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#c.comp> [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#invF> ;
+                        owl:someValuesFrom <http://oiled.man.example.net/test#d> ] [ a owl:Restriction ;
+                        owl:allValuesFrom :V.3 ;
+                        owl:onProperty <http://oiled.man.example.net/test#invR> ] ) ] .
 
-oiled:c a owl:Class ;
+<http://oiled.man.example.net/test#c> a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent627#P.1> ] .
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
 
-oiled:invR a owl:ObjectProperty ;
-    owl:inverseOf oiled:r .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent627#V.3> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty oiled:invF ;
-            owl:someValuesFrom oiled:d ] .
-
-oiled:c.comp a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent627#P.1> ] .
-
-oiled:d a owl:Class ;
-    owl:intersectionOf ( oiled:c [ a owl:Restriction ;
-                owl:onProperty oiled:f ;
-                owl:someValuesFrom oiled:c.comp ] ) .
-
-oiled:f a owl:FunctionalProperty,
+<http://oiled.man.example.net/test#f> a owl:FunctionalProperty,
         owl:ObjectProperty ;
-    rdfs:subPropertyOf oiled:r .
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#r> ;
+    owl:inverseOf <http://oiled.man.example.net/test#invF> .
 
-oiled:invF a owl:ObjectProperty ;
-    owl:inverseOf oiled:f .
+<http://oiled.man.example.net/test#invR> a owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#r> .
 
-oiled:r a owl:ObjectProperty,
+:V.3 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#invF> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#d> ] .
+
+<http://oiled.man.example.net/test#c.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+<http://oiled.man.example.net/test#d> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#c> [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#f> ;
+                        owl:someValuesFrom <http://oiled.man.example.net/test#c.comp> ] ) ] .
+
+<http://oiled.man.example.net/test#r> a owl:ObjectProperty,
         owl:TransitiveProperty .
 
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent627#P.1> a owl:DatatypeProperty .
+:P.1 a owl:DatatypeProperty .
 
-[] a oiled:Unsatisfiable .
+<http://oiled.man.example.net/test#invF> a owl:ObjectProperty .
+
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

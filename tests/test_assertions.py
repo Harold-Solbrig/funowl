@@ -6,7 +6,9 @@ from funowl.annotations import Annotation
 from funowl.assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
 from funowl.literals import Literal, TypedLiteral
+from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase, A
+from tests.utils.rdf_comparator import compare_rdf
 
 
 class AssertionsTestCase(TestBase):
@@ -87,9 +89,23 @@ class AssertionsTestCase(TestBase):
 
     def test_objectpropertyassertion_rdf(self):
         g = Graph()
-        ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
-        print('test_objectpropertyassertion_rdf')
-        print(g.serialize(format='turtle').decode())
+        assrt = ObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie)
+        assrt.to_rdf(g)
+        diff = compare_rdf("""@prefix ns1: <http://example.org/a#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ns1:Meg a <http://www.w3.org/2002/07/owl#NamedIndividual> ;
+    ns1:hasBrother ns1:Stewie .
+
+ns1:hasBrother a <http://www.w3.org/2002/07/owl#ObjectProperty> .
+
+ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(format='turtle').decode())
+        if diff:
+            print(diff)
+            self.fail()
 
     def test_negativeobjectpropertyassertion(self):
         self.assertEqual('NegativeObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
@@ -111,12 +127,13 @@ class AssertionsTestCase(TestBase):
                          DataPropertyAssertion(A.hasAge, A.Meg, Literal('"17"^^xsd:integer')).
                          to_functional(self.wa).getvalue())
 
-    # def test_datapropertyassertion_rdf(self):
-    #     x = Literal('"17"^^xsd:integer')
-    #     g = Graph()
-    #     DataPropertyAssertion(A.hasAge, A.Meg, x).to_rdf(g)
-    #     print('test_datapropertyassertion_rdf')
-    #     print(g.serialize(format='turtle').decode())
+
+    def test_datapropertyassertion_rdf(self):
+        x = Literal('"17"^^xsd:integer')
+        g = Graph()
+        DataPropertyAssertion(A.hasAge, A.Meg, x).to_rdf(g)
+        print('test_datapropertyassertion_rdf')
+        print(g.serialize(format='turtle').decode())
 
     def test_negativedatapropertyassertion(self):
         TypedLiteral(5, XSD.integer)
@@ -124,10 +141,28 @@ class AssertionsTestCase(TestBase):
                          NegativeDataPropertyAssertion(A.hasBrother, A.Meg, TypedLiteral(5, XSD.integer)).
                          to_functional(self.wa).getvalue())
 
-    # def test_negativedatapropertyassertion_rdf(self):
-    #     g = Graph()
-    #     NegativeDataPropertyAssertion(A.hasBrother, A.Meg, TypedLiteral(5, XSD.integer)).to_rdf(g)
-    #     print(g.serialize(format='turtle').decode())
+    def test_negativedatapropertyassertion_rdf(self):
+        g = Graph()
+        NegativeDataPropertyAssertion(A.hasBrother, A.Meg, TypedLiteral(5, XSD.integer)).to_rdf(g)
+        diff = compare_rdf("""@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/a#Meg> a ns1:NamedIndividual .
+
+<http://example.org/a#hasBrother> a ns1:DatatypeProperty .
+
+[] a ns1:NegativePropertyAssertion ;
+    ns1:assertionProperty <http://example.org/a#hasBrother> ;
+    ns1:sourceIndividual <http://example.org/a#Meg> ;
+    ns1:targetValue <http://notimplemented.org/TypedLiteral> .
+""", g)
+        if diff:
+            print(diff)
+            self.fail()
+
 
 if __name__ == '__main__':
     unittest.main()

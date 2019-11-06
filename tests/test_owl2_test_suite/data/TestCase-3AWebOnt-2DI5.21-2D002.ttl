@@ -1,88 +1,87 @@
-@prefix first: <http://www.w3.org/2002/03owlt/I5.21/premises002#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:Agamidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Agamidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Agamidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Agamidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Amphisbaenidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Amphisbaenidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Amphisbaenidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Amphisbaenidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Anomalepidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Anomalepidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Anomalepidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Anomalepidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Bipedidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Bipedidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Bipedidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Bipedidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Cordylidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Cordylidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Cordylidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Cordylidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Crocodylidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Crocodylidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Crocodylidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Crocodylidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Emydidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Emydidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Emydidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Emydidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Gekkonidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Gekkonidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Gekkonidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Gekkonidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Leptotyphlopidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Leptotyphlopidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Leptotyphlopidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Leptotyphlopidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Loxocemidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Loxocemidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Loxocemidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Loxocemidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Sphenodontidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Sphenodontidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Sphenodontidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Sphenodontidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Xantusiidae a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:hasValue "Xantusiidae" ;
-            owl:onProperty first:family-name ],
-        first:Reptile .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Xantusiidae> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "Xantusiidae" ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ],
+        <http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> .
 
-first:Reptile a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:cardinality "1"^^xsd:int ;
-            owl:onProperty first:family-name ] .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#Reptile> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :cardinality "1"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> ] .
 
-first:family-name a owl:DatatypeProperty .
+<http://www.w3.org/2002/03owlt/I5.21/premises002#family-name> a :DatatypeProperty .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

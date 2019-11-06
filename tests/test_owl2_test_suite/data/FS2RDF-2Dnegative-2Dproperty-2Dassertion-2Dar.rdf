@@ -1,98 +1,285 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-    xmlns="http://example.org/"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#">
-  <owl:Ontology/>
-  <owl:ObjectProperty rdf:about="http://example.org/p1"/>
-  <owl:ObjectProperty rdf:about="http://example.org/p7"/>
-  <owl:ObjectProperty rdf:about="http://example.org/p3"/>
-  <owl:ObjectProperty rdf:about="http://example.org/p6"/>
-  <owl:ObjectProperty rdf:about="http://example.org/p4"/>
-  <owl:ObjectProperty rdf:about="http://example.org/p9"/>
-  <owl:DatatypeProperty rdf:about="http://example.org/p5"/>
-  <owl:DatatypeProperty rdf:about="http://example.org/p8"/>
-  <owl:DatatypeProperty rdf:about="http://example.org/p2"/>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s6"/>
-    <owl:assertionProperty rdf:parseType="Resource">
-      <owl:inverseOf rdf:resource="http://example.org/p6"/>
-    </owl:assertionProperty>
-    <owl:targetIndividual rdf:resource="http://example.org/o6"/>
-    <rdfs:comment>I hereby annotate this also</rdfs:comment>
-  </owl:NegativePropertyAssertion>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s1"/>
-    <owl:assertionProperty rdf:resource="http://example.org/p1"/>
-    <owl:targetIndividual rdf:resource="http://example.org/o1"/>
-  </owl:NegativePropertyAssertion>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s2"/>
-    <owl:assertionProperty rdf:resource="http://example.org/p2"/>
-    <owl:targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
-    >2</owl:targetValue>
-  </owl:NegativePropertyAssertion>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s3"/>
-    <owl:assertionProperty rdf:parseType="Resource">
-      <owl:inverseOf rdf:resource="http://example.org/p3"/>
-    </owl:assertionProperty>
-    <owl:targetIndividual rdf:resource="http://example.org/o3"/>
-  </owl:NegativePropertyAssertion>
-  <owl:Annotation>
-    <owl:annotatedSource>
-      <owl:NegativePropertyAssertion>
-        <owl:sourceIndividual rdf:resource="http://example.org/s7"/>
-        <owl:assertionProperty rdf:resource="http://example.org/p7"/>
-        <owl:targetIndividual rdf:resource="http://example.org/o7"/>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/p1 -->
+
+    <ObjectProperty rdf:about="http://example.org/p1"/>
+    
+
+
+    <!-- http://example.org/p3 -->
+
+    <ObjectProperty rdf:about="http://example.org/p3"/>
+    
+
+
+    <!-- http://example.org/p4 -->
+
+    <ObjectProperty rdf:about="http://example.org/p4"/>
+    
+
+
+    <!-- http://example.org/p6 -->
+
+    <ObjectProperty rdf:about="http://example.org/p6"/>
+    
+
+
+    <!-- http://example.org/p7 -->
+
+    <ObjectProperty rdf:about="http://example.org/p7"/>
+    
+
+
+    <!-- http://example.org/p9 -->
+
+    <ObjectProperty rdf:about="http://example.org/p9"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/p2 -->
+
+    <DatatypeProperty rdf:about="http://example.org/p2"/>
+    
+
+
+    <!-- http://example.org/p5 -->
+
+    <DatatypeProperty rdf:about="http://example.org/p5"/>
+    
+
+
+    <!-- http://example.org/p8 -->
+
+    <DatatypeProperty rdf:about="http://example.org/p8"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/o1 -->
+
+    <NamedIndividual rdf:about="http://example.org/o1"/>
+    
+
+
+    <!-- http://example.org/o3 -->
+
+    <NamedIndividual rdf:about="http://example.org/o3"/>
+    
+
+
+    <!-- http://example.org/o4 -->
+
+    <NamedIndividual rdf:about="http://example.org/o4"/>
+    
+
+
+    <!-- http://example.org/o6 -->
+
+    <NamedIndividual rdf:about="http://example.org/o6"/>
+    
+
+
+    <!-- http://example.org/o7 -->
+
+    <NamedIndividual rdf:about="http://example.org/o7"/>
+    
+
+
+    <!-- http://example.org/o9 -->
+
+    <NamedIndividual rdf:about="http://example.org/o9"/>
+    
+
+
+    <!-- http://example.org/s1 -->
+
+    <NamedIndividual rdf:about="http://example.org/s1"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s1"/>
+        <assertionProperty rdf:resource="http://example.org/p1"/>
+        <targetIndividual rdf:resource="http://example.org/o1"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s2 -->
+
+    <NamedIndividual rdf:about="http://example.org/s2"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s2"/>
+        <assertionProperty rdf:resource="http://example.org/p2"/>
+        <targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</targetValue>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s3 -->
+
+    <NamedIndividual rdf:about="http://example.org/s3"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s3"/>
+        <assertionProperty>
+            <rdf:Description>
+                <inverseOf rdf:resource="http://example.org/p3"/>
+            </rdf:Description>
+        </assertionProperty>
+        <targetIndividual rdf:resource="http://example.org/o3"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s4 -->
+
+    <NamedIndividual rdf:about="http://example.org/s4"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s4"/>
+        <assertionProperty rdf:resource="http://example.org/p4"/>
+        <targetIndividual rdf:resource="http://example.org/o4"/>
         <rdfs:comment>I hereby annotate this</rdfs:comment>
-      </owl:NegativePropertyAssertion>
-    </owl:annotatedSource>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <owl:annotatedTarget>I hereby annotate this</owl:annotatedTarget>
-    <rdfs:label>on seven</rdfs:label>
-  </owl:Annotation>
-  <owl:Annotation>
-    <owl:annotatedSource>
-      <owl:NegativePropertyAssertion>
-        <owl:sourceIndividual rdf:resource="http://example.org/s9"/>
-        <owl:assertionProperty rdf:parseType="Resource">
-          <owl:inverseOf rdf:resource="http://example.org/p9"/>
-        </owl:assertionProperty>
-        <owl:targetIndividual rdf:resource="http://example.org/o9"/>
-        <rdfs:comment>I hereby annotate this also</rdfs:comment>
-      </owl:NegativePropertyAssertion>
-    </owl:annotatedSource>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <owl:annotatedTarget>I hereby annotate this also</owl:annotatedTarget>
-    <rdfs:label>on nine</rdfs:label>
-  </owl:Annotation>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s4"/>
-    <owl:assertionProperty rdf:resource="http://example.org/p4"/>
-    <owl:targetIndividual rdf:resource="http://example.org/o4"/>
-    <rdfs:comment>I hereby annotate this</rdfs:comment>
-  </owl:NegativePropertyAssertion>
-  <owl:NegativePropertyAssertion>
-    <owl:sourceIndividual rdf:resource="http://example.org/s5"/>
-    <owl:assertionProperty rdf:resource="http://example.org/p5"/>
-    <owl:targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
-    >5</owl:targetValue>
-    <rdfs:comment>I hereby annotate this too</rdfs:comment>
-  </owl:NegativePropertyAssertion>
-  <owl:Annotation>
-    <owl:annotatedSource>
-      <owl:NegativePropertyAssertion>
-        <owl:sourceIndividual rdf:resource="http://example.org/s8"/>
-        <owl:assertionProperty rdf:resource="http://example.org/p8"/>
-        <owl:targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer"
-        >8</owl:targetValue>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s5 -->
+
+    <NamedIndividual rdf:about="http://example.org/s5"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s5"/>
+        <assertionProperty rdf:resource="http://example.org/p5"/>
+        <targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</targetValue>
         <rdfs:comment>I hereby annotate this too</rdfs:comment>
-      </owl:NegativePropertyAssertion>
-    </owl:annotatedSource>
-    <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
-    <owl:annotatedTarget>I hereby annotate this too</owl:annotatedTarget>
-    <rdfs:label>on eight</rdfs:label>
-  </owl:Annotation>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s6 -->
+
+    <NamedIndividual rdf:about="http://example.org/s6"/>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+        <sourceIndividual rdf:resource="http://example.org/s6"/>
+        <assertionProperty>
+            <rdf:Description>
+                <inverseOf rdf:resource="http://example.org/p6"/>
+            </rdf:Description>
+        </assertionProperty>
+        <targetIndividual rdf:resource="http://example.org/o6"/>
+        <rdfs:comment>I hereby annotate this also</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://example.org/s7 -->
+
+    <NamedIndividual rdf:about="http://example.org/s7"/>
+    <Annotation>
+        <annotatedSource>
+            <rdf:Description rdf:nodeID="_:genid9">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+                <sourceIndividual rdf:resource="http://example.org/s7"/>
+                <assertionProperty rdf:resource="http://example.org/p7"/>
+                <targetIndividual rdf:resource="http://example.org/o7"/>
+                <rdfs:comment>I hereby annotate this</rdfs:comment>
+            </rdf:Description>
+        </annotatedSource>
+        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+        <annotatedTarget>I hereby annotate this</annotatedTarget>
+        <rdfs:label>on seven</rdfs:label>
+    </Annotation>
+    
+
+
+    <!-- http://example.org/s8 -->
+
+    <NamedIndividual rdf:about="http://example.org/s8"/>
+    <Annotation>
+        <annotatedSource>
+            <rdf:Description rdf:nodeID="_:genid11">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+                <sourceIndividual rdf:resource="http://example.org/s8"/>
+                <assertionProperty rdf:resource="http://example.org/p8"/>
+                <targetValue rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</targetValue>
+                <rdfs:comment>I hereby annotate this too</rdfs:comment>
+            </rdf:Description>
+        </annotatedSource>
+        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+        <annotatedTarget>I hereby annotate this too</annotatedTarget>
+        <rdfs:label>on eight</rdfs:label>
+    </Annotation>
+    
+
+
+    <!-- http://example.org/s9 -->
+
+    <NamedIndividual rdf:about="http://example.org/s9"/>
+    <Annotation>
+        <annotatedSource>
+            <rdf:Description rdf:nodeID="_:genid13">
+                <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NegativePropertyAssertion"/>
+                <sourceIndividual rdf:resource="http://example.org/s9"/>
+                <assertionProperty>
+                    <rdf:Description>
+                        <inverseOf rdf:resource="http://example.org/p9"/>
+                    </rdf:Description>
+                </assertionProperty>
+                <targetIndividual rdf:resource="http://example.org/o9"/>
+                <rdfs:comment>I hereby annotate this also</rdfs:comment>
+            </rdf:Description>
+        </annotatedSource>
+        <annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#comment"/>
+        <annotatedTarget>I hereby annotate this also</annotatedTarget>
+        <rdfs:label>on nine</rdfs:label>
+    </Annotation>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

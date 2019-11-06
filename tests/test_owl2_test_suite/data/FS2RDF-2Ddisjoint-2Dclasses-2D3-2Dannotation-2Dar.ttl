@@ -10,9 +10,9 @@
 
 <http://example.org/c> a :Class .
 
+[] a :Ontology .
+
 [] a :AllDisjointClasses ;
     rdfs:comment "I hereby annotate this" ;
     :members ( <http://example.org/a> <http://example.org/b> <http://example.org/c> ) .
-
-[] a :Ontology .
 

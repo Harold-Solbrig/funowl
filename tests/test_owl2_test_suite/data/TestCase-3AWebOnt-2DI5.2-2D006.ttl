@@ -1,57 +1,58 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#A> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#q> ;
-            owl:someValuesFrom owl:Thing ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#A> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#q> ;
+            :someValuesFrom :Thing ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#AorB> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ;
-            owl:someValuesFrom owl:Thing ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#AorB> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ;
+            :someValuesFrom :Thing ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#B> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#r> ;
-            owl:someValuesFrom owl:Thing ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#B> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#r> ;
+            :someValuesFrom :Thing ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ] ;
-    owl:intersectionOf ( <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> <http://www.w3.org/2002/03owlt/I5.2/premises006#notB> ) .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ],
+        [ a :Class ;
+            :intersectionOf ( <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> <http://www.w3.org/2002/03owlt/I5.2/premises006#notB> ) ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#notA> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#q> ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#notA> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#q> ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#notB> a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#r> ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#notB> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#r> ] .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#p> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#p> a :ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#q> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#q> a :ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#r> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#r> a :ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#s> a owl:ObjectProperty .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#s> a :ObjectProperty .
 
-<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#p> ],
-        [ a owl:Restriction ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#p> ] .
+<http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :maxCardinality "0"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#p> ],
+        [ a :Restriction ;
+            :minCardinality "1"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#p> ] .
 
-owl:Thing a owl:Class .
+:Thing a :Class .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

@@ -9,11 +9,6 @@
 
 <http://example.org/A> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
-            :onProperty <http://example.org/dp> ;
-            :someValuesFrom [ a rdfs:Datatype ;
-                    :onDatatype xsd:integer ;
-                    :withRestrictions ( [ xsd:minInclusive 4 ] ) ] ],
-        [ a :Restriction ;
             :allValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
                             rdf:first 2 ;
@@ -28,7 +23,12 @@
                             rdf:rest [ a rdf:List ;
                                     rdf:first 4 ;
                                     rdf:rest () ] ] ] ;
-            :onProperty <http://example.org/dp> ] .
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
+            :onProperty <http://example.org/dp> ;
+            :someValuesFrom [ a rdfs:Datatype ;
+                    :onDatatype xsd:integer ;
+                    :withRestrictions ( [ xsd:minInclusive 4 ] ) ] ] .
 
 <http://example.org/dp> a :DatatypeProperty .
 

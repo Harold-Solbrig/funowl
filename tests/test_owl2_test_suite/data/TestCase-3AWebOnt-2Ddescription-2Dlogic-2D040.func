@@ -112,5 +112,5 @@ SubClassOf(eg:C5 ObjectAllValuesFrom(eg:R eg:C3))
 SubClassOf(eg:TEST ObjectIntersectionOf(eg:C1 eg:C4 eg:C5))
 
 
-ClassAssertion(eg:TEST _:genid16481)
+ClassAssertion(eg:TEST _:genid25295)
 )

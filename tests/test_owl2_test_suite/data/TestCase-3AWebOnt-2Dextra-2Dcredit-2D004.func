@@ -6,9 +6,9 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error39>))
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error40>))
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error41>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error55>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error56>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error57>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>))
@@ -61,17 +61,17 @@ ObjectPropertyRange(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-
 #   Classes
 ############################
 
-# Class: <http://org.semanticweb.owlapi/error#Error39> (<http://org.semanticweb.owlapi/error#Error39>)
+# Class: <http://org.semanticweb.owlapi/error#Error55> (<http://org.semanticweb.owlapi/error#Error55>)
 
-EquivalentClasses(<http://org.semanticweb.owlapi/error#Error39> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error55> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
 
-# Class: <http://org.semanticweb.owlapi/error#Error40> (<http://org.semanticweb.owlapi/error#Error40>)
+# Class: <http://org.semanticweb.owlapi/error#Error56> (<http://org.semanticweb.owlapi/error#Error56>)
 
-EquivalentClasses(<http://org.semanticweb.owlapi/error#Error40> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error56> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
 
-# Class: <http://org.semanticweb.owlapi/error#Error41> (<http://org.semanticweb.owlapi/error#Error41>)
+# Class: <http://org.semanticweb.owlapi/error#Error57> (<http://org.semanticweb.owlapi/error#Error57>)
 
-EquivalentClasses(<http://org.semanticweb.owlapi/error#Error41> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error57> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
 
 # Class: <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
 

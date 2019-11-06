@@ -42,4 +42,5 @@ class IRI(FunOwlChoice):
             logging.warning(f"IRI type not specified for class {type(self).__name__}")
         else:
             g.add((fulluri, RDF.type, self.rdf_type))
+
         return fulluri

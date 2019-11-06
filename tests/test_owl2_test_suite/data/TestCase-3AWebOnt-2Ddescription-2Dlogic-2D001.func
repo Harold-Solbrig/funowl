@@ -29,5 +29,5 @@ SubClassOf(<http://oiled.man.example.net/test#a> ObjectComplementOf(ObjectUnionO
 SubClassOf(<http://oiled.man.example.net/test#b> ObjectComplementOf(<http://oiled.man.example.net/test#c>))
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid15488)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid29611)
 )

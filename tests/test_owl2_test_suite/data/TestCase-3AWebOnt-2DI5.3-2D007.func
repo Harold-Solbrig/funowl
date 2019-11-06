@@ -10,5 +10,5 @@ Ontology(
 Declaration(AnnotationProperty(first:dp))
 
 
-AnnotationAssertion(first:dp _:genid17778 "value")
+AnnotationAssertion(first:dp _:genid25537 "value")
 )

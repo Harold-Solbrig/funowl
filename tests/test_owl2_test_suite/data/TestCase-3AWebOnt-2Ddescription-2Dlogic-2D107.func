@@ -72,5 +72,5 @@ DisjointClasses(<http://oiled.man.example.net/test#c> <http://oiled.man.example.
 DisjointClasses(<http://oiled.man.example.net/test#d> <http://oiled.man.example.net/test#e>)
 
 
-ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid19909)
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid25568)
 )

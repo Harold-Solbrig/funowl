@@ -1,13 +1,24 @@
-@prefix ex: <http://www.example.org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix www: <http://www.example.org#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:q owl:inverseOf ex:p .
+www:p a :ObjectProperty ;
+    :inverseOf www:q .
 
-ex:s1 ex:p ex:o1 .
+www:s1 a :NamedIndividual ;
+    www:p www:o1 .
 
-ex:s2 ex:q ex:o2 .
+www:s2 a :NamedIndividual ;
+    www:q www:o2 .
+
+www:o1 a :NamedIndividual .
+
+www:o2 a :NamedIndividual .
+
+www:q a :ObjectProperty .
+
+[] a :Ontology .
 

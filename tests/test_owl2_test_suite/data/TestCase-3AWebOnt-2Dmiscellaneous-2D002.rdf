@@ -1,1318 +1,2065 @@
-<!DOCTYPE owl [
-     <!ENTITY vin  "http://www.w3.org/2002/03owlt/miscellaneous/consistent001#" >
-     <!ENTITY food "http://www.w3.org/2002/03owlt/miscellaneous/consistent002#" >
-     <!ENTITY xsd  "http://www.w3.org/2001/XMLSchema#" >
-   ]>
-
-<rdf:RDF
-  xmlns     = "&food;"
-  xmlns:food= "&food;"
-  xml:base  = "&food;"
-  xmlns:vin = "&vin;"
-  xmlns:owl = "http://www.w3.org/2002/07/owl#"
-  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#">
-
-  <owl:Ontology rdf:about="">
-    <rdfs:comment>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#"
+     xml:base="http://www.w3.org/2002/03owlt/miscellaneous/consistent002"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002">
+        <owl:imports rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001"/>
+        <rdfs:comment>
       Derived from the DAML Wine ontology at 
       http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
       Substantially modified.
-    </rdfs:comment> 
-    <owl:imports rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001"/>
-  </owl:Ontology>
+    </rdfs:comment>
+    </owl:Ontology>
+    
 
-  <owl:Class rdf:ID="ConsumableThing" />
 
-  <owl:Class rdf:ID="NonConsumableThing">
-    <owl:complementOf rdf:resource="#ConsumableThing" />
-  </owl:Class>
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-  <owl:Class rdf:ID="EdibleThing">
-    <rdfs:subClassOf rdf:resource="#ConsumableThing" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PotableLiquid">
-    <rdfs:subClassOf rdf:resource="#ConsumableThing" />
-    <owl:disjointWith rdf:resource="#EdibleThing" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Wine">
-    <owl:equivalentClass rdf:resource="&vin;Wine"/>
-  </owl:Class>
+    
 
-  <owl:ObjectProperty rdf:ID="madeFromFruit">
-    <rdfs:domain rdf:resource="#ConsumableThing" />
-    <rdfs:range rdf:resource="#Fruit" />
-  </owl:ObjectProperty>
 
-  <owl:Class rdf:ID="Juice">
-    <rdfs:subClassOf rdf:resource="#PotableLiquid" />
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#madeFromFruit" />
-  <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#course -->
 
-  <owl:ObjectProperty rdf:ID="hasDrink">
-    <rdfs:domain rdf:resource="#MealCourse" />
-    <rdfs:range rdf:resource="#PotableLiquid" />
-  </owl:ObjectProperty>
-  
-  <owl:Thing rdf:ID="White">
-    <owl:sameAs rdf:resource="&vin;White"/>
-  </owl:Thing>
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#course">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meal"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+    </owl:ObjectProperty>
+    
 
-  <owl:Thing rdf:ID="Rose">
-    <owl:sameAs rdf:resource="&vin;Rose" />
-  </owl:Thing>
 
-  <owl:Thing rdf:ID="Red">
-    <owl:sameAs rdf:resource="&vin;Red" />
-  </owl:Thing>
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink -->
 
-  <owl:Thing rdf:ID="Sweet">
-    <owl:sameAs rdf:resource="&vin;Sweet" />
-  </owl:Thing>
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid"/>
+    </owl:ObjectProperty>
+    
 
-  <owl:Thing rdf:ID="OffDry">
-    <owl:sameAs rdf:resource="&vin;OffDry" />
-  </owl:Thing>
 
-  <owl:Thing rdf:ID="Dry">
-    <owl:sameAs rdf:resource="&vin;Dry" />
-  </owl:Thing>
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood -->
 
-  <owl:Thing rdf:ID="Delicate">
-    <owl:sameAs rdf:resource="&vin;Delicate" />
-  </owl:Thing>
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+    </owl:ObjectProperty>
+    
 
-  <owl:Thing rdf:ID="Moderate">
-    <owl:sameAs rdf:resource="&vin;Moderate" />
-  </owl:Thing>
 
-  <owl:Thing rdf:ID="Strong">
-    <owl:sameAs rdf:resource="&vin;Strong" />
-  </owl:Thing>
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#madeFromFruit -->
 
-  <owl:Thing rdf:ID="Light">
-    <owl:sameAs rdf:resource="&vin;Light" />
-  </owl:Thing>
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#madeFromFruit">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit"/>
+    </owl:ObjectProperty>
+    
 
-  <owl:Thing rdf:ID="Medium">
-    <owl:sameAs rdf:resource="&vin;Medium" />
-  </owl:Thing>
 
-  <owl:Thing rdf:ID="Full">
-    <owl:sameAs rdf:resource="&vin;Full" />
-  </owl:Thing>
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-  <owl:ObjectProperty rdf:ID="course">
-    <rdfs:domain rdf:resource="#Meal" />
-    <rdfs:range rdf:resource="#MealCourse" />
-  </owl:ObjectProperty>
-  
-  <owl:Class rdf:ID="Grape">
-    <rdfs:subClassOf rdf:resource="#SweetFruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Pasta">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Meat" />
-    <owl:disjointWith rdf:resource="#Fowl" />
-    <owl:disjointWith rdf:resource="#Seafood" />
-    <owl:disjointWith rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithWhiteSauce">
-    <rdfs:subClassOf rdf:resource="#Pasta" />
-    <owl:disjointWith rdf:resource="#PastaWithRedSauce" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithSpicyRedSauceCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#PastaWithSpicyRedSauce" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Full" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Strong" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithSpicyRedSauce">
-    <rdfs:subClassOf rdf:resource="#PastaWithRedSauce" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithRedSauce">
-    <rdfs:subClassOf rdf:resource="#Pasta" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithNonSpicyRedSauceCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#PastaWithNonSpicyRedSauce" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithNonSpicyRedSauce">
-    <rdfs:subClassOf rdf:resource="#PastaWithRedSauce" />
-    <owl:disjointWith rdf:resource="#PastaWithSpicyRedSauce" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithLightCreamSauce">
-    <rdfs:subClassOf rdf:resource="#PastaWithWhiteSauce" />
-    <owl:disjointWith rdf:resource="#PastaWithHeavyCreamSauce" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithLightCreamCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#PastaWithLightCreamSauce" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Light" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Delicate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithHeavyCreamSauce">
-    <rdfs:subClassOf rdf:resource="#PastaWithWhiteSauce" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="PastaWithHeavyCreamCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#PastaWithHeavyCreamSauce" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="OysterShellfishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#OysterShellfish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Sweet" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="OysterShellfish">
-    <rdfs:subClassOf rdf:resource="#Shellfish" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="OtherTomatoBasedFoodCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#OtherTomatoBasedFood" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="OtherTomatoBasedFood">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Pasta" />
-    <owl:disjointWith rdf:resource="#Meat" />
-    <owl:disjointWith rdf:resource="#Fowl" />
-    <owl:disjointWith rdf:resource="#Seafood" />
-    <owl:disjointWith rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonSweetFruitCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#NonSweetFruit" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Delicate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#OffDry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="SweetFruitCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#SweetFruit" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Sweet" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-   
-  <owl:Class rdf:ID="NonSweetFruit">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#SweetFruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonSpicyRedMeatCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#NonSpicyRedMeat" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                  <owl:Thing rdf:about="#Strong" />
-                  <owl:Thing rdf:about="#Moderate" />
-                </owl:oneOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonSpicyRedMeat">
-    <rdfs:subClassOf rdf:resource="#RedMeat" />
-    <owl:disjointWith rdf:resource="#SpicyRedMeat" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonRedMeatCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#NonRedMeat" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Strong" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonRedMeat">
-    <rdfs:subClassOf rdf:resource="#Meat" />
-    <owl:disjointWith rdf:resource="#RedMeat" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonOysterShellfishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#NonOysterShellfish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonOysterShellfish">
-    <rdfs:subClassOf rdf:resource="#Shellfish" />
-    <owl:disjointWith rdf:resource="#OysterShellfish" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonBlandFishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#NonBlandFish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="NonBlandFish">
-    <rdfs:subClassOf rdf:resource="#Fish" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Meat">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Fowl" />
-    <owl:disjointWith rdf:resource="#Seafood" />
-    <owl:disjointWith rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="MealCourse">
-    <rdfs:subClassOf rdf:resource="#ConsumableThing" />
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom rdf:resource="#Wine" />
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="#PotableLiquid" />
-    <owl:disjointWith rdf:resource="#EdibleThing" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Meal">
-    <rdfs:subClassOf rdf:resource="#ConsumableThing" />
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#course" />
-        <owl:minCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minCardinality>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#course" />
-        <owl:allValuesFrom rdf:resource="#MealCourse" />
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <owl:disjointWith rdf:resource="#MealCourse" />
-    <owl:disjointWith rdf:resource="#PotableLiquid" />
-    <owl:disjointWith rdf:resource="#EdibleThing" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="LightMeatFowlCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#LightMeatFowl" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="LightMeatFowl">
-    <rdfs:subClassOf rdf:resource="#Fowl" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="FruitCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#Fruit" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
- 
-  
-  <owl:Class rdf:ID="Fruit">
-    <owl:unionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#SweetFruit" />
-      <owl:Class rdf:about="#NonSweetFruit" />
-    </owl:unionOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Fowl">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Seafood" />
-    <owl:disjointWith rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="FishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#Fish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Medium" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="DessertCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#Dessert" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Full" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Strong" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Sweet" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Dessert">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-   <owl:Class rdf:ID="SweetFruit">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="SweetDessertCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#SweetDessert" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="SweetDessert">
-    <rdfs:subClassOf rdf:resource="#Dessert" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="DarkMeatFowlCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#DarkMeatFowl" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Light" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Delicate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="DarkMeatFowl">
-    <rdfs:subClassOf rdf:resource="#Fowl" />
-    <owl:disjointWith rdf:resource="#LightMeatFowl" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="CheeseNutsDessertCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#CheeseNutsDessert" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="CheeseNutsDessert">
-    <rdfs:subClassOf rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#SweetDessert" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="BlandFishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#BlandFish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Delicate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="BlandFish">
-    <rdfs:subClassOf rdf:resource="#Fish" />
-    <owl:disjointWith rdf:resource="#NonBlandFish" />
-  </owl:Class>
-  
-  <owl:ObjectProperty rdf:ID="hasFood">
-    <rdfs:domain rdf:resource="#MealCourse" />
-    <rdfs:range rdf:resource="#EdibleThing" />
-  </owl:ObjectProperty>
-  
-  <owl:Class rdf:ID="Fish">
-    <rdfs:subClassOf rdf:resource="#Seafood" />
-    <owl:disjointWith rdf:resource="#Shellfish" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="SpicyRedMeat">
-    <rdfs:subClassOf rdf:resource="#RedMeat" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="ShellfishCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#Shellfish" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:allValuesFrom>
-              <owl:Class>
-                <owl:oneOf rdf:parseType="Collection">
-                  <owl:Thing rdf:about="#Moderate" />
-                  <owl:Thing rdf:about="#Strong" />
-                </owl:oneOf>
-              </owl:Class>
-            </owl:allValuesFrom>
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Full" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Shellfish">
-    <rdfs:subClassOf rdf:resource="#Seafood" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="SeafoodCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#Seafood" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#White" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="Seafood">
-    <rdfs:subClassOf rdf:resource="#EdibleThing" />
-    <owl:disjointWith rdf:resource="#Dessert" />
-    <owl:disjointWith rdf:resource="#Fruit" />
-  </owl:Class>
-  
-  <owl:Class rdf:ID="RedMeatCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#RedMeat" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <owl:Class rdf:ID="RedMeat">
-    <rdfs:subClassOf rdf:resource="#Meat" />
-  </owl:Class>
-  
-  <SweetDessert rdf:ID="Cake" />
-  
-  <SweetFruit rdf:ID="Bananas" />
-  
-  <SweetFruit rdf:ID="MixedFruit" />
-  
-  <NonOysterShellfish rdf:ID="Mussels" />
-  
-  <CheeseNutsDessert rdf:ID="Nuts" />
-  
-  <OysterShellfish rdf:ID="Oysters" />
-  
-  <PastaWithLightCreamSauce rdf:ID="PastaWithWhiteClamSauce" />
-  
-  <SweetFruit rdf:ID="Peaches" />
-  
-  <SweetDessert rdf:ID="Pie" />
-  
-  <OtherTomatoBasedFood rdf:ID="Pizza" />
-  
-  <NonRedMeat rdf:ID="Pork" />
-  
-  <NonSpicyRedMeat rdf:ID="RoastBeef" />
-  
-  <BlandFish rdf:ID="Scrod" />
-  
-  <PastaWithNonSpicyRedSauce rdf:ID="SpaghettiWithTomatoSauce" />
-  
-  <NonSpicyRedMeat rdf:ID="Steak" />
-  
-  <NonBlandFish rdf:ID="Swordfish" />
-  
-  <EatingGrape rdf:ID="ThompsonSeedless" />
-  
-  <owl:Class rdf:ID="EatingGrape">
-    <rdfs:subClassOf rdf:resource="#Grape" />
-  </owl:Class>
+    
 
-  <NonBlandFish rdf:ID="Tuna" />
-  
-  <LightMeatFowl rdf:ID="Turkey" />
-  
-  <NonSpicyRedMeat rdf:ID="Veal" />
-  
-  <owl:Class rdf:ID="SpicyRedMeatCourse">
-    <owl:intersectionOf rdf:parseType="Collection">
-      <owl:Class rdf:about="#MealCourse" />
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasFood" />
-        <owl:allValuesFrom rdf:resource="#SpicyRedMeat" />
-      </owl:Restriction>
-    </owl:intersectionOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasColor" />
-            <owl:hasValue rdf:resource="#Red" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasBody" />
-            <owl:hasValue rdf:resource="#Full" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasFlavor" />
-            <owl:hasValue rdf:resource="#Moderate" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-    <rdfs:subClassOf>
-      <owl:Restriction>
-        <owl:onProperty rdf:resource="#hasDrink" />
-        <owl:allValuesFrom>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="&vin;hasSugar" />
-            <owl:hasValue rdf:resource="#Dry" />
-          </owl:Restriction>
-        </owl:allValuesFrom>
-      </owl:Restriction>
-    </rdfs:subClassOf>
-  </owl:Class>
-  
-  <SpicyRedMeat rdf:ID="BeefCurry" />
-  
-  <LightMeatFowl rdf:ID="Chicken" />
-  
-  <NonOysterShellfish rdf:ID="Clams" />
-  
-  <DarkMeatFowl rdf:ID="Duck" />
-  
-  <SpicyRedMeat rdf:ID="GarlickyRoast" />
-  
-  <DarkMeatFowl rdf:ID="Goose" />
-  
-  <BlandFish rdf:ID="Halibut" />
-  
-  <NonOysterShellfish rdf:ID="Crab" />
-  
-  <BlandFish rdf:ID="Flounder" />
-  
-  <NonOysterShellfish rdf:ID="Lobster" />
-  
-  <PastaWithHeavyCreamSauce rdf:ID="FettucineAlfRedo" />
-  
-  <PastaWithSpicyRedSauce rdf:ID="FraDiavolo" />
-  
-  <CheeseNutsDessert rdf:ID="Cheese" />
-  
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Wine -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Wine">
+        <owl:equivalentClass rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Wine"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fish"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessert -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessert">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dessert"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessertCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessertCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessert"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowl -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowl">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fowl"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowlCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowlCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowl"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Light"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dessert -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dessert">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fowl"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DessertCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DessertCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dessert"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EatingGrape -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EatingGrape">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Grape"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meal"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fowl -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fowl">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruit"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FruitCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FruitCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fruit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Grape -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Grape">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Juice -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Juice">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#madeFromFruit"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fowl"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowlCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowlCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meal -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meal">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#course"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#course"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Wine"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Fish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonConsumableThing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonConsumableThing">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:complementOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeat -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeatCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeatCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeatCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeatCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:oneOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+                                </owl:oneOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruit -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruit">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruitCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruitCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSweetFruit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OffDry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFoodCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFoodCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamSauce"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteSauce"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamSauce"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Light"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithRedSauce"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauceCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauceCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauce"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithRedSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithRedSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+        <owl:disjointWith rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithRedSauce"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauceCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauceCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauce"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteSauce -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteSauce">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pasta"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PotableLiquid">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ConsumableThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Meat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeatCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeatCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SeafoodCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SeafoodCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Seafood"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ShellfishCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ShellfishCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Shellfish"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:oneOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+                                </owl:oneOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RedMeat"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeatCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeatCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dessert"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessertCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessertCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EdibleThing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruitCourse -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruitCourse">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MealCourse"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasFood"/>
+                        <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#hasDrink"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar"/>
+                        <owl:hasValue rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Wine -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Wine"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Delicate -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Delicate">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Dry -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Dry">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Full -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Full">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Light -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Light">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Light"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Medium -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Medium">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Moderate -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Moderate">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#OffDry -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#OffDry">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OffDry"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Red -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Red">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Rose -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Rose">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Rose"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Strong -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Strong">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Sweet -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Sweet">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent001#White -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent001#White">
+        <owl:sameAs rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Bananas -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Bananas">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BeefCurry -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BeefCurry">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Cake -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Cake">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Cheese -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Cheese">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Chicken -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Chicken">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Clams -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Clams">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Crab -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Crab">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Delicate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Dry">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Duck -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Duck">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FettucineAlfRedo -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FettucineAlfRedo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithHeavyCreamSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Flounder -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Flounder">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FraDiavolo -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#FraDiavolo">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithSpicyRedSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Full">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#GarlickyRoast -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#GarlickyRoast">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpicyRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Goose -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Goose">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#DarkMeatFowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Halibut -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Halibut">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Light -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Light">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Lobster -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Lobster">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Medium">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MixedFruit -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#MixedFruit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Moderate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Mussels -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Mussels">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonOysterShellfish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Nuts -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Nuts">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#CheeseNutsDessert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OffDry -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OffDry">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Oysters -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Oysters">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OysterShellfish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteClamSauce -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithWhiteClamSauce">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithLightCreamSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Peaches -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Peaches">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetFruit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pie -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pie">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SweetDessert"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pizza -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pizza">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#OtherTomatoBasedFood"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pork -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Pork">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Red">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RoastBeef -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#RoastBeef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Rose -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Rose">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Scrod -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Scrod">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#BlandFish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpaghettiWithTomatoSauce -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#SpaghettiWithTomatoSauce">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#PastaWithNonSpicyRedSauce"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Steak -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Steak">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Strong">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Sweet">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Swordfish -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Swordfish">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ThompsonSeedless -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#ThompsonSeedless">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#EatingGrape"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Tuna -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Tuna">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonBlandFish"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Turkey -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Turkey">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#LightMeatFowl"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Veal -->
+
+    <owl:NamedIndividual rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#Veal">
+        <rdf:type rdf:resource="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#NonSpicyRedMeat"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White -->
+
+    <owl:Thing rdf:about="http://www.w3.org/2002/03owlt/miscellaneous/consistent002#White">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </owl:Thing>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

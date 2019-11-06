@@ -9,11 +9,11 @@
 
 <http://example.org/A> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
-            :onProperty <http://example.org/dp> ;
-            :someValuesFrom xsd:integer ],
-        [ a :Restriction ;
             :allValuesFrom xsd:string ;
-            :onProperty <http://example.org/dp> ] .
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
+            :onProperty <http://example.org/dp> ;
+            :someValuesFrom xsd:integer ] .
 
 <http://example.org/dp> a :DatatypeProperty .
 

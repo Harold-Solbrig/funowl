@@ -9,17 +9,17 @@
 
 <http://example.org/b> a :Class .
 
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
+
 [] a :Ontology .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :equivalentClass ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :equivalentClass ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
 

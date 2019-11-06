@@ -64,5 +64,5 @@ EquivalentClasses(:V.4 ObjectAllValuesFrom(oiled:invR :V.2))
 EquivalentClasses(:V.5 ObjectAllValuesFrom(oiled:invR :V.3))
 
 
-ClassAssertion(oiled:Satisfiable _:genid17657)
+ClassAssertion(oiled:Satisfiable _:genid24371)
 )

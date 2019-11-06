@@ -1,108 +1,225 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#"
-    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent909" >
-   <owl:Ontology/>
-   <owl:FunctionalProperty rdf:ID="p-N-to-1" >
-     <owl:inverseOf>
-        <owl:ObjectProperty rdf:ID="invP-1-to-N" />
-     </owl:inverseOf>
-     <rdfs:domain rdf:resource="#cardinality-N" />
-     <rdfs:range rdf:resource="#finite" />
-   </owl:FunctionalProperty>
-   <owl:ObjectProperty rdf:about="#p-N-to-1" />
-   <owl:FunctionalProperty rdf:ID="q-M-to-1" >
-     <owl:inverseOf>
-        <owl:ObjectProperty  rdf:ID="invQ-1-to-M" />
-     </owl:inverseOf>
-     <rdfs:domain rdf:resource="#cardinality-N-times-M" />
-     <rdfs:range rdf:resource="#cardinality-N" />
-   </owl:FunctionalProperty>
-   <owl:ObjectProperty rdf:about="#q-M-to-1" />
-   <owl:FunctionalProperty rdf:ID="r-N-times-M-to-1">
-     <owl:inverseOf>
-        <owl:ObjectProperty  rdf:ID="invR-N-times-M-to-1" />
-     </owl:inverseOf>
-     <rdfs:domain rdf:resource="#cardinality-N-times-M" />
-     <rdfs:range rdf:resource="#finite" />
-   </owl:FunctionalProperty>
-   <owl:ObjectProperty rdf:about="#r-N-times-M-to-1"/>
-   <owl:FunctionalProperty rdf:ID="f-K-to-1" >
-     <owl:inverseOf>
-        <owl:ObjectProperty rdf:ID="invF-1-to-K" />
-     </owl:inverseOf>
-     <rdfs:domain rdf:resource="#finite" />
-     <rdfs:range rdf:resource="#only-d" />
-   </owl:FunctionalProperty>
-   <owl:ObjectProperty rdf:about="#f-K-to-1" />
-   <owl:Class rdf:ID="only-d">
-      <owl:oneOf rdf:parseType="Collection">
-         <owl:Thing rdf:ID="d"/>
-      </owl:oneOf>
-      <owl:equivalentClass>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="#invF-1-to-K"/>
-          <owl:maxCardinality rdf:datatype=
-            "http://www.w3.org/2001/XMLSchema#integer"
-           >1000000000</owl:maxCardinality>
-        </owl:Restriction>
-      </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:ID="finite">
-      <owl:equivalentClass>
-        <owl:Restriction>
-          <owl:onProperty rdf:resource="#invP-1-to-N"/>
-          <owl:cardinality rdf:datatype=
-            "http://www.w3.org/2001/XMLSchema#integer"
-           >2</owl:cardinality>
-        </owl:Restriction>
-      </owl:equivalentClass>
-      <owl:equivalentClass>
-         <owl:Restriction>
-           <owl:onProperty rdf:resource="#invR-N-times-M-to-1"/>
-          <owl:cardinality rdf:datatype=
-            "http://www.w3.org/2001/XMLSchema#integer"
-           >5</owl:cardinality>
-       <owl:equivalentClass>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="#f-K-to-1"/>
-            <owl:someValuesFrom rdf:resource="#only-d"/>
-          </owl:Restriction>
-       </owl:equivalentClass>
-        </owl:Restriction>
-      </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:ID="cardinality-N">
-       <owl:equivalentClass>
-         <owl:Restriction>
-           <owl:onProperty rdf:resource="#p-N-to-1"/>
-           <owl:someValuesFrom rdf:resource="#finite"/>
-         </owl:Restriction>
-       </owl:equivalentClass>
-       <owl:equivalentClass>
-         <owl:Restriction>
-             <owl:onProperty rdf:resource="#invQ-1-to-M"/>
-             <owl:cardinality rdf:datatype=
-               "http://www.w3.org/2001/XMLSchema#integer"
-              >3</owl:cardinality>
-         </owl:Restriction>
-       </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:ID="cardinality-N-times-M">
-       <owl:equivalentClass>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="#q-M-to-1"/>
-            <owl:someValuesFrom rdf:resource="#cardinality-N"/>
-          </owl:Restriction>
-       </owl:equivalentClass>
-    </owl:Class>
-    <owl:Class rdf:about="#cardinality-N-times-M">
-       <owl:equivalentClass>
-          <owl:Restriction>
-            <owl:onProperty rdf:resource="#r-N-times-M-to-1"/>
-            <owl:someValuesFrom rdf:resource="#finite"/>
-          </owl:Restriction>
-       </owl:equivalentClass>
-    </owl:Class>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1 -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1">
+        <inverseOf rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N">
+        <inverseOf rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M">
+        <inverseOf rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1 -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1">
+        <inverseOf rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1 -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1 -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1 -->
+
+    <ObjectProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite"/>
+    </ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite"/>
+            </Restriction>
+        </equivalentClass>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M"/>
+                <cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</cardinality>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N-times-M">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#q-M-to-1"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N"/>
+            </Restriction>
+        </equivalentClass>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1"/>
+                <someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite"/>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite">
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invP-1-to-N"/>
+                <cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</cardinality>
+            </Restriction>
+        </equivalentClass>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1"/>
+                <cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</cardinality>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d">
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K"/>
+                <maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1000000000</maxCardinality>
+            </Restriction>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <Restriction>
+        <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#f-K-to-1"/>
+        <someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d"/>
+        <equivalentClass>
+            <Restriction>
+                <onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invR-N-times-M-to-1"/>
+                <cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">5</cardinality>
+            </Restriction>
+        </equivalentClass>
+    </Restriction>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

@@ -1,4 +1,4 @@
-@prefix j.0: <http://owl2.test/rules#> .
+@prefix : <http://org.semanticweb.ontologies/Ontology1232054810511161000#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -7,15 +7,16 @@
 
 <http://org.semanticweb.ontologies/Ontology1232054810511161000> a owl:Ontology .
 
-j.0:c a j.0:C,
+<http://owl2.test/rules#c> a <http://owl2.test/rules#C>,
+        owl:NamedIndividual,
         owl:Thing .
 
-j.0:C a owl:Class ;
+<http://owl2.test/rules#C> a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty j.0:OP ] .
+            owl:onProperty <http://owl2.test/rules#OP> ] .
 
-j.0:OP a owl:ObjectProperty .
+<http://owl2.test/rules#OP> a owl:ObjectProperty .
 
 owl:Thing a owl:Class .
 

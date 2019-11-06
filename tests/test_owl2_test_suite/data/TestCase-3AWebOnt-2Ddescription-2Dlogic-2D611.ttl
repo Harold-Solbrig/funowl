@@ -1,55 +1,57 @@
-@prefix oiled: <http://oiled.man.example.net/test#> .
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-oiled:invF a owl:ObjectProperty ;
-    owl:inverseOf oiled:f .
-
-oiled:invF1 a owl:ObjectProperty ;
-    owl:inverseOf oiled:f1 .
-
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent611> a owl:Ontology .
 
-oiled:Unsatisfiable a owl:Class ;
-    owl:intersectionOf ( [ a owl:Restriction ;
-                owl:allValuesFrom oiled:p.comp ;
-                owl:onProperty oiled:s ] [ a owl:Restriction ;
-                owl:onProperty oiled:s ;
-                owl:someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#A.2> ] ) .
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#s> ;
+                        owl:someValuesFrom :A.2 ] [ a owl:Restriction ;
+                        owl:allValuesFrom <http://oiled.man.example.net/test#p.comp> ;
+                        owl:onProperty <http://oiled.man.example.net/test#s> ] ) ] .
 
-oiled:invS a owl:ObjectProperty ;
-    owl:inverseOf oiled:s .
-
-oiled:p.comp a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:minCardinality "1"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> ] .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent611#A.2> a owl:Class ;
-    owl:intersectionOf ( oiled:p [ a owl:Restriction ;
-                owl:onProperty oiled:invS ;
-                owl:someValuesFrom oiled:p ] ) .
-
-oiled:f a owl:FunctionalProperty,
-        owl:ObjectProperty .
-
-oiled:f1 a owl:FunctionalProperty,
-        owl:ObjectProperty .
-
-oiled:p a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
-            owl:maxCardinality "0"^^</2001/XMLSchema#int> ;
-            owl:onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> ] .
-
-<http://www.w3.org/2002/03owlt/description-logic/inconsistent611#P.1> a owl:DatatypeProperty .
-
-oiled:s a owl:FunctionalProperty,
+<http://oiled.man.example.net/test#f> a owl:FunctionalProperty,
         owl:ObjectProperty ;
-    rdfs:subPropertyOf oiled:f,
-        oiled:f1 .
+    owl:inverseOf <http://oiled.man.example.net/test#invF> .
 
-[] a oiled:Unsatisfiable .
+<http://oiled.man.example.net/test#f1> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#invF1> .
+
+<http://oiled.man.example.net/test#invF> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#invF1> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#invS> a owl:ObjectProperty ;
+    owl:inverseOf <http://oiled.man.example.net/test#s> .
+
+<http://oiled.man.example.net/test#p.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+:A.2 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#p> [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#invS> ;
+                        owl:someValuesFrom <http://oiled.man.example.net/test#p> ] ) ] .
+
+<http://oiled.man.example.net/test#p> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+:P.1 a owl:DatatypeProperty .
+
+<http://oiled.man.example.net/test#s> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#f>,
+        <http://oiled.man.example.net/test#f1> .
+
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

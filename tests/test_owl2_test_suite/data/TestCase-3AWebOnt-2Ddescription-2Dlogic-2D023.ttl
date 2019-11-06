@@ -1,3 +1,4 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent023#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -11,24 +12,24 @@
             owl:onProperty <http://oiled.man.example.net/test#s> ;
             owl:someValuesFrom [ a owl:Class ;
                     owl:intersectionOf ( [ a owl:Restriction ;
-                                owl:onProperty <http://oiled.man.example.net/test#r> ;
-                                owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
                                 owl:onProperty <http://oiled.man.example.net/test#p> ;
                                 owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
-                                owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
-                                owl:onProperty <http://oiled.man.example.net/test#r> ] [ a owl:Restriction ;
-                                owl:allValuesFrom [ a owl:Restriction ;
-                                        owl:onProperty <http://oiled.man.example.net/test#r> ;
-                                        owl:someValuesFrom owl:Thing ] ;
-                                owl:onProperty <http://oiled.man.example.net/test#p> ] [ a owl:Restriction ;
+                                owl:onProperty <http://oiled.man.example.net/test#r> ;
+                                owl:someValuesFrom owl:Thing ] [ a owl:Restriction ;
                                 owl:allValuesFrom [ a owl:Restriction ;
                                         owl:onProperty <http://oiled.man.example.net/test#p> ;
                                         owl:someValuesFrom owl:Thing ] ;
                                 owl:onProperty <http://oiled.man.example.net/test#p> ] [ a owl:Restriction ;
                                 owl:allValuesFrom [ a owl:Restriction ;
+                                        owl:onProperty <http://oiled.man.example.net/test#r> ;
+                                        owl:someValuesFrom owl:Thing ] ;
+                                owl:onProperty <http://oiled.man.example.net/test#p> ] [ a owl:Restriction ;
+                                owl:allValuesFrom [ a owl:Restriction ;
                                         owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
                                         owl:onProperty <http://oiled.man.example.net/test#r> ] ;
-                                owl:onProperty <http://oiled.man.example.net/test#p> ] ) ] ],
+                                owl:onProperty <http://oiled.man.example.net/test#p> ] [ a owl:Restriction ;
+                                owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
+                                owl:onProperty <http://oiled.man.example.net/test#r> ] ) ] ],
         <http://oiled.man.example.net/test#a> .
 
 <http://oiled.man.example.net/test#invP> a owl:ObjectProperty ;

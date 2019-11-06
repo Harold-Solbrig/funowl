@@ -1,97 +1,216 @@
-<rdf:RDF
-    xmlns:oiled="http://oiled.man.example.net/test#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
- xml:base="http://www.w3.org/2002/03owlt/description-logic/consistent605">
- <owl:Ontology rdf:about=""/>
- <owl:Class rdf:about="http://oiled.man.example.net/test#c2"/>
- <owl:Class rdf:about="http://oiled.man.example.net/test#Satisfiable">
-  <owl:intersectionOf rdf:parseType="Collection">
-   <owl:Class rdf:about="#C.1"/>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3a"/>
-    </owl:onProperty>
-    <owl:someValuesFrom>
-     <owl:Class rdf:about="http://oiled.man.example.net/test#c1"/>
-    </owl:someValuesFrom>
-   </owl:Restriction>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx4a"/>
-    </owl:onProperty>
-    <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#c2"/>
-   </owl:Restriction>
-  </owl:intersectionOf>
- </owl:Class>
- <owl:Class rdf:ID="C.1">
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:DatatypeProperty rdf:ID="P.1"/>
-    </owl:onProperty>
-    <owl:minCardinality rdf:datatype="/2001/XMLSchema#int"
-    >1</owl:minCardinality>
-   </owl:Restriction>
-  </owl:equivalentClass>
- </owl:Class>
- <owl:Class rdf:ID="A.2">
-  <owl:intersectionOf rdf:parseType="Collection">
-   <owl:Class rdf:about="http://oiled.man.example.net/test#c1"/>
-   <owl:Class rdf:about="http://oiled.man.example.net/test#c2"/>
-  </owl:intersectionOf>
- </owl:Class>
- <owl:Class rdf:ID="C.1.comp">
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty rdf:resource="#P.1"/>
-    <owl:maxCardinality rdf:datatype="/2001/XMLSchema#int"
-    >0</owl:maxCardinality>
-   </owl:Restriction>
-  </owl:equivalentClass>
-  <owl:equivalentClass>
-   <owl:Restriction>
-    <owl:onProperty>
-     <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3a"/>
-    </owl:onProperty>
-    <owl:someValuesFrom rdf:resource="#A.2"/>
-   </owl:Restriction>
-  </owl:equivalentClass>
- </owl:Class>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx4">
-  <rdfs:subPropertyOf>
-   <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx2"/>
-  </rdfs:subPropertyOf>
-  <rdfs:subPropertyOf>
-   <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx"/>
-  </rdfs:subPropertyOf>
-  <rdf:type rdf:resource="/2002/07/owl#FunctionalProperty"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3">
-  <rdfs:subPropertyOf>
-   <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx1"/>
-  </rdfs:subPropertyOf>
-  <rdfs:subPropertyOf>
-   <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx"/>
-  </rdfs:subPropertyOf>
-  <rdf:type rdf:resource="/2002/07/owl#FunctionalProperty"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rxa"/>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx">
-  <rdf:type rdf:resource="/2002/07/owl#FunctionalProperty"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx1a"/>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx2a"/>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3a">
-  <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx1a"/>
-  <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rxa"/>
-  <rdf:type rdf:resource="/2002/07/owl#FunctionalProperty"/>
- </owl:ObjectProperty>
- <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx4a">
-  <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx2a"/>
-  <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rxa"/>
-  <rdf:type rdf:resource="/2002/07/owl#FunctionalProperty"/>
- </owl:ObjectProperty>
- <oiled:Satisfiable/>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/description-logic/consistent605#"
+     xml:base="http://www.w3.org/2002/03owlt/description-logic/consistent605"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx1 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx1"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx1a -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx1a"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx2 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx2"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx2a -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx2a"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx3 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx"/>
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx1"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx3a -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx3a">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx1a"/>
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rxa"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx4 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx4">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx"/>
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx2"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rx4a -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rx4a">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rx2a"/>
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#rxa"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#rxa -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#rxa"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent605#P.1 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605#P.1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#Satisfiable -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#Satisfiable">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605#C.1"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#rx3a"/>
+                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#c1"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#rx4a"/>
+                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#c2"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#c1 -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#c1"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#c2 -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#c2"/>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent605#A.2 -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605#A.2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#c1"/>
+                    <rdf:Description rdf:about="http://oiled.man.example.net/test#c2"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent605#C.1 -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605#C.1">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/consistent605#P.1"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent605#C.1.comp -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent605#C.1.comp">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#rx3a"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/03owlt/description-logic/consistent605#A.2"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2002/03owlt/description-logic/consistent605#P.1"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://oiled.man.example.net/test#Satisfiable"/>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

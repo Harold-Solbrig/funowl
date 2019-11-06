@@ -1,24 +1,27 @@
-@prefix : <http://example.org/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:Peter :hasName "Peter Griffin" .
+example:Peter a :NamedIndividual ;
+    example:hasName "Peter Griffin" .
 
-:Peter_Griffin :hasAddress "Peter Griffin" .
+example:Peter_Griffin a :NamedIndividual ;
+    example:hasAddress "Peter Griffin" .
 
-:Petre :hasZip "Peter Griffin" .
+example:Petre a :NamedIndividual ;
+    example:hasZip "Peter Griffin" .
 
-:hasAddress a owl:DatatypeProperty .
+example:hasAddress a :DatatypeProperty .
 
-:hasName a owl:DatatypeProperty .
+example:hasName a :DatatypeProperty .
 
-:hasZip a owl:DatatypeProperty .
+example:hasZip a :DatatypeProperty .
 
-[] a owl:AllDisjointProperties ;
-    owl:members ( :hasName :hasAddress :hasZip ) .
+[] a :AllDisjointProperties ;
+    :members ( example:hasAddress example:hasName example:hasZip ) .
 
-[] a owl:Ontology .
+[] a :Ontology .
 

@@ -1,59 +1,129 @@
-<rdf:RDF
-    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent012"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
-    <owl:Ontology rdf:about=""/>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/description-logic/inconsistent012#"
+     xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent012"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent012"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#f -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#invF"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#f1 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f1">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#invF1"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#invF -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#invF1 -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF1"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#invS -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invS">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#s"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#s -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#s">
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#f"/>
+        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#f1"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#Unsatisfiable -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://oiled.man.example.net/test#f"/>
-                        <owl:someValuesFrom>
-                            <owl:Class rdf:about="http://oiled.man.example.net/test#p"/>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#s"/>
-                        <owl:someValuesFrom>
-                            <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
-                        </owl:someValuesFrom>
+                        <owl:someValuesFrom rdf:resource="http://oiled.man.example.net/test#p"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://oiled.man.example.net/test#f1"/>
                         <owl:someValuesFrom>
                             <owl:Class>
-                                <owl:complementOf>
-                                    <owl:Class rdf:about="http://oiled.man.example.net/test#p"/>
-                                </owl:complementOf>
+                                <owl:complementOf rdf:resource="http://oiled.man.example.net/test#p"/>
                             </owl:Class>
                         </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://oiled.man.example.net/test#s"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
+    
+
+
+    <!-- http://oiled.man.example.net/test#p -->
+
     <owl:Class rdf:about="http://oiled.man.example.net/test#p"/>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF">
-        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#f"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invS">
-        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#s"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invF1">
-        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#f1"/>
-    </owl:ObjectProperty>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f"/>
-    <owl:FunctionalProperty rdf:about="http://oiled.man.example.net/test#f"/>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#s">
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#f"/>
-        <rdfs:subPropertyOf rdf:resource="http://oiled.man.example.net/test#f1"/>
-    </owl:ObjectProperty>
-    <owl:FunctionalProperty rdf:about="http://oiled.man.example.net/test#s"/>
-    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#f1"/>
-    <owl:FunctionalProperty rdf:about="http://oiled.man.example.net/test#f1"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
     <rdf:Description>
         <rdf:type rdf:resource="http://oiled.man.example.net/test#Unsatisfiable"/>
     </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

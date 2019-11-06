@@ -1,12 +1,16 @@
-@prefix ex: <http://www.example.org#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix www: <http://www.example.org#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ex:p1 owl:propertyDisjointWith ex:p2 .
+www:p1 a :AnnotationProperty .
 
-ex:s ex:p1 ex:o ;
-    ex:p2 ex:o .
+www:p2 a :AnnotationProperty .
+
+www:s www:p1 www:o ;
+    www:p2 www:o .
+
+[] a :Ontology .
 

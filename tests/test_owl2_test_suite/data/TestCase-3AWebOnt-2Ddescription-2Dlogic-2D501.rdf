@@ -1,545 +1,707 @@
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xml:base="http://www.w3.org/2002/03owlt/description-logic/consistent501" >
-<owl:Ontology/>
-<owl:Class rdf:ID='TorF'> 
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:ID='T'>
-        <owl:differentFrom rdf:resource='#F'/>
-     </owl:Thing>
-     <owl:Thing rdf:ID='F'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus1'/>
-     <owl:Thing rdf:about='#minus1'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus2'/>
-     <owl:Thing rdf:about='#minus2'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus3'/>
-     <owl:Thing rdf:about='#minus3'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus4'/>
-     <owl:Thing rdf:about='#minus4'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus5'/>
-     <owl:Thing rdf:about='#minus5'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus6'/>
-     <owl:Thing rdf:about='#minus6'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus7'/>
-     <owl:Thing rdf:about='#minus7'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus8'/>
-     <owl:Thing rdf:about='#minus8'/>
-  </owl:oneOf>
-  <owl:oneOf rdf:parseType='Collection'>
-     <owl:Thing rdf:about='#plus9'/>
-     <owl:Thing rdf:about='#minus9'/>
-  </owl:oneOf>
-</owl:Class>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus9'/>
-            <rdf:Description rdf:about='#minus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#minus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus4'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus1'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#plus5'/>
-            <rdf:Description rdf:about='#plus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#minus6'/>
-            <rdf:Description rdf:about='#minus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus3'/>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#plus7'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus3'/>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#plus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus4'/>
-            <rdf:Description rdf:about='#minus6'/>
-            <rdf:Description rdf:about='#plus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#plus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#minus9'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus5'/>
-            <rdf:Description rdf:about='#minus2'/>
-            <rdf:Description rdf:about='#plus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus5'/>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#plus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus2'/>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#minus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus6'/>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#minus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus9'/>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#minus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus6'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#plus9'/>
-            <rdf:Description rdf:about='#minus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#minus9'/>
-            <rdf:Description rdf:about='#minus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus9'/>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#plus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus5'/>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#plus4'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#plus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus4'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus8'/>
-            <rdf:Description rdf:about='#plus4'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus3'/>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#minus6'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#minus2'/>
-            <rdf:Description rdf:about='#minus9'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#plus4'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#minus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus5'/>
-            <rdf:Description rdf:about='#plus4'/>
-            <rdf:Description rdf:about='#minus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus1'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#plus7'/>
-            <rdf:Description rdf:about='#minus9'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#plus2'/>
-            <rdf:Description rdf:about='#plus6'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus7'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#plus9'/>
-            <rdf:Description rdf:about='#minus8'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus5'/>
-            <rdf:Description rdf:about='#minus9'/>
-            <rdf:Description rdf:about='#minus7'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus9'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus1'/>
-            <rdf:Description rdf:about='#minus2'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#plus1'/>
-            <rdf:Description rdf:about='#plus4'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus6'/>
-            <rdf:Description rdf:about='#minus7'/>
-            <rdf:Description rdf:about='#plus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#minus6'/>
-            <rdf:Description rdf:about='#plus3'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus5'/>
-            <rdf:Description rdf:about='#minus2'/>
-            <rdf:Description rdf:about='#plus6'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#plus8'/>
-            <rdf:Description rdf:about='#plus3'/>
-            <rdf:Description rdf:about='#minus5'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
-<rdf:Description rdf:about='#T'>
-   <rdf:type>
-      <owl:Class>
-        <owl:oneOf rdf:parseType='Collection'>
-            <rdf:Description rdf:about='#minus2'/>
-            <rdf:Description rdf:about='#minus4'/>
-            <rdf:Description rdf:about='#minus9'/>
-        </owl:oneOf>
-      </owl:Class>
-   </rdf:type>
-</rdf:Description>
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF -->
+
+    <Class rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#TorF">
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#F"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#T"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+        <equivalentClass>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9"/>
+                </oneOf>
+            </Class>
+        </equivalentClass>
+    </Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#F -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#F">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#T -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#T">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+        <rdf:type>
+            <Class>
+                <oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5"/>
+                    <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8"/>
+                </oneOf>
+            </Class>
+        </rdf:type>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9 -->
+
+    <Thing rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#F"/>
+            <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/description-logic/consistent501#T"/>
+        </distinctMembers>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

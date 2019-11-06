@@ -1,11 +1,20 @@
-@prefix first: <http://www.w3.org/2002/03owlt/I5.8/premises017#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix premises017: <http://www.w3.org/2002/03owlt/I5.8/premises017#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-xsd:decimal owl:sameAs first:bar .
+xsd:decimal a :NamedIndividual ;
+    :sameAs premises017:bar .
 
-first:xx first:yy "01"^^<#bar> .
+premises017:xx premises017:yy "01"^^<#bar> .
+
+premises017:yy a :AnnotationProperty .
+
+:bar a rdfs:Datatype .
+
+premises017:bar a :NamedIndividual .
+
+[] a :Ontology .
 

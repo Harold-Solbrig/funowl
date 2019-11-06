@@ -1,14 +1,25 @@
-@prefix first: <http://www.w3.org/2002/03owlt/unionOf/premises002#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix second: <http://www.w3.org/2002/03owlt/unionOf/conclusions002#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-first:B owl:unionOf ( first:Animal first:Human first:Stone ) .
+<http://www.w3.org/2002/03owlt/unionOf/premises002#B> a :Class ;
+    :equivalentClass [ a :Class ;
+            :unionOf ( <http://www.w3.org/2002/03owlt/unionOf/premises002#Animal> <http://www.w3.org/2002/03owlt/unionOf/premises002#Human> <http://www.w3.org/2002/03owlt/unionOf/premises002#Stone> ) ] .
 
-first:John a first:A .
+<http://www.w3.org/2002/03owlt/unionOf/premises002#John> a <http://www.w3.org/2002/03owlt/unionOf/premises002#A>,
+        :NamedIndividual .
 
-first:A owl:unionOf ( first:Human first:Animal ) .
+<http://www.w3.org/2002/03owlt/unionOf/premises002#A> a :Class ;
+    :equivalentClass [ a :Class ;
+            :unionOf ( <http://www.w3.org/2002/03owlt/unionOf/premises002#Animal> <http://www.w3.org/2002/03owlt/unionOf/premises002#Human> ) ] .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises002#Stone> a :Class .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises002#Animal> a :Class .
+
+<http://www.w3.org/2002/03owlt/unionOf/premises002#Human> a :Class .
+
+[] a :Ontology .
 

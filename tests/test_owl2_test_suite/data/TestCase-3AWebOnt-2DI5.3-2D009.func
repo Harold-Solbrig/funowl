@@ -11,7 +11,7 @@ Declaration(ObjectProperty(first:p))
 Declaration(ObjectProperty(first:q))
 
 
-ClassAssertion(owl:Thing _:genid19563)
-ObjectPropertyAssertion(first:p _:genid19563 _:genid19564)
-ObjectPropertyAssertion(first:q _:genid19563 _:genid19564)
+ClassAssertion(owl:Thing _:genid29637)
+ObjectPropertyAssertion(first:p _:genid29637 _:genid29638)
+ObjectPropertyAssertion(first:q _:genid29637 _:genid29638)
 )

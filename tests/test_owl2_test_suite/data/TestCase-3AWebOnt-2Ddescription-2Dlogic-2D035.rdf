@@ -1,58 +1,121 @@
-<rdf:RDF 
-    xmlns:owl="http://www.w3.org/2002/07/owl#"
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
-    xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent035"
-    xmlns:oiled="http://oiled.man.example.net/test#">
-
-<owl:Ontology rdf:about="">
-  <rdfs:comment>An ontology illustrating the use of a spy point that
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/03owlt/description-logic/inconsistent035#"
+     xml:base="http://www.w3.org/2002/03owlt/description-logic/inconsistent035"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.w3.org/2002/03owlt/description-logic/inconsistent035">
+        <rdfs:comment>An ontology illustrating the use of a spy point that
 limits the cardinality of the interpretation domain to having only two
-objects.</rdfs:comment> 
-</owl:Ontology>
+objects.</rdfs:comment>
+    </owl:Ontology>
+    
 
-<owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
- <rdfs:subClassOf>
-  <owl:Restriction>
-    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#r"/>
-    <owl:minCardinality
-rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minCardinality>
-  </owl:Restriction>
- </rdfs:subClassOf>
-</owl:Class>
 
-<owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#p">
- <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#invP"/>
-</owl:ObjectProperty>
-<owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
 
-<owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invP"/>
+    
 
-<owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
- <rdfs:subClassOf> 
-  <owl:Restriction>
-   <owl:onProperty rdf:resource="http://oiled.man.example.net/test#p"/>
-   <owl:someValuesFrom>
-    <owl:Class>
-     <owl:oneOf rdf:parseType="Collection">
-      <owl:Thing rdf:about="http://oiled.man.example.net/test#spy"/>
-     </owl:oneOf>
+
+    <!-- http://oiled.man.example.net/test#invP -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#invP">
+        <owl:inverseOf rdf:resource="http://oiled.man.example.net/test#p"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://oiled.man.example.net/test#p -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#p"/>
+    
+
+
+    <!-- http://oiled.man.example.net/test#r -->
+
+    <owl:ObjectProperty rdf:about="http://oiled.man.example.net/test#r"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#Unsatisfiable -->
+
+    <owl:Class rdf:about="http://oiled.man.example.net/test#Unsatisfiable">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#r"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
-   </owl:someValuesFrom>
-  </owl:Restriction>
- </rdfs:subClassOf>
-</owl:Class>
+    
 
-<rdf:Description rdf:about="http://oiled.man.example.net/test#spy">
-  <rdf:type>
-   <owl:Restriction>
-    <owl:onProperty rdf:resource="http://oiled.man.example.net/test#invP"/>
-    <owl:maxCardinality
-rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxCardinality>
-  </owl:Restriction>
- </rdf:type>
-</rdf:Description>
 
-<oiled:Unsatisfiable/>
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
 
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#p"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:oneOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://oiled.man.example.net/test#spy"/>
+                        </owl:oneOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://oiled.man.example.net/test#spy -->
+
+    <owl:Thing rdf:about="http://oiled.man.example.net/test#spy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://oiled.man.example.net/test#invP"/>
+                <owl:maxCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:maxCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:Thing>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://oiled.man.example.net/test#Unsatisfiable"/>
+    </rdf:Description>
 </rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

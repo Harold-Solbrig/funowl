@@ -1,13 +1,19 @@
-@prefix eg: <http://example.net/vocab#> .
-@prefix my: <http://example.net/myVocab#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix myVocab: <http://example.net/myVocab#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix your: <http://example.net/yourVocab#> .
 
-my:hasBrother owl:inverseOf your:isBrotherOf .
+myVocab:hasBrother a :ObjectProperty ;
+    :inverseOf <http://example.net/yourVocab#isBrotherOf> .
 
-eg:joe my:hasBrother eg:bob .
+<http://example.net/vocab#joe> a :NamedIndividual ;
+    myVocab:hasBrother <http://example.net/vocab#bob> .
+
+<http://example.net/vocab#bob> a :NamedIndividual .
+
+<http://example.net/yourVocab#isBrotherOf> a :ObjectProperty .
+
+[] a :Ontology .
 

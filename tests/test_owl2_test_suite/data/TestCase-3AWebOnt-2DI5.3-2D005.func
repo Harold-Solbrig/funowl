@@ -9,5 +9,5 @@ Prefix(first:=<http://www.w3.org/2002/03owlt/I5.3/consistent005#>)
 Ontology(
 Declaration(AnnotationProperty(first:p))
 
-AnnotationAssertion(first:p _:genid19008 _:genid19007)
+AnnotationAssertion(first:p _:genid27195 _:genid27194)
 )

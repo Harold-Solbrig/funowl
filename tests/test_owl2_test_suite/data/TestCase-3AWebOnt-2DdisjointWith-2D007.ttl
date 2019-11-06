@@ -1,41 +1,24 @@
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://www.w3.org/2002/03owlt/disjointWith/consistent007#B> a owl:Class .
+<http://www.w3.org/2002/03owlt/disjointWith/consistent007#A> a :Class ;
+    :disjointWith <http://www.w3.org/2002/03owlt/disjointWith/consistent007#B>,
+        <http://www.w3.org/2002/03owlt/disjointWith/consistent007#C>,
+        <http://www.w3.org/2002/03owlt/disjointWith/consistent007#D>,
+        <http://www.w3.org/2002/03owlt/disjointWith/consistent007#E> .
 
-<http://www.w3.org/2002/03owlt/disjointWith/consistent007#C> a owl:Class .
+<http://www.w3.org/2002/03owlt/disjointWith/consistent007#B> a :Class ;
+    :disjointWith <http://www.w3.org/2002/03owlt/disjointWith/consistent007#C> .
 
-<http://www.w3.org/2002/03owlt/disjointWith/consistent007#D> a owl:Class .
+<http://www.w3.org/2002/03owlt/disjointWith/consistent007#D> a :Class ;
+    :disjointWith <http://www.w3.org/2002/03owlt/disjointWith/consistent007#E> .
 
-<http://www.w3.org/2002/03owlt/disjointWith/consistent007#E> a owl:Class .
+<http://www.w3.org/2002/03owlt/disjointWith/consistent007#C> a :Class .
 
-<http://www.w3.org/2002/03owlt/disjointWith/consistent007#A> a owl:Class ;
-    owl:disjointWith _:N073acf868d704eb19d56d7dc9e77ffcc,
-        _:Naefab6f041674b538ac721e5ae0eabbb .
+<http://www.w3.org/2002/03owlt/disjointWith/consistent007#E> a :Class .
 
-[] a owl:Ontology .
-
-[] a owl:Class ;
-    owl:disjointWith [ a owl:Class ;
-            owl:disjointWith <http://www.w3.org/2002/03owlt/disjointWith/consistent007#A> ;
-            owl:intersectionOf ( <http://www.w3.org/2002/03owlt/disjointWith/consistent007#C> ) ],
-        <http://www.w3.org/2002/03owlt/disjointWith/consistent007#A> ;
-    owl:intersectionOf ( <http://www.w3.org/2002/03owlt/disjointWith/consistent007#B> ) .
-
-_:N5caca0e5e5dc433f93139aeb4a4978a1 rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent007#D> ;
-    rdf:rest () .
-
-_:Nb4aa88278d7a4e59be564d2d59ac26fc rdf:first <http://www.w3.org/2002/03owlt/disjointWith/consistent007#E> ;
-    rdf:rest () .
-
-_:N073acf868d704eb19d56d7dc9e77ffcc a owl:Class ;
-    owl:disjointWith _:Naefab6f041674b538ac721e5ae0eabbb ;
-    owl:intersectionOf _:N5caca0e5e5dc433f93139aeb4a4978a1 .
-
-_:Naefab6f041674b538ac721e5ae0eabbb a owl:Class ;
-    owl:disjointWith _:N073acf868d704eb19d56d7dc9e77ffcc ;
-    owl:intersectionOf _:Nb4aa88278d7a4e59be564d2d59ac26fc .
+[] a :Ontology .
 

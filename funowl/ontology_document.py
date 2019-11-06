@@ -138,10 +138,7 @@ class Ontology(Annotatable):
         return self
 
     def subClassOf(self, sub: IRI.types(), sup: IRI.types()) -> "Ontology":
-        subc = Class(sub)
-        supc = Class(sup)
-        # self.declaration(subc).declaration(supc)
-        self.axioms.append(SubClassOf(subc, supc))
+        self.axioms.append(SubClassOf(Class(sub), Class(sub)))
         return self
 
     def equivalentClasses(self, *classExpressions: ClassExpression) -> "Ontology":

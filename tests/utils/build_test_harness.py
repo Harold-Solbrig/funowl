@@ -7,7 +7,7 @@ import requests
 
 
 class ValidationTestCase(unittest.TestCase):
-    repo_base: str = None           # Base URI or direcctory name
+    repo_base: str = None           # Base URI or directory name
     file_suffix: str = None         # file suffix (e.g. ".shex")
     start_at: Optional[str] = ""    # Start at or after this
     skip: Dict[str, str] = dict()   # Filename / reason for skip array

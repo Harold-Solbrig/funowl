@@ -1,16 +1,15 @@
-@prefix j.0: <http://owl2.test/rules#> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix : <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rules: <http://owl2.test/rules#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-j.0:op a owl:ObjectProperty .
+rules:op a :ObjectProperty .
 
-j.0:I a owl:NamedIndividual .
+rules:I a :NamedIndividual .
 
-[] a owl:Ontology .
+[] rules:op rules:I .
 
-[] a owl:NamedIndividual ;
-    j.0:op j.0:I .
+[] a :Ontology .
 
