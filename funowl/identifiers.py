@@ -11,7 +11,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
 
 
-@dataclass
+@dataclass(unsafe_hash=True)
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
     v: Union[AbbreviatedIRI, FullIRI, str]

@@ -1,0 +1,34 @@
+CHANGES
+=======
+
+* OWL2 Test Suite now running on RDF
+* Uncommented test assertion section
+* Added the RDF comparison component of the test
+* Passes all unit tests w/ exception of 10 owl2 test cases
+* Passes 483 out of 493 tests in the test suite
+* Remove old test case
+* Checkpoint
+* Implemented assertion.py rdf functions and tests
+* Converted the OWL 2 test suite into functional/owl entries
+* Added Oscar
+* Owl in a bucket.  Nuff said
+* Adding start of implementation notes section
+* Further annotation work
+* Add test for multiple different individuals
+* Implemented DifferentIndividuals() function in assertions.py along with test cases in test\_assertions.py
+* Add sample RDF emitter for assertions/SameIndividual
+* Checkpoint -- functional parser more or less works
+* Implement to\_rdf on ObjectHasValue
+* Implement Import to\_rdf
+* Renamed basics.py to pizza.py
+* Enhancements
+* Checkpoint
+* First cut at functional syntax --> pyfun
+* Switch to lower case file names
+* Checkpoint -- more tweaks and bug fixes, test skeletons in place
+* Checkpoint - ClassAxioms pass basic unit tests
+* Checkpoint -- passes all existing unit tests
+* Add CC0 license
+* Add jetbrains artifacts to gitignore
+* Initial drop.  Ideas sort of fleshed out, bits of it almost work
+* Initial commit

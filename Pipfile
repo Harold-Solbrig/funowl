@@ -6,9 +6,8 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-rdflib = "*"
-pyjsg = "*"
-jupyter = "*"
+rdflib = ">=4.2.2"
+pyjsg = ">=0.9.1"
 rfc3987 = "*"
 bcp47 = "*"
 

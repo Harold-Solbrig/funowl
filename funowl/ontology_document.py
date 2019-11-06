@@ -20,7 +20,7 @@ from funowl.axioms import Axiom
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.list_support import empty_list
 from funowl.base.rdftriple import NODE, SUBJ
-from funowl.class_axioms import SubClassOf
+from funowl.class_axioms import SubClassOf, EquivalentClasses
 from funowl.class_expressions import Class, ClassExpression
 from funowl.declarations import Declaration
 from funowl.general_definitions import PrefixName, FullIRI
@@ -144,11 +144,14 @@ class Ontology(Annotatable):
         self.axioms.append(SubClassOf(subc, supc))
         return self
 
+    def equivalentClasses(self, *classExpressions: ClassExpression) -> "Ontology":
+        self.axioms.append(EquivalentClasses(*classExpressions))
+        return self
+
     def subObjectPropertyOf(self, sub: SubObjectPropertyExpression.types(), sup: ObjectPropertyExpression.types()) \
             -> "Ontology":
         subp = SubObjectPropertyExpression(sub)
         supp = ObjectPropertyExpression(sup)
-        # self.declaration(subp).declaration(supp)
         self.axioms.append(SubObjectPropertyOf(subp, supp))
         return self
 

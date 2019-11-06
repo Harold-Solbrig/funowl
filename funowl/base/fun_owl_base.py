@@ -13,7 +13,7 @@ from funowl.terminals.TypingHelper import get_args
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-@dataclass
+@dataclass(unsafe_hash=True)
 class FunOwlRoot:
     """ The root object for all OWL functional representations """
     def __post_init__(self):

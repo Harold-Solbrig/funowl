@@ -12,7 +12,7 @@ from funowl.terminals.TypingHelper import get_args, isinstance_, is_union
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-@dataclass
+@dataclass(unsafe_hash=True)
 class FunOwlChoice(FunOwlBase):
     """
     Base class for different type choices.
