@@ -203,7 +203,7 @@ class Ontology(Annotatable):
     def to_rdf(self, g: Graph) -> SUBJ:
         for p in self.prefixDeclarations:
             p.to_rdf(g)
-        ontology_uri = self.iri.as_rdf(g) if self.iri else BNode()
+        ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         g.add((ontology_uri, RDF.type, OWL.Ontology))
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, URIRef(self.version.full_uri(g))))
