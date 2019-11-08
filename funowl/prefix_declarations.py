@@ -25,7 +25,7 @@ class Prefix(FunOwlBase):
         :param g: Graph to add binding to
         :return: None -- no corresponding node
         """
-        g.bind(self.prefixName, self.fullIRI.as_rdf(g))
+        g.bind(self.prefixName, self.fullIRI.to_rdf(g))
         return None
 
 

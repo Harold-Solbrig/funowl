@@ -73,7 +73,7 @@ class NodeID(BLANK_NODE_LABEL, FunOwlRoot):
             raise TypeError(f"{v} is not a valid {type(self)}")
         BLANK_NODE_LABEL.__init__(self, self)
 
-    def as_rdf(self, g) -> BNode:
+    def to_rdf(self, _: Graph) -> BNode:
         return BNode()
 
 
@@ -90,7 +90,7 @@ class FullIRI(str, FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + w.g.namespace_manager.normalizeUri(str(self))
 
-    def as_rdf(self, _: Graph) -> URIRef:
+    def to_rdf(self, _: Graph) -> URIRef:
         return URIRef(str(self))
 
 
@@ -113,5 +113,5 @@ class PrefixName(OPT_PNAME_NS, FunOwlRoot):
 
 
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):
-    def as_rdf(self, g: Graph) -> URIRef:
+    def to_rdf(self, g: Graph) -> URIRef:
         return URIRef(g.namespace_manager.normalizeUri(str(self)))
