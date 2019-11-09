@@ -47,17 +47,17 @@ from dataclasses import dataclass
 from typing import List, ClassVar, Union, Optional
 
 from rdflib import URIRef, OWL, Graph, RDF
-from rdflib.term import Node, BNode
+from rdflib.term import BNode, Literal as RDFLiteral
 
+from funowl.base.fun_owl_base import FunOwlBase
 from funowl.converters.rdf_converter import SEQ
-from funowl.dataranges import DataRange
 from funowl.dataproperty_expressions import DataPropertyExpression
+from funowl.dataranges import DataRange
 from funowl.general_definitions import NonNegativeInteger
 from funowl.identifiers import IRI
 from funowl.individuals import Individual
 from funowl.literals import Literal
 from funowl.objectproperty_expressions import ObjectPropertyExpression
-from funowl.base.fun_owl_base import FunOwlBase
 from funowl.writers import FunctionalWriter
 
 
@@ -147,6 +147,20 @@ class ObjectSomeValuesFrom(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
+    def to_rdf(self, g: Graph) -> BNode:
+        """
+        :x rdf:type owl:Restriction .
+        _:x owl:onProperty T(OPE) .
+        _:x owl:someValuesFrom T(CE) .
+        :param g: the RDF graph
+        :return: a BNode
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Restriction))
+        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((rval, OWL.someValuesFrom, self.classExpression.to_rdf(g)))
+        return rval
+
 
 @dataclass
 class ObjectAllValuesFrom(FunOwlBase):
@@ -155,6 +169,20 @@ class ObjectAllValuesFrom(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
+
+    def to_rdf(self, g: Graph) -> BNode:
+        """
+        _:x rdf:type owl:Restriction .
+        _:x owl:onProperty T(OPE) .
+        _:x owl:allValuesFrom T(CE) .
+        :param g: RDF graph
+        :return: a BNode
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Restriction))
+        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((rval, OWL.allValuesFrom, self.classExpression.to_rdf(g)))
+        return rval
 
 
 @dataclass
@@ -184,6 +212,20 @@ class ObjectHasSelf(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression)
+
+    def to_rdf(self, g: Graph) -> BNode:
+        """
+        _:x rdf:type owl:Restriction .
+        _:x owl:onProperty T(OPE) .
+        _:x owl:hasSelf "true"^^xsd:boolean .
+        :param g: the RDF graph
+        :return: a BNode
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Restriction))
+        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((rval, OWL.hasSelf, RDFLiteral(True)))
+        return rval
 
 
 @dataclass
