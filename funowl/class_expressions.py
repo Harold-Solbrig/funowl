@@ -62,8 +62,7 @@ from funowl.writers import FunctionalWriter
 
 
 class Class(IRI):
-    # rdf_type: ClassVar[URIRef] = OWL.Class
-    pass
+    rdf_type: ClassVar[URIRef] = OWL.Class
 
 
 @dataclass
@@ -78,11 +77,11 @@ class ObjectIntersectionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> BNode:
-        subj = BNode()
-        g.add((subj, RDF.type, OWL.Class))
-        g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
-        return subj
+    # def to_rdf(self, g: Graph) -> BNode:
+    #     subj = BNode()
+    #     g.add((subj, RDF.type, OWL.Class))
+    #     g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
+    #     return subj
 
 
 @dataclass
@@ -97,15 +96,15 @@ class ObjectUnionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    # def to_rdf(self, g: Graph) -> Optional[NODE]:
-    #     """
-    #     _:x rdf:type owl:Class .
-    #     _:x owl:unionOf T(SEQ CE1 ... CEn) .
-    #     """
-    #     rval = BNode()
-    #     g.add((rval, RDF.type, OWL.Class))
-    #     g.add((rval, OWL.unionOf, SEQ(g, self.classExpressions)))
-    #     return rval
+    def to_rdf(self, g: Graph) -> BNode:
+        """
+        _:x rdf:type owl:Class .
+        _:x owl:unionOf T(SEQ CE1 ... CEn) .
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Class))
+        g.add((rval, OWL.unionOf, SEQ(g, self.classExpressions)))
+        return rval
 
 @dataclass
 class ObjectComplementOf(FunOwlBase):
@@ -125,6 +124,18 @@ class ObjectOneOf(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.individuals))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        """
+        _:x rdf:type owl:Class .
+        _:x owl:oneOf T(SEQ a1 ... an) .
+        :param g:
+        :return:
+        """
+        rval = BNode()
+        g.add((rval, RDF.type, OWL.Class))
+        g.add((rval, OWL.oneOf, SEQ(g, self.individuals)))
+        return rval
 
 
 @dataclass
