@@ -58,8 +58,11 @@ class EquivalentClasses(Annotatable):
         return self.annots(w, lambda: w.iter(self.classExpressions))
 
     def to_rdf(self, g: Graph) -> None:
-        for i in range(0, len(self.classExpressions)-1):
-            g.add((self.classExpressions[i].to_rdf(g), OWL.equivalentClass, self.classExpressions[i+1].to_rdf(g)))
+        subj = self.classExpressions[0].to_rdf(g)
+        for i in range(1, len(self.classExpressions)):
+            obj = self.classExpressions[i].to_rdf(g)
+            g.add((subj, OWL.equivalentClass, obj))
+            subj = obj
 
 
 @dataclass
