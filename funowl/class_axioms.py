@@ -15,7 +15,7 @@ disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 from dataclasses import dataclass
 from typing import List, Optional, Union
 
-from rdflib import Graph, RDFS
+from rdflib import Graph, RDFS, OWL
 from rdflib.term import Node
 
 from funowl.annotations import Annotation, Annotatable
@@ -56,6 +56,13 @@ class EquivalentClasses(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'classExpressions', 2)
         return self.annots(w, lambda: w.iter(self.classExpressions))
+
+    def to_rdf(self, g: Graph) -> None:
+        subj = self.classExpressions[0].to_rdf(g)
+        for i in range(1, len(self.classExpressions)):
+            obj = self.classExpressions[i].to_rdf(g)
+            g.add((subj, OWL.equivalentClass, obj))
+            subj = obj
 
 
 @dataclass
