@@ -77,11 +77,11 @@ class ObjectIntersectionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    # def to_rdf(self, g: Graph) -> BNode:
-    #     subj = BNode()
-    #     g.add((subj, RDF.type, OWL.Class))
-    #     g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
-    #     return subj
+    def to_rdf(self, g: Graph) -> BNode:
+        subj = BNode()
+        g.add((subj, RDF.type, OWL.Class))
+        g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
+        return subj
 
 
 @dataclass

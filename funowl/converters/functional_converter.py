@@ -2,17 +2,16 @@ import logging
 import re
 from dataclasses import dataclass
 from pprint import pformat
-from typing import Union, List, Tuple, Match, cast, Optional
+from typing import Union, List, Tuple, Match, Optional
 
 import rdflib
 
 import funowl
-from funowl import Ontology, Prefix, Annotation
+from funowl import Prefix, Annotation, OntologyDocument
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiteralNoLanguage
-
 # Ontology definition
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 
@@ -117,6 +116,7 @@ def nested(s: str, depth=1) -> Tuple[str, str]:
     :param depth: starting depth
     :return: everything inside / everything outside
     """
+
     for i in range(0, len(s)):
         c = s[i]
         if c == '(':
@@ -199,12 +199,14 @@ def fparse(s: str) -> List[OWLFunc]:
             raise ValueError("Unrecognized functional syntax string")
         body, unparsed = nested(m_rem(m))
         rval.append(OWLFunc(m.group(1), parse_args(body)))
+
     return rval
 
 
-def to_python(defn: str) -> Optional[Ontology]:
+def to_python(defn: str) -> Optional[OntologyDocument]:
     rval = None
 
+    # An ontology document consists of any number of prefix declarations and exactly one (?) ontology declaration
     tree = fparse(defn)
     logging.debug(pformat(defn))
 
@@ -215,8 +217,8 @@ def to_python(defn: str) -> Optional[Ontology]:
             decl = e.eval()
             if isinstance(decl, funowl.Prefix):
                 prefixes.append(decl)
+            elif isinstance(decl, funowl.Ontology):
+                rval = OntologyDocument(*prefixes, ontology=decl)
             else:
-                rval = cast(funowl.Ontology, decl)
-                prefix_reprs = {prefix.prefixName: prefix.fullIRI for prefix in prefixes}
-                rval.prefixes(None, **prefix_reprs)
+                logging.error("Unrecognized declaration")
     return rval

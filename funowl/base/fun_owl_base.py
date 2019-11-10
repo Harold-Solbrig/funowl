@@ -23,7 +23,7 @@ class FunOwlRoot:
         # Resolve Forward references before we begin the cast process
         hints = get_type_hints(type(self), getmodule(self).__dict__)
         super().__setattr__(
-            key, cast(hints[key], value, getattr(self, 'coercion_allowed', None)) if key in hints else value)
+            key, cast(hints[key], value, getattr(self, '_coercion_allowed', None)) if key in hints else value)
 
     def __getattribute__(self, item):
         rval = super().__getattribute__(item)

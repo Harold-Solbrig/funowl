@@ -17,11 +17,11 @@ class FunOwlChoice(FunOwlBase):
     """
     Base class for different type choices.
     - v: The actual value.  Subclasses override the possible types of v
-    - coercion_allowed: False means don't try to coerce incoming values to types -- must match exactly.
+    - _coercion_allowed: False means don't try to coerce incoming values to types -- must match exactly.
       True means try to make it fit
     """
     v: Any
-    coercion_allowed: ClassVar[bool] = True       # False means type has to be exact coming in
+    _coercion_allowed: ClassVar[bool] = True       # False means type has to be exact coming in
     input_type: ClassVar[Type] = None             # Type hint for IDE's.  Not actually included in cooercion
 
     @classmethod
@@ -48,7 +48,7 @@ class FunOwlChoice(FunOwlBase):
         :return: True if v was set
         """
         for choice_type in self.hints():
-            if issubclass(type(value), choice_type) or (self.coercion_allowed and isinstance_(value, choice_type)):
+            if issubclass(type(value), choice_type) or (self._coercion_allowed and isinstance_(value, choice_type)):
                 super().__setattr__('v', value)
                 logging.debug(f"{type(self).__name__}: value = {str(self.v)} (type: {type(self.v).__name__})")
                 return True
@@ -83,7 +83,7 @@ class FunOwlChoice(FunOwlBase):
         for choice_type in cls.hints():
             if issubclass(type(v), choice_type):
                 return True
-            elif cls.coercion_allowed and isinstance(v, choice_type):
+            elif cls._coercion_allowed and isinstance(v, choice_type):
                 return True
         return False
 

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional, List, Union
 
 from rdflib import Graph
 from rdflib.namespace import NamespaceManager, OWL
@@ -29,14 +29,17 @@ class Prefix(FunOwlBase):
         return None
 
 
+# TODO: there are parts of this class that are not necessary  -- in particular, it is questionable whether
+#       we really need a graph to back it up
 class PrefixDeclarations(NamespaceManager):
-    def __init__(self) -> None:
+    def __init__(self, g: Optional[Graph] = None) -> None:
         self._init = True
-        super().__init__(Graph())
+        super().__init__(g if g is not None else Graph())
         self.bind('owl', OWL)
         self._init = False
 
-    def pdlist(self) -> List[Prefix]:
+    def as_prefixes(self) -> List[Prefix]:
+        """ Return the contents of the manager as a list of Prefixes """
         return [Prefix(ns if ns else None, uri) for (ns, uri) in self.namespaces()]
 
     def __setattr__(self, key, value):
@@ -45,18 +48,23 @@ class PrefixDeclarations(NamespaceManager):
         else:
             self.append(Prefix(key, value))
 
-    def add(self, decls: List[Prefix]) -> None:
-        for decl in decls:
+    def add(self, decls: Union["PrefixDeclarations", List[Prefix]]) -> None:
+        """ Add an existing list of prefixes or prefix declarations  """
+        for decl in decls.as_prefixes() if isinstance(decls, PrefixDeclarations) else decls:
             self.append(decl)
+
+    def add_to_graph(self, g: Graph) -> None:
+        for prefix in self.as_prefixes():
+            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
 
     def append(self, decl: Prefix) -> None:
         self.bind(decl.prefixName, decl.fullIRI)
 
     def bind(self, prefix, namespace, override=True, replace=True):
         """ Bind with override and replace defaults changed """
-        super().bind(prefix, namespace, override, replace)
+        super().bind(str(prefix) if prefix is not None else None, str(namespace), override, replace)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.iter(self.pdlist(), indent=False)
+        return w.iter(self.as_prefixes(), indent=False)
 
 

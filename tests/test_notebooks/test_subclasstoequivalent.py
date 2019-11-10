@@ -26,25 +26,25 @@ SubClassOf(<https://loinc.org/document_ontology/#93024-8> ObjectSomeValuesFrom(d
 )
 """
 
-ontology = to_python(owl_functional)
+ontologydoc = to_python(owl_functional)
 
 equivalents: Dict[ClassExpression, List[Axiom]] = dict()
 
 # Convert all subclass expressions into the equivalents
-for axiom in ontology.axioms:
+for axiom in ontologydoc.ontology.axioms:
     # Note that we can't use isinstance because of type cooercion
     if issubclass(axiom.__class__, SubClassOf):
         equivalents.setdefault(axiom.subClassExpression, []).append(axiom)
 
 for class_expression, axioms in equivalents.items():
     if len(axioms) == 1:
-        ontology.equivalentClasses(class_expression,
+        ontologydoc.ontology.equivalentClasses(class_expression,
                                    axioms[0].superClassExpression)
     else:
-        ontology.equivalentClasses(class_expression,
+        ontologydoc.ontology.equivalentClasses(class_expression,
                                    ObjectIntersectionOf(*[axiom.superClassExpression for axiom in axioms]))
     for axiom in axioms:
-        ontology.axioms.remove(axiom)
+        ontologydoc.ontology.axioms.remove(axiom)
 
 
-print(ontology.to_functional().getvalue())
+print(ontologydoc.to_functional().getvalue())

@@ -136,7 +136,8 @@ class FunctionalWriter:
         self._indent = max(self._indent - 1, 0)
         return self.br().add(line)
 
-    def func(self, func_name: Union[str, Any], contents: Callable[[], "FunctionalWriter"], indent: bool = True) -> "FunctionalWriter":
+    def func(self, func_name: Union[str, Any], contents: Optional[Callable[[], "FunctionalWriter"]] = None,
+             indent: bool = True) -> "FunctionalWriter":
         """
         Generate a functional method in the form of "func( ... )"
         
@@ -150,7 +151,7 @@ class FunctionalWriter:
         inside = self._inside_function
         self._inside_function = True
         (self.indent() if inside and indent else self) + (func_name + '(')
-        contents()
+        contents() if contents else None
         self + ')'
         self._inside_function = inside
         return self.outdent() if inside and indent else self

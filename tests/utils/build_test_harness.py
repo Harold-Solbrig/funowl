@@ -13,19 +13,25 @@ class ValidationTestCase(unittest.TestCase):
     skip: Dict[str, str] = dict()   # Filename / reason for skip array
     validation_function: Callable[[str], bool] = None  #
     single_file: bool = False       # True means process exactly one file
+    stop_on_error: bool = False      # True means stop once you encounter an error
+    number_of_errors: int = 0       # Number of errors detected
 
     @classmethod
     def make_test_function(cls, url):
         def test(self):
-            self.assertTrue(cls.validation_function(url))
+            if not cls.stop_on_error or not cls.number_of_errors:
+                rval = cls.validation_function(url)
+                if not rval:
+                    cls.number_of_errors += 1
+                    self.fail()
         return test
 
     @classmethod
     def build_test_harness(cls) -> None:
         started = not bool(cls.start_at)
-        for fname, fpath in \
-                (cls.enumerate_http_files(cls.repo_base) if ':' in cls.repo_base else
-                    cls.enumerate_directory(cls.repo_base)):
+        cls.number_of_errors = 0
+        for fname, fpath in (cls.enumerate_http_files(cls.repo_base)
+                if ':' in cls.repo_base else cls.enumerate_directory(cls.repo_base)):
             if fname.endswith(cls.file_suffix):
                 if started or fname.startswith(cls.start_at):
                     if fname not in cls.skip:

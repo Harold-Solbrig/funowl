@@ -9,11 +9,10 @@ Ontology :=
       axioms
    ')'
 """
-from dataclasses import dataclass, field, MISSING
-from typing import Optional, List, Union, Dict
+from dataclasses import dataclass, MISSING
+from typing import Optional, List, Union, Dict, cast
 
 from rdflib import Graph, RDF, OWL, URIRef, BNode
-from rdflib.extras.infixowl import Ontology
 
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.axioms import Axiom
@@ -35,7 +34,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 @dataclass
 class Import(FunOwlBase):
-    iri: Union[Ontology, IRI]
+    iri: Union["Ontology", IRI]
 
     def ontology_iri(self) -> IRI:
         return self.iri if isinstance(self.iri, IRI) else self.iri.iri
@@ -51,13 +50,9 @@ class Import(FunOwlBase):
 class Ontology(Annotatable):
     iri: Optional[IRI.types()] = None
     version: Optional[IRI.types()] = None
-    prefixDeclarations: List[Prefix] = empty_list()
     directlyImportsDocuments: List[Import] = empty_list()
     axioms: List[Axiom] = empty_list()
     annotations: List[Annotation] = empty_list()
-
-    # TODO: the relationship between prefixDeclarations and the manager is a wee bit brittle
-    _prefixmanager: PrefixDeclarations = field(default=PrefixDeclarations(), init=False, repr=False)
 
     def __init__(self, *args: FunOwlBase, **kwargs: Dict[str, FunOwlBase]) -> None:
         args = list(args)
@@ -65,13 +60,10 @@ class Ontology(Annotatable):
             self.iri = args.pop(0)
         if args and isinstance(args[0], IRI) and not isinstance_(args[0], Axiom):
             self.version = args.pop(0)
-        self.prefixDeclarations = []
-        while args and isinstance(args[0], Prefix):
-            self.prefixDeclarations.append(args.pop(0))
-        self.directlyImportsDocuments = []
+        self.directlyImportsDocuments = cast(List[Import], [])
         while args and isinstance(args[0], Import):
             self.directlyImportsDocuments.append(args.pop(0))
-        self.axioms = []
+        self.axioms = cast(List[Axiom], [])
         while args and isinstance_(args[0], Axiom):
             self.axioms.append(args.pop(0))
         self.annotations = kwargs.get('annotations', [])
@@ -87,48 +79,10 @@ class Ontology(Annotatable):
         if args:
             raise ValueError(f"Unrecognized arguments ot Ontology: {args}")
 
-        for pd in self._prefixmanager.pdlist():
-            if not self._has_prefix(pd.prefixName):
-                self._prefixmanager.append(pd)
-
-    def _has_prefix(self, pn: str) -> bool:
-        for pd in self.prefixDeclarations:
-            if pd.prefixName == pn or (not pn and not pd.prefixName):
-                return True
-        return False
-
-    def __setattr__(self, key, value):
-        if key == 'prefixDeclarations' and value:
-            self.prefixDeclarations.extend(value)
-        else:
-            super().__setattr__(key, value)
-
-    def __getattr__(self, item):
-        rval = super().__getattribute__(item)
-        return rval.pdlist() if item == 'prefixDeclarations' else rval
-
-    def _add_or_replace_prefix(self, prefix: Optional[str], iri: str) -> None:
-        for pd in self.prefixDeclarations:
-            if pd.prefixName is None and prefix is None or str(pd.prefixName) == prefix:
-                pd.fullIRI = iri
-                self._prefixmanager.append(pd)
-                return
-        pd = Prefix(PrefixName(prefix) if prefix else None, FullIRI(str(iri)))
-        self.prefixDeclarations.append(pd)
-        self._prefixmanager.append(pd)
 
     # =======================
-    # Syntactic sugar
+    # Syntactic sugar -- fill these in as needed
     # =======================
-    # TODO: "base" is a valid prefix
-    def prefixes(self, base: Optional[FullIRI] = None,
-                 **namedprefix: Dict[str, str]) -> "Ontology":
-        if base is not None:
-            self._add_or_replace_prefix(None, base)
-        for pn, iri in namedprefix.items():
-            self._add_or_replace_prefix(str(pn), str(iri))
-        return self
-
     def annotation(self, prop: AnnotationProperty.types(), value: AnnotationValue.types()) -> "Ontology":
         self.annotations.append(Annotation(prop, value))
         return self
@@ -138,7 +92,7 @@ class Ontology(Annotatable):
         return self
 
     def subClassOf(self, sub: IRI.types(), sup: IRI.types()) -> "Ontology":
-        self.axioms.append(SubClassOf(Class(sub), Class(sub)))
+        self.axioms.append(SubClassOf(Class(sub), Class(sup)))
         return self
 
     def equivalentClasses(self, *classExpressions: ClassExpression) -> "Ontology":
@@ -177,7 +131,7 @@ class Ontology(Annotatable):
         self.axioms.append(ObjectPropertyRange(ope, ce))
         return self
 
-    def imports(self, import_: Union[Ontology, str]) -> "Ontology":
+    def imports(self, import_: Union["Ontology", str]) -> "Ontology":
         self.directlyImportsDocuments.append(
             Import(import_.iri if isinstance(import_, Ontology) else IRI(str(import_))))
         return self
@@ -186,23 +140,17 @@ class Ontology(Annotatable):
     # Conversion functions
     # ====================
 
-    def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
+    def to_functional(self, w: Optional[FunctionalWriter]) -> FunctionalWriter:
         """ Return a FunctionalWriter instance with the representation of the ontology in functional syntax """
         if self.version and not self.iri:
             raise ValueError(f"Ontology cannot have a versionIRI ({self.version} without an ontologyIRI")
-        g = Graph()
-        for p in self.prefixDeclarations:
-            g.bind(p.prefixName, p.fullIRI)
-        w = w or FunctionalWriter(g=g)
-        return self._prefixmanager.to_functional(w).hardbr().\
-            func(self, lambda: w.opt(self.iri).opt(self.version).
+        w = w or FunctionalWriter()
+        return w.func(self, lambda: w.opt(self.iri).opt(self.version).
                  br(bool(self.directlyImportsDocuments) or bool(self.annotations) or bool(self.axioms)).
                  iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
                  iter(self.axioms, indent=False), indent=False)
 
     def to_rdf(self, g: Graph) -> SUBJ:
-        for p in self.prefixDeclarations:
-            p.to_rdf(g)
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         g.add((ontology_uri, RDF.type, OWL.Ontology))
         if self.version:
@@ -213,3 +161,57 @@ class Ontology(Annotatable):
             axiom.to_rdf(g)
         super().to_rdf(g)
         return ontology_uri
+
+
+@dataclass
+class OntologyDocument(FunOwlBase):
+    """
+    prefixDeclarations are
+    """
+    prefixDeclarations: List[Prefix] = empty_list()
+    ontology: Ontology = None
+
+    def __init__(self, *prefix: Prefix, ontology: Optional[Ontology] = None):
+        if len(prefix) == 1 and isinstance(prefix[0], list):
+            self.prefixDeclarations = prefix[0]
+            self.ontology = ontology
+        elif prefix and isinstance(prefix[-1], Ontology):
+            self.prefixDeclarations = list(prefix[:-1])
+            self.ontology = prefix[-1]
+        else:
+            self.prefixDeclarations = list(prefix)
+            self.ontology = ontology or Ontology()
+
+    def prefixes(self, dflt: Optional[FullIRI], **prefixes: FullIRI) -> None:
+        if dflt:
+            self.prefixDeclarations.append(Prefix('', dflt))
+        for ns, iri in prefixes.items():
+            self.prefixDeclarations.append(Prefix(PrefixName(ns), iri))
+
+    def __setattr__(self, key: str, value) -> None:
+        if key.startswith('_') or key in ('prefixDeclarations', 'ontology'):
+            super().__setattr__(key, value)
+        else:
+            prefix = Prefix(PrefixName(key) if key else None, FullIRI(value))
+            self.prefixDeclarations.append(prefix)
+
+    def __getattr__(self, item):
+        # This gets called only when something isn't already in the dictionary
+        if isinstance(item, PrefixName):
+            for p in self.prefixDeclarations:
+                if p.prefixName == item:
+                    return p.fullIRI
+        return super().__getattribute__(item)
+
+    def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
+        """ Return a FunctionalWriter instance with the representation of the OntologyDocument in functional syntax """
+        w = w or FunctionalWriter()
+        for prefix in self.prefixDeclarations:
+            w.g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
+        return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() +\
+               (self.ontology or Ontology())
+
+    def to_rdf(self, g: Graph) -> SUBJ:
+        for p in self.prefixDeclarations:
+            p.to_rdf(g)
+        return self.ontology.to_rdf(g)

@@ -33,15 +33,17 @@ Ontology( <http://www.example.com/ontology1>
 using a pythonic idiom:
 ```python
 from rdflib import RDFS, OWL, Namespace
-from funowl import Ontology
+from funowl import OntologyDocument, Ontology
 
 EX = Namespace("http://www.example.com/ontology1#")
 
 o = Ontology("http://www.example.com/ontology1")
-o.prefixes(EX)
+
 o.imports("http://www.example.com/ontology2")
 o.annotation(RDFS.label, "An example")
 o.subClassOf(EX.Child, OWL.Thing)
+
+doc = OntologyDocument(EX, o)
 
 ```
 Represent:

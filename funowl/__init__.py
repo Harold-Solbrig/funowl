@@ -1,5 +1,5 @@
 from . prefix_declarations import Prefix
-from . ontology_document import Ontology, Import
+from . ontology_document import OntologyDocument, Ontology, Import
 from . declarations import Declaration, Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, \
     NamedIndividual
 from . annotations import Annotation, AnnotationAssertion, SubAnnotationPropertyOf, AnnotationPropertyDomain, \

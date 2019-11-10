@@ -38,9 +38,7 @@ class IRI(FunOwlChoice):
 
     def to_rdf(self, g: Graph) -> URIRef:
         fulluri = self.full_uri(g)
-        if self.rdf_type is None:
-            logging.warning(f"IRI type not specified for class {type(self).__name__}")
-        else:
+        if self.rdf_type:
             g.add((fulluri, RDF.type, self.rdf_type))
 
         return fulluri

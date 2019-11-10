@@ -9,6 +9,7 @@ from funowl.declarations import Datatype, ObjectProperty, DataProperty, Declarat
 from funowl.class_expressions import Class
 from funowl.individuals import NamedIndividual
 from tests.utils.base import TestBase, A
+from tests.utils.rdf_comparator import compare_rdf
 
 target_rdf = """@prefix a: <http://example.org/a#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -58,7 +59,10 @@ Declaration( NamedIndividual( a:Peter ) )""", self.wa.getvalue())
         Declaration(NamedIndividual(A.Peter)).to_rdf(g)
         g2 = Graph()
         g2.parse(data=target_rdf, format="turtle")
-        self.assertTrue(g.isomorphic(g2))
+        msg = compare_rdf(g2, g)
+        if msg:
+            print(msg)
+            self.fail("Graphs do not match")
 
     def test_inverse_objectProperty(self):
         self.assertEqual('ObjectInverseOf( a:fatherOf )', ObjectInverseOf(A.fatherOf).to_functional(self.wa).getvalue())

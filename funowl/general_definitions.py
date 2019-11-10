@@ -107,6 +107,9 @@ class PrefixName(OPT_PNAME_NS, FunOwlRoot):
         if v and not is_ncname(v):
             raise ValueError(f"{v} is not a valid NCNAME according to rdflib")
 
+    def __str__(self) -> str:
+        return '' if self is None else super().__str__()
+
     """ a finite sequence of characters matching the as PNAME_NS production of [SPARQL] """
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.concat(str(self), sep='')

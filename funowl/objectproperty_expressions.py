@@ -33,5 +33,5 @@ class ObjectInverseOf(FunOwlChoice):
 class ObjectPropertyExpression(FunOwlChoice):
     # The order below is important
     v: Union[ObjectProperty, ObjectInverseOf, str]
-    coercion_allowed = False
+    _coercion_allowed = False
     input_type = str

@@ -43,7 +43,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 @dataclass
 class Declaration(FunOwlChoice):
     v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]
-    coercion_allowed = False
+    _coercion_allowed = False
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w), indent=False))
