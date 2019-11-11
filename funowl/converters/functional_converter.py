@@ -1,13 +1,13 @@
 import logging
 import re
-import sys
-from pprint import pformat
-from typing import Union, List, Tuple, Match, Optional, Callable
+from io import BytesIO
+from mmap import mmap, ACCESS_READ
+from typing import Union, List, Tuple, Match, Optional, Callable, IO
 
 import rdflib
 
 import funowl
-from funowl import Prefix, Annotation, OntologyDocument, Ontology
+from funowl import Annotation, OntologyDocument, Ontology
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -15,30 +15,47 @@ from funowl.literals import TypedLiteral, StringLiteralWithLanguage, StringLiter
 # Ontology definition
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 
-ontology_re = re.compile(r'\s*Ontology\s*\((.*)\s*\)\s*$', flags=re.DOTALL)
 # 1: Function '('
-function_re = re.compile(r'([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
+function_re = re.compile(rb'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
+inner_function_re = re.compile(r'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
+
 # 1: Prefix ':=' 2: URI
-prefix_re = re.compile(r'(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
+prefix_re = re.compile(r'\s*(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
+
 # '<' 1:uri '>
-abs_uri = re.compile(r'<([^>]+)>', flags=re.DOTALL)
+abs_uri = re.compile(r'\s*<([^>]+)>', flags=re.DOTALL)
+abs_uri_b = re.compile(rb'\s*<([^>]+)>', flags=re.DOTALL)
+
 # 1: rel-url
-rel_uri = re.compile(r'((([A-Za-z_]).*?)?:\S+)', flags=re.DOTALL)
+rel_uri = re.compile(r'\s*((([A-Za-z_])[^(]*?)?:\S+)\s*', flags=re.DOTALL)
+rel_uri_b = re.compile(rb'\s*((([A-Za-z_])[^(]*?)?:\S+)\s*', flags=re.DOTALL)
+
 # 1: literal
-literal_re = re.compile(r'("(?:\\.|[^"\\])*"|\S+)', flags=re.DOTALL)
+literal_re = re.compile(r'\s*("(?:\\.|[^"\\])*"|\S+)\s*', flags=re.DOTALL)
+
 # 1: lang
 literal_lang = re.compile(r'@(\S+)')
+
 # 1: datatype
 literal_datatype = re.compile(r'\^\^(\S+)')
+
 # '(' 1:
 nested_re = re.compile(r'\(\s*(.+\s*\))', flags=re.DOTALL)
 
+# Trailing paren for ontology
+final_pren = re.compile(rb'\s*\)\s*$', flags=re.DOTALL)
+
+
 # TODO: Where is this defined and how do we deal with different EOL's?
-comments_re = re.compile(r'#[^\n]*\n?', flags=re.DOTALL)
+comments_re = re.compile(r'\s*#[^\n]*\n?', flags=re.DOTALL)
+comments_re_b = re.compile(rb'\s*#[^\n]*\n?', flags=re.DOTALL)
+
+
+ARG_TYPE = Union["OWLFunc", rdflib.Literal, rdflib.URIRef, str]
 
 
 class OWLFunc:
-    def __init__(self, function: str, body: str) -> None:
+    def __init__(self, function: str, body: List[Union[ARG_TYPE, List[ARG_TYPE]]]) -> None:
         self.decl = self.eval(function, body)
 
     def __str__(self):
@@ -48,7 +65,7 @@ class OWLFunc:
         return repr(self.decl)
 
     @staticmethod
-    def _eval_body(arg: Union["OWLFunc", rdflib.Literal, str, List[Union["OWLFunc", rdflib.Literal, str]]]) -> \
+    def _eval_body(arg: Union[ARG_TYPE, List[ARG_TYPE]]) -> \
             Union[str, FunOwlBase, List[FunOwlBase]]:
         if isinstance(arg, str):
             return arg
@@ -66,22 +83,13 @@ class OWLFunc:
         else:
             return [OWLFunc._eval_body(b) for b in arg]
 
-    def eval(self, function: str, arg_str: str) -> FunOwlBase:
+    def eval(self, function: str, body: List[Union[ARG_TYPE, List[ARG_TYPE]]]) -> FunOwlBase:
         """ Evaluate function against argument string """
-
-        # Ontology is processed differently because of the potential size of its contents -- we construct it one by
-        # one unstead of trying to create a giant argument list
-        if function == 'Ontology':
-            ontology = Ontology()
-            parse_args(arg_str, lambda e: ontology_processor(ontology, e))
-            return ontology
 
         # Everything else gets processed normally
         method_to_call = getattr(funowl, function, None)
         args = []
         annotations = []
-        body = []
-        parse_args(arg_str, lambda e: body.append(e))
 
         # Flatten nested lists and move annotations to the front
         for b in body:
@@ -106,27 +114,9 @@ class OWLFunc:
             raise e
 
 
-ARG_TYPE = Union[OWLFunc, rdflib.Literal, rdflib.URIRef, str]
-
-num_entered = 0
-def ontology_processor(ontology: Ontology, entry: Union[ARG_TYPE, List[ARG_TYPE]]) -> None:
-    global num_entered
-    ontology.add_arg(entry.decl if isinstance(entry, OWLFunc) else entry)
-    num_entered += 1
-    if not num_entered % 100:
-        if not num_entered % 1000:
-            if not num_entered % 10000:
-                print("T", end='')
-            else:
-                print("K", end='')
-        else:
-            print('.', end='')
-        sys.stdout.flush()
-
-
 def m_rem(m: Match) -> str:
     """ Return everything that doesn't match """
-    return m.string[m.span()[1]:].strip()
+    return m.string[m.span()[1]:]
 
 
 def lit_parser(value: str, rest: str) -> Tuple[rdflib.Literal, str]:
@@ -140,113 +130,191 @@ def lit_parser(value: str, rest: str) -> Tuple[rdflib.Literal, str]:
         return rdflib.Literal(value), rest
 
 
-def nested(s: str, depth=1) -> Tuple[str, str]:
+def nested(s: bytes, start: int) -> Tuple[bytes, int]:
     """
-    Split string into everything inside a set of parens (leading has been removed) and everything outside
-    :param s: string to split
-    :param depth: starting depth
-    :return: everything inside / everything outside
+    Return everything between start and a matching closing parenthesis
+    :param s:
+    :param start:
+    :return:
     """
+    depth = 1           # Because the function match eats the opening parenthesis
+    i = start
+    try:
+        while True:
+            m = s[i:i+1]
+            if m == b'(':
+                depth += 1
+            elif m == b')':
+                depth -= 1
+                if depth <= 0:
+                    return s[start:i], i+1
+            i += 1
+    except IndexError:
+        raise ValueError("Parenthesis mismatch")
 
-    for i in range(0, len(s)):
-        c = s[i]
-        if c == '(':
-            depth +=  1
-        elif c == ')':
-            depth -= 1
-            if depth <= 0:
-                return s[0:i], s[i+1:]
-    raise ValueError("Parenthesis mismatch")
+def uri_matcher(unparsed: Union[str, bytes], start: int) -> Tuple[Optional[rdflib.URIRef], int]:
+    if isinstance(unparsed, (bytes, mmap)):
+        m = abs_uri_b.match(unparsed, start)
+        if m:
+            return rdflib.URIRef(m.group(1).decode()), m.span()[1]
+        m = rel_uri_b.match(unparsed, start)
+        if m:
+            return rdflib.URIRef(m.group(1).decode()), m.span()[1]
+        return None, start
+    else:
+        m = abs_uri.match(unparsed, start)
+        if m:
+            return rdflib.URIRef(m.group(1)), m.span()[1]
+        m = rel_uri.match(unparsed, start)
+        if m:
+            return rdflib.URIRef(m.group(1)), m.span()[1]
+        return None, start
 
 
-def parse_args(s: str, arg_processor: Callable[[Union[ARG_TYPE, List[ARG_TYPE]]], None] ) -> None:
+
+def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
     """
-     Parse an argument list to a function
-    :param s: everything left inside the function
-    :param arg_processor: function to call with a new argument
+    Parse an argument list to a function
+
+    :param s: everything between the parenthesis
     :return: arguments split up into functions, urls, literals or lists thereof
     """
+    rval = []
     unparsed = s
     while unparsed:
-        unparsed =unparsed.strip()                          # Remove all white space
-        m = comments_re.match(unparsed)
-        if m:
-            unparsed = unparsed[len(m.group(0)):]
-            continue
+        unparsed = unparsed[skip_comments(unparsed, 0):]
         m = prefix_re.match(unparsed)
         if m:
-            arg_processor(m.group(1))
-            parse_args(m.group(2), arg_processor)
-            break
-        m = function_re.match(unparsed)
-        if m:
-            body, unparsed = nested(m_rem(m))
-            arg_processor(OWLFunc(m.group(1), body))
+            rval.append(m.group(1))
+            rval.extend(parse_args(m.group(2)))
+            unparsed = unparsed[m.span()[1]:]
             continue
-        m = abs_uri.match(unparsed)
+        m = inner_function_re.match(unparsed)
         if m:
-            arg_processor(rdflib.URIRef(m.group(1)))
-            unparsed = m_rem(m)
+            body = bytes(m_rem(m), encoding='utf8')
+            args, pos = nested(body, 0)
+            unparsed = body[pos:].decode()
+            rval.append(OWLFunc(m.group(1), parse_args(args.decode())))
             continue
-        m = rel_uri.match(unparsed)
-        if m:
-            arg_processor(rdflib.URIRef(m.group(1)))
-            unparsed = m_rem(m)
+        uri, pos = uri_matcher(unparsed, 0)
+        if uri:
+            rval.append(uri)
+            unparsed = unparsed[pos:]
             continue
+        # The nasty little HasKey parenthesis bit
+        unparsed = unparsed.strip()
         m = nested_re.match(unparsed)
         if m:
-            body, unparsed = nested(m.group(1).strip())
-            parse_args(body, lambda e: arg_processor(ObjectPropertyExpression(e)))
-            # arg_processor([ObjectPropertyExpression(e) for e in parse_args(body)])
-            m = nested_re.match(unparsed.strip())
+            body = bytes(m.group(1).strip(), encoding='utf8')
+            args, pos = nested(body, 0)
+            opes = parse_args(args.decode())
+            unparsed = body[pos:].decode().strip()
+            rval.extend([ObjectPropertyExpression(e) for e in opes])
+            m = nested_re.match(unparsed)
             if not m:
                 raise ValueError(f"HasKey DataPropertyExpressions clause missing: {unparsed}")
-            body, unparsed = nested(m.group(1).strip())
-            parse_args(body, lambda e: arg_processor(DataPropertyExpression(e)))
-            # arg_processor([DataPropertyExpression(e) for e in parse_args(body)])
+            body = bytes(m.group(1).strip(), encoding='utf8')
+            args, pos = nested(body, 0)
+            opes = parse_args(args.decode())
+            unparsed = body[pos:].decode().strip()
+            rval.extend([DataPropertyExpression(e) for e in opes])
             continue
         m = literal_re.match(unparsed)
         if m:
             lit, unparsed = lit_parser(m.group(1), m_rem(m))
-            arg_processor(lit)
+            rval.append(lit)
             continue
-        raise ValueError(f"Unrecognized content: {unparsed[:20]}")
-
-
-def fparse(s: str) -> List[OWLFunc]:
-    """
-     Parse functional syntax string and list of OWL Functions
-    :param s: OWL string to parse
-    :return: list of OWLFunc entries
-    """
-    rval: List[OWLFunc] = []
-    unparsed = s
-    while unparsed:
-        unparsed = unparsed.strip()
-        m = function_re.match(unparsed)
-        if not m:
-            raise ValueError("Unrecognized functional syntax string")
-        body, unparsed = nested(m_rem(m))
-        rval.append(OWLFunc(m.group(1), body))
+        if unparsed:
+            raise ValueError(f"Unrecognized content: {unparsed[:20]}")
 
     return rval
 
 
-def to_python(defn: str) -> Optional[OntologyDocument]:
-    rval = None
+def skip_comments(inp: Union[bytes, str], start: int) -> int:
+    if isinstance(inp, (bytes, mmap)):
+        m = comments_re_b.match(inp, start)
+        while m:
+            start = m.span()[1]
+            m = comments_re_b.match(inp, start)
+    else:
+        m = comments_re.match(inp, start)
+        while m:
+            start = m.span()[1]
+            m = comments_re.match(inp, start)
+    return start
 
-    # An ontology document consists of any number of prefix declarations and exactly one (?) ontology declaration
-    tree = fparse(defn)
-    logging.debug(pformat(defn))
+def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None]) -> int:
+    """
+    Functional parser - work through inp pulling complete functions out and processing them.
+    :param inp: input byte stream
+    :param start: current 0 based position in the stream
+    :param consumer: OWLFunc entry consumer
+    :return: final position
+    """
+    try:
+        while True:
+            start = skip_comments(inp, start)
+            m = function_re.match(inp, start)
+            if not m:
+                break
+            func = m.group(1).decode()
+            start = m.span()[1]
 
-    if tree:
-        prefixes: List[Prefix] = []
-
-        for e in tree:
-            if isinstance(e.decl, funowl.Prefix):
-                prefixes.append(e.decl)
-            elif isinstance(e.decl, funowl.Ontology):
-                rval = OntologyDocument(*prefixes, ontology=e.decl)
+            # Don't try to pre-parse the arguments for an Ontology
+            if func == "Ontology":
+                o = Ontology()
+                start = skip_comments(inp, start)
+                uri, start = uri_matcher(inp, start)
+                if uri:
+                    o.iri = uri
+                    start = skip_comments(inp, start)
+                    vers, start = uri_matcher(inp, start)
+                    if vers:
+                        o.version = vers
+                start = skip_comments(inp, start)
+                start = fparse(inp, start, lambda f: o.add_arg(f))
+                consumer(o)
+                start = skip_comments(inp, start)
+                m = final_pren.match(inp, start)
+                if not m:
+                    raise ValueError("Missing final parenthesis")
+                break
             else:
-                logging.error("Unrecognized declaration")
-    return rval
+                body, start = nested(inp, start)
+                consumer(OWLFunc(m.group(1).decode(), parse_args(body.decode())).decl)
+    except IndexError:
+        pass
+    return start
+
+def to_bytes_array(defn: Union[str, bytes, IO]) -> bytes:
+    if isinstance(defn, (bytes, mmap)):
+        return defn
+    elif isinstance(defn, IO):
+        return mmap(defn.fileno(), 0, access=ACCESS_READ)
+    elif '\n' in defn:
+        return bytes(defn, encoding='utf8')
+    elif '://' in defn:
+        # TODO: add in a buffered requests call
+        return b''
+    else:
+        with open(defn, 'rb') as f:
+            return mmap(f.fileno(), 0, access=ACCESS_READ)
+
+
+def to_python(defn: Union[str, bytes, IO]) -> Optional[OntologyDocument]:
+    """
+    Convert the functional syntax in defn to a Python representation
+    :param defn: The ontology definition
+    :return: Ontology Document
+    """
+    def consumer(e: FunOwlBase) -> None:
+        if isinstance(e, funowl.Prefix):
+            ontology_doc.prefixDeclarations.append(e)
+        elif isinstance(e, funowl.Ontology):
+            ontology_doc.ontology = e
+        else:
+            logging.error("Unrecognized declaration")
+
+    ontology_doc = OntologyDocument()
+    fparse(to_bytes_array(defn), 0, consumer)
+    return ontology_doc

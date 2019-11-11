@@ -230,6 +230,6 @@ class OntologyDocument(FunOwlBase):
                (self.ontology or Ontology())
 
     def to_rdf(self, g: Graph) -> SUBJ:
-        for p in self.prefixDeclarations:
-            p.to_rdf(g)
+        for prefix in self.prefixDeclarations:
+            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
         return self.ontology.to_rdf(g)

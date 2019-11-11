@@ -164,7 +164,7 @@ class SubAnnotationPropertyOf(Annotatable):
         return self.annots(w, lambda: w + self.sub + self.super)
 
     def to_rdf(self, g: Graph) -> None:
-        self.add_triple(g, self.sub.to_rdf(g), RDFS.subPropertOf, self.super.to_rdf(g))
+        self.add_triple(g, self.sub.to_rdf(g), RDFS.subPropertyOf, self.super.to_rdf(g))
 
 
 @dataclass
@@ -177,7 +177,7 @@ class AnnotationPropertyDomain(Annotatable):
         return self.annots(w, lambda: w + self.property + self.domain)
 
     def to_rdf(self, g: Graph) -> None:
-        self.add(g, self.property.to_rdf(g), RDFS.domain, self.domain.to_rdf(g))
+        self.add_triple(g, self.property.to_rdf(g), RDFS.domain, self.domain.to_rdf(g))
 
 
 @dataclass

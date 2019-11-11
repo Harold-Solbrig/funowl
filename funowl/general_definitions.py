@@ -117,4 +117,5 @@ class PrefixName(OPT_PNAME_NS, FunOwlRoot):
 
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):
     def to_rdf(self, g: Graph) -> URIRef:
-        return URIRef(g.namespace_manager.normalizeUri(str(self)))
+        prefix, name = self.split(':', 1)
+        return URIRef(g.namespace_manager.store.namespace(prefix or "") + name)

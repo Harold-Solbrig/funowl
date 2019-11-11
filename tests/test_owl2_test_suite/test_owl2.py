@@ -14,6 +14,7 @@ logging.getLogger().setLevel(logging.WARNING)
 OBJECT_INVERSE_ISSUE = "ObjectInverseOf declared on data property - test is bad"
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
 DID_NOT_LOAD = "Testcase has issue"
+XML_TO_TTL_FAIL = "XML does not load in rdflib"
 
 
 orig_add = Graph.add
@@ -29,7 +30,7 @@ class OWL2ValidationTestCase(ValidationTestCase):
     file_suffix = '.func'
 
     # Starting point in directory
-    start_at = 'TestCase-3AWebOnt-2DI5.8-2D017.func'
+    start_at = ''
 
     # True means do exactly one file
     single_file = bool(start_at)
@@ -38,7 +39,11 @@ class OWL2ValidationTestCase(ValidationTestCase):
     skip = {
         'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
         'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
-        'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI
+        'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
+        'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
+        'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
+        'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
+        'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI
     }
 
     # Stop on the first error
@@ -50,7 +55,7 @@ class OWL2ValidationTestCase(ValidationTestCase):
 
 
 # RDF Comparison switch
-do_rdf = False
+do_rdf = True
 
 
 def validate_owl2(fileloc: str) -> bool:
@@ -65,7 +70,7 @@ def validate_owl2(fileloc: str) -> bool:
 
     if not ontology_doc:
         return False
-    logging.info('\n===== Pass 1 Output =====\n' + str(ontology_doc))
+    logging.info('\n===== Pass 1 Output =====\n' + str(ontology_doc.to_functional()))
 
     # 2) determine whether the RDF representation of the Ontology is what is expected
     #    g(f(functional_repr) == RDF
@@ -75,6 +80,7 @@ def validate_owl2(fileloc: str) -> bool:
         actual_rdf = Graph()
         actual_rdf.add = lambda t: add(actual_rdf, t)
         ontology_doc.to_rdf(actual_rdf)
+
         rslts = compare_rdf(expected_rdf, actual_rdf)
         if rslts:
             logging.info('\n========== pass 1 rdf output =================\n' + actual_rdf.serialize(format="turtle").decode())
