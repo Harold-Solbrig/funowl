@@ -40,11 +40,14 @@ TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations Obje
 from dataclasses import dataclass
 from typing import List, Union, Optional
 
+from rdflib import Graph, BNode
+
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
 from funowl.base.fun_owl_base import FunOwlBase
+from funowl.converters.rdf_converter import SEQ
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
@@ -62,6 +65,8 @@ class ObjectPropertyChain(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
 
+    def to_rdf(self, g: Graph) -> BNode:
+        return SEQ(g, self.objectPropertyExpressions)
 
 @dataclass
 class SubObjectPropertyExpression(FunOwlChoice):
