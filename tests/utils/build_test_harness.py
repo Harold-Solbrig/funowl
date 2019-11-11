@@ -23,7 +23,7 @@ class ValidationTestCase(unittest.TestCase):
                 rval = cls.validation_function(url)
                 if not rval:
                     cls.number_of_errors += 1
-                    self.fail()
+                    self.fail("Validation failure")
         return test
 
     @classmethod

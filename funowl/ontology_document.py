@@ -77,7 +77,24 @@ class Ontology(Annotatable):
                 setattr(self, k, cur_v + v)
 
         if args:
-            raise ValueError(f"Unrecognized arguments ot Ontology: {args}")
+            raise ValueError(f"Unrecognized arguments to Ontology: {args}")
+
+    def add_arg(self, arg: [IRI.types(), Import, Axiom, Annotation]):
+        if isinstance_(arg, Axiom):
+            self.axioms.append(arg)
+        elif isinstance(arg, IRI):
+            if not self.iri:
+                self.iri = arg
+            elif not self.version:
+                self.version = arg
+            else:
+                raise ValueError(f"Raw IRI is not a valid argument {arg}")
+        elif isinstance(arg, Import):
+            self.directlyImportsDocuments.append(arg)
+        elif isinstance(arg, Annotation):
+            self.annotations.append(arg)
+        else:
+            raise ValueError(f"Unrecognized argument to Ontology: {arg}")
 
 
     # =======================
@@ -152,9 +169,10 @@ class Ontology(Annotatable):
 
     def to_rdf(self, g: Graph) -> SUBJ:
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
+        version_uri = self.version.to_rdf(g) if self.version else None
         g.add((ontology_uri, RDF.type, OWL.Ontology))
         if self.version:
-            g.add((ontology_uri, OWL.versionIRI, URIRef(self.version.full_uri(g))))
+            g.add((ontology_uri, OWL.versionIRI, version_uri))
         for imp in self.directlyImportsDocuments:
             g.add((ontology_uri, OWL.imports, imp.to_rdf(g)))
         for axiom in self.axioms:

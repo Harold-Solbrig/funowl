@@ -1,13 +1,13 @@
 import logging
 import re
-from dataclasses import dataclass
+import sys
 from pprint import pformat
-from typing import Union, List, Tuple, Match, Optional
+from typing import Union, List, Tuple, Match, Optional, Callable
 
 import rdflib
 
 import funowl
-from funowl import Prefix, Annotation, OntologyDocument
+from funowl import Prefix, Annotation, OntologyDocument, Ontology
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -37,23 +37,23 @@ nested_re = re.compile(r'\(\s*(.+\s*\))', flags=re.DOTALL)
 comments_re = re.compile(r'#[^\n]*\n?', flags=re.DOTALL)
 
 
-@dataclass
 class OWLFunc:
-    """
-    A function consists of a function name and a list consisting of owl functions, rdflib literals or lists of both """
-    function: str
-    body: List[Union["OWLFunc", rdflib.Literal, List[Union["OWLFunc", rdflib.Literal]]]]
+    def __init__(self, function: str, body: str) -> None:
+        self.decl = self.eval(function, body)
 
     def __str__(self):
-        body_str = ', '.join([str(b) for b in self.body])
-        return f"{self.function}({body_str})"
+        return str(self.decl)
 
-    def _eval_body(self, arg: Union["OWLFunc", rdflib.Literal, str, List[Union["OWLFunc", rdflib.Literal, str]]]) -> \
+    def __repr__(self):
+        return repr(self.decl)
+
+    @staticmethod
+    def _eval_body(arg: Union["OWLFunc", rdflib.Literal, str, List[Union["OWLFunc", rdflib.Literal, str]]]) -> \
             Union[str, FunOwlBase, List[FunOwlBase]]:
         if isinstance(arg, str):
             return arg
-        if isinstance(arg, OWLFunc):
-            return arg.eval()
+        elif isinstance(arg, OWLFunc):
+            return arg.decl
         elif isinstance(arg, rdflib.Literal):
             if arg.datatype:
                 return TypedLiteral(arg.value, arg.datatype)
@@ -64,14 +64,27 @@ class OWLFunc:
         elif isinstance(arg, FunOwlBase):
             return arg
         else:
-            return [self._eval_body(b) for b in arg]
+            return [OWLFunc._eval_body(b) for b in arg]
 
-    def eval(self) -> FunOwlBase:
-        method_to_call = getattr(funowl, self.function, None)
+    def eval(self, function: str, arg_str: str) -> FunOwlBase:
+        """ Evaluate function against argument string """
+
+        # Ontology is processed differently because of the potential size of its contents -- we construct it one by
+        # one unstead of trying to create a giant argument list
+        if function == 'Ontology':
+            ontology = Ontology()
+            parse_args(arg_str, lambda e: ontology_processor(ontology, e))
+            return ontology
+
+        # Everything else gets processed normally
+        method_to_call = getattr(funowl, function, None)
         args = []
         annotations = []
+        body = []
+        parse_args(arg_str, lambda e: body.append(e))
+
         # Flatten nested lists and move annotations to the front
-        for b in self.body:
+        for b in body:
             arg = self._eval_body(b)
             if isinstance(arg, Annotation):
                 annotations.append(arg)
@@ -79,7 +92,7 @@ class OWLFunc:
                 args += arg if isinstance(arg, list) else [arg]
 
         if method_to_call is None:
-            logging.getLogger().error(f"Unknown function: {self.function}")
+            logging.getLogger().error(f"Unknown function: {function}")
             raise NotImplemented("Create an instance of FunOwlBase that reflects what is written to it ")
         # TODO: Address flattened arguments
         try:
@@ -91,6 +104,24 @@ class OWLFunc:
             arglist = ', '.join([str(arg) for arg in args])
             logging.error(f"function {method_to_call.__name__}({arglist})")
             raise e
+
+
+ARG_TYPE = Union[OWLFunc, rdflib.Literal, rdflib.URIRef, str]
+
+num_entered = 0
+def ontology_processor(ontology: Ontology, entry: Union[ARG_TYPE, List[ARG_TYPE]]) -> None:
+    global num_entered
+    ontology.add_arg(entry.decl if isinstance(entry, OWLFunc) else entry)
+    num_entered += 1
+    if not num_entered % 100:
+        if not num_entered % 1000:
+            if not num_entered % 10000:
+                print("T", end='')
+            else:
+                print("K", end='')
+        else:
+            print('.', end='')
+        sys.stdout.flush()
 
 
 def m_rem(m: Match) -> str:
@@ -128,16 +159,13 @@ def nested(s: str, depth=1) -> Tuple[str, str]:
     raise ValueError("Parenthesis mismatch")
 
 
-ARG_TYPE = Union[OWLFunc, rdflib.Literal, rdflib.URIRef]
-
-
-def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
+def parse_args(s: str, arg_processor: Callable[[Union[ARG_TYPE, List[ARG_TYPE]]], None] ) -> None:
     """
      Parse an argument list to a function
     :param s: everything left inside the function
+    :param arg_processor: function to call with a new argument
     :return: arguments split up into functions, urls, literals or lists thereof
     """
-    rval = []
     unparsed = s
     while unparsed:
         unparsed =unparsed.strip()                          # Remove all white space
@@ -147,41 +175,42 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
             continue
         m = prefix_re.match(unparsed)
         if m:
-            rval.append(m.group(1))
-            rval.append(parse_args(m.group(2)))
+            arg_processor(m.group(1))
+            parse_args(m.group(2), arg_processor)
             break
         m = function_re.match(unparsed)
         if m:
             body, unparsed = nested(m_rem(m))
-            rval.append(OWLFunc(m.group(1), parse_args(body)))
+            arg_processor(OWLFunc(m.group(1), body))
             continue
         m = abs_uri.match(unparsed)
         if m:
-            rval.append(rdflib.URIRef(m.group(1)))
+            arg_processor(rdflib.URIRef(m.group(1)))
             unparsed = m_rem(m)
             continue
         m = rel_uri.match(unparsed)
         if m:
-            rval.append(rdflib.URIRef(m.group(1)))
+            arg_processor(rdflib.URIRef(m.group(1)))
             unparsed = m_rem(m)
             continue
         m = nested_re.match(unparsed)
         if m:
             body, unparsed = nested(m.group(1).strip())
-            rval.extend([ObjectPropertyExpression(e) for e in parse_args(body)])
+            parse_args(body, lambda e: arg_processor(ObjectPropertyExpression(e)))
+            # arg_processor([ObjectPropertyExpression(e) for e in parse_args(body)])
             m = nested_re.match(unparsed.strip())
             if not m:
                 raise ValueError(f"HasKey DataPropertyExpressions clause missing: {unparsed}")
             body, unparsed = nested(m.group(1).strip())
-            rval.extend([DataPropertyExpression(e) for e in parse_args(body)])
+            parse_args(body, lambda e: arg_processor(DataPropertyExpression(e)))
+            # arg_processor([DataPropertyExpression(e) for e in parse_args(body)])
             continue
         m = literal_re.match(unparsed)
         if m:
             lit, unparsed = lit_parser(m.group(1), m_rem(m))
-            rval.append(lit)
+            arg_processor(lit)
             continue
         raise ValueError(f"Unrecognized content: {unparsed[:20]}")
-    return rval
 
 
 def fparse(s: str) -> List[OWLFunc]:
@@ -198,7 +227,7 @@ def fparse(s: str) -> List[OWLFunc]:
         if not m:
             raise ValueError("Unrecognized functional syntax string")
         body, unparsed = nested(m_rem(m))
-        rval.append(OWLFunc(m.group(1), parse_args(body)))
+        rval.append(OWLFunc(m.group(1), body))
 
     return rval
 
@@ -214,11 +243,10 @@ def to_python(defn: str) -> Optional[OntologyDocument]:
         prefixes: List[Prefix] = []
 
         for e in tree:
-            decl = e.eval()
-            if isinstance(decl, funowl.Prefix):
-                prefixes.append(decl)
-            elif isinstance(decl, funowl.Ontology):
-                rval = OntologyDocument(*prefixes, ontology=decl)
+            if isinstance(e.decl, funowl.Prefix):
+                prefixes.append(e.decl)
+            elif isinstance(e.decl, funowl.Ontology):
+                rval = OntologyDocument(*prefixes, ontology=e.decl)
             else:
                 logging.error("Unrecognized declaration")
     return rval

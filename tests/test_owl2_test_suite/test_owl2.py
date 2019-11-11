@@ -9,7 +9,7 @@ from funowl.converters.functional_converter import to_python
 from tests.utils.build_test_harness import ValidationTestCase
 from tests.utils.rdf_comparator import compare_rdf
 
-logging.getLogger().setLevel(logging.ERROR)
+logging.getLogger().setLevel(logging.WARNING)
 
 OBJECT_INVERSE_ISSUE = "ObjectInverseOf declared on data property - test is bad"
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
@@ -29,47 +29,58 @@ class OWL2ValidationTestCase(ValidationTestCase):
     file_suffix = '.func'
 
     # Starting point in directory
-    start_at = ''
+    start_at = 'TestCase-3AWebOnt-2DI5.8-2D017.func'
 
     # True means do exactly one file
     single_file = bool(start_at)
 
     # Filenames to skip and reason for skipping it
-    skip = { }
+    skip = {
+        'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
+        'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
+        'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI
+    }
 
     # Stop on the first error
     stop_on_error = False
 
+    # If we're starting at a given file, we'll want more detail
+    if start_at:
+        logging.getLogger().setLevel(logging.INFO)
 
+
+# RDF Comparison switch
+do_rdf = False
 
 
 def validate_owl2(fileloc: str) -> bool:
-    logging.info(f"Validating {fileloc}")
+    print(f"Validating {os.path.basename(fileloc)}")
 
     # 1) convert the functional syntax to nn Ontology:
     #    Ontology = f(functional_repr)
     with open(fileloc) as f:
         func_repr = f.read()
-    logging.info('\n===== Input =====\n' + func_repr)
+    logging.info('\n===== Original Input =====\n' + func_repr)
     ontology_doc = to_python(func_repr)
 
     if not ontology_doc:
         return False
+    logging.info('\n===== Pass 1 Output =====\n' + str(ontology_doc))
 
     # 2) determine whether the RDF representation of the Ontology is what is expected
     #    g(f(functional_repr) == RDF
-    expected_rdf = Graph()
-    expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
-    actual_rdf = Graph()
-    actual_rdf.add = lambda t: add(actual_rdf, t)
-    ontology_doc.to_rdf(actual_rdf)
-    logging.info('\n========== Functional ==========\n' + ontology_doc.to_functional().getvalue())
-    logging.info('\n========== RDF =================\n' + actual_rdf.serialize(format="turtle").decode())
-    logging.info('\n---------- expected ------------\n' + expected_rdf.serialize(format="turtle").decode())
-    rslts = compare_rdf(expected_rdf, actual_rdf)
-    if rslts:
-        print(rslts)
-        return False
+    if do_rdf:
+        expected_rdf = Graph()
+        expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
+        actual_rdf = Graph()
+        actual_rdf.add = lambda t: add(actual_rdf, t)
+        ontology_doc.to_rdf(actual_rdf)
+        rslts = compare_rdf(expected_rdf, actual_rdf)
+        if rslts:
+            logging.info('\n========== pass 1 rdf output =================\n' + actual_rdf.serialize(format="turtle").decode())
+            logging.info('\n---------- expected rdf ------------\n' + expected_rdf.serialize(format="turtle").decode())
+            print(rslts)
+            return False
 
 
     # 3) convert the ontology back into functional syntax
@@ -78,19 +89,21 @@ def validate_owl2(fileloc: str) -> bool:
     if not ontology_2:
         logging.error(f"Failed to parse emitted functional syntax")
         return False
+    logging.info('\n===== Pass 2 Output =====\n' + str(ontology_2.to_functional()))
 
     # 4) Convert the functional syntax back into an Ontology
     #    Ontology_prime = f(f**-1(f(functional_repr)))
-    roundtrip_rdf = Graph()
-    ontology_2.to_rdf(roundtrip_rdf)
-    logging.info('\n========== Round Trip RDF =================\n' + roundtrip_rdf.serialize(format="turtle").decode())
+    if do_rdf:
+        roundtrip_rdf = Graph()
+        ontology_2.to_rdf(roundtrip_rdf)
+        logging.info('\n========== Round Trip RDF =================\n' + roundtrip_rdf.serialize(format="turtle").decode())
 
-    # 5) Make sure that the RDF representation stll matches
-    #    g(f(functional_repr)) == g(f(f**-1(f(functional_repr))
-    rslts = compare_rdf(expected_rdf, roundtrip_rdf)
-    if rslts:
-        print(rslts)
-        return False
+        # 5) Make sure that the RDF representation stll matches
+        #    g(f(functional_repr)) == g(f(f**-1(f(functional_repr))
+        rslts = compare_rdf(expected_rdf, roundtrip_rdf)
+        if rslts:
+            print(rslts)
+            return False
     return True
 
 

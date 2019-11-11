@@ -103,5 +103,6 @@ class FunctionalWriterTestCase(TestBase):
         with self.assertRaises(ValueError):
             self.w + self.w.indent()
 
+
 if __name__ == '__main__':
     unittest.main()
