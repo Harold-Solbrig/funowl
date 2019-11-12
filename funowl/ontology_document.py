@@ -9,7 +9,8 @@ Ontology :=
       axioms
    ')'
 """
-from dataclasses import dataclass, MISSING
+import sys
+from dataclasses import dataclass, MISSING, field
 from typing import Optional, List, Union, Dict, cast
 
 from rdflib import Graph, RDF, OWL, URIRef, BNode
@@ -78,10 +79,22 @@ class Ontology(Annotatable):
 
         if args:
             raise ValueError(f"Unrecognized arguments to Ontology: {args}")
+        self._naxioms = 0
 
     def add_arg(self, arg: [IRI.types(), Import, Axiom, Annotation]):
         if isinstance_(arg, Axiom):
             self.axioms.append(arg)
+            self._naxioms += 1
+            if not self._naxioms % 100000:
+                print('H')
+            elif not self._naxioms % 10000:
+                print('K')
+            elif not self._naxioms % 1000:
+                print('k', end='')
+                sys.stdout.flush()
+            elif not self._naxioms % 100:
+                print('.', end='')
+                sys.stdout.flush()
         elif isinstance(arg, IRI):
             if not self.iri:
                 self.iri = arg
@@ -221,15 +234,18 @@ class OntologyDocument(FunOwlBase):
                     return p.fullIRI
         return super().__getattribute__(item)
 
+    def add_namespaces(self, g: Graph) -> Graph:
+        for prefix in self.prefixDeclarations:
+            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
+        return g
+
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
         """ Return a FunctionalWriter instance with the representation of the OntologyDocument in functional syntax """
         w = w or FunctionalWriter()
-        for prefix in self.prefixDeclarations:
-            w.g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
+        self.add_namespaces(w.g)
         return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() +\
                (self.ontology or Ontology())
 
     def to_rdf(self, g: Graph) -> SUBJ:
-        for prefix in self.prefixDeclarations:
-            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
+        self.add_namespaces(g)
         return self.ontology.to_rdf(g)

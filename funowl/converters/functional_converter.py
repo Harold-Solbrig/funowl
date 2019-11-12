@@ -1,8 +1,10 @@
 import logging
 import re
+from contextlib import closing
 from io import BytesIO
 from mmap import mmap, ACCESS_READ
 from typing import Union, List, Tuple, Match, Optional, Callable, IO
+from urllib.request import urlopen, urlretrieve
 
 import rdflib
 
@@ -286,18 +288,27 @@ def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None]) -> in
         pass
     return start
 
-def to_bytes_array(defn: Union[str, bytes, IO]) -> bytes:
+
+def to_bytes_array(defn: Union[str, bytes, IO]) -> Union[bytes, mmap]:
+    """ Find the target OWL resource and convert it to a bytes array.  "Why bytes?", you ask.  Some of the ontological
+    resources that we have been called on to load (e.g. SNOMED CT) exceed 100MB in size.  Our parser is designed to
+    consume resource information sequentially, so we have attempted to improve performance by using the mmap package.
+    This, however, forces us to parse bytes vs. string arrays.
+    :param defn: A file name, URL, open file handle, mmap, or simple string representing an owl ontology
+
+    """
     if isinstance(defn, (bytes, mmap)):
         return defn
-    elif isinstance(defn, IO):
+    elif hasattr(defn, 'read'):
         return mmap(defn.fileno(), 0, access=ACCESS_READ)
     elif '\n' in defn:
         return bytes(defn, encoding='utf8')
     elif '://' in defn:
-        # TODO: add in a buffered requests call
-        return b''
+        fname, resp = urlretrieve(defn)
+        with closing(open(fname, 'r+b')) as f:
+            return mmap(f.fileno(), 0, access=ACCESS_READ)
     else:
-        with open(defn, 'rb') as f:
+        with closing(open(defn, 'r+b')) as f:
             return mmap(f.fileno(), 0, access=ACCESS_READ)
 
 

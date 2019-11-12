@@ -1,11 +1,7 @@
 ![Owl in a bucket](images/owlinbucket.jpg)
 
 # FunOwl - Functional OWL syntax for Python
-
-While we would be happy to be corrected, to the best of our knowledge there is to be minimal support for OWL in python.
-[OwlReady2](https://owlready2.readthedocs.io/en/latest/) appears to be the closest thing to what we are 
-looking for, but, as described in this [paper](http://www.lesfleursdunormal.fr/static/_downloads/article_owlready_aim_2017.pdf)
-it creates an ontology-oriented programming API for ontologies, while what we want is much closer to the raw OWL itself.
+[OWL2 Functional Style Syntax](https://www.w3.org/TR/owl2-syntax/) for python.
 
 ## Goals
 To date, it appears that the majority of the python based OWL generators use variations of the 
@@ -117,3 +113,12 @@ Ontology(
   )
 )
 ```
+## Other packages
+While we would be happy to be corrected, to the best of our knowledge there is to be minimal support for OWL in python.
+* [OwlReady2](https://owlready2.readthedocs.io/en/latest/) appears to be the closest thing to what we are 
+looking for, but, as described in this [paper](http://www.lesfleursdunormal.fr/static/_downloads/article_owlready_aim_2017.pdf)
+it creates an ontology-oriented programming API for ontologies, while what we want is much closer to the raw OWL itself. 
+We have also recently discovered 
+* The `rdflib` [infixowl](https://rdflib.readthedocs.io/en/stable/apidocs/rdflib.extras.html#module-rdflib.extras.infixowl) 
+actually comes closer to what we've been trying to accomplish and, had we known of its existence before we got started, we
+may have chosen to build on it instead of starting from scratch.
