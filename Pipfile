@@ -10,6 +10,3 @@ rdflib = ">=4.2.2"
 pyjsg = ">=0.9.1"
 rfc3987 = "*"
 bcp47 = "*"
-
-[requires]
-python_version = "3.7"

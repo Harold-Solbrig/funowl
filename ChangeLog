@@ -1,6 +1,28 @@
 CHANGES
 =======
 
+* More work on singleton property
+
+v0.1.0
+------
+
+* Fix issue in SubObjectPropertyOf RDF emission
+* Fix issues where BNode parsing stopped working
+* Implemented to\_rdf for SubObjectPropertyOf, ObjectPropertyDomain, FunctionalObjectProperty and InverseFunctionalObjectProperty
+* Add a Pizza Ontology example to the basics notebook
+* Add functional image of the pizza ontology for testing purposes
+* Set theme jekyll-theme-minimal
+* Creating documentation directory
+* Added RDF for ObjectPropertyChain
+* Using mmem for file load
+* Some attempts at performance improvement
+* Add OwlDocument back into the picture
+* Make the to\_rdf more efficient in EquivalentClasses
+* Implementation of to\_rdf in ObjectHasSelf, ObjectSomeValuesFrom, ObjectAllValuesFrom
+* Implementation of to\_rdf in ObjectOneOf, ObjectUnionOf and EquivalentClasses
+* Refactor as\_rdf to to\_rdf methods
+* Complete and document owl2 test suite
+* Add subclass to equivalent sample
 * OWL2 Test Suite now running on RDF
 * Uncommented test assertion section
 * Added the RDF comparison component of the test
