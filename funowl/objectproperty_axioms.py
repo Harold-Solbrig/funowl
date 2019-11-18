@@ -84,7 +84,7 @@ class SubObjectPropertyOf(Annotatable):
 
     def to_rdf(self, g: Graph) -> None:
         if issubclass(self.subObjectPropertyExpression.__class__, ObjectPropertyChain):
-            self.add_triple(g, self.superObjectPropertyExpression, OWL.propertyChainAxiom,
+            self.add_triple(g, self.superObjectPropertyExpression.to_rdf(g), OWL.propertyChainAxiom,
                             self.subObjectPropertyExpression.to_rdf(g))
         else:
             self.add_triple(g, self.subObjectPropertyExpression.to_rdf(g), RDF.subPropertyOf,
