@@ -14,7 +14,7 @@ from funowl.general_definitions import FullIRI, AbbreviatedIRI
 @dataclass(unsafe_hash=True)
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
-    v: Union[AbbreviatedIRI, FullIRI, str]
+    v: Union[AbbreviatedIRI, FullIRI, URIRef, str]
     rdf_type: ClassVar[URIRef] = None
     input_type: ClassVar[Type] = str
 

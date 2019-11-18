@@ -121,8 +121,12 @@ class Ontology(Annotatable):
         self.axioms.append(Declaration(decl))
         return self
 
-    def subClassOf(self, sub: IRI.types(), sup: IRI.types()) -> "Ontology":
-        self.axioms.append(SubClassOf(Class(sub), Class(sup)))
+    def subClassOf(self, sub: Class.types(), sup: Class.types()) -> "Ontology":
+        if not issubclass(sub.__class__, Class) and isinstance(sub, Class):
+            sub = Class(sub)
+        if not issubclass(sup.__class__, Class) and isinstance(sup, Class):
+            sup = Class(sup)
+        self.axioms.append(SubClassOf(sub, sup))
         return self
 
     def equivalentClasses(self, *classExpressions: ClassExpression) -> "Ontology":
@@ -202,16 +206,14 @@ class OntologyDocument(FunOwlBase):
     prefixDeclarations: List[Prefix] = empty_list()
     ontology: Ontology = None
 
-    def __init__(self, *prefix: Prefix, ontology: Optional[Ontology] = None):
-        if len(prefix) == 1 and isinstance(prefix[0], list):
-            self.prefixDeclarations = prefix[0]
-            self.ontology = ontology
-        elif prefix and isinstance(prefix[-1], Ontology):
-            self.prefixDeclarations = list(prefix[:-1])
-            self.ontology = prefix[-1]
-        else:
-            self.prefixDeclarations = list(prefix)
-            self.ontology = ontology or Ontology()
+    def __init__(self, default_prefix: FullIRI = None, ontology: Optional[Ontology] = None, **prefixes: FullIRI):
+        self.prefixDeclarations = []
+        self.ontology = ontology if ontology is not None else Ontology()
+        if default_prefix:
+            self.prefixDeclarations.append(Prefix(None, default_prefix))
+        if prefixes:
+            for k, v in prefixes.items():
+                self.prefixDeclarations.append(Prefix(k, v))
 
     def prefixes(self, dflt: Optional[FullIRI], **prefixes: FullIRI) -> None:
         if dflt:
@@ -236,7 +238,7 @@ class OntologyDocument(FunOwlBase):
 
     def add_namespaces(self, g: Graph) -> Graph:
         for prefix in self.prefixDeclarations:
-            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
+            g.namespace_manager.bind(str(prefix.prefixName or ''), str(prefix.fullIRI), True, True)
         return g
 
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:

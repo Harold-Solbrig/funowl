@@ -24,6 +24,9 @@ inner_function_re = re.compile(r'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
 # 1: Prefix ':=' 2: URI
 prefix_re = re.compile(r'\s*(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
 
+# nodeId
+blank_node_label_re = re.compile(r'\s*(_:\S*)', flags=re.DOTALL)
+
 # '<' 1:uri '>
 abs_uri = re.compile(r'\s*<([^>]+)>', flags=re.DOTALL)
 abs_uri_b = re.compile(rb'\s*<([^>]+)>', flags=re.DOTALL)
@@ -197,6 +200,11 @@ def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:
             args, pos = nested(body, 0)
             unparsed = body[pos:].decode()
             rval.append(OWLFunc(m.group(1), parse_args(args.decode())))
+            continue
+        m = blank_node_label_re.match(unparsed)
+        if m:
+            rval.append(m.group(1))
+            unparsed = unparsed[m.span()[1]:]
             continue
         uri, pos = uri_matcher(unparsed, 0)
         if uri:

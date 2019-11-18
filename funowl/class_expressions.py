@@ -116,7 +116,7 @@ class ObjectComplementOf(FunOwlBase):
 
 @dataclass(init=False)
 class ObjectOneOf(FunOwlBase):
-    individuals: List[Individual]
+    individuals: List[Individual.types()]
 
     def __init__(self, *individual: Individual) -> None:
         self.individuals = list(individual)
