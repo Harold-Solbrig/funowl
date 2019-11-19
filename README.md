@@ -1,5 +1,9 @@
 ![Owl in a bucket](images/owlinbucket.jpg)
 
+[![Pyversions](https://img.shields.io/pypi/pyversions/funowl.svg)](https://pypi.python.org/pypi/funowl)
+
+[![PyPi](https://img.shields.io/pypi/v/funowl.svg)](https://pypi.python.org/pypi/funowl)
+
 # FunOwl - Functional OWL syntax for Python
 [OWL2 Functional Style Syntax](https://www.w3.org/TR/owl2-syntax/) for python.
 
