@@ -1,6 +1,13 @@
 CHANGES
 =======
 
+v0.1.4
+------
+
+* Add version badges
+* Don't emit a DataType declaration for literal data types
+* Several fixes on literal representation
+
 v0.1.3
 ------
 
