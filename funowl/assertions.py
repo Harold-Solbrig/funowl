@@ -114,7 +114,7 @@ class ObjectPropertyAssertion(Annotatable):
     def to_rdf(self, g: Graph) -> None:
         # ObjectPropertyAssertion( OP a1 a2 ) 	T(a1) T(OP) T(a2) .
         # ObjectPropertyAssertion( ObjectInverseOf( OP ) a1 a2 ) 	T(a2) T(OP) T(a1) .
-        if issubclass(self.expr.__class__, ObjectInverseOf):
+        if issubclass(type(self.expr), ObjectInverseOf):
             self.add_triple(g, self.targetIndividual.to_rdf(g), self.expr.v.v.to_rdf(g),
                             self.sourceIndividual.to_rdf(g))
         else:

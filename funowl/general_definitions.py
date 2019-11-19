@@ -25,7 +25,7 @@ from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, QUO
 class NonNegativeInteger(int, FunOwlBase):
     """ a nonempty finite sequence of digits between 0 and 9 """
     def __init__(self, v: int) -> None:
-        if not isinstance(v, self.__class__):
+        if not isinstance(v, type(self)):
             raise TypeError(f"{v}: invalid non-negative integer")
 
     def _is_valid(self, instance) -> bool:
@@ -49,7 +49,7 @@ class LanguageTag(str, FunOwlBase):
     languages: ClassVar[Set[str]] = set(bcp47.languages.values())
     """ @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47] """
     def __init__(self, v: str) -> None:
-        if not isinstance(v, self.__class__):
+        if not isinstance(v, type(self)):
             raise TypeError(f"{v}: invalid language tag")
 
     def _is_valid(self, instance) -> bool:

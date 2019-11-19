@@ -22,7 +22,7 @@ class FunOwlChoice(FunOwlBase):
     """
     v: Any
     _coercion_allowed: ClassVar[bool] = True       # False means type has to be exact coming in
-    input_type: ClassVar[Type] = None             # Type hint for IDE's.  Not actually included in cooercion
+    input_type: ClassVar[Type] = None              # Type hint for IDE's.  Not actually included in coerrcion
 
     @classmethod
     def types(cls) -> List[Type]:

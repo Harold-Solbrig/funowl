@@ -33,7 +33,7 @@ equivalents: Dict[ClassExpression, List[Axiom]] = dict()
 # Convert all subclass expressions into the equivalents
 for axiom in ontologydoc.ontology.axioms:
     # Note that we can't use isinstance because of type cooercion
-    if issubclass(axiom.__class__, SubClassOf):
+    if issubclass(type(axiom), SubClassOf):
         equivalents.setdefault(axiom.subClassExpression, []).append(axiom)
 
 for class_expression, axioms in equivalents.items():

@@ -15,18 +15,7 @@ error prone.  What we are attempting to do in this project is (in order of relat
 5) Consume OWL RDF
 6) Provide a [py4j](https://www.py4j.org/) or equivalent wrapper to the standard Java OWL libraries
 
-### Goal 1:
-Create:
-```
-Prefix(:=<http://www.example.com/ontology1#>)
-Ontology( <http://www.example.com/ontology1>
-    Import( <http://www.example.com/ontology2> )
-    Annotation( rdfs:label "An example" )
-
-    SubClassOf( :Child owl:Thing )
-) 
-```
-using a pythonic idiom:
+### Goal 1: Create OWL Functional Syntax using Python
 ```python
 from rdflib import RDFS, OWL, Namespace
 from funowl import OntologyDocument, Ontology
@@ -34,13 +23,26 @@ from funowl import OntologyDocument, Ontology
 EX = Namespace("http://www.example.com/ontology1#")
 
 o = Ontology("http://www.example.com/ontology1")
-
 o.imports("http://www.example.com/ontology2")
 o.annotation(RDFS.label, "An example")
 o.subClassOf(EX.Child, OWL.Thing)
-
 doc = OntologyDocument(EX, o)
+print(str(doc.to_functional()))
+```
+### Output
+```
+Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+Prefix( : = <http://www.example.com/ontology1#> )
 
+Ontology( <http://www.example.com/ontology1>
+    Import( <http://www.example.com/ontology2> )
+    Annotation( rdfs:label "An example" )
+    SubClassOf( :Child owl:Thing )
+)
 ```
 Represent:
 ```

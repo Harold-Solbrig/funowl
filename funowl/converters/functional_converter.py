@@ -125,12 +125,14 @@ def m_rem(m: Match) -> str:
 
 
 def lit_parser(value: str, rest: str) -> Tuple[rdflib.Literal, str]:
+    if len(value) > 3 and value.startswith('"') and value.endswith('"'):
+        value = value[1:-1]
     if rest.startswith('@'):
         m = literal_lang.match(rest)
         return rdflib.Literal(value, lang=m.group(1)), m_rem(m)
     elif rest.startswith('^^'):
         m = literal_datatype.match(rest)
-        return rdflib.Literal(value, datatype=rdflib.URIRef(m.group(1))), m_rem(m)
+        return TypedLiteral(value, m.group(1)), m_rem(m)
     else:
         return rdflib.Literal(value), rest
 
@@ -174,7 +176,6 @@ def uri_matcher(unparsed: Union[str, bytes], start: int) -> Tuple[Optional[rdfli
         if m:
             return rdflib.URIRef(m.group(1)), m.span()[1]
         return None, start
-
 
 
 def parse_args(s: str) -> List[Union[ARG_TYPE, List[ARG_TYPE]]]:

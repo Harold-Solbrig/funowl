@@ -13,6 +13,7 @@ pizza_fun = os.path.join(datadir, 'pizza.owl.out')
 
 class FunctionalConverterTestCase(unittest.TestCase):
     def verify(self, loc: Any) -> None:
+        self.maxDiff = None
         doc = to_python(loc)
         if os.path.exists(pizza_fun):
             with open(pizza_fun) as f:

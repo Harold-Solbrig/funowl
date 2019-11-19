@@ -43,7 +43,7 @@ class FunOwlRoot:
 
     def to_rdf(self, g: Graph) -> URIRef:
         """ Add RDF representation of self to graph g and return node representing representation if applicable """
-        return URIRef(f"http://notimplemented.org/{self.__class__.__name__}")
+        return URIRef(f"http://notimplemented.org/{type(self).__name__}")
 
     def list_cardinality(self, els: List, list_name: str, min_: int = 1, max_: int = None) -> "FunOwlRoot":
         """ Validate the cardinality of a list element """

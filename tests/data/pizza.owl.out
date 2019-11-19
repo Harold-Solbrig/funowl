@@ -1,0 +1,1155 @@
+Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+Prefix( : = <http://www.co-ode.org/ontologies/pizza#> )
+Prefix( dc: = <http://purl.org/dc/elements/1.1/> )
+Prefix( skos: = <http://www.w3.org/2004/02/skos/core#> )
+Prefix( pizza: = <http://www.co-ode.org/ontologies/pizza/pizza.owl#> )
+Prefix( terms: = <http://purl.org/dc/terms/> )
+
+Ontology( <http://www.co-ode.org/ontologies/pizza> <http://www.co-ode.org/ontologies/pizza/2.0.0>
+    Annotation( dc:description "An ontology about pizzas and their toppings.
+
+This is an example ontology that contains all constructs required for the various versions of the Pizza Tutorial run by Manchester University (see http://owl.cs.manchester.ac.uk/publications/talks-and-tutorials/protg-owl-tutorial)."@en )
+    Annotation( dc:title "pizza"@en )
+    Annotation( terms:contributor "Alan Rector" )
+    Annotation( terms:contributor "Chris Wroe" )
+    Annotation( terms:contributor "Matthew Horridge" )
+    Annotation( terms:contributor "Nick Drummond" )
+    Annotation( terms:contributor "Robert Stevens" )
+    Annotation( terms:license "Creative Commons Attribution 3.0 (CC BY 3.0)"^^xsd:string )
+    Annotation( terms:provenance "v2.0 Added new annotations to the ontology using standard/well-know annotation properties
+
+v1.5. Removed protege.owl import and references. Made ontology URI date-independent
+
+v1.4. Added Food class (used in domain/range of hasIngredient), Added several hasCountryOfOrigin restrictions on pizzas, Made hasTopping invers functional"@en )
+    Annotation( rdfs:label "pizza"^^xsd:string )
+    Annotation( owl:versionInfo "2.0"^^xsd:string )
+    Declaration( Class( pizza:American ) )
+    Declaration( Class( pizza:AmericanHot ) )
+    Declaration( Class( pizza:AnchoviesTopping ) )
+    Declaration( Class( pizza:ArtichokeTopping ) )
+    Declaration( Class( pizza:AsparagusTopping ) )
+    Declaration( Class( pizza:Cajun ) )
+    Declaration( Class( pizza:CajunSpiceTopping ) )
+    Declaration( Class( pizza:CaperTopping ) )
+    Declaration( Class( pizza:Capricciosa ) )
+    Declaration( Class( pizza:Caprina ) )
+    Declaration( Class( pizza:CheeseTopping ) )
+    Declaration( Class( pizza:CheeseyPizza ) )
+    Declaration( Class( pizza:CheeseyVegetableTopping ) )
+    Declaration( Class( pizza:ChickenTopping ) )
+    Declaration( Class( pizza:Country ) )
+    Declaration( Class( pizza:DeepPanBase ) )
+    Declaration( Class( pizza:DomainConcept ) )
+    Declaration( Class( pizza:Fiorentina ) )
+    Declaration( Class( pizza:FishTopping ) )
+    Declaration( Class( pizza:Food ) )
+    Declaration( Class( pizza:FourCheesesTopping ) )
+    Declaration( Class( pizza:FourSeasons ) )
+    Declaration( Class( pizza:FruitTopping ) )
+    Declaration( Class( pizza:FruttiDiMare ) )
+    Declaration( Class( pizza:GarlicTopping ) )
+    Declaration( Class( pizza:Giardiniera ) )
+    Declaration( Class( pizza:GoatsCheeseTopping ) )
+    Declaration( Class( pizza:GorgonzolaTopping ) )
+    Declaration( Class( pizza:GreenPepperTopping ) )
+    Declaration( Class( pizza:HamTopping ) )
+    Declaration( Class( pizza:HerbSpiceTopping ) )
+    Declaration( Class( pizza:Hot ) )
+    Declaration( Class( pizza:HotGreenPepperTopping ) )
+    Declaration( Class( pizza:HotSpicedBeefTopping ) )
+    Declaration( Class( pizza:IceCream ) )
+    Declaration( Class( pizza:InterestingPizza ) )
+    Declaration( Class( pizza:JalapenoPepperTopping ) )
+    Declaration( Class( pizza:LaReine ) )
+    Declaration( Class( pizza:LeekTopping ) )
+    Declaration( Class( pizza:Margherita ) )
+    Declaration( Class( pizza:MeatTopping ) )
+    Declaration( Class( pizza:MeatyPizza ) )
+    Declaration( Class( pizza:Medium ) )
+    Declaration( Class( pizza:Mild ) )
+    Declaration( Class( pizza:MixedSeafoodTopping ) )
+    Declaration( Class( pizza:MozzarellaTopping ) )
+    Declaration( Class( pizza:Mushroom ) )
+    Declaration( Class( pizza:MushroomTopping ) )
+    Declaration( Class( pizza:NamedPizza ) )
+    Declaration( Class( pizza:Napoletana ) )
+    Declaration( Class( pizza:NonVegetarianPizza ) )
+    Declaration( Class( pizza:NutTopping ) )
+    Declaration( Class( pizza:OliveTopping ) )
+    Declaration( Class( pizza:OnionTopping ) )
+    Declaration( Class( pizza:ParmaHamTopping ) )
+    Declaration( Class( pizza:Parmense ) )
+    Declaration( Class( pizza:ParmesanTopping ) )
+    Declaration( Class( pizza:PeperonataTopping ) )
+    Declaration( Class( pizza:PeperoniSausageTopping ) )
+    Declaration( Class( pizza:PepperTopping ) )
+    Declaration( Class( pizza:PetitPoisTopping ) )
+    Declaration( Class( pizza:PineKernels ) )
+    Declaration( Class( pizza:Pizza ) )
+    Declaration( Class( pizza:PizzaBase ) )
+    Declaration( Class( pizza:PizzaTopping ) )
+    Declaration( Class( pizza:PolloAdAstra ) )
+    Declaration( Class( pizza:PrawnsTopping ) )
+    Declaration( Class( pizza:PrinceCarlo ) )
+    Declaration( Class( pizza:QuattroFormaggi ) )
+    Declaration( Class( pizza:RealItalianPizza ) )
+    Declaration( Class( pizza:RedOnionTopping ) )
+    Declaration( Class( pizza:RocketTopping ) )
+    Declaration( Class( pizza:Rosa ) )
+    Declaration( Class( pizza:RosemaryTopping ) )
+    Declaration( Class( pizza:SauceTopping ) )
+    Declaration( Class( pizza:Siciliana ) )
+    Declaration( Class( pizza:SlicedTomatoTopping ) )
+    Declaration( Class( pizza:SloppyGiuseppe ) )
+    Declaration( Class( pizza:Soho ) )
+    Declaration( Class( pizza:Spiciness ) )
+    Declaration( Class( pizza:SpicyPizza ) )
+    Declaration( Class( pizza:SpicyPizzaEquivalent ) )
+    Declaration( Class( pizza:SpicyTopping ) )
+    Declaration( Class( pizza:SpinachTopping ) )
+    Declaration( Class( pizza:SultanaTopping ) )
+    Declaration( Class( pizza:SundriedTomatoTopping ) )
+    Declaration( Class( pizza:SweetPepperTopping ) )
+    Declaration( Class( pizza:ThinAndCrispyBase ) )
+    Declaration( Class( pizza:ThinAndCrispyPizza ) )
+    Declaration( Class( pizza:TobascoPepperSauce ) )
+    Declaration( Class( pizza:TomatoTopping ) )
+    Declaration( Class( pizza:UnclosedPizza ) )
+    Declaration( Class( pizza:ValuePartition ) )
+    Declaration( Class( pizza:VegetableTopping ) )
+    Declaration( Class( pizza:VegetarianPizza ) )
+    Declaration( Class( pizza:VegetarianPizzaEquivalent1 ) )
+    Declaration( Class( pizza:VegetarianPizzaEquivalent2 ) )
+    Declaration( Class( pizza:VegetarianTopping ) )
+    Declaration( Class( pizza:Veneziana ) )
+    Declaration( ObjectProperty( pizza:hasBase ) )
+    Declaration( ObjectProperty( pizza:hasCountryOfOrigin ) )
+    Declaration( ObjectProperty( pizza:hasIngredient ) )
+    Declaration( ObjectProperty( pizza:hasSpiciness ) )
+    Declaration( ObjectProperty( pizza:hasTopping ) )
+    Declaration( ObjectProperty( pizza:isBaseOf ) )
+    Declaration( ObjectProperty( pizza:isIngredientOf ) )
+    Declaration( ObjectProperty( pizza:isToppingOf ) )
+    Declaration( NamedIndividual( pizza:America ) )
+    Declaration( NamedIndividual( pizza:England ) )
+    Declaration( NamedIndividual( pizza:France ) )
+    Declaration( NamedIndividual( pizza:Germany ) )
+    Declaration( NamedIndividual( pizza:Italy ) )
+    Declaration( AnnotationProperty( dc:description ) )
+    Declaration( AnnotationProperty( dc:title ) )
+    Declaration( AnnotationProperty( terms:contributor ) )
+    Declaration( AnnotationProperty( terms:license ) )
+    Declaration( AnnotationProperty( terms:provenance ) )
+    Declaration( AnnotationProperty( skos:altLabel ) )
+    Declaration( AnnotationProperty( skos:definition ) )
+    Declaration( AnnotationProperty( skos:prefLabel ) )
+    SubObjectPropertyOf( pizza:hasBase pizza:hasIngredient )
+    InverseObjectProperties( pizza:hasBase pizza:isBaseOf )
+    FunctionalObjectProperty( pizza:hasBase )
+    InverseFunctionalObjectProperty( pizza:hasBase )
+    ObjectPropertyDomain( pizza:hasBase pizza:Pizza )
+    ObjectPropertyRange( pizza:hasBase pizza:PizzaBase )
+    AnnotationAssertion( rdfs:comment pizza:hasIngredient "NB Transitive - the ingredients of ingredients are ingredients of the whole" )
+    InverseObjectProperties( pizza:hasIngredient pizza:isIngredientOf )
+    TransitiveObjectProperty( pizza:hasIngredient )
+    ObjectPropertyDomain( pizza:hasIngredient pizza:Food )
+    ObjectPropertyRange( pizza:hasIngredient pizza:Food )
+    AnnotationAssertion( rdfs:comment pizza:hasSpiciness "A property created to be used with the ValuePartition - Spiciness." )
+    FunctionalObjectProperty( pizza:hasSpiciness )
+    ObjectPropertyRange( pizza:hasSpiciness pizza:Spiciness )
+    AnnotationAssertion( rdfs:comment pizza:hasTopping "Note that hasTopping is inverse functional because isToppingOf is functional" )
+    SubObjectPropertyOf( pizza:hasTopping pizza:hasIngredient )
+    InverseObjectProperties( pizza:hasTopping pizza:isToppingOf )
+    InverseFunctionalObjectProperty( pizza:hasTopping )
+    ObjectPropertyDomain( pizza:hasTopping pizza:Pizza )
+    ObjectPropertyRange( pizza:hasTopping pizza:PizzaTopping )
+    SubObjectPropertyOf( pizza:isBaseOf pizza:isIngredientOf )
+    FunctionalObjectProperty( pizza:isBaseOf )
+    InverseFunctionalObjectProperty( pizza:isBaseOf )
+    AnnotationAssertion( rdfs:comment pizza:isIngredientOf "The inverse property tree to hasIngredient - all subproperties and attributes of the properties should reflect those under hasIngredient." )
+    TransitiveObjectProperty( pizza:isIngredientOf )
+    AnnotationAssertion( rdfs:comment pizza:isToppingOf "Any given instance of topping should only be added to a single pizza (no cheap half-measures on our pizzas)" )
+    SubObjectPropertyOf( pizza:isToppingOf pizza:isIngredientOf )
+    FunctionalObjectProperty( pizza:isToppingOf )
+    AnnotationAssertion( rdfs:label pizza:American "American" )
+    AnnotationAssertion( rdfs:label pizza:American "Americana" )
+    AnnotationAssertion( skos:altLabel pizza:American "American" )
+    AnnotationAssertion( skos:altLabel pizza:American "American Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:American "American" )
+    SubClassOf( pizza:American pizza:NamedPizza )
+    SubClassOf( pizza:American     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:American     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperoniSausageTopping ) )
+    SubClassOf( pizza:American     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:American     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:MozzarellaTopping
+        pizza:PeperoniSausageTopping
+        pizza:TomatoTopping
+    ) ) )
+    SubClassOf( pizza:American     ObjectHasValue( pizza:hasCountryOfOrigin pizza:America ) )
+    AnnotationAssertion( rdfs:label pizza:AmericanHot "AmericanHot" )
+    AnnotationAssertion( rdfs:label pizza:AmericanHot "AmericanaPicante" )
+    AnnotationAssertion( skos:altLabel pizza:AmericanHot "American Hot" )
+    AnnotationAssertion( skos:altLabel pizza:AmericanHot "American Hot Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:AmericanHot "American Hot" )
+    SubClassOf( pizza:AmericanHot pizza:NamedPizza )
+    SubClassOf( pizza:AmericanHot     ObjectSomeValuesFrom( pizza:hasTopping pizza:HotGreenPepperTopping ) )
+    SubClassOf( pizza:AmericanHot     ObjectSomeValuesFrom( pizza:hasTopping pizza:JalapenoPepperTopping ) )
+    SubClassOf( pizza:AmericanHot     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:AmericanHot     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperoniSausageTopping ) )
+    SubClassOf( pizza:AmericanHot     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:AmericanHot     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:HotGreenPepperTopping
+        pizza:JalapenoPepperTopping
+        pizza:MozzarellaTopping
+        pizza:PeperoniSausageTopping
+        pizza:TomatoTopping
+    ) ) )
+    SubClassOf( pizza:AmericanHot     ObjectHasValue( pizza:hasCountryOfOrigin pizza:America ) )
+    AnnotationAssertion( rdfs:label pizza:AnchoviesTopping "AnchoviesTopping" )
+    AnnotationAssertion( rdfs:label pizza:AnchoviesTopping "CoberturaDeAnchovies" )
+    AnnotationAssertion( skos:prefLabel pizza:AnchoviesTopping "Anchovies" )
+    SubClassOf( pizza:AnchoviesTopping pizza:FishTopping )
+    AnnotationAssertion( rdfs:label pizza:ArtichokeTopping "ArtichokeTopping" )
+    AnnotationAssertion( rdfs:label pizza:ArtichokeTopping "CoberturaDeArtichoke" )
+    AnnotationAssertion( skos:prefLabel pizza:ArtichokeTopping "Artichoke" )
+    SubClassOf( pizza:ArtichokeTopping pizza:VegetableTopping )
+    SubClassOf( pizza:ArtichokeTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:AsparagusTopping "AsparagusTopping" )
+    AnnotationAssertion( rdfs:label pizza:AsparagusTopping "CoberturaDeAspargos" )
+    AnnotationAssertion( skos:prefLabel pizza:AsparagusTopping "Asparagus" )
+    SubClassOf( pizza:AsparagusTopping pizza:VegetableTopping )
+    SubClassOf( pizza:AsparagusTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:Cajun "Cajun" )
+    AnnotationAssertion( rdfs:label pizza:Cajun "Cajun" )
+    AnnotationAssertion( skos:altLabel pizza:Cajun "Cajun" )
+    AnnotationAssertion( skos:altLabel pizza:Cajun "Cajun Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Cajun "Cajun" )
+    SubClassOf( pizza:Cajun pizza:NamedPizza )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:OnionTopping ) )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperonataTopping ) )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:PrawnsTopping ) )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:TobascoPepperSauce ) )
+    SubClassOf( pizza:Cajun     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Cajun     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:MozzarellaTopping
+        pizza:OnionTopping
+        pizza:PeperonataTopping
+        pizza:PrawnsTopping
+        pizza:TobascoPepperSauce
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:CajunSpiceTopping "CajunSpiceTopping" )
+    AnnotationAssertion( rdfs:label pizza:CajunSpiceTopping "CoberturaDeCajun" )
+    AnnotationAssertion( skos:prefLabel pizza:CajunSpiceTopping "Cajun Spice" )
+    SubClassOf( pizza:CajunSpiceTopping pizza:HerbSpiceTopping )
+    SubClassOf( pizza:CajunSpiceTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot ) )
+    DisjointClasses( pizza:CajunSpiceTopping pizza:RosemaryTopping )
+    AnnotationAssertion( rdfs:label pizza:CaperTopping "CaperTopping" )
+    AnnotationAssertion( rdfs:label pizza:CaperTopping "CoberturaDeCaper" )
+    AnnotationAssertion( skos:prefLabel pizza:CaperTopping "Caper" )
+    SubClassOf( pizza:CaperTopping pizza:VegetableTopping )
+    SubClassOf( pizza:CaperTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:Capricciosa "Capricciosa" )
+    AnnotationAssertion( rdfs:label pizza:Capricciosa "Capricciosa" )
+    AnnotationAssertion( skos:altLabel pizza:Capricciosa "Capricciosa" )
+    AnnotationAssertion( skos:altLabel pizza:Capricciosa "Capricciosa Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Capricciosa "Capricciosa" )
+    SubClassOf( pizza:Capricciosa pizza:NamedPizza )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:AnchoviesTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:CaperTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:HamTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperonataTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Capricciosa     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:AnchoviesTopping
+        pizza:CaperTopping
+        pizza:HamTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:PeperonataTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:Caprina "Caprina" )
+    AnnotationAssertion( rdfs:label pizza:Caprina "Caprina" )
+    AnnotationAssertion( skos:altLabel pizza:Caprina "Caprina" )
+    AnnotationAssertion( skos:altLabel pizza:Caprina "Caprina Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Caprina "Caprina" )
+    SubClassOf( pizza:Caprina pizza:NamedPizza )
+    SubClassOf( pizza:Caprina     ObjectSomeValuesFrom( pizza:hasTopping pizza:GoatsCheeseTopping ) )
+    SubClassOf( pizza:Caprina     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Caprina     ObjectSomeValuesFrom( pizza:hasTopping pizza:SundriedTomatoTopping ) )
+    SubClassOf( pizza:Caprina     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Caprina     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GoatsCheeseTopping
+        pizza:MozzarellaTopping
+        pizza:SundriedTomatoTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:CheeseTopping "CheeseTopping" )
+    AnnotationAssertion( rdfs:label pizza:CheeseTopping "CoberturaDeQueijo" )
+    AnnotationAssertion( skos:prefLabel pizza:CheeseTopping "Cheese" )
+    SubClassOf( pizza:CheeseTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:CheeseyPizza "CheesyPizza" )
+    AnnotationAssertion( rdfs:label pizza:CheeseyPizza "PizzaComQueijo" )
+    AnnotationAssertion( skos:definition pizza:CheeseyPizza "Any pizza that has at least 1 cheese topping." )
+    AnnotationAssertion( skos:prefLabel pizza:CheeseyPizza "Cheesy Pizza" )
+    EquivalentClasses(
+        pizza:CheeseyPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectSomeValuesFrom( pizza:hasTopping pizza:CheeseTopping )
+    )
+    )
+    AnnotationAssertion( rdfs:comment pizza:CheeseyVegetableTopping "This class will be unsatisfiable. This is because we have given it 2 disjoint parents, which means it could never have any instances (as nothing can be both a CheeseTopping and a VegetableTopping). NB Called ProbeInconsistentTopping in the ProtegeOWL Tutorial." )
+    AnnotationAssertion( rdfs:label pizza:CheeseyVegetableTopping "CheesyVegetableTopping" )
+    AnnotationAssertion( rdfs:label pizza:CheeseyVegetableTopping "CoberturaDeQueijoComVegetais" )
+    SubClassOf( pizza:CheeseyVegetableTopping pizza:CheeseTopping )
+    SubClassOf( pizza:CheeseyVegetableTopping pizza:VegetableTopping )
+    AnnotationAssertion( rdfs:label pizza:ChickenTopping "ChickenTopping" )
+    AnnotationAssertion( rdfs:label pizza:ChickenTopping "CoberturaDeFrango" )
+    AnnotationAssertion( skos:prefLabel pizza:ChickenTopping "Chicken" )
+    SubClassOf( pizza:ChickenTopping pizza:MeatTopping )
+    SubClassOf( pizza:ChickenTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:comment pizza:Country "A class that is equivalent to the set of individuals that are described in the enumeration - ie Countries can only be either America, England, France, Germany or Italy and nothing else. Note that these individuals have been asserted to be allDifferent from each other." )
+    AnnotationAssertion( rdfs:label pizza:Country "Country" )
+    AnnotationAssertion( rdfs:label pizza:Country "Pais" )
+    AnnotationAssertion( skos:prefLabel pizza:Country "Country" )
+    EquivalentClasses(
+        pizza:Country
+            ObjectIntersectionOf(
+        pizza:DomainConcept
+            ObjectOneOf(
+        pizza:America
+        pizza:England
+        pizza:France
+        pizza:Germany
+        pizza:Italy
+    )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:DeepPanBase "BaseEspessa" )
+    AnnotationAssertion( rdfs:label pizza:DeepPanBase "DeepPanBase" )
+    AnnotationAssertion( skos:prefLabel pizza:DeepPanBase "Deep Pan Base" )
+    SubClassOf( pizza:DeepPanBase pizza:PizzaBase )
+    DisjointClasses( pizza:DeepPanBase pizza:ThinAndCrispyBase )
+    AnnotationAssertion( rdfs:label pizza:DomainConcept "DomainThing" )
+    AnnotationAssertion( skos:prefLabel pizza:DomainConcept "Domain Thing" )
+    DisjointClasses( pizza:DomainConcept pizza:ValuePartition )
+    AnnotationAssertion( rdfs:label pizza:Fiorentina "Fiorentina" )
+    AnnotationAssertion( rdfs:label pizza:Fiorentina "Fiorentina" )
+    AnnotationAssertion( skos:altLabel pizza:Fiorentina "Fiorentina" )
+    AnnotationAssertion( skos:altLabel pizza:Fiorentina "Fiorentina Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Fiorentina "Fiorentina" )
+    SubClassOf( pizza:Fiorentina pizza:NamedPizza )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:GarlicTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:ParmesanTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:SpinachTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Fiorentina     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GarlicTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:ParmesanTopping
+        pizza:SpinachTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:FishTopping "CoberturaDePeixe" )
+    AnnotationAssertion( rdfs:label pizza:FishTopping "SeafoodTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:FishTopping "Seafood" )
+    SubClassOf( pizza:FishTopping pizza:PizzaTopping )
+    SubClassOf( pizza:FishTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:Food "Food" )
+    AnnotationAssertion( skos:prefLabel pizza:Food "Food" )
+    SubClassOf( pizza:Food pizza:DomainConcept )
+    AnnotationAssertion( rdfs:label pizza:FourCheesesTopping "CoberturaQuatroQueijos" )
+    AnnotationAssertion( rdfs:label pizza:FourCheesesTopping "FourCheesesTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:FourCheesesTopping "Four Cheeses" )
+    SubClassOf( pizza:FourCheesesTopping pizza:CheeseTopping )
+    SubClassOf( pizza:FourCheesesTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:FourSeasons "FourSeasons" )
+    AnnotationAssertion( rdfs:label pizza:FourSeasons "QuatroQueijos" )
+    AnnotationAssertion( skos:altLabel pizza:FourSeasons "Four Seasons" )
+    AnnotationAssertion( skos:altLabel pizza:FourSeasons "Four Seasons Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:FourSeasons "Four Seasons" )
+    SubClassOf( pizza:FourSeasons pizza:NamedPizza )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:AnchoviesTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:CaperTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:MushroomTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperoniSausageTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:FourSeasons     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:AnchoviesTopping
+        pizza:CaperTopping
+        pizza:MozzarellaTopping
+        pizza:MushroomTopping
+        pizza:OliveTopping
+        pizza:PeperoniSausageTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:FruitTopping "CoberturaDeFrutas" )
+    AnnotationAssertion( rdfs:label pizza:FruitTopping "FruitTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:FruitTopping "Fruit" )
+    SubClassOf( pizza:FruitTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:FruttiDiMare "FrutosDoMar" )
+    AnnotationAssertion( rdfs:label pizza:FruttiDiMare "FruttiDiMare" )
+    AnnotationAssertion( skos:altLabel pizza:FruttiDiMare "Frutti Di Mare" )
+    AnnotationAssertion( skos:altLabel pizza:FruttiDiMare "Frutti Di Mare Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:FruttiDiMare "Frutti Di Mare" )
+    SubClassOf( pizza:FruttiDiMare pizza:NamedPizza )
+    SubClassOf( pizza:FruttiDiMare     ObjectSomeValuesFrom( pizza:hasTopping pizza:GarlicTopping ) )
+    SubClassOf( pizza:FruttiDiMare     ObjectSomeValuesFrom( pizza:hasTopping pizza:MixedSeafoodTopping ) )
+    SubClassOf( pizza:FruttiDiMare     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:FruttiDiMare     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GarlicTopping
+        pizza:MixedSeafoodTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:GarlicTopping "CoberturaDeAlho" )
+    AnnotationAssertion( rdfs:label pizza:GarlicTopping "GarlicTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:GarlicTopping "Garlic" )
+    SubClassOf( pizza:GarlicTopping pizza:VegetableTopping )
+    SubClassOf( pizza:GarlicTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:Giardiniera "Giardiniera" )
+    AnnotationAssertion( rdfs:label pizza:Giardiniera "Giardiniera" )
+    AnnotationAssertion( skos:altLabel pizza:Giardiniera "Giardiniera" )
+    AnnotationAssertion( skos:altLabel pizza:Giardiniera "Giardiniera Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Giardiniera "Giardiniera" )
+    SubClassOf( pizza:Giardiniera pizza:NamedPizza )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:LeekTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:MushroomTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:PeperonataTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:PetitPoisTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:SlicedTomatoTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Giardiniera     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:LeekTopping
+        pizza:MozzarellaTopping
+        pizza:MushroomTopping
+        pizza:OliveTopping
+        pizza:PeperonataTopping
+        pizza:PetitPoisTopping
+        pizza:SlicedTomatoTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:GoatsCheeseTopping "CoberturaDeQueijoDeCabra" )
+    AnnotationAssertion( rdfs:label pizza:GoatsCheeseTopping "GoatsCheeseTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:GoatsCheeseTopping "Goats Cheese" )
+    SubClassOf( pizza:GoatsCheeseTopping pizza:CheeseTopping )
+    SubClassOf( pizza:GoatsCheeseTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:GorgonzolaTopping "CoberturaDeGorgonzola" )
+    AnnotationAssertion( rdfs:label pizza:GorgonzolaTopping "GorgonzolaTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:GorgonzolaTopping "Gorgonzola" )
+    SubClassOf( pizza:GorgonzolaTopping pizza:CheeseTopping )
+    SubClassOf( pizza:GorgonzolaTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:GreenPepperTopping "CoberturaDePimentaoVerde" )
+    AnnotationAssertion( rdfs:label pizza:GreenPepperTopping "GreenPepperTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:GreenPepperTopping "Green Pepper" )
+    SubClassOf( pizza:GreenPepperTopping pizza:PepperTopping )
+    AnnotationAssertion( rdfs:label pizza:HamTopping "CoberturaDePresunto" )
+    AnnotationAssertion( rdfs:label pizza:HamTopping "HamTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:HamTopping "Ham" )
+    SubClassOf( pizza:HamTopping pizza:MeatTopping )
+    AnnotationAssertion( rdfs:label pizza:HerbSpiceTopping "CoberturaDeErvas" )
+    AnnotationAssertion( rdfs:label pizza:HerbSpiceTopping "HerbSpiceTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:HerbSpiceTopping "Herb Spice" )
+    SubClassOf( pizza:HerbSpiceTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:Hot "Hot" )
+    AnnotationAssertion( rdfs:label pizza:Hot "Picante" )
+    AnnotationAssertion( skos:prefLabel pizza:Hot "Hot" )
+    SubClassOf( pizza:Hot pizza:Spiciness )
+    AnnotationAssertion( rdfs:label pizza:HotGreenPepperTopping "CoberturaDePimentaoVerdePicante" )
+    AnnotationAssertion( rdfs:label pizza:HotGreenPepperTopping "HotGreenPepperTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:HotGreenPepperTopping "Hot Green Pepper" )
+    SubClassOf( pizza:HotGreenPepperTopping pizza:GreenPepperTopping )
+    SubClassOf( pizza:HotGreenPepperTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot ) )
+    AnnotationAssertion( rdfs:label pizza:HotSpicedBeefTopping "CoberturaDeBifePicante" )
+    AnnotationAssertion( rdfs:label pizza:HotSpicedBeefTopping "HotSpicedBeefTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:HotSpicedBeefTopping "Hot Spiced Beef" )
+    SubClassOf( pizza:HotSpicedBeefTopping pizza:MeatTopping )
+    SubClassOf( pizza:HotSpicedBeefTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot ) )
+    AnnotationAssertion( rdfs:comment pizza:IceCream "A class to demonstrate mistakes made with setting a property domain. The property hasTopping has a domain of Pizza. This means that the reasoner can infer that all individuals using the hasTopping property must be of type Pizza. Because of the restriction on this class, all members of IceCream must use the hasTopping property, and therefore must also be members of Pizza. However, Pizza and IceCream are disjoint, so this causes an inconsistency. If they were not disjoint, IceCream would be inferred to be a subclass of Pizza." )
+    AnnotationAssertion( rdfs:label pizza:IceCream "IceCream" )
+    AnnotationAssertion( rdfs:label pizza:IceCream "Sorvete" )
+    AnnotationAssertion( skos:prefLabel pizza:IceCream "Ice Cream" )
+    SubClassOf( pizza:IceCream pizza:Food )
+    SubClassOf( pizza:IceCream     ObjectSomeValuesFrom( pizza:hasTopping pizza:FruitTopping ) )
+    AnnotationAssertion( rdfs:label pizza:InterestingPizza "InterestingPizza" )
+    AnnotationAssertion( rdfs:label pizza:InterestingPizza "PizzaInteressante" )
+    AnnotationAssertion( skos:definition pizza:InterestingPizza "Any pizza that has at least 3 toppings. Note that this is a cardinality constraint on the hasTopping property and NOT a qualified cardinality constraint (QCR). A QCR would specify from which class the members in this relationship must be. eg has at least 3 toppings from PizzaTopping. This is currently not supported in OWL." )
+    AnnotationAssertion( skos:prefLabel pizza:InterestingPizza "Interesting Pizza" )
+    EquivalentClasses(
+        pizza:InterestingPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectMinCardinality( 3 pizza:hasTopping )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:JalapenoPepperTopping "CoberturaDeJalapeno" )
+    AnnotationAssertion( rdfs:label pizza:JalapenoPepperTopping "JalapenoPepperTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:JalapenoPepperTopping "Jalapeno Pepper" )
+    SubClassOf( pizza:JalapenoPepperTopping pizza:PepperTopping )
+    SubClassOf( pizza:JalapenoPepperTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot ) )
+    AnnotationAssertion( rdfs:label pizza:LaReine "LaReine" )
+    AnnotationAssertion( rdfs:label pizza:LaReine "LaReine" )
+    AnnotationAssertion( skos:altLabel pizza:LaReine "La Reine" )
+    AnnotationAssertion( skos:altLabel pizza:LaReine "La Reine Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:LaReine "La Reine" )
+    SubClassOf( pizza:LaReine pizza:NamedPizza )
+    SubClassOf( pizza:LaReine     ObjectSomeValuesFrom( pizza:hasTopping pizza:HamTopping ) )
+    SubClassOf( pizza:LaReine     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:LaReine     ObjectSomeValuesFrom( pizza:hasTopping pizza:MushroomTopping ) )
+    SubClassOf( pizza:LaReine     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:LaReine     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:LaReine     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:HamTopping
+        pizza:MozzarellaTopping
+        pizza:MushroomTopping
+        pizza:OliveTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:LeekTopping "CoberturaDeLeek" )
+    AnnotationAssertion( rdfs:label pizza:LeekTopping "LeekTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:LeekTopping "Leek" )
+    SubClassOf( pizza:LeekTopping pizza:VegetableTopping )
+    SubClassOf( pizza:LeekTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:Margherita "Margherita" )
+    AnnotationAssertion( rdfs:label pizza:Margherita "Margherita" )
+    AnnotationAssertion( skos:altLabel pizza:Margherita "Margherita" )
+    AnnotationAssertion( skos:altLabel pizza:Margherita "Margherita Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Margherita "Margherita" )
+    SubClassOf( pizza:Margherita pizza:NamedPizza )
+    SubClassOf( pizza:Margherita     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Margherita     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Margherita     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:MozzarellaTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:MeatTopping "CoberturaDeCarne" )
+    AnnotationAssertion( rdfs:label pizza:MeatTopping "MeatTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:MeatTopping "Meat" )
+    SubClassOf( pizza:MeatTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:MeatyPizza "MeatyPizza" )
+    AnnotationAssertion( rdfs:label pizza:MeatyPizza "PizzaDeCarne" )
+    AnnotationAssertion( skos:definition pizza:MeatyPizza "Any pizza that has at least one meat topping" )
+    AnnotationAssertion( skos:prefLabel pizza:MeatyPizza "Meaty Pizza" )
+    EquivalentClasses(
+        pizza:MeatyPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectSomeValuesFrom( pizza:hasTopping pizza:MeatTopping )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:Medium "Media" )
+    AnnotationAssertion( rdfs:label pizza:Medium "Medium" )
+    AnnotationAssertion( skos:prefLabel pizza:Medium "Medium" )
+    SubClassOf( pizza:Medium pizza:Spiciness )
+    AnnotationAssertion( rdfs:label pizza:Mild "Mild" )
+    AnnotationAssertion( rdfs:label pizza:Mild "NaoPicante" )
+    AnnotationAssertion( skos:prefLabel pizza:Mild "Mild" )
+    SubClassOf( pizza:Mild pizza:Spiciness )
+    AnnotationAssertion( rdfs:label pizza:MixedSeafoodTopping "CoberturaDeFrutosDoMarMistos" )
+    AnnotationAssertion( rdfs:label pizza:MixedSeafoodTopping "MixedSeafoodTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:MixedSeafoodTopping "Mixed Seafood" )
+    SubClassOf( pizza:MixedSeafoodTopping pizza:FishTopping )
+    AnnotationAssertion( rdfs:label pizza:MozzarellaTopping "CoberturaDeMozzarella" )
+    AnnotationAssertion( rdfs:label pizza:MozzarellaTopping "MozzarellaTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:MozzarellaTopping "Mozzarella" )
+    SubClassOf( pizza:MozzarellaTopping pizza:CheeseTopping )
+    SubClassOf( pizza:MozzarellaTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    SubClassOf( pizza:MozzarellaTopping     ObjectHasValue( pizza:hasCountryOfOrigin pizza:Italy ) )
+    AnnotationAssertion( rdfs:label pizza:Mushroom "Cogumelo" )
+    AnnotationAssertion( rdfs:label pizza:Mushroom "Mushroom" )
+    AnnotationAssertion( skos:altLabel pizza:Mushroom "Mushroom" )
+    AnnotationAssertion( skos:altLabel pizza:Mushroom "Mushroom Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Mushroom "Mushroom" )
+    SubClassOf( pizza:Mushroom pizza:NamedPizza )
+    SubClassOf( pizza:Mushroom     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Mushroom     ObjectSomeValuesFrom( pizza:hasTopping pizza:MushroomTopping ) )
+    SubClassOf( pizza:Mushroom     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Mushroom     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:MozzarellaTopping
+        pizza:MushroomTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:MushroomTopping "CoberturaDeCogumelo" )
+    AnnotationAssertion( rdfs:label pizza:MushroomTopping "MushroomTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:MushroomTopping "Mushroom" )
+    SubClassOf( pizza:MushroomTopping pizza:VegetableTopping )
+    SubClassOf( pizza:MushroomTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:comment pizza:NamedPizza "A pizza that can be found on a pizza menu" )
+    AnnotationAssertion( rdfs:label pizza:NamedPizza "PizzaComUmNome" )
+    SubClassOf( pizza:NamedPizza pizza:Pizza )
+    AnnotationAssertion( rdfs:label pizza:Napoletana "Napoletana" )
+    AnnotationAssertion( rdfs:label pizza:Napoletana "Napoletana" )
+    AnnotationAssertion( skos:altLabel pizza:Napoletana "Napoletana" )
+    AnnotationAssertion( skos:altLabel pizza:Napoletana "Napoletana Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Napoletana "Napoletana" )
+    SubClassOf( pizza:Napoletana pizza:NamedPizza )
+    SubClassOf( pizza:Napoletana     ObjectSomeValuesFrom( pizza:hasTopping pizza:AnchoviesTopping ) )
+    SubClassOf( pizza:Napoletana     ObjectSomeValuesFrom( pizza:hasTopping pizza:CaperTopping ) )
+    SubClassOf( pizza:Napoletana     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Napoletana     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Napoletana     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Napoletana     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:AnchoviesTopping
+        pizza:CaperTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:TomatoTopping
+    ) ) )
+    SubClassOf( pizza:Napoletana     ObjectHasValue( pizza:hasCountryOfOrigin pizza:Italy ) )
+    AnnotationAssertion( rdfs:label pizza:NonVegetarianPizza "NonVegetarianPizza" )
+    AnnotationAssertion( rdfs:label pizza:NonVegetarianPizza "PizzaNaoVegetariana" )
+    AnnotationAssertion( skos:definition pizza:NonVegetarianPizza "Any Pizza that is not a VegetarianPizza" )
+    AnnotationAssertion( skos:prefLabel pizza:NonVegetarianPizza "Non Vegetarian Pizza" )
+    EquivalentClasses(
+        pizza:NonVegetarianPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectComplementOf( pizza:VegetarianPizza )
+    )
+    )
+    DisjointClasses( pizza:NonVegetarianPizza pizza:VegetarianPizza )
+    AnnotationAssertion( rdfs:label pizza:NutTopping "CoberturaDeCastanha" )
+    AnnotationAssertion( rdfs:label pizza:NutTopping "NutTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:NutTopping "Nut" )
+    SubClassOf( pizza:NutTopping pizza:PizzaTopping )
+    SubClassOf( pizza:NutTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:OliveTopping "CoberturaDeAzeitona" )
+    AnnotationAssertion( rdfs:label pizza:OliveTopping "OliveTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:OliveTopping "Olive" )
+    SubClassOf( pizza:OliveTopping pizza:VegetableTopping )
+    SubClassOf( pizza:OliveTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:OnionTopping "CoberturaDeCebola" )
+    AnnotationAssertion( rdfs:label pizza:OnionTopping "OnionTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:OnionTopping "Onion" )
+    SubClassOf( pizza:OnionTopping pizza:VegetableTopping )
+    SubClassOf( pizza:OnionTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:ParmaHamTopping "CoberturaDePrezuntoParma" )
+    AnnotationAssertion( rdfs:label pizza:ParmaHamTopping "ParmaHamTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:ParmaHamTopping "Parma Ham" )
+    SubClassOf( pizza:ParmaHamTopping pizza:HamTopping )
+    SubClassOf( pizza:ParmaHamTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:Parmense "Parmense" )
+    AnnotationAssertion( rdfs:label pizza:Parmense "Parmense" )
+    AnnotationAssertion( skos:altLabel pizza:Parmense "Parmese" )
+    AnnotationAssertion( skos:altLabel pizza:Parmense "Parmese Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Parmense "Parmense" )
+    SubClassOf( pizza:Parmense pizza:NamedPizza )
+    SubClassOf( pizza:Parmense     ObjectSomeValuesFrom( pizza:hasTopping pizza:AsparagusTopping ) )
+    SubClassOf( pizza:Parmense     ObjectSomeValuesFrom( pizza:hasTopping pizza:HamTopping ) )
+    SubClassOf( pizza:Parmense     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Parmense     ObjectSomeValuesFrom( pizza:hasTopping pizza:ParmesanTopping ) )
+    SubClassOf( pizza:Parmense     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Parmense     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:AsparagusTopping
+        pizza:HamTopping
+        pizza:MozzarellaTopping
+        pizza:ParmesanTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:ParmesanTopping "CoberturaDeParmesao" )
+    AnnotationAssertion( rdfs:label pizza:ParmesanTopping "ParmezanTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:ParmesanTopping "Parmezan" )
+    SubClassOf( pizza:ParmesanTopping pizza:CheeseTopping )
+    SubClassOf( pizza:ParmesanTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:PeperonataTopping "CoberturaPeperonata" )
+    AnnotationAssertion( rdfs:label pizza:PeperonataTopping "PeperonataTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PeperonataTopping "Peperonata" )
+    SubClassOf( pizza:PeperonataTopping pizza:PepperTopping )
+    SubClassOf( pizza:PeperonataTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:PeperoniSausageTopping "CoberturaDeCalabreza" )
+    AnnotationAssertion( rdfs:label pizza:PeperoniSausageTopping "PeperoniSausageTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PeperoniSausageTopping "Peperoni Sausage" )
+    SubClassOf( pizza:PeperoniSausageTopping pizza:MeatTopping )
+    SubClassOf( pizza:PeperoniSausageTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:PepperTopping "CoberturaDePimentao" )
+    AnnotationAssertion( rdfs:label pizza:PepperTopping "PepperTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PepperTopping "Pepper" )
+    SubClassOf( pizza:PepperTopping pizza:VegetableTopping )
+    AnnotationAssertion( rdfs:label pizza:PetitPoisTopping "CoberturaPetitPois" )
+    AnnotationAssertion( rdfs:label pizza:PetitPoisTopping "PetitPoisTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PetitPoisTopping "Petit Pois" )
+    SubClassOf( pizza:PetitPoisTopping pizza:VegetableTopping )
+    SubClassOf( pizza:PetitPoisTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:PineKernels "CoberturaPineKernels" )
+    AnnotationAssertion( rdfs:label pizza:PineKernels "PineKernelTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PineKernels "Pine Kernel" )
+    SubClassOf( pizza:PineKernels pizza:NutTopping )
+    AnnotationAssertion( rdfs:label pizza:Pizza "Pizza" )
+    AnnotationAssertion( rdfs:seeAlso pizza:Pizza <https://en.wikipedia.org/wiki/Pizza> )
+    AnnotationAssertion( skos:prefLabel pizza:Pizza "Pizza" )
+    SubClassOf( pizza:Pizza pizza:Food )
+    SubClassOf( pizza:Pizza     ObjectSomeValuesFrom( pizza:hasBase pizza:PizzaBase ) )
+    AnnotationAssertion( rdfs:label pizza:PizzaBase "BaseDaPizza" )
+    AnnotationAssertion( rdfs:label pizza:PizzaBase "PizzaBase" )
+    AnnotationAssertion( skos:prefLabel pizza:PizzaBase "Pizza Base" )
+    SubClassOf( pizza:PizzaBase pizza:Food )
+    AnnotationAssertion( rdfs:label pizza:PizzaTopping "CoberturaDaPizza" )
+    AnnotationAssertion( rdfs:label pizza:PizzaTopping "PizzaTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PizzaTopping "Pizza Topping" )
+    SubClassOf( pizza:PizzaTopping pizza:Food )
+    AnnotationAssertion( rdfs:label pizza:PolloAdAstra "PolloAdAstra" )
+    AnnotationAssertion( rdfs:label pizza:PolloAdAstra "PolloAdAstra" )
+    AnnotationAssertion( skos:altLabel pizza:PolloAdAstra "Pollo Ad Astra" )
+    AnnotationAssertion( skos:altLabel pizza:PolloAdAstra "Pollo Ad Astra Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:PolloAdAstra "Pollo Ad Astra" )
+    SubClassOf( pizza:PolloAdAstra pizza:NamedPizza )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:CajunSpiceTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:ChickenTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:GarlicTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:RedOnionTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:SweetPepperTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:PolloAdAstra     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:CajunSpiceTopping
+        pizza:ChickenTopping
+        pizza:GarlicTopping
+        pizza:MozzarellaTopping
+        pizza:RedOnionTopping
+        pizza:SweetPepperTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:PrawnsTopping "CoberturaDeCamarao" )
+    AnnotationAssertion( rdfs:label pizza:PrawnsTopping "PrawnsTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:PrawnsTopping "Prawns" )
+    SubClassOf( pizza:PrawnsTopping pizza:FishTopping )
+    AnnotationAssertion( rdfs:label pizza:PrinceCarlo "CoberturaPrinceCarlo" )
+    AnnotationAssertion( rdfs:label pizza:PrinceCarlo "PrinceCarlo" )
+    AnnotationAssertion( skos:altLabel pizza:PrinceCarlo "Prince Carlo" )
+    AnnotationAssertion( skos:altLabel pizza:PrinceCarlo "Prince Carlo Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:PrinceCarlo "Prince Carlo" )
+    SubClassOf( pizza:PrinceCarlo pizza:NamedPizza )
+    SubClassOf( pizza:PrinceCarlo     ObjectSomeValuesFrom( pizza:hasTopping pizza:LeekTopping ) )
+    SubClassOf( pizza:PrinceCarlo     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:PrinceCarlo     ObjectSomeValuesFrom( pizza:hasTopping pizza:ParmesanTopping ) )
+    SubClassOf( pizza:PrinceCarlo     ObjectSomeValuesFrom( pizza:hasTopping pizza:RosemaryTopping ) )
+    SubClassOf( pizza:PrinceCarlo     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:PrinceCarlo     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:LeekTopping
+        pizza:MozzarellaTopping
+        pizza:ParmesanTopping
+        pizza:RosemaryTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:QuattroFormaggi "QuatroQueijos" )
+    AnnotationAssertion( rdfs:label pizza:QuattroFormaggi "QuattroFormaggi" )
+    AnnotationAssertion( skos:altLabel pizza:QuattroFormaggi "Quattro Formaggi" )
+    AnnotationAssertion( skos:altLabel pizza:QuattroFormaggi "Quattro Formaggi Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:QuattroFormaggi "Quattro Formaggi" )
+    SubClassOf( pizza:QuattroFormaggi pizza:NamedPizza )
+    SubClassOf( pizza:QuattroFormaggi     ObjectSomeValuesFrom( pizza:hasTopping pizza:FourCheesesTopping ) )
+    SubClassOf( pizza:QuattroFormaggi     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:QuattroFormaggi     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:FourCheesesTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:RealItalianPizza "PizzaItalianaReal" )
+    AnnotationAssertion( rdfs:label pizza:RealItalianPizza "RealItalianPizza" )
+    AnnotationAssertion( skos:definition pizza:RealItalianPizza "Any Pizza that has the country of origin, Italy.  RealItalianPizzas must also only have ThinAndCrispy bases." )
+    AnnotationAssertion( skos:prefLabel pizza:RealItalianPizza "Real Italian Pizza" )
+    EquivalentClasses(
+        pizza:RealItalianPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectHasValue( pizza:hasCountryOfOrigin pizza:Italy )
+    )
+    )
+    SubClassOf( pizza:RealItalianPizza     ObjectAllValuesFrom( pizza:hasBase pizza:ThinAndCrispyBase ) )
+    AnnotationAssertion( rdfs:label pizza:RedOnionTopping "CoberturaDeCebolaVermelha" )
+    AnnotationAssertion( rdfs:label pizza:RedOnionTopping "RedOnionTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:RedOnionTopping "Red Onion" )
+    SubClassOf( pizza:RedOnionTopping pizza:OnionTopping )
+    AnnotationAssertion( rdfs:label pizza:RocketTopping "CoberturaRocket" )
+    AnnotationAssertion( rdfs:label pizza:RocketTopping "RocketTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:RocketTopping "Rocket" )
+    SubClassOf( pizza:RocketTopping pizza:VegetableTopping )
+    SubClassOf( pizza:RocketTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:Rosa "Rosa" )
+    AnnotationAssertion( rdfs:label pizza:Rosa "Rosa" )
+    AnnotationAssertion( skos:altLabel pizza:Rosa "Rosa" )
+    AnnotationAssertion( skos:altLabel pizza:Rosa "Rosa Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Rosa "Rosa" )
+    SubClassOf( pizza:Rosa pizza:NamedPizza )
+    SubClassOf( pizza:Rosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:GorgonzolaTopping ) )
+    SubClassOf( pizza:Rosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Rosa     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Rosa     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GorgonzolaTopping
+        pizza:MozzarellaTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:RosemaryTopping "CoberturaRosemary" )
+    AnnotationAssertion( rdfs:label pizza:RosemaryTopping "RosemaryTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:RosemaryTopping "Rosemary" )
+    SubClassOf( pizza:RosemaryTopping pizza:HerbSpiceTopping )
+    SubClassOf( pizza:RosemaryTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:SauceTopping "CoberturaEmMolho" )
+    AnnotationAssertion( rdfs:label pizza:SauceTopping "SauceTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SauceTopping "Sauce" )
+    SubClassOf( pizza:SauceTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:Siciliana "Siciliana" )
+    AnnotationAssertion( rdfs:label pizza:Siciliana "Siciliana" )
+    AnnotationAssertion( skos:altLabel pizza:Siciliana "Siciliana" )
+    AnnotationAssertion( skos:altLabel pizza:Siciliana "Siciliana Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Siciliana "Siciliana" )
+    SubClassOf( pizza:Siciliana pizza:NamedPizza )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:AnchoviesTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:ArtichokeTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:GarlicTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:HamTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Siciliana     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:AnchoviesTopping
+        pizza:ArtichokeTopping
+        pizza:GarlicTopping
+        pizza:HamTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:SlicedTomatoTopping "CoberturaDeTomateFatiado" )
+    AnnotationAssertion( rdfs:label pizza:SlicedTomatoTopping "SlicedTomatoTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SlicedTomatoTopping "Sliced Tomato" )
+    SubClassOf( pizza:SlicedTomatoTopping pizza:TomatoTopping )
+    SubClassOf( pizza:SlicedTomatoTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    DisjointClasses( pizza:SlicedTomatoTopping pizza:SundriedTomatoTopping )
+    AnnotationAssertion( rdfs:label pizza:SloppyGiuseppe "SloppyGiuseppe" )
+    AnnotationAssertion( rdfs:label pizza:SloppyGiuseppe "SloppyGiuseppe" )
+    AnnotationAssertion( skos:altLabel pizza:SloppyGiuseppe "Sloppy Giuseppe" )
+    AnnotationAssertion( skos:altLabel pizza:SloppyGiuseppe "Sloppy Giuseppe Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:SloppyGiuseppe "Sloppy Giuseppe" )
+    SubClassOf( pizza:SloppyGiuseppe pizza:NamedPizza )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectSomeValuesFrom( pizza:hasTopping pizza:GreenPepperTopping ) )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectSomeValuesFrom( pizza:hasTopping pizza:HotSpicedBeefTopping ) )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectSomeValuesFrom( pizza:hasTopping pizza:OnionTopping ) )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:SloppyGiuseppe     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GreenPepperTopping
+        pizza:HotSpicedBeefTopping
+        pizza:MozzarellaTopping
+        pizza:OnionTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:label pizza:Soho "Soho" )
+    AnnotationAssertion( rdfs:label pizza:Soho "Soho" )
+    AnnotationAssertion( skos:altLabel pizza:Soho "Soho" )
+    AnnotationAssertion( skos:altLabel pizza:Soho "Soho Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Soho "Soho" )
+    SubClassOf( pizza:Soho pizza:NamedPizza )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:GarlicTopping ) )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:ParmesanTopping ) )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:RocketTopping ) )
+    SubClassOf( pizza:Soho     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Soho     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:GarlicTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:ParmesanTopping
+        pizza:RocketTopping
+        pizza:TomatoTopping
+    ) ) )
+    AnnotationAssertion( rdfs:comment pizza:Spiciness "A ValuePartition that describes only values from Hot, Medium or Mild. NB Subclasses can themselves be divided up into further partitions." )
+    AnnotationAssertion( rdfs:label pizza:Spiciness "Spiciness" )
+    AnnotationAssertion( rdfs:label pizza:Spiciness "Tempero" )
+    AnnotationAssertion( skos:prefLabel pizza:Spiciness "Spiciness" )
+    EquivalentClasses(
+        pizza:Spiciness
+            ObjectUnionOf(
+        pizza:Hot
+        pizza:Medium
+        pizza:Mild
+    )
+    )
+    SubClassOf( pizza:Spiciness pizza:ValuePartition )
+    AnnotationAssertion( rdfs:label pizza:SpicyPizza "PizzaTemperada" )
+    AnnotationAssertion( rdfs:label pizza:SpicyPizza "SpicyPizza" )
+    AnnotationAssertion( skos:definition pizza:SpicyPizza "Any pizza that has a spicy topping is a SpicyPizza" )
+    AnnotationAssertion( skos:prefLabel pizza:SpicyPizza "Spicy Pizza" )
+    EquivalentClasses(
+        pizza:SpicyPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectSomeValuesFrom( pizza:hasTopping pizza:SpicyTopping )
+    )
+    )
+    AnnotationAssertion( rdfs:comment pizza:SpicyPizzaEquivalent "An alternative definition for the SpicyPizza which does away with needing a definition of SpicyTopping and uses a slightly more complicated restriction: Pizzas that have at least one topping that is both a PizzaTopping and has spiciness hot are members of this class." )
+    AnnotationAssertion( rdfs:label pizza:SpicyPizzaEquivalent "PizzaTemperadaEquivalente" )
+    AnnotationAssertion( rdfs:label pizza:SpicyPizzaEquivalent "SpicyPizzaEquivalent" )
+    AnnotationAssertion( skos:prefLabel pizza:SpicyPizzaEquivalent "Spicy Pizza Equivalent" )
+    EquivalentClasses(
+        pizza:SpicyPizzaEquivalent
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectSomeValuesFrom( pizza:hasTopping     ObjectIntersectionOf(
+        pizza:PizzaTopping
+            ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot )
+    ) )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:SpicyTopping "CoberturaTemperada" )
+    AnnotationAssertion( rdfs:label pizza:SpicyTopping "SpicyTopping" )
+    AnnotationAssertion( skos:definition pizza:SpicyTopping "Any pizza topping that has spiciness Hot" )
+    AnnotationAssertion( skos:prefLabel pizza:SpicyTopping "Spicy" )
+    EquivalentClasses(
+        pizza:SpicyTopping
+            ObjectIntersectionOf(
+        pizza:PizzaTopping
+            ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:SpinachTopping "CoberturaDeEspinafre" )
+    AnnotationAssertion( rdfs:label pizza:SpinachTopping "SpinachTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SpinachTopping "Spinach" )
+    SubClassOf( pizza:SpinachTopping pizza:VegetableTopping )
+    SubClassOf( pizza:SpinachTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:SultanaTopping "CoberturaSultana" )
+    AnnotationAssertion( rdfs:label pizza:SultanaTopping "SultanaTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SultanaTopping "Sultana" )
+    SubClassOf( pizza:SultanaTopping pizza:FruitTopping )
+    SubClassOf( pizza:SultanaTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Medium ) )
+    AnnotationAssertion( rdfs:label pizza:SundriedTomatoTopping "CoberturaDeTomateRessecadoAoSol" )
+    AnnotationAssertion( rdfs:label pizza:SundriedTomatoTopping "SundriedTomatoTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SundriedTomatoTopping "Sundried Tomato" )
+    SubClassOf( pizza:SundriedTomatoTopping pizza:TomatoTopping )
+    SubClassOf( pizza:SundriedTomatoTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:SweetPepperTopping "CoberturaDePimentaoDoce" )
+    AnnotationAssertion( rdfs:label pizza:SweetPepperTopping "SweetPepperTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:SweetPepperTopping "Sweet Pepper" )
+    SubClassOf( pizza:SweetPepperTopping pizza:PepperTopping )
+    SubClassOf( pizza:SweetPepperTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:label pizza:ThinAndCrispyBase "BaseFinaEQuebradica" )
+    AnnotationAssertion( rdfs:label pizza:ThinAndCrispyBase "ThinAndCrispyBase" )
+    AnnotationAssertion( skos:prefLabel pizza:ThinAndCrispyBase "Thin And Crispy Base" )
+    SubClassOf( pizza:ThinAndCrispyBase pizza:PizzaBase )
+    AnnotationAssertion( rdfs:label pizza:ThinAndCrispyPizza "ThinAndCrispyPizza" )
+    AnnotationAssertion( skos:prefLabel pizza:ThinAndCrispyPizza "Thin And Crispy Pizza" )
+    EquivalentClasses(
+        pizza:ThinAndCrispyPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectAllValuesFrom( pizza:hasBase pizza:ThinAndCrispyBase )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:TobascoPepperSauce "MolhoTobascoPepper" )
+    AnnotationAssertion( rdfs:label pizza:TobascoPepperSauce "TobascoPepperSauceTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:TobascoPepperSauce "Tobasco Pepper Sauce" )
+    SubClassOf( pizza:TobascoPepperSauce pizza:SauceTopping )
+    SubClassOf( pizza:TobascoPepperSauce     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Hot ) )
+    AnnotationAssertion( rdfs:label pizza:TomatoTopping "CoberturaDeTomate" )
+    AnnotationAssertion( rdfs:label pizza:TomatoTopping "TomatoTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:TomatoTopping "Tomato" )
+    SubClassOf( pizza:TomatoTopping pizza:VegetableTopping )
+    SubClassOf( pizza:TomatoTopping     ObjectSomeValuesFrom( pizza:hasSpiciness pizza:Mild ) )
+    AnnotationAssertion( rdfs:comment pizza:UnclosedPizza "An unclosed Pizza cannot be inferred to be either a VegetarianPizza or a NonVegetarianPizza, because it might have other toppings."^^xsd:string )
+    AnnotationAssertion( rdfs:label pizza:UnclosedPizza "PizzaAberta" )
+    AnnotationAssertion( rdfs:label pizza:UnclosedPizza "UnclosedPizza" )
+    AnnotationAssertion( skos:prefLabel pizza:UnclosedPizza "Unclosed Pizza" )
+    SubClassOf( pizza:UnclosedPizza pizza:Pizza )
+    SubClassOf( pizza:UnclosedPizza     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    AnnotationAssertion( rdfs:comment pizza:ValuePartition "A ValuePartition is a pattern that describes a restricted set of classes from which a property can be associated. The parent class is used in restrictions, and the covering axiom means that only members of the subclasses may be used as values. The possible subclasses cannot be extended without updating the ValuePartition class."^^xsd:string )
+    AnnotationAssertion( rdfs:label pizza:ValuePartition "ValorDaParticao" )
+    AnnotationAssertion( rdfs:label pizza:ValuePartition "ValuePartition" )
+    AnnotationAssertion( skos:prefLabel pizza:ValuePartition "Value Partition" )
+    AnnotationAssertion( rdfs:label pizza:VegetableTopping "CoberturaDeVegetais" )
+    AnnotationAssertion( rdfs:label pizza:VegetableTopping "VegetableTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:VegetableTopping "Vegetable Topping" )
+    SubClassOf( pizza:VegetableTopping pizza:PizzaTopping )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizza "PizzaVegetariana" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizza "VegetarianPizza" )
+    AnnotationAssertion( skos:definition pizza:VegetarianPizza "Any pizza that does not have fish topping and does not have meat topping is a VegetarianPizza. Note that instances of this class do not need to have any toppings at all." )
+    AnnotationAssertion( skos:prefLabel pizza:VegetarianPizza "Vegetarian Pizza" )
+    EquivalentClasses(
+        pizza:VegetarianPizza
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectComplementOf(     ObjectSomeValuesFrom( pizza:hasTopping pizza:FishTopping ) )
+            ObjectComplementOf(     ObjectSomeValuesFrom( pizza:hasTopping pizza:MeatTopping ) )
+    )
+    )
+    AnnotationAssertion( rdfs:comment pizza:VegetarianPizzaEquivalent1 "Any pizza that only has vegetarian toppings or no toppings is a VegetarianPizzaEquiv1. Should be inferred to be equivalent to VegetarianPizzaEquiv2.  Not equivalent to VegetarianPizza because PizzaTopping is not covering" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizzaEquivalent1 "PizzaVegetarianaEquivalente1" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizzaEquivalent1 "VegetarianPizza1" )
+    AnnotationAssertion( skos:prefLabel pizza:VegetarianPizzaEquivalent1 "Vegetarian Pizza1" )
+    EquivalentClasses(
+        pizza:VegetarianPizzaEquivalent1
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectAllValuesFrom( pizza:hasTopping pizza:VegetarianTopping )
+    )
+    )
+    AnnotationAssertion( rdfs:comment pizza:VegetarianPizzaEquivalent2 "An alternative to VegetarianPizzaEquiv1 that does not require a definition of VegetarianTopping. Perhaps more difficult to maintain. Not equivalent to VegetarianPizza" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizzaEquivalent2 "PizzaVegetarianaEquivalente2" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianPizzaEquivalent2 "VegetarianPizza2" )
+    AnnotationAssertion( skos:prefLabel pizza:VegetarianPizzaEquivalent2 "Vegetarian Pizza2" )
+    EquivalentClasses(
+        pizza:VegetarianPizzaEquivalent2
+            ObjectIntersectionOf(
+        pizza:Pizza
+            ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:CheeseTopping
+        pizza:FruitTopping
+        pizza:HerbSpiceTopping
+        pizza:NutTopping
+        pizza:SauceTopping
+        pizza:VegetableTopping
+    ) )
+    )
+    )
+    AnnotationAssertion( rdfs:comment pizza:VegetarianTopping "An example of a covering axiom. VegetarianTopping is equivalent to the union of all toppings in the given axiom. VegetarianToppings can only be Cheese or Vegetable or....etc." )
+    AnnotationAssertion( rdfs:label pizza:VegetarianTopping "CoberturaVegetariana" )
+    AnnotationAssertion( rdfs:label pizza:VegetarianTopping "VegetarianTopping" )
+    AnnotationAssertion( skos:prefLabel pizza:VegetarianTopping "Vegetarian Topping" )
+    EquivalentClasses(
+        pizza:VegetarianTopping
+            ObjectIntersectionOf(
+        pizza:PizzaTopping
+            ObjectUnionOf(
+        pizza:CheeseTopping
+        pizza:FruitTopping
+        pizza:HerbSpiceTopping
+        pizza:NutTopping
+        pizza:SauceTopping
+        pizza:VegetableTopping
+    )
+    )
+    )
+    AnnotationAssertion( rdfs:label pizza:Veneziana "Veneziana" )
+    AnnotationAssertion( rdfs:label pizza:Veneziana "Veneziana" )
+    AnnotationAssertion( skos:altLabel pizza:Veneziana "Veneziana" )
+    AnnotationAssertion( skos:altLabel pizza:Veneziana "Veneziana Pizza" )
+    AnnotationAssertion( skos:prefLabel pizza:Veneziana "Veneziana" )
+    SubClassOf( pizza:Veneziana pizza:NamedPizza )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:CaperTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:MozzarellaTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:OliveTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:OnionTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:PineKernels ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:SultanaTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectSomeValuesFrom( pizza:hasTopping pizza:TomatoTopping ) )
+    SubClassOf( pizza:Veneziana     ObjectAllValuesFrom( pizza:hasTopping     ObjectUnionOf(
+        pizza:CaperTopping
+        pizza:MozzarellaTopping
+        pizza:OliveTopping
+        pizza:OnionTopping
+        pizza:PineKernels
+        pizza:SultanaTopping
+        pizza:TomatoTopping
+    ) ) )
+    SubClassOf( pizza:Veneziana     ObjectHasValue( pizza:hasCountryOfOrigin pizza:Italy ) )
+    ClassAssertion( pizza:Country pizza:America )
+    ClassAssertion( owl:Thing pizza:America )
+    ClassAssertion( pizza:Country pizza:England )
+    ClassAssertion( owl:Thing pizza:England )
+    ClassAssertion( pizza:Country pizza:France )
+    ClassAssertion( owl:Thing pizza:France )
+    ClassAssertion( pizza:Country pizza:Germany )
+    ClassAssertion( owl:Thing pizza:Germany )
+    ClassAssertion( pizza:Country pizza:Italy )
+    ClassAssertion( owl:Thing pizza:Italy )
+    DisjointClasses(
+        pizza:American
+        pizza:AmericanHot
+        pizza:Cajun
+        pizza:Capricciosa
+        pizza:Caprina
+        pizza:Fiorentina
+        pizza:FourSeasons
+        pizza:FruttiDiMare
+        pizza:Giardiniera
+        pizza:LaReine
+        pizza:Margherita
+        pizza:Mushroom
+        pizza:Napoletana
+        pizza:Parmense
+        pizza:PolloAdAstra
+        pizza:PrinceCarlo
+        pizza:QuattroFormaggi
+        pizza:Rosa
+        pizza:Siciliana
+        pizza:SloppyGiuseppe
+        pizza:Soho
+        pizza:UnclosedPizza
+        pizza:Veneziana
+    )
+    DisjointClasses(
+        pizza:AnchoviesTopping
+        pizza:MixedSeafoodTopping
+        pizza:PrawnsTopping
+    )
+    DisjointClasses(
+        pizza:ArtichokeTopping
+        pizza:AsparagusTopping
+        pizza:CaperTopping
+        pizza:GarlicTopping
+        pizza:LeekTopping
+        pizza:MushroomTopping
+        pizza:OliveTopping
+        pizza:OnionTopping
+        pizza:PepperTopping
+        pizza:PetitPoisTopping
+        pizza:RocketTopping
+        pizza:SpinachTopping
+        pizza:TomatoTopping
+    )
+    DisjointClasses(
+        pizza:CheeseTopping
+        pizza:FishTopping
+        pizza:FruitTopping
+        pizza:HerbSpiceTopping
+        pizza:MeatTopping
+        pizza:NutTopping
+        pizza:SauceTopping
+        pizza:VegetableTopping
+    )
+    DisjointClasses(
+        pizza:ChickenTopping
+        pizza:HamTopping
+        pizza:HotSpicedBeefTopping
+        pizza:PeperoniSausageTopping
+    )
+    DisjointClasses(
+        pizza:FourCheesesTopping
+        pizza:GoatsCheeseTopping
+        pizza:GorgonzolaTopping
+        pizza:MozzarellaTopping
+        pizza:ParmesanTopping
+    )
+    DisjointClasses(
+        pizza:GreenPepperTopping
+        pizza:JalapenoPepperTopping
+        pizza:PeperonataTopping
+        pizza:SweetPepperTopping
+    )
+    DisjointClasses(
+        pizza:Hot
+        pizza:Medium
+        pizza:Mild
+    )
+    DisjointClasses(
+        pizza:IceCream
+        pizza:Pizza
+        pizza:PizzaBase
+        pizza:PizzaTopping
+    )
+    DifferentIndividuals( pizza:America pizza:England pizza:France pizza:Germany pizza:Italy )
+)
