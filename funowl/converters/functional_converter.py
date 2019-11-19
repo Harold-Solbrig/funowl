@@ -125,7 +125,7 @@ def m_rem(m: Match) -> str:
 
 
 def lit_parser(value: str, rest: str) -> Tuple[rdflib.Literal, str]:
-    if len(value) > 3 and value.startswith('"') and value.endswith('"'):
+    if len(value) > 1 and value.startswith('"') and value.endswith('"'):
         value = value[1:-1]
     if rest.startswith('@'):
         m = literal_lang.match(rest)

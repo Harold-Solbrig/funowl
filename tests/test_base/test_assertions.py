@@ -157,7 +157,7 @@ ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(f
 [] a ns1:NegativePropertyAssertion ;
     ns1:assertionProperty <http://example.org/a#hasBrother> ;
     ns1:sourceIndividual <http://example.org/a#Meg> ;
-    ns1:targetValue <http://notimplemented.org/TypedLiteral> .
+    ns1:targetValue "5"^^xsd:integer .
 """, g)
         if diff:
             print(diff)

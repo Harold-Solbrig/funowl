@@ -26,7 +26,6 @@ from funowl.identifiers import IRI
 class Datatype(IRI):
     rdf_type = RDFS.Datatype
 
-
 class StringLiteralNoLanguage(QuotedString):
     def to_rdf(self, g: Graph) -> Literal:
         return rdflib.Literal(self)
@@ -54,10 +53,13 @@ class TypedLiteral(FunOwlBase):
             self.literal = StringLiteralNoLanguage(literal.value)
             self.datatype = literal.datatype if literal.datatype else XSD.string
         else:
-            print("HERE")
+            raise ValueError(f"Unknown TypedLiteral constructor: {literal}^^{datatype}")
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.concat(self.literal, '^^', self.datatype)
+
+    def to_rdf(self, g: Graph) -> rdflib.Literal:
+        return rdflib.Literal(self.literal, datatype=IRI(self.datatype).to_rdf(g))
 
     def __str__(self) -> str:
         return str(self.literal) + '^^' + str(self.datatype)
