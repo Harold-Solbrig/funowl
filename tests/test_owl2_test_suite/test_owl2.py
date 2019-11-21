@@ -77,13 +77,13 @@ def validate_owl2(fileloc: str) -> bool:
     if do_rdf:
         expected_rdf = Graph()
         expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
-        actual_rdf = Graph()
-        actual_rdf.add = lambda t: add(actual_rdf, t)
-        ontology_doc.to_rdf(actual_rdf)
+        actual_rdf_graph = Graph()
+        actual_rdf_graph.add = lambda t: add(actual_rdf_graph, t)
+        ontology_doc.to_rdf(actual_rdf_graph)
 
-        rslts = compare_rdf(expected_rdf, actual_rdf)
+        rslts = compare_rdf(expected_rdf, actual_rdf_graph)
         if rslts:
-            logging.info('\n========== pass 1 rdf output =================\n' + actual_rdf.serialize(format="turtle").decode())
+            logging.info('\n========== pass 1 rdf output =================\n' + actual_rdf_graph.serialize(format="turtle").decode())
             logging.info('\n---------- expected rdf ------------\n' + expected_rdf.serialize(format="turtle").decode())
             print(rslts)
             return False

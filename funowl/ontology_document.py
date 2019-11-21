@@ -15,6 +15,7 @@ from typing import Optional, List, Union, Dict, cast
 
 from rdflib import Graph, RDF, OWL, URIRef, BNode
 
+from funowl.assertions import DataPropertyAssertion
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.axioms import Axiom
 from funowl.base.fun_owl_base import FunOwlBase
@@ -22,10 +23,12 @@ from funowl.base.list_support import empty_list
 from funowl.base.rdftriple import NODE, SUBJ
 from funowl.class_axioms import SubClassOf, EquivalentClasses
 from funowl.class_expressions import Class, ClassExpression
+from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.declarations import Declaration
 from funowl.general_definitions import PrefixName, FullIRI
 from funowl.identifiers import IRI
-from funowl.individuals import NamedIndividual
+from funowl.individuals import NamedIndividual, Individual
+from funowl.literals import Literal
 from funowl.objectproperty_axioms import SubObjectPropertyOf, SubObjectPropertyExpression, InverseObjectProperties, \
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ObjectPropertyDomain, ObjectPropertyRange
 from funowl.objectproperty_expressions import ObjectPropertyExpression
@@ -175,6 +178,12 @@ class Ontology(Annotatable):
     def namedIndividuals(self, *individuals: IRI.types()) -> "Ontology":
         for individual in individuals:
             self.axioms.append(NamedIndividual(individual))
+        return self
+
+    def dataPropertyAssertion(self, expr: DataPropertyExpression.types(), sourceIndividual: Individual.types(),
+                              targetValue: Literal.types()) -> "Ontology":
+        self.axioms.append(DataPropertyAssertion(expr, sourceIndividual, targetValue))
+        return self
 
     # ====================
     # Conversion functions
@@ -241,6 +250,9 @@ class OntologyDocument(FunOwlBase):
                 if p.prefixName == item:
                     return p.fullIRI
         return super().__getattribute__(item)
+
+    def __str__(self) -> str:
+        return self.to_functional().getvalue()
 
     def add_namespaces(self, g: Graph) -> Graph:
         for prefix in self.prefixDeclarations:
