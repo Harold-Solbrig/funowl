@@ -40,7 +40,7 @@ TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations Obje
 from dataclasses import dataclass
 from typing import List, Union, Optional
 
-from rdflib import Graph, BNode, OWL, RDF
+from rdflib import Graph, BNode, OWL, RDF, RDFS
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
@@ -108,6 +108,13 @@ class EquivalentObjectProperties(Annotatable):
     def f(self, a, b, c, d=12, e=32):
         pass
 
+    def to_rdf(self, g: Graph) -> None:
+        subj = self.objectPropertyExpressions[0].to_rdf(g)
+        for i in range(1, len(self.objectPropertyExpressions)):
+            obj = self.objectPropertyExpressions[i].to_rdf(g)
+            g.add((subj, OWL.equivalentProperty, obj))
+            subj = obj
+
 @dataclass
 class DisjointObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
@@ -135,6 +142,10 @@ class ObjectPropertyDomain(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDFS.domain, self.classExpression.to_rdf(g)))
+
+
 @dataclass
 class ObjectPropertyRange(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
@@ -143,6 +154,9 @@ class ObjectPropertyRange(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
+
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDFS.range, self.classExpression.to_rdf(g)))
 
 
 @dataclass
@@ -194,6 +208,9 @@ class ReflexiveObjectProperty(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.ReflexiveProperty))
+
 
 @dataclass
 class IrreflexiveObjectProperty(Annotatable):
@@ -202,6 +219,9 @@ class IrreflexiveObjectProperty(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
+
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.IrreflexiveProperty))
 
 
 @dataclass
@@ -212,6 +232,9 @@ class SymmetricObjectProperty(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.SymmetricProperty))
+
 
 @dataclass
 class AsymmetricObjectProperty(Annotatable):
@@ -220,6 +243,9 @@ class AsymmetricObjectProperty(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
+
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.AsymmetricProperty))
 
 
 @dataclass
@@ -230,6 +256,8 @@ class TransitiveObjectProperty(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
+    def to_rdf(self, g: Graph) -> None:
+        g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.TransitiveProperty))
 
 
 ObjectPropertyAxiom = Union[SubObjectPropertyOf, EquivalentObjectProperties, DisjointObjectProperties,
