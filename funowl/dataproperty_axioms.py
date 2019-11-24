@@ -1,6 +1,8 @@
 from dataclasses import dataclass
 from typing import List, Union
 
+from rdflib import Graph, OWL
+
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
@@ -70,6 +72,10 @@ class DisjointDataProperties((Annotatable)):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.dataPropertyExpressions, 'exprs', 2)
         return self.annots(w, lambda: w.iter(self.dataPropertyExpressions))
+
+    def to_rdf(self, g: Graph) -> None:
+        self.add_triple(g, self.dataPropertyExpressions[0].to_rdf(g),
+                        OWL.propertyDisjointWith, self.dataPropertyExpressions[1].to_rdf(g))
 
 
 @dataclass
