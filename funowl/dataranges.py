@@ -22,6 +22,8 @@ restrictionValue := Literal
 from dataclasses import dataclass
 from typing import Union, List
 
+from rdflib import Graph, BNode
+
 from funowl.annotations import Annotation
 from funowl.identifiers import IRI
 from funowl.literals import Datatype
