@@ -38,7 +38,6 @@ class OWL2ValidationTestCase(ValidationTestCase):
 
     # Filenames to skip and reason for skipping it
     skip = {
-        'Bnode2somevaluesfrom.func': CONFLICT_WITH_SPEC,
         'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
         'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
         'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
