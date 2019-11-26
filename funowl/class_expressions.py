@@ -149,7 +149,7 @@ class ObjectSomeValuesFrom(FunOwlBase):
 
     def to_rdf(self, g: Graph) -> BNode:
         """
-        :x rdf:type owl:Restriction .
+        _:x rdf:type owl:Restriction .
         _:x owl:onProperty T(OPE) .
         _:x owl:someValuesFrom T(CE) .
         :param g: the RDF graph
@@ -270,11 +270,28 @@ class ObjectExactCardinality(FunOwlBase):
 
 @dataclass
 class DataSomeValuesFrom(FunOwlBase):
-    dataPropertyExpression: DataPropertyExpression
+    dataPropertyExpression: List[DataPropertyExpression]
     dataRange: DataRange
+
+    def __init__(self, dataPropertyExpression: DataPropertyExpression,
+                 *addlExprsPlusRange: Union[DataPropertyExpression, DataRange]) -> None:
+        self.dataPropertyExpression = [dataPropertyExpression]
+        for dpeor in addlExprsPlusRange[:-1]:
+            self.dataPropertyExpression.append(dpeor)
+        self.dataRange = addlExprsPlusRange[-1]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRange))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        subj = BNode()
+        g.add((subj, RDF.type, OWL.Restriction))
+        if len(self.dataPropertyExpression) >= 2:
+            g.add((subj, OWL.onProperties, SEQ(g, self.dataPropertyExpression)))
+        else:
+            g.add((subj, OWL.onProperty, self.dataPropertyExpression[0].to_rdf(g)))
+        g.add((subj, OWL.someValuesFrom, self.dataRange.to_rdf(g)))
+        return subj
 
 
 @dataclass
@@ -298,7 +315,7 @@ class DataAllValuesFrom(FunOwlBase):
         if len(self.dataPropertyExpression) >= 2:
             g.add((subj, OWL.onProperties, SEQ(g, self.dataPropertyExpression)))
         else:
-            g.add((subj, OWL.onProperty, self.dataPropertyExpression[0]))
+            g.add((subj, OWL.onProperty, self.dataPropertyExpression[0].to_rdf(g)))
         g.add((subj, OWL.allValuesFrom, self.dataRange.to_rdf(g)))
         return subj
 

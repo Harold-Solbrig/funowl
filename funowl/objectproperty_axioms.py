@@ -40,7 +40,7 @@ TransitiveObjectProperty := 'TransitiveObjectProperty' '(' axiomAnnotations Obje
 from dataclasses import dataclass
 from typing import List, Union, Optional
 
-from rdflib import Graph, BNode, OWL, RDF
+from rdflib import Graph, BNode, OWL, RDF, RDFS
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
@@ -87,7 +87,7 @@ class SubObjectPropertyOf(Annotatable):
             self.add_triple(g, self.superObjectPropertyExpression.to_rdf(g), OWL.propertyChainAxiom,
                             self.subObjectPropertyExpression.to_rdf(g))
         else:
-            self.add_triple(g, self.subObjectPropertyExpression.to_rdf(g), RDF.subPropertyOf,
+            self.add_triple(g, self.subObjectPropertyExpression.to_rdf(g), RDFS.subPropertyOf,
                             self.superObjectPropertyExpression.to_rdf(g))
 
 
