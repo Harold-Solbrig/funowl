@@ -15,12 +15,13 @@ disjointClassExpressions := ClassExpression ClassExpression { ClassExpression }
 from dataclasses import dataclass
 from typing import List, Optional, Union
 
-from rdflib import Graph, RDFS, OWL
-from rdflib.term import Node
+from rdflib import Graph, RDFS, OWL, RDF
+from rdflib.term import Node, BNode
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression, Class
+from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers import FunctionalWriter
@@ -81,6 +82,16 @@ class DisjointClasses(Annotatable):
             return self.annots(w, lambda: w + self.classExpressions[0] + self.classExpressions[1])
         else:
             return self.annots(w, lambda: w.iter(self.classExpressions))
+
+    def to_rdf(self, g: Graph) -> None:
+        if len(self.classExpressions) == 2:
+            self.add_triple(g, self.classExpressions[0].to_rdf(g),
+                            OWL.disjointWith, self.classExpressions[1].to_rdf(g))
+        else:
+            subj = BNode()
+            g.add((subj, RDF.type, OWL.ALLDisjointClasses))
+            g.add((subj, OWL.members, SEQ(g, self.classExpressions)))
+            self.TANN(g, subj)
 
 
 @dataclass
