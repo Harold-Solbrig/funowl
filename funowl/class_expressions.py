@@ -46,7 +46,8 @@ HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpr
 from dataclasses import dataclass
 from typing import List, ClassVar, Union, Optional
 
-from rdflib import URIRef, OWL, Graph, RDF
+import rdflib
+from rdflib import URIRef, OWL, Graph, RDF, XSD
 from rdflib.term import BNode, Literal as RDFLiteral
 
 from funowl.base.fun_owl_base import FunOwlBase
@@ -344,6 +345,27 @@ class DataMinCardinality(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).opt(self.dataRange))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        #  DataMinCardinality( n DPE )
+        #    _:x rdf:type owl:Restriction .
+        #    _:x owl:onProperty T(DPE) .
+        #    _:x owl:minCardinality "n"^^xsd:nonNegativeInteger .
+        # DataMinCardinality( n DPE DR )
+        #    _:x rdf:type owl:Restriction .
+        #    _:x owl:onProperty T(DPE) .
+        #    _:x owl:minQualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        #    _:x owl:onDataRange T(DR) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
+        restr = rdflib.Literal(self.min_, datatype=XSD.nonNegativeInteger)
+        if not self.dataRange:
+            g.add((x, OWL.minCardinality, restr))
+        else:
+            g.add((complex, OWL.minQualifiedCardinality, restr))
+            g.add((x, OWL.onDataRange, self.dataRange.to_rdf(g)))
+        return x
 
 
 @dataclass

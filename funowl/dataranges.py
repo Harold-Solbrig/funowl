@@ -22,9 +22,10 @@ restrictionValue := Literal
 from dataclasses import dataclass
 from typing import Union, List
 
-from rdflib import Graph, BNode
+from rdflib import Graph, BNode, RDF, RDFS, OWL
 
 from funowl.annotations import Annotation
+from funowl.converters.rdf_converter import SEQ
 from funowl.identifiers import IRI
 from funowl.literals import Datatype
 from funowl.literals import Literal
@@ -76,6 +77,14 @@ class DataOneOf(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.literal))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type rdfs:Datatype .
+        # _:x owl:oneOf T(SEQ lt1 ... ltn) .
+        x = BNode()
+        g.add((x, RDF.type, RDFS.Datatype))
+        g.add((x, OWL.oneOf, SEQ(g, self.literal)))
+        return x
 
 
 @dataclass

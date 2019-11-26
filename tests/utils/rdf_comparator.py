@@ -3,7 +3,7 @@ from contextlib import redirect_stdout
 from io import StringIO
 from typing import Union, Optional
 
-from rdflib import Graph
+from rdflib import Graph, RDFS, RDF
 from rdflib.compare import to_isomorphic, IsomorphicGraph, graph_diff
 
 
@@ -42,6 +42,9 @@ def compare_rdf(expected: Union[Graph, str], actual: Union[Graph, str], fmt: Opt
     :return: None if they match else summary of difference
     """
     def rem_metadata(g: Graph) -> IsomorphicGraph:
+        # Remove list declarations from target
+        for s in g.subjects(RDF.type, RDF.List):
+            g.remove((s, RDF.type, RDF.List))
         g_iso = to_isomorphic(g)
         return g_iso
 

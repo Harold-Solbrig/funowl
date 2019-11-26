@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Union
 
-from rdflib import Graph, OWL
+from rdflib import Graph, OWL, RDFS
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list
@@ -45,7 +45,7 @@ class SubDataPropertyOf(Annotatable):
 
 
 @dataclass
-class EquivalentDataProperties((Annotatable)):
+class EquivalentDataProperties(Annotatable):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -60,7 +60,7 @@ class EquivalentDataProperties((Annotatable)):
 
 
 @dataclass
-class DisjointDataProperties((Annotatable)):
+class DisjointDataProperties(Annotatable):
     dataPropertyExpressions: List[DataPropertyExpression]
     annotations: List[Annotation] = empty_list()
 
@@ -79,7 +79,7 @@ class DisjointDataProperties((Annotatable)):
 
 
 @dataclass
-class DataPropertyDomain((Annotatable)):
+class DataPropertyDomain(Annotatable):
     dataPropertyExpression: DataPropertyExpression
     classExpression: ClassExpression
     annotations: List[Annotation] = empty_list()
@@ -89,17 +89,21 @@ class DataPropertyDomain((Annotatable)):
 
 
 @dataclass
-class DataPropertyRange((Annotatable)):
+class DataPropertyRange(Annotatable):
     dataPropertyExpression: DataPropertyExpression
     dataRange: DataRange
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.dataPropertyExpression + ' ' + self.dataRange)
+    
+    def to_rdf(self, g: Graph) -> None:
+        # T(DPE) rdfs:range T(DR) .
+        return self.add_triple(g, self.dataPropertyExpression.to_rdf(g), RDFS.range, self.dataRange.to_rdf(g))
 
 
 @dataclass
-class FunctionalDataProperty((Annotatable)):
+class FunctionalDataProperty(Annotatable):
     dataPropertyExpression: DataPropertyExpression
     annotations: List[Annotation] = empty_list()
 
@@ -108,7 +112,7 @@ class FunctionalDataProperty((Annotatable)):
 
 
 @dataclass
-class DatatypeDefinition((Annotatable)):
+class DatatypeDefinition(Annotatable):
     datatype: Datatype
     datarange: DataRange
     annotations: List[Annotation] = empty_list()
