@@ -279,23 +279,28 @@ class DataSomeValuesFrom(FunOwlBase):
 
 @dataclass
 class DataAllValuesFrom(FunOwlBase):
-    # Changed to List DataPropertyExpression, so I probably broke to_functional
     dataPropertyExpression: List[DataPropertyExpression]
     dataRange: DataRange
+
+    def __init__(self, dataPropertyExpression: DataPropertyExpression,
+                 *addlExprsPlusRange: Union[DataPropertyExpression, DataRange]) -> None:
+        self.dataPropertyExpression = [dataPropertyExpression]
+        for dpeor in addlExprsPlusRange[:-1]:
+            self.dataPropertyExpression.append(dpeor)
+        self.dataRange = addlExprsPlusRange[-1]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRange))
 
     def to_rdf(self, g: Graph) -> BNode:
         subj = BNode()
-        if self.dataPropertyExpression >= 2:
-            g.add((subj, RDF.type, OWL.Restriction))
+        g.add((subj, RDF.type, OWL.Restriction))
+        if len(self.dataPropertyExpression) >= 2:
             g.add((subj, OWL.onProperties, SEQ(g, self.dataPropertyExpression)))
-            g.add((subj, OWL.allValuesFrom, self.dataRange.to_rdf(g)))
         else:
-            g.add((subj, RDF.type, OWL.Restriction))
-            g.add((subj, OWL.onProperties, self.dataPropertyExpression))
-            g.add((subj, OWL.allValuesFrom, self.dataRange.to_rdf(g)))
+            g.add((subj, OWL.onProperty, self.dataPropertyExpression[0]))
+        g.add((subj, OWL.allValuesFrom, self.dataRange.to_rdf(g)))
+        return subj
 
 
 @dataclass
