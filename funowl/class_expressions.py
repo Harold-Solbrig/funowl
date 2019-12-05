@@ -271,26 +271,31 @@ class ObjectExactCardinality(FunOwlBase):
 
 @dataclass
 class DataSomeValuesFrom(FunOwlBase):
-    dataPropertyExpression: List[DataPropertyExpression]
+    dataPropertyExpressions: List[DataPropertyExpression]
     dataRange: DataRange
 
-    def __init__(self, dataPropertyExpression: DataPropertyExpression,
-                 *addlExprsPlusRange: Union[DataPropertyExpression, DataRange]) -> None:
-        self.dataPropertyExpression = [dataPropertyExpression]
-        for dpeor in addlExprsPlusRange[:-1]:
-            self.dataPropertyExpression.append(dpeor)
-        self.dataRange = addlExprsPlusRange[-1]
+    def __init__(self, *dataPropertyExpressions: Union[DataPropertyExpression, DataRange]) -> None:
+        self.dataPropertyExpressions = list(dataPropertyExpressions[:-1])
+        self.dataRange = dataPropertyExpressions[-1]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w.func(self, lambda: (w + self.dataPropertyExpression + self.dataRange))
+        return w.func(self, lambda: w.iter(self.dataPropertyExpressions) + self.dataRange)
 
     def to_rdf(self, g: Graph) -> BNode:
+        # N == 1
+        #    _:x rdf:type owl:Restriction .
+        #   _:x owl:onProperty T(DPE) .
+        #    _:x owl:someValuesFrom T(DR) .
+        # N >= 2
+        #    _:x rdf:type owl:Restriction .
+        #    _:x owl:onProperties T(SEQ DPE1 ... DPEn) .
+        #    _:x owl:someValuesFrom T(DR) .
         subj = BNode()
         g.add((subj, RDF.type, OWL.Restriction))
-        if len(self.dataPropertyExpression) >= 2:
-            g.add((subj, OWL.onProperties, SEQ(g, self.dataPropertyExpression)))
+        if len(self.dataPropertyExpressions) >= 2:
+            g.add((subj, OWL.onProperties, SEQ(g, self.dataPropertyExpressions)))
         else:
-            g.add((subj, OWL.onProperty, self.dataPropertyExpression[0].to_rdf(g)))
+            g.add((subj, OWL.onProperty, self.dataPropertyExpressions[0].to_rdf(g)))
         g.add((subj, OWL.someValuesFrom, self.dataRange.to_rdf(g)))
         return subj
 

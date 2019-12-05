@@ -1,4 +1,7 @@
 # Implementation Notes
+This project is based on the following:
+* [OWL 2 Web Ontology Language Structural Specification and Functional-Style Syntax (Second Edition)](https://www.w3.org/TR/owl2-syntax/)
+
 ## Functions that take open ended lists as arguments
 When a function takes a list of arguments such as `ObjectUnionOf`:
 

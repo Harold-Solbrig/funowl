@@ -31,7 +31,7 @@ o.imports("http://www.example.com/ontology2")
 o.annotation(RDFS.label, "An example")
 o.subClassOf(EX.Child, OWL.Thing)
 doc = OntologyDocument(EX, o)
-print(str(doc.to_functional()))
+print(str(doc))
 ```
 ### Output
 ```

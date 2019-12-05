@@ -95,6 +95,12 @@ class FacetRestriction(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + self.constrainingFacet + self.restrictionValue
 
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:y1 F1 lt1 .
+        y = BNode()
+        g.add((y, self.constrainingFacet.to_rdf(g), self.restrictionValue.to_rdf(g)))
+        return y
+
 
 @dataclass
 class DatatypeRestriction(FunOwlBase):
@@ -110,6 +116,19 @@ class DatatypeRestriction(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.datatype).iter(self.restrictions))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type rdfs:Datatype .
+        # _:x owl:onDatatype T(DT) .
+        # _:x owl:withRestrictions T(SEQ _:y1 ... _:yn) .
+        # _:y1 F1 lt1 .
+        # ...
+        # _:yn Fn ltn .
+        x = BNode()
+        g.add((x, RDF.type, RDFS.Datatype))
+        g.add((x, OWL.onDatatype, self.datatype.to_rdf(g)))
+        g.add((x, OWL.withRestrictions, SEQ(g, self.restrictions)))
+        return x
 
 
 DataRange = Union[Datatype, DataIntersectionOf, DataUnionOf, DataComplementOf, DataOneOf, DatatypeRestriction]
