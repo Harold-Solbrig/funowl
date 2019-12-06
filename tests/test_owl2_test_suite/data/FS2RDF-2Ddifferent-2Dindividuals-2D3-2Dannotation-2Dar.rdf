@@ -49,6 +49,7 @@
 
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <rdfs:comment>I hereby annotate this</rdfs:comment>
         <distinctMembers rdf:parseType="Collection">
             <rdf:Description rdf:about="http://example.org/a"/>
             <rdf:Description rdf:about="http://example.org/b"/>

@@ -13,5 +13,6 @@
 [] a :Ontology .
 
 [] a :AllDifferent ;
+    rdfs:comment "I hereby annotate this" ;
     :distinctMembers ( <http://example.org/a> <http://example.org/b> <http://example.org/c> ) .
 
