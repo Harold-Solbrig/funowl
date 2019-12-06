@@ -8,8 +8,13 @@
 
 <http://example.org/b> a :NamedIndividual .
 
-[] a :AllDifferent ;
-    :distinctMembers ( <http://example.org/a> <http://example.org/b> ) .
-
 [] a :Ontology .
+
+<http://example.org/a> :differentFrom <http://example.org/b> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :differentFrom ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
 
