@@ -1,0 +1,13 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/complementOf/premises001#"
+    xmlns:second="http://www.w3.org/2002/03owlt/complementOf/conclusions001#"
+    xml:base="http://www.w3.org/2002/03owlt/complementOf/premises001" >
+
+    <rdf:Description rdf:about="premises001#A">
+        <owl:complementOf rdf:resource="premises001#B"/>
+    </rdf:Description>
+
+</rdf:RDF>

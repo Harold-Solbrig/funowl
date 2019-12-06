@@ -1,0 +1,213 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://purl.org/science/ontology/example/lumen.owl#"
+     xml:base="http://purl.org/science/ontology/example/lumen.owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:example="http://purl.org/science/ontology/example/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="">
+      <rdfs:comment>http://groups.google.com/group/fma-owl-2009/browse_thread/thread/4643f80187bf9327</rdfs:comment>
+    </owl:Ontology>
+
+
+    
+
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/science/ontology/example/LUME0000003">
+        <rdfs:label>has part</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/science/ontology/example/LUME0000004">
+        <rdfs:label>LumenSelf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/science/ontology/example/LUME0000005">
+        <rdfs:label>ArterySelf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+
+    <owl:ObjectProperty rdf:about="http://purl.org/science/ontology/example/LUME0000006">
+        <rdfs:label
+            >is continuous with</rdfs:label>
+        <rdfs:comment
+            >Then the following axiom 
+(3) SubProperty(SubPropertyChain( LumenSelf InverseOf(hasPart1)   
+isContinuousWith ArterySelf hasPart1 LumenSelf) isContinuousWith)</rdfs:comment>
+        <owl:propertyChainAxiom rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000004"/>
+            <owl:ObjectProperty>
+                <owl:inverseOf rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+            </owl:ObjectProperty>
+            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000006"/>
+            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000005"/>
+            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000003"/>
+            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000004"/>
+        </owl:propertyChainAxiom>
+    </owl:ObjectProperty>
+    
+
+
+
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000001">
+        <rdfs:label>Lumen</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000004"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000002">
+        <rdfs:label>Artery</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000005"/>
+                <owl:hasSelf rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasSelf>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000007">
+        <rdfs:label
+            >SubClavianArtery</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000001"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000008"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000006"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000009"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:comment
+            >SubClavianArtery SubClassOf 
+  (Artery and 
+   (hasPart1 some Lumen) and 
+   (hasPart1 some Wall) and 
+   (isContinuousWith some RadialArtery))</rdfs:comment>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000008">
+        <rdfs:label>Wall</rdfs:label>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000009">
+        <rdfs:label>RadialArtery</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.org/science/ontology/example/LUME0000002"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000002"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000001"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000008"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000006"/>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000007"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000011">
+        <rdfs:label
+            >Lumen of SubClavian Artery</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000001"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <owl:ObjectProperty>
+                                <owl:inverseOf rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                            </owl:ObjectProperty>
+                        </owl:onProperty>
+                        <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000007"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://purl.org/science/ontology/example/LUME0000012">
+        <rdfs:label
+            >Continuous with the Lumen of Radial Artery</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.org/science/ontology/example/LUME0000006"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://purl.org/science/ontology/example/LUME0000001"/>
+                            <owl:Restriction>
+                                <owl:onProperty>
+                                    <owl:ObjectProperty>
+                                        <owl:inverseOf rdf:resource="http://purl.org/science/ontology/example/LUME0000003"/>
+                                    </owl:ObjectProperty>
+                                </owl:onProperty>
+                                <owl:someValuesFrom rdf:resource="http://purl.org/science/ontology/example/LUME0000009"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+    
+
+
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+</rdf:RDF>

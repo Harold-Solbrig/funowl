@@ -1,0 +1,12 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/I5.8/premises017#"
+    xml:base="http://www.w3.org/2002/03owlt/I5.8/premises017" >
+   <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#decimal">
+      <owl:sameAs rdf:resource="#bar"/>
+   </rdf:Description>
+   <rdf:Description rdf:ID="xx">
+     <first:yy rdf:datatype="#bar">01</first:yy>
+   </rdf:Description>
+</rdf:RDF>

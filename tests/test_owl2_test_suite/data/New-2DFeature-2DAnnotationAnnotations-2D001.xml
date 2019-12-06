@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#">
+
+<owl:Ontology rdf:about="http://example.org/"/>
+
+<rdf:Description rdf:about="http://example.org/">
+  <rdfs:label>An example ontology</rdfs:label>
+</rdf:Description>
+
+<owl:Annotation>
+  <owl:annotatedSource rdf:resource="http://example.org/" />
+  <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#label" />
+  <owl:annotatedTarget>An example ontology</owl:annotatedTarget>
+  <author>Mike Smith</author>
+</owl:Annotation>
+
+<owl:AnnotationProperty rdf:about="author" />
+<owl:NamedIndividual rdf:about="i" />
+
+</rdf:RDF>

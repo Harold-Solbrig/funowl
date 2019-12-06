@@ -1,0 +1,30 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/equivalentProperty/premises004" >
+   <owl:Ontology/>
+   <owl:ObjectProperty rdf:ID="p">
+      <rdfs:domain rdf:resource="#d"/>
+   </owl:ObjectProperty>
+   <owl:ObjectProperty rdf:ID="q">
+      <rdfs:domain rdf:resource="#d"/>
+   </owl:ObjectProperty>
+   <owl:FunctionalProperty rdf:about="#q"/>
+   <owl:FunctionalProperty rdf:about="#p"/>
+   <owl:Thing rdf:ID="v"/>
+   <owl:Class rdf:ID="d">
+     <owl:equivalentClass>
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="#p"/>
+                <owl:hasValue rdf:resource="#v"/>
+              </owl:Restriction>
+     </owl:equivalentClass>
+     <owl:equivalentClass>
+              <owl:Restriction>
+                <owl:onProperty rdf:resource="#q"/>
+                <owl:hasValue rdf:resource="#v"/>
+              </owl:Restriction>
+     </owl:equivalentClass>
+   </owl:Class>
+</rdf:RDF>

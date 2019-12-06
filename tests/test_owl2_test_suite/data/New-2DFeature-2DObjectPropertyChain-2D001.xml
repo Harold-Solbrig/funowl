@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:ObjectProperty rdf:about="hasMother" />
+<owl:ObjectProperty rdf:about="hasSister" />
+<owl:ObjectProperty rdf:about="hasAunt" />
+
+<rdf:Description rdf:about="hasAunt">
+  <owl:propertyChainAxiom rdf:parseType="Collection">
+    <rdf:Description rdf:about="hasMother" />
+    <rdf:Description rdf:about="hasSister" />
+  </owl:propertyChainAxiom>
+</rdf:Description>
+
+<rdf:Description rdf:about="Stewie">
+  <hasMother rdf:resource="Lois" />
+</rdf:Description>
+
+<rdf:Description rdf:about="Lois">
+  <hasSister rdf:resource="Carol" />
+</rdf:Description>
+
+</rdf:RDF>

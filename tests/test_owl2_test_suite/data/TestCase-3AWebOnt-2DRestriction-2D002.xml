@@ -1,0 +1,20 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/Restriction/inconsistent002" >
+   <owl:Ontology/>
+   <owl:ObjectProperty rdf:ID="op"/>
+   <rdf:Description rdf:ID="a">
+     <rdf:type>
+        <owl:Restriction rdf:nodeID="r">
+           <owl:onProperty rdf:resource="#op"/>
+           <owl:someValuesFrom rdf:resource=
+     "http://www.w3.org/2002/07/owl#Nothing" />
+        </owl:Restriction>
+     </rdf:type>
+   </rdf:Description>
+   <rdf:Description rdf:ID="b">
+     <rdf:type rdf:nodeID="r"/>
+   </rdf:Description>
+               
+</rdf:RDF>

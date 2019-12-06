@@ -1,0 +1,48 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/I4.5/premises001#"
+    xml:base="http://www.w3.org/2002/03owlt/I4.5/premises001" >
+
+    <owl:Ontology/>
+
+    <owl:Class rdf:ID="EuropeanCountry" />
+    <owl:Class rdf:ID="Person" />
+
+    <owl:Class rdf:ID="EUCountry">
+      <owl:oneOf rdf:parseType="Collection">
+         <first:EuropeanCountry rdf:ID="UK"/>
+         <first:EuropeanCountry rdf:ID="BE"/>
+         <first:EuropeanCountry rdf:ID="ES"/>
+         <first:EuropeanCountry rdf:ID="FR"/>
+         <first:EuropeanCountry rdf:ID="NL"/>
+         <first:EuropeanCountry rdf:ID="PT"/>
+      </owl:oneOf>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:ID="hasEuroMP" >
+      <rdfs:domain rdf:resource="#EUCountry"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:ID="isEuroMPFrom" >
+      <owl:inverseOf rdf:resource="#hasEuroMP"/>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:ID="EuroMP">
+      <owl:equivalentClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEuroMPFrom" />
+          <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing" />
+        </owl:Restriction>
+      </owl:equivalentClass>
+    </owl:Class>
+
+    <first:Person rdf:ID="Kinnock" />
+
+    <first:EuropeanCountry rdf:about="#UK">
+      <first:hasEuroMP rdf:resource="#Kinnock" />
+    </first:EuropeanCountry>
+  
+
+</rdf:RDF>

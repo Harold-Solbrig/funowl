@@ -1,0 +1,21 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/Restriction/premises005" >
+  <owl:Ontology/>
+  <owl:Thing rdf:ID="x">
+    <rdf:type>
+      <owl:Restriction>
+        <rdf:type 
+    rdf:resource="http://www.w3.org/2000/01/rdf-schema#Class"/>
+        <owl:onProperty>
+           <owl:ObjectProperty rdf:about="premises005#p" />
+        </owl:onProperty>
+        <owl:maxCardinality rdf:datatype=
+  "http://www.w3.org/2001/XMLSchema#int"
+        >0</owl:maxCardinality>
+      </owl:Restriction>
+    </rdf:type>
+  </owl:Thing>
+  <owl:ObjectProperty rdf:ID="p" />
+</rdf:RDF>

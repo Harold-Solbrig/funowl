@@ -1,0 +1,19 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="http://owl2.test/rules/">
+  <owl:Ontology />
+  <owl:InverseFunctionalProperty rdf:about="http://owl2.test/rules/ifp">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules/Y2">
+    <j.0:ifp>
+      <owl:NamedIndividual rdf:about="http://owl2.test/rules/X2"/>
+    </j.0:ifp>
+  </owl:NamedIndividual>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules/X1"/>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules/Y1">
+    <owl:differentFrom rdf:resource="http://owl2.test/rules/Y2"/>
+    <j.0:ifp rdf:resource="http://owl2.test/rules/X1"/>
+  </owl:NamedIndividual>
+</rdf:RDF>

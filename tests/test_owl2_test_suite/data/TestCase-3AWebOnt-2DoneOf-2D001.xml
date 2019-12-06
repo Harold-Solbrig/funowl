@@ -1,0 +1,24 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/oneOf/consistent001#"
+    xml:base="http://www.w3.org/2002/03owlt/oneOf/consistent001" >
+   <owl:Ontology/>
+   <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+         <rdf:Description rdf:ID="amy"/>
+         <rdf:Description rdf:ID="bob"/>
+         <rdf:Description rdf:ID="caroline"/>
+      </owl:oneOf>
+      <owl:equivalentClass>
+           <owl:Class>
+             <owl:oneOf rdf:parseType="Collection">
+               <rdf:Description rdf:ID="yolanda"/>
+               <rdf:Description rdf:ID="zebedee"/>
+             </owl:oneOf>
+           </owl:Class>
+      </owl:equivalentClass>
+   </owl:Class>
+
+</rdf:RDF>

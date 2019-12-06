@@ -1,0 +1,23 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/intersectionOf/premises001#"
+    xml:base="http://www.w3.org/2002/03owlt/intersectionOf/premises001" >
+
+    <rdf:Description rdf:about="premises001#B">
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="premises001#Student"/>
+            <rdf:Description rdf:about="premises001#Employee"/>
+        </owl:intersectionOf>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="premises001#C">
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="premises001#Employee"/>
+            <rdf:Description rdf:about="premises001#Student"/>
+        </owl:intersectionOf>
+    </rdf:Description>
+
+    <first:B rdf:about="premises001#John"/>
+
+</rdf:RDF>

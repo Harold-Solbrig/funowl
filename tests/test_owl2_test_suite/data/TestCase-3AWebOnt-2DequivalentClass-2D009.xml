@@ -1,0 +1,35 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+ xml:base="http://www.w3.org/2002/03owlt/equivalentClass/consistent009" >
+ 
+   <owl:Ontology/>
+ <owl:Class rdf:nodeID="a">
+   <owl:oneOf rdf:parseType="Collection">
+      <owl:Thing rdf:ID="A"/>
+   </owl:oneOf>
+   <owl:equivalentClass>   
+     <owl:Class rdf:nodeID="b">
+       <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="B"/>
+       </owl:unionOf>
+     </owl:Class>
+   </owl:equivalentClass>  
+   <owl:equivalentClass>    
+     <owl:Class rdf:nodeID="c">
+       <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="C"/>
+       </owl:intersectionOf>
+     </owl:Class>
+   </owl:equivalentClass>  
+   <owl:equivalentClass>    
+     <owl:Class rdf:nodeID="d">
+       <owl:complementOf>
+          <owl:Class rdf:ID="D"/>
+       </owl:complementOf>
+     </owl:Class>
+   </owl:equivalentClass>  
+
+ </owl:Class>
+
+</rdf:RDF>

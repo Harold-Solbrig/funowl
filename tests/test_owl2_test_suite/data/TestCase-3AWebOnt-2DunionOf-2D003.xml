@@ -1,0 +1,23 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xml:base="http://www.w3.org/2002/03owlt/unionOf/premises003" >
+   <owl:Ontology/>
+   <owl:Class rdf:ID="A">
+     <owl:oneOf rdf:parseType="Collection">
+       <owl:Thing rdf:ID="a"/>
+     </owl:oneOf>
+   </owl:Class>
+   <owl:Class rdf:ID="B">
+     <owl:oneOf rdf:parseType="Collection">
+       <owl:Thing rdf:ID="b"/>
+     </owl:oneOf>
+   </owl:Class>
+   <owl:Class rdf:ID="A-and-B">
+     <owl:oneOf rdf:parseType="Collection">
+       <owl:Thing rdf:about="#a"/>
+       <owl:Thing rdf:about="#b"/>
+     </owl:oneOf>
+   </owl:Class>
+
+</rdf:RDF>

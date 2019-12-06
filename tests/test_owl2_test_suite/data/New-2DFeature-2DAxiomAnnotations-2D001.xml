@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+<owl:Ontology/>
+
+<owl:Class rdf:about="Child" />
+<owl:Class rdf:about="Person" />
+
+<rdf:Description rdf:about="Child">
+  <rdfs:subClassOf rdf:resource="Person" />
+</rdf:Description>
+
+<owl:Axiom>
+  <owl:annotatedSource rdf:resource="Child" />
+  <owl:annotatedProperty rdf:resource="http://www.w3.org/2000/01/rdf-schema#subClassOf" />
+  <owl:annotatedTarget rdf:resource="Person" />
+  <rdfs:comment>Children are people.</rdfs:comment>
+</owl:Axiom>
+
+</rdf:RDF>

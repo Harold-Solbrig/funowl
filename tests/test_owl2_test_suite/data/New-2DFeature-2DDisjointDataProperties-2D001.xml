@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:DatatypeProperty rdf:about="hasName" />
+<owl:DatatypeProperty rdf:about="hasAddress" />
+
+<rdf:Description rdf:about="hasName">
+  <owl:propertyDisjointWith rdf:resource="hasAddress" />
+</rdf:Description>
+
+<rdf:Description rdf:about="Peter">
+  <hasName>Peter Griffin</hasName>
+  <hasAddress>Peter Griffin</hasAddress>
+</rdf:Description>
+
+</rdf:RDF>

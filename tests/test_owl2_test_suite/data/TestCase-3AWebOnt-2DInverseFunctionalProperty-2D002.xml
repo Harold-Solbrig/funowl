@@ -1,0 +1,14 @@
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:owl ="http://www.w3.org/2002/07/owl#"
+  xmlns:eg ="http://www.example.org/"
+  xmlns:first="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises002#" 
+  xml:base="http://www.w3.org/2002/03owlt/InverseFunctionalProperty/premises002" >
+    <owl:InverseFunctionalProperty rdf:ID="prop"/>
+    <rdf:Description rdf:ID="subject1" >
+      <first:prop rdf:resource="#object" />
+      <eg:prop2>value</eg:prop2>
+    </rdf:Description>
+    <rdf:Description rdf:ID="subject2" >
+      <first:prop rdf:resource="#object" />
+    </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,14 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/Class/premises004#"
+    xmlns:dc='http://purl.org/dc/elements/1.0/'
+    xml:base="http://www.w3.org/2002/03owlt/Class/premises004" >
+   <owl:Class rdf:ID="WorkingGroup"/>
+   <owl:Class rdf:about="http://www.w3.org/2000/01/rdf-schema#Class">
+     <dc:creator>
+        <first:WorkingGroup 
+          rdf:about="http://www.w3.org/RDF/Group/Schema/members" />
+     </dc:creator>
+   </owl:Class>
+</rdf:RDF>

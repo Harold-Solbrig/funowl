@@ -1,0 +1,9 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xml:base="http://www.w3.org/2002/03owlt/I5.5/inconsistent003" >
+   <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil">
+       <rdf:rest>
+          <rdf:Description />
+       </rdf:rest>
+   </rdf:Description>
+</rdf:RDF>

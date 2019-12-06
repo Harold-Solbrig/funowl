@@ -1,0 +1,22 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/disjointWith/inconsistent010#"
+    xml:base="http://www.w3.org/2002/03owlt/disjointWith/inconsistent010" >
+
+ <owl:Restriction rdf:nodeID="n">
+     <owl:onProperty>
+        <owl:ObjectProperty rdf:about="#p" />
+     </owl:onProperty>
+     <owl:minCardinality rdf:datatype=
+ "http://www.w3.org/2001/XMLSchema#int"
+     >1</owl:minCardinality>
+     <owl:disjointWith rdf:nodeID="n"/>
+  </owl:Restriction>
+  <owl:Thing>
+     <first:p>
+        <owl:Thing/>
+     </first:p>
+  </owl:Thing>
+
+</rdf:RDF>

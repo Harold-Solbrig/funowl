@@ -1,0 +1,11 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="http://owl2.test/rules#">
+  <owl:Ontology />
+  <owl:ObjectProperty rdf:about="http://owl2.test/rules#op"/>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules#I"/>
+  <owl:NamedIndividual>
+    <j.0:op rdf:resource="http://owl2.test/rules#I"/>
+  </owl:NamedIndividual>
+</rdf:RDF>

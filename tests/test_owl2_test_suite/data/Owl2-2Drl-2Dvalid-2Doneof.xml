@@ -1,0 +1,16 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology />
+  <owl:Class rdf:about="http://owl2.test/rules#Cb"/>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules#X"/>
+  <owl:NamedIndividual rdf:about="http://owl2.test/rules#Y"/>
+  <rdf:Description>
+    <rdfs:subClassOf rdf:resource="http://owl2.test/rules#Cb"/>
+    <owl:oneOf rdf:parseType="Collection">
+      <owl:NamedIndividual rdf:about="http://owl2.test/rules#X"/>
+      <owl:NamedIndividual rdf:about="http://owl2.test/rules#Y"/>
+    </owl:oneOf>
+  </rdf:Description>
+</rdf:RDF>

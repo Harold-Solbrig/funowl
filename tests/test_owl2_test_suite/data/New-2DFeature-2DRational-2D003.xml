@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#">
+
+<owl:Ontology/>
+
+<owl:DatatypeProperty rdf:about="dp" />
+
+<rdf:Description rdf:about="a">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="dp" />
+      <owl:allValuesFrom>
+        <rdfs:Datatype>
+          <owl:oneOf>
+            <rdf:Description>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3333333333333333</rdf:first>
+              <rdf:rest>
+                <rdf:Description>
+                  <rdf:first rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/3</rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+                </rdf:Description>
+              </rdf:rest>
+            </rdf:Description>
+          </owl:oneOf>
+        </rdfs:Datatype>
+      </owl:allValuesFrom>
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+<rdf:Description rdf:about="a">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="dp" />
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+</rdf:RDF>

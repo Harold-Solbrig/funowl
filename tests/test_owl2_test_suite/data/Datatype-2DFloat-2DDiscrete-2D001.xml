@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/ontology/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd = "http://www.w3.org/2001/XMLSchema#" >
+
+<owl:Ontology/>
+
+<owl:DatatypeProperty rdf:about="dp" />
+
+<rdf:Description rdf:about="a">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="dp" />
+      <owl:someValuesFrom>
+        <rdfs:Datatype>
+          <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float" />
+          <owl:withRestrictions rdf:parseType="Collection">
+            <rdf:Description>
+              <xsd:minExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">0.0</xsd:minExclusive>
+            </rdf:Description>
+            <rdf:Description>
+              <xsd:maxExclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1.401298464324817e-45</xsd:maxExclusive>
+            </rdf:Description>
+          </owl:withRestrictions>
+        </rdfs:Datatype>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+</rdf:RDF>

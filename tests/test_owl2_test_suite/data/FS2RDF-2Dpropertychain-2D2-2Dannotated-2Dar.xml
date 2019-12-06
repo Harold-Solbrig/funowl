@@ -1,0 +1,27 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:ObjectProperty rdf:about="http://example.org/r"/>
+  <owl:ObjectProperty rdf:about="http://example.org/p">
+    <owl:propertyChainAxiom>
+      <rdf:Description rdf:nodeID="A0">
+        <rdf:first>
+          <owl:ObjectProperty rdf:about="http://example.org/q"/>
+        </rdf:first>
+        <rdf:rest rdf:parseType="Collection">
+          <owl:ObjectProperty rdf:about="http://example.org/r"/>
+        </rdf:rest>
+      </rdf:Description>
+    </owl:propertyChainAxiom>
+  </owl:ObjectProperty>
+  <owl:Axiom>
+    <owl:annotatedSource rdf:resource="http://example.org/p"/>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#propertyChainAxiom"/>
+    <owl:annotatedTarget rdf:nodeID="A0"/>
+    <rdfs:comment>I hereby annotate this</rdfs:comment>
+  </owl:Axiom>
+</rdf:RDF>

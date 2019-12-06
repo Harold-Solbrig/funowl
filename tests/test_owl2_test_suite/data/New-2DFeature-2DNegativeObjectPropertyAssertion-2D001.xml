@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:ObjectProperty rdf:about="hasSon" />
+
+<owl:NegativePropertyAssertion>
+  <owl:sourceIndividual rdf:resource="Peter" />
+  <owl:assertionProperty rdf:resource="hasSon" />
+  <owl:targetIndividual rdf:resource="Meg" />
+</owl:NegativePropertyAssertion>
+
+<rdf:Description rdf:about="Peter">
+  <hasSon rdf:resource="Meg" />
+</rdf:Description>
+
+</rdf:RDF>

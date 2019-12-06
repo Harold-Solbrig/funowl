@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:Class rdf:about="Boy" />
+<owl:Class rdf:about="Girl" />
+<owl:Class rdf:about="Dog" />
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="Boy" />
+    <rdf:Description rdf:about="Girl" />
+    <rdf:Description rdf:about="Dog" />
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<Boy rdf:about="Stewie" />
+
+</rdf:RDF>

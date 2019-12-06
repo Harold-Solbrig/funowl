@@ -1,0 +1,16 @@
+<rdf:RDF 
+    xmlns:my="http://example.net/myVocab#"
+    xmlns:eg="http://example.net/vocab#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xml:base='http://www.w3.org/2002/03owlt/inverseOf/premises001'
+    xmlns:your="http://example.net/yourVocab#">
+
+    <rdf:Description rdf:about="http://example.net/myVocab#hasBrother">
+        <owl:inverseOf rdf:resource="http://example.net/yourVocab#isBrotherOf"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://example.net/vocab#joe">
+        <my:hasBrother rdf:resource="http://example.net/vocab#bob"/>
+    </rdf:Description>
+</rdf:RDF>

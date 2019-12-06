@@ -1,0 +1,15 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:first="http://www.w3.org/2002/03owlt/imports/imports008#"
+    xmlns:second="http://www.w3.org/2002/03owlt/imports/main008#"
+    xml:base="http://www.w3.org/2002/03owlt/imports/main008" >
+    <owl:Ontology rdf:about="">
+      <owl:imports> 
+         <owl:Ontology rdf:about="imports008"/>
+      </owl:imports>
+    </owl:Ontology>
+    <owl:Class rdf:about="imports008#sub"/>
+    <owl:Class rdf:about="imports008#super"/>
+</rdf:RDF>

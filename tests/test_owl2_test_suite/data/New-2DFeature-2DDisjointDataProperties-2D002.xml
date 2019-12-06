@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:DatatypeProperty rdf:about="hasName" />
+<owl:DatatypeProperty rdf:about="hasAddress" />
+<owl:DatatypeProperty rdf:about="hasZip" />
+
+<owl:AllDisjointProperties>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="hasName" />
+    <rdf:Description rdf:about="hasAddress" />
+    <rdf:Description rdf:about="hasZip" />
+  </owl:members>
+</owl:AllDisjointProperties>
+
+<rdf:Description rdf:about="Peter">
+  <hasName>Peter Griffin</hasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="Peter_Griffin">
+  <hasAddress>Peter Griffin</hasAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="Petre">
+  <hasZip>Peter Griffin</hasZip>
+</rdf:Description>
+
+</rdf:RDF>
