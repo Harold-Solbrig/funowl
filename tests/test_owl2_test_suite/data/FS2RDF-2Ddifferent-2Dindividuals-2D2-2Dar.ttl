@@ -8,8 +8,7 @@
 
 <http://example.org/b> a :NamedIndividual .
 
-[] a :AllDifferent ;
-    :distinctMembers ( <http://example.org/a> <http://example.org/b> ) .
-
 [] a :Ontology .
+
+<http://example.org/a> :differentFrom <http://example.org/b> .
 

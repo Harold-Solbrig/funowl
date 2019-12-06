@@ -40,7 +40,10 @@
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
-
+    <Class rdf:about="http://example.org/a">
+        <differentFrom rdf:resource="http://example.org/b"/>
+    </Class>
+    <!-- Test Case ERROR: distinctMembers doesn't count with 2 entries
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <distinctMembers rdf:parseType="Collection">
@@ -48,6 +51,7 @@
             <rdf:Description rdf:about="http://example.org/b"/>
         </distinctMembers>
     </rdf:Description>
+    -->
 </rdf:RDF>
 
 
