@@ -41,21 +41,21 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent907#cardinality-N> a :Class ;
     :equivalentClass [ a :Restriction ;
-            :cardinality "300"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invQ-1-to-M> ],
-        [ a :Restriction ;
             :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#p-N-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent907#only-d> ] .
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent907#only-d> ],
+        [ a :Restriction ;
+            :cardinality "300"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invQ-1-to-M> ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent907#only-d> a :Class ;
-    :equivalentClass [ a :Restriction ;
-            :cardinality "200"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invP-1-to-N> ],
-        [ a :Class ;
+    :equivalentClass [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent907#d> ) ],
         [ a :Restriction ;
             :cardinality "60000"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invR-N-times-M-to-1> ] .
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invR-N-times-M-to-1> ],
+        [ a :Restriction ;
+            :cardinality "200"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent907#invP-1-to-N> ] .
 
 [] a :Ontology .
 

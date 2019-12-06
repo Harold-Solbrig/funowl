@@ -19,8 +19,8 @@ example:Man a :Class .
 example:Stewie a example:Man,
         :NamedIndividual .
 
-[] a :Ontology .
-
 [] a :AllDifferent ;
     :distinctMembers ( example:Chris example:Stewie ) .
+
+[] a :Ontology .
 

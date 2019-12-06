@@ -10,10 +10,10 @@ example:Meg a :NamedIndividual ;
 
 example:hasAge a :DatatypeProperty .
 
+[] a :Ontology .
+
 [] a :NegativePropertyAssertion ;
     :assertionProperty example:hasAge ;
     :sourceIndividual example:Meg ;
     :targetValue 5 .
-
-[] a :Ontology .
 

@@ -20,12 +20,12 @@
 
 <http://www.w3.org/2002/03owlt/I5.1/consistent010#q> a :ObjectProperty .
 
-[] a :Ontology .
-
 [] a :Restriction ;
     :equivalentClass [ a :Restriction ;
             :onProperty <http://www.w3.org/2002/03owlt/I5.1/consistent010#p> ;
             :someValuesFrom xsd:unsignedInt ] ;
     :hasValue <http://www.w3.org/2002/03owlt/I5.1/consistent010#spy> ;
     :onProperty <http://www.w3.org/2002/03owlt/I5.1/consistent010#q> .
+
+[] a :Ontology .
 

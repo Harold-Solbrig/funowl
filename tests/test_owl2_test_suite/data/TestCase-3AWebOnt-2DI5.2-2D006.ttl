@@ -20,11 +20,11 @@
             :someValuesFrom :Thing ] .
 
 <http://www.w3.org/2002/03owlt/I5.2/premises006#notAorB> a :Class ;
-    :equivalentClass [ a :Restriction ;
+    :equivalentClass [ a :Class ;
+            :intersectionOf ( <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> <http://www.w3.org/2002/03owlt/I5.2/premises006#notB> ) ],
+        [ a :Restriction ;
             :allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/premises006#Nothing> ;
-            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ],
-        [ a :Class ;
-            :intersectionOf ( <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> <http://www.w3.org/2002/03owlt/I5.2/premises006#notB> ) ] .
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises006#s> ] .
 
 <http://www.w3.org/2002/03owlt/I5.2/premises006#notA> a :Class ;
     :equivalentClass [ a :Restriction ;

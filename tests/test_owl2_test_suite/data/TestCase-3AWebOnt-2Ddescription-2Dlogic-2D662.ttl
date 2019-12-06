@@ -40,19 +40,19 @@ test:C28 a owl:Class ;
 
 test:C32 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C2 ],
-        [ a owl:Restriction ;
             owl:cardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.7 ] .
+            owl:onProperty :P.7 ],
+        [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
 
 test:C34 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C32.comp ],
-        [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.9 ] .
+            owl:onProperty :P.9 ],
+        [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C32.comp ] .
 
 test:C36 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -72,11 +72,11 @@ test:C44 a owl:Class ;
 
 test:C48 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C2.comp ],
-        [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.12 ] .
+            owl:onProperty :P.12 ],
+        [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2.comp ] .
 
 test:C50 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -96,11 +96,11 @@ test:C54 a owl:Class ;
 
 test:C6 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.28 ],
-        [ a owl:Restriction ;
             owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C2.comp ] .
+            owl:someValuesFrom test:C2.comp ],
+        [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.28 ] .
 
 test:C62 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -112,11 +112,11 @@ test:C62 a owl:Class ;
 
 test:C74 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C72 ],
-        [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.18 ] .
+            owl:onProperty :P.18 ],
+        [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C72 ] .
 
 test:C78 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -128,11 +128,11 @@ test:C78 a owl:Class ;
 
 test:C82 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
-            owl:cardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.25 ],
-        [ a owl:Restriction ;
             owl:onProperty test:R1 ;
-            owl:someValuesFrom test:C80 ] .
+            owl:someValuesFrom test:C80 ],
+        [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.25 ] .
 
 test:C84 a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -211,11 +211,11 @@ test:C24 a owl:Class ;
             owl:someValuesFrom test:C22 ] .
 
 test:C26 a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C20.comp test:C24 ) ],
+        [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.30 ],
-        [ a owl:Class ;
-            owl:intersectionOf ( test:C20.comp test:C24 ) ] .
+            owl:onProperty :P.30 ] .
 
 test:C26.comp a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;
@@ -257,11 +257,11 @@ test:C40 a owl:Class ;
             owl:someValuesFrom test:C38 ] .
 
 test:C42 a owl:Class ;
-    owl:equivalentClass [ a owl:Restriction ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C34.comp test:C40 ) ],
+        [ a owl:Restriction ;
             owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.31 ],
-        [ a owl:Class ;
-            owl:intersectionOf ( test:C34.comp test:C40 ) ] .
+            owl:onProperty :P.31 ] .
 
 test:C42.comp a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;

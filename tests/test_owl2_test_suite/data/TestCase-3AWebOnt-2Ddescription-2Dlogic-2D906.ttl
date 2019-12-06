@@ -18,11 +18,11 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent906#cardinality-N-times-M> a :Class ;
     :equivalentClass [ a :Restriction ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#q-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent906#cardinality-N> ],
-        [ a :Restriction ;
             :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#r-N-times-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent906#only-d> ] .
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent906#only-d> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#q-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent906#cardinality-N> ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent906#p-N-to-1> a :FunctionalProperty,
         :ObjectProperty ;
@@ -49,13 +49,13 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent906#only-d> a :Class ;
     :equivalentClass [ a :Restriction ;
+            :cardinality "20"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#invP-1-to-N> ],
+        [ a :Restriction ;
             :cardinality "600"^^xsd:nonNegativeInteger ;
             :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#invR-N-times-M-to-1> ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent906#d> ) ],
-        [ a :Restriction ;
-            :cardinality "20"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent906#invP-1-to-N> ] .
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent906#d> ) ] .
 
 [] a :Ontology .
 

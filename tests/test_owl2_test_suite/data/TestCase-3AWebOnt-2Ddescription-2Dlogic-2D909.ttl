@@ -33,11 +33,11 @@
     :inverseOf <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#r-N-times-M-to-1> .
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#only-d> a :Class ;
-    :equivalentClass [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d> ) ],
-        [ a :Restriction ;
+    :equivalentClass [ a :Restriction ;
             :maxCardinality "1000000000"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K> ] .
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invF-1-to-K> ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#d> ) ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> a :FunctionalProperty,
         :ObjectProperty ;
@@ -56,11 +56,11 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#cardinality-N> a :Class ;
     :equivalentClass [ a :Restriction ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> ],
-        [ a :Restriction ;
             :cardinality "3"^^xsd:nonNegativeInteger ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M> ] .
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#invQ-1-to-M> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#p-N-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/inconsistent909#finite> a :Class ;
     :equivalentClass [ a :Restriction ;

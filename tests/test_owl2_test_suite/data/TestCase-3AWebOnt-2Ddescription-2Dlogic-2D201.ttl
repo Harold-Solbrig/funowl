@@ -10,35 +10,31 @@
             owl:intersectionOf ( <http://oiled.man.example.net/test#C140> <http://oiled.man.example.net/test#C6> ) ] .
 
 <http://oiled.man.example.net/test#V822576> a [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C112> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C134> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C96> ],
-        [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C84> ],
         [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C76> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C100> ],
+        [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C108> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C18> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C102> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C90> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C10> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C92> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C78> ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf <http://oiled.man.example.net/test#C82> ] ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
         [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C18> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C78> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C90> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C92> ],
+        [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C86> ],
         [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C100> ],
+            owl:complementOf <http://oiled.man.example.net/test#C102> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C10> ],
         [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C132> ],
         [ a owl:Restriction ;
@@ -50,7 +46,11 @@
                     owl:complementOf <http://oiled.man.example.net/test#C88> ] ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
         [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C76> ],
+            owl:complementOf <http://oiled.man.example.net/test#C96> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C112> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C134> ],
         <http://oiled.man.example.net/test#C16>,
         <http://oiled.man.example.net/test#C2>,
         <http://oiled.man.example.net/test#C34>,

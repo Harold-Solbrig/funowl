@@ -6,9 +6,9 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error51>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error58>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent007#B>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent007#C>))
 
-ClassAssertion(ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/I5.26/consistent007#B> ObjectUnionOf(<http://org.semanticweb.owlapi/error#Error51> <http://www.w3.org/2002/03owlt/I5.26/consistent007#C>)) _:genid27208)
+ClassAssertion(ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/I5.26/consistent007#B> ObjectUnionOf(<http://org.semanticweb.owlapi/error#Error58> <http://www.w3.org/2002/03owlt/I5.26/consistent007#C>)) _:genid33734)
 )

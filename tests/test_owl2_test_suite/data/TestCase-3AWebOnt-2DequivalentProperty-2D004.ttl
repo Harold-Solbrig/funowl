@@ -15,10 +15,10 @@
 <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#d> a :Class ;
     :equivalentClass [ a :Restriction ;
             :hasValue <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> ;
-            :onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#p> ],
+            :onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#q> ],
         [ a :Restriction ;
             :hasValue <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> ;
-            :onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#q> ] .
+            :onProperty <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#p> ] .
 
 <http://www.w3.org/2002/03owlt/equivalentProperty/premises004#v> a :NamedIndividual,
         :Thing .

@@ -5,10 +5,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/a> a [ a :Restriction ;
-            :allValuesFrom :rational ;
+            :minCardinality "2"^^xsd:nonNegativeInteger ;
             :onProperty <http://example.org/dp> ],
         [ a :Restriction ;
-            :minCardinality "2"^^xsd:nonNegativeInteger ;
+            :allValuesFrom :rational ;
             :onProperty <http://example.org/dp> ],
         :NamedIndividual .
 

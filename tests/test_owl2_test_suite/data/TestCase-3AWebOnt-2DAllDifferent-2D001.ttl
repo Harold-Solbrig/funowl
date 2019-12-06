@@ -18,8 +18,8 @@
 
 <http://www.w3.org/2002/03owlt/AllDifferent/premises001#Person> a :Class .
 
-[] a :Ontology .
-
 [] a :AllDifferent ;
     :distinctMembers ( <http://www.w3.org/2002/03owlt/AllDifferent/premises001#Barney> <http://www.w3.org/2002/03owlt/AllDifferent/premises001#Betty> <http://www.w3.org/2002/03owlt/AllDifferent/premises001#Fred> <http://www.w3.org/2002/03owlt/AllDifferent/premises001#Wilma> ) .
+
+[] a :Ontology .
 

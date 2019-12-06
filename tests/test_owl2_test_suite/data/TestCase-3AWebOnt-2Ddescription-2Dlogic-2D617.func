@@ -56,5 +56,5 @@ SubClassOf(owl:Thing ObjectMaxCardinality(1 oiled:f1))
 SubClassOf(owl:Thing ObjectMaxCardinality(1 oiled:f2))
 
 
-ClassAssertion(oiled:Unsatisfiable _:genid22614)
+ClassAssertion(oiled:Unsatisfiable _:genid36290)
 )

@@ -10,8 +10,8 @@ consistent010:p a :ObjectProperty .
 consistent010:c a :Class,
         :NamedIndividual .
 
+[] a :Ontology .
+
 [] a :Thing ;
     consistent010:p consistent010:c .
-
-[] a :Ontology .
 

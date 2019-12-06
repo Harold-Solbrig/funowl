@@ -6,26 +6,26 @@
 
 <http://example.org/A> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
+            :allValuesFrom :real ;
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
             :onProperty <http://example.org/dp> ;
             :someValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
                             rdf:first "-INF"^^xsd:float ;
                             rdf:rest [ a rdf:List ;
                                     rdf:first 0 ;
-                                    rdf:rest () ] ] ] ],
-        [ a :Restriction ;
-            :allValuesFrom :real ;
-            :onProperty <http://example.org/dp> ] .
+                                    rdf:rest () ] ] ] ] .
 
 <http://example.org/a> a <http://example.org/A>,
         :NamedIndividual .
 
 <http://example.org/dp> a :DatatypeProperty .
 
-[] a :Ontology .
-
 [] a :NegativePropertyAssertion ;
     :assertionProperty <http://example.org/dp> ;
     :sourceIndividual <http://example.org/a> ;
     :targetValue "0"^^xsd:unsignedInt .
+
+[] a :Ontology .
 

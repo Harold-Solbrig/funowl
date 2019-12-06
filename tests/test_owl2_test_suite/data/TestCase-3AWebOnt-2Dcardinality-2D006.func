@@ -6,8 +6,8 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 
 Ontology(
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error46>))
-Declaration(Class(<http://org.semanticweb.owlapi/error#Error47>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error62>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error63>))
 Declaration(Class(<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c>))
 Declaration(AnnotationProperty(owl:maxCardinality))
 Declaration(AnnotationProperty(owl:minCardinality))
@@ -19,9 +19,9 @@ Declaration(AnnotationProperty(owl:minCardinality))
 
 # Class: <http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> (<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c>)
 
-EquivalentClasses(<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> ObjectIntersectionOf(<http://org.semanticweb.owlapi/error#Error46> <http://org.semanticweb.owlapi/error#Error47>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> ObjectIntersectionOf(<http://org.semanticweb.owlapi/error#Error62> <http://org.semanticweb.owlapi/error#Error63>))
 
 
-AnnotationAssertion(owl:minCardinality _:genid23025 "1"^^xsd:nonNegativeInteger)
-AnnotationAssertion(owl:maxCardinality _:genid23026 "1"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:minCardinality _:genid37052 "1"^^xsd:nonNegativeInteger)
+AnnotationAssertion(owl:maxCardinality _:genid37053 "1"^^xsd:nonNegativeInteger)
 )

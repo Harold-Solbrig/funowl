@@ -20,9 +20,9 @@ FunctionalDataProperty(first:fp)
 
 
 
-ClassAssertion(owl:Thing _:genid29561)
-DataPropertyAssertion(first:fp _:genid29561 "<span xml:lang=\"en\">
+ClassAssertion(owl:Thing _:genid35694)
+DataPropertyAssertion(first:fp _:genid35694 "<span xml:lang=\"en\">
         <b>Bad!</b></span>"^^rdf:XMLLiteral)
-DataPropertyAssertion(first:fp _:genid29561 "<span xml:lang=\"en\">
+DataPropertyAssertion(first:fp _:genid35694 "<span xml:lang=\"en\">
         <b>Good!</b></span>"^^rdf:XMLLiteral)
 )

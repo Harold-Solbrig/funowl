@@ -5,15 +5,15 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/a> a [ a :Restriction ;
-            :minCardinality "2"^^xsd:nonNegativeInteger ;
-            :onProperty <http://example.org/dp> ],
-        [ a :Restriction ;
             :allValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
                             rdf:first 0.5 ;
                             rdf:rest [ a rdf:List ;
                                     rdf:first "1/2"^^:rational ;
                                     rdf:rest () ] ] ] ;
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
+            :minCardinality "2"^^xsd:nonNegativeInteger ;
             :onProperty <http://example.org/dp> ],
         :NamedIndividual .
 

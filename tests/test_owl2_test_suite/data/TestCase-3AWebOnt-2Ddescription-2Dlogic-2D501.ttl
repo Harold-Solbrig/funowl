@@ -8,117 +8,117 @@
     :equivalentClass [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#F> <http://www.w3.org/2002/03owlt/description-logic/consistent501#T> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#F> <http://www.w3.org/2002/03owlt/description-logic/consistent501#T> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ] .
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent501#F> a :NamedIndividual,
         :Thing .
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent501#T> a [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
+        [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> ) ],
         [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> ) ],
         [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus6> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus4> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus6> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus7> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus1> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus9> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus8> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus9> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus1> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
-        [ a :Class ;
-            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus8> ) ],
+            :oneOf ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus2> <http://www.w3.org/2002/03owlt/description-logic/consistent501#minus5> <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus3> ) ],
         :NamedIndividual,
         :Thing .
 
@@ -176,8 +176,8 @@
 <http://www.w3.org/2002/03owlt/description-logic/consistent501#plus7> a :NamedIndividual,
         :Thing .
 
-[] a :Ontology .
-
 [] a :AllDifferent ;
     :distinctMembers ( <http://www.w3.org/2002/03owlt/description-logic/consistent501#F> <http://www.w3.org/2002/03owlt/description-logic/consistent501#T> ) .
+
+[] a :Ontology .
 

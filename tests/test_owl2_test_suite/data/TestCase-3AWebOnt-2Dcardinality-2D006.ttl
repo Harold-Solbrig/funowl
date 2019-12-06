@@ -6,19 +6,19 @@
 
 <http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> a :Class ;
     :equivalentClass [ a :Class ;
-            :intersectionOf ( <http://org.semanticweb.owlapi/error#Error46> <http://org.semanticweb.owlapi/error#Error47> ) ] .
+            :intersectionOf ( <http://org.semanticweb.owlapi/error#Error62> <http://org.semanticweb.owlapi/error#Error63> ) ] .
 
 :maxCardinality a :AnnotationProperty .
 
 :minCardinality a :AnnotationProperty .
 
-<http://org.semanticweb.owlapi/error#Error46> a :Class .
+<http://org.semanticweb.owlapi/error#Error62> a :Class .
 
-<http://org.semanticweb.owlapi/error#Error47> a :Class .
+<http://org.semanticweb.owlapi/error#Error63> a :Class .
+
+[] :maxCardinality "1"^^xsd:nonNegativeInteger .
 
 [] a :Ontology .
 
 [] :minCardinality "1"^^xsd:nonNegativeInteger .
-
-[] :maxCardinality "1"^^xsd:nonNegativeInteger .
 

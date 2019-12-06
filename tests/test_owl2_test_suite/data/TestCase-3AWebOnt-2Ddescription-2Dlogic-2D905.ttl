@@ -18,11 +18,11 @@
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent905#cardinality-N-times-M> a :Class ;
     :equivalentClass [ a :Restriction ;
-            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent905#q-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent905#cardinality-N> ],
-        [ a :Restriction ;
             :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent905#r-N-times-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent905#only-d> ] .
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent905#only-d> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent905#q-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent905#cardinality-N> ] .
 
 <http://www.w3.org/2002/03owlt/description-logic/consistent905#p-N-to-1> a :FunctionalProperty,
         :ObjectProperty ;

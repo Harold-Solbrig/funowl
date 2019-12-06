@@ -10,10 +10,10 @@
 
 <http://owl2.test/rules#op> a :ObjectProperty .
 
+[] a :Ontology .
+
 [] a :Restriction ;
     rdfs:subClassOf <http://owl2.test/rules#C> ;
     :allValuesFrom <http://owl2.test/rules#C1> ;
     :onProperty <http://owl2.test/rules#op> .
-
-[] a :Ontology .
 

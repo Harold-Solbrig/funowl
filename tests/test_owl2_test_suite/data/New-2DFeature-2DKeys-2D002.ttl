@@ -15,8 +15,8 @@ example:Peter_Griffin a :NamedIndividual ;
 
 example:hasSSN a :DatatypeProperty .
 
+[] a :Ontology .
+
 [] a :AllDifferent ;
     :distinctMembers ( example:Peter example:Peter_Griffin ) .
-
-[] a :Ontology .
 

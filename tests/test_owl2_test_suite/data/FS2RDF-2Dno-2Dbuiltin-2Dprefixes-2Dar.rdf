@@ -25,9 +25,6 @@
 
     <NamedIndividual rdf:about="http://example.org/a">
         <sameAs rdf:resource="http://example.org/b"/>
-        <sameAs rdf:resource="http://example.org/c"/>
-        <sameAs rdf:resource="http://example.org/d"/>
-        <sameAs rdf:resource="http://example.org/e"/>
     </NamedIndividual>
     
 
@@ -36,8 +33,6 @@
 
     <NamedIndividual rdf:about="http://example.org/b">
         <sameAs rdf:resource="http://example.org/c"/>
-        <sameAs rdf:resource="http://example.org/d"/>
-        <sameAs rdf:resource="http://example.org/e"/>
     </NamedIndividual>
     
 
@@ -46,7 +41,6 @@
 
     <NamedIndividual rdf:about="http://example.org/c">
         <sameAs rdf:resource="http://example.org/d"/>
-        <sameAs rdf:resource="http://example.org/e"/>
     </NamedIndividual>
     
 

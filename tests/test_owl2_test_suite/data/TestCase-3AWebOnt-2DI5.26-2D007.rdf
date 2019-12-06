@@ -21,9 +21,9 @@
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error51 -->
+    <!-- http://org.semanticweb.owlapi/error#Error58 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error51"/>
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error58"/>
     
 
 
@@ -43,7 +43,7 @@
                     <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I5.26/consistent007#B"/>
                     <Class>
                         <unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error51"/>
+                            <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error58"/>
                             <rdf:Description rdf:about="http://www.w3.org/2002/03owlt/I5.26/consistent007#C"/>
                         </unionOf>
                     </Class>

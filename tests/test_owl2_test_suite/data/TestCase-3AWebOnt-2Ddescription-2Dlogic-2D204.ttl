@@ -6,40 +6,40 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://oiled.man.example.net/test#V3102> a [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C42> ],
+            owl:complementOf <http://oiled.man.example.net/test#C100> ],
         [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C26> ],
         [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C16> ],
+            owl:complementOf <http://oiled.man.example.net/test#C12> ],
         [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C100> ],
+            owl:complementOf <http://oiled.man.example.net/test#C42> ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf <http://oiled.man.example.net/test#C60> ] ;
+                    owl:complementOf <http://oiled.man.example.net/test#C10> ] ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf <http://oiled.man.example.net/test#C24> ] ;
-            owl:onProperty <http://oiled.man.example.net/test#R1> ],
-        [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C214> ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf <http://oiled.man.example.net/test#C40> ] ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
         [ a owl:Class ;
-            owl:complementOf <http://oiled.man.example.net/test#C12> ],
+            owl:complementOf <http://oiled.man.example.net/test#C16> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <http://oiled.man.example.net/test#C98> ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C24> ] ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
         [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C62> ],
         [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf <http://oiled.man.example.net/test#C10> ] ;
+            owl:allValuesFrom <http://oiled.man.example.net/test#C98> ;
             owl:onProperty <http://oiled.man.example.net/test#R1> ],
         [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C2> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C60> ] ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C214> ],
         [ a owl:Class ;
             owl:complementOf <http://oiled.man.example.net/test#C32> ],
         <http://oiled.man.example.net/test#TEST>,

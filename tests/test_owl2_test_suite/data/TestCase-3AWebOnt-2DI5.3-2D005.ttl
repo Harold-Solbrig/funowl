@@ -7,7 +7,7 @@
 
 consistent005:p a :AnnotationProperty .
 
-[] a :Ontology .
-
 [] consistent005:p [ ] .
+
+[] a :Ontology .
 

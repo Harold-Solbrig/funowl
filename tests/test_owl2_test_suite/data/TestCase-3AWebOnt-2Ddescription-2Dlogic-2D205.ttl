@@ -50,12 +50,12 @@ test:TEST a owl:Class ;
             owl:intersectionOf ( test:C18 test:TOP ) ] .
 
 test:V16561 a [ a owl:Class ;
-            owl:complementOf test:C2 ],
+            owl:complementOf test:C4 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C2 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C4 ],
+            owl:complementOf test:C2 ],
         owl:NamedIndividual,
         owl:Thing .
 

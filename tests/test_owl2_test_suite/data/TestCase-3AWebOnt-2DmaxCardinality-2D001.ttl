@@ -24,11 +24,11 @@ inconsistent001:ob3 a :NamedIndividual .
 [] a :Ontology .
 
 [] a :AllDifferent ;
+    :distinctMembers ( inconsistent001:ob2 inconsistent001:ob3 ) .
+
+[] a :AllDifferent ;
     :distinctMembers ( inconsistent001:ob1 inconsistent001:ob3 ) .
 
 [] a :AllDifferent ;
     :distinctMembers ( inconsistent001:ob1 inconsistent001:ob2 ) .
-
-[] a :AllDifferent ;
-    :distinctMembers ( inconsistent001:ob2 inconsistent001:ob3 ) .
 

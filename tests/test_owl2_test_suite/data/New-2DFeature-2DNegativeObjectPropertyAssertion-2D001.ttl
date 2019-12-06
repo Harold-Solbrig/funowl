@@ -12,10 +12,10 @@ example:hasSon a :ObjectProperty .
 
 example:Meg a :NamedIndividual .
 
+[] a :Ontology .
+
 [] a :NegativePropertyAssertion ;
     :assertionProperty example:hasSon ;
     :sourceIndividual example:Peter ;
     :targetIndividual example:Meg .
-
-[] a :Ontology .
 

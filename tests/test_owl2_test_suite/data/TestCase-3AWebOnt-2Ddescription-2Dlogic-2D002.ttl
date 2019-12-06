@@ -21,10 +21,10 @@
             owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
             owl:onProperty <http://oiled.man.example.net/test#r> ] .
 
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
+
 [] a owl:Restriction ;
     rdfs:subClassOf <http://oiled.man.example.net/test#d> ;
     owl:allValuesFrom <http://oiled.man.example.net/test#c> ;
     owl:onProperty <http://oiled.man.example.net/test#r> .
-
-[] a <http://oiled.man.example.net/test#Unsatisfiable> .
 

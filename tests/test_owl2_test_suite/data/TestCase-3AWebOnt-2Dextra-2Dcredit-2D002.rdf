@@ -103,25 +103,25 @@
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error52 -->
+    <!-- http://org.semanticweb.owlapi/error#Error59 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error52">
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error59">
         <equivalentClass rdf:resource="http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N"/>
     </Class>
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error53 -->
+    <!-- http://org.semanticweb.owlapi/error#Error60 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error53">
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error60">
         <equivalentClass rdf:resource="http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d"/>
     </Class>
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error54 -->
+    <!-- http://org.semanticweb.owlapi/error#Error61 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error54">
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error61">
         <equivalentClass rdf:resource="http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d"/>
     </Class>
     

@@ -14,10 +14,10 @@
 
 <http://www.w3.org/2002/03owlt/oneOf/consistent001#zebedee> a :NamedIndividual .
 
-[] a :Ontology .
-
 [] a :Class ;
     :equivalentClass [ a :Class ;
             :oneOf ( <http://www.w3.org/2002/03owlt/oneOf/consistent001#yolanda> <http://www.w3.org/2002/03owlt/oneOf/consistent001#zebedee> ) ] ;
     :oneOf ( <http://www.w3.org/2002/03owlt/oneOf/consistent001#amy> <http://www.w3.org/2002/03owlt/oneOf/consistent001#bob> <http://www.w3.org/2002/03owlt/oneOf/consistent001#caroline> ) .
+
+[] a :Ontology .
 

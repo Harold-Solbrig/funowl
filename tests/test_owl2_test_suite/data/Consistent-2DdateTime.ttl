@@ -9,15 +9,15 @@
 
 <http://example.org/A> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
-            :allValuesFrom [ a rdfs:Datatype ;
-                    :onDatatype xsd:dateTime ;
-                    :withRestrictions ( [ xsd:maxInclusive "2008-10-08T20:44:11.656000+01:00"^^xsd:dateTime ] ) ] ;
-            :onProperty <http://example.org/dp> ],
-        [ a :Restriction ;
             :onProperty <http://example.org/dp> ;
             :someValuesFrom [ a rdfs:Datatype ;
                     :onDatatype xsd:dateTime ;
-                    :withRestrictions ( [ xsd:minInclusive "2008-10-08T20:44:11.656000+01:00"^^xsd:dateTime ] ) ] ] .
+                    :withRestrictions ( [ xsd:minInclusive "2008-10-08T20:44:11.656000+01:00"^^xsd:dateTime ] ) ] ],
+        [ a :Restriction ;
+            :allValuesFrom [ a rdfs:Datatype ;
+                    :onDatatype xsd:dateTime ;
+                    :withRestrictions ( [ xsd:maxInclusive "2008-10-08T20:44:11.656000+01:00"^^xsd:dateTime ] ) ] ;
+            :onProperty <http://example.org/dp> ] .
 
 <http://example.org/dp> a :DatatypeProperty .
 

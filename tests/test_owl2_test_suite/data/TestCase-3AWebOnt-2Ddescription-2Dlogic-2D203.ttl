@@ -19,26 +19,26 @@ test:V5475 a [ a owl:Restriction ;
     test:R1 test:V5476 .
 
 test:V5478 a [ a owl:Class ;
+            owl:complementOf test:C34 ],
+        [ a owl:Class ;
+            owl:complementOf test:C12 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C10 ] ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
             owl:complementOf test:C130 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C28 ] ;
+            owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C118 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C2 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C12 ],
-        [ a owl:Class ;
             owl:complementOf test:C30 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C28 ] ;
-            owl:onProperty test:R1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C10 ] ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C34 ],
         test:C2,
         owl:NamedIndividual,
         owl:Thing .

@@ -7,7 +7,7 @@
 
 consistent007:dp a :AnnotationProperty .
 
-[] a :Ontology .
-
 [] consistent007:dp "value" .
+
+[] a :Ontology .
 

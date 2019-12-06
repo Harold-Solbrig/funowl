@@ -12,15 +12,15 @@ test:TEST a owl:Class ;
                         owl:complementOf test:C94 ] ) ] .
 
 test:V8467 a [ a owl:Class ;
-            owl:complementOf test:C52 ],
-        [ a owl:Class ;
-            owl:complementOf test:C92 ],
+            owl:complementOf test:C26 ],
         [ a owl:Class ;
             owl:complementOf test:C72 ],
         [ a owl:Class ;
-            owl:complementOf test:C26 ],
-        [ a owl:Class ;
             owl:complementOf test:C42 ],
+        [ a owl:Class ;
+            owl:complementOf test:C92 ],
+        [ a owl:Class ;
+            owl:complementOf test:C52 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V8468,
@@ -239,11 +239,11 @@ test:V8468 a [ a owl:Class ;
         owl:NamedIndividual,
         owl:Thing .
 
-test:V8469 a [ a owl:Restriction ;
+test:V8469 a [ a owl:Class ;
+            owl:complementOf test:C6 ],
+        [ a owl:Restriction ;
             owl:allValuesFrom test:C2 ;
             owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C6 ],
         owl:NamedIndividual,
         owl:Thing .
 
@@ -252,12 +252,12 @@ test:V8470 a test:TOP,
         owl:Thing .
 
 test:V8471 a [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        [ a owl:Class ;
             owl:complementOf test:C78 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C2 ;
             owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C2 ],
         owl:NamedIndividual,
         owl:Thing .
 

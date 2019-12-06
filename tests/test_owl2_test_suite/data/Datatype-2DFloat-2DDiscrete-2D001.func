@@ -1,18 +1,22 @@
-Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
-Prefix( ex: = <http://example.org/ontology/> )
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
 
 Ontology(
+Declaration(DataProperty(<http://example.org/ontology/dp>))
+Declaration(NamedIndividual(<http://example.org/ontology/a>))
 
-  Declaration( DataProperty( ex:dp ) )
 
-  ClassAssertion(
-    DataSomeValuesFrom( ex:dp
-      DatatypeRestriction( xsd:float
-        xsd:minExclusive "0.0"^^xsd:float
-        xsd:maxExclusive "1.401298464324817e-45"^^xsd:float
-      )
-    )
-    ex:a
-  )
+############################
+#   Named Individuals
+############################
+
+# Individual: <http://example.org/ontology/a> (<http://example.org/ontology/a>)
+
+ClassAssertion(DataSomeValuesFrom(<http://example.org/ontology/dp> DatatypeRestriction(xsd:float xsd:minExclusive "0.0"^^xsd:float xsd:maxExclusive "1.4E-45"^^xsd:float)) <http://example.org/ontology/a>)
+
 
 )

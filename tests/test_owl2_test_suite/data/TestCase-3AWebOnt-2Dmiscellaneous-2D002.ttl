@@ -107,13 +107,13 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Delicate ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Red ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Delicate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -123,6 +123,11 @@
 :DessertCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Strong ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Sweet ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
@@ -130,11 +135,6 @@
             owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Full ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Strong ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -150,13 +150,13 @@
 :FishCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Medium ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Dry ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -203,8 +203,8 @@
 :LightMeatFowlCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :White ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -218,8 +218,8 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Medium ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -264,6 +264,11 @@
 :NonRedMeatCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Dry ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
@@ -276,11 +281,6 @@
             owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Medium ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :White ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -290,6 +290,11 @@
 :NonSpicyRedMeatCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
                     owl:allValuesFrom [ a owl:Class ;
                             owl:oneOf ( :Moderate :Strong ) ] ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
@@ -298,11 +303,6 @@
             owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Medium ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Red ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -336,13 +336,13 @@
 :OtherTomatoBasedFoodCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Red ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Medium ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -351,8 +351,8 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Dry ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -381,6 +381,11 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Dry ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
@@ -388,11 +393,6 @@
             owl:allValuesFrom [ a owl:Restriction ;
                     owl:hasValue :Medium ;
                     owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Moderate ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -407,13 +407,13 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Light ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :White ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Light ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -428,13 +428,8 @@
 :PastaWithNonSpicyRedSauceCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Moderate ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Red ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -443,8 +438,13 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Medium ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -454,13 +454,13 @@
 :PastaWithSpicyRedSauceCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Full ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Dry ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -523,14 +523,14 @@
 :ShellfishCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:allValuesFrom [ a owl:Class ;
-                            owl:oneOf ( :Moderate :Strong ) ] ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Full ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:allValuesFrom [ a owl:Class ;
+                            owl:oneOf ( :Moderate :Strong ) ] ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -543,13 +543,13 @@
 :SpicyRedMeatCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Full ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Red ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
@@ -558,8 +558,8 @@
             owl:onProperty :hasDrink ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Restriction ;
-                    owl:hasValue :Moderate ;
-                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
             owl:onProperty :hasDrink ] ;
     owl:equivalentClass [ a owl:Class ;
             owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
@@ -626,10 +626,10 @@
 
 :Meal a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom :MealCourse ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty :course ],
         [ a owl:Restriction ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:allValuesFrom :MealCourse ;
             owl:onProperty :course ],
         :ConsumableThing ;
     owl:disjointWith :MealCourse,
@@ -812,12 +812,12 @@
 :MealCourse a owl:Class ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :hasDrink ],
-        [ a owl:Restriction ;
-            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty :hasFood ],
         [ a owl:Restriction ;
             owl:allValuesFrom :Wine ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty :hasDrink ],
         :ConsumableThing ;
     owl:disjointWith :PotableLiquid .

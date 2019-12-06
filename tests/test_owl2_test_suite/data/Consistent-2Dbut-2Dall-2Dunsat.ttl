@@ -58,17 +58,17 @@
 
 <http://example.com/a> a owl:Class ;
     rdfs:label "a"^^xsd:string ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <http://example.com/aTO2a> ;
-            owl:someValuesFrom <http://example.com/2a> ],
-        [ a owl:Restriction ;
-            owl:onProperty <http://example.com/aTOb> ;
-            owl:someValuesFrom <http://example.com/b> ],
-        [ a owl:Class ;
+    rdfs:subClassOf [ a owl:Class ;
             owl:unionOf ( [ a owl:Class ;
                         owl:oneOf ( <http://example.com/i1> ) ] [ a owl:Class ;
                         owl:oneOf ( <http://example.com/i2> ) ] [ a owl:Class ;
-                        owl:oneOf ( <http://example.com/i3> ) ] ) ] ;
+                        owl:oneOf ( <http://example.com/i3> ) ] ) ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/aTOb> ;
+            owl:someValuesFrom <http://example.com/b> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/aTO2a> ;
+            owl:someValuesFrom <http://example.com/2a> ] ;
     owl:disjointWith <http://example.com/2a>,
         <http://example.com/b>,
         <http://example.com/c> .

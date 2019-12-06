@@ -23,7 +23,7 @@ ObjectPropertyRange(<http://www.w3.org/2002/03owlt/FunctionalProperty/premises00
 
 # Class: <http://www.w3.org/2002/03owlt/FunctionalProperty/premises004#Singleton> (<http://www.w3.org/2002/03owlt/FunctionalProperty/premises004#Singleton>)
 
-EquivalentClasses(<http://www.w3.org/2002/03owlt/FunctionalProperty/premises004#Singleton> ObjectOneOf(_:genid24275))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/FunctionalProperty/premises004#Singleton> ObjectOneOf(_:genid32596))
 
 
 )

@@ -36,6 +36,21 @@
     
 
 
+    <!-- http://example.org/p4 -->
+
+    <ObjectProperty rdf:about="http://example.org/p4">
+        <rdfs:domain>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://example.org/c3"/>
+                    <rdf:Description rdf:about="http://example.org/u3"/>
+                </unionOf>
+            </Class>
+        </rdfs:domain>
+    </ObjectProperty>
+    
+
+
     <!-- http://example.org/p5 -->
 
     <ObjectProperty rdf:about="http://example.org/p5"/>
@@ -130,16 +145,7 @@
 
     <!-- http://example.org/p4 -->
 
-    <DatatypeProperty rdf:about="http://example.org/p4">
-        <rdfs:domain>
-            <Class>
-                <unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://example.org/c3"/>
-                    <rdf:Description rdf:about="http://example.org/u3"/>
-                </unionOf>
-            </Class>
-        </rdfs:domain>
-    </DatatypeProperty>
+    <DatatypeProperty rdf:about="http://example.org/p4"/>
     
 
 

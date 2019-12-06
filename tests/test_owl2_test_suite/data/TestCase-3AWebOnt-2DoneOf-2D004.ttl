@@ -13,6 +13,14 @@
 <http://www.w3.org/2002/03owlt/oneOf/premises004#p> a :DatatypeProperty ;
     rdfs:range [ a rdfs:Datatype ;
             :oneOf [ a rdf:List ;
+                    rdf:first 4 ;
+                    rdf:rest [ a rdf:List ;
+                            rdf:first 5 ;
+                            rdf:rest [ a rdf:List ;
+                                    rdf:first 6 ;
+                                    rdf:rest () ] ] ] ],
+        [ a rdfs:Datatype ;
+            :oneOf [ a rdf:List ;
                     rdf:first 1 ;
                     rdf:rest [ a rdf:List ;
                             rdf:first 2 ;
@@ -20,15 +28,7 @@
                                     rdf:first 3 ;
                                     rdf:rest [ a rdf:List ;
                                             rdf:first 4 ;
-                                            rdf:rest () ] ] ] ] ],
-        [ a rdfs:Datatype ;
-            :oneOf [ a rdf:List ;
-                    rdf:first 4 ;
-                    rdf:rest [ a rdf:List ;
-                            rdf:first 5 ;
-                            rdf:rest [ a rdf:List ;
-                                    rdf:first 6 ;
-                                    rdf:rest () ] ] ] ] .
+                                            rdf:rest () ] ] ] ] ] .
 
 [] a :Ontology .
 

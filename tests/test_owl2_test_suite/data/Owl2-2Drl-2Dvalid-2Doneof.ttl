@@ -10,9 +10,9 @@
 
 <http://owl2.test/rules#Y> a :NamedIndividual .
 
+[] a :Ontology .
+
 [] a :Class ;
     rdfs:subClassOf <http://owl2.test/rules#Cb> ;
     :oneOf ( <http://owl2.test/rules#X> <http://owl2.test/rules#Y> ) .
-
-[] a :Ontology .
 

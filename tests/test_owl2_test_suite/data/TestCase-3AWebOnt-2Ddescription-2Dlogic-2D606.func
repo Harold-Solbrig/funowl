@@ -125,5 +125,5 @@ EquivalentClasses(:C.3 DataExactCardinality(0 :P.3))
 EquivalentClasses(:C.3.comp DataMinCardinality(1 :P.3))
 
 
-ClassAssertion(oiled:Satisfiable _:genid22990)
+ClassAssertion(oiled:Satisfiable _:genid37770)
 )

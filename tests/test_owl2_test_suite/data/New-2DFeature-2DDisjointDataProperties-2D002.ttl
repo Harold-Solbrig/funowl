@@ -20,8 +20,8 @@ example:hasName a :DatatypeProperty .
 
 example:hasZip a :DatatypeProperty .
 
+[] a :Ontology .
+
 [] a :AllDisjointProperties ;
     :members ( example:hasAddress example:hasName example:hasZip ) .
-
-[] a :Ontology .
 

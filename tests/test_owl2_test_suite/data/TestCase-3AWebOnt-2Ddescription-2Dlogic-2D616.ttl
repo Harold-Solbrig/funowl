@@ -13,10 +13,10 @@
 
 owl:Thing rdfs:subClassOf [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty <http://oiled.man.example.net/test#f2> ],
+            owl:onProperty <http://oiled.man.example.net/test#f1> ],
         [ a owl:Restriction ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty <http://oiled.man.example.net/test#f1> ] .
+            owl:onProperty <http://oiled.man.example.net/test#f2> ] .
 
 <http://oiled.man.example.net/test#Satisfiable> a owl:Class ;
     owl:equivalentClass [ a owl:Class ;

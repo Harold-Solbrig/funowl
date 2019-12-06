@@ -18,8 +18,8 @@ rules:Y1 a :NamedIndividual ;
 rules:Y2 a :NamedIndividual ;
     rules:ifp rules:X2 .
 
+[] a :Ontology .
+
 [] a :AllDifferent ;
     :distinctMembers ( rules:Y1 rules:Y2 ) .
-
-[] a :Ontology .
 

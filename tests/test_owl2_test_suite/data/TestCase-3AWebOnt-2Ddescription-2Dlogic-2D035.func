@@ -51,5 +51,5 @@ ClassAssertion(owl:Thing oiled:spy)
 ClassAssertion(ObjectMaxCardinality(2 oiled:invP) oiled:spy)
 
 
-ClassAssertion(oiled:Unsatisfiable _:genid29547)
+ClassAssertion(oiled:Unsatisfiable _:genid30577)
 )

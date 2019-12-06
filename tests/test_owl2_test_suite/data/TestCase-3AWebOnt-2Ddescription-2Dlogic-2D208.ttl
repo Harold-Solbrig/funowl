@@ -20,48 +20,48 @@ test:V16439 a [ a owl:Restriction ;
 
 test:V16448 a [ a owl:Class ;
             owl:complementOf test:C90 ],
-        [ a owl:Class ;
-            owl:complementOf test:C70 ],
-        [ a owl:Class ;
-            owl:complementOf test:C52 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C34 ;
-            owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C50 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
+            owl:complementOf test:C52 ],
+        [ a owl:Class ;
+            owl:complementOf test:C70 ],
+        [ a owl:Class ;
             owl:complementOf test:C36 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C88 ;
+            owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C68 ;
             owl:onProperty test:R1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom test:C88 ;
+            owl:allValuesFrom test:C34 ;
             owl:onProperty test:R1 ],
         test:TOP,
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16449 .
 
-test:V16453 a [ a owl:Restriction ;
-            owl:allValuesFrom test:C56 ;
-            owl:onProperty test:R1 ],
+test:V16453 a [ a owl:Class ;
+            owl:complementOf test:C58 ],
         [ a owl:Class ;
-            owl:complementOf test:C16 ],
+            owl:complementOf test:C94 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C72 ] ;
             owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C58 ],
-        [ a owl:Class ;
-            owl:complementOf test:C94 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C92 ] ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C74 ],
+        [ a owl:Class ;
+            owl:complementOf test:C16 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C56 ;
+            owl:onProperty test:R1 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16461 .
@@ -69,33 +69,42 @@ test:V16453 a [ a owl:Restriction ;
 test:V16455 a [ a owl:Class ;
             owl:complementOf test:C54 ],
         [ a owl:Class ;
-            owl:complementOf test:C40 ],
+            owl:complementOf test:C72 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C70 ] ;
+            owl:onProperty test:R1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C90 ] ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C12 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C38 ;
+            owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C52 ] ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C72 ],
-        [ a owl:Class ;
             owl:complementOf test:C92 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C70 ] ;
-            owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C12 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C90 ] ;
-            owl:onProperty test:R1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C38 ;
-            owl:onProperty test:R1 ],
+            owl:complementOf test:C40 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16460 .
 
 test:V16457 a [ a owl:Class ;
+            owl:complementOf test:C52 ],
+        [ a owl:Class ;
+            owl:complementOf test:C70 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C34 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C36 ],
+        [ a owl:Class ;
             owl:complementOf test:C8 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C68 ;
@@ -104,19 +113,10 @@ test:V16457 a [ a owl:Class ;
             owl:allValuesFrom test:C50 ;
             owl:onProperty test:R1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom test:C34 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C90 ],
-        [ a owl:Class ;
-            owl:complementOf test:C52 ],
-        [ a owl:Class ;
-            owl:complementOf test:C36 ],
-        [ a owl:Restriction ;
             owl:allValuesFrom test:C88 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C70 ],
+            owl:complementOf test:C90 ],
         test:TOP,
         owl:NamedIndividual,
         owl:Thing .
@@ -124,31 +124,31 @@ test:V16457 a [ a owl:Class ;
 test:V16459 a [ a owl:Class ;
             owl:complementOf test:C10 ],
         [ a owl:Class ;
-            owl:complementOf test:C18 ],
-        [ a owl:Class ;
-            owl:complementOf test:C32 ],
-        [ a owl:Class ;
             owl:complementOf test:C30 ],
         [ a owl:Class ;
             owl:complementOf test:C84 ],
         [ a owl:Class ;
-            owl:complementOf test:C14 ],
-        [ a owl:Class ;
-            owl:complementOf test:C6 ],
-        [ a owl:Class ;
-            owl:complementOf test:C8 ],
-        [ a owl:Class ;
-            owl:complementOf test:C48 ],
+            owl:complementOf test:C2 ],
         [ a owl:Class ;
             owl:complementOf test:C86 ],
         [ a owl:Class ;
-            owl:complementOf test:C64 ],
+            owl:complementOf test:C46 ],
         [ a owl:Class ;
-            owl:complementOf test:C2 ],
+            owl:complementOf test:C18 ],
+        [ a owl:Class ;
+            owl:complementOf test:C8 ],
+        [ a owl:Class ;
+            owl:complementOf test:C14 ],
+        [ a owl:Class ;
+            owl:complementOf test:C48 ],
         [ a owl:Class ;
             owl:complementOf test:C66 ],
         [ a owl:Class ;
-            owl:complementOf test:C46 ],
+            owl:complementOf test:C64 ],
+        [ a owl:Class ;
+            owl:complementOf test:C32 ],
+        [ a owl:Class ;
+            owl:complementOf test:C6 ],
         test:C12,
         test:C4,
         owl:NamedIndividual,
@@ -286,18 +286,18 @@ test:TEST a owl:Class ;
             owl:intersectionOf ( test:C108 test:C130 ) ] .
 
 test:V16440 a [ a owl:Class ;
-            owl:complementOf test:C78 ],
+            owl:complementOf test:C102 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C76 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C102 ],
+            owl:complementOf test:C78 ],
+        [ a owl:Class ;
+            owl:complementOf test:C96 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C94 ] ;
             owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C96 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16463 .
@@ -311,106 +311,106 @@ test:V16442 a owl:NamedIndividual,
 test:V16449 a owl:NamedIndividual,
         owl:Thing .
 
-test:V16460 a [ a owl:Class ;
-            owl:complementOf test:C90 ],
+test:V16460 a [ a owl:Restriction ;
+            owl:allValuesFrom test:C34 ;
+            owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C52 ],
+            owl:complementOf test:C90 ],
         [ a owl:Class ;
             owl:complementOf test:C70 ],
         [ a owl:Class ;
             owl:complementOf test:C8 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C88 ;
+            owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C36 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C68 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C34 ;
-            owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C50 ;
             owl:onProperty test:R1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom test:C88 ;
+            owl:allValuesFrom test:C68 ;
             owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C52 ],
         test:TOP,
         owl:NamedIndividual,
         owl:Thing .
 
 test:V16461 a [ a owl:Class ;
-            owl:complementOf test:C54 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C52 ] ;
-            owl:onProperty test:R1 ],
+            owl:complementOf test:C12 ],
         [ a owl:Class ;
             owl:complementOf test:C72 ],
-        [ a owl:Class ;
-            owl:complementOf test:C92 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom test:C38 ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C90 ] ;
             owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C70 ] ;
             owl:onProperty test:R1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C38 ;
+            owl:onProperty test:R1 ],
         [ a owl:Class ;
-            owl:complementOf test:C12 ],
-        [ a owl:Class ;
-            owl:complementOf test:C40 ],
+            owl:complementOf test:C92 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C90 ] ;
+                    owl:complementOf test:C52 ] ;
             owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C54 ],
+        [ a owl:Class ;
+            owl:complementOf test:C40 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16462 .
 
 test:V16462 a [ a owl:Restriction ;
-            owl:allValuesFrom test:C88 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Restriction ;
             owl:allValuesFrom test:C68 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C52 ],
-        [ a owl:Class ;
-            owl:complementOf test:C70 ],
-        [ a owl:Class ;
-            owl:complementOf test:C36 ],
-        [ a owl:Class ;
-            owl:complementOf test:C90 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C50 ;
             owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C34 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C8 ],
+        [ a owl:Class ;
+            owl:complementOf test:C36 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C88 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C52 ],
+        [ a owl:Class ;
+            owl:complementOf test:C90 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C50 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C70 ],
         test:TOP,
         owl:NamedIndividual,
         owl:Thing .
 
-test:V16463 a [ a owl:Class ;
-            owl:complementOf test:C58 ],
-        [ a owl:Class ;
-            owl:complementOf test:C16 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C56 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C74 ],
-        [ a owl:Restriction ;
+test:V16463 a [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C72 ] ;
             owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C74 ],
+        [ a owl:Class ;
+            owl:complementOf test:C58 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C92 ] ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
+            owl:complementOf test:C16 ],
+        [ a owl:Class ;
             owl:complementOf test:C94 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C56 ;
+            owl:onProperty test:R1 ],
         owl:NamedIndividual,
         owl:Thing ;
     test:R1 test:V16464 .
@@ -418,26 +418,26 @@ test:V16463 a [ a owl:Class ;
 test:V16464 a [ a owl:Restriction ;
             owl:allValuesFrom test:C38 ;
             owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C12 ],
-        [ a owl:Class ;
-            owl:complementOf test:C40 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C70 ] ;
+            owl:onProperty test:R1 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C90 ] ;
             owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C40 ],
+        [ a owl:Class ;
+            owl:complementOf test:C12 ],
+        [ a owl:Class ;
+            owl:complementOf test:C54 ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a owl:Class ;
                     owl:complementOf test:C52 ] ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C72 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a owl:Class ;
-                    owl:complementOf test:C70 ] ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C54 ],
         [ a owl:Class ;
             owl:complementOf test:C92 ],
         owl:NamedIndividual,
@@ -445,27 +445,27 @@ test:V16464 a [ a owl:Restriction ;
     test:R1 test:V16465 .
 
 test:V16465 a [ a owl:Class ;
+            owl:complementOf test:C70 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C50 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C68 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
             owl:complementOf test:C36 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C34 ;
             owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C90 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C50 ;
-            owl:onProperty test:R1 ],
-        [ a owl:Class ;
-            owl:complementOf test:C70 ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom test:C68 ;
-            owl:onProperty test:R1 ],
         [ a owl:Class ;
             owl:complementOf test:C52 ],
-        [ a owl:Class ;
-            owl:complementOf test:C8 ],
         [ a owl:Restriction ;
             owl:allValuesFrom test:C88 ;
             owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C8 ],
         test:TOP,
         owl:NamedIndividual,
         owl:Thing .

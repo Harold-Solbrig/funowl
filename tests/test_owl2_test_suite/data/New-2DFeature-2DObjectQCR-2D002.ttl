@@ -22,8 +22,8 @@ example:Stewie a :NamedIndividual .
 
 example:Woman a :Class .
 
-[] a :Ontology .
-
 [] a :AllDifferent ;
     :distinctMembers ( example:Meg example:Stewie ) .
+
+[] a :Ontology .
 

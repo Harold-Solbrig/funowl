@@ -10,9 +10,9 @@ inconsistent204:fp a :DatatypeProperty,
 
 [] a :Thing ;
     inconsistent204:fp [ a :span ;
-            :b "Good!"@en ],
+            :b "Bad!"@en ],
         [ a :span ;
-            :b "Bad!"@en ] .
+            :b "Good!"@en ] .
 
 [] a :Ontology .
 

@@ -4,13 +4,13 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://org.semanticweb.owlapi/error#Error48> a :Class ;
+<http://org.semanticweb.owlapi/error#Error67> a :Class ;
     :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises003#cardinality-N> .
 
-<http://org.semanticweb.owlapi/error#Error49> a :Class ;
+<http://org.semanticweb.owlapi/error#Error68> a :Class ;
     :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises003#only-d> .
 
-<http://org.semanticweb.owlapi/error#Error50> a :Class ;
+<http://org.semanticweb.owlapi/error#Error69> a :Class ;
     :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises003#only-d> .
 
 <http://www.w3.org/2002/03owlt/extra-credit/premises003#N-times-M> :sameAs "77"^^xsd:int .
@@ -30,11 +30,11 @@
 
 <http://www.w3.org/2002/03owlt/extra-credit/premises003#cardinality-N-times-M> a :Class ;
     :equivalentClass [ a :Restriction ;
-            :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises003#r-N-times-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises003#only-d> ],
-        [ a :Restriction ;
             :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises003#q-M-to-1> ;
-            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises003#cardinality-N> ] .
+            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises003#cardinality-N> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises003#r-N-times-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises003#only-d> ] .
 
 <http://www.w3.org/2002/03owlt/extra-credit/premises003#p-N-to-1> a :FunctionalProperty,
         :ObjectProperty ;

@@ -18,8 +18,8 @@ rules:X1 a :NamedIndividual .
 
 rules:X2 a :NamedIndividual .
 
+[] a :Ontology .
+
 [] a :AllDifferent ;
     :distinctMembers ( rules:X1 rules:X2 ) .
-
-[] a :Ontology .
 

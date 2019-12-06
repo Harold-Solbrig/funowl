@@ -9,8 +9,8 @@ rdf:_1 a :ObjectProperty .
 rdf:Bag a :Class ;
     rdfs:comment "The class of unordered containers." .
 
+[] a :Ontology .
+
 [] a rdf:Bag ;
     rdf:_1 [ a :Thing ] .
-
-[] a :Ontology .
 

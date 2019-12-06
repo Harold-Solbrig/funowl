@@ -11,6 +11,6 @@ Declaration(Class(first:c))
 Declaration(AnnotationProperty(first:p))
 
 
-ClassAssertion(owl:Thing _:genid24813)
-AnnotationAssertion(first:p _:genid24813 first:c)
+ClassAssertion(owl:Thing _:genid33770)
+AnnotationAssertion(first:p _:genid33770 first:c)
 )

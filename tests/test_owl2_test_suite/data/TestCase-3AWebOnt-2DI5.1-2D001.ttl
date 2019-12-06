@@ -14,9 +14,9 @@ vocab:stateCode a :InverseFunctionalProperty,
 
 [] a :Ontology .
 
-[] vocab:population "2688418" ;
+[] vocab:stateBird vocab:WesternMeadowlark ;
     vocab:stateCode "KS" .
 
-[] vocab:stateBird vocab:WesternMeadowlark ;
+[] vocab:population "2688418" ;
     vocab:stateCode "KS" .
 

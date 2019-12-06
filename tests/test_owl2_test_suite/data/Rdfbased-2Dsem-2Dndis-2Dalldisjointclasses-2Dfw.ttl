@@ -14,8 +14,8 @@
 
 <http://www.example.org#c2> a :Class .
 
+[] a :Ontology .
+
 [] a :AllDisjointClasses ;
     :members ( <http://www.example.org#c1> <http://www.example.org#c2> <http://www.example.org#c3> ) .
-
-[] a :Ontology .
 

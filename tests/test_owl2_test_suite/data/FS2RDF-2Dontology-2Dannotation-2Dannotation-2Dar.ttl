@@ -8,8 +8,6 @@
 example:a a :Class ;
     :equivalentClass example:b .
 
-example:for a :AnnotationProperty .
-
 example:b a :Class ;
     :equivalentClass example:c .
 

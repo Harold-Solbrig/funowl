@@ -44,15 +44,15 @@
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error46 -->
+    <!-- http://org.semanticweb.owlapi/error#Error62 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error46"/>
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error62"/>
     
 
 
-    <!-- http://org.semanticweb.owlapi/error#Error47 -->
+    <!-- http://org.semanticweb.owlapi/error#Error63 -->
 
-    <Class rdf:about="http://org.semanticweb.owlapi/error#Error47"/>
+    <Class rdf:about="http://org.semanticweb.owlapi/error#Error63"/>
     
 
 
@@ -62,8 +62,8 @@
         <equivalentClass>
             <Class>
                 <intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error46"/>
-                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error47"/>
+                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error62"/>
+                    <rdf:Description rdf:about="http://org.semanticweb.owlapi/error#Error63"/>
                 </intersectionOf>
             </Class>
         </equivalentClass>

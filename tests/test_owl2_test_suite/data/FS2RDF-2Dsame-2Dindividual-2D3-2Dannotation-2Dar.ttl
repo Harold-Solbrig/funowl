@@ -5,36 +5,37 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/a> a :NamedIndividual ;
-    :sameAs <http://example.org/b> .
+    :sameAs <http://example.org/b>,
+        <http://example.org/c> .
 
 <http://example.org/c> a :NamedIndividual .
 
 <http://example.org/b> a :NamedIndividual ;
     :sameAs <http://example.org/c> .
 
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/b> ;
-    :annotatedTarget <http://example.org/c> .
-
 [] a :Ontology .
 
 [] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
     :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/b> ;
-    :annotatedTarget <http://example.org/c> .
+    :annotatedSource <http://example.org/a>,
+        <http://example.org/b> ;
+    :annotatedTarget <http://example.org/b>,
+        <http://example.org/c> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :sameAs ;
+    :annotatedSource <http://example.org/a>,
+        <http://example.org/b> ;
+    :annotatedTarget <http://example.org/b>,
+        <http://example.org/c> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :sameAs ;
+    :annotatedSource <http://example.org/a>,
+        <http://example.org/b> ;
+    :annotatedTarget <http://example.org/b>,
+        <http://example.org/c> .
 

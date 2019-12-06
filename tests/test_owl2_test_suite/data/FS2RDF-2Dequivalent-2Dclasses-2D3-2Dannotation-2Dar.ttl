@@ -27,8 +27,14 @@
 [] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
     :annotatedProperty :equivalentClass ;
-    :annotatedSource <http://example.org/b> ;
-    :annotatedTarget <http://example.org/c> .
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
+
+[] a :Axiom ;
+    rdfs:comment "I hereby annotate this" ;
+    :annotatedProperty :equivalentClass ;
+    :annotatedSource <http://example.org/a> ;
+    :annotatedTarget <http://example.org/b> .
 
 [] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
@@ -41,12 +47,6 @@
 [] a :Axiom ;
     rdfs:comment "I hereby annotate this" ;
     :annotatedProperty :equivalentClass ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :equivalentClass ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
+    :annotatedSource <http://example.org/b> ;
+    :annotatedTarget <http://example.org/c> .
 

@@ -5,10 +5,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/a> a [ a :Restriction ;
-            :hasValue 19 ;
+            :hasValue 18 ;
             :onProperty <http://example.org/hasAge> ],
         [ a :Restriction ;
-            :hasValue 18 ;
+            :hasValue 19 ;
             :onProperty <http://example.org/hasAge> ],
         :NamedIndividual .
 

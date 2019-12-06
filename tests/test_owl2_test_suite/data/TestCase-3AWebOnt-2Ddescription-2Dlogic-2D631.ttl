@@ -17,11 +17,11 @@
 <http://www.w3.org/2002/03owlt/description-logic/consistent631> a owl:Ontology .
 
 :C.2.comp a owl:Class ;
-    owl:equivalentClass [ a owl:Class ;
-            owl:intersectionOf ( <http://oiled.man.example.net/test#p1> :C.3 ) ],
-        [ a owl:Restriction ;
+    owl:equivalentClass [ a owl:Restriction ;
             owl:minCardinality "1"^^xsd:nonNegativeInteger ;
-            owl:onProperty :P.2 ] .
+            owl:onProperty :P.2 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#p1> :C.3 ) ] .
 
 :C.3.comp a owl:Class ;
     owl:equivalentClass [ a owl:Restriction ;

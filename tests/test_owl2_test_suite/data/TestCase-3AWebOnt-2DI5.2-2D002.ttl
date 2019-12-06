@@ -6,10 +6,10 @@
 
 <http://www.w3.org/2002/03owlt/I5.2/premises002#Nothing> a :Class ;
     rdfs:subClassOf [ a :Restriction ;
-            :maxCardinality "0"^^xsd:nonNegativeInteger ;
+            :minCardinality "1"^^xsd:nonNegativeInteger ;
             :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises002#p> ],
         [ a :Restriction ;
-            :minCardinality "1"^^xsd:nonNegativeInteger ;
+            :maxCardinality "0"^^xsd:nonNegativeInteger ;
             :onProperty <http://www.w3.org/2002/03owlt/I5.2/premises002#p> ] .
 
 <http://www.w3.org/2002/03owlt/I5.2/premises002#p> a :ObjectProperty .

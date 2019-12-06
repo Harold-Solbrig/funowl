@@ -11,17 +11,17 @@
     rdfs:subClassOf [ a :Restriction ;
             :allValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
-                            rdf:first 2 ;
+                            rdf:first 3 ;
                             rdf:rest [ a rdf:List ;
-                                    rdf:first 3 ;
+                                    rdf:first 4 ;
                                     rdf:rest () ] ] ] ;
             :onProperty <http://example.org/dp> ],
         [ a :Restriction ;
             :allValuesFrom [ a rdfs:Datatype ;
                     :oneOf [ a rdf:List ;
-                            rdf:first 3 ;
+                            rdf:first 2 ;
                             rdf:rest [ a rdf:List ;
-                                    rdf:first 4 ;
+                                    rdf:first 3 ;
                                     rdf:rest () ] ] ] ;
             :onProperty <http://example.org/dp> ],
         [ a :Restriction ;
