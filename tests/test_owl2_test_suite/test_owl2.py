@@ -16,6 +16,8 @@ QUESTIONABLE_IRI = "IRI that looks like a BNODE"
 DID_NOT_LOAD = "Testcase has issue"
 XML_TO_TTL_FAIL = "XML does not load in rdflib"
 CONFLICT_WITH_SPEC = "Test case does not appear to match spec"
+XML_LANG_PARSE_ERROR = "Unexplained XML Language"
+NOT_CONFORMANT_TO_SPEC = "Expected RDF does not match specification"
 
 
 orig_add = Graph.add
@@ -44,7 +46,8 @@ class OWL2ValidationTestCase(ValidationTestCase):
         'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
         'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
         'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
-        'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI
+        'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI,
+        'TestCase-3AWebOnt-2Dmiscellaneous-2D204.func': XML_LANG_PARSE_ERROR
     }
 
     # Stop on the first error

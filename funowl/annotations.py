@@ -105,7 +105,7 @@ class Annotatable(FunOwlBase, ABC):
             if isinstance(subj, Tuple):
                 # Subj is a triple -- reify it
                 x = BNode()
-                g.add((x, RDF.type, OWL.Annotation))
+                g.add((x, RDF.type, OWL.Axiom))
                 g.add((x, OWL.annotatedSource, subj[0]))
                 g.add((x, OWL.annotatedProperty, subj[1]))
                 g.add((x, OWL.annotatedTarget, subj[2]))
@@ -133,7 +133,7 @@ class Annotation(Annotatable):
         if isinstance_(subj, TRIPLE):
             g.add(subj)
             x = BNode()
-            g.add((x, RDF.type, OWL.Annotation))
+            g.add((x, RDF.type, OWL.Axiom))
             g.add((x, OWL.annotatedSource, subj[0]))
             g.add((x, OWL.annotatedProperty, subj[1]))
             g.add((x, OWL.annotatedTarget, subj[2]))

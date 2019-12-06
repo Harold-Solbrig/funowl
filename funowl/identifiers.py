@@ -3,7 +3,7 @@ import logging
 from dataclasses import dataclass
 from typing import Union, ClassVar, Optional, Type
 
-from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD
+from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD, RDFS
 from rdflib.term import Node
 
 from funowl.base.fun_owl_choice import FunOwlChoice
@@ -40,7 +40,11 @@ class IRI(FunOwlChoice):
         fulluri = self.full_uri(g)
         if self.rdf_type:
             # Filter: for (undocumented?) reasons, never assert owl:thing a owl:Class
-            if not (fulluri == OWL.Thing or fulluri.startswith(str(XSD))):
+            if not (fulluri == OWL.Thing or
+                    fulluri.startswith(str(XSD)) or
+                    fulluri.startswith(str(RDF)) or
+                    fulluri.startswith(str(RDFS))
+            ):
                 g.add((fulluri, RDF.type, self.rdf_type))
 
         return fulluri

@@ -77,12 +77,18 @@ class DifferentIndividuals(Annotatable):
             annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
     def to_rdf(self, g: Graph) -> None:
+        # N == 2
+        #    T(a1) owl:differentFrom T(a2) .
+        # N > 2
+        #    _:x rdf:type owl:AllDifferent .
+        #    _:x owl:members T(SEQ a1 ... an) .
+        # TODO: Spec says members, tooling says "distinctMembers" -- error in spec?
         if len(self.individuals) == 2:
             self.add_triple(g, self.individuals[0].to_rdf(g), OWL.differentFrom, self.individuals[1].to_rdf(g))
         elif len(self.individuals) > 2:
             subj = BNode()
             g.add((subj, RDF.type, OWL.AllDifferent))
-            g.add((subj, OWL.memebers, SEQ(g, self.individuals)))
+            g.add((subj, OWL.distinctMembers, SEQ(g, self.individuals)))
             self.TANN(g, subj)
         return None
 

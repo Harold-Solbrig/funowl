@@ -59,11 +59,11 @@ class EquivalentClasses(Annotatable):
         return self.annots(w, lambda: w.iter(self.classExpressions))
 
     def to_rdf(self, g: Graph) -> None:
-        subj = self.classExpressions[0].to_rdf(g)
-        for i in range(1, len(self.classExpressions)):
-            obj = self.classExpressions[i].to_rdf(g)
-            g.add((subj, OWL.equivalentClass, obj))
-            subj = obj
+        # EquivalentClasses( CE1 ... CEn ) 	T(CE1) owl:equivalentClass T(CE2) .
+        # ...
+        # T(CEn-1) owl:equivalentClass T(CEn) .
+        for ce1, ce2 in zip(self.classExpressions[:-1], self.classExpressions[1:]):
+            self.add_triple(g, ce1.to_rdf(g), OWL.equivalentClass, ce2.to_rdf(g))
 
 
 @dataclass
@@ -89,7 +89,7 @@ class DisjointClasses(Annotatable):
                             OWL.disjointWith, self.classExpressions[1].to_rdf(g))
         else:
             subj = BNode()
-            g.add((subj, RDF.type, OWL.ALLDisjointClasses))
+            g.add((subj, RDF.type, OWL.AllDisjointClasses))
             g.add((subj, OWL.members, SEQ(g, self.classExpressions)))
             self.TANN(g, subj)
 

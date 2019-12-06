@@ -43,6 +43,7 @@
     <NamedIndividual rdf:about="http://example.org/b">
         <sameAs rdf:resource="http://example.org/c"/>
     </NamedIndividual>
+    <!-- This shouldn't be here
     <Axiom>
         <annotatedSource rdf:resource="http://example.org/a"/>
         <annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
@@ -51,12 +52,14 @@
         <annotatedTarget rdf:resource="http://example.org/c"/>
         <annotatedSource rdf:resource="http://example.org/b"/>
     </Axiom>
+    -->
     
 
 
     <!-- http://example.org/c -->
 
     <NamedIndividual rdf:about="http://example.org/c"/>
+        <!-- This shouldn't be here
     <Axiom>
         <annotatedSource rdf:resource="http://example.org/a"/>
         <annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#sameAs"/>
@@ -65,6 +68,7 @@
         <annotatedTarget rdf:resource="http://example.org/c"/>
         <annotatedSource rdf:resource="http://example.org/b"/>
     </Axiom>
+    -->
 </rdf:RDF>
 
 

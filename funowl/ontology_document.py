@@ -202,7 +202,7 @@ class Ontology(Annotatable):
     def to_rdf(self, g: Graph) -> SUBJ:
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         version_uri = self.version.to_rdf(g) if self.version else None
-        g.add((ontology_uri, RDF.type, OWL.Ontology))
+        self.add_triple(g, ontology_uri, RDF.type, OWL.Ontology)
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, version_uri))
         for imp in self.directlyImportsDocuments:

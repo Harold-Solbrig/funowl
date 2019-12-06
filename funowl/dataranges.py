@@ -67,6 +67,14 @@ class DataComplementOf(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.dataRange)
 
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type rdfs:Datatype .
+        # _:x owl:datatypeComplementOf T(DR) .
+        x = BNode()
+        g.add((x, RDF.type, RDFS.Datatype))
+        g.add((x, OWL.datatypeComplementOf, self.dataRange.to_rdf(g)))
+        return x
+
 @dataclass
 class DataOneOf(FunOwlBase):
     literal: List[Literal]
