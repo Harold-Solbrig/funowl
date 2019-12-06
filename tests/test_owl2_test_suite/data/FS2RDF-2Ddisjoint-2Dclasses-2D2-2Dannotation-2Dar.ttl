@@ -17,9 +17,4 @@
 
 [] a :Ontology .
 
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :disjointWith ;
-    :annotatedSource <http://example.org/a> ;
-    :annotatedTarget <http://example.org/b> .
 
