@@ -17,6 +17,8 @@ DataPropertyExpression := DataProperty
 from dataclasses import dataclass
 from typing import Union
 
+from rdflib import OWL
+
 from funowl.annotations import AnnotationProperty
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.class_expressions import Class

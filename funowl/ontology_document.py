@@ -53,6 +53,7 @@ class Import(FunOwlBase):
 
 @dataclass
 class Ontology(Annotatable):
+    annotation_type = OWL.Ontology
     iri: Optional[IRI.types()] = None
     version: Optional[IRI.types()] = None
     directlyImportsDocuments: List[Import] = empty_list()

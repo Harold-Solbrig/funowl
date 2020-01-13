@@ -13,8 +13,8 @@ from typing import Optional, ClassVar, Set
 
 import rfc3987
 import bcp47
-from rdflib import BNode, URIRef, Graph
-from rdflib.namespace import is_ncname
+from rdflib import BNode, URIRef, Graph, Literal
+from rdflib.namespace import is_ncname, XSD
 
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -35,6 +35,9 @@ class NonNegativeInteger(int, FunOwlBase):
             return False
         except ValueError:
             return False
+
+    def to_rdf(self, g: Graph) -> Literal:
+        return Literal(self, datatype=XSD.nonNegativeInteger)
 
 
 class QuotedString(QUOTED_STRING, FunOwlRoot):

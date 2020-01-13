@@ -90,9 +90,9 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="http://example.org/hasChild"/>
             <rdf:Description rdf:about="http://example.org/hasFather"/>
             <rdf:Description rdf:about="http://example.org/hasMother"/>
+            <rdf:Description rdf:about="http://example.org/hasChild"/>
         </members>
     </rdf:Description>
 </rdf:RDF>

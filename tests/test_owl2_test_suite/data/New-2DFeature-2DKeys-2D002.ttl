@@ -8,7 +8,8 @@
 :Thing :hasKey ( example:hasSSN ) .
 
 example:Peter a :NamedIndividual ;
-    example:hasSSN "123-45-6789" .
+    example:hasSSN "123-45-6789" ;
+    :differentFrom example:Peter_Griffin .
 
 example:Peter_Griffin a :NamedIndividual ;
     example:hasSSN "123-45-6789" .
@@ -17,6 +18,4 @@ example:hasSSN a :DatatypeProperty .
 
 [] a :Ontology .
 
-[] a :AllDifferent ;
-    :distinctMembers ( example:Peter example:Peter_Griffin ) .
 

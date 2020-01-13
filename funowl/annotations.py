@@ -60,6 +60,8 @@ class Annotation(object):
 
 @dataclass
 class Annotatable(FunOwlBase, ABC):
+    annotation_type: ClassVar[URIRef] = OWL.Axiom
+
     """ Annotatable must declare annotations after the required fields """
 
     def _add_annotations(self, w: FunctionalWriter, f: Callable[[], FunctionalWriter] = None) -> FunctionalWriter:
@@ -105,7 +107,7 @@ class Annotatable(FunOwlBase, ABC):
             if isinstance(subj, Tuple):
                 # Subj is a triple -- reify it
                 x = BNode()
-                g.add((x, RDF.type, OWL.Axiom))
+                g.add((x, RDF.type, self.annotation_type))
                 g.add((x, OWL.annotatedSource, subj[0]))
                 g.add((x, OWL.annotatedProperty, subj[1]))
                 g.add((x, OWL.annotatedTarget, subj[2]))
@@ -121,6 +123,7 @@ class Annotatable(FunOwlBase, ABC):
 
 @dataclass
 class Annotation(Annotatable):
+    annotation_type = OWL.Annotation
     property: AnnotationProperty
     value: AnnotationValue
     annotations: List["Annotation"] = empty_list()

@@ -79,6 +79,8 @@ class ObjectIntersectionOf(FunOwlBase):
         return w.func(self, lambda: w.iter(self.classExpressions))
 
     def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type owl:Class .
+        # _:x owl:intersectionOf T(SEQ CE1 ... CEn) .
         subj = BNode()
         g.add((subj, RDF.type, OWL.Class))
         g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
@@ -98,14 +100,12 @@ class ObjectUnionOf(FunOwlBase):
         return w.func(self, lambda: w.iter(self.classExpressions))
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Class .
-        _:x owl:unionOf T(SEQ CE1 ... CEn) .
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Class))
-        g.add((rval, OWL.unionOf, SEQ(g, self.classExpressions)))
-        return rval
+        # _:x rdf:type owl:Class .
+        # _:x owl:unionOf T(SEQ CE1 ... CEn) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Class))
+        g.add((x, OWL.unionOf, SEQ(g, self.classExpressions)))
+        return x
 
 @dataclass
 class ObjectComplementOf(FunOwlBase):
@@ -135,16 +135,12 @@ class ObjectOneOf(FunOwlBase):
         return w.func(self, lambda: w.iter(self.individuals))
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Class .
-        _:x owl:oneOf T(SEQ a1 ... an) .
-        :param g:
-        :return:
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Class))
-        g.add((rval, OWL.oneOf, SEQ(g, self.individuals)))
-        return rval
+        # _:x rdf:type owl:Class .
+        # _:x owl:oneOf T(SEQ a1 ... an) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Class))
+        g.add((x, OWL.oneOf, SEQ(g, self.individuals)))
+        return x
 
 
 @dataclass
@@ -157,18 +153,14 @@ class ObjectSomeValuesFrom(FunOwlBase):
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Restriction .
-        _:x owl:onProperty T(OPE) .
-        _:x owl:someValuesFrom T(CE) .
-        :param g: the RDF graph
-        :return: a BNode
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Restriction))
-        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
-        g.add((rval, OWL.someValuesFrom, self.classExpression.to_rdf(g)))
-        return rval
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:someValuesFrom T(CE) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((x, OWL.someValuesFrom, self.classExpression.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -180,18 +172,14 @@ class ObjectAllValuesFrom(FunOwlBase):
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Restriction .
-        _:x owl:onProperty T(OPE) .
-        _:x owl:allValuesFrom T(CE) .
-        :param g: RDF graph
-        :return: a BNode
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Restriction))
-        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
-        g.add((rval, OWL.allValuesFrom, self.classExpression.to_rdf(g)))
-        return rval
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:allValuesFrom T(CE) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((x, OWL.allValuesFrom, self.classExpression.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -203,16 +191,14 @@ class ObjectHasValue(FunOwlBase):
         return w.func(self, lambda: w + self.objectPropertyExpression + self.individual)
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Restriction .
-        _:x owl:onProperty T(OPE) .
-        _:x owl:hasValue T(a) .
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Restriction))
-        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
-        g.add((rval, OWL.hasValue, self.individual.to_rdf(g)))
-        return rval
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:hasValue T(a) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((x, OWL.hasValue, self.individual.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -223,18 +209,14 @@ class ObjectHasSelf(FunOwlBase):
         return w.func(self, lambda: w + self.objectPropertyExpression)
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Restriction .
-        _:x owl:onProperty T(OPE) .
-        _:x owl:hasSelf "true"^^xsd:boolean .
-        :param g: the RDF graph
-        :return: a BNode
-        """
-        rval = BNode()
-        g.add((rval, RDF.type, OWL.Restriction))
-        g.add((rval, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
-        g.add((rval, OWL.hasSelf, RDFLiteral(True)))
-        return rval
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:hasSelf "true"^^xsd:boolean .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        g.add((x, OWL.hasSelf, RDFLiteral(True)))
+        return x
 
 
 @dataclass
@@ -246,6 +228,23 @@ class ObjectMinCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.objectPropertyExpression).opt(self.classExpression))
 
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:minCardinality "n"^^xsd:nonNegativeInteger .
+        #
+        # _:x owl:minQualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onClass T(CE) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        if self.classExpression:
+            g.add((x, OWL.minQualifiedCardinality, self.min_.to_rdf(g)))
+            g.add((x, OWL.onClass, self.classExpression.to_rdf(g)))
+        else:
+            g.add((x, OWL.minCardinality, self.min_.to_rdf(g)))
+        return x
+
 
 @dataclass
 class ObjectMaxCardinality(FunOwlBase):
@@ -255,6 +254,23 @@ class ObjectMaxCardinality(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.objectPropertyExpression).opt(self.classExpression))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:maxCardinality "n"^^xsd:nonNegativeInteger .
+        #
+        # _:x owl:maxQualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onClass T(CE) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        if self.classExpression:
+            g.add((x, OWL.maxQualifiedCardinality, self.max_.to_rdf(g)))
+            g.add((x, OWL.onClass, self.classExpression.to_rdf(g)))
+        else:
+            g.add((x, OWL.maxCardinality, self.max_.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -267,14 +283,22 @@ class ObjectExactCardinality(FunOwlBase):
         return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
 
     def to_rdf(self, g: Graph) -> BNode:
-        """
-        _:x rdf:type owl:Restriction .
-        _:x owl:onProperty T(OPE) .
-        _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
-        """
-        rval = BNode()
-        ...
-        return rval
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(OPE) .
+        # _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
+        #     or
+        # _:x owl:qualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onClass T(CE) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
+        if self.classExpression:
+            g.add((x, OWL.qualifiedCardinality, self.min_.to_rdf(g)))
+            g.add((x, OWL.onClass, self.classExpression.to_rdf(g)))
+        else:
+
+            g.add((x, OWL.cardinality, self.card.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -348,11 +372,14 @@ class DataHasValue(FunOwlBase):
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.literal))
 
     def to_rdf(self, g: Graph) -> BNode:
-        subj = BNode()
-        g.add((subj, RDF.type, OWL.Restriction))
-        g.add((subj, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
-        g.add((subj, OWL.hasValue, self.literal.to_rdf(g)))
-        return subj
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(DPE) .
+        # _:x owl:hasValue T(lt) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
+        g.add((x, OWL.hasValue, self.literal.to_rdf(g)))
+        return x
 
 
 @dataclass
@@ -365,24 +392,20 @@ class DataMinCardinality(FunOwlBase):
         return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).opt(self.dataRange))
 
     def to_rdf(self, g: Graph) -> BNode:
-        #  DataMinCardinality( n DPE )
-        #    _:x rdf:type owl:Restriction .
-        #    _:x owl:onProperty T(DPE) .
-        #    _:x owl:minCardinality "n"^^xsd:nonNegativeInteger .
-        # DataMinCardinality( n DPE DR )
-        #    _:x rdf:type owl:Restriction .
-        #    _:x owl:onProperty T(DPE) .
-        #    _:x owl:minQualifiedCardinality "n"^^xsd:nonNegativeInteger .
-        #    _:x owl:onDataRange T(DR) .
+        #  _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(DPE) .
+        # _:x owl:minCardinality "n"^^xsd:nonNegativeInteger
+        #
+        # _:x owl:minQualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onDataRange T(DR) .
         x = BNode()
         g.add((x, RDF.type, OWL.Restriction))
         g.add((x, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
-        restr = rdflib.Literal(self.min_, datatype=XSD.nonNegativeInteger)
-        if not self.dataRange:
-            g.add((x, OWL.minCardinality, restr))
-        else:
-            g.add((complex, OWL.minQualifiedCardinality, restr))
+        if self.dataRange:
+            g.add((x, OWL.minQualifiedCardinality, self.min_.to_rdf(g)))
             g.add((x, OWL.onDataRange, self.dataRange.to_rdf(g)))
+        else:
+            g.add((x, OWL.minCardinality, self.min_.to_rdf(g)))
         return x
 
 
@@ -395,6 +418,22 @@ class DataMaxCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.dataPropertyExpression).opt(self.dataRange))
 
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(DPE) .
+        # _:x owl:maxCardinality "n"^^xsd:nonNegativeInteger .
+        #
+        # _:x owl:maxQualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onDataRange T(DR) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
+        if self.dataRange:
+            g.add((x, OWL.maxQualifiedCardinality, self.max_.to_rdf(g)))
+            g.add((x, OWL.onDataRange, self.dataRange.to_rdf(g)))
+        else:
+            g.add((x, OWL.maxCardinality, self.max_.to_rdf(g)))
+        return x
 
 @dataclass
 class DataExactCardinality(FunOwlBase):
@@ -404,6 +443,23 @@ class DataExactCardinality(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.dataPropertyExpression).opt(self.dataRange))
+
+    def to_rdf(self, g: Graph) -> BNode:
+        # _:x rdf:type owl:Restriction .
+        # _:x owl:onProperty T(DPE) .
+        # _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
+        #
+        # _:x owl:qualifiedCardinality "n"^^xsd:nonNegativeInteger .
+        # _:x owl:onDataRange T(DR) .
+        x = BNode()
+        g.add((x, RDF.type, OWL.Restriction))
+        g.add((x, OWL.onProperty, self.dataPropertyExpression.to_rdf(g)))
+        if self.dataRange:
+            g.add((x, OWL.qualifiedCardinality, self.card.to_rdf(g)))
+            g.add((x, OWL.onDataRange, self.dataRange.to_rdf(g)))
+        else:
+            g.add((x, OWL.cardinality, self.card.to_rdf(g)))
+        return x
 
 
 # A Class expression can be a class or any subclass of ClassExpression

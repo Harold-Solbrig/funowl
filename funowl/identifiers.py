@@ -40,10 +40,10 @@ class IRI(FunOwlChoice):
         fulluri = self.full_uri(g)
         if self.rdf_type:
             # Filter: for (undocumented?) reasons, never assert owl:thing a owl:Class
-            if not (fulluri == OWL.Thing or
-                    fulluri.startswith(str(XSD)) or
+            if not (fulluri.startswith(str(XSD)) or
                     fulluri.startswith(str(RDF)) or
-                    fulluri.startswith(str(RDFS))
+                    fulluri.startswith(str(RDFS)) or
+                    fulluri.startswith(str(OWL))
             ):
                 g.add((fulluri, RDF.type, self.rdf_type))
 

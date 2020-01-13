@@ -18,12 +18,11 @@ example:fatherOf a :ObjectProperty .
 example:Meg a example:Woman,
         :NamedIndividual .
 
-example:Stewie a :NamedIndividual .
+example:Stewie a :NamedIndividual ;
+    :differentFrom example:Meg .
 
 example:Woman a :Class .
 
-[] a :AllDifferent ;
-    :distinctMembers ( example:Meg example:Stewie ) .
 
 [] a :Ontology .
 

@@ -123,8 +123,17 @@ class DisjointObjectProperties(Annotatable):
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
     def to_rdf(self, g: Graph) -> None:
-        self.add_triple(g, self.objectPropertyExpressions[0].to_rdf(g), OWL.propertyDisjointWith,
-                        self.objectPropertyExpressions[1].to_rdf(g))
+        # T(OPE1) owl:propertyDisjointWith T(OPE2) .
+        # N > 2:
+        #    _:x rdf:type owl:AllDisjointProperties .
+        #    _:x owl:members T(SEQ OPE1 ... OPEn) .
+        if len(self.objectPropertyExpressions) > 2:
+            x = BNode()
+            g.add((x, RDF.type, OWL.AllDisjointProperties))
+            self.add_triple(g, x, OWL.members, SEQ(g, self.objectPropertyExpressions))
+        else:
+            self.add_triple(g, self.objectPropertyExpressions[0].to_rdf(g), OWL.propertyDisjointWith,
+                            self.objectPropertyExpressions[1].to_rdf(g))
 
 @dataclass
 class ObjectPropertyDomain(Annotatable):

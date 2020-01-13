@@ -5,7 +5,9 @@ Axiom := Declaration | ClassAxiom | ObjectPropertyAxiom | DataPropertyAxiom | Da
 """
 from typing import Union
 
-from funowl.annotations import AnnotationAxiom
+from rdflib import OWL
+
+from funowl.annotations import AnnotationAxiom, Annotatable
 from funowl.assertions import Assertion
 from funowl.class_axioms import ClassAxiom, HasKey
 from funowl.dataproperty_axioms import DataPropertyAxiom, DatatypeDefinition

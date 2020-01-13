@@ -25,5 +25,5 @@ example:hasMother a :ObjectProperty .
 [] a :Ontology .
 
 [] a :AllDisjointProperties ;
-    :members ( example:hasChild example:hasFather example:hasMother ) .
+    :members ( example:hasFather example:hasMother example:hasChild ) .
 

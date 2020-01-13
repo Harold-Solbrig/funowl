@@ -12,15 +12,13 @@ example:Peter a :NamedIndividual ;
 example:fatherOf a :ObjectProperty .
 
 example:Chris a example:Man,
-        :NamedIndividual .
+        :NamedIndividual ;
+        :differentFrom example:Stewie .
 
 example:Man a :Class .
 
 example:Stewie a example:Man,
         :NamedIndividual .
-
-[] a :AllDifferent ;
-    :distinctMembers ( example:Chris example:Stewie ) .
 
 [] a :Ontology .
 

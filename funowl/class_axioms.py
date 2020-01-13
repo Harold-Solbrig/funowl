@@ -111,6 +111,9 @@ class DisjointUnion(Annotatable):
         self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 2)
         return self.annots(w, lambda: (w + self.cls).iter(self.disjointClassExpressions))
 
+    def to_rdf(self, g: Graph) -> None:
+        # 	T(C) owl:disjointUnionOf T(SEQ CE1 ... CEn) .
+        self.add_triple(g, self.cls.to_rdf(g), OWL.disjointUnionOf, SEQ(g, self.disjointClassExpressions))
 
 @dataclass
 class HasKey(Annotatable):
@@ -138,6 +141,11 @@ class HasKey(Annotatable):
                            lambda: ((w + self.classExpression +
                                     '(').iter(self.objectPropertyExpressions) + ')' +
                                     '(').iter(self.dataPropertyExpressions) + ')')
+
+    def to_rdf(self, g: Graph) -> None:
+        # T(CE) owl:hasKey T(SEQ OPE1 ... OPEm DPE1 ... DPEn ) .
+        self.add_triple(g, self.classExpression.to_rdf(g), OWL.hasKey,
+                        SEQ(g, self.objectPropertyExpressions + self.dataPropertyExpressions))
 
 
 ClassAxiom = Union[SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion]
