@@ -1,0 +1,66 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://org.semanticweb.owlapi/error#Error130> a :Class ;
+    :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N> .
+
+<http://org.semanticweb.owlapi/error#Error131> a :Class ;
+    :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> .
+
+<http://org.semanticweb.owlapi/error#Error132> a :Class ;
+    :equivalentClass <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#M> :sameAs "23"^^xsd:int .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#N> :sameAs "15"^^xsd:int .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#invP-1-to-N> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises002#p-N-to-1> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#invQ-1-to-M> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises002#q-M-to-1> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#invR-1-to-N-times-M> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/extra-credit/premises002#r-N-times-M-to-1> .
+
+:sameAs a :AnnotationProperty .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#d> a :NamedIndividual .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N-times-M> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises002#q-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises002#r-N-times-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> ] .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#p-N-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#q-M-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#r-N-times-M-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#cardinality-N> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/extra-credit/premises002#p-N-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> ] .
+
+<http://www.w3.org/2002/03owlt/extra-credit/premises002#only-d> a :Class ;
+    :equivalentClass [ a :Class ;
+            :oneOf ( <http://www.w3.org/2002/03owlt/extra-credit/premises002#d> ) ] .
+
+[] a :Ontology .
+

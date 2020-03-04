@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:Class rdf:about="GriffinFamilyMember" />
+
+<owl:DatatypeProperty rdf:about="hasName" />
+
+<rdf:Description rdf:about="GriffinFamilyMember">
+  <owl:hasKey rdf:parseType="Collection">
+    <rdf:Description rdf:about="hasName" />
+  </owl:hasKey>
+</rdf:Description>
+
+<rdf:Description rdf:about="Peter">
+  <hasName>Peter</hasName>
+  <rdf:type rdf:resource="GriffinFamilyMember" />
+</rdf:Description>
+
+<rdf:Description rdf:about="Peter_Griffin">
+  <hasName>Peter</hasName>
+  <rdf:type rdf:resource="GriffinFamilyMember" />
+</rdf:Description>
+
+<rdf:Description rdf:about="StPeter">
+  <hasName>Peter</hasName>
+</rdf:Description>
+
+</rdf:RDF>

@@ -1,0 +1,112 @@
+@prefix : <http://owl.semanticweb.org/page/Special:GetOntology/Consistent-but-all-unsat?m=p#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://owl.semanticweb.org/page/Special:GetOntology/Consistent-but-all-unsat?m=p> a owl:Ontology .
+
+<http://example.com/aTO2a> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "a<=>2a"^^xsd:string ;
+    owl:inverseOf <http://example.com/2aTOa> .
+
+<http://example.com/aTOb> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "a<=>b"^^xsd:string ;
+    owl:inverseOf <http://example.com/bTOa> .
+
+<http://example.com/bTOc> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "b<=>c"^^xsd:string ;
+    owl:inverseOf <http://example.com/cTOb> .
+
+<http://example.com/bUNIONc> a owl:Class ;
+    rdfs:label "bUNIONc"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://example.com/bUNIONcTO2a> ;
+            owl:someValuesFrom <http://example.com/2a> ] ;
+    owl:disjointWith <http://example.com/2a> ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( <http://example.com/b> <http://example.com/c> ) ] .
+
+<http://example.com/bUNIONcTO2a> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "bUNIONc<=>2a"^^xsd:string ;
+    owl:inverseOf <http://example.com/2aTObUNIONc> .
+
+<http://example.com/i1> a owl:NamedIndividual .
+
+<http://example.com/i2> a owl:NamedIndividual .
+
+<http://example.com/i3> a owl:NamedIndividual .
+
+<http://example.com/2aTOa> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "2a<=>a"^^xsd:string .
+
+<http://example.com/2aTObUNIONc> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "2a<=>bUNIONc"^^xsd:string .
+
+<http://example.com/a> a owl:Class ;
+    rdfs:label "a"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://example.com/aTOb> ;
+            owl:someValuesFrom <http://example.com/b> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/aTO2a> ;
+            owl:someValuesFrom <http://example.com/2a> ],
+        [ a owl:Class ;
+            owl:unionOf ( [ a owl:Class ;
+                        owl:oneOf ( <http://example.com/i1> ) ] [ a owl:Class ;
+                        owl:oneOf ( <http://example.com/i2> ) ] [ a owl:Class ;
+                        owl:oneOf ( <http://example.com/i3> ) ] ) ] ;
+    owl:disjointWith <http://example.com/2a>,
+        <http://example.com/b>,
+        <http://example.com/c> .
+
+<http://example.com/bTOa> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "b<=>a"^^xsd:string .
+
+<http://example.com/cTOb> a owl:FunctionalProperty,
+        owl:InverseFunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:label "c<=>b"^^xsd:string .
+
+<http://example.com/b> a owl:Class ;
+    rdfs:label "b"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://example.com/bTOc> ;
+            owl:someValuesFrom <http://example.com/c> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/bTOa> ;
+            owl:someValuesFrom <http://example.com/a> ] ;
+    owl:disjointWith <http://example.com/2a>,
+        <http://example.com/c> .
+
+<http://example.com/c> a owl:Class ;
+    rdfs:label "c"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://example.com/cTOb> ;
+            owl:someValuesFrom <http://example.com/b> ] ;
+    owl:disjointWith <http://example.com/2a> .
+
+<http://example.com/2a> a owl:Class ;
+    rdfs:label "2a"^^xsd:string ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty <http://example.com/2aTOa> ;
+            owl:someValuesFrom <http://example.com/a> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/2aTObUNIONc> ;
+            owl:someValuesFrom <http://example.com/bUNIONc> ] .
+

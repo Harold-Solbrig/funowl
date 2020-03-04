@@ -1,0 +1,30 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix example: <http://example.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+example:Lois a [ a :Restriction ;
+            :onProperty example:marriedTo ;
+            :someValuesFrom [ a :Class ;
+                    :intersectionOf ( example:Man [ a :Restriction ;
+                                :hasValue "123-45-6789" ;
+                                :onProperty example:hasSSN ] ) ] ],
+        :NamedIndividual .
+
+example:Peter a example:Person,
+        :NamedIndividual ;
+    example:hasSSN "123-45-6789" .
+
+example:Man a :Class .
+
+example:Person a :Class ;
+    :hasKey ( example:hasSSN ) .
+
+example:marriedTo a :ObjectProperty .
+
+example:hasSSN a :DatatypeProperty .
+
+[] a :Ontology .
+

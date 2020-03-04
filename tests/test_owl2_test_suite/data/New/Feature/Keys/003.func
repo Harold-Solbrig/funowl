@@ -1,0 +1,38 @@
+Prefix(:=<http://example.org/>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(:GriffinFamilyMember))
+Declaration(DataProperty(:hasName))
+Declaration(NamedIndividual(:Peter))
+Declaration(NamedIndividual(:Peter_Griffin))
+Declaration(NamedIndividual(:StPeter))
+
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: :Peter (:Peter)
+
+ClassAssertion(:GriffinFamilyMember :Peter)
+DataPropertyAssertion(:hasName :Peter "Peter")
+
+# Individual: :Peter_Griffin (:Peter_Griffin)
+
+ClassAssertion(:GriffinFamilyMember :Peter_Griffin)
+DataPropertyAssertion(:hasName :Peter_Griffin "Peter")
+
+# Individual: :StPeter (:StPeter)
+
+DataPropertyAssertion(:hasName :StPeter "Peter")
+
+
+HasKey(:GriffinFamilyMember () (:hasName))
+)

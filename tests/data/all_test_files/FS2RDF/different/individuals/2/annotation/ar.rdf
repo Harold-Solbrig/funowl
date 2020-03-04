@@ -1,0 +1,18 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:Axiom>
+    <owl:annotatedSource>
+      <rdf:Description rdf:about="http://example.org/a">
+        <owl:differentFrom rdf:resource="http://example.org/b"/>
+      </rdf:Description>
+    </owl:annotatedSource>
+    <owl:annotatedProperty rdf:resource="http://www.w3.org/2002/07/owl#differentFrom"/>
+    <owl:annotatedTarget rdf:resource="http://example.org/b"/>
+    <rdfs:comment>I hereby annotate this</rdfs:comment>
+  </owl:Axiom>
+</rdf:RDF>

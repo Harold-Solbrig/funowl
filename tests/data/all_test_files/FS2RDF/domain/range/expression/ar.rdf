@@ -1,0 +1,92 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:Class rdf:about="http://example.org/c5"/>
+  <owl:Class rdf:about="http://example.org/u2"/>
+  <owl:Class rdf:about="http://example.org/u5"/>
+  <owl:Class rdf:about="http://example.org/c2"/>
+  <owl:Class rdf:about="http://example.org/c3"/>
+  <owl:Class rdf:about="http://example.org/c6"/>
+  <owl:Class rdf:about="http://example.org/c4"/>
+  <owl:Class rdf:about="http://example.org/c1"/>
+  <owl:Class rdf:about="http://example.org/u3"/>
+  <owl:Class rdf:about="http://example.org/u6"/>
+  <owl:Class rdf:about="http://example.org/u1"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/p1">
+    <rdfs:range>
+      <rdfs:Datatype>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"/>
+          <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#float"/>
+        </owl:unionOf>
+      </rdfs:Datatype>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p7"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/p5"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/p3">
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://example.org/c2"/>
+          <owl:Class rdf:about="http://example.org/u2"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p6"/>
+  <owl:DatatypeProperty rdf:about="http://example.org/p2">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://example.org/c1"/>
+          <owl:Class rdf:about="http://example.org/u1"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://example.org/p4">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://example.org/c3"/>
+          <owl:Class rdf:about="http://example.org/u3"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <rdf:Description>
+    <owl:inverseOf rdf:resource="http://example.org/p6"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://example.org/c5"/>
+          <owl:Class rdf:about="http://example.org/u5"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </rdf:Description>
+  <rdf:Description>
+    <owl:inverseOf rdf:resource="http://example.org/p5"/>
+    <rdfs:range rdf:resource="http://example.org/c4"/>
+  </rdf:Description>
+  <rdf:Description>
+    <owl:inverseOf rdf:resource="http://example.org/p7"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="http://example.org/c6"/>
+          <owl:Class rdf:about="http://example.org/u6"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </rdf:Description>
+  <rdf:Description>
+    <owl:inverseOf rdf:resource="http://example.org/p5"/>
+    <rdfs:domain rdf:resource="http://example.org/c4"/>
+  </rdf:Description>
+</rdf:RDF>

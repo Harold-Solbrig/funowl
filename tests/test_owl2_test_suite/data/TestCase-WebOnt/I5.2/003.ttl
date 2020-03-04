@@ -1,0 +1,32 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/I5.2/consistent003#A> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/consistent003#q> ;
+            :someValuesFrom :Thing ] .
+
+<http://www.w3.org/2002/03owlt/I5.2/consistent003#notA> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :allValuesFrom <http://www.w3.org/2002/03owlt/I5.2/consistent003#Nothing> ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/consistent003#q> ] .
+
+<http://www.w3.org/2002/03owlt/I5.2/consistent003#Nothing> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :minCardinality "1"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/consistent003#p> ],
+        [ a :Restriction ;
+            :maxCardinality "0"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/I5.2/consistent003#p> ] .
+
+:Thing a :Class .
+
+<http://www.w3.org/2002/03owlt/I5.2/consistent003#p> a :ObjectProperty .
+
+<http://www.w3.org/2002/03owlt/I5.2/consistent003#q> a :ObjectProperty .
+
+[] a :Ontology .
+

@@ -1,0 +1,33 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent001#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent001>
+
+Declaration(Class(<http://oiled.man.example.net/test#Unsatisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#a>))
+Declaration(Class(<http://oiled.man.example.net/test#b>))
+Declaration(Class(<http://oiled.man.example.net/test#c>))
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Unsatisfiable> (<http://oiled.man.example.net/test#Unsatisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectUnionOf(ObjectIntersectionOf(<http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#b>) ObjectIntersectionOf(<http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#c>) ObjectIntersectionOf(<http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c>)))
+
+# Class: <http://oiled.man.example.net/test#a> (<http://oiled.man.example.net/test#a>)
+
+SubClassOf(<http://oiled.man.example.net/test#a> ObjectComplementOf(ObjectUnionOf(<http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c>)))
+
+# Class: <http://oiled.man.example.net/test#b> (<http://oiled.man.example.net/test#b>)
+
+SubClassOf(<http://oiled.man.example.net/test#b> ObjectComplementOf(<http://oiled.man.example.net/test#c>))
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid79984)
+)

@@ -1,0 +1,54 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent011#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent011>
+
+Declaration(Class(<http://oiled.man.example.net/test#Unsatisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#p>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#f>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#f1>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#invF>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#invF1>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#invS>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#s>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://oiled.man.example.net/test#f> (<http://oiled.man.example.net/test#f>)
+
+InverseObjectProperties(<http://oiled.man.example.net/test#f> <http://oiled.man.example.net/test#invF>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#f>)
+
+# Object Property: <http://oiled.man.example.net/test#f1> (<http://oiled.man.example.net/test#f1>)
+
+InverseObjectProperties(<http://oiled.man.example.net/test#f1> <http://oiled.man.example.net/test#invF1>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#f1>)
+
+# Object Property: <http://oiled.man.example.net/test#invS> (<http://oiled.man.example.net/test#invS>)
+
+InverseObjectProperties(<http://oiled.man.example.net/test#invS> <http://oiled.man.example.net/test#s>)
+
+# Object Property: <http://oiled.man.example.net/test#s> (<http://oiled.man.example.net/test#s>)
+
+SubObjectPropertyOf(<http://oiled.man.example.net/test#s> <http://oiled.man.example.net/test#f>)
+SubObjectPropertyOf(<http://oiled.man.example.net/test#s> <http://oiled.man.example.net/test#f1>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#s>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Unsatisfiable> (<http://oiled.man.example.net/test#Unsatisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectIntersectionOf(ObjectSomeValuesFrom(<http://oiled.man.example.net/test#s> ObjectIntersectionOf(<http://oiled.man.example.net/test#p> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#invS> <http://oiled.man.example.net/test#p>))) ObjectAllValuesFrom(<http://oiled.man.example.net/test#s> ObjectComplementOf(<http://oiled.man.example.net/test#p>))))
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid73100)
+)

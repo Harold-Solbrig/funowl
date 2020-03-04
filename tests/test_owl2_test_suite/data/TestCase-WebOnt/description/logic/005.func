@@ -1,0 +1,67 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/consistent005#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/consistent005>
+
+Declaration(Class(<http://oiled.man.example.net/test#Satisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#c1>))
+Declaration(Class(<http://oiled.man.example.net/test#c2>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx1>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx1a>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx2>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx2a>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx3>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx3a>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx4>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rx4a>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#rxa>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://oiled.man.example.net/test#rx> (<http://oiled.man.example.net/test#rx>)
+
+FunctionalObjectProperty(<http://oiled.man.example.net/test#rx>)
+
+# Object Property: <http://oiled.man.example.net/test#rx3> (<http://oiled.man.example.net/test#rx3>)
+
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx3> <http://oiled.man.example.net/test#rx>)
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx3> <http://oiled.man.example.net/test#rx1>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#rx3>)
+
+# Object Property: <http://oiled.man.example.net/test#rx3a> (<http://oiled.man.example.net/test#rx3a>)
+
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx3a> <http://oiled.man.example.net/test#rx1a>)
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx3a> <http://oiled.man.example.net/test#rxa>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#rx3a>)
+
+# Object Property: <http://oiled.man.example.net/test#rx4> (<http://oiled.man.example.net/test#rx4>)
+
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx4> <http://oiled.man.example.net/test#rx>)
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx4> <http://oiled.man.example.net/test#rx2>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#rx4>)
+
+# Object Property: <http://oiled.man.example.net/test#rx4a> (<http://oiled.man.example.net/test#rx4a>)
+
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx4a> <http://oiled.man.example.net/test#rx2a>)
+SubObjectPropertyOf(<http://oiled.man.example.net/test#rx4a> <http://oiled.man.example.net/test#rxa>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#rx4a>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Satisfiable> (<http://oiled.man.example.net/test#Satisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Satisfiable> ObjectIntersectionOf(ObjectComplementOf(ObjectSomeValuesFrom(<http://oiled.man.example.net/test#rx3a> ObjectIntersectionOf(<http://oiled.man.example.net/test#c1> <http://oiled.man.example.net/test#c2>))) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#rx3a> <http://oiled.man.example.net/test#c1>) ObjectSomeValuesFrom(<http://oiled.man.example.net/test#rx4a> <http://oiled.man.example.net/test#c2>)))
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid73011)
+)

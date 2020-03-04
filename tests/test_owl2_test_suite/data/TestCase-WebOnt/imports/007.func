@@ -1,0 +1,18 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/imports/main007#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/imports/imports007#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/imports/main007>
+Import(<http://www.w3.org/2002/03owlt/imports/imports007>)
+
+
+
+ClassAssertion(owl:Thing _:genid72825)
+ClassAssertion(owl:Thing _:genid72827)
+ObjectPropertyAssertion(first:p _:genid72825 _:genid72827)
+)

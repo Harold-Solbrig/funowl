@@ -1,0 +1,56 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#invP-1-to-N> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/description-logic/consistent908#p-N-to-1> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#invQ-1-to-M> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/description-logic/consistent908#q-M-to-1> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#invR-N-times-M-to-1> a :ObjectProperty ;
+    :inverseOf <http://www.w3.org/2002/03owlt/description-logic/consistent908#r-N-times-M-to-1> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N-times-M> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#q-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N> ],
+        [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#r-N-times-M-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent908#infinite> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#p-N-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/description-logic/consistent908#infinite> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#q-M-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#r-N-times-M-to-1> a :FunctionalProperty,
+        :ObjectProperty ;
+    rdfs:domain <http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N-times-M> ;
+    rdfs:range <http://www.w3.org/2002/03owlt/description-logic/consistent908#infinite> .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#cardinality-N> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#p-N-to-1> ;
+            :someValuesFrom <http://www.w3.org/2002/03owlt/description-logic/consistent908#infinite> ],
+        [ a :Restriction ;
+            :cardinality "3"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#invQ-1-to-M> ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/consistent908#infinite> a :Class ;
+    :equivalentClass [ a :Restriction ;
+            :cardinality "5"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#invR-N-times-M-to-1> ],
+        [ a :Restriction ;
+            :cardinality "2"^^xsd:nonNegativeInteger ;
+            :onProperty <http://www.w3.org/2002/03owlt/description-logic/consistent908#invP-1-to-N> ] .
+
+[] a :Ontology .
+

@@ -1,0 +1,129 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent608#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent608>
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(oiled:p1))
+Declaration(Class(oiled:p2))
+Declaration(Class(oiled:p2.comp))
+Declaration(Class(oiled:p3))
+Declaration(Class(oiled:p3.comp))
+Declaration(Class(oiled:p4))
+Declaration(Class(oiled:p4.comp))
+Declaration(Class(oiled:p5))
+Declaration(Class(oiled:p5.comp))
+Declaration(Class(:A.14))
+Declaration(Class(:C.1))
+Declaration(Class(:C.1.comp))
+Declaration(Class(:C.2))
+Declaration(Class(:C.2.comp))
+Declaration(Class(:C.3))
+Declaration(Class(:C.3.comp))
+Declaration(ObjectProperty(oiled:invR))
+Declaration(ObjectProperty(oiled:r))
+Declaration(ObjectProperty(:P.2))
+Declaration(ObjectProperty(:P.4))
+Declaration(ObjectProperty(:P.6))
+Declaration(DataProperty(:P.1))
+Declaration(DataProperty(:P.3))
+Declaration(DataProperty(:P.5))
+Declaration(DataProperty(:P.7))
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:invR (oiled:invR)
+
+InverseObjectProperties(oiled:invR oiled:r)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+EquivalentClasses(oiled:Unsatisfiable ObjectIntersectionOf(oiled:p2 ObjectSomeValuesFrom(oiled:invR :A.14)))
+
+# Class: oiled:p1 (oiled:p1)
+
+SubClassOf(oiled:p1 :C.1)
+
+# Class: oiled:p2 (oiled:p2)
+
+EquivalentClasses(oiled:p2 DataMinCardinality(1 :P.5))
+SubClassOf(oiled:p2 :C.2)
+
+# Class: oiled:p2.comp (oiled:p2.comp)
+
+EquivalentClasses(oiled:p2.comp DataExactCardinality(0 :P.5))
+
+# Class: oiled:p3 (oiled:p3)
+
+EquivalentClasses(oiled:p3 ObjectMinCardinality(1 :P.6))
+SubClassOf(oiled:p3 :C.3)
+
+# Class: oiled:p3.comp (oiled:p3.comp)
+
+EquivalentClasses(oiled:p3.comp ObjectMaxCardinality(0 :P.6))
+
+# Class: oiled:p4 (oiled:p4)
+
+EquivalentClasses(oiled:p4 DataExactCardinality(0 :P.7))
+SubClassOf(oiled:p4 oiled:p5.comp)
+
+# Class: oiled:p4.comp (oiled:p4.comp)
+
+EquivalentClasses(oiled:p4.comp DataMinCardinality(1 :P.7))
+
+# Class: oiled:p5 (oiled:p5)
+
+EquivalentClasses(oiled:p5 ObjectExactCardinality(0 :P.4))
+
+# Class: oiled:p5.comp (oiled:p5.comp)
+
+EquivalentClasses(oiled:p5.comp ObjectMinCardinality(1 :P.4))
+
+# Class: :A.14 (:A.14)
+
+EquivalentClasses(:A.14 ObjectIntersectionOf(ObjectSomeValuesFrom(oiled:r oiled:p1) ObjectMaxCardinality(1 oiled:r)))
+
+# Class: :C.1 (:C.1)
+
+EquivalentClasses(:C.1 ObjectIntersectionOf(oiled:p2.comp oiled:p3.comp oiled:p4.comp oiled:p5.comp))
+EquivalentClasses(:C.1 DataMinCardinality(1 :P.1))
+
+# Class: :C.1.comp (:C.1.comp)
+
+EquivalentClasses(:C.1.comp DataMaxCardinality(0 :P.1))
+
+# Class: :C.2 (:C.2)
+
+EquivalentClasses(:C.2 ObjectIntersectionOf(oiled:p3.comp oiled:p4.comp oiled:p5.comp))
+EquivalentClasses(:C.2 ObjectExactCardinality(0 :P.2))
+
+# Class: :C.2.comp (:C.2.comp)
+
+EquivalentClasses(:C.2.comp ObjectMinCardinality(1 :P.2))
+
+# Class: :C.3 (:C.3)
+
+EquivalentClasses(:C.3 ObjectIntersectionOf(oiled:p4.comp oiled:p5.comp))
+EquivalentClasses(:C.3 DataExactCardinality(0 :P.3))
+
+# Class: :C.3.comp (:C.3.comp)
+
+EquivalentClasses(:C.3.comp DataMinCardinality(1 :P.3))
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid74521)
+)

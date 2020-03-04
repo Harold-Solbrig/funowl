@@ -1,0 +1,55 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent035#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent035>
+Annotation(rdfs:comment "An ontology illustrating the use of a spy point that
+limits the cardinality of the interpretation domain to having only two
+objects.")
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(oiled:invP))
+Declaration(ObjectProperty(oiled:p))
+Declaration(ObjectProperty(oiled:r))
+Declaration(NamedIndividual(oiled:spy))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:invP (oiled:invP)
+
+InverseObjectProperties(oiled:invP oiled:p)
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+SubClassOf(oiled:Unsatisfiable ObjectMinCardinality(3 oiled:r))
+
+# Class: owl:Thing (owl:Thing)
+
+SubClassOf(owl:Thing ObjectSomeValuesFrom(oiled:p ObjectOneOf(oiled:spy)))
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: oiled:spy (oiled:spy)
+
+ClassAssertion(owl:Thing oiled:spy)
+ClassAssertion(ObjectMaxCardinality(2 oiled:invP) oiled:spy)
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid74555)
+)

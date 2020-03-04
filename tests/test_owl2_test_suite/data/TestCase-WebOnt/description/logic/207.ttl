@@ -1,0 +1,58 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/premises207#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix test: <http://oiled.man.example.net/test#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:V21080 a [ a owl:Class ;
+            owl:complementOf test:C8 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C6 ] ;
+            owl:onProperty test:R1 ],
+        test:TEST,
+        owl:NamedIndividual,
+        owl:Thing ;
+    test:R1 test:V21081 .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises207> a owl:Ontology .
+
+test:C10 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C2 test:C4 ) ] .
+
+test:C12 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C10 ] .
+
+test:TEST a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C12 [ a owl:Class ;
+                        owl:complementOf test:C8 ] ) ] .
+
+test:V21081 a [ a owl:Class ;
+            owl:complementOf test:C6 ],
+        test:C2,
+        test:C4,
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:C8 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C6 ] .
+
+test:C2 a owl:Class .
+
+test:C4 a owl:Class .
+
+test:C6 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C4 [ a owl:Class ;
+                        owl:complementOf test:C2 ] ) ] .
+
+test:R1 a owl:ObjectProperty .
+

@@ -1,0 +1,828 @@
+@prefix : <http://www.w3.org/2002/03owlt/miscellaneous/consistent002#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Delicate> a owl:NamedIndividual ;
+    owl:sameAs :Delicate .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Dry> a owl:NamedIndividual ;
+    owl:sameAs :Dry .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Full> a owl:NamedIndividual ;
+    owl:sameAs :Full .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Light> a owl:NamedIndividual ;
+    owl:sameAs :Light .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Medium> a owl:NamedIndividual ;
+    owl:sameAs :Medium .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Moderate> a owl:NamedIndividual ;
+    owl:sameAs :Moderate .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#OffDry> a owl:NamedIndividual ;
+    owl:sameAs :OffDry .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Red> a owl:NamedIndividual ;
+    owl:sameAs :Red .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Rose> a owl:NamedIndividual ;
+    owl:sameAs :Rose .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Strong> a owl:NamedIndividual ;
+    owl:sameAs :Strong .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Sweet> a owl:NamedIndividual ;
+    owl:sameAs :Sweet .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#White> a owl:NamedIndividual ;
+    owl:sameAs :White .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent001#Wine> owl:equivalentClass :Wine .
+
+<http://www.w3.org/2002/03owlt/miscellaneous/consistent002> a owl:Ontology ;
+    rdfs:comment """
+      Derived from the DAML Wine ontology at 
+      http://ontolingua.stanford.edu/doc/chimaera/ontologies/wines.daml
+      Substantially modified.
+    """ ;
+    owl:imports <http://www.w3.org/2002/03owlt/miscellaneous/consistent001> .
+
+:Bananas a :SweetFruit,
+        owl:NamedIndividual .
+
+:BeefCurry a :SpicyRedMeat,
+        owl:NamedIndividual .
+
+:BlandFishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Delicate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :BlandFish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Cake a :SweetDessert,
+        owl:NamedIndividual .
+
+:Cheese a :CheeseNutsDessert,
+        owl:NamedIndividual .
+
+:CheeseNutsDessertCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :CheeseNutsDessert ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Chicken a :LightMeatFowl,
+        owl:NamedIndividual .
+
+:Clams a :NonOysterShellfish,
+        owl:NamedIndividual .
+
+:Crab a :NonOysterShellfish,
+        owl:NamedIndividual .
+
+:DarkMeatFowlCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Light ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Delicate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :DarkMeatFowl ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:DessertCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Strong ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Sweet ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :Dessert ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Duck a :DarkMeatFowl,
+        owl:NamedIndividual .
+
+:FettucineAlfRedo a :PastaWithHeavyCreamSauce,
+        owl:NamedIndividual .
+
+:FishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :Fish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Flounder a :BlandFish,
+        owl:NamedIndividual .
+
+:FraDiavolo a :PastaWithSpicyRedSauce,
+        owl:NamedIndividual .
+
+:FruitCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :Fruit ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:GarlickyRoast a :SpicyRedMeat,
+        owl:NamedIndividual .
+
+:Goose a :DarkMeatFowl,
+        owl:NamedIndividual .
+
+:Halibut a :BlandFish,
+        owl:NamedIndividual .
+
+:Juice a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :madeFromFruit ],
+        :PotableLiquid .
+
+:LightMeatFowlCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :LightMeatFowl ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Lobster a :NonOysterShellfish,
+        owl:NamedIndividual .
+
+:MixedFruit a :SweetFruit,
+        owl:NamedIndividual .
+
+:Mussels a :NonOysterShellfish,
+        owl:NamedIndividual .
+
+:NonBlandFishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :NonBlandFish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:NonConsumableThing a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:complementOf :ConsumableThing ] .
+
+:NonOysterShellfishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :NonOysterShellfish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:NonRedMeatCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Strong ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :NonRedMeat ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:NonSpicyRedMeatCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom [ a owl:Class ;
+                            owl:oneOf ( :Moderate :Strong ) ] ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :NonSpicyRedMeat ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:NonSweetFruitCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :OffDry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Delicate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :NonSweetFruit ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Nuts a :CheeseNutsDessert,
+        owl:NamedIndividual .
+
+:OtherTomatoBasedFoodCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :OtherTomatoBasedFood ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:OysterShellfishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Sweet ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :OysterShellfish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Oysters a :OysterShellfish,
+        owl:NamedIndividual .
+
+:PastaWithHeavyCreamCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :PastaWithHeavyCreamSauce ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:PastaWithLightCreamCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Light ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Delicate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :PastaWithLightCreamSauce ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:PastaWithNonSpicyRedSauceCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Medium ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :PastaWithNonSpicyRedSauce ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:PastaWithSpicyRedSauceCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Strong ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :PastaWithSpicyRedSauce ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:PastaWithWhiteClamSauce a :PastaWithLightCreamSauce,
+        owl:NamedIndividual .
+
+:Peaches a :SweetFruit,
+        owl:NamedIndividual .
+
+:Pie a :SweetDessert,
+        owl:NamedIndividual .
+
+:Pizza a :OtherTomatoBasedFood,
+        owl:NamedIndividual .
+
+:Pork a :NonRedMeat,
+        owl:NamedIndividual .
+
+:RedMeatCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :RedMeat ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:RoastBeef a :NonSpicyRedMeat,
+        owl:NamedIndividual .
+
+:Scrod a :BlandFish,
+        owl:NamedIndividual .
+
+:SeafoodCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :Seafood ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:ShellfishCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:allValuesFrom [ a owl:Class ;
+                            owl:oneOf ( :Moderate :Strong ) ] ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :Shellfish ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:SpaghettiWithTomatoSauce a :PastaWithNonSpicyRedSauce,
+        owl:NamedIndividual .
+
+:SpicyRedMeatCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Dry ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Full ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasBody> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Red ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :SpicyRedMeat ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Steak a :NonSpicyRedMeat,
+        owl:NamedIndividual .
+
+:SweetDessertCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :White ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasColor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :SweetDessert ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:SweetFruitCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Sweet ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasSugar> ] ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Restriction ;
+                    owl:hasValue :Moderate ;
+                    owl:onProperty <http://www.w3.org/2002/03owlt/miscellaneous/consistent001#hasFlavor> ] ;
+            owl:onProperty :hasDrink ] ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :MealCourse [ a owl:Restriction ;
+                        owl:allValuesFrom :SweetFruit ;
+                        owl:onProperty :hasFood ] ) ] .
+
+:Swordfish a :NonBlandFish,
+        owl:NamedIndividual .
+
+:ThompsonSeedless a :EatingGrape,
+        owl:NamedIndividual .
+
+:Tuna a :NonBlandFish,
+        owl:NamedIndividual .
+
+:Turkey a :LightMeatFowl,
+        owl:NamedIndividual .
+
+:Veal a :NonSpicyRedMeat,
+        owl:NamedIndividual .
+
+:EatingGrape a owl:Class ;
+    rdfs:subClassOf :Grape .
+
+:Grape a owl:Class ;
+    rdfs:subClassOf :SweetFruit .
+
+:Rose a owl:NamedIndividual,
+        owl:Thing .
+
+:madeFromFruit a owl:ObjectProperty ;
+    rdfs:domain :ConsumableThing ;
+    rdfs:range :Fruit .
+
+:Meal a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :course ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :MealCourse ;
+            owl:onProperty :course ],
+        :ConsumableThing ;
+    owl:disjointWith :MealCourse,
+        :PotableLiquid .
+
+:NonRedMeat a owl:Class ;
+    rdfs:subClassOf :Meat ;
+    owl:disjointWith :RedMeat .
+
+:NonSweetFruit a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :SweetFruit .
+
+:OffDry a owl:NamedIndividual,
+        owl:Thing .
+
+:PastaWithHeavyCreamSauce a owl:Class ;
+    rdfs:subClassOf :PastaWithWhiteSauce ;
+    owl:disjointWith :PastaWithLightCreamSauce .
+
+:PastaWithNonSpicyRedSauce a owl:Class ;
+    rdfs:subClassOf :PastaWithRedSauce ;
+    owl:disjointWith :PastaWithSpicyRedSauce .
+
+:PastaWithRedSauce a owl:Class ;
+    rdfs:subClassOf :Pasta ;
+    owl:disjointWith :PastaWithWhiteSauce .
+
+:Wine a owl:Class .
+
+:course a owl:ObjectProperty ;
+    rdfs:domain :Meal ;
+    rdfs:range :MealCourse .
+
+:CheeseNutsDessert a owl:Class ;
+    rdfs:subClassOf :Dessert ;
+    owl:disjointWith :SweetDessert .
+
+:DarkMeatFowl a owl:Class ;
+    rdfs:subClassOf :Fowl ;
+    owl:disjointWith :LightMeatFowl .
+
+:Dessert a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :Fowl,
+        :Fruit,
+        :Meat,
+        :OtherTomatoBasedFood,
+        :Pasta,
+        :Seafood .
+
+:Fish a owl:Class ;
+    rdfs:subClassOf :Seafood ;
+    owl:disjointWith :Shellfish .
+
+:Fowl a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :Fruit,
+        :Meat,
+        :OtherTomatoBasedFood,
+        :Pasta,
+        :Seafood .
+
+:Light a owl:NamedIndividual,
+        owl:Thing .
+
+:OysterShellfish a owl:Class ;
+    rdfs:subClassOf :Shellfish .
+
+:PastaWithLightCreamSauce a owl:Class ;
+    rdfs:subClassOf :PastaWithWhiteSauce .
+
+:PastaWithSpicyRedSauce a owl:Class ;
+    rdfs:subClassOf :PastaWithRedSauce .
+
+:PastaWithWhiteSauce a owl:Class ;
+    rdfs:subClassOf :Pasta .
+
+:BlandFish a owl:Class ;
+    rdfs:subClassOf :Fish ;
+    owl:disjointWith :NonBlandFish .
+
+:Fruit a owl:Class ;
+    owl:disjointWith :Meat,
+        :OtherTomatoBasedFood,
+        :Pasta,
+        :Seafood ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:unionOf ( :NonSweetFruit :SweetFruit ) ] .
+
+:LightMeatFowl a owl:Class ;
+    rdfs:subClassOf :Fowl .
+
+:NonBlandFish a owl:Class ;
+    rdfs:subClassOf :Fish .
+
+:NonSpicyRedMeat a owl:Class ;
+    rdfs:subClassOf :RedMeat ;
+    owl:disjointWith :SpicyRedMeat .
+
+:RedMeat a owl:Class ;
+    rdfs:subClassOf :Meat .
+
+:Shellfish a owl:Class ;
+    rdfs:subClassOf :Seafood .
+
+:SpicyRedMeat a owl:Class ;
+    rdfs:subClassOf :RedMeat .
+
+:Sweet a owl:NamedIndividual,
+        owl:Thing .
+
+:SweetDessert a owl:Class ;
+    rdfs:subClassOf :Dessert .
+
+:Delicate a owl:NamedIndividual,
+        owl:Thing .
+
+:Full a owl:NamedIndividual,
+        owl:Thing .
+
+:Meat a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :OtherTomatoBasedFood,
+        :Pasta,
+        :Seafood .
+
+:NonOysterShellfish a owl:Class ;
+    rdfs:subClassOf :Shellfish ;
+    owl:disjointWith :OysterShellfish .
+
+:PotableLiquid a owl:Class ;
+    rdfs:subClassOf :ConsumableThing .
+
+:ConsumableThing a owl:Class .
+
+:OtherTomatoBasedFood a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :Pasta,
+        :Seafood .
+
+:Strong a owl:NamedIndividual,
+        owl:Thing .
+
+:Pasta a owl:Class ;
+    rdfs:subClassOf :EdibleThing ;
+    owl:disjointWith :Seafood .
+
+:SweetFruit a owl:Class ;
+    rdfs:subClassOf :EdibleThing .
+
+:White a owl:NamedIndividual,
+        owl:Thing .
+
+:EdibleThing a owl:Class ;
+    rdfs:subClassOf :ConsumableThing ;
+    owl:disjointWith :Meal,
+        :MealCourse,
+        :PotableLiquid .
+
+:Medium a owl:NamedIndividual,
+        owl:Thing .
+
+:Red a owl:NamedIndividual,
+        owl:Thing .
+
+:Seafood a owl:Class ;
+    rdfs:subClassOf :EdibleThing .
+
+:Moderate a owl:NamedIndividual,
+        owl:Thing .
+
+:Dry a owl:NamedIndividual,
+        owl:Thing .
+
+:hasFood a owl:ObjectProperty ;
+    rdfs:domain :MealCourse ;
+    rdfs:range :EdibleThing .
+
+:MealCourse a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :hasFood ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :hasDrink ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom :Wine ;
+            owl:onProperty :hasDrink ],
+        :ConsumableThing ;
+    owl:disjointWith :PotableLiquid .
+
+:hasDrink a owl:ObjectProperty ;
+    rdfs:domain :MealCourse ;
+    rdfs:range :PotableLiquid .
+

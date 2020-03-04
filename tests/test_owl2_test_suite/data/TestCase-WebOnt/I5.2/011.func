@@ -1,0 +1,27 @@
+Prefix(eg:=<http://www.example.org/user#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(eg:Bag))
+Declaration(ObjectProperty(eg:_1))
+
+
+
+############################
+#   Classes
+############################
+
+# Class: eg:Bag (eg:Bag)
+
+AnnotationAssertion(rdfs:comment eg:Bag "The class of unordered containers.")
+
+
+ClassAssertion(eg:Bag _:genid73541)
+ClassAssertion(owl:Thing _:genid73543)
+ObjectPropertyAssertion(eg:_1 _:genid73541 _:genid73543)
+)

@@ -1,0 +1,719 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/premises661#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://oiled.man.example.net/test#C102> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C100> <http://oiled.man.example.net/test#C34> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.35 ] .
+
+<http://oiled.man.example.net/test#C108> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.36 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C106> <http://oiled.man.example.net/test#C34.comp> ) ] .
+
+<http://oiled.man.example.net/test#C110> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C102.comp> <http://oiled.man.example.net/test#C108.comp> ) ],
+        [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.37 ] .
+
+<http://oiled.man.example.net/test#C112> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.39 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C110.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C12> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10> <http://oiled.man.example.net/test#C4.comp> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
+
+<http://oiled.man.example.net/test#C130> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.44 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C122> <http://oiled.man.example.net/test#C128> ) ] .
+
+<http://oiled.man.example.net/test#C134> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.45 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C130.comp> <http://oiled.man.example.net/test#C132> ) ] .
+
+<http://oiled.man.example.net/test#C136> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.46 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C116> <http://oiled.man.example.net/test#C134.comp> ) ] .
+
+<http://oiled.man.example.net/test#C138> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C136.comp> ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.47 ] .
+
+<http://oiled.man.example.net/test#C22> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C20> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ] .
+
+<http://oiled.man.example.net/test#C28> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16.comp> <http://oiled.man.example.net/test#C26> ) ] .
+
+<http://oiled.man.example.net/test#C30> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C22.comp> <http://oiled.man.example.net/test#C28.comp> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ] .
+
+<http://oiled.man.example.net/test#C32> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.14 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C30.comp> ) ] .
+
+<http://oiled.man.example.net/test#C40> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.11 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C38> ) ] .
+
+<http://oiled.man.example.net/test#C46> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.12 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34.comp> <http://oiled.man.example.net/test#C44> ) ] .
+
+<http://oiled.man.example.net/test#C48> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C40.comp> <http://oiled.man.example.net/test#C46.comp> ) ],
+        [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.13 ] .
+
+<http://oiled.man.example.net/test#C50> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C4> <http://oiled.man.example.net/test#C48.comp> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.15 ] .
+
+<http://oiled.man.example.net/test#C68> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.20 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C60> <http://oiled.man.example.net/test#C66> ) ] .
+
+<http://oiled.man.example.net/test#C72> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C68.comp> <http://oiled.man.example.net/test#C70> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.21 ] .
+
+<http://oiled.man.example.net/test#C76> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2.comp> <http://oiled.man.example.net/test#C4> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.24 ] .
+
+<http://oiled.man.example.net/test#C78> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.25 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10> <http://oiled.man.example.net/test#C4.comp> ) ] .
+
+<http://oiled.man.example.net/test#C8> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2.comp> <http://oiled.man.example.net/test#C4> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
+
+<http://oiled.man.example.net/test#C86> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.28 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C84> ) ] .
+
+<http://oiled.man.example.net/test#C92> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16.comp> <http://oiled.man.example.net/test#C90> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.29 ] .
+
+<http://oiled.man.example.net/test#C94> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.30 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C86.comp> <http://oiled.man.example.net/test#C92.comp> ) ] .
+
+<http://oiled.man.example.net/test#C96> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.38 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C94.comp> ) ] .
+
+<http://oiled.man.example.net/test#TEST> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C140> <http://oiled.man.example.net/test#C6> ) ] .
+
+<http://oiled.man.example.net/test#V822576> a [ a owl:Restriction ;
+            owl:allValuesFrom <http://oiled.man.example.net/test#C98.comp> ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://oiled.man.example.net/test#C88.comp> ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://oiled.man.example.net/test#C82.comp> ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        <http://oiled.man.example.net/test#C10.comp>,
+        <http://oiled.man.example.net/test#C100.comp>,
+        <http://oiled.man.example.net/test#C102.comp>,
+        <http://oiled.man.example.net/test#C108.comp>,
+        <http://oiled.man.example.net/test#C112.comp>,
+        <http://oiled.man.example.net/test#C132.comp>,
+        <http://oiled.man.example.net/test#C134.comp>,
+        <http://oiled.man.example.net/test#C16>,
+        <http://oiled.man.example.net/test#C18.comp>,
+        <http://oiled.man.example.net/test#C2>,
+        <http://oiled.man.example.net/test#C34>,
+        <http://oiled.man.example.net/test#C4>,
+        <http://oiled.man.example.net/test#C76.comp>,
+        <http://oiled.man.example.net/test#C78.comp>,
+        <http://oiled.man.example.net/test#C84.comp>,
+        <http://oiled.man.example.net/test#C86.comp>,
+        <http://oiled.man.example.net/test#C90.comp>,
+        <http://oiled.man.example.net/test#C92.comp>,
+        <http://oiled.man.example.net/test#C96.comp>,
+        owl:NamedIndividual,
+        owl:Thing .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises661> a owl:Ontology .
+
+<http://oiled.man.example.net/test#C100> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.49 ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C98> ] .
+
+<http://oiled.man.example.net/test#C100.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.49 ] .
+
+<http://oiled.man.example.net/test#C104> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C106> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C104> ] .
+
+<http://oiled.man.example.net/test#C110.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.37 ] .
+
+<http://oiled.man.example.net/test#C114> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C112.comp> <http://oiled.man.example.net/test#C96.comp> ) ] .
+
+<http://oiled.man.example.net/test#C116> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C114> <http://oiled.man.example.net/test#C80> ) ] .
+
+<http://oiled.man.example.net/test#C118> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C12.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
+
+<http://oiled.man.example.net/test#C120> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C118> <http://oiled.man.example.net/test#C34> ) ] .
+
+<http://oiled.man.example.net/test#C122> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C120> ] .
+
+<http://oiled.man.example.net/test#C124> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C126> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C124> <http://oiled.man.example.net/test#C34.comp> ) ] .
+
+<http://oiled.man.example.net/test#C128> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C126> ] .
+
+<http://oiled.man.example.net/test#C130.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.44 ] .
+
+<http://oiled.man.example.net/test#C132> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C4.comp> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.48 ] .
+
+<http://oiled.man.example.net/test#C132.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.48 ] .
+
+<http://oiled.man.example.net/test#C136.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.46 ] .
+
+<http://oiled.man.example.net/test#C138.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.47 ] .
+
+<http://oiled.man.example.net/test#C14> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C12.comp> <http://oiled.man.example.net/test#C8.comp> ) ] .
+
+<http://oiled.man.example.net/test#C140> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C138.comp> <http://oiled.man.example.net/test#C74> ) ] .
+
+<http://oiled.man.example.net/test#C18> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.56 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16.comp> <http://oiled.man.example.net/test#C2> ) ] .
+
+<http://oiled.man.example.net/test#C18.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.56 ] .
+
+<http://oiled.man.example.net/test#C20> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C18> ] .
+
+<http://oiled.man.example.net/test#C22.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ] .
+
+<http://oiled.man.example.net/test#C24> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C2> ) ] .
+
+<http://oiled.man.example.net/test#C26> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C24> ] .
+
+<http://oiled.man.example.net/test#C28.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ] .
+
+<http://oiled.man.example.net/test#C30.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ] .
+
+<http://oiled.man.example.net/test#C32.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.14 ] .
+
+<http://oiled.man.example.net/test#C36> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C38> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C36> ] .
+
+<http://oiled.man.example.net/test#C40.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.11 ] .
+
+<http://oiled.man.example.net/test#C42> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C44> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C42> ] .
+
+<http://oiled.man.example.net/test#C46.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.12 ] .
+
+<http://oiled.man.example.net/test#C48.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.13 ] .
+
+<http://oiled.man.example.net/test#C50.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.15 ] .
+
+<http://oiled.man.example.net/test#C52> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C32.comp> <http://oiled.man.example.net/test#C50.comp> ) ] .
+
+<http://oiled.man.example.net/test#C54> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C14> <http://oiled.man.example.net/test#C52> ) ] .
+
+<http://oiled.man.example.net/test#C56> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C58> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34> <http://oiled.man.example.net/test#C56> ) ] .
+
+<http://oiled.man.example.net/test#C6> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C4.comp> ) ] .
+
+<http://oiled.man.example.net/test#C60> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C58> ] .
+
+<http://oiled.man.example.net/test#C62> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C10.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C64> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34.comp> <http://oiled.man.example.net/test#C62> ) ] .
+
+<http://oiled.man.example.net/test#C66> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C64> ] .
+
+<http://oiled.man.example.net/test#C68.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.20 ] .
+
+<http://oiled.man.example.net/test#C70> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C4.comp> ) ] .
+
+<http://oiled.man.example.net/test#C72.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.21 ] .
+
+<http://oiled.man.example.net/test#C74> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C54> <http://oiled.man.example.net/test#C72.comp> ) ] .
+
+<http://oiled.man.example.net/test#C8.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
+
+<http://oiled.man.example.net/test#C80> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C76.comp> <http://oiled.man.example.net/test#C78.comp> ) ] .
+
+<http://oiled.man.example.net/test#C82> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16.comp> <http://oiled.man.example.net/test#C2> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.65 ] .
+
+<http://oiled.man.example.net/test#C82.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.65 ] .
+
+<http://oiled.man.example.net/test#C84> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C82> ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.53 ] .
+
+<http://oiled.man.example.net/test#C84.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.53 ] .
+
+<http://oiled.man.example.net/test#C88> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.64 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C2> ) ] .
+
+<http://oiled.man.example.net/test#C88.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.64 ] .
+
+<http://oiled.man.example.net/test#C90> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.52 ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C88> ] .
+
+<http://oiled.man.example.net/test#C90.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.52 ] .
+
+<http://oiled.man.example.net/test#C94.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.30 ] .
+
+<http://oiled.man.example.net/test#C98> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.63 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C34.comp> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C98.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.63 ] .
+
+<http://oiled.man.example.net/test#C10> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.16 ] .
+
+<http://oiled.man.example.net/test#C102.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.35 ] .
+
+<http://oiled.man.example.net/test#C108.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.36 ] .
+
+<http://oiled.man.example.net/test#C112.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.39 ] .
+
+<http://oiled.man.example.net/test#C134.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.45 ] .
+
+<http://oiled.man.example.net/test#C2.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.22 ] .
+
+<http://oiled.man.example.net/test#C76.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.24 ] .
+
+<http://oiled.man.example.net/test#C78.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.25 ] .
+
+<http://oiled.man.example.net/test#C86.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.28 ] .
+
+<http://oiled.man.example.net/test#C92.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.29 ] .
+
+<http://oiled.man.example.net/test#C96.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.38 ] .
+
+:P.1 a owl:DatatypeProperty .
+
+:P.11 a owl:DatatypeProperty .
+
+:P.12 a owl:ObjectProperty .
+
+:P.13 a owl:DatatypeProperty .
+
+:P.14 a owl:ObjectProperty .
+
+:P.15 a owl:DatatypeProperty .
+
+:P.16 a owl:ObjectProperty .
+
+:P.2 a owl:ObjectProperty .
+
+:P.20 a owl:ObjectProperty .
+
+:P.21 a owl:DatatypeProperty .
+
+:P.22 a owl:ObjectProperty .
+
+:P.24 a owl:ObjectProperty .
+
+:P.25 a owl:DatatypeProperty .
+
+:P.28 a owl:ObjectProperty .
+
+:P.29 a owl:DatatypeProperty .
+
+:P.3 a owl:DatatypeProperty .
+
+:P.30 a owl:ObjectProperty .
+
+:P.35 a owl:DatatypeProperty .
+
+:P.36 a owl:ObjectProperty .
+
+:P.37 a owl:DatatypeProperty .
+
+:P.38 a owl:ObjectProperty .
+
+:P.39 a owl:DatatypeProperty .
+
+:P.4 a owl:ObjectProperty .
+
+:P.44 a owl:ObjectProperty .
+
+:P.45 a owl:DatatypeProperty .
+
+:P.46 a owl:ObjectProperty .
+
+:P.47 a owl:DatatypeProperty .
+
+:P.48 a owl:ObjectProperty .
+
+:P.49 a owl:DatatypeProperty .
+
+:P.52 a owl:ObjectProperty .
+
+:P.53 a owl:DatatypeProperty .
+
+:P.56 a owl:ObjectProperty .
+
+:P.6 a owl:ObjectProperty .
+
+:P.63 a owl:DatatypeProperty .
+
+:P.64 a owl:ObjectProperty .
+
+:P.65 a owl:DatatypeProperty .
+
+:P.7 a owl:DatatypeProperty .
+
+:P.8 a owl:ObjectProperty .
+
+:P.9 a owl:DatatypeProperty .
+
+<http://oiled.man.example.net/test#C16.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.4 ] .
+
+<http://oiled.man.example.net/test#C10.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.16 ] .
+
+<http://oiled.man.example.net/test#C16> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.4 ] .
+
+<http://oiled.man.example.net/test#C4.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+<http://oiled.man.example.net/test#C34.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.9 ] .
+
+<http://oiled.man.example.net/test#C34> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.9 ] .
+
+<http://oiled.man.example.net/test#C2> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.22 ] .
+
+<http://oiled.man.example.net/test#C4> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+<http://oiled.man.example.net/test#R1> a owl:ObjectProperty .
+

@@ -1,0 +1,68 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/p1> a :DatatypeProperty ;
+    rdfs:range [ a rdfs:Datatype ;
+            :unionOf ( rdf:PlainLiteral xsd:float ) ] .
+
+<http://example.org/p2> a :DatatypeProperty ;
+    rdfs:domain [ a :Class ;
+            :unionOf ( <http://example.org/c1> <http://example.org/u1> ) ] .
+
+<http://example.org/p3> a :DatatypeProperty,
+        :ObjectProperty ;
+    rdfs:range [ a :Class ;
+            :unionOf ( <http://example.org/c2> <http://example.org/u2> ) ] .
+
+<http://example.org/p4> a :DatatypeProperty ;
+    rdfs:domain [ a :Class ;
+            :unionOf ( <http://example.org/c3> <http://example.org/u3> ) ] .
+
+<http://example.org/c1> a :Class .
+
+<http://example.org/c2> a :Class .
+
+<http://example.org/c3> a :Class .
+
+<http://example.org/c5> a :Class .
+
+<http://example.org/c6> a :Class .
+
+<http://example.org/p5> a :DatatypeProperty,
+        :ObjectProperty .
+
+<http://example.org/p6> a :DatatypeProperty,
+        :ObjectProperty .
+
+<http://example.org/p7> a :DatatypeProperty,
+        :ObjectProperty .
+
+<http://example.org/u1> a :Class .
+
+<http://example.org/u2> a :Class .
+
+<http://example.org/u3> a :Class .
+
+<http://example.org/u5> a :Class .
+
+<http://example.org/u6> a :Class .
+
+<http://example.org/c4> a :Class .
+
+[] rdfs:range [ a :Class ;
+            :unionOf ( <http://example.org/c6> <http://example.org/u6> ) ] ;
+    :inverseOf <http://example.org/p7> .
+
+[] a :Ontology .
+
+[] rdfs:domain <http://example.org/c4> ;
+    rdfs:range <http://example.org/c4> ;
+    :inverseOf <http://example.org/p5> .
+
+[] rdfs:domain [ a :Class ;
+            :unionOf ( <http://example.org/c5> <http://example.org/u5> ) ] ;
+    :inverseOf <http://example.org/p6> .
+

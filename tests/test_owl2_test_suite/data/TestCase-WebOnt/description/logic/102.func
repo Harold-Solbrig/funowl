@@ -1,0 +1,48 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent102#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent102>
+
+Declaration(Class(<http://oiled.man.example.net/test#Unsatisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#c>))
+Declaration(Class(<http://oiled.man.example.net/test#c1>))
+Declaration(Class(<http://oiled.man.example.net/test#d>))
+Declaration(Class(<http://oiled.man.example.net/test#d1>))
+Declaration(Class(<http://oiled.man.example.net/test#e3>))
+Declaration(Class(<http://oiled.man.example.net/test#f>))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#r>))
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Unsatisfiable> (<http://oiled.man.example.net/test#Unsatisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectIntersectionOf(ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> owl:Thing) ObjectAllValuesFrom(<http://oiled.man.example.net/test#r> ObjectIntersectionOf(<http://oiled.man.example.net/test#c> <http://oiled.man.example.net/test#d>))))
+
+# Class: <http://oiled.man.example.net/test#c> (<http://oiled.man.example.net/test#c>)
+
+SubClassOf(<http://oiled.man.example.net/test#c> ObjectComplementOf(<http://oiled.man.example.net/test#d>))
+
+# Class: <http://oiled.man.example.net/test#c1> (<http://oiled.man.example.net/test#c1>)
+
+SubClassOf(<http://oiled.man.example.net/test#c1> <http://oiled.man.example.net/test#d1>)
+SubClassOf(<http://oiled.man.example.net/test#c1> ObjectComplementOf(<http://oiled.man.example.net/test#d1>))
+
+# Class: <http://oiled.man.example.net/test#e3> (<http://oiled.man.example.net/test#e3>)
+
+SubClassOf(<http://oiled.man.example.net/test#e3> <http://oiled.man.example.net/test#c>)
+
+# Class: <http://oiled.man.example.net/test#f> (<http://oiled.man.example.net/test#f>)
+
+SubClassOf(<http://oiled.man.example.net/test#f> <http://oiled.man.example.net/test#d>)
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid77444)
+)

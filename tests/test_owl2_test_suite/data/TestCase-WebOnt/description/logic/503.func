@@ -1,0 +1,119 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/description-logic/consistent503#>)
+
+
+Ontology(
+Declaration(Class(first:Test))
+Declaration(Class(first:minus1))
+Declaration(Class(first:minus2))
+Declaration(Class(first:minus3))
+Declaration(Class(first:minus4))
+Declaration(Class(first:minus5))
+Declaration(Class(first:minus6))
+Declaration(Class(first:minus7))
+Declaration(Class(first:minus8))
+Declaration(Class(first:minus9))
+Declaration(Class(first:plus1))
+Declaration(Class(first:plus2))
+Declaration(Class(first:plus3))
+Declaration(Class(first:plus4))
+Declaration(Class(first:plus5))
+Declaration(Class(first:plus6))
+Declaration(Class(first:plus7))
+Declaration(Class(first:plus8))
+Declaration(Class(first:plus9))
+############################
+#   Classes
+############################
+
+# Class: first:Test (first:Test)
+
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:minus2 first:plus3))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:minus2 first:plus9))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:minus4 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:minus8 first:plus9))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:minus9 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:plus2 first:plus3))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:plus5 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus1 first:plus6 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:minus3 first:minus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:minus4 first:minus9))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:minus5 first:plus3))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:minus8 first:minus9))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:minus9 first:plus1))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:plus3 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus2 first:plus5 first:plus6))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:minus5 first:plus4))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:minus6 first:minus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:minus6 first:plus2))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:minus8 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:plus1 first:plus9))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:plus2 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus3 first:plus6 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus4 first:minus6 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus5 first:minus6 first:minus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus5 first:minus7 first:plus1))
+SubClassOf(first:Test ObjectUnionOf(first:minus5 first:plus3 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus5 first:plus4 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus6 first:plus1 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus6 first:plus3 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:minus9 first:plus3))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:minus9 first:plus5))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:plus2 first:plus5))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:plus3 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:plus4 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:minus7 first:plus5 first:plus6))
+SubClassOf(first:Test ObjectUnionOf(first:minus8 first:minus9 first:plus2))
+SubClassOf(first:Test ObjectUnionOf(first:minus8 first:minus9 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus8 first:plus1 first:plus2))
+SubClassOf(first:Test ObjectUnionOf(first:minus8 first:plus4 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:minus9 first:plus3 first:plus6))
+SubClassOf(first:Test ObjectUnionOf(first:plus1 first:plus4 first:plus6))
+SubClassOf(first:Test ObjectUnionOf(first:plus2 first:plus3 first:plus6))
+SubClassOf(first:Test ObjectUnionOf(first:plus2 first:plus5 first:plus8))
+SubClassOf(first:Test ObjectUnionOf(first:plus3 first:plus6 first:plus7))
+SubClassOf(first:Test ObjectUnionOf(first:plus4 first:plus5 first:plus8))
+
+# Class: first:minus1 (first:minus1)
+
+DisjointClasses(first:minus1 first:plus1)
+
+# Class: first:minus2 (first:minus2)
+
+DisjointClasses(first:minus2 first:plus2)
+
+# Class: first:minus3 (first:minus3)
+
+DisjointClasses(first:minus3 first:plus3)
+
+# Class: first:minus4 (first:minus4)
+
+DisjointClasses(first:minus4 first:plus4)
+
+# Class: first:minus5 (first:minus5)
+
+DisjointClasses(first:minus5 first:plus5)
+
+# Class: first:minus6 (first:minus6)
+
+DisjointClasses(first:minus6 first:plus6)
+
+# Class: first:minus7 (first:minus7)
+
+DisjointClasses(first:minus7 first:plus7)
+
+# Class: first:minus8 (first:minus8)
+
+DisjointClasses(first:minus8 first:plus8)
+
+# Class: first:minus9 (first:minus9)
+
+DisjointClasses(first:minus9 first:plus9)
+
+
+ClassAssertion(first:Test _:genid75839)
+)

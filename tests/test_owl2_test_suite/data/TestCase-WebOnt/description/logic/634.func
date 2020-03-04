@@ -1,0 +1,68 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/consistent634#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/consistent634>
+
+Declaration(Class(oiled:Satisfiable))
+Declaration(Class(oiled:p))
+Declaration(Class(oiled:p.comp))
+Declaration(Class(:V.2))
+Declaration(Class(:V.3))
+Declaration(Class(:V.4))
+Declaration(Class(:V.5))
+Declaration(ObjectProperty(oiled:invR))
+Declaration(ObjectProperty(oiled:r))
+Declaration(ObjectProperty(oiled:r1))
+Declaration(DataProperty(:P.1))
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:invR (oiled:invR)
+
+InverseObjectProperties(oiled:invR oiled:r)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Satisfiable (oiled:Satisfiable)
+
+EquivalentClasses(oiled:Satisfiable ObjectIntersectionOf(ObjectSomeValuesFrom(oiled:r :V.4) ObjectSomeValuesFrom(oiled:r :V.5)))
+
+# Class: oiled:p (oiled:p)
+
+EquivalentClasses(oiled:p DataMaxCardinality(0 :P.1))
+
+# Class: oiled:p.comp (oiled:p.comp)
+
+EquivalentClasses(oiled:p.comp DataMinCardinality(1 :P.1))
+
+# Class: :V.2 (:V.2)
+
+EquivalentClasses(:V.2 ObjectAllValuesFrom(oiled:r1 oiled:p))
+
+# Class: :V.3 (:V.3)
+
+EquivalentClasses(:V.3 ObjectAllValuesFrom(oiled:r1 oiled:p.comp))
+
+# Class: :V.4 (:V.4)
+
+EquivalentClasses(:V.4 ObjectAllValuesFrom(oiled:invR :V.2))
+
+# Class: :V.5 (:V.5)
+
+EquivalentClasses(:V.5 ObjectAllValuesFrom(oiled:invR :V.3))
+
+
+ClassAssertion(oiled:Satisfiable _:genid74547)
+)

@@ -1,0 +1,75 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent604#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://oiled.man.example.net/test#rx3a> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#rx1a>,
+        <http://oiled.man.example.net/test#rxa> .
+
+<http://oiled.man.example.net/test#rx4a> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#rx2a>,
+        <http://oiled.man.example.net/test#rxa> .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent604> a owl:Ontology .
+
+:C.1.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#rx3> ;
+            owl:someValuesFrom :A.2 ] .
+
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :C.1 [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#rx3> ;
+                        owl:someValuesFrom <http://oiled.man.example.net/test#c1> ] [ a owl:Restriction ;
+                        owl:onProperty <http://oiled.man.example.net/test#rx4> ;
+                        owl:someValuesFrom <http://oiled.man.example.net/test#c2> ] ) ] .
+
+<http://oiled.man.example.net/test#rx1> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#rx1a> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#rx2> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#rx2a> a owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#rx4> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#rx>,
+        <http://oiled.man.example.net/test#rx2> .
+
+:A.2 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#c1> <http://oiled.man.example.net/test#c2> ) ] .
+
+:C.1 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+<http://oiled.man.example.net/test#c1> a owl:Class .
+
+<http://oiled.man.example.net/test#c2> a owl:Class .
+
+<http://oiled.man.example.net/test#rx> a owl:FunctionalProperty,
+        owl:ObjectProperty .
+
+<http://oiled.man.example.net/test#rx3> a owl:FunctionalProperty,
+        owl:ObjectProperty ;
+    rdfs:subPropertyOf <http://oiled.man.example.net/test#rx>,
+        <http://oiled.man.example.net/test#rx1> .
+
+<http://oiled.man.example.net/test#rxa> a owl:ObjectProperty .
+
+:P.1 a owl:DatatypeProperty .
+
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
+

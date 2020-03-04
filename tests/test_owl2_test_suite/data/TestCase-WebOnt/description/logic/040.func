@@ -1,0 +1,116 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent040#>)
+Prefix(eg:=<http://example.org/factkb#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent040>
+
+Declaration(Class(eg:A))
+Declaration(Class(eg:A0))
+Declaration(Class(eg:A1))
+Declaration(Class(eg:A10))
+Declaration(Class(eg:A11))
+Declaration(Class(eg:A12))
+Declaration(Class(eg:A13))
+Declaration(Class(eg:A14))
+Declaration(Class(eg:A15))
+Declaration(Class(eg:A16))
+Declaration(Class(eg:A17))
+Declaration(Class(eg:A18))
+Declaration(Class(eg:A19))
+Declaration(Class(eg:A2))
+Declaration(Class(eg:A20))
+Declaration(Class(eg:A21))
+Declaration(Class(eg:A22))
+Declaration(Class(eg:A23))
+Declaration(Class(eg:A24))
+Declaration(Class(eg:A25))
+Declaration(Class(eg:A26))
+Declaration(Class(eg:A27))
+Declaration(Class(eg:A28))
+Declaration(Class(eg:A29))
+Declaration(Class(eg:A3))
+Declaration(Class(eg:A30))
+Declaration(Class(eg:A31))
+Declaration(Class(eg:A4))
+Declaration(Class(eg:A5))
+Declaration(Class(eg:A6))
+Declaration(Class(eg:A7))
+Declaration(Class(eg:A8))
+Declaration(Class(eg:A9))
+Declaration(Class(eg:B))
+Declaration(Class(eg:B0))
+Declaration(Class(eg:B1))
+Declaration(Class(eg:B10))
+Declaration(Class(eg:B11))
+Declaration(Class(eg:B12))
+Declaration(Class(eg:B13))
+Declaration(Class(eg:B14))
+Declaration(Class(eg:B15))
+Declaration(Class(eg:B16))
+Declaration(Class(eg:B17))
+Declaration(Class(eg:B18))
+Declaration(Class(eg:B19))
+Declaration(Class(eg:B2))
+Declaration(Class(eg:B20))
+Declaration(Class(eg:B21))
+Declaration(Class(eg:B22))
+Declaration(Class(eg:B23))
+Declaration(Class(eg:B24))
+Declaration(Class(eg:B25))
+Declaration(Class(eg:B26))
+Declaration(Class(eg:B27))
+Declaration(Class(eg:B28))
+Declaration(Class(eg:B29))
+Declaration(Class(eg:B3))
+Declaration(Class(eg:B30))
+Declaration(Class(eg:B31))
+Declaration(Class(eg:B4))
+Declaration(Class(eg:B5))
+Declaration(Class(eg:B6))
+Declaration(Class(eg:B7))
+Declaration(Class(eg:B8))
+Declaration(Class(eg:B9))
+Declaration(Class(eg:C1))
+Declaration(Class(eg:C2))
+Declaration(Class(eg:C3))
+Declaration(Class(eg:C4))
+Declaration(Class(eg:C5))
+Declaration(Class(eg:TEST))
+Declaration(ObjectProperty(eg:R))
+
+############################
+#   Classes
+############################
+
+# Class: eg:C1 (eg:C1)
+
+SubClassOf(eg:C1 ObjectIntersectionOf(ObjectUnionOf(eg:A0 eg:B0) ObjectUnionOf(eg:A1 eg:B1) ObjectUnionOf(eg:A10 eg:B10) ObjectUnionOf(eg:A11 eg:B11) ObjectUnionOf(eg:A12 eg:B12) ObjectUnionOf(eg:A13 eg:B13) ObjectUnionOf(eg:A14 eg:B14) ObjectUnionOf(eg:A15 eg:B15) ObjectUnionOf(eg:A16 eg:B16) ObjectUnionOf(eg:A17 eg:B17) ObjectUnionOf(eg:A18 eg:B18) ObjectUnionOf(eg:A19 eg:B19) ObjectUnionOf(eg:A2 eg:B2) ObjectUnionOf(eg:A20 eg:B20) ObjectUnionOf(eg:A21 eg:B21) ObjectUnionOf(eg:A22 eg:B22) ObjectUnionOf(eg:A23 eg:B23) ObjectUnionOf(eg:A24 eg:B24) ObjectUnionOf(eg:A25 eg:B25) ObjectUnionOf(eg:A26 eg:B26) ObjectUnionOf(eg:A27 eg:B27) ObjectUnionOf(eg:A28 eg:B28) ObjectUnionOf(eg:A29 eg:B29) ObjectUnionOf(eg:A3 eg:B3) ObjectUnionOf(eg:A30 eg:B30) ObjectUnionOf(eg:A31 eg:B31) ObjectUnionOf(eg:A4 eg:B4) ObjectUnionOf(eg:A5 eg:B5) ObjectUnionOf(eg:A6 eg:B6) ObjectUnionOf(eg:A7 eg:B7) ObjectUnionOf(eg:A8 eg:B8) ObjectUnionOf(eg:A9 eg:B9)))
+
+# Class: eg:C2 (eg:C2)
+
+SubClassOf(eg:C2 ObjectIntersectionOf(ObjectUnionOf(eg:A eg:B) ObjectUnionOf(eg:A ObjectComplementOf(eg:B))))
+
+# Class: eg:C3 (eg:C3)
+
+SubClassOf(eg:C3 ObjectIntersectionOf(ObjectUnionOf(eg:B ObjectComplementOf(eg:A)) ObjectUnionOf(ObjectComplementOf(eg:A) ObjectComplementOf(eg:B))))
+
+# Class: eg:C4 (eg:C4)
+
+SubClassOf(eg:C4 ObjectSomeValuesFrom(eg:R eg:C2))
+
+# Class: eg:C5 (eg:C5)
+
+SubClassOf(eg:C5 ObjectAllValuesFrom(eg:R eg:C3))
+
+# Class: eg:TEST (eg:TEST)
+
+SubClassOf(eg:TEST ObjectIntersectionOf(eg:C1 eg:C4 eg:C5))
+
+
+ClassAssertion(eg:TEST _:genid76812)
+)

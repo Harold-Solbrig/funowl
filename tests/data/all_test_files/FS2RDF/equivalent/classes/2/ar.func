@@ -1,0 +1,5 @@
+Prefix(: = <http://example.org/>)
+ Ontology(
+ Declaration(Class(:a))
+ Declaration(Class(:b))
+ EquivalentClasses( :a :b ))

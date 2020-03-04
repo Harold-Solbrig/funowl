@@ -1,0 +1,24 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.w3.org/2002/03owlt/cardinality/conclusions006#c> a :Class ;
+    :equivalentClass [ a :Class ;
+            :intersectionOf ( <http://org.semanticweb.owlapi/error#Error128> <http://org.semanticweb.owlapi/error#Error129> ) ] .
+
+:maxCardinality a :AnnotationProperty .
+
+:minCardinality a :AnnotationProperty .
+
+<http://org.semanticweb.owlapi/error#Error128> a :Class .
+
+<http://org.semanticweb.owlapi/error#Error129> a :Class .
+
+[] a :Ontology .
+
+[] :maxCardinality "1"^^xsd:nonNegativeInteger .
+
+[] :minCardinality "1"^^xsd:nonNegativeInteger .
+

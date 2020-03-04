@@ -1,0 +1,14 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error133>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent007#B>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/I5.26/consistent007#C>))
+
+ClassAssertion(ObjectIntersectionOf(<http://www.w3.org/2002/03owlt/I5.26/consistent007#B> ObjectUnionOf(<http://org.semanticweb.owlapi/error#Error133> <http://www.w3.org/2002/03owlt/I5.26/consistent007#C>)) _:genid80539)
+)

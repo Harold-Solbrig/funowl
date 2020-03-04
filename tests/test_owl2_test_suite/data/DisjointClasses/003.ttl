@@ -1,0 +1,20 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/Stewie> a <http://example.org/Boy>,
+        :NamedIndividual .
+
+<http://example.org/Dog> a :Class .
+
+<http://example.org/Girl> a :Class .
+
+<http://example.org/Boy> a :Class .
+
+[] a :Ontology .
+
+[] a :AllDisjointClasses ;
+    :members ( <http://example.org/Boy> <http://example.org/Dog> <http://example.org/Girl> ) .
+

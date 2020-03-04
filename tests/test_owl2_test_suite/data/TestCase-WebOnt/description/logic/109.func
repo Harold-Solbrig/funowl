@@ -1,0 +1,35 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent109#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent109>
+
+Declaration(Class(<http://oiled.man.example.net/test#Unsatisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#a>))
+Declaration(Class(<http://oiled.man.example.net/test#c>))
+Declaration(Class(<http://oiled.man.example.net/test#d>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#tt>))
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Unsatisfiable> (<http://oiled.man.example.net/test#Unsatisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Unsatisfiable> ObjectIntersectionOf(ObjectAllValuesFrom(<http://oiled.man.example.net/test#tt> <http://oiled.man.example.net/test#a>) ObjectMinCardinality(3 <http://oiled.man.example.net/test#tt>) ObjectMaxCardinality(1 <http://oiled.man.example.net/test#tt>)))
+
+# Class: <http://oiled.man.example.net/test#a> (<http://oiled.man.example.net/test#a>)
+
+SubClassOf(<http://oiled.man.example.net/test#a> ObjectUnionOf(<http://oiled.man.example.net/test#c> <http://oiled.man.example.net/test#d>))
+
+# Class: <http://oiled.man.example.net/test#c> (<http://oiled.man.example.net/test#c>)
+
+SubClassOf(<http://oiled.man.example.net/test#c> ObjectComplementOf(<http://oiled.man.example.net/test#d>))
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Unsatisfiable> _:genid76218)
+)

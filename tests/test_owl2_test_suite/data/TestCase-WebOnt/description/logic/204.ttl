@@ -1,0 +1,614 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/premises204#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://oiled.man.example.net/test#V3102> a [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C214> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C26> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C16> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C40> ] ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C24> ] ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C62> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C60> ] ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C10> ] ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C100> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C42> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C32> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C12> ],
+        [ a owl:Class ;
+            owl:complementOf <http://oiled.man.example.net/test#C2> ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <http://oiled.man.example.net/test#C98> ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ],
+        <http://oiled.man.example.net/test#TEST>,
+        <http://oiled.man.example.net/test#TOP>,
+        owl:NamedIndividual,
+        owl:Thing .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises204> a owl:Ontology .
+
+<http://oiled.man.example.net/test#C102> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C104> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C102> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C106> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C104> ] .
+
+<http://oiled.man.example.net/test#C108> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C106> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] ) ] .
+
+<http://oiled.man.example.net/test#C110> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C112> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C110> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C114> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C112> ] .
+
+<http://oiled.man.example.net/test#C116> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C114> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] ) ] .
+
+<http://oiled.man.example.net/test#C118> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C116> ] .
+
+<http://oiled.man.example.net/test#C120> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C118> ] .
+
+<http://oiled.man.example.net/test#C122> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C124> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C122> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C126> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C124> ] .
+
+<http://oiled.man.example.net/test#C128> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C126> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] ) ] .
+
+<http://oiled.man.example.net/test#C130> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C128> ] .
+
+<http://oiled.man.example.net/test#C132> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C120> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C130> ] ) ] .
+
+<http://oiled.man.example.net/test#C134> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C108> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C132> ] ) ] .
+
+<http://oiled.man.example.net/test#C136> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C138> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C136> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C14> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C12> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C2> ] ) ] .
+
+<http://oiled.man.example.net/test#C140> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C138> ] .
+
+<http://oiled.man.example.net/test#C142> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C140> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] ) ] .
+
+<http://oiled.man.example.net/test#C144> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C146> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C144> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C148> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C146> ] .
+
+<http://oiled.man.example.net/test#C150> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C148> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] ) ] .
+
+<http://oiled.man.example.net/test#C152> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C150> ] .
+
+<http://oiled.man.example.net/test#C154> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C152> ] .
+
+<http://oiled.man.example.net/test#C156> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C158> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C156> <http://oiled.man.example.net/test#C16> ) ] .
+
+<http://oiled.man.example.net/test#C160> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C158> ] .
+
+<http://oiled.man.example.net/test#C162> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C160> ] ) ] .
+
+<http://oiled.man.example.net/test#C164> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C162> ] .
+
+<http://oiled.man.example.net/test#C166> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C154> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C164> ] ) ] .
+
+<http://oiled.man.example.net/test#C168> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C142> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C166> ] ) ] .
+
+<http://oiled.man.example.net/test#C170> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C168> ] ] .
+
+<http://oiled.man.example.net/test#C172> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C174> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C172> ) ] .
+
+<http://oiled.man.example.net/test#C176> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C174> ] .
+
+<http://oiled.man.example.net/test#C178> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C176> ] ) ] .
+
+<http://oiled.man.example.net/test#C18> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C180> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C182> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C180> ) ] .
+
+<http://oiled.man.example.net/test#C184> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C182> ] .
+
+<http://oiled.man.example.net/test#C186> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C184> ] ) ] .
+
+<http://oiled.man.example.net/test#C188> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C186> ] .
+
+<http://oiled.man.example.net/test#C190> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C188> ] .
+
+<http://oiled.man.example.net/test#C192> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C194> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C192> ) ] .
+
+<http://oiled.man.example.net/test#C196> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C194> ] .
+
+<http://oiled.man.example.net/test#C198> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C196> ] ) ] .
+
+<http://oiled.man.example.net/test#C20> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C18> ) ] .
+
+<http://oiled.man.example.net/test#C200> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C198> ] .
+
+<http://oiled.man.example.net/test#C202> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C190> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C200> ] ) ] .
+
+<http://oiled.man.example.net/test#C204> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C178> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C202> ] ) ] .
+
+<http://oiled.man.example.net/test#C206> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C170> <http://oiled.man.example.net/test#C204> ) ] .
+
+<http://oiled.man.example.net/test#C208> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C206> ] .
+
+<http://oiled.man.example.net/test#C210> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C134> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C208> ] ) ] .
+
+<http://oiled.man.example.net/test#C212> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C210> ] .
+
+<http://oiled.man.example.net/test#C216> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C64> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C214> ] ) ] .
+
+<http://oiled.man.example.net/test#C22> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C20> ] .
+
+<http://oiled.man.example.net/test#C28> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C26> ] ) ] .
+
+<http://oiled.man.example.net/test#C30> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C14> <http://oiled.man.example.net/test#C28> ) ] .
+
+<http://oiled.man.example.net/test#C34> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C32> ] ] .
+
+<http://oiled.man.example.net/test#C36> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C32> <http://oiled.man.example.net/test#C34> ) ] .
+
+<http://oiled.man.example.net/test#C38> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C36> ] .
+
+<http://oiled.man.example.net/test#C4> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C2> ] ] .
+
+<http://oiled.man.example.net/test#C44> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C32> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C42> ] ) ] .
+
+<http://oiled.man.example.net/test#C46> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C30> <http://oiled.man.example.net/test#C44> ) ] .
+
+<http://oiled.man.example.net/test#C48> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C50> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C52> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C50> ) ] .
+
+<http://oiled.man.example.net/test#C54> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C52> ] .
+
+<http://oiled.man.example.net/test#C56> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C54> ] ) ] .
+
+<http://oiled.man.example.net/test#C58> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C56> ] .
+
+<http://oiled.man.example.net/test#C6> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C2> <http://oiled.man.example.net/test#C4> ) ] .
+
+<http://oiled.man.example.net/test#C64> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#TOP> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C62> ] ) ] .
+
+<http://oiled.man.example.net/test#C66> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C68> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C66> ) ] .
+
+<http://oiled.man.example.net/test#C70> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C68> ] .
+
+<http://oiled.man.example.net/test#C72> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C70> ] ) ] .
+
+<http://oiled.man.example.net/test#C74> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C76> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C74> ) ] .
+
+<http://oiled.man.example.net/test#C78> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C76> ] .
+
+<http://oiled.man.example.net/test#C8> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C6> ] .
+
+<http://oiled.man.example.net/test#C80> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C78> ] ) ] .
+
+<http://oiled.man.example.net/test#C82> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C80> ] .
+
+<http://oiled.man.example.net/test#C84> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C82> ] .
+
+<http://oiled.man.example.net/test#C86> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C16> ] ] .
+
+<http://oiled.man.example.net/test#C88> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C16> <http://oiled.man.example.net/test#C86> ) ] .
+
+<http://oiled.man.example.net/test#C90> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C88> ] .
+
+<http://oiled.man.example.net/test#C92> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C90> ] ) ] .
+
+<http://oiled.man.example.net/test#C94> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C92> ] .
+
+<http://oiled.man.example.net/test#C96> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C84> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C94> ] ) ] .
+
+<http://oiled.man.example.net/test#TEST> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C216> <http://oiled.man.example.net/test#C46> ) ] .
+
+<http://oiled.man.example.net/test#C10> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C2> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C8> ] ) ] .
+
+<http://oiled.man.example.net/test#C100> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf <http://oiled.man.example.net/test#C98> ] ] .
+
+<http://oiled.man.example.net/test#C12> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C10> ] .
+
+<http://oiled.man.example.net/test#C214> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C100> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C212> ] ) ] .
+
+<http://oiled.man.example.net/test#C24> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C16> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C22> ] ) ] .
+
+<http://oiled.man.example.net/test#C26> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C24> ] .
+
+<http://oiled.man.example.net/test#C40> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C32> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C38> ] ) ] .
+
+<http://oiled.man.example.net/test#C42> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C40> ] .
+
+<http://oiled.man.example.net/test#C60> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#C48> [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C58> ] ) ] .
+
+<http://oiled.man.example.net/test#C62> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty <http://oiled.man.example.net/test#R1> ;
+            owl:someValuesFrom <http://oiled.man.example.net/test#C60> ] .
+
+<http://oiled.man.example.net/test#C98> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C72> ] [ a owl:Class ;
+                        owl:complementOf <http://oiled.man.example.net/test#C96> ] ) ] .
+
+<http://oiled.man.example.net/test#TOP> a owl:Class .
+
+<http://oiled.man.example.net/test#C2> a owl:Class .
+
+<http://oiled.man.example.net/test#C32> a owl:Class .
+
+<http://oiled.man.example.net/test#C16> a owl:Class .
+
+<http://oiled.man.example.net/test#R1> a owl:ObjectProperty .
+

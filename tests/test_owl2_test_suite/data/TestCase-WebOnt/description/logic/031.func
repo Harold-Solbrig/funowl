@@ -1,0 +1,45 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/consistent031#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/consistent031>
+
+Declaration(Class(<http://oiled.man.example.net/test#Satisfiable>))
+Declaration(Class(<http://oiled.man.example.net/test#p1>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#f>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#invF>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#invR>))
+Declaration(ObjectProperty(<http://oiled.man.example.net/test#r>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://oiled.man.example.net/test#f> (<http://oiled.man.example.net/test#f>)
+
+InverseObjectProperties(<http://oiled.man.example.net/test#f> <http://oiled.man.example.net/test#invF>)
+FunctionalObjectProperty(<http://oiled.man.example.net/test#f>)
+
+# Object Property: <http://oiled.man.example.net/test#invR> (<http://oiled.man.example.net/test#invR>)
+
+InverseObjectProperties(<http://oiled.man.example.net/test#invR> <http://oiled.man.example.net/test#r>)
+
+# Object Property: <http://oiled.man.example.net/test#r> (<http://oiled.man.example.net/test#r>)
+
+TransitiveObjectProperty(<http://oiled.man.example.net/test#r>)
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://oiled.man.example.net/test#Satisfiable> (<http://oiled.man.example.net/test#Satisfiable>)
+
+EquivalentClasses(<http://oiled.man.example.net/test#Satisfiable> ObjectIntersectionOf(<http://oiled.man.example.net/test#p1> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> ObjectSomeValuesFrom(<http://oiled.man.example.net/test#r> ObjectIntersectionOf(<http://oiled.man.example.net/test#p1> ObjectAllValuesFrom(<http://oiled.man.example.net/test#invR> ObjectUnionOf(ObjectComplementOf(<http://oiled.man.example.net/test#p1>) ObjectAllValuesFrom(<http://oiled.man.example.net/test#r> <http://oiled.man.example.net/test#p1>))))))))
+
+
+ClassAssertion(<http://oiled.man.example.net/test#Satisfiable> _:genid73031)
+)

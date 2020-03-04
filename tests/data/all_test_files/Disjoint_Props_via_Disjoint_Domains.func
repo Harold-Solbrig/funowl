@@ -1,0 +1,12 @@
+Prefix( : = <http://example.org/> )
+
+Ontology(
+  Declaration( Class( :Boy ) )
+  Declaration( Class( :Girl ) )
+  Declaration(ObjectProperty(:sonOf))
+  Declaration(ObjectProperty(:daughterOf))
+
+  DisjointClasses( :Boy :Girl )
+  ObjectPropertyDomain(:sonOf :Boy)
+  ObjectPropertyDomain(:daughterOf :Girl)
+)

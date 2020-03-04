@@ -1,0 +1,22 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vocab: <http://example.org/vocab#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+vocab:population a :AnnotationProperty .
+
+vocab:stateBird a :AnnotationProperty .
+
+vocab:stateCode a :InverseFunctionalProperty,
+        :ObjectProperty .
+
+[] a :Ontology .
+
+[] vocab:population "2688418" ;
+    vocab:stateCode "KS" .
+
+[] vocab:stateBird vocab:WesternMeadowlark ;
+    vocab:stateCode "KS" .
+

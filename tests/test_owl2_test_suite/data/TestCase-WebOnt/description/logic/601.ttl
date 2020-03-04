@@ -1,0 +1,109 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/inconsistent601#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://oiled.man.example.net/test#Unsatisfiable.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( :C.6 :C.7 :C.8 ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.5 ] .
+
+<http://www.w3.org/2002/03owlt/description-logic/inconsistent601> a owl:Ontology .
+
+:C.1.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ] .
+
+:C.6.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#b> ) ] .
+
+:C.7.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#a> <http://oiled.man.example.net/test#c> ) ] .
+
+:C.8.comp a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#b> <http://oiled.man.example.net/test#c> ) ],
+        [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ] .
+
+<http://oiled.man.example.net/test#Unsatisfiable> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.5 ] .
+
+<http://oiled.man.example.net/test#b.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
+
+:C.1 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( <http://oiled.man.example.net/test#b.comp> <http://oiled.man.example.net/test#c.comp> ) ] .
+
+:C.6 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:maxCardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.6 ] .
+
+:C.7 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.7 ] .
+
+:C.8 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.8 ] .
+
+<http://oiled.man.example.net/test#a> a owl:Class ;
+    rdfs:subClassOf :C.1 .
+
+<http://oiled.man.example.net/test#b> a owl:Class ;
+    rdfs:subClassOf <http://oiled.man.example.net/test#c.comp> ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.3 ] .
+
+<http://oiled.man.example.net/test#c> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:minCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
+
+<http://oiled.man.example.net/test#c.comp> a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:cardinality "0"^^xsd:nonNegativeInteger ;
+            owl:onProperty :P.2 ] .
+
+:P.1 a owl:DatatypeProperty .
+
+:P.2 a owl:ObjectProperty .
+
+:P.3 a owl:DatatypeProperty .
+
+:P.5 a owl:DatatypeProperty .
+
+:P.6 a owl:ObjectProperty .
+
+:P.7 a owl:DatatypeProperty .
+
+:P.8 a owl:ObjectProperty .
+
+[] a <http://oiled.man.example.net/test#Unsatisfiable> .
+

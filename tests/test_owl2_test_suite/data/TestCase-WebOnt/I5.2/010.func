@@ -1,0 +1,26 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(rdf:Bag))
+Declaration(ObjectProperty(rdf:_1))
+
+
+
+############################
+#   Classes
+############################
+
+# Class: rdf:Bag (rdf:Bag)
+
+AnnotationAssertion(rdfs:comment rdf:Bag "The class of unordered containers.")
+
+
+ClassAssertion(owl:Thing _:genid73319)
+ClassAssertion(rdf:Bag _:genid73320)
+ObjectPropertyAssertion(rdf:_1 _:genid73320 _:genid73319)
+)

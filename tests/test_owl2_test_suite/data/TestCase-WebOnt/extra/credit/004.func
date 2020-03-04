@@ -1,0 +1,92 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error122>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error123>))
+Declaration(Class(<http://org.semanticweb.owlapi/error#Error124>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M>))
+Declaration(Class(<http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1>))
+Declaration(ObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1>))
+Declaration(NamedIndividual(<http://www.w3.org/2002/03owlt/extra-credit/premises004#d>))
+Declaration(AnnotationProperty(owl:sameAs))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invP-1-to-N> <http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invQ-1-to-M> <http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M>)
+
+InverseObjectProperties(<http://www.w3.org/2002/03owlt/extra-credit/premises004#invR-1-to-N-times-M> <http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
+
+# Object Property: <http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1>)
+
+FunctionalObjectProperty(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1>)
+ObjectPropertyDomain(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M>)
+ObjectPropertyRange(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://org.semanticweb.owlapi/error#Error122> (<http://org.semanticweb.owlapi/error#Error122>)
+
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error122> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
+
+# Class: <http://org.semanticweb.owlapi/error#Error123> (<http://org.semanticweb.owlapi/error#Error123>)
+
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error123> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+
+# Class: <http://org.semanticweb.owlapi/error#Error124> (<http://org.semanticweb.owlapi/error#Error124>)
+
+EquivalentClasses(<http://org.semanticweb.owlapi/error#Error124> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+
+# Class: <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/extra-credit/premises004#p-N-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>))
+
+# Class: <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/extra-credit/premises004#q-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N>))
+EquivalentClasses(<http://www.w3.org/2002/03owlt/extra-credit/premises004#cardinality-N-times-M> ObjectSomeValuesFrom(<http://www.w3.org/2002/03owlt/extra-credit/premises004#r-N-times-M-to-1> <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>))
+
+# Class: <http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> (<http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d>)
+
+EquivalentClasses(<http://www.w3.org/2002/03owlt/extra-credit/premises004#only-d> ObjectOneOf(<http://www.w3.org/2002/03owlt/extra-credit/premises004#d>))
+
+
+
+AnnotationAssertion(owl:sameAs <http://www.w3.org/2002/03owlt/extra-credit/premises004#N-times-M> "929136997"^^xsd:int)
+)

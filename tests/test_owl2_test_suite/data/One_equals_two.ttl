@@ -86,11 +86,11 @@
 :b a owl:Class ;
     rdfs:label "b"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <http://example.com/b=a'> ;
-            owl:someValuesFrom :a ],
-        [ a owl:Restriction ;
             owl:onProperty <http://example.com/b=c> ;
-            owl:someValuesFrom :c ] ;
+            owl:someValuesFrom :c ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/b=a'> ;
+            owl:someValuesFrom :a ] ;
     owl:disjointWith <http://example.com/2a>,
         :c .
 
@@ -104,11 +104,11 @@
 <http://example.com/2a> a owl:Class ;
     rdfs:label "2a"^^xsd:string ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty <http://example.com/2a=b-and-c> ;
-            owl:someValuesFrom :b-and-c ],
-        [ a owl:Restriction ;
             owl:onProperty <http://example.com/2a=a> ;
-            owl:someValuesFrom :a ] .
+            owl:someValuesFrom :a ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.com/2a=b-and-c> ;
+            owl:someValuesFrom :b-and-c ] .
 
 [] a owl:AllDifferent ;
     owl:distinctMembers ( :i :j :k ) .

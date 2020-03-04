@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:example="http://example.org/">
+    <Ontology/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/dp -->
+
+    <DatatypeProperty rdf:about="http://example.org/dp"/>
+    <Axiom>
+        <annotatedSource rdf:resource="http://example.org/dp"/>
+        <annotatedProperty rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#type"/>
+        <annotatedTarget rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+        <rdfs:comment>No range so any literal is fine</rdfs:comment>
+    </Axiom>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://example.org/holder -->
+
+    <NamedIndividual rdf:about="http://example.org/holder">
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#negativeInteger">-11</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#nonPositiveInteger">0</example:dp>
+        <example:dp>1</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2002/07/owl#rational">1/2</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#double">1100000.0</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#float">1100000.0</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#positiveInteger">12</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedInt">12</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12.25</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#int">13</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#short">14</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#byte">15</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedShort">17</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2007-09-01T12:00:01</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTimeStamp">2007-09-01T12:00:01-05:00</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedByte">28</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#long">6666666666</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#unsignedLong">6666666666</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"><rdf:RDF
+    xmlns:ex="http://example.org/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    >
+  <owl:Ontology></owl:Ontology>
+  <rdf:Description rdf:about="http://example.org/a">
+    <owl:differentFrom rdf:resource="http://example.org/b"/>
+  </rdf:Description>
+ </rdf:RDF>
+ </example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">C010</example:dp>
+        <example:dp xml:lang="en">No use of rdf:PlainLiteral in old rdf serializations</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#normalizedString">Normalized string can&apos;t have carriage return (#xD), line feed (#xA) or tab (#x9) characters in them</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#Name">_12345</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#base64Binary">b3ds</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#language">en</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://www.w3.org/2007/OWL/wiki/Syntax</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#NCName">non-hyphenated</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#string">string</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#token">there is only one space between each word</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#NMTOKEN">token</example:dp>
+        <example:dp rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</example:dp>
+    </NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.1.4.20160202-2327) https://github.com/owlcs/owlapi -->
+

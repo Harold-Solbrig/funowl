@@ -1,0 +1,16 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Ontology/>
+  <owl:AllDifferent>
+    <owl:members rdf:parseType="Collection">
+      <rdf:Description rdf:about="http://example.org/a"/>
+      <rdf:Description rdf:about="http://example.org/b"/>
+      <rdf:Description rdf:about="http://example.org/c"/>
+    </owl:members>
+    <rdfs:comment>I hereby annotate this</rdfs:comment>
+  </owl:AllDifferent>
+</rdf:RDF>

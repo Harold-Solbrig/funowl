@@ -1,0 +1,23 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/a> a <http://example.org/A>,
+        :NamedIndividual .
+
+<http://example.org/A> a :Class ;
+    rdfs:subClassOf [ a :Restriction ;
+            :hasValue "2007-10-08T20:44:11.656000+01:00"^^xsd:dateTime ;
+            :onProperty <http://example.org/dp> ],
+        [ a :Restriction ;
+            :allValuesFrom [ a rdfs:Datatype ;
+                    :onDatatype xsd:dateTime ;
+                    :withRestrictions ( [ xsd:minInclusive "2008-07-08T20:44:11.656000+01:00"^^xsd:dateTime ] [ xsd:maxInclusive "2008-10-08T20:44:11.656000+01:00"^^xsd:dateTime ] ) ] ;
+            :onProperty <http://example.org/dp> ] .
+
+<http://example.org/dp> a :DatatypeProperty .
+
+[] a :Ontology .
+

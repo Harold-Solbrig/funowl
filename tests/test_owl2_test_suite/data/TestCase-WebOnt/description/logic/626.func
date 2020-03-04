@@ -1,0 +1,72 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent626#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent626>
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(oiled:c))
+Declaration(Class(oiled:c.comp))
+Declaration(Class(oiled:d))
+Declaration(Class(:V.3))
+Declaration(ObjectProperty(oiled:f))
+Declaration(ObjectProperty(oiled:invF))
+Declaration(ObjectProperty(oiled:invR))
+Declaration(ObjectProperty(oiled:r))
+Declaration(DataProperty(:P.1))
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:f (oiled:f)
+
+SubObjectPropertyOf(oiled:f oiled:r)
+InverseObjectProperties(oiled:f oiled:invF)
+
+# Object Property: oiled:invR (oiled:invR)
+
+InverseObjectProperties(oiled:invR oiled:r)
+
+# Object Property: oiled:r (oiled:r)
+
+TransitiveObjectProperty(oiled:r)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+EquivalentClasses(oiled:Unsatisfiable ObjectIntersectionOf(oiled:c.comp ObjectSomeValuesFrom(oiled:invF oiled:d) ObjectAllValuesFrom(oiled:invR :V.3)))
+
+# Class: oiled:c (oiled:c)
+
+EquivalentClasses(oiled:c DataMaxCardinality(0 :P.1))
+
+# Class: oiled:c.comp (oiled:c.comp)
+
+EquivalentClasses(oiled:c.comp DataMinCardinality(1 :P.1))
+
+# Class: oiled:d (oiled:d)
+
+EquivalentClasses(oiled:d ObjectIntersectionOf(oiled:c ObjectSomeValuesFrom(oiled:f oiled:c.comp)))
+
+# Class: :V.3 (:V.3)
+
+EquivalentClasses(:V.3 ObjectSomeValuesFrom(oiled:invF oiled:d))
+
+# Class: owl:Thing (owl:Thing)
+
+SubClassOf(owl:Thing ObjectMaxCardinality(1 oiled:f))
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid79963)
+)

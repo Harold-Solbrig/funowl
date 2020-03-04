@@ -1,0 +1,57 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent614#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent614>
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(oiled:p))
+Declaration(Class(oiled:p.comp))
+Declaration(Class(:V.2))
+Declaration(ObjectProperty(oiled:invS))
+Declaration(ObjectProperty(oiled:r))
+Declaration(ObjectProperty(oiled:s))
+Declaration(DataProperty(:P.1))
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:invS (oiled:invS)
+
+InverseObjectProperties(oiled:invS oiled:s)
+
+# Object Property: oiled:s (oiled:s)
+
+SubObjectPropertyOf(oiled:s oiled:r)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+EquivalentClasses(oiled:Unsatisfiable ObjectIntersectionOf(oiled:p.comp ObjectSomeValuesFrom(oiled:r :V.2) ObjectSomeValuesFrom(oiled:s oiled:p) ObjectMaxCardinality(1 oiled:r)))
+
+# Class: oiled:p (oiled:p)
+
+EquivalentClasses(oiled:p DataMaxCardinality(0 :P.1))
+
+# Class: oiled:p.comp (oiled:p.comp)
+
+EquivalentClasses(oiled:p.comp DataMinCardinality(1 :P.1))
+
+# Class: :V.2 (:V.2)
+
+EquivalentClasses(:V.2 ObjectAllValuesFrom(oiled:invS oiled:p))
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid76652)
+)

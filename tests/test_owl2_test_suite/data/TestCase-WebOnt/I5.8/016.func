@@ -1,0 +1,18 @@
+Prefix(eg:=<http://example.org/user/data#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/I5.8/consistent016#>)
+
+
+Ontology(
+Declaration(DataProperty(first:prop))
+Declaration(Datatype(eg:type))
+
+
+
+ClassAssertion(owl:Thing _:genid79494)
+DataPropertyAssertion(first:prop _:genid79494 "foo"^^eg:type)
+)

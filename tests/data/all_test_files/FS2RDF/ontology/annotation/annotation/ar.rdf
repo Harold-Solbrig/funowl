@@ -1,0 +1,28 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns="http://example.org/"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Class rdf:about="http://example.org/c"/>
+  <owl:Class rdf:about="http://example.org/a">
+    <owl:equivalentClass>
+      <owl:Class rdf:about="http://example.org/b"/>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="http://example.org/b">
+    <owl:equivalentClass rdf:resource="http://example.org/c"/>
+  </owl:Class>
+  <owl:Annotation>
+    <owl:annotatedSource>
+      <owl:Ontology>
+        <for rdf:resource="http://example.org/eqc"/>
+      </owl:Ontology>
+    </owl:annotatedSource>
+    <owl:annotatedProperty rdf:resource="http://example.org/for"/>
+    <owl:annotatedTarget rdf:resource="http://example.org/eqc"/>
+    <member rdf:resource="http://example.org/a"/>
+    <member rdf:resource="http://example.org/b"/>
+    <member rdf:resource="http://example.org/c"/>
+  </owl:Annotation>
+</rdf:RDF>

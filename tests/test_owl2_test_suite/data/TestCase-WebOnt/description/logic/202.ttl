@@ -1,0 +1,341 @@
+@prefix : <http://www.w3.org/2002/03owlt/description-logic/premises202#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix test: <http://oiled.man.example.net/test#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+test:TEST a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C76 [ a owl:Class ;
+                        owl:complementOf test:C94 ] ) ] .
+
+test:V8467 a [ a owl:Class ;
+            owl:complementOf test:C92 ],
+        [ a owl:Class ;
+            owl:complementOf test:C72 ],
+        [ a owl:Class ;
+            owl:complementOf test:C52 ],
+        [ a owl:Class ;
+            owl:complementOf test:C26 ],
+        [ a owl:Class ;
+            owl:complementOf test:C42 ],
+        owl:NamedIndividual,
+        owl:Thing ;
+    test:R1 test:V8468,
+        test:V8469,
+        test:V8470,
+        test:V8471,
+        test:V8472,
+        test:V8473,
+        test:V8474,
+        test:V8475 .
+
+<http://www.w3.org/2002/03owlt/description-logic/premises202> a owl:Ontology .
+
+test:C10 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C4 test:C8 ) ] .
+
+test:C12 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C10 ] .
+
+test:C14 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:TOP ] .
+
+test:C16 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C14 ] ] .
+
+test:C18 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C12 [ a owl:Class ;
+                        owl:complementOf test:C16 ] ) ] .
+
+test:C20 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C22 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C24 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C22 ] .
+
+test:C28 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C26 ] .
+
+test:C30 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C18 [ a owl:Class ;
+                        owl:complementOf test:C28 ] ) ] .
+
+test:C34 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C32 ] ] .
+
+test:C36 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
+
+test:C38 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C36 ] ] .
+
+test:C4 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C40 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C38 ] .
+
+test:C44 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C42 ] .
+
+test:C46 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C30 [ a owl:Class ;
+                        owl:complementOf test:C44 ] ) ] .
+
+test:C48 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C50 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
+
+test:C54 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C52 ] .
+
+test:C56 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C46 [ a owl:Class ;
+                        owl:complementOf test:C54 ] ) ] .
+
+test:C58 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
+
+test:C60 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C58 [ a owl:Class ;
+                        owl:complementOf test:C2 ] ) ] .
+
+test:C62 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C60 ] .
+
+test:C64 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
+
+test:C66 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C64 [ a owl:Class ;
+                        owl:complementOf test:C2 ] ) ] .
+
+test:C68 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C66 ] .
+
+test:C70 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C68 ] .
+
+test:C74 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C72 ] .
+
+test:C76 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C56 [ a owl:Class ;
+                        owl:complementOf test:C74 ] ) ] .
+
+test:C8 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C6 ] ] .
+
+test:C80 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf test:C2 ] [ a owl:Class ;
+                        owl:complementOf test:C78 ] ) ] .
+
+test:C82 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C80 ] .
+
+test:C84 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C86 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf test:C2 ] [ a owl:Class ;
+                        owl:complementOf test:C84 ] ) ] .
+
+test:C88 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C86 ] .
+
+test:C90 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C88 ] .
+
+test:C94 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C92 ] .
+
+test:V8468 a [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8469 a [ a owl:Class ;
+            owl:complementOf test:C6 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom test:C2 ;
+            owl:onProperty test:R1 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8470 a test:TOP,
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8471 a [ a owl:Restriction ;
+            owl:allValuesFrom test:C2 ;
+            owl:onProperty test:R1 ],
+        [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        [ a owl:Class ;
+            owl:complementOf test:C78 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8472 a [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        owl:NamedIndividual,
+        owl:Thing ;
+    test:R1 test:V8476 .
+
+test:V8473 a [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8474 a [ a owl:Class ;
+            owl:complementOf test:C32 ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ;
+            owl:onProperty test:R1 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8475 a [ a owl:Class ;
+            owl:complementOf test:C2 ],
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:V8476 a test:C2,
+        owl:NamedIndividual,
+        owl:Thing .
+
+test:C26 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C24 [ a owl:Class ;
+                        owl:complementOf test:C20 ] ) ] .
+
+test:C32 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom test:C2 ] .
+
+test:C42 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C40 [ a owl:Class ;
+                        owl:complementOf test:C34 ] ) ] .
+
+test:C52 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Class ;
+                        owl:complementOf test:C48 ] [ a owl:Class ;
+                        owl:complementOf test:C50 ] ) ] .
+
+test:C6 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C72 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C70 [ a owl:Class ;
+                        owl:complementOf test:C62 ] ) ] .
+
+test:C78 a owl:Class ;
+    owl:equivalentClass [ a owl:Restriction ;
+            owl:onProperty test:R1 ;
+            owl:someValuesFrom [ a owl:Class ;
+                    owl:complementOf test:C2 ] ] .
+
+test:C92 a owl:Class ;
+    owl:equivalentClass [ a owl:Class ;
+            owl:intersectionOf ( test:C90 [ a owl:Class ;
+                        owl:complementOf test:C82 ] ) ] .
+
+test:TOP a owl:Class .
+
+test:C2 a owl:Class .
+
+test:R1 a owl:ObjectProperty .
+

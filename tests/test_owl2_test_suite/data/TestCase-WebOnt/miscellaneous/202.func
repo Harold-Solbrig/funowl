@@ -1,0 +1,28 @@
+Prefix(:=<http://www.w3.org/1999/xhtml>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(first:=<http://www.w3.org/2002/03owlt/miscellaneous/consistent202#>)
+
+
+Ontology(
+Declaration(DataProperty(first:fp))
+############################
+#   Data Properties
+############################
+
+# Data Property: first:fp (first:fp)
+
+FunctionalDataProperty(first:fp)
+
+
+
+
+ClassAssertion(owl:Thing _:genid79943)
+DataPropertyAssertion(first:fp _:genid79943 "<br></br>
+<img src=\"vn.png\" alt=\"Venn diagram\" longdesc=\"vn.html\" title=\"Venn\"></img>"^^rdf:XMLLiteral)
+DataPropertyAssertion(first:fp _:genid79943 "<br></br>
+<img src=\"vn.png\" title=\"Venn\" alt=\"Venn diagram\" longdesc=\"vn.html\"></img>"^^rdf:XMLLiteral)
+)

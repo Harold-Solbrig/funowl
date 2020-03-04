@@ -1,0 +1,28 @@
+Prefix(NS0:=<http://example.org/vocab#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(ObjectProperty(NS0:stateCode))
+Declaration(AnnotationProperty(NS0:population))
+Declaration(AnnotationProperty(NS0:stateBird))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: NS0:stateCode (NS0:stateCode)
+
+InverseFunctionalObjectProperty(NS0:stateCode)
+
+
+
+AnnotationAssertion(NS0:stateBird _:genid76094 NS0:WesternMeadowlark)
+AnnotationAssertion(NS0:stateCode _:genid76094 "KS")
+AnnotationAssertion(NS0:population _:genid76095 "2688418")
+AnnotationAssertion(NS0:stateCode _:genid76095 "KS")
+)

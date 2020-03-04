@@ -1,0 +1,25 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rules: <http://owl2.test/rules/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rules:ifp a :InverseFunctionalProperty,
+        :ObjectProperty .
+
+rules:X1 a :NamedIndividual .
+
+rules:X2 a :NamedIndividual .
+
+rules:Y1 a :NamedIndividual ;
+    rules:ifp rules:X1 .
+
+rules:Y2 a :NamedIndividual ;
+    rules:ifp rules:X2 .
+
+[] a :AllDifferent ;
+    :distinctMembers ( rules:Y1 rules:Y2 ) .
+
+[] a :Ontology .
+

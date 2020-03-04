@@ -1,0 +1,100 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent623#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent623>
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(oiled:a))
+Declaration(Class(oiled:a.comp))
+Declaration(Class(oiled:c))
+Declaration(Class(:A.2))
+Declaration(Class(:V.3))
+Declaration(Class(:V.4))
+Declaration(Class(:V.5))
+Declaration(Class(:V.6))
+Declaration(Class(:V.7))
+Declaration(Class(owl:Thing))
+Declaration(ObjectProperty(oiled:invP))
+Declaration(ObjectProperty(oiled:invR))
+Declaration(ObjectProperty(oiled:invS))
+Declaration(ObjectProperty(oiled:p))
+Declaration(ObjectProperty(oiled:r))
+Declaration(ObjectProperty(oiled:s))
+Declaration(DataProperty(:P.1))
+############################
+#   Object Properties
+############################
+
+# Object Property: oiled:invP (oiled:invP)
+
+InverseObjectProperties(oiled:invP oiled:p)
+
+# Object Property: oiled:invR (oiled:invR)
+
+InverseObjectProperties(oiled:invR oiled:r)
+
+# Object Property: oiled:invS (oiled:invS)
+
+InverseObjectProperties(oiled:invS oiled:s)
+
+# Object Property: oiled:p (oiled:p)
+
+TransitiveObjectProperty(oiled:p)
+
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+SubClassOf(oiled:Unsatisfiable oiled:a)
+SubClassOf(oiled:Unsatisfiable ObjectSomeValuesFrom(oiled:s :A.2))
+
+# Class: oiled:a (oiled:a)
+
+EquivalentClasses(oiled:a DataMaxCardinality(0 :P.1))
+
+# Class: oiled:a.comp (oiled:a.comp)
+
+EquivalentClasses(oiled:a.comp DataMinCardinality(1 :P.1))
+
+# Class: oiled:c (oiled:c)
+
+EquivalentClasses(oiled:c ObjectAllValuesFrom(oiled:invR :V.7))
+
+# Class: :A.2 (:A.2)
+
+EquivalentClasses(:A.2 ObjectIntersectionOf(ObjectSomeValuesFrom(oiled:p owl:Thing) ObjectSomeValuesFrom(oiled:r owl:Thing) ObjectAllValuesFrom(oiled:p :V.3) ObjectAllValuesFrom(oiled:p :V.4) ObjectAllValuesFrom(oiled:p :V.5) ObjectAllValuesFrom(oiled:r oiled:c)))
+
+# Class: :V.3 (:V.3)
+
+EquivalentClasses(:V.3 ObjectSomeValuesFrom(oiled:r owl:Thing))
+
+# Class: :V.4 (:V.4)
+
+EquivalentClasses(:V.4 ObjectSomeValuesFrom(oiled:p owl:Thing))
+
+# Class: :V.5 (:V.5)
+
+EquivalentClasses(:V.5 ObjectAllValuesFrom(oiled:r oiled:c))
+
+# Class: :V.6 (:V.6)
+
+EquivalentClasses(:V.6 ObjectAllValuesFrom(oiled:invS oiled:a.comp))
+
+# Class: :V.7 (:V.7)
+
+EquivalentClasses(:V.7 ObjectAllValuesFrom(oiled:invP :V.6))
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid80529)
+)

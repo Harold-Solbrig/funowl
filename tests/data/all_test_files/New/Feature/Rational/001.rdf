@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xml:base  = "http://example.org/"
+  xmlns     = "http://example.org/"
+  xmlns:owl = "http://www.w3.org/2002/07/owl#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+<owl:Ontology/>
+
+<owl:DatatypeProperty rdf:about="dp" />
+
+<rdf:Description rdf:about="a">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="dp" />
+      <owl:allValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#rational" />
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+<rdf:Description rdf:about="a">
+  <rdf:type>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="dp" />
+      <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minCardinality>
+    </owl:Restriction>
+  </rdf:type>
+</rdf:Description>
+
+</rdf:RDF>

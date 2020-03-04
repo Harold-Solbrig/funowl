@@ -1,0 +1,20 @@
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(:=<http://purl.obolibrary.org/obo/example/>)
+
+Ontology(<http://example.org/literal-not-thing.owl>
+
+Declaration(DataProperty(:dp))
+AnnotationAssertion(rdfs:label :dp "dp")
+
+Declaration(NamedIndividual(:a))
+AnnotationAssertion(rdfs:label :a "a")
+Declaration(NamedIndividual(:b))
+AnnotationAssertion(rdfs:label :b "b")
+
+EquivalentClasses(owl:Thing ObjectOneOf(:b :a))
+DataPropertyAssertion(:dp :b "42"^^xsd:integer)
+DataPropertyAssertion(:dp :b "44"^^xsd:integer)
+DataPropertyAssertion(:dp :b "43"^^xsd:integer)
+)

@@ -1,0 +1,70 @@
+Prefix(:=<http://www.w3.org/2002/03owlt/description-logic/inconsistent643#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(oiled:=<http://oiled.man.example.net/test#>)
+
+
+Ontology(<http://www.w3.org/2002/03owlt/description-logic/inconsistent643>
+
+Declaration(Class(oiled:Unsatisfiable))
+Declaration(Class(oiled:c))
+Declaration(Class(oiled:c1))
+Declaration(Class(oiled:d))
+Declaration(Class(oiled:d.comp))
+Declaration(Class(oiled:d1))
+Declaration(Class(oiled:d1.comp))
+Declaration(Class(oiled:e3))
+Declaration(Class(oiled:f))
+Declaration(ObjectProperty(oiled:r))
+Declaration(ObjectProperty(:P.2))
+Declaration(DataProperty(:P.1))
+
+
+
+############################
+#   Classes
+############################
+
+# Class: oiled:Unsatisfiable (oiled:Unsatisfiable)
+
+EquivalentClasses(oiled:Unsatisfiable ObjectIntersectionOf(oiled:e3 oiled:f))
+
+# Class: oiled:c (oiled:c)
+
+SubClassOf(oiled:c oiled:d.comp)
+
+# Class: oiled:c1 (oiled:c1)
+
+SubClassOf(oiled:c1 oiled:d1)
+SubClassOf(oiled:c1 oiled:d1.comp)
+
+# Class: oiled:d (oiled:d)
+
+EquivalentClasses(oiled:d DataMaxCardinality(0 :P.1))
+
+# Class: oiled:d.comp (oiled:d.comp)
+
+EquivalentClasses(oiled:d.comp DataMinCardinality(1 :P.1))
+
+# Class: oiled:d1 (oiled:d1)
+
+EquivalentClasses(oiled:d1 ObjectMinCardinality(1 :P.2))
+
+# Class: oiled:d1.comp (oiled:d1.comp)
+
+EquivalentClasses(oiled:d1.comp ObjectExactCardinality(0 :P.2))
+
+# Class: oiled:e3 (oiled:e3)
+
+SubClassOf(oiled:e3 oiled:c)
+
+# Class: oiled:f (oiled:f)
+
+SubClassOf(oiled:f oiled:d)
+
+
+ClassAssertion(oiled:Unsatisfiable _:genid74159)
+)
