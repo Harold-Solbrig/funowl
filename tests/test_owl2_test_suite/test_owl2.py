@@ -47,17 +47,17 @@ class OWL2ValidationTestCase(ValidationTestCase):
 
     # Filenames to skip and reason for skipping it
     skip = {
-        'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
-        'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
-        'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
-        'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
-        'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
-        'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
-        'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI,
-        'TestCase-3AWebOnt-2Dmiscellaneous-2D204.func': XML_LANG_PARSE_ERROR,
-        'Direct_Semantics_Literal_disjoint_from_Thing.func': RDFCOMPARE_BUG,
-        "FS2RDF-2Dpropertychain-2D2-2Dannotated-2Dar.func": SAME_VS_DUPLICATE_LIST,
-        "FS2RDF-2Dontology-2Dannotation-2Dannotation-2Dar.func": NEEDS_REVISITING
+        # 'FS2RDF-2Ddomain-2Drange-2Dexpression-2Dar.func': OBJECT_INVERSE_ISSUE,
+        # 'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
+        # 'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
+        # 'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
+        # 'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
+        # 'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
+        # 'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI,
+        # 'TestCase-3AWebOnt-2Dmiscellaneous-2D204.func': XML_LANG_PARSE_ERROR,
+        # 'Direct_Semantics_Literal_disjoint_from_Thing.func': RDFCOMPARE_BUG,
+        # "FS2RDF-2Dpropertychain-2D2-2Dannotated-2Dar.func": SAME_VS_DUPLICATE_LIST,
+        # "FS2RDF-2Dontology-2Dannotation-2Dannotation-2Dar.func": NEEDS_REVISITING
     }
 
     # Stop on the first error
@@ -116,7 +116,6 @@ def validate_owl2(fileloc: str) -> bool:
             logging.info('\n---------- expected rdf ------------\n' + dump_rdf(expected_rdf))
             print(rslts)
             return False
-
 
     # 3) convert the ontology back into functional syntax
     #    functional_repr_prime = f**-1(f(functional_repr))

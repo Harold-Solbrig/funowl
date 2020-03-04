@@ -1,5 +1,6 @@
 import unittest
 import sys
+from pathlib import Path
 from typing import Tuple, Optional, Dict, Callable
 
 import os
@@ -31,13 +32,17 @@ class ValidationTestCase(unittest.TestCase):
         started = not bool(cls.start_at)
         cls.number_of_errors = 0
         for fname, fpath in (cls.enumerate_http_files(cls.repo_base)
-                if ':' in cls.repo_base else cls.enumerate_directory(cls.repo_base)):
+                if ':' in cls.repo_base else cls.enumerate_directory(cls.repo_base, cls.file_suffix)):
             if fname.endswith(cls.file_suffix):
                 if started or fname.startswith(cls.start_at):
                     if fname not in cls.skip:
                         started = True
                         test_func = cls.make_test_function(fpath)
-                        setattr(cls, 'test_{0}'.format(fname.rsplit('.', 1)[0]), test_func)
+
+                        # Create a test name relative to repo_base
+                        rel_fpath = os.path.relpath(fpath, cls.repo_base)
+                        test_name = '.'.join(['test_' + e for e in rel_fpath.split('/')]).rsplit('.', 1)[0]
+                        setattr(cls, test_name, test_func)
                         if cls.single_file:
                             break
                     else:
@@ -53,11 +58,9 @@ class ValidationTestCase(unittest.TestCase):
             print("Error {}: {}".format(resp.status_code, resp.reason), file=sys.stderr)
 
     @staticmethod
-    def enumerate_directory(dir_) -> Tuple[str, str]:
-        for fname in os.listdir(dir_):
-            fpath = os.path.join(dir_, fname)
-            if os.path.isfile(fpath):
-                yield fname, fpath
+    def enumerate_directory(dir_, sfx: str) -> Tuple[str, str]:
+        for fpath in list(Path(dir_).rglob(f"*{sfx}")):
+            yield os.path.basename(fpath), str(fpath)
 
     def blank_test(self):
         self.assertTrue(True)
