@@ -3,9 +3,16 @@ from contextlib import redirect_stdout
 from io import StringIO
 from typing import Union, Optional
 
-from rdflib import Graph, RDFS, RDF
+from rdflib import Graph, RDFS, RDF, OWL
 from rdflib.compare import to_isomorphic, IsomorphicGraph, graph_diff
 
+# See notes in TestCaseIssues.md -- we ignore these
+triples_to_ignore = [
+    (OWL.Thing, RDF.type, OWL.Class),
+    (RDFS.Class, RDF.type, OWL.Class),
+    (OWL.sameAs, RDF.type, OWL.AnnotationProperty),
+    (RDF.type, RDF.type, OWL.AnnotationProperty)
+]
 
 def to_graph(inp: Union[Graph, str], fmt: Optional[str] = "turtle") -> Graph:
     """
@@ -57,7 +64,14 @@ def compare_rdf(expected: Union[Graph, str], actual: Union[Graph, str], fmt: Opt
     in_both, in_old, in_new = graph_diff(expected_isomorphic, actual_isomorphic)
     # if old_iso != new_iso:
     #     in_both, in_old, in_new = graph_diff(old_iso, new_iso)
+
     old_len = len(list(in_old))
+    if old_len:
+        for t in triples_to_ignore:
+            if t in in_old:
+                print(f"WARNING: {t} removed from expected graph")
+                in_old.remove(t)
+        old_len = len(in_old)
     new_len = len(list(in_new))
     if old_len or new_len:
         txt = StringIO()

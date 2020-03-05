@@ -22,20 +22,3 @@
         <http://example.org/c> .
 
 [] a :Ontology .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/a>,
-        <http://example.org/b> ;
-    :annotatedTarget <http://example.org/b>,
-        <http://example.org/c> .
-
-[] a :Axiom ;
-    rdfs:comment "I hereby annotate this" ;
-    :annotatedProperty :sameAs ;
-    :annotatedSource <http://example.org/a>,
-        <http://example.org/b> ;
-    :annotatedTarget <http://example.org/b>,
-        <http://example.org/c> .
-

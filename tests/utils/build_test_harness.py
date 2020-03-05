@@ -34,19 +34,19 @@ class ValidationTestCase(unittest.TestCase):
         for fname, fpath in (cls.enumerate_http_files(cls.repo_base)
                 if ':' in cls.repo_base else cls.enumerate_directory(cls.repo_base, cls.file_suffix)):
             if fname.endswith(cls.file_suffix):
-                if started or fname.startswith(cls.start_at):
-                    if fname not in cls.skip:
+                rel_fpath = os.path.relpath(fpath, cls.repo_base)
+                if started or rel_fpath.startswith(cls.start_at):
+                    if rel_fpath not in cls.skip:
                         started = True
                         test_func = cls.make_test_function(fpath)
 
                         # Create a test name relative to repo_base
-                        rel_fpath = os.path.relpath(fpath, cls.repo_base)
                         test_name = '.'.join(['test_' + e for e in rel_fpath.split('/')]).rsplit('.', 1)[0]
                         setattr(cls, test_name, test_func)
                         if cls.single_file:
                             break
                     else:
-                        print(f"***** Skipped: {fname} - {cls.skip[fname]}")
+                        print(f"***** Skipped: {rel_fpath} - {cls.skip[rel_fpath]}")
 
     @staticmethod
     def enumerate_http_files(url) -> Tuple[str, str]:

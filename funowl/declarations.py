@@ -15,12 +15,13 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 DataPropertyExpression := DataProperty
 """
 from dataclasses import dataclass
-from typing import Union
+from typing import Union, List
 
 from rdflib import OWL
 
-from funowl.annotations import AnnotationProperty
+from funowl.annotations import AnnotationProperty, Annotatable, Annotation
 from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.base.list_support import empty_list
 from funowl.class_expressions import Class
 from funowl.dataproperty_expressions import DataProperty
 from funowl.individuals import NamedIndividual
@@ -43,8 +44,9 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass
-class Declaration(FunOwlChoice):
+class Declaration(FunOwlChoice, Annotatable):
     v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]
+    annotations: List[Annotation] = empty_list()
     _coercion_allowed = False
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
