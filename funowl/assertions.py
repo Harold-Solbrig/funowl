@@ -72,7 +72,9 @@ class SameIndividual(Annotatable):
             for tgt in rdf_individuals[1:]:
                 g.add((x, OWL.annotatedTarget, clone_subgraph(g, tgt) if USE_BNODE_COPIES else tgt))
             for annotation in self.annotations:
-                annotation.TANN(g, x)
+                t = (x, annotation.property.to_rdf(g), annotation.value.to_rdf(g))
+                g.add(t)
+                annotation.TANN(g, t)
 
 
 @dataclass

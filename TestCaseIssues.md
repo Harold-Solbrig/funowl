@@ -59,6 +59,15 @@ interpret this as
     Not sure quite what to think of this, but for the time being we're going
     to go with it.
 
+4. ObjectPropertyChain
+Does `ObjectPropertyChain(:p1 :p2)` imply `:p1 a owl:ObjectProperty` and `:p2 a owl:ObjectProperyt`?
+The generator currently emits them, but the test code (Rdfbased/sem/chain/def.func) does not show this as happening.  For the
+moment we are going to assume that we are right and change the test target (Rdfbased/sem/chain/def.ttl)
+
+5. HasKey
+Does `HasKey(ex:c () (ex:p1 ex:p2))` imply `ex:p1 a owl:DatatypeProperyt`?  Same as ObjectPropertyChain.  
+see: Rdfbased/sem/key/def.func and Rdfbased/sem/ndis/alldisjointproperties/fw.func
+
 ## Specific file issues
 
 **Direct_Semantics_Literal_disjoint_from_Thing.func**
@@ -140,5 +149,14 @@ The Finland converter got the properties backward -- sb `hasName disjointWith ha
 **Validating New/Feature/ObjectQCR/002.func**
 **Owl2/rl/rules/fp/differentFrom.fun**
 **Owl2/rl/rules/ifp/differentFrom.func**
+**Rdfbased/sem/eqdis/different/sameas.func**
 
 The Finland converter records a pair as `allDifferent` rather than `differentFrom`
+
+**New/Feature/AnnotationAnnotations/001.func**
+
+The annotation on the annotation wasn't emitted by the Finland processor
+
+**Rdfbased/sem/eqdis/disclass/irrflxv.func**
+
+Failed the Finland conversion completely.  ttl added on our side

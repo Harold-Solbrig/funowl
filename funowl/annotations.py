@@ -115,7 +115,9 @@ class Annotatable(FunOwlBase, ABC):
                 subj = x
 
             for annotation in self.annotations:
-                annotation.TANN(g, subj)
+                t = (subj, annotation.property.to_rdf(g), annotation.value.to_rdf(g))
+                g.add(t)
+                annotation.TANN(g, t)
 
     def add_triple(self, g: Graph, subj: SUBJ, pred: PRED, obj: TARG) -> None:
         g.add((subj, pred, obj))
@@ -132,17 +134,6 @@ class Annotation(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         # Annotated annotations get special handling
         return self.annots(w, lambda: w + self.property + self.value)
-
-    def TANN(self, g: Graph, subj: Union[SUBJ, TRIPLE]) -> None:
-        if isinstance_(subj, TRIPLE):
-            g.add(subj)
-            x = BNode()
-            g.add((x, RDF.type, OWL.Axiom))
-            g.add((x, OWL.annotatedSource, subj[0]))
-            g.add((x, OWL.annotatedProperty, subj[1]))
-            g.add((x, OWL.annotatedTarget, subj[2]))
-            subj = x
-        g.add((subj, self.property.to_rdf(g), self.value.to_rdf(g)))
 
 @dataclass
 class AnnotationAssertion(Annotatable):

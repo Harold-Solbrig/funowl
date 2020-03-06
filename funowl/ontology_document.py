@@ -53,7 +53,7 @@ class Import(FunOwlBase):
 
 @dataclass
 class Ontology(Annotatable):
-    annotation_type = OWL.Ontology
+    # annotation_type = OWL.Ontology
     iri: Optional[IRI.types()] = None
     version: Optional[IRI.types()] = None
     directlyImportsDocuments: List[Import] = empty_list()
@@ -203,14 +203,17 @@ class Ontology(Annotatable):
     def to_rdf(self, g: Graph) -> SUBJ:
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         version_uri = self.version.to_rdf(g) if self.version else None
-        self.add_triple(g, ontology_uri, RDF.type, OWL.Ontology)
+        g.add((ontology_uri, RDF.type, OWL.Ontology))
+        for annotation in self.annotations:
+            t = (ontology_uri, annotation.property.to_rdf(g), annotation.value.to_rdf(g))
+            g.add(t)
+            annotation.TANN(g, t)
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, version_uri))
         for imp in self.directlyImportsDocuments:
             g.add((ontology_uri, OWL.imports, imp.to_rdf(g)))
         for axiom in self.axioms:
             axiom.to_rdf(g)
-        super().to_rdf(g)
         return ontology_uri
 
 

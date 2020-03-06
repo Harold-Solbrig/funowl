@@ -69,7 +69,7 @@ class OWL2ValidationTestCase(ValidationTestCase):
     }
 
     # Stop on the first error
-    stop_on_error = True
+    stop_on_error = False
 
     # If we're starting at a given file, we'll want more detail
     if start_at:
