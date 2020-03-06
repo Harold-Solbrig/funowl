@@ -33,6 +33,7 @@ from rdflib import Graph, OWL, RDF
 from rdflib.term import BNode
 
 from funowl.annotations import Annotation, Annotatable
+from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.list_support import empty_list
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
@@ -58,8 +59,20 @@ class SameIndividual(Annotatable):
             annots(w, lambda: w.iter(self.individuals, f=lambda o: w + o, indent=False))
 
     def to_rdf(self, g: Graph) -> None:
-        for i in range(1, len(self.individuals)):
-            self.add_triple(g, self.individuals[i-1].to_rdf(g), OWL.sameAs, self.individuals[i].to_rdf(g))
+        rdf_individuals = [ind.to_rdf(g) for ind in self.individuals]
+        for i in range(0, len(rdf_individuals)):
+            for j in rdf_individuals[i+1:]:
+                g.add((rdf_individuals[i], OWL.sameAs, j))
+        if self.annotations:
+            x = BNode()
+            g.add((x, RDF.type, self.annotation_type))
+            for src in rdf_individuals[:-1]:
+                g.add((x, OWL.annotatedSource, clone_subgraph(g, src) if USE_BNODE_COPIES else src))
+            g.add((x, OWL.annotatedProperty, OWL.sameAs))
+            for tgt in rdf_individuals[1:]:
+                g.add((x, OWL.annotatedTarget, clone_subgraph(g, tgt) if USE_BNODE_COPIES else tgt))
+            for annotation in self.annotations:
+                annotation.TANN(g, x)
 
 
 @dataclass

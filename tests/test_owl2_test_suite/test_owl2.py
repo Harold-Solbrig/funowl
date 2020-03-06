@@ -15,12 +15,12 @@ logging.getLogger().setLevel(logging.WARNING)
 OBJECT_INVERSE_ISSUE = "Argument should be declared to be BOTH an Object and Data Property?"
 DECIMAL_ISSUE = "Something subtle with 1 and 1.0 decimal"
 ONTOLOGY_ANNOTATION_PROBLEM = 'Issue with ontology level annotation -- needs fixing'
+XML_LANG_PARSE_ERROR = "Unexplained XML Language"
 
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
 DID_NOT_LOAD = "Testcase has issue"
 XML_TO_TTL_FAIL = "XML does not load in rdflib"
 CONFLICT_WITH_SPEC = "Test case does not appear to match spec"
-XML_LANG_PARSE_ERROR = "Unexplained XML Language"
 NOT_CONFORMANT_TO_SPEC = "Expected RDF does not match specification"
 RDFCOMPARE_BUG = "Bug in RDF comparator"
 NEEDS_REVISITING = "Needs hard thinking"
@@ -55,20 +55,21 @@ class OWL2ValidationTestCase(ValidationTestCase):
         'FS2RDF/literals/ar.func': DECIMAL_ISSUE,
         'FS2RDF/negative/property/assertion/ar.func': OBJECT_INVERSE_ISSUE,
         'FS2RDF/ontology/annotation/annotation/ar.func': ONTOLOGY_ANNOTATION_PROBLEM,
+        'TestCase-WebOnt/miscellaneous/204.func': XML_LANG_PARSE_ERROR,
+        'TestCase-WebOnt/miscellaneous/203.func': XML_LANG_PARSE_ERROR,
+        'TestCase-WebOnt/miscellaneous/202.func': XML_LANG_PARSE_ERROR,
         # 'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
         # 'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
         # 'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
         # 'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
         # 'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
         # 'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI,
-        # 'TestCase-3AWebOnt-2Dmiscellaneous-2D204.func': XML_LANG_PARSE_ERROR,
         # 'Direct_Semantics_Literal_disjoint_from_Thing.func': RDFCOMPARE_BUG,
         # "FS2RDF-2Dpropertychain-2D2-2Dannotated-2Dar.func": SAME_VS_DUPLICATE_LIST,
-        # "FS2RDF-2Dontology-2Dannotation-2Dannotation-2Dar.func": NEEDS_REVISITING
     }
 
     # Stop on the first error
-    stop_on_error = False
+    stop_on_error = True
 
     # If we're starting at a given file, we'll want more detail
     if start_at:

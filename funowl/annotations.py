@@ -25,10 +25,11 @@ from rdflib import URIRef, Graph
 from rdflib.namespace import OWL, RDF, RDFS
 from rdflib.term import BNode
 
+from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
-from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG
+from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG, NODE
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
 from funowl.literals import Literal
@@ -108,9 +109,9 @@ class Annotatable(FunOwlBase, ABC):
                 # Subj is a triple -- reify it
                 x = BNode()
                 g.add((x, RDF.type, self.annotation_type))
-                g.add((x, OWL.annotatedSource, subj[0]))
+                g.add((x, OWL.annotatedSource, clone_subgraph(g, subj[0]) if USE_BNODE_COPIES else subj[0]))
                 g.add((x, OWL.annotatedProperty, subj[1]))
-                g.add((x, OWL.annotatedTarget, subj[2]))
+                g.add((x, OWL.annotatedTarget, clone_subgraph(g, subj[2]) if USE_BNODE_COPIES else subj[2]))
                 subj = x
 
             for annotation in self.annotations:

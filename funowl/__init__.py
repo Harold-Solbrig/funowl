@@ -19,4 +19,3 @@ from . dataproperty_axioms import SubDataPropertyOf, EquivalentDataProperties, D
     DataPropertyDomain, DataPropertyRange, FunctionalDataProperty, DatatypeDefinition
 from . assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
-

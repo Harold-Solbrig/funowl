@@ -2,10 +2,62 @@
 
 ## General Issues
 
-1) Should we emit `owl:Thing a owl:Class`?  The spec doesn't appear to say we shouldn't, but the test cases themselves
+1. Should we emit `owl:Thing a owl:Class`?  The spec doesn't appear to say we shouldn't, but the test cases themselves
 are inconsistent.  `Bnode2somevaluesfrom.func` shows it as not being emitted, yet other tests do.  For the time being,
 identifiers.py#43 does not emit any declarations about XSD, RDF, RDFS or OWL, and our tests remove them (with warnings)
 from the target files.
+
+2. Reified annotations: the Finland parser and, possibly, the test case itself replicates BNodes used as `annotatedSource`
+or `annotatedTarget` elements.  Using
+[FS2RDF/propertychain/2/annotated/ar.func](tests/test_owls2_test_suite/FS2RDF/propertychain/2/annotated/ar.func) as an example,
+we can either point at a _copy_ of the subject and object in the annotation Axiom:
+    ```text
+    <http://example.org/p> a :ObjectProperty ;
+        :propertyChainAxiom ( <http://example.org/q> <http://example.org/r> ) .
+    
+    [] a :Axiom ;
+        rdfs:comment "I hereby annotate this" ;
+        :annotatedProperty :propertyChainAxiom ;
+        :annotatedSource <http://example.org/p> ;
+        :annotatedTarget ( <http://example.org/q> <http://example.org/r> ) .
+    ```
+   or we can point at the items themselves:
+    ```text
+    <http://example.org/p> a :ObjectProperty ;
+        :propertyChainAxiom _:fb1b444ef721943fd96f22d4d6c53d9b1b1 .
+    
+    [] a :Axiom ;
+        rdfs:comment "I hereby annotate this" ;
+        :annotatedProperty :propertyChainAxiom ;
+        :annotatedSource <http://example.org/p> ;
+        :annotatedTarget _:fb1b444ef721943fd96f22d4d6c53d9b1b1 .
+    
+    _:fb1b444ef721943fd96f22d4d6c53d9b1b2 rdf:first <http://example.org/r> ;
+        rdf:rest () .
+    
+    _:fb1b444ef721943fd96f22d4d6c53d9b1b1 rdf:first <http://example.org/q> ;
+        rdf:rest _:fb1b444ef721943fd96f22d4d6c53d9b1b2 .
+    ```
+    The first form is obviously more readable, but it is inconsistent but will be a real challenge to process, as
+    one has to go on the assumption that `_:b1 a rdf:Thing . _:b2 a rdf:Thing` implies `_:b1` == `_:b2`, something
+    that I suspect runs counter to the RDF philosophy.
+
+    Since the test cases use the first form, we have added an option `USE_BNODE_COPIES` to funowl/base/clone_subgraph.py to
+    allow us to have it either way.
+
+3. `sameIndividuals` annotations
+The RDF spec seems to have a gap when it comes to how annotations apply to
+`sameIndividuals(Annotation(rdfs:comment "annot") :a :b :c :d).  The Finnish converter seems to
+interpret this as
+   ```text
+   [] a :Axiom ;
+    rdfs:comment "annot" ;
+    :annotatedProperty :sameAs ;
+    :annotatedSource :a, :b, :c ;
+    :annotatedTarget :b, :c, :d .
+    ```
+    Not sure quite what to think of this, but for the time being we're going
+    to go with it.
 
 ## Specific file issues
 
