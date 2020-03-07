@@ -150,8 +150,13 @@ The Finland converter got the properties backward -- sb `hasName disjointWith ha
 **Owl2/rl/rules/fp/differentFrom.fun**
 **Owl2/rl/rules/ifp/differentFrom.func**
 **Rdfbased/sem/eqdis/different/sameas.func**
+**TestCase-WebOnt/description/logic/501.func**
+**TestCase-WebOnt/maxCardinality/001.func**
 
 The Finland converter records a pair as `allDifferent` rather than `differentFrom`
+
+Note that maxCardinality/001.func was missing the ontology declaration as
+well
 
 **New/Feature/AnnotationAnnotations/001.func**
 
@@ -160,3 +165,29 @@ The annotation on the annotation wasn't emitted by the Finland processor
 **Rdfbased/sem/eqdis/disclass/irrflxv.func**
 
 Failed the Finland conversion completely.  ttl added on our side
+
+**Rdfbased/sem/npa/dat/fw.func**
+
+This test uses a non-standard OWL property -- `owl:targetValue` .  Our current
+implementation does not emit declarations about the OWL, RDF or other known
+namespaces, so this doesn't get emitted.  We are ignoring this test for the
+time being.
+
+**TestCase-WebOnt/I5.26/004.func**
+**TestCase-WebOnt/I5.26/005.func**
+
+The Finnish converter reversed the order of the declaration going from
+XML to functional and then switched it again going to turtle.  Edited
+the functional declaration to match the XML.
+
+**TestCase-WebOnt/I5.3/009.func**
+Finnish conversion failed -- loaded expected with output of generator.
+
+**TestCase-WebOnt/miscellaneous/002.func**
+Several implied declarations were missing -- not sure why.
+
+**TestCase-WebOnt/I5.8/017.func**
+Uses document local URI's -- funowl processor doesn't work with fragments (e.g. `"01"^^<#bar> .`)
+
+**TestCase-WebOnt/I6.1/001.func**
+The BNode elements of the test were missing completely.

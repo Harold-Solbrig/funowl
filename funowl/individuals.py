@@ -19,11 +19,12 @@ from funowl.identifiers import IRI
 @dataclass
 class NamedIndividual(IRI):
     rdf_type: ClassVar[URIRef] = OWL.NamedIndividual
+    from_cast: bool = False
 
 
 class AnonymousIndividual(NodeID):
     def to_rdf(self, g: Graph) -> BNode:
-        return BNode()
+        return BNode(str(self)[2:])
 
 
 @dataclass

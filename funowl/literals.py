@@ -44,9 +44,12 @@ class TypedLiteral(FunOwlBase):
         :param literal: Literal
         :param datatype: Data type or None if it is to be coputed
         """
-        if datatype is not None:
+        if isinstance(literal, TypedLiteral):
+            self.literal = literal.literal
+            self.datatype = literal.datatype
+        elif datatype is not None:
             self.literal = StringLiteralNoLanguage(literal)
-            self.datatype = datatype
+            self.datatype = datatype if isinstance(datatype, Datatype) else Datatype(datatype)
         elif isinstance(literal, (int, float, bool, date, time, datetime, rdflib.Literal)):
             if not isinstance(literal, rdflib.Literal):
                 literal = rdflib.Literal(literal)
@@ -59,7 +62,7 @@ class TypedLiteral(FunOwlBase):
         return w.concat(self.literal, '^^', self.datatype)
 
     def to_rdf(self, g: Graph) -> rdflib.Literal:
-        return rdflib.Literal(self.literal, datatype=IRI(self.datatype).to_rdf(g))
+        return rdflib.Literal(self.literal, datatype=IRI(str(self.datatype)).to_rdf(g))
 
     def __str__(self) -> str:
         return str(self.literal) + '^^' + str(self.datatype)

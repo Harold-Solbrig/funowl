@@ -47,7 +47,6 @@ class AnnotationSubject(FunOwlChoice):
     v: Union[IRI, AnonymousIndividual]
 
 
-
 @dataclass
 class AnnotationValue(FunOwlChoice):
     v: Union[AnonymousIndividual, IRI, Literal, str]

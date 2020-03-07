@@ -43,9 +43,9 @@ AnnotationAssertion(rdfs:label example:LUME0000005 "ArterySelf")
 
 # Object Property: example:LUME0000006 (is continuous with)
 
-AnnotationAssertion(rdfs:comment example:LUME0000006 "Then the following axiom 
-(3) SubProperty(SubPropertyChain( LumenSelf InverseOf(hasPart1)   
-isContinuousWith ArterySelf hasPart1 LumenSelf) isContinuousWith)")
+AnnotationAssertion(rdfs:comment example:LUME0000006 "Then the following axiom
+ (3) SubProperty(SubPropertyChain( LumenSelf InverseOf(hasPart1)
+ isContinuousWith ArterySelf hasPart1 LumenSelf) isContinuousWith)")
 AnnotationAssertion(rdfs:label example:LUME0000006 "is continuous with")
 
 
@@ -66,10 +66,10 @@ SubClassOf(example:LUME0000002 ObjectHasSelf(example:LUME0000005))
 
 # Class: example:LUME0000007 (SubClavianArtery)
 
-AnnotationAssertion(rdfs:comment example:LUME0000007 "SubClavianArtery SubClassOf 
-  (Artery and 
-   (hasPart1 some Lumen) and 
-   (hasPart1 some Wall) and 
+AnnotationAssertion(rdfs:comment example:LUME0000007 "SubClavianArtery SubClassOf
+  (Artery and
+   (hasPart1 some Lumen) and
+   (hasPart1 some Wall) and
    (isContinuousWith some RadialArtery))")
 AnnotationAssertion(rdfs:label example:LUME0000007 "SubClavianArtery")
 SubClassOf(example:LUME0000007 ObjectIntersectionOf(example:LUME0000002 ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000001) ObjectSomeValuesFrom(example:LUME0000003 example:LUME0000008) ObjectSomeValuesFrom(example:LUME0000006 example:LUME0000009)))

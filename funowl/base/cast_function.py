@@ -1,7 +1,7 @@
 import logging
 from collections import Iterable
 from copy import copy
-from typing import Type, Any, Optional, get_type_hints
+from typing import Type, Any, Optional, Callable
 
 from funowl.terminals.TypingHelper import is_union, get_args, is_iterable, isinstance_
 
@@ -18,6 +18,15 @@ def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
     """
     from funowl.base.fun_owl_choice import FunOwlChoice
 
+    def choice_match(poss_type: Callable[[Type], Any]) -> Any:
+        logging.debug(f"     Matches {poss_type.__name__}")
+        if getattr(poss_type, '_parse_input', None):
+            rval = typ(poss_type(*poss_type._parse_input(v)))
+        else:
+            rval = typ(poss_type(v))
+        rval.from_cast = True
+        return rval
+
     if v is None or v == []:  # Null and empty list are always allowed (a bit too permissive but...)
         return v
 
@@ -26,7 +35,8 @@ def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
         for t in get_args(typ):
             if type(v) is t:
                 return v
-            elif _coercion_allowed is not False and isinstance_(v, t):
+        for t in get_args(typ):
+            if _coercion_allowed is not False and isinstance_(v, t):
                 return cast(t, v)
         raise TypeError(f"Type mismatch between {v} (type: {type(v)} and {typ}")
 
@@ -45,11 +55,12 @@ def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
         pos_types = ', '.join([t.__name__ for t in hints])
         logging.debug(f"value: {v} (type: {type(v)}) testing against {typ}[{pos_types}]")
         for poss_type in hints:
-            if issubclass(type(v), poss_type) or (_coercion_allowed is not False and isinstance(v, poss_type)):
-                logging.debug(f"     Matches {poss_type.__name__}")
-                if getattr(poss_type, '_parse_input', None):
-                    return typ(poss_type(*poss_type._parse_input(v)))
-                return typ(poss_type(v))
+            if issubclass(type(v), poss_type) and poss_type != typ.input_type:
+                return choice_match(poss_type)
+        for poss_type in hints:
+            if poss_type != typ.input_type \
+                    and (issubclass(type(v), poss_type) or (_coercion_allowed is not False and isinstance(v, poss_type))):
+                return choice_match(poss_type)
         logging.debug('     No match')
 
     # Determine whether v can be cooreced into type

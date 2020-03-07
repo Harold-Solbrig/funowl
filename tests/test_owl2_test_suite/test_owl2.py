@@ -16,6 +16,8 @@ OBJECT_INVERSE_ISSUE = "Argument should be declared to be BOTH an Object and Dat
 DECIMAL_ISSUE = "Something subtle with 1 and 1.0 decimal"
 ONTOLOGY_ANNOTATION_PROBLEM = 'Issue with ontology level annotation -- needs fixing'
 XML_LANG_PARSE_ERROR = "Unexplained XML Language"
+NONSTANDARD_OWL = "Uses an OWL predicate that isn't real -- test ignored"
+LOCAL_URI_ISSUE = "funowl doesn't handle document relative URIs"
 
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
 DID_NOT_LOAD = "Testcase has issue"
@@ -58,14 +60,8 @@ class OWL2ValidationTestCase(ValidationTestCase):
         'TestCase-WebOnt/miscellaneous/204.func': XML_LANG_PARSE_ERROR,
         'TestCase-WebOnt/miscellaneous/203.func': XML_LANG_PARSE_ERROR,
         'TestCase-WebOnt/miscellaneous/202.func': XML_LANG_PARSE_ERROR,
-        # 'FS2RDF-2Dnegative-2Dproperty-2Dassertion-2Dar.func': OBJECT_INVERSE_ISSUE,
-        # 'TestCase-3AWebOnt-2DequivalentProperty-2D005.func': QUESTIONABLE_IRI,
-        # 'Rdfbased-2Dsem-2Deqdis-2Ddisclass-2Dirrflxv.func': XML_TO_TTL_FAIL,
-        # 'TestCase-3AWebOnt-2DI5.3-2D009.func': XML_TO_TTL_FAIL,
-        # 'TestCase-3AWebOnt-2DdisjointWith-2D010.func': XML_TO_TTL_FAIL,
-        # 'TestCase-3AWebOnt-2DI5.8-2D017.func': QUESTIONABLE_IRI,
-        # 'Direct_Semantics_Literal_disjoint_from_Thing.func': RDFCOMPARE_BUG,
-        # "FS2RDF-2Dpropertychain-2D2-2Dannotated-2Dar.func": SAME_VS_DUPLICATE_LIST,
+        'Rdfbased/sem/npa/dat/fw.func': NONSTANDARD_OWL,
+        'TestCase-WebOnt/I5.8/017.func': LOCAL_URI_ISSUE
     }
 
     # Stop on the first error

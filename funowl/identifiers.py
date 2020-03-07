@@ -1,22 +1,22 @@
 """ IRI := fullIRI | abbreviatedIRI """
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, Field
 from typing import Union, ClassVar, Optional, Type
 
 from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD, RDFS
-from rdflib.term import Node
 
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass(unsafe_hash=True)
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
-    v: Union[AbbreviatedIRI, FullIRI, URIRef, str]
+    v: Union[AbbreviatedIRI, FullIRI, str]
     rdf_type: ClassVar[URIRef] = None
     input_type: ClassVar[Type] = str
+    from_cast: bool = False
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:
         if isinstance(self.v, URIRef):
@@ -44,7 +44,7 @@ class IRI(FunOwlChoice):
                     fulluri.startswith(str(RDF)) or
                     fulluri.startswith(str(RDFS)) or
                     fulluri.startswith(str(OWL))
-            ):
+            ) or not self.from_cast:
                 g.add((fulluri, RDF.type, self.rdf_type))
 
         return fulluri

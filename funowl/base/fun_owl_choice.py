@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Any, ClassVar, get_type_hints, List, Type, Tuple, Optional
 
 from rdflib import Graph
-from rdflib.term import Node
+from rdflib.term import Node, URIRef
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.cast_function import cast
@@ -55,7 +55,12 @@ class FunOwlChoice(FunOwlBase):
         return False
 
     def __setattr__(self, key, value):
-        if key != 'v' or not self.set_v(value):
+        if key == 'from_cast':
+            # TODO: this may be a symptom of a deeper problem -- should v ever be a non-funowl class?
+            if not isinstance(self.v, (URIRef, str)):
+                self.v.from_cast = value
+            super().__setattr__(key, value)
+        elif key != 'v' or not self.set_v(value):
             hints = get_type_hints(type(self))
             super().__setattr__(key, cast(hints[key], value) if key in hints else value)
 

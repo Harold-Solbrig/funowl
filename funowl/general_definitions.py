@@ -11,6 +11,7 @@ abbreviatedIRI := a finite sequence of characters matching the PNAME_LN producti
 import re
 from typing import Optional, ClassVar, Set
 
+import rdflib
 import rfc3987
 import bcp47
 from rdflib import BNode, URIRef, Graph, Literal
@@ -88,7 +89,8 @@ class FullIRI(str, FunOwlBase):
             raise TypeError(f"{v} is not a valid {type(self)}")
 
     def _is_valid(self, instance) -> bool:
-        return instance is not None and rfc3987.match(str(instance), 'IRI')
+        return instance is not None and not isinstance(instance, (rdflib.Literal, Literal)) \
+               and rfc3987.match(str(instance), 'IRI')
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + w.g.namespace_manager.normalizeUri(str(self))

@@ -105,8 +105,9 @@ class EquivalentObjectProperties(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
-    def f(self, a, b, c, d=12, e=32):
-        pass
+    def to_rdf(self, g: Graph) -> None:
+        for t1, t2 in zip(self.objectPropertyExpressions[:-1], self.objectPropertyExpressions[1:]):
+            self.add_triple(g, t1.to_rdf(g), OWL.equivalentProperty, t2.to_rdf(g))
 
 @dataclass
 class DisjointObjectProperties(Annotatable):
