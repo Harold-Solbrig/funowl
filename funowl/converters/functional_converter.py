@@ -159,6 +159,7 @@ def nested(s: bytes, start: int) -> Tuple[bytes, int]:
     except IndexError:
         raise ValueError("Parenthesis mismatch")
 
+
 def uri_matcher(unparsed: Union[str, bytes], start: int) -> Tuple[Optional[rdflib.URIRef], int]:
     if isinstance(unparsed, (bytes, mmap)):
         m = abs_uri_b.match(unparsed, start)

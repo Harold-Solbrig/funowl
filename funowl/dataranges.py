@@ -20,7 +20,8 @@ constrainingFacet := IRI
 restrictionValue := Literal
 """
 from dataclasses import dataclass
-from typing import Union, List
+# TODO: Figure out ForwardRef issue (See: class_expressions for issue focus point)
+from typing import Union, List, ForwardRef
 
 from rdflib import Graph, BNode, RDF, RDFS, OWL
 
@@ -36,7 +37,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 @dataclass
 class DataIntersectionOf(FunOwlBase):
-    dataRanges: List["DataRange"]
+    dataRanges: List[ForwardRef("DataRange")]
 
     def __init__(self, *dataRanges: List["DataRange"]) -> None:
         self.dataRanges = list(dataRanges)
@@ -49,7 +50,7 @@ class DataIntersectionOf(FunOwlBase):
 
 @dataclass
 class DataUnionOf(FunOwlBase):
-    dataRanges: List["DataRange"]
+    dataRanges: List[ForwardRef("DataRange")]
 
     def __init__(self, *dataRanges: List["DataRange"]) -> None:
         self.dataRanges = list(dataRanges)
@@ -62,7 +63,7 @@ class DataUnionOf(FunOwlBase):
 
 @dataclass
 class DataComplementOf(FunOwlBase):
-    dataRange: "DataRange"
+    dataRange: ForwardRef("DataRange")
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.dataRange)

@@ -1,5 +1,5 @@
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, fields, Field, MISSING, field
 from typing import Any, ClassVar, get_type_hints, List, Type, Tuple, Optional
 
 from rdflib import Graph
@@ -21,8 +21,8 @@ class FunOwlChoice(FunOwlBase):
       True means try to make it fit
     """
     v: Any
-    _coercion_allowed: ClassVar[bool] = True       # False means type has to be exact coming in
-    input_type: ClassVar[Type] = None              # Type hint for IDE's.  Not actually included in coerrcion
+    _coercion_allowed: ClassVar[bool] = True            # False means type has to be exact coming in
+    _input_types: ClassVar[Optional[List[Type]]] = None  # Type hint for IDE's.  Not actually included in coercion
 
     @classmethod
     def types(cls) -> List[Type]:
@@ -32,15 +32,20 @@ class FunOwlChoice(FunOwlBase):
         return get_type_hints(cls)['v']
 
     @classmethod
+    def exclusions(cls, default: Any = MISSING) -> Field:
+        for f in fields(cls):
+            if f.name == 'v':
+                return field(default=default, metadata=f.metadata)
+        assert(False, "This should never happen")
+
+    @classmethod
     def hints(cls) -> List[Type]:
         """
         Return the allowed types for value v, removing the input_type hint
         """
         hints = cls.types()
         t = list(get_args(hints)) if is_union(hints) else [hints]
-        if cls.input_type:
-            t.remove(cls.input_type)
-        return t
+        return [e for e in t if e not in cls._input_types] if cls._input_types else t
 
     def set_v(self, value: Any) -> bool:
         """ Default setter -- can be invoked from more elaborate coercion routines
@@ -57,8 +62,11 @@ class FunOwlChoice(FunOwlBase):
     def __setattr__(self, key, value):
         if key == 'from_cast':
             # TODO: this may be a symptom of a deeper problem -- should v ever be a non-funowl class?
-            if not isinstance(self.v, (URIRef, str)):
-                self.v.from_cast = value
+            if not isinstance(self.v, URIRef):
+                try:
+                    self.v.from_cast = value
+                except AttributeError:
+                    pass
             super().__setattr__(key, value)
         elif key != 'v' or not self.set_v(value):
             hints = get_type_hints(type(self))

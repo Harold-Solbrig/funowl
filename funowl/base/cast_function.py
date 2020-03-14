@@ -1,17 +1,32 @@
 import logging
 from collections import Iterable
 from copy import copy
-from typing import Type, Any, Optional, Callable
+from dataclasses import Field, MISSING, field
+from typing import Type, Any, Optional, Callable, Union, List
 
-from funowl.terminals.TypingHelper import is_union, get_args, is_iterable, isinstance_
+from funowl.terminals.TypingHelper import is_union, get_args, is_iterable, isinstance_, proc_forward
+
+# The basic problem we face is that when you are using an IDE, we want to be permissive.  As an example, if you are
+# constructing an IRI, you can pass a fullIRI or an abbreviatedIRI, but you also want to accept an rdflib URIRef or
+# any string that conforms to fullIRI or abbreviatedIRI syntax.
+#
+# If it is the latter two types, however (URIRef or str), we do NOT want to accept them if they don't conform.  The
+# exclude function adds "exclude" metadata to the type hint that prevents coercion to the input only types.
+def exclude(exclusions: List[Type], *, default=MISSING) -> Field:
+    """
+    :param exclusions: List of exclusions
+    :param default: default value
+    :return: Field definition
+    """
+    return field(default=default, metadata={"exclude":exclusions})
 
 
-def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
+def cast(cast_to: Union[Type, Field], v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
     """
     Convert value v to type typ.  Raises TypeError if conversion is not possible.  Note that None and empty lists are
     treated as universal types
 
-    :param typ: type to convert v to
+    :param cast_to: type to convert v to
     :param v: value to convert to type
     :param _coercion_allowed: True means type coercion is allowed.  False means only matching types work
     :return: instance of type
@@ -30,13 +45,22 @@ def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
     if v is None or v == []:  # Null and empty list are always allowed (a bit too permissive but...)
         return v
 
+    (typ, skip) = (cast_to.type, cast_to.metadata.get('exclude', [])) if isinstance_(cast_to, Field) else (cast_to, [])
+
+    # The following imports are all of the forward references elsewhere.
+    from funowl.class_expressions import ClassExpression
+    from funowl import Ontology
+    from funowl.dataranges import DataRange
+    typ = proc_forward(typ, locals())
+
     # Union[...]
     if is_union(typ):
         for t in get_args(typ):
-            if type(v) is t:
+            if type(v) is t and t not in skip:
                 return v
         for t in get_args(typ):
-            if _coercion_allowed is not False and isinstance_(v, t):
+            t = proc_forward(t, locals())
+            if _coercion_allowed is not False and isinstance_(v, t) and t not in skip:
                 return cast(t, v)
         raise TypeError(f"Type mismatch between {v} (type: {type(v)} and {typ}")
 
@@ -52,14 +76,14 @@ def cast(typ: Type, v: Any, _coercion_allowed: Optional[bool] = None) -> Any:
 
     if isinstance(typ, type) and issubclass(typ, FunOwlChoice):
         hints = typ.hints()
-        pos_types = ', '.join([t.__name__ for t in hints])
-        logging.debug(f"value: {v} (type: {type(v)}) testing against {typ}[{pos_types}]")
+        if logging.getLogger().level <= logging.DEBUG:
+            pos_types = ', '.join([t.__name__ for t in hints])
+            logging.debug(f"value: {v} (type: {type(v)}) testing against {typ}[{pos_types}]")
         for poss_type in hints:
-            if issubclass(type(v), poss_type) and poss_type != typ.input_type:
+            if issubclass(type(v), poss_type):
                 return choice_match(poss_type)
         for poss_type in hints:
-            if poss_type != typ.input_type \
-                    and (issubclass(type(v), poss_type) or (_coercion_allowed is not False and isinstance(v, poss_type))):
+            if issubclass(type(v), poss_type) or (_coercion_allowed is not False and isinstance(v, poss_type)):
                 return choice_match(poss_type)
         logging.debug('     No match')
 

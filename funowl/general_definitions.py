@@ -89,8 +89,12 @@ class FullIRI(str, FunOwlBase):
             raise TypeError(f"{v} is not a valid {type(self)}")
 
     def _is_valid(self, instance) -> bool:
+        # Something is considered to be an instance of FullIRI iff:
+        #   It isn't an RDFLib Literal -- you can never cross those beams
+        #   It is already declated to be a URIRef no matter what it looks like
+        #   It looks like an IRI
         return instance is not None and not isinstance(instance, (rdflib.Literal, Literal)) \
-               and rfc3987.match(str(instance), 'IRI')
+               and (isinstance(instance, URIRef) or rfc3987.match(str(instance), 'IRI'))
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + w.g.namespace_manager.normalizeUri(str(self))

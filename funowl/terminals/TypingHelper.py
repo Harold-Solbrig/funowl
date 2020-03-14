@@ -2,7 +2,7 @@
 Helper functions for typing library.  Variation on the version in pyjsg library
 """
 import sys
-from typing import Union, Any, Iterable
+from typing import Union, Any, Iterable, Dict, ForwardRef
 
 if sys.version_info < (3, 8):
     def get_origin(typ):
@@ -13,6 +13,9 @@ if sys.version_info < (3, 8):
 else:
     from typing import get_origin, get_args, Union
 
+def proc_forward(etype, namespace: Dict[str, Any]):
+    """ Resolve etype to an actual type if it is a forward reference """
+    return etype._evaluate(namespace, namespace) if type(etype) is ForwardRef else etype
 
 def is_union(etype) -> bool:
     """ Determine whether etype is a Union """

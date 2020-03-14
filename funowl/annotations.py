@@ -29,11 +29,10 @@ from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list
-from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG, NODE
+from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
 from funowl.literals import Literal
-from funowl.terminals.TypingHelper import isinstance_
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -49,8 +48,8 @@ class AnnotationSubject(FunOwlChoice):
 
 @dataclass
 class AnnotationValue(FunOwlChoice):
-    v: Union[AnonymousIndividual, IRI, Literal, str]
-    input_type = str
+    v: Union[IRI, AnonymousIndividual, Literal, str]
+    _input_types = [str]
 
 
 # Placeholder to prevent recursive definitions
@@ -134,11 +133,12 @@ class Annotation(Annotatable):
         # Annotated annotations get special handling
         return self.annots(w, lambda: w + self.property + self.value)
 
+
 @dataclass
 class AnnotationAssertion(Annotatable):
-    property: AnnotationProperty.types()
-    subject: AnnotationSubject.types()
-    value: AnnotationValue.types()
+    property: AnnotationProperty
+    subject: AnnotationSubject
+    value: AnnotationValue
     annotations: List[Annotation] = empty_list()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:

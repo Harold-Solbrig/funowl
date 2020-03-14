@@ -54,8 +54,8 @@ class Import(FunOwlBase):
 @dataclass
 class Ontology(Annotatable):
     # annotation_type = OWL.Ontology
-    iri: Optional[IRI.types()] = None
-    version: Optional[IRI.types()] = None
+    iri: Optional[IRI.types()] = IRI.exclusions(None)
+    version: Optional[IRI.types()] = IRI.exclusions(None)
     directlyImportsDocuments: List[Import] = empty_list()
     axioms: List[Axiom] = empty_list()
     annotations: List[Annotation] = empty_list()

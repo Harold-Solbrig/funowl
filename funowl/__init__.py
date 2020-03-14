@@ -19,3 +19,10 @@ from . dataproperty_axioms import SubDataPropertyOf, EquivalentDataProperties, D
     DataPropertyDomain, DataPropertyRange, FunctionalDataProperty, DatatypeDefinition
 from . assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
+
+# TODO: Run coverage and toss anything that isn't executed
+# TODO: Look for NON-Dataclass elements, noting that the "fields" function is dataclass only
+# TODO: Look at the _coericion_allowed variable and see whether it can't be removed
+# TODO: Consider removing the streaming IO feature -- it doesn't seem to do a lot for performance and makes things compicated
+# TODO: Look at all disabled unit tests
+# TODO: Put an official unit test in -- something like rdflib

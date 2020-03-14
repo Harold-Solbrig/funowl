@@ -45,6 +45,9 @@ HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpr
 """
 from dataclasses import dataclass
 from typing import List, ClassVar, Union, Optional
+# TODO: find out why we can't import this and/or why the types that are currently wrapped in ForwardRef below don't
+#       work if they are plain strings.  Maybe we need 3.8?
+from funowl.terminals.TypingHelper import ForwardRef
 
 import rdflib
 from rdflib import URIRef, OWL, Graph, RDF, XSD
@@ -68,7 +71,7 @@ class Class(IRI):
 
 @dataclass
 class ObjectIntersectionOf(FunOwlBase):
-    classExpressions: List["ClassExpression"]
+    classExpressions: List[ForwardRef("ClassExpression")]
 
     def __init__(self, *classExpression: "ClassExpression") -> None:
         self.classExpressions = list(classExpression)
@@ -89,7 +92,7 @@ class ObjectIntersectionOf(FunOwlBase):
 
 @dataclass
 class ObjectUnionOf(FunOwlBase):
-    classExpressions: List["ClassExpression"]
+    classExpressions: List[ForwardRef("ClassExpression")]
 
     def __init__(self, *classExpression: "ClassExpression") -> None:
         self.classExpressions = list(classExpression)
@@ -109,7 +112,7 @@ class ObjectUnionOf(FunOwlBase):
 
 @dataclass
 class ObjectComplementOf(FunOwlBase):
-    classExpression: "ClassExpression"
+    classExpression:ForwardRef("ClassExpression")
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.classExpression)
@@ -146,7 +149,7 @@ class ObjectOneOf(FunOwlBase):
 @dataclass
 class ObjectSomeValuesFrom(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: "ClassExpression"
+    classExpression: ForwardRef("ClassExpression")
     coercion_allowed: ClassVar[bool] = True
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
@@ -166,7 +169,7 @@ class ObjectSomeValuesFrom(FunOwlBase):
 @dataclass
 class ObjectAllValuesFrom(FunOwlBase):
     objectPropertyExpression: ObjectPropertyExpression
-    classExpression: "ClassExpression"
+    classExpression:ForwardRef("ClassExpression")
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)

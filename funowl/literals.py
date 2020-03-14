@@ -15,6 +15,7 @@ from rdflib.namespace import RDFS, XSD, RDF
 from rdflib.plugins.parsers.notation3 import BadSyntax
 from rdflib.term import Node
 
+from funowl.base.cast_function import exclude
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -44,12 +45,12 @@ class TypedLiteral(FunOwlBase):
         :param literal: Literal
         :param datatype: Data type or None if it is to be coputed
         """
-        if isinstance(literal, TypedLiteral):
+        if issubclass(type(literal), TypedLiteral):
             self.literal = literal.literal
             self.datatype = literal.datatype
         elif datatype is not None:
             self.literal = StringLiteralNoLanguage(literal)
-            self.datatype = datatype if isinstance(datatype, Datatype) else Datatype(datatype)
+            self.datatype = datatype if issubclass(type(datatype), Datatype) else Datatype(datatype)
         elif isinstance(literal, (int, float, bool, date, time, datetime, rdflib.Literal)):
             if not isinstance(literal, rdflib.Literal):
                 literal = rdflib.Literal(literal)
@@ -87,8 +88,8 @@ class TypedLiteral(FunOwlBase):
 
 @dataclass(init=False)
 class StringLiteralWithLanguage(FunOwlBase):
-    literal: Union[StringLiteralNoLanguage, str, rdflib.Literal]
-    language: Optional[Union[LanguageTag, str]] = None
+    literal: Union[StringLiteralNoLanguage, str, rdflib.Literal] = exclude([str, rdflib.Literal])
+    language: Optional[Union[LanguageTag, str]] = exclude([str], default=None)
 
     def __init__(self, literal: Union[StringLiteralNoLanguage, str, rdflib.Literal],
                  language: Optional[Union[LanguageTag, str]] = None) -> None:

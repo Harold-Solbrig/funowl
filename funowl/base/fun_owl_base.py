@@ -1,11 +1,11 @@
 import logging
 from abc import ABCMeta
-from dataclasses import dataclass
+from dataclasses import dataclass, field, Field, fields
 from inspect import getmodule
 from typing import List, Any, get_type_hints, Tuple, Type, Optional
 
 from rdflib import Graph
-from rdflib.term import Node, URIRef
+from rdflib.term import URIRef
 
 from funowl.base.cast_function import cast
 from funowl.base.list_support import ListWrapper
@@ -21,9 +21,9 @@ class FunOwlRoot:
 
     def __setattr__(self, key, value):
         # Resolve Forward references before we begin the cast process
-        hints = get_type_hints(type(self), getmodule(self).__dict__)
+        hint = self._field_for(key)
         super().__setattr__(
-            key, cast(hints[key], value, getattr(self, '_coercion_allowed', None)) if key in hints else value)
+            key, cast(hint, value, getattr(self, '_coercion_allowed', None)) if hint else value)
 
     def __getattribute__(self, item):
         rval = super().__getattribute__(item)
@@ -32,6 +32,13 @@ class FunOwlRoot:
             if item in hints:
                 return ListWrapper(rval, get_args(hints[item])[0])
         return rval
+
+    def _field_for(self, key) -> Optional[Field]:
+        for f in fields(self):
+            if f.name == key:
+
+                return f
+        return None
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         """

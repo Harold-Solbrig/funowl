@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from logging import exception
 from typing import Union
 
 from rdflib import OWL, Graph
@@ -17,7 +18,7 @@ class ObjectProperty(IRI):
 @dataclass
 class ObjectInverseOf(FunOwlChoice):
     v: Union[ObjectProperty, str]
-    input_type = str
+    _input_types = [str]
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.v)
@@ -32,6 +33,6 @@ class ObjectInverseOf(FunOwlChoice):
 @dataclass
 class ObjectPropertyExpression(FunOwlChoice):
     # The order below is important
-    v: Union[ObjectProperty, ObjectInverseOf, str]
+    v: Union[ObjectProperty, ObjectInverseOf, str] = exception([str])
     _coercion_allowed = False
-    input_type = str
+    _input_types = [str]

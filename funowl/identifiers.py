@@ -5,17 +5,18 @@ from typing import Union, ClassVar, Optional, Type
 
 from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD, RDFS
 
+from funowl.base.cast_function import exclude
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
-
+#TODO: determine whether this is needed
 @dataclass(unsafe_hash=True)
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
-    v: Union[AbbreviatedIRI, FullIRI, str]
+    v: Union[AbbreviatedIRI, FullIRI, URIRef, str] = exclude([URIRef, str])
     rdf_type: ClassVar[URIRef] = None
-    input_type: ClassVar[Type] = str
+    _input_types: ClassVar[Type] = [URIRef, str]
     from_cast: bool = False
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:

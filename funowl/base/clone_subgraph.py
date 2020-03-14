@@ -7,6 +7,7 @@ from rdflib.term import Node
 # for further information
 USE_BNODE_COPIES = True
 
+
 def clone_subgraph(g: Graph, subj: Node, seen: Dict[Node, Node] = None) -> Node:
     """
      If subj is a BNode, make a copy of it, making copyies of any BNode objects
