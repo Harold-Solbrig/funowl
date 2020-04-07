@@ -106,8 +106,8 @@ class OWLFunc:
 
         if method_to_call is None:
             logging.getLogger().error(f"Unknown function: {function}")
-            raise NotImplemented("Create an instance of FunOwlBase that reflects what is written to it ")
-        # TODO: Address flattened arguments
+            raise NotImplemented(f"Method {function} is not implemented")
+
         try:
             if annotations:
                 return method_to_call(*args, annotations=annotations)
@@ -175,7 +175,7 @@ def uri_matcher(unparsed: Union[str, bytes], start: int) -> Tuple[Optional[rdfli
             return rdflib.URIRef(m.group(1)), m.span()[1]
         m = rel_uri.match(unparsed, start)
         if m:
-            return rdflib.URIRef(m.group(1)), m.span()[1]
+            return m.group(1), m.span()[1]
         return None, start
 
 

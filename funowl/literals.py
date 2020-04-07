@@ -27,8 +27,9 @@ from funowl.identifiers import IRI
 class Datatype(IRI):
     rdf_type = RDFS.Datatype
 
+
 class StringLiteralNoLanguage(QuotedString):
-    def to_rdf(self, g: Graph) -> Literal:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> Literal:
         return rdflib.Literal(self)
 
 
@@ -62,8 +63,8 @@ class TypedLiteral(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.concat(self.literal, '^^', self.datatype)
 
-    def to_rdf(self, g: Graph) -> rdflib.Literal:
-        return rdflib.Literal(self.literal, datatype=IRI(str(self.datatype)).to_rdf(g))
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> rdflib.Literal:
+        return rdflib.Literal(self.literal, datatype=IRI(str(self.datatype)).to_rdf(g, emit_type_arc=emit_type_arc))
 
     def __str__(self) -> str:
         return str(self.literal) + '^^' + str(self.datatype)
@@ -91,11 +92,14 @@ class StringLiteralWithLanguage(FunOwlBase):
     literal: Union[StringLiteralNoLanguage, str, rdflib.Literal] = exclude([str, rdflib.Literal])
     language: Optional[Union[LanguageTag, str]] = exclude([str], default=None)
 
-    def __init__(self, literal: Union[StringLiteralNoLanguage, str, rdflib.Literal],
+    def __init__(self, literal: Union[StringLiteralNoLanguage, "StringLiteralWithLanguage", str, rdflib.Literal],
                  language: Optional[Union[LanguageTag, str]] = None) -> None:
         if isinstance(literal, rdflib.Literal):
             self.literal = literal.value
             self.literal = literal.language
+        elif isinstance(literal, StringLiteralWithLanguage):
+            self.literal = literal.literal
+            self.language = literal.language
         else:
             assert language, "Language must be supplied"
             self.literal = StringLiteralNoLanguage(str(literal))
@@ -177,5 +181,5 @@ class Literal(FunOwlChoice):
         return l
 
     def _is_valid(cls, instance) -> bool:
-        return bool(Literal._to_n3(instance))
+        return Literal._to_n3(instance) is not None
 

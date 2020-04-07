@@ -19,7 +19,7 @@ from rdflib import Graph, RDFS, OWL, RDF
 from rdflib.term import Node, BNode
 
 from funowl.annotations import Annotation, Annotatable
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, ListWrapper, empty_list_wrapper
 from funowl.class_expressions import ClassExpression, Class
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -31,12 +31,12 @@ from funowl.writers import FunctionalWriter
 class SubClassOf(Annotatable):
     subClassExpression: ClassExpression
     superClassExpression: ClassExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: (w + self.subClassExpression + self.superClassExpression))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         """
         Add subclass representation to graph
         :param g: Graph to add representation to
@@ -48,17 +48,17 @@ class SubClassOf(Annotatable):
 @dataclass
 class EquivalentClasses(Annotatable):
     classExpressions: List[ClassExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *classExpression: ClassExpression, annotations: List[Annotation] = None) -> None:
-        self.classExpressions = list(classExpression)
+        self.classExpressions = ListWrapper(list(classExpression), ClassExpression)
         self.annotations = annotations or []
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'classExpressions', 2)
         return self.annots(w, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # EquivalentClasses( CE1 ... CEn ) 	T(CE1) owl:equivalentClass T(CE2) .
         # ...
         # T(CEn-1) owl:equivalentClass T(CEn) .
@@ -69,7 +69,7 @@ class EquivalentClasses(Annotatable):
 @dataclass
 class DisjointClasses(Annotatable):
     classExpressions: List[ClassExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *classExpression: ClassExpression, annotations: List[Annotation] = None) -> None:
         self.classExpressions = list(classExpression)
@@ -83,7 +83,7 @@ class DisjointClasses(Annotatable):
         else:
             return self.annots(w, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         if len(self.classExpressions) == 2:
             self.add_triple(g, self.classExpressions[0].to_rdf(g),
                             OWL.disjointWith, self.classExpressions[1].to_rdf(g))
@@ -98,7 +98,7 @@ class DisjointClasses(Annotatable):
 class DisjointUnion(Annotatable):
     cls: Class
     disjointClassExpressions: List[ClassExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, cls: Class, *disjointClassExpression: ClassExpression,
                  annotations: List[Annotation] = None) -> None:
@@ -111,7 +111,7 @@ class DisjointUnion(Annotatable):
         self.list_cardinality(self.disjointClassExpressions, 'disjointClassExpressions', 2)
         return self.annots(w, lambda: (w + self.cls).iter(self.disjointClassExpressions))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # 	T(C) owl:disjointUnionOf T(SEQ CE1 ... CEn) .
         self.add_triple(g, self.cls.to_rdf(g), OWL.disjointUnionOf, SEQ(g, self.disjointClassExpressions))
 
@@ -120,7 +120,7 @@ class HasKey(Annotatable):
     classExpression: ClassExpression
     objectPropertyExpressions: Optional[List[ObjectPropertyExpression]] = empty_list()
     dataPropertyExpressions: Optional[List[DataPropertyExpression]] = empty_list()
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, classExpression: ClassExpression,
                  *exprs: Union[ObjectPropertyExpression, DataPropertyExpression],
@@ -129,7 +129,7 @@ class HasKey(Annotatable):
         self.objectPropertyExpressions = []
         self.dataPropertyExpressions = []
         for expr in exprs:
-            if isinstance(expr, ObjectPropertyExpression):
+            if issubclass(type(expr), ObjectPropertyExpression):
                 self.objectPropertyExpressions.append(expr)
             else:
                 self.dataPropertyExpressions.append(expr)
@@ -142,7 +142,7 @@ class HasKey(Annotatable):
                                     '(').iter(self.objectPropertyExpressions) + ')' +
                                     '(').iter(self.dataPropertyExpressions) + ')')
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(CE) owl:hasKey T(SEQ OPE1 ... OPEm DPE1 ... DPEn ) .
         self.add_triple(g, self.classExpression.to_rdf(g), OWL.hasKey,
                         SEQ(g, self.objectPropertyExpressions + self.dataPropertyExpressions))

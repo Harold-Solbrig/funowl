@@ -10,14 +10,15 @@ from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
-#TODO: determine whether this is needed
+
 @dataclass(unsafe_hash=True)
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
     v: Union[AbbreviatedIRI, FullIRI, URIRef, str] = exclude([URIRef, str])
     rdf_type: ClassVar[URIRef] = None
-    _input_types: ClassVar[Type] = [URIRef, str]
-    from_cast: bool = False
+
+    # def __post_init__(self):
+    #     print(f"Just constructed a {type(self)} value {str(self.v)}")
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:
         if isinstance(self.v, URIRef):
@@ -37,15 +38,18 @@ class IRI(FunOwlChoice):
         fulluri = self.full_uri(w.g)
         return w + (fulluri.n3(w.g.namespace_manager) if fulluri else self.v)
 
-    def to_rdf(self, g: Graph) -> URIRef:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:
         fulluri = self.full_uri(g)
+
+        def is_builtin_namespace(n) -> bool:
+            # Never add assertions that consist entirely of builtin types
+            return (n.startswith(str(XSD)) or
+                    n.startswith(str(RDF)) or
+                    n.startswith(str(RDFS)) or
+                    n.startswith(str(OWL)))
+
         if self.rdf_type:
             # Filter: for (undocumented?) reasons, never assert owl:thing a owl:Class
-            if not (fulluri.startswith(str(XSD)) or
-                    fulluri.startswith(str(RDF)) or
-                    fulluri.startswith(str(RDFS)) or
-                    fulluri.startswith(str(OWL))
-            ) or not self.from_cast:
+            if emit_type_arc or not is_builtin_namespace(fulluri) or not is_builtin_namespace(self.rdf_type):
                 g.add((fulluri, RDF.type, self.rdf_type))
-
         return fulluri

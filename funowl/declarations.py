@@ -15,13 +15,14 @@ InverseObjectProperty := 'ObjectInverseOf' '(' ObjectProperty ')'
 DataPropertyExpression := DataProperty
 """
 from dataclasses import dataclass
-from typing import Union, List
+from typing import Union, List, Optional
 
-from rdflib import OWL
+from rdflib import OWL, Graph
 
 from funowl.annotations import AnnotationProperty, Annotatable, Annotation
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.rdftriple import NODE
 from funowl.class_expressions import Class
 from funowl.dataproperty_expressions import DataProperty
 from funowl.individuals import NamedIndividual
@@ -30,24 +31,14 @@ from funowl.objectproperty_expressions import ObjectProperty
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
-# Class is defined in class_expressions.py
-
-# Datatype is defined in literals.py
-
-# ObjectProperty is defined in objectproperty_expressions.py
-
-# DaataProperty is defined in dataproperty_expressions.py
-
-# AnnotationProperty is defined in annotations.py
-
-# NamedIndividual is defined in individuals.py
-
-
 @dataclass
 class Declaration(FunOwlChoice, Annotatable):
     v: Union[Class, Datatype, ObjectProperty, DataProperty, AnnotationProperty, NamedIndividual]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
     _coercion_allowed = False
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.func(self.v, lambda: self.v.to_functional(w), indent=False))
+
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> Optional[NODE]:
+        return super().to_rdf(g, emit_type_arc=True)

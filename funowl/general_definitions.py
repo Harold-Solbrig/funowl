@@ -37,7 +37,7 @@ class NonNegativeInteger(int, FunOwlBase):
         except ValueError:
             return False
 
-    def to_rdf(self, g: Graph) -> Literal:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> Literal:
         return Literal(self, datatype=XSD.nonNegativeInteger)
 
 
@@ -125,6 +125,6 @@ class PrefixName(OPT_PNAME_NS, FunOwlRoot):
 
 
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):
-    def to_rdf(self, g: Graph) -> URIRef:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:
         prefix, name = self.split(':', 1)
         return URIRef(g.namespace_manager.store.namespace(prefix or "") + name)

@@ -21,22 +21,23 @@ class FunOwlRoot:
 
     def __setattr__(self, key, value):
         # Resolve Forward references before we begin the cast process
+        # TODO: This seems like it would be a performance issue -- can we do something up front to make sure that all
+        #       forward references are covered globally
         hint = self._field_for(key)
         super().__setattr__(
             key, cast(hint, value, getattr(self, '_coercion_allowed', None)) if hint else value)
 
-    def __getattribute__(self, item):
-        rval = super().__getattribute__(item)
-        if not item.startswith('_') and isinstance(rval, list):
-            hints = get_type_hints(type(self), getmodule(self).__dict__)
-            if item in hints:
-                return ListWrapper(rval, get_args(hints[item])[0])
-        return rval
+    # def __getattribute__(self, item):
+    #     rval = super().__getattribute__(item)
+    #     if not item.startswith('_') and isinstance(rval, list):
+    #         hints = get_type_hints(type(self), getmodule(self).__dict__)
+    #         if item in hints:
+    #             return ListWrapper(rval, get_args(hints[item])[0])
+    #     return rval
 
     def _field_for(self, key) -> Optional[Field]:
         for f in fields(self):
             if f.name == key:
-
                 return f
         return None
 
@@ -48,7 +49,7 @@ class FunOwlRoot:
         """
         return w + str(self)
 
-    def to_rdf(self, g: Graph) -> URIRef:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:
         """ Add RDF representation of self to graph g and return node representing representation if applicable """
         return URIRef(f"http://notimplemented.org/{type(self).__name__}")
 

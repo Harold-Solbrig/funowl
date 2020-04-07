@@ -8,8 +8,8 @@
 www:s www:p1 www:o ;
     www:p2 www:o .
 
-www:p1 a :DatatypeProperty .
-www:p2 a :DatatypeProperty .
+www:p1 a :DatatypeProperty , :AnnotationProperty .
+www:p2 a :DatatypeProperty , :AnnotationProperty .
 www:p3 a :DatatypeProperty .
 
 [] a :Ontology .

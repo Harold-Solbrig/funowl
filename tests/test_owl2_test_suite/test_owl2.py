@@ -16,25 +16,15 @@ OBJECT_INVERSE_ISSUE = "Argument should be declared to be BOTH an Object and Dat
 DECIMAL_ISSUE = "Something subtle with 1 and 1.0 decimal"
 ONTOLOGY_ANNOTATION_PROBLEM = 'Issue with ontology level annotation -- needs fixing'
 XML_LANG_PARSE_ERROR = "Unexplained XML Language"
-NONSTANDARD_OWL = "Uses an OWL predicate that isn't real -- test ignored"
 LOCAL_URI_ISSUE = "funowl doesn't handle document relative URIs"
-
 QUESTIONABLE_IRI = "IRI that looks like a BNODE"
-DID_NOT_LOAD = "Testcase has issue"
-XML_TO_TTL_FAIL = "XML does not load in rdflib"
-CONFLICT_WITH_SPEC = "Test case does not appear to match spec"
-NOT_CONFORMANT_TO_SPEC = "Expected RDF does not match specification"
-RDFCOMPARE_BUG = "Bug in RDF comparator"
-NEEDS_REVISITING = "Needs hard thinking"
-
-# The issue below is that the test code generates two lists -- one for the thing annotated and a second for the thint
-# we generate one list (and we believe that we are correct)
-SAME_VS_DUPLICATE_LIST = "Same vs duplicate list"
+TRIPLE_QUOTED_COMMENT = "Single Quote in Triple Quote Issue"
 
 
 orig_add = Graph.add
 
 validation_base = os.path.abspath(os.path.join(os.path.dirname(__file__), 'data'))
+
 
 def add(g: Graph, t: TRIPLE) -> None:
     """ Handy debug point for seeing what is going into a graph """
@@ -56,12 +46,13 @@ class OWL2ValidationTestCase(ValidationTestCase):
         'FS2RDF/domain/range/expression/ar.func': OBJECT_INVERSE_ISSUE,
         'FS2RDF/literals/ar.func': DECIMAL_ISSUE,
         'FS2RDF/negative/property/assertion/ar.func': OBJECT_INVERSE_ISSUE,
-        'FS2RDF/ontology/annotation/annotation/ar.func': ONTOLOGY_ANNOTATION_PROBLEM,
         'TestCase-WebOnt/miscellaneous/204.func': XML_LANG_PARSE_ERROR,
         'TestCase-WebOnt/miscellaneous/203.func': XML_LANG_PARSE_ERROR,
         'TestCase-WebOnt/miscellaneous/202.func': XML_LANG_PARSE_ERROR,
-        'Rdfbased/sem/npa/dat/fw.func': NONSTANDARD_OWL,
-        'TestCase-WebOnt/I5.8/017.func': LOCAL_URI_ISSUE
+        'TestCase-WebOnt/I5.8/017.func': LOCAL_URI_ISSUE,
+        'TestCase-WebOnt/equivalentProperty/005.func': QUESTIONABLE_IRI,
+        'TestCase-WebOnt/I5.8/013.func': TRIPLE_QUOTED_COMMENT,
+        'TestCase-WebOnt/I5.8/015.func': TRIPLE_QUOTED_COMMENT
     }
 
     # Stop on the first error

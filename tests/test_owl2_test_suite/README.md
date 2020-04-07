@@ -16,7 +16,24 @@ A single function, `convert`, which uses the [owl conversion service](http://www
 published by the [Linked Data Finland](http://www.ldf.fi/) to convert OWL syntaxes.  We use it to generate the functional
 format input and to test the resulting RDF output.
 
-## [test_owl2.py](testts/test_owl2_test_wuite/test_owl2.py) --
+## [test_owl2.py](tests/test_owl2_test_wuite/test_owl2.py)
+This is the basic test harness.  It creates and executes a unit test for every file with a ".func"
+suffix in the [data]() directory and does the following:
+1) Parse the functional syntax
+2) Serialize the parsed syntax in RDF and compare it to (file).ttl -- this validates the RDF serializer
+3) Emit the parsed syntax in Functional Syntax
+4) Parse the emitted Functional Syntax
+5) Serialize the *re*parsed Functional Syntax in RDF and compare *it* to (file).ttl -- this verifies that the functional
+syntax serializer
 
+There are several configuration parameters that can be used with this test:
+* `start_at` - line 40 when this was written.  If you have a failing test, you can put the specific test name here.
+(Example: `'TestCase-WebOnt/description/logic/504.func'`).  Test names, as a rule, appear as the first line on an
+error report.  If this line is non-blank, only this test will be run and a lot of additional diagnostic information will
+be generated.
+* `stop_on_error` - `True` indicates to stop on the first error.  `False` means run the entire test
+* `skip` - A list of files to skip and the reasons they are being skipped.  When this was written, we had 11 skips, for
+the following reasons:
+    * OBJECT_INVERSE_ISSUE - 
 
 

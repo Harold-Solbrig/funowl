@@ -1,13 +1,13 @@
 from dataclasses import dataclass
-from typing import Optional, List, Union
+from typing import Optional, List
 
 from rdflib import Graph
 from rdflib.namespace import NamespaceManager, OWL
-from rdflib.term import Node, URIRef
+from rdflib.term import URIRef
 
-from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
-from funowl.writers.FunctionalWriter import FunctionalWriter
+from funowl.base.fun_owl_base import FunOwlBase
 from funowl.general_definitions import PrefixName, FullIRI
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass
@@ -19,7 +19,7 @@ class Prefix(FunOwlBase):
         return w.func(self, lambda: w.concat((self.prefixName or '') + ':', '=',
                                              URIRef(str(self.fullIRI)).n3(), sep=' '))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         """
         Add the prefix binding to the graph
         :param g: Graph to add binding to
@@ -29,8 +29,6 @@ class Prefix(FunOwlBase):
         return None
 
 
-# TODO: there are parts of this class that are not necessary  -- in particular, it is questionable whether
-#       we really need a graph to back it up
 class PrefixDeclarations(NamespaceManager):
     def __init__(self, g: Optional[Graph] = None) -> None:
         self._init = True
@@ -48,15 +46,6 @@ class PrefixDeclarations(NamespaceManager):
         else:
             self.append(Prefix(key, value))
 
-    def add(self, decls: Union["PrefixDeclarations", List[Prefix]]) -> None:
-        """ Add an existing list of prefixes or prefix declarations  """
-        for decl in decls.as_prefixes() if isinstance(decls, PrefixDeclarations) else decls:
-            self.append(decl)
-
-    def add_to_graph(self, g: Graph) -> None:
-        for prefix in self.as_prefixes():
-            g.namespace_manager.bind(str(prefix.prefixName), str(prefix.fullIRI), True, True)
-
     def append(self, decl: Prefix) -> None:
         self.bind(decl.prefixName, decl.fullIRI)
 
@@ -66,5 +55,3 @@ class PrefixDeclarations(NamespaceManager):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.iter(self.as_prefixes(), indent=False)
-
-

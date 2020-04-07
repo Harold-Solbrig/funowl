@@ -62,11 +62,38 @@ interpret this as
 4. ObjectPropertyChain
 Does `ObjectPropertyChain(:p1 :p2)` imply `:p1 a owl:ObjectProperty` and `:p2 a owl:ObjectProperyt`?
 The generator currently emits them, but the test code (Rdfbased/sem/chain/def.func) does not show this as happening.  For the
-moment we are going to assume that we are right and change the test target (Rdfbased/sem/chain/def.ttl)
+moment we are going to assume that we are right and change the test targets:
+   * Rdfbased/sem/chain/def.ttl
+   * Owl2/rl/rules/ifp/askey.ttl
+   * TestCase-WebOnt/I5.1/001.ttl
+   * Rdfbased/sem/chain/def.ttl
+   * Rdfbased/sem/key/def.ttl
+   * Rdfbased/sem/ndis/alldisjointproperties/fw.ttl
 
 5. HasKey
 Does `HasKey(ex:c () (ex:p1 ex:p2))` imply `ex:p1 a owl:DatatypeProperyt`?  Same as ObjectPropertyChain.  
 see: Rdfbased/sem/key/def.func and Rdfbased/sem/ndis/alldisjointproperties/fw.func
+
+6. Representation of quoted strings inside triple-quoted strings:
+   * TestCase-WebOnt/I5.8/013.func
+   * TestCase-WebOnt/I5.8/015.func
+
+   Expected:
+   ```text
+   <http://example.org/user/data#type> rdfs:comment """
+   This type maps the string "foo" to the number 3.
+   All other strings are not in the lexical space.
+   """ .
+   ```
+
+   FunOWL
+   ```text
+   <http://example.org/user/data#type> rdfs:comment """
+   This type maps the string \\"foo\\" to the number 3.
+   All other strings are not in the lexical space.
+  """ .
+  ```
+  As a short-term solution, we have added the escapes to the expected side of things
 
 ## Specific file issues
 
@@ -141,8 +168,11 @@ The annotation axiom was repeated twice.  Error in Finland converter.
 The annotation axiom was repeated multiple times.  Error in Finland converter.
 
 **New/Feature/DisjointDataProperties/001.func**
+**TestCase-WebOnt/disjointWith/008.func**
+**TestCase-WebOnt/disjointWith/009.func**
 
 The Finland converter got the properties backward -- sb `hasName disjointWith hasAddress`
+Same with 008
 
 **New/Feature/Keys/002.func**
 **Validating New/Feature/ObjectQCR/001.func**
@@ -152,6 +182,8 @@ The Finland converter got the properties backward -- sb `hasName disjointWith ha
 **Rdfbased/sem/eqdis/different/sameas.func**
 **TestCase-WebOnt/description/logic/501.func**
 **TestCase-WebOnt/maxCardinality/001.func**
+**TestCase-WebOnt/differentFrom/001.func**
+**TestCase-WebOnt/description/logic/502.func**
 
 The Finland converter records a pair as `allDifferent` rather than `differentFrom`
 
@@ -191,3 +223,18 @@ Uses document local URI's -- funowl processor doesn't work with fragments (e.g. 
 
 **TestCase-WebOnt/I6.1/001.func**
 The BNode elements of the test were missing completely.
+
+**TestCase-WebOnt/imports/001.func**
+**TestCase-WebOnt/imports/003.func**
+**TestCase-WebOnt/imports/006.func**
+**TestCase-WebOnt/imports/007.func**
+**TestCase-WebOnt/imports/011.func**
+All of these curiously miss one triple -- either `<http://www.w3.org/2002/03owlt/imports/support001-A#Man> a <http://www.w3.org/2002/07/owl#Class> .`
+`<http://www.w3.org/2002/03owlt/imports/imports006#c> a <http://www.w3.org/2002/07/owl#Class> .` or
+`<http://www.w3.org/2002/03owlt/imports/imports007#p> a <http://www.w3.org/2002/07/owl#ObjectProperty> .`
+
+**TestCase-WebOnt/disjointWith/010.func**
+Finnish conversion failed -- loaded with output of generator
+
+**FS2RDF/ontology/annotation/annotation/ar.func**
+Finnish loader didn't get the annotations correct.  Added our output

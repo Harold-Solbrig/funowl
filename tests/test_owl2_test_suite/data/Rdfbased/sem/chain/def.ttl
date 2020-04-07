@@ -12,9 +12,9 @@ www:x www:p1 www:y .
 
 www:y www:p2 www:z .
 
-www:p1 a :ObjectProperty .
+www:p1 a :ObjectProperty, :AnnotationProperty .
 
-www:p2 a :ObjectProperty .
+www:p2 a :ObjectProperty, :AnnotationProperty .
 
 [] a :Ontology .
 

@@ -1,13 +1,13 @@
-import logging
 import unittest
 from dataclasses import dataclass
 from typing import List
 
 from rdflib import RDFS, RDF, XSD, Namespace, OWL
 
-from funowl.annotations import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
-    SubAnnotationPropertyOf, Annotatable
-from funowl.base.list_support import empty_list
+from funowl import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
+    SubAnnotationPropertyOf
+from funowl.annotations import Annotatable
+from funowl.base.list_support import empty_list, empty_list_wrapper
 from funowl.identifiers import IRI
 from funowl.writers import FunctionalWriter
 from tests.utils.base import TestBase
@@ -96,21 +96,22 @@ class AnnotationsTestCase(TestBase):
     def test_annotatable(self):
         @dataclass
         class Foo(Annotatable):
-            props: List[IRI] = empty_list()
-            annotations: List[Annotation] = empty_list()
+            props: List[IRI] = empty_list_wrapper(IRI)
+            annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
             def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
                 return self.annots(w, lambda: w.iter(self.props, indent=False))
 
         self.assertEqual("Foo( )", Foo().to_functional(self.w).getvalue())
-
         f = Foo(annotations=[Annotation(RDFS.comment, "t1")])
         self.w.reset()
         self.assertEqual("""Foo(
     Annotation( rdfs:comment "t1" )
 )""", f.to_functional(self.w).getvalue())
         self.w.reset()
-        f.props += [RDF.type, RDFS.label]
+        with self.assertRaises(AssertionError):
+            f.props += [RDF.type, RDFS.label]
+        f.props.extend([RDF.type, RDFS.label])
         f.props.append(OWL.Ontology)
         self.assertEqual("""Foo(
     Annotation( rdfs:comment "t1" )

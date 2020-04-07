@@ -18,8 +18,8 @@ www:y a www:c,
 www:c a :Class ;
     :hasKey ( www:p1 www:p2 ) .
 
-www:p1 a :DatatypeProperty .
-www:p2 a :DatatypeProperty .
+www:p1 a :DatatypeProperty , :AnnotationProperty .
+www:p2 a :DatatypeProperty, :AnnotationProperty .
 
 [] a :Ontology .
 

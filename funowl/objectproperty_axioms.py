@@ -44,7 +44,7 @@ from rdflib import Graph, BNode, OWL, RDF, RDFS
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, empty_list_wrapper
 from funowl.class_expressions import ClassExpression
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.converters.rdf_converter import SEQ
@@ -55,7 +55,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 @dataclass
 class ObjectPropertyChain(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression, annotations: List[Annotation] = None):
         self.objectPropertyExpressions = list(objectPropertyExpressions)
@@ -65,25 +65,25 @@ class ObjectPropertyChain(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.objectPropertyExpressions))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         return SEQ(g, self.objectPropertyExpressions)
 
 @dataclass
 class SubObjectPropertyExpression(FunOwlChoice):
-    v: Union[ObjectPropertyExpression.types(), ObjectPropertyChain]
+    v: Union[ObjectPropertyExpression, ObjectPropertyChain]
 
 
 @dataclass
 class SubObjectPropertyOf(Annotatable):
-    subObjectPropertyExpression: SubObjectPropertyExpression.types()
-    superObjectPropertyExpression: ObjectPropertyExpression.types()
-    annotations: List[Annotation] = empty_list()
+    subObjectPropertyExpression: SubObjectPropertyExpression
+    superObjectPropertyExpression: ObjectPropertyExpression
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: (w + self.subObjectPropertyExpression + self.superObjectPropertyExpression))
 
-    def to_rdf(self, g: Graph) -> None:
-        if issubclass(type(self.subObjectPropertyExpression), ObjectPropertyChain):
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
+        if issubclass(type(self.subObjectPropertyExpression.v), ObjectPropertyChain):
             self.add_triple(g, self.superObjectPropertyExpression.to_rdf(g), OWL.propertyChainAxiom,
                             self.subObjectPropertyExpression.to_rdf(g))
         else:
@@ -94,7 +94,7 @@ class SubObjectPropertyOf(Annotatable):
 @dataclass
 class EquivalentObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
                  annotations: Optional[List[Annotation]] = None) -> None:
@@ -105,14 +105,14 @@ class EquivalentObjectProperties(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         for t1, t2 in zip(self.objectPropertyExpressions[:-1], self.objectPropertyExpressions[1:]):
             self.add_triple(g, t1.to_rdf(g), OWL.equivalentProperty, t2.to_rdf(g))
 
 @dataclass
 class DisjointObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression,
                  annotations: Optional[List[Annotation]] = None) -> None:
@@ -123,7 +123,7 @@ class DisjointObjectProperties(Annotatable):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w.iter(self.objectPropertyExpressions))
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE1) owl:propertyDisjointWith T(OPE2) .
         # N > 2:
         #    _:x rdf:type owl:AllDisjointProperties .
@@ -140,12 +140,12 @@ class DisjointObjectProperties(Annotatable):
 class ObjectPropertyDomain(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     classExpression: ClassExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdfs:domain T(CE) .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDFS.domain, self.classExpression.to_rdf(g))
 
@@ -153,12 +153,12 @@ class ObjectPropertyDomain(Annotatable):
 class ObjectPropertyRange(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
     classExpression: ClassExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression + self.classExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdfs:range T(CE) .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDFS.range, self.classExpression.to_rdf(g))
 
@@ -166,7 +166,7 @@ class ObjectPropertyRange(Annotatable):
 @dataclass
 class InverseObjectProperties(Annotatable):
     objectPropertyExpressions: List[ObjectPropertyExpression]
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *objectPropertyExpressions: ObjectPropertyExpression, annotations: List[Annotation] = None) \
             -> None:
@@ -177,42 +177,42 @@ class InverseObjectProperties(Annotatable):
         self.list_cardinality(self.objectPropertyExpressions, 'expressions', 2, 2)
         return w.func(self, lambda: w + self.objectPropertyExpressions[0] + self.objectPropertyExpressions[1])
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpressions[0].to_rdf(g), OWL.inverseOf, self.objectPropertyExpressions[1].to_rdf(g)))
 
 @dataclass
 class FunctionalObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.FunctionalProperty))
 
 
 @dataclass
 class InverseFunctionalObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.InverseFunctionalProperty))
 
 
 @dataclass
 class ReflexiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:ReflexiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.ReflexiveProperty)
 
@@ -220,12 +220,12 @@ class ReflexiveObjectProperty(Annotatable):
 @dataclass
 class IrreflexiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:IrreflexiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.IrreflexiveProperty)
 
@@ -233,12 +233,12 @@ class IrreflexiveObjectProperty(Annotatable):
 @dataclass
 class SymmetricObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:SymmetricProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.SymmetricProperty)
 
@@ -246,12 +246,12 @@ class SymmetricObjectProperty(Annotatable):
 @dataclass
 class AsymmetricObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:AsymmetricProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.AsymmetricProperty)
 
@@ -259,12 +259,12 @@ class AsymmetricObjectProperty(Annotatable):
 @dataclass
 class TransitiveObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:TransitiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.TransitiveProperty)
 

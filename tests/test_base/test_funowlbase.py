@@ -1,12 +1,13 @@
 import unittest
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import List, Union, Optional
 
 
 # This has to be global for the cast forwards to work correctly
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.terminals.TypingHelper import proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase
 
@@ -18,6 +19,11 @@ class C1(FunOwlBase):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.br().indent().concat(self.instnum, ':', sep='').outdent().iter(self.foos))
+
+proc_forwards(C1, globals())
+for f in fields(C1):
+    if f.name == 'foos':
+        f.default_factory = empty_list_wrapper(C1)
 
 
 # noinspection PyTypeChecker

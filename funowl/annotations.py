@@ -18,28 +18,29 @@ AnnotationPropertyDomain := 'AnnotationPropertyDomain' '(' axiomAnnotations Anno
 AnnotationPropertyRange := 'AnnotationPropertyRange' '(' axiomAnnotations AnnotationProperty IRI ')'
 """
 from abc import ABC
-from dataclasses import dataclass
+from dataclasses import dataclass, fields
 from typing import Union, List, Callable, ClassVar, Tuple
 
 from rdflib import URIRef, Graph
 from rdflib.namespace import OWL, RDF, RDFS
 from rdflib.term import BNode
 
+from funowl.base.cast_function import exclude
 from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, empty_list_wrapper
 from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
 from funowl.literals import Literal
+from funowl.terminals.TypingHelper import proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 @dataclass
 class AnnotationProperty(IRI):
     rdf_type: ClassVar[URIRef] = OWL.AnnotationProperty
-
 
 @dataclass
 class AnnotationSubject(FunOwlChoice):
@@ -48,8 +49,7 @@ class AnnotationSubject(FunOwlChoice):
 
 @dataclass
 class AnnotationValue(FunOwlChoice):
-    v: Union[IRI, AnonymousIndividual, Literal, str]
-    _input_types = [str]
+    v: Union[IRI, AnonymousIndividual, Literal, str] = exclude([str])
 
 
 # Placeholder to prevent recursive definitions
@@ -134,17 +134,22 @@ class Annotation(Annotatable):
         return self.annots(w, lambda: w + self.property + self.value)
 
 
+proc_forwards(Annotation, globals())
+for f in fields(Annotation):
+    if f.name == 'annotations':
+        f.default_factory = empty_list_wrapper(Annotation)
+
 @dataclass
 class AnnotationAssertion(Annotatable):
     property: AnnotationProperty
     subject: AnnotationSubject
     value: AnnotationValue
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.subject + self.value)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.subject.to_rdf(g), self.property.to_rdf(g), self.value.to_rdf(g))
 
 
@@ -152,12 +157,12 @@ class AnnotationAssertion(Annotatable):
 class SubAnnotationPropertyOf(Annotatable):
     sub: AnnotationProperty
     super: AnnotationProperty
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.sub + self.super)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.sub.to_rdf(g), RDFS.subPropertyOf, self.super.to_rdf(g))
 
 
@@ -165,12 +170,12 @@ class SubAnnotationPropertyOf(Annotatable):
 class AnnotationPropertyDomain(Annotatable):
     property: AnnotationProperty
     domain: IRI
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.domain)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.property.to_rdf(g), RDFS.domain, self.domain.to_rdf(g))
 
 
@@ -178,12 +183,12 @@ class AnnotationPropertyDomain(Annotatable):
 class AnnotationPropertyRange(Annotatable):
     property: AnnotationProperty
     range: IRI
-    annotations: List[Annotation] = empty_list()
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.property + self.range)
 
-    def to_rdf(self, g: Graph) -> None:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.property.to_rdf(g), RDFS.range, self.range.to_rdf(g))
 
 

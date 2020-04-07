@@ -4,7 +4,7 @@ from rdflib import RDFS, Namespace
 
 from funowl.annotations import Annotation
 from funowl.class_axioms import SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion, HasKey
-from funowl.class_expressions import ObjectIntersectionOf, ObjectSomeValuesFrom
+from funowl.class_expressions import ObjectIntersectionOf, ObjectSomeValuesFrom, ObjectUnionOf
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -17,10 +17,6 @@ class ClassAxiomsTestCase(TestBase):
     def setUp(self) -> None:
         self.sw = FunctionalWriter()
         self.sw.bind(None, SCT)
-
-    def test_subclass_of(self):
-        # print(SubClassOf(Annotation(RDFS.comment, "Just a test"), ))
-        pass
 
     def test_equivalentclasses(self):
         self.assertEqual("""EquivalentClasses(
@@ -53,6 +49,22 @@ class ClassAxiomsTestCase(TestBase):
                       ObjectSomeValuesFrom(SCT['260686004'], SCT['129397003']),
                       ObjectSomeValuesFrom(SCT['363700003'], SCT['52988006']),
                       ObjectSomeValuesFrom(SCT['405813007'], SCT['69695003']))))).to_functional(self.sw.reset())))
+
+    def test_oio(self):
+        """ Bug: ObjectIntersectionOf ends up being a single argument to ObjectSomeValuesOf """
+        self.assertEqual("""ObjectIntersectionOf(
+    <http://snomed.info/id/45189000>
+        ObjectSomeValuesFrom( <http://snomed.info/id/609096000>     ObjectUnionOf(
+        <http://snomed.info/id/1>
+        <http://snomed.info/id/2>
+    ) )
+)""", str(ObjectIntersectionOf(
+            SCT['45189000'],
+            ObjectSomeValuesFrom(
+                SCT['609096000'],
+                ObjectUnionOf(
+                    SCT['1'],
+                    SCT['2']))).to_functional(self.sw.reset())))
 
     def test_disjointclasses(self):
         self.assertEqual("""DisjointClasses(

@@ -19,7 +19,7 @@ from funowl.assertions import DataPropertyAssertion
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.axioms import Axiom
 from funowl.base.fun_owl_base import FunOwlBase
-from funowl.base.list_support import empty_list
+from funowl.base.list_support import empty_list, empty_list_wrapper
 from funowl.base.rdftriple import NODE, SUBJ
 from funowl.class_axioms import SubClassOf, EquivalentClasses
 from funowl.class_expressions import Class, ClassExpression
@@ -33,7 +33,7 @@ from funowl.objectproperty_axioms import SubObjectPropertyOf, SubObjectPropertyE
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ObjectPropertyDomain, ObjectPropertyRange
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.prefix_declarations import Prefix
-from funowl.terminals.TypingHelper import isinstance_
+from funowl.terminals.TypingHelper import isinstance_, proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -54,11 +54,11 @@ class Import(FunOwlBase):
 @dataclass
 class Ontology(Annotatable):
     # annotation_type = OWL.Ontology
-    iri: Optional[IRI.types()] = IRI.exclusions(None)
-    version: Optional[IRI.types()] = IRI.exclusions(None)
-    directlyImportsDocuments: List[Import] = empty_list()
-    axioms: List[Axiom] = empty_list()
-    annotations: List[Annotation] = empty_list()
+    iri: Optional[IRI] = None
+    version: Optional[IRI] = None
+    directlyImportsDocuments: List[Import] = empty_list_wrapper(Import)
+    axioms: List[Axiom] = empty_list_wrapper(Axiom)
+    annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, *args: Union[FunOwlBase, IRI.types()], **kwargs: Dict[str, FunOwlBase]) -> None:
         args = list(args)
@@ -113,7 +113,6 @@ class Ontology(Annotatable):
             self.annotations.append(arg)
         else:
             raise ValueError(f"Unrecognized argument to Ontology: {arg}")
-
 
     # =======================
     # Syntactic sugar -- fill these in as needed
@@ -196,11 +195,11 @@ class Ontology(Annotatable):
             raise ValueError(f"Ontology cannot have a versionIRI ({self.version} without an ontologyIRI")
         w = w or FunctionalWriter()
         return w.func(self, lambda: w.opt(self.iri).opt(self.version).
-                 br(bool(self.directlyImportsDocuments) or bool(self.annotations) or bool(self.axioms)).
-                 iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
-                 iter(self.axioms, indent=False), indent=False)
+                      br(bool(self.directlyImportsDocuments) or bool(self.annotations) or bool(self.axioms)).
+                      iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
+                      iter(self.axioms, indent=False), indent=False)
 
-    def to_rdf(self, g: Graph) -> SUBJ:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> SUBJ:
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         version_uri = self.version.to_rdf(g) if self.version else None
         g.add((ontology_uri, RDF.type, OWL.Ontology))
@@ -222,7 +221,7 @@ class OntologyDocument(FunOwlBase):
     """
     prefixDeclarations are
     """
-    prefixDeclarations: List[Prefix] = empty_list()
+    prefixDeclarations: List[Prefix] = empty_list_wrapper(Prefix)
     ontology: Ontology = None
 
     def __init__(self, default_prefix: FullIRI = None, ontology: Optional[Ontology] = None, **prefixes: FullIRI):
@@ -267,9 +266,12 @@ class OntologyDocument(FunOwlBase):
         """ Return a FunctionalWriter instance with the representation of the OntologyDocument in functional syntax """
         w = w or FunctionalWriter()
         self.add_namespaces(w.g)
-        return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() +\
+        return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() + \
                (self.ontology or Ontology())
 
-    def to_rdf(self, g: Graph) -> SUBJ:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> SUBJ:
         self.add_namespaces(g)
         return self.ontology.to_rdf(g)
+
+
+proc_forwards(Import, globals())

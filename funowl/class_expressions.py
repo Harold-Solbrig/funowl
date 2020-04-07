@@ -44,16 +44,13 @@ DataExactCardinality := 'DataExactCardinality' '(' nonNegativeInteger DataProper
 HasKey := 'HasKey' '(' axiomAnnotations ClassExpression '(' { ObjectPropertyExpression } ')' '(' { DataPropertyExpression } ')' ')'
 """
 from dataclasses import dataclass
-from typing import List, ClassVar, Union, Optional
-# TODO: find out why we can't import this and/or why the types that are currently wrapped in ForwardRef below don't
-#       work if they are plain strings.  Maybe we need 3.8?
-from funowl.terminals.TypingHelper import ForwardRef
+from typing import List, ClassVar, Union, Optional, ForwardRef
 
-import rdflib
-from rdflib import URIRef, OWL, Graph, RDF, XSD
+from rdflib import URIRef, OWL, Graph, RDF
 from rdflib.term import BNode, Literal as RDFLiteral
 
 from funowl.base.fun_owl_base import FunOwlBase
+from funowl.base.list_support import ListWrapper
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.dataranges import DataRange
@@ -62,16 +59,20 @@ from funowl.identifiers import IRI
 from funowl.individuals import Individual
 from funowl.literals import Literal
 from funowl.objectproperty_expressions import ObjectPropertyExpression
+# TODO: find out why we can't import this and/or why the types that are currently wrapped in ForwardRef below don't
+#       work if they are plain strings.  Maybe we need 3.8?
+from funowl.terminals.TypingHelper import proc_forwards
 from funowl.writers import FunctionalWriter
 
 
 class Class(IRI):
+    v: IRI.types() = IRI.v_field()
     rdf_type: ClassVar[URIRef] = OWL.Class
 
 
 @dataclass
 class ObjectIntersectionOf(FunOwlBase):
-    classExpressions: List[ForwardRef("ClassExpression")]
+    classExpressions: List["ClassExpression"]
 
     def __init__(self, *classExpression: "ClassExpression") -> None:
         self.classExpressions = list(classExpression)
@@ -81,7 +82,7 @@ class ObjectIntersectionOf(FunOwlBase):
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Class .
         # _:x owl:intersectionOf T(SEQ CE1 ... CEn) .
         subj = BNode()
@@ -92,17 +93,17 @@ class ObjectIntersectionOf(FunOwlBase):
 
 @dataclass
 class ObjectUnionOf(FunOwlBase):
-    classExpressions: List[ForwardRef("ClassExpression")]
+    classExpressions: List["ClassExpression"]
 
     def __init__(self, *classExpression: "ClassExpression") -> None:
-        self.classExpressions = list(classExpression)
+        self.classExpressions = ListWrapper(classExpression, ClassExpression)
         super().__init__()
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         self.list_cardinality(self.classExpressions, 'exprs', 2)
         return w.func(self, lambda: w.iter(self.classExpressions))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Class .
         # _:x owl:unionOf T(SEQ CE1 ... CEn) .
         x = BNode()
@@ -117,7 +118,7 @@ class ObjectComplementOf(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.classExpression)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Class .
         # _:x owl:complementOf T(CE) .
         x = BNode()
@@ -137,7 +138,7 @@ class ObjectOneOf(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.individuals))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Class .
         # _:x owl:oneOf T(SEQ a1 ... an) .
         x = BNode()
@@ -155,7 +156,7 @@ class ObjectSomeValuesFrom(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:someValuesFrom T(CE) .
@@ -174,7 +175,7 @@ class ObjectAllValuesFrom(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.classExpression)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:allValuesFrom T(CE) .
@@ -193,7 +194,7 @@ class ObjectHasValue(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression + self.individual)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:hasValue T(a) .
@@ -211,7 +212,7 @@ class ObjectHasSelf(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w + self.objectPropertyExpression)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:hasSelf "true"^^xsd:boolean .
@@ -231,7 +232,7 @@ class ObjectMinCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.objectPropertyExpression).opt(self.classExpression))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:minCardinality "n"^^xsd:nonNegativeInteger .
@@ -258,7 +259,7 @@ class ObjectMaxCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.objectPropertyExpression).opt(self.classExpression))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:maxCardinality "n"^^xsd:nonNegativeInteger .
@@ -285,7 +286,7 @@ class ObjectExactCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.objectPropertyExpression).opt(self.classExpression))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(OPE) .
         # _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
@@ -316,7 +317,7 @@ class DataSomeValuesFrom(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.dataPropertyExpressions) + self.dataRange)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # N == 1
         #    _:x rdf:type owl:Restriction .
         #   _:x owl:onProperty T(DPE) .
@@ -347,7 +348,7 @@ class DataAllValuesFrom(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.iter(self.dataPropertyExpressions) + self.dataRange)
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # N == 1
         #    _:x rdf:type owl:Restriction .
         #   _:x owl:onProperty T(DPE) .
@@ -374,7 +375,7 @@ class DataHasValue(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.dataPropertyExpression + self.literal))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(DPE) .
         # _:x owl:hasValue T(lt) .
@@ -394,7 +395,7 @@ class DataMinCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.min_ + self.dataPropertyExpression).opt(self.dataRange))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         #  _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(DPE) .
         # _:x owl:minCardinality "n"^^xsd:nonNegativeInteger
@@ -421,7 +422,7 @@ class DataMaxCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.max_ + self.dataPropertyExpression).opt(self.dataRange))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(DPE) .
         # _:x owl:maxCardinality "n"^^xsd:nonNegativeInteger .
@@ -447,7 +448,7 @@ class DataExactCardinality(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.card + self.dataPropertyExpression).opt(self.dataRange))
 
-    def to_rdf(self, g: Graph) -> BNode:
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         # _:x rdf:type owl:Restriction .
         # _:x owl:onProperty T(DPE) .
         # _:x owl:cardinality "n"^^xsd:nonNegativeInteger .
@@ -473,3 +474,12 @@ ClassExpression = Union[Class, ObjectIntersectionOf, ObjectUnionOf, ObjectComple
     ObjectMinCardinality, ObjectMaxCardinality, ObjectExactCardinality,
     DataSomeValuesFrom, DataAllValuesFrom, DataHasValue,
     DataMinCardinality, DataMaxCardinality, DataExactCardinality]
+
+proc_forwards(ObjectMinCardinality, globals())
+proc_forwards(ObjectMaxCardinality, globals())
+proc_forwards(ObjectExactCardinality, globals())
+proc_forwards(ObjectIntersectionOf, globals())
+proc_forwards(ObjectUnionOf, globals())
+proc_forwards(ObjectComplementOf, globals())
+proc_forwards(ObjectSomeValuesFrom, globals())
+proc_forwards(ObjectAllValuesFrom, globals())

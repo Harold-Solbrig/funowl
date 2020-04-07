@@ -18,6 +18,7 @@ class FunctionalConverterTestCase(unittest.TestCase):
         if os.path.exists(pizza_fun):
             with open(pizza_fun) as f:
                 expected = f.read()
+            self.maxDiff = None
             self.assertEqual(expected, str(doc.to_functional()))
         else:
             with open(pizza_fun, 'w') as f:

@@ -1,4 +1,5 @@
 import unittest
+from dataclasses import dataclass
 
 from rdflib import Namespace
 
@@ -57,6 +58,7 @@ class FunctionalWriterTestCase(TestBase):
         self.assertEqual('Phedra( phoo )', self.w.func(Phedra(), lambda: self.w + 'phoo').getvalue())
 
     def test_join_functional_outputs(self):
+        @dataclass
         class T1(FunOwlRoot):
             v: IRI
 

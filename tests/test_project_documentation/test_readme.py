@@ -31,11 +31,11 @@ class MyTestCase(unittest.TestCase):
         o.declarations(DataProperty(EX.dp), Class(EX.A))
 
         # Axioms are added by type
-        o.subClassOf(EX.A, DataAllValuesFrom(EX.dp, DataOneOf(3, Literal(4, datatype=XSD.int_))))
+        o.subClassOf(EX.A, DataAllValuesFrom(EX.dp, DataOneOf(3, Literal(4, datatype=XSD.int))))
 
         # or as an array
         o.axioms.append(SubClassOf(EX.A, DataAllValuesFrom(EX.dp, DataOneOf(Literal(2, datatype=XSD.short),
-                                                                            Literal(3, datatype=XSD.int_)))))
+                                                                            Literal(3, datatype=XSD.int)))))
         o.axioms.append(ClassAssertion(DataSomeValuesFrom(EX.dp, DataOneOf(3)), EX.a))
 
         print(str(OntologyDocument(EX, ontology=o).to_functional()))

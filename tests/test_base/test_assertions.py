@@ -6,7 +6,6 @@ from funowl.annotations import Annotation
 from funowl.assertions import SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion, \
     NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion
 from funowl.literals import Literal, TypedLiteral
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase, A
 from tests.utils.rdf_comparator import compare_rdf
 
@@ -25,12 +24,6 @@ class AssertionsTestCase(TestBase):
     a:Alex a:Bob a:Charlie
 )""", SameIndividual(A.Alex, A.Bob, A.Charlie,
                      annotations=Annotation(RDFS.comment, "Many aliases")).to_functional(self.wa).getvalue())
-
-    def test_sameindividual_rdf(self):
-        g = Graph()
-        g.bind('owl', str(OWL))
-        SameIndividual(A.Peter, A.Peter_Griffin).to_rdf(g)
-        print(g.serialize(format="turtle").decode())
 
     def test_differentindividuals(self):
         self.assertEqual('DifferentIndividuals( a:Peter a:Peter_Griffin )',
@@ -60,13 +53,6 @@ class AssertionsTestCase(TestBase):
 
 <http://example.org/a#Bob> a owl:NamedIndividual .""", g.serialize(format="turtle").decode().strip())
 
-        g = Graph(namespace_manager=g.namespace_manager)
-        DifferentIndividuals(A.Alex, A.Bob, A.Fred, A.Joe).to_rdf(g)
-        print(g.serialize(format="turtle").decode())
-        g = Graph(namespace_manager=g.namespace_manager)
-        DifferentIndividuals(A.Alex, A.Bob, annotations=[Annotation(RDFS.label, "Test")]).to_rdf(g)
-        print(g.serialize(format="turtle").decode())
-
     def test_classassertion(self):
         self.assertEqual('ClassAssertion( a:GriffinFamilyMember a:Peter_Griffin )',
                          ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin).to_functional(self.wa).getvalue())
@@ -77,11 +63,6 @@ class AssertionsTestCase(TestBase):
 )""", ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin,
                      Annotation(RDFS.comment, "It runs in...")).to_functional(self.wa).getvalue())
 
-    def test_classassertion_rdf(self):
-        g = Graph()
-        ClassAssertion(A.GriffinFamilyMember, A.Peter_Griffin).to_rdf(g)
-        print('test_classassertion_rdf')
-        print(g.serialize(format='turtle').decode())
 
     def test_objectpropertyassertion(self):
         self.assertEqual('ObjectPropertyAssertion( a:hasBrother a:Meg a:Stewie )',
@@ -112,13 +93,6 @@ ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(f
                          NegativeObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).
                          to_functional(self.wa).getvalue())
 
-    def test_negativeobjectpropertyassertion_rdf(self):
-        g = Graph()
-        g.bind('owl', str(OWL))
-        NegativeObjectPropertyAssertion(A.hasBrother, A.Meg, A.Stewie).to_rdf(g)
-        print('test_negativeobejctpropertyassertion_rdf')
-        print(g.serialize(format='turtle').decode())
-
 
     def test_datapropertyassertion(self):
         x = Literal('"17"^^xsd:integer')
@@ -126,14 +100,6 @@ ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(f
         self.assertEqual('DataPropertyAssertion( a:hasAge a:Meg "17"^^xsd:integer )',
                          DataPropertyAssertion(A.hasAge, A.Meg, Literal('"17"^^xsd:integer')).
                          to_functional(self.wa).getvalue())
-
-
-    def test_datapropertyassertion_rdf(self):
-        x = Literal('"17"^^xsd:integer')
-        g = Graph()
-        DataPropertyAssertion(A.hasAge, A.Meg, x).to_rdf(g)
-        print('test_datapropertyassertion_rdf')
-        print(g.serialize(format='turtle').decode())
 
     def test_negativedatapropertyassertion(self):
         TypedLiteral(5, XSD.integer)
