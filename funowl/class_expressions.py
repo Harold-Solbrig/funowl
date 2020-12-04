@@ -297,7 +297,7 @@ class ObjectExactCardinality(FunOwlBase):
         g.add((x, RDF.type, OWL.Restriction))
         g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
         if self.classExpression:
-            g.add((x, OWL.qualifiedCardinality, self.min_.to_rdf(g)))
+            g.add((x, OWL.qualifiedCardinality, self.card.to_rdf(g)))
             g.add((x, OWL.onClass, self.classExpression.to_rdf(g)))
         else:
 

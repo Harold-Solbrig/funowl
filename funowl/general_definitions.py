@@ -1,6 +1,6 @@
 """
 nonNegativeInteger := a nonempty finite sequence of digits between 0 and 9
-quotedString := a finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form \" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
+quotedString := a finite sequence of characters in which " (U+22) and \\ (U+5C) occur only in pairs of the form \\" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
 languageTag := @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47]
 nodeID := a finite sequence of characters matching the BLANK_NODE_LABEL production of [SPARQL]
 
@@ -42,8 +42,8 @@ class NonNegativeInteger(int, FunOwlBase):
 
 
 class QuotedString(QUOTED_STRING, FunOwlRoot):
-    """  finite sequence of characters in which " (U+22) and \ (U+5C) occur only in pairs of the form
-     \" (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
+    """  finite sequence of characters in which " (U+22) and \\ (U+5C) occur only in pairs of the form
+     "\\ (U+5C, U+22) and \\ (U+5C, U+5C), enclosed in a pair of " (U+22) characters
      """
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + ('"' + self.replace('\\', '\\\\').replace('"', '\\"') + '"')
