@@ -10,7 +10,4 @@
 # `Pipfile.lock` and then regenerate `requirements*.txt`.
 ################################################################################
 
-bcp47
-pyjsg>=0.11.6
-rdflib>=5.0.0
-rfc3987
+requests

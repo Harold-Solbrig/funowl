@@ -1,6 +1,38 @@
 CHANGES
 =======
 
+* Update test cases to reflect rdflib 5.0 differences
+* Fix issue 12
+* bit 'o cleanup'
+* Major checkpoint -- refactored typing system
+* Milestone -- passes all unit tests
+* 12 failures, 7 skips out of 482 tests
+* 38 failures and 7 skips out of 446 total tests
+* Checkpoint
+* Checkpoin t
+* Update test harness to use the relative file names
+* Revisit the test generation strategy
+* Passes 411 out of 478 Tests
+* Passing 315 out of 481 tests
+* Test suite error
+* Test suite error
+* Fixed Test suite error
+* Fix Test Suite Error
+* Adding XML representations as a double check
+* Checkpoint on test suite
+* Test case error
+* Test Case Error
+* Test case error
+* Further RDF progress
+* Implement DataMinCardinality, DataPropertyRange, DataOneOf
+* Ad-hoc fix for owl:Thing a owl:Class declaration
+* Add DataSomeValuesFrom
+* Add Bnode2somevaluesfrom to list of contested unit tests
+* Tweaks to DataAllValuesFrom
+* Implemented to\_rdf for DisjointClasses, DataAllValuesFrom and DisjointDataProperties
+* Added \_\_str\_\_ method to ontology document to simplify serialization
+* Release version 0.1.4
+
 v0.1.4
 ------
 
