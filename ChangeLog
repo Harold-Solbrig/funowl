@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Add github actions for unit test and update
 * Update test cases to reflect rdflib 5.0 differences
 * Fix issue 12
 * bit 'o cleanup'
