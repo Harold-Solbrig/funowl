@@ -18,8 +18,8 @@ AnnotationPropertyDomain := 'AnnotationPropertyDomain' '(' axiomAnnotations Anno
 AnnotationPropertyRange := 'AnnotationPropertyRange' '(' axiomAnnotations AnnotationProperty IRI ')'
 """
 from abc import ABC
-from dataclasses import dataclass, fields
-from typing import Union, List, Callable, ClassVar, Tuple
+from dataclasses import dataclass, fields, field
+from typing import Union, List, Callable, ClassVar, Tuple, Any
 
 from rdflib import URIRef, Graph
 from rdflib.namespace import OWL, RDF, RDFS
@@ -29,7 +29,7 @@ from funowl.base.cast_function import exclude
 from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.base.rdftriple import SUBJ, TRIPLE, PRED, TARG
 from funowl.identifiers import IRI
 from funowl.individuals import AnonymousIndividual
@@ -127,7 +127,7 @@ class Annotation(Annotatable):
     annotation_type = OWL.Annotation
     property: AnnotationProperty
     value: AnnotationValue
-    annotations: List["Annotation"] = empty_list()
+    annotations: List["Annotation"] = field(default_factory=list)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         # Annotated annotations get special handling

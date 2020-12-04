@@ -1,12 +1,11 @@
 import unittest
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, field
 from typing import List, Union, Optional
-
 
 # This has to be global for the cast forwards to work correctly
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.terminals.TypingHelper import proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 from tests.utils.base import TestBase
@@ -15,7 +14,7 @@ from tests.utils.base import TestBase
 @dataclass
 class C1(FunOwlBase):
     instnum: int
-    foos: List["C1"] = empty_list()
+    foos: List["C1"] = field(default_factory=list)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.br().indent().concat(self.instnum, ':', sep='').outdent().iter(self.foos))
@@ -58,7 +57,7 @@ class FunOwlBaseTestCase(TestBase):
 
         @dataclass
         class Foo(FunOwlBase):
-            v: List[Foo2] = empty_list()
+            v: List[Foo2] = empty_list_wrapper(Foo2)
 
             def to_functional(self, wr: FunctionalWriter) -> FunctionalWriter:
                 return wr.iter(self.v, f=lambda e:  wr.hardbr() + e)
@@ -83,7 +82,7 @@ class FunOwlBaseTestCase(TestBase):
 
         @dataclass
         class Foo(FunOwlBase):
-            v: List[int] = empty_list()
+            v: List[int] = empty_list_wrapper(int)
 
         x = Foo()
         self.assertEqual(x, x.list_cardinality(x.v, 'v', 0))

@@ -15,11 +15,11 @@ from typing import Optional, List, Union, Dict, cast
 
 from rdflib import Graph, RDF, OWL, URIRef, BNode
 
-from funowl.assertions import DataPropertyAssertion
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
+from funowl.assertions import DataPropertyAssertion
 from funowl.axioms import Axiom
 from funowl.base.fun_owl_base import FunOwlBase
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.base.rdftriple import NODE, SUBJ
 from funowl.class_axioms import SubClassOf, EquivalentClasses
 from funowl.class_expressions import Class, ClassExpression
@@ -91,9 +91,9 @@ class Ontology(Annotatable):
             self.axioms.append(arg)
             self._naxioms += 1
             if not self._naxioms % 100000:
-                print('H')
+                print(self._naxioms)
             elif not self._naxioms % 10000:
-                print('K')
+                print(self._naxioms)
             elif not self._naxioms % 1000:
                 print('k', end='')
                 sys.stdout.flush()

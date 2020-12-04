@@ -7,7 +7,7 @@ from rdflib import RDFS, RDF, XSD, Namespace, OWL
 from funowl import Annotation, AnnotationPropertyDomain, AnnotationPropertyRange, AnnotationAssertion, \
     SubAnnotationPropertyOf
 from funowl.annotations import Annotatable
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.identifiers import IRI
 from funowl.writers import FunctionalWriter
 from tests.utils.base import TestBase
@@ -87,7 +87,7 @@ class AnnotationsTestCase(TestBase):
         """ A single annotation should get transformed into a list by the annotation constructor """
         @dataclass
         class Foo(Annotatable):
-            annotations: List[Annotation] = empty_list()
+            annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
         a = Annotation(RDFS.comment, "Not a list")
         x = Foo(a)

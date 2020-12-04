@@ -6,11 +6,6 @@ from typing import Type
 from funowl.base.cast_function import cast
 
 
-def empty_list():
-    """ Shortcut dataclass list factory initializer """
-    return field(default_factory=list)
-
-
 class ListWrapper(UserList):
     def __init__(self, l: Iterable, typ = None) -> None:
         super().__init__()

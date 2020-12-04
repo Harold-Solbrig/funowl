@@ -4,13 +4,13 @@ from typing import List, Union
 from rdflib import Graph, OWL, RDFS, RDF, BNode
 
 from funowl.annotations import Annotation, Annotatable
-from funowl.base.list_support import empty_list, empty_list_wrapper, ListWrapper
+from funowl.base.list_support import empty_list_wrapper, ListWrapper
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.dataranges import DataRange
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.literals import Datatype
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 """
 (Annotatable) :=

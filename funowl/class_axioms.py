@@ -16,10 +16,10 @@ from dataclasses import dataclass
 from typing import List, Optional, Union
 
 from rdflib import Graph, RDFS, OWL, RDF
-from rdflib.term import Node, BNode
+from rdflib.term import BNode
 
 from funowl.annotations import Annotation, Annotatable
-from funowl.base.list_support import empty_list, ListWrapper, empty_list_wrapper
+from funowl.base.list_support import ListWrapper, empty_list_wrapper
 from funowl.class_expressions import ClassExpression, Class
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -118,8 +118,8 @@ class DisjointUnion(Annotatable):
 @dataclass
 class HasKey(Annotatable):
     classExpression: ClassExpression
-    objectPropertyExpressions: Optional[List[ObjectPropertyExpression]] = empty_list()
-    dataPropertyExpressions: Optional[List[DataPropertyExpression]] = empty_list()
+    objectPropertyExpressions: Optional[List[ObjectPropertyExpression]] = empty_list_wrapper(ObjectPropertyExpression)
+    dataPropertyExpressions: Optional[List[DataPropertyExpression]] = empty_list_wrapper(DataPropertyExpression)
     annotations: List[Annotation] = empty_list_wrapper(Annotation)
 
     def __init__(self, classExpression: ClassExpression,

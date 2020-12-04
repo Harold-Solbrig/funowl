@@ -34,7 +34,7 @@ from rdflib.term import BNode
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression

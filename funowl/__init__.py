@@ -29,10 +29,7 @@ from . objectproperty_expressions import ObjectProperty, ObjectInverseOf, Object
 from . ontology_document import OntologyDocument, Ontology, Import
 from . axioms import Axiom
 
-# TODO: Run coverage and toss anything that isn't executed
-# TODO: Look for NON-Dataclass elements, noting that the "fields" function is dataclass only
-# TODO: Look at the _coericion_allowed variable and see whether it can't be removed
+# TODO: Run coverage and test or toss anything that isn't executed
 # TODO: Consider removing the streaming IO feature -- it doesn't seem to do a lot for performance and makes things compicated
 # TODO: Put an official unit test in -- something like rdflib
-# TODO: Get print statements out of unit tests
 # TODO: See table 5 in OWL Spec -- builtin solution?

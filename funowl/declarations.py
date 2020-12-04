@@ -17,11 +17,11 @@ DataPropertyExpression := DataProperty
 from dataclasses import dataclass
 from typing import Union, List, Optional
 
-from rdflib import OWL, Graph
+from rdflib import Graph
 
 from funowl.annotations import AnnotationProperty, Annotatable, Annotation
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.base.rdftriple import NODE
 from funowl.class_expressions import Class
 from funowl.dataproperty_expressions import DataProperty

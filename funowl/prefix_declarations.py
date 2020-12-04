@@ -19,15 +19,6 @@ class Prefix(FunOwlBase):
         return w.func(self, lambda: w.concat((self.prefixName or '') + ':', '=',
                                              URIRef(str(self.fullIRI)).n3(), sep=' '))
 
-    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
-        """
-        Add the prefix binding to the graph
-        :param g: Graph to add binding to
-        :return: None -- no corresponding node
-        """
-        g.bind(self.prefixName, self.fullIRI.to_rdf(g))
-        return None
-
 
 class PrefixDeclarations(NamespaceManager):
     def __init__(self, g: Optional[Graph] = None) -> None:

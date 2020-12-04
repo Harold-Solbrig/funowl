@@ -44,9 +44,8 @@ from rdflib import Graph, BNode, OWL, RDF, RDFS
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
-from funowl.base.list_support import empty_list, empty_list_wrapper
+from funowl.base.list_support import empty_list_wrapper
 from funowl.class_expressions import ClassExpression
-from funowl.base.fun_owl_base import FunOwlBase
 from funowl.converters.rdf_converter import SEQ
 from funowl.objectproperty_expressions import ObjectPropertyExpression
 from funowl.writers.FunctionalWriter import FunctionalWriter
