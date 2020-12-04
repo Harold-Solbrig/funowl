@@ -20,9 +20,9 @@ class ClassAxiomsTestCase(TestBase):
 
     def test_equivalentclasses(self):
         self.assertEqual("""EquivalentClasses(
-    <http://snomed.info/id/303394007>
-    <http://snomed.info/id/45189000>
-    <http://snomed.info/id/609096000>
+    :303394007
+    :45189000
+    :609096000
 )""", str(EquivalentClasses(SCT['303394007'], SCT['45189000'], SCT['609096000']).to_functional(self.sw)))
 
         with self.assertRaises(ValueError, msg="at least 2 arguments are required"):
@@ -30,13 +30,13 @@ class ClassAxiomsTestCase(TestBase):
 
         # Taken from SNOMED CT
         self.assertEqual("""EquivalentClasses(
-    <http://snomed.info/id/303394007>
+    :303394007
         ObjectIntersectionOf(
-        <http://snomed.info/id/45189000>
-            ObjectSomeValuesFrom( <http://snomed.info/id/609096000>     ObjectIntersectionOf(
-            ObjectSomeValuesFrom( <http://snomed.info/id/260686004> <http://snomed.info/id/129397003> )
-            ObjectSomeValuesFrom( <http://snomed.info/id/363700003> <http://snomed.info/id/52988006> )
-            ObjectSomeValuesFrom( <http://snomed.info/id/405813007> <http://snomed.info/id/69695003> )
+        :45189000
+            ObjectSomeValuesFrom( :609096000     ObjectIntersectionOf(
+            ObjectSomeValuesFrom( :260686004 :129397003 )
+            ObjectSomeValuesFrom( :363700003 :52988006 )
+            ObjectSomeValuesFrom( :405813007 :69695003 )
     ) )
     )
 )""", str(EquivalentClasses(
@@ -53,10 +53,10 @@ class ClassAxiomsTestCase(TestBase):
     def test_oio(self):
         """ Bug: ObjectIntersectionOf ends up being a single argument to ObjectSomeValuesOf """
         self.assertEqual("""ObjectIntersectionOf(
-    <http://snomed.info/id/45189000>
-        ObjectSomeValuesFrom( <http://snomed.info/id/609096000>     ObjectUnionOf(
-        <http://snomed.info/id/1>
-        <http://snomed.info/id/2>
+    :45189000
+        ObjectSomeValuesFrom( :609096000     ObjectUnionOf(
+        :1
+        :2
     ) )
 )""", str(ObjectIntersectionOf(
             SCT['45189000'],
@@ -68,28 +68,28 @@ class ClassAxiomsTestCase(TestBase):
 
     def test_disjointclasses(self):
         self.assertEqual("""DisjointClasses(
-    <http://snomed.info/id/303394007>
-    <http://snomed.info/id/45189000>
-    <http://snomed.info/id/609096000>
+    :303394007
+    :45189000
+    :609096000
 )""", str(DisjointClasses(SCT['303394007'], SCT['45189000'], SCT['609096000']).to_functional(self.sw)))
 
     def test_disjointunion(self):
-        self.assertEqual("""DisjointUnion( <http://snomed.info/id/12345>
-    <http://snomed.info/id/303394007>
-    <http://snomed.info/id/45189000>
-    <http://snomed.info/id/609096000>
+        self.assertEqual("""DisjointUnion( :12345
+    :303394007
+    :45189000
+    :609096000
 )""", str(DisjointUnion(SCT['12345'], SCT['303394007'], SCT['45189000'], SCT['609096000']).
           to_functional(self.sw.reset())))
         with self.assertRaises(ValueError, msg="Have to have at least 2 expressions"):
             DisjointUnion(SCT['12345'], SCT['303394007']).to_functional(self.sw)
 
     def test_haskey(self):
-        self.assertEqual('''HasKey( <http://snomed.info/id/12345> (
-    <http://snomed.info/id/23456>
-    <http://snomed.info/id/23457>
+        self.assertEqual('''HasKey( :12345 (
+    :23456
+    :23457
 ) (
-    <http://snomed.info/id/23458>
-    <http://snomed.info/id/23459>
+    :23458
+    :23459
 ) )''', str(HasKey(SCT['12345'], ObjectPropertyExpression(SCT['23456']), ObjectPropertyExpression(SCT['23457']),
                  DataPropertyExpression(SCT['23458']), DataPropertyExpression(SCT['23459'])).to_functional(self.sw.reset())))
 

@@ -43,10 +43,6 @@ class AssertionsTestCase(TestBase):
         g.bind('owl', str(OWL))
         DifferentIndividuals(A.Alex, A.Bob).to_rdf(g)
         self.assertEqual("""@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/a#Alex> a owl:NamedIndividual ;
     owl:differentFrom <http://example.org/a#Bob> .
