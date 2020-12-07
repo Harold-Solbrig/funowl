@@ -8,18 +8,17 @@ fullIRI := an IRI as defined in [RFC3987], enclosed in a pair of < (U+3C) and > 
 prefixName := a finite sequence of characters matching the as PNAME_NS production of [SPARQL]
 abbreviatedIRI := a finite sequence of characters matching the PNAME_LN production of [SPARQL]
 """
-import re
 from typing import Optional, ClassVar, Set
 
+import bcp47
 import rdflib
 import rfc3987
-import bcp47
 from rdflib import BNode, URIRef, Graph, Literal
 from rdflib.namespace import is_ncname, XSD
 
 from funowl.base.fun_owl_base import FunOwlBase, FunOwlRoot
-from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.terminals.Terminals import PNAME_NS, PNAME_LN, BLANK_NODE_LABEL, QUOTED_STRING, OPT_PNAME_NS
+from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
 # Note - super class warning is ok
@@ -50,14 +49,19 @@ class QuotedString(QUOTED_STRING, FunOwlRoot):
 
 
 class LanguageTag(str, FunOwlBase):
+    # A map from lower case tags to the case defined in BCP 47.
     languages: ClassVar[Set[str]] = set(bcp47.languages.values())
+    lc_languages: ClassVar[Set[str]] = {l.lower() for l in languages}
+    CASE_SENSITIVE: bool = False
+
     """ @ (U+40) followed a nonempty sequence of characters matching the langtag production from [BCP 47] """
     def __init__(self, v: str) -> None:
         if not isinstance(v, type(self)):
             raise TypeError(f"{v}: invalid language tag")
 
     def _is_valid(self, instance) -> bool:
-        return instance in self.languages
+        return instance in LanguageTag.languages if LanguageTag.CASE_SENSITIVE else\
+               instance.lower() in LanguageTag.lc_languages
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w + ('@' + str(self))
