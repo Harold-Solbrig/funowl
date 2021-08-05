@@ -79,7 +79,7 @@ from funowl import *
 EX = Namespace("http://example.org/")
 
 # Ontology represents the OWLF OntologyDocument production
-o = Ontology(EX.myOntology "http://example.org/myOntolology/version/0.1"])
+o = Ontology(EX.myOntology, "http://example.org/myOntolology/version/0.1")
 
 # prefixes array includes default
 o.prefixes(EX, rdfs=RDFS)
