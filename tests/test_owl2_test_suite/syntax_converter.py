@@ -29,7 +29,7 @@ def convert(key: str, content: str, output_format: OWLFormat=OWLFormat.func) -> 
     :return: Converted information if successful
     """
     try:
-        resp = requests.post('http://www.ldf.fi/service/owl-converter/',
+        resp = requests.post('https://www.ldf.fi/service/owl-converter/',
                              data=dict(onto=content, to=output_format.name))
     except ConnectionError as e:
         logging.getLogger().error(f"{key}: {str(e)}")

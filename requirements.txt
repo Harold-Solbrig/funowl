@@ -12,5 +12,5 @@
 
 bcp47
 pyjsg>=0.11.6
-rdflib>=5.0.0
+rdflib~=5.0, >=5.0.0
 rfc3987

@@ -1,6 +1,20 @@
 CHANGES
 =======
 
+* Update dependency on urllib3
+
+v0.1.6
+------
+
+* Automatically generated requirements and Pipfile.lock
+* Fix issue #14
+* Update setup.cfg
+
+v0.1.5
+------
+
+* Remove 3.7 unit tests
+* Automatically generated requirements and Pipfile.lock
 * Add github actions for unit test and update
 * Update test cases to reflect rdflib 5.0 differences
 * Fix issue 12

@@ -1,3 +1,6 @@
+import sys
+from warnings import warn
+
 from . prefix_declarations import Prefix
 from . declarations import Declaration
 from . literals import Datatype, StringLiteralNoLanguage, TypedLiteral, StringLiteralWithLanguage, Literal
@@ -28,6 +31,10 @@ from . objectproperty_axioms import ObjectPropertyChain, SubObjectPropertyExpres
 from . objectproperty_expressions import ObjectProperty, ObjectInverseOf, ObjectPropertyExpression
 from . ontology_document import OntologyDocument, Ontology, Import
 from . axioms import Axiom
+
+
+if sys.version_info < (3, 8, 0):
+    warn(f"FunOwl needs python 3.8 or later.  Current version: {sys.version_info}")
 
 # TODO: Run coverage and test or toss anything that isn't executed
 # TODO: Consider removing the streaming IO feature -- it doesn't seem to do a lot for performance and makes things compicated
