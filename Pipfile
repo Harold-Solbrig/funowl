@@ -7,7 +7,7 @@ verify_ssl = true
 requests = "*"
 
 [packages]
-rdflib = ">=5.0.0"
+rdflib = "~=5.0, >=5.0.0"
 pyjsg = ">=0.11.6"
 rfc3987 = "*"
 bcp47 = "*"
