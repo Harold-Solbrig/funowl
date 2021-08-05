@@ -60,11 +60,11 @@
         },
         "rdflib": {
             "hashes": [
-                "sha256:7ce4d757eb26f4dd43205ec340d8c097f29e5adfe45d6ea20238c731dc679879",
-                "sha256:bb24f0058070d5843503e15b37c597bc3858d328d11acd9476efad3aa62f555d"
+                "sha256:78149dd49d385efec3b3adfbd61c87afaf1281c30d3fcaf1b323b34f603fb155",
+                "sha256:88208ea971a87886d60ae2b1a4b2cdc263527af0454c422118d43fe64b357877"
             ],
             "index": "pypi",
-            "version": "==6.0.0"
+            "version": "==5.0.0"
         },
         "rfc3987": {
             "hashes": [
