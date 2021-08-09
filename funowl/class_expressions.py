@@ -51,6 +51,7 @@ from rdflib.term import BNode, Literal as RDFLiteral
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.base.list_support import ListWrapper
+from funowl.base.rdftriple import SUBJ
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
 from funowl.dataranges import DataRange
@@ -90,6 +91,8 @@ class ObjectIntersectionOf(FunOwlBase):
         g.add((subj, OWL.intersectionOf, SEQ(g, self.classExpressions)))
         return subj
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []       # There are no subjects in object intersection -- only objects
 
 @dataclass
 class ObjectUnionOf(FunOwlBase):
@@ -111,6 +114,9 @@ class ObjectUnionOf(FunOwlBase):
         g.add((x, OWL.unionOf, SEQ(g, self.classExpressions)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []       # There are no subjects in object union -- only objects
+
 @dataclass
 class ObjectComplementOf(FunOwlBase):
     classExpression:ForwardRef("ClassExpression")
@@ -126,6 +132,8 @@ class ObjectComplementOf(FunOwlBase):
         g.add((x, OWL.complementOf, self.classExpression.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []       # There are no subjects in object comlement -- only objects
 
 @dataclass(init=False)
 class ObjectOneOf(FunOwlBase):
@@ -146,6 +154,8 @@ class ObjectOneOf(FunOwlBase):
         g.add((x, OWL.oneOf, SEQ(g, self.individuals)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []       # There are no subjects in object one of -- only objects
 
 @dataclass
 class ObjectSomeValuesFrom(FunOwlBase):
@@ -166,6 +176,8 @@ class ObjectSomeValuesFrom(FunOwlBase):
         g.add((x, OWL.someValuesFrom, self.classExpression.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []       # There are no subjects in object some values from -- only objects
 
 @dataclass
 class ObjectAllValuesFrom(FunOwlBase):
@@ -184,6 +196,9 @@ class ObjectAllValuesFrom(FunOwlBase):
         g.add((x, OWL.onProperty, self.objectPropertyExpression.to_rdf(g)))
         g.add((x, OWL.allValuesFrom, self.classExpression.to_rdf(g)))
         return x
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []               # Universal quantifiers don't have a subject
 
 
 @dataclass
@@ -204,6 +219,8 @@ class ObjectHasValue(FunOwlBase):
         g.add((x, OWL.hasValue, self.individual.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class ObjectHasSelf(FunOwlBase):
@@ -222,6 +239,8 @@ class ObjectHasSelf(FunOwlBase):
         g.add((x, OWL.hasSelf, RDFLiteral(True)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class ObjectMinCardinality(FunOwlBase):
@@ -248,6 +267,9 @@ class ObjectMinCardinality(FunOwlBase):
         else:
             g.add((x, OWL.minCardinality, self.min_.to_rdf(g)))
         return x
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 
 @dataclass
@@ -276,6 +298,8 @@ class ObjectMaxCardinality(FunOwlBase):
             g.add((x, OWL.maxCardinality, self.max_.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class ObjectExactCardinality(FunOwlBase):
@@ -304,6 +328,8 @@ class ObjectExactCardinality(FunOwlBase):
             g.add((x, OWL.cardinality, self.card.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class DataSomeValuesFrom(FunOwlBase):
@@ -334,6 +360,9 @@ class DataSomeValuesFrom(FunOwlBase):
             g.add((subj, OWL.onProperty, self.dataPropertyExpressions[0].to_rdf(g)))
         g.add((subj, OWL.someValuesFrom, self.dataRange.to_rdf(g)))
         return subj
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []           # No subjects for this construct
 
 
 @dataclass
@@ -366,6 +395,9 @@ class DataAllValuesFrom(FunOwlBase):
         g.add((subj, OWL.allValuesFrom, self.dataRange.to_rdf(g)))
         return subj
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []           # No subjects for this construct
+
 
 @dataclass
 class DataHasValue(FunOwlBase):
@@ -385,6 +417,8 @@ class DataHasValue(FunOwlBase):
         g.add((x, OWL.hasValue, self.literal.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 @dataclass
 class DataMinCardinality(FunOwlBase):
@@ -411,6 +445,9 @@ class DataMinCardinality(FunOwlBase):
         else:
             g.add((x, OWL.minCardinality, self.min_.to_rdf(g)))
         return x
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 
 @dataclass
@@ -439,6 +476,9 @@ class DataMaxCardinality(FunOwlBase):
             g.add((x, OWL.maxCardinality, self.max_.to_rdf(g)))
         return x
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
+
 @dataclass
 class DataExactCardinality(FunOwlBase):
     card: NonNegativeInteger
@@ -464,6 +504,9 @@ class DataExactCardinality(FunOwlBase):
         else:
             g.add((x, OWL.cardinality, self.card.to_rdf(g)))
         return x
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 
 # A Class expression can be a class or any subclass of ClassExpression

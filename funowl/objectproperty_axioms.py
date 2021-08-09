@@ -45,6 +45,7 @@ from rdflib import Graph, BNode, OWL, RDF, RDFS
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.list_support import empty_list_wrapper
+from funowl.base.rdftriple import SUBJ
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.objectproperty_expressions import ObjectPropertyExpression
@@ -66,6 +67,9 @@ class ObjectPropertyChain(Annotatable):
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> BNode:
         return SEQ(g, self.objectPropertyExpressions)
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []
 
 @dataclass
 class SubObjectPropertyExpression(FunOwlChoice):
@@ -89,6 +93,8 @@ class SubObjectPropertyOf(Annotatable):
             self.add_triple(g, self.subObjectPropertyExpression.to_rdf(g), RDFS.subPropertyOf,
                             self.superObjectPropertyExpression.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.subObjectPropertyExpression._subjects(g)
 
 @dataclass
 class EquivalentObjectProperties(Annotatable):
@@ -107,6 +113,12 @@ class EquivalentObjectProperties(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         for t1, t2 in zip(self.objectPropertyExpressions[:-1], self.objectPropertyExpressions[1:]):
             self.add_triple(g, t1.to_rdf(g), OWL.equivalentProperty, t2.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.objectPropertyExpressions:
+            rval += e._subjects(g)
+        return rval
 
 @dataclass
 class DisjointObjectProperties(Annotatable):
@@ -135,6 +147,12 @@ class DisjointObjectProperties(Annotatable):
             self.add_triple(g, self.objectPropertyExpressions[0].to_rdf(g), OWL.propertyDisjointWith,
                             self.objectPropertyExpressions[1].to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.objectPropertyExpressions:
+            rval += e._subjects(g)
+        return rval
+
 @dataclass
 class ObjectPropertyDomain(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
@@ -147,6 +165,9 @@ class ObjectPropertyDomain(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdfs:domain T(CE) .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDFS.domain, self.classExpression.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class ObjectPropertyRange(Annotatable):
@@ -161,6 +182,8 @@ class ObjectPropertyRange(Annotatable):
         # T(OPE) rdfs:range T(CE) .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDFS.range, self.classExpression.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class InverseObjectProperties(Annotatable):
@@ -179,6 +202,12 @@ class InverseObjectProperties(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpressions[0].to_rdf(g), OWL.inverseOf, self.objectPropertyExpressions[1].to_rdf(g)))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.objectPropertyExpressions:
+            rval += e._subjects(g)
+        return rval
+
 @dataclass
 class FunctionalObjectProperty(Annotatable):
     objectPropertyExpression: ObjectPropertyExpression
@@ -190,6 +219,8 @@ class FunctionalObjectProperty(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.FunctionalProperty))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class InverseFunctionalObjectProperty(Annotatable):
@@ -201,6 +232,9 @@ class InverseFunctionalObjectProperty(Annotatable):
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         g.add((self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.InverseFunctionalProperty))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 
 @dataclass
@@ -215,6 +249,8 @@ class ReflexiveObjectProperty(Annotatable):
         # T(OPE) rdf:type owl:ReflexiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.ReflexiveProperty)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class IrreflexiveObjectProperty(Annotatable):
@@ -228,6 +264,8 @@ class IrreflexiveObjectProperty(Annotatable):
         # T(OPE) rdf:type owl:IrreflexiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.IrreflexiveProperty)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class SymmetricObjectProperty(Annotatable):
@@ -240,6 +278,9 @@ class SymmetricObjectProperty(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:SymmetricProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.SymmetricProperty)
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 
 @dataclass
@@ -254,6 +295,8 @@ class AsymmetricObjectProperty(Annotatable):
         # T(OPE) rdf:type owl:AsymmetricProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.AsymmetricProperty)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 @dataclass
 class TransitiveObjectProperty(Annotatable):
@@ -266,6 +309,9 @@ class TransitiveObjectProperty(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(OPE) rdf:type owl:TransitiveProperty .
         self.add_triple(g, self.objectPropertyExpression.to_rdf(g), RDF.type, OWL.TransitiveProperty)
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.objectPropertyExpression._subjects(g)
 
 
 ObjectPropertyAxiom = Union[SubObjectPropertyOf, EquivalentObjectProperties, DisjointObjectProperties,

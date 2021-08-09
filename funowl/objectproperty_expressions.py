@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from logging import exception
 from typing import Union
 
 from rdflib import OWL, Graph

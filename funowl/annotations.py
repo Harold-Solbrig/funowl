@@ -152,6 +152,10 @@ class AnnotationAssertion(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.subject.to_rdf(g), self.property.to_rdf(g), self.value.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.subject._subjects(g)
+
+
 
 @dataclass
 class SubAnnotationPropertyOf(Annotatable):
@@ -165,6 +169,8 @@ class SubAnnotationPropertyOf(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.sub.to_rdf(g), RDFS.subPropertyOf, self.super.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.sub._subjects(g)
 
 @dataclass
 class AnnotationPropertyDomain(Annotatable):
@@ -178,6 +184,8 @@ class AnnotationPropertyDomain(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.property.to_rdf(g), RDFS.domain, self.domain.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.property._subjects(g)
 
 @dataclass
 class AnnotationPropertyRange(Annotatable):
@@ -190,6 +198,9 @@ class AnnotationPropertyRange(Annotatable):
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.property.to_rdf(g), RDFS.range, self.range.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.property._subjects(g)
 
 
 AnnotationAxiom = Union[AnnotationAssertion, SubAnnotationPropertyOf, AnnotationPropertyDomain, AnnotationPropertyRange]

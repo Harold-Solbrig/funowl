@@ -35,6 +35,7 @@ from rdflib.term import BNode
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.clone_subgraph import clone_subgraph, USE_BNODE_COPIES
 from funowl.base.list_support import empty_list_wrapper
+from funowl.base.rdftriple import SUBJ
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -76,6 +77,11 @@ class SameIndividual(Annotatable):
                 g.add(t)
                 annotation.TANN(g, t)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.individuals:
+            rval += e._subjects(g)
+        return rval
 
 @dataclass
 class DifferentIndividuals(Annotatable):
@@ -107,6 +113,11 @@ class DifferentIndividuals(Annotatable):
             self.TANN(g, subj)
         return None
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.individuals:
+            rval += e._subjects(g)
+        return rval
 
 @dataclass
 class ClassAssertion(Annotatable):
@@ -120,6 +131,8 @@ class ClassAssertion(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.individual.to_rdf(g), RDF.type, self.expr.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.individual._subjects(g)
 
 @dataclass
 class ObjectPropertyAssertion(Annotatable):
@@ -141,6 +154,9 @@ class ObjectPropertyAssertion(Annotatable):
         else:
             self.add_triple(g, self.sourceIndividual.to_rdf(g), self.expr.to_rdf(g), self.targetIndividual.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.sourceIndividual._subjects(g)
+
 
 @dataclass
 class NegativeObjectPropertyAssertion(Annotatable):
@@ -160,6 +176,8 @@ class NegativeObjectPropertyAssertion(Annotatable):
         g.add((subj, OWL.targetIndividual, self.targetIndividual.to_rdf(g)))
         self.TANN(g, subj)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.sourceIndividual._subjects(g)
 
 @dataclass
 class DataPropertyAssertion(Annotatable):
@@ -174,6 +192,8 @@ class DataPropertyAssertion(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         self.add_triple(g, self.sourceIndividual.to_rdf(g), self.expr.to_rdf(g), self.targetValue.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.sourceIndividual._subjects(g)
 
 @dataclass
 class NegativeDataPropertyAssertion(Annotatable):
@@ -193,6 +213,9 @@ class NegativeDataPropertyAssertion(Annotatable):
         g.add((subj, OWL.targetValue, self.targetValue.to_rdf(g)))
         self.TANN(g, subj)
 
-        
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.sourceIndividual._subjects(g)
+
+
 Assertion = Union[SameIndividual, DifferentIndividuals, ClassAssertion, ObjectPropertyAssertion,
                   NegativeObjectPropertyAssertion, DataPropertyAssertion, NegativeDataPropertyAssertion]

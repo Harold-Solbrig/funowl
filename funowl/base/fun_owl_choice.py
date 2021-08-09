@@ -7,7 +7,7 @@ from rdflib.term import URIRef
 
 from funowl.base.cast_function import cast
 from funowl.base.fun_owl_base import FunOwlBase
-from funowl.base.rdftriple import NODE
+from funowl.base.rdftriple import NODE, SUBJ
 from funowl.terminals.TypingHelper import isinstance_, get_args
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
@@ -97,3 +97,6 @@ class FunOwlChoice(FunOwlBase):
 
     def __str__(self) -> str:
         return str(self.v)
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.v._subjects(g)
