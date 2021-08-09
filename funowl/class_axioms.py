@@ -20,6 +20,7 @@ from rdflib.term import BNode
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import ListWrapper, empty_list_wrapper
+from funowl.base.rdftriple import SUBJ
 from funowl.class_expressions import ClassExpression, Class
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -44,6 +45,9 @@ class SubClassOf(Annotatable):
         """
         self.add_triple(g, self.subClassExpression.to_rdf(g), RDFS.subClassOf, self.superClassExpression.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.subClassExpression._subjects(g)
+
 
 @dataclass
 class EquivalentClasses(Annotatable):
@@ -64,6 +68,12 @@ class EquivalentClasses(Annotatable):
         # T(CEn-1) owl:equivalentClass T(CEn) .
         for ce1, ce2 in zip(self.classExpressions[:-1], self.classExpressions[1:]):
             self.add_triple(g, ce1.to_rdf(g), OWL.equivalentClass, ce2.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.classExpressions:
+            rval += e._subjects(g)
+        return rval
 
 
 @dataclass
@@ -93,6 +103,13 @@ class DisjointClasses(Annotatable):
             g.add((subj, OWL.members, SEQ(g, self.classExpressions)))
             self.TANN(g, subj)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.classExpressions:
+            rval += e._subjects(g)
+        return rval
+
+
 
 @dataclass
 class DisjointUnion(Annotatable):
@@ -114,6 +131,9 @@ class DisjointUnion(Annotatable):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # 	T(C) owl:disjointUnionOf T(SEQ CE1 ... CEn) .
         self.add_triple(g, self.cls.to_rdf(g), OWL.disjointUnionOf, SEQ(g, self.disjointClassExpressions))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return []   # No subject for a disjoint union
 
 @dataclass
 class HasKey(Annotatable):
@@ -146,6 +166,9 @@ class HasKey(Annotatable):
         # T(CE) owl:hasKey T(SEQ OPE1 ... OPEm DPE1 ... DPEn ) .
         self.add_triple(g, self.classExpression.to_rdf(g), OWL.hasKey,
                         SEQ(g, self.objectPropertyExpressions + self.dataPropertyExpressions))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.classExpression._subjects(g)
 
 
 ClassAxiom = Union[SubClassOf, EquivalentClasses, DisjointClasses, DisjointUnion]

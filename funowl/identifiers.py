@@ -1,12 +1,13 @@
 """ IRI := fullIRI | abbreviatedIRI """
 import logging
 from dataclasses import dataclass, Field
-from typing import Union, ClassVar, Optional, Type
+from typing import Union, ClassVar, Optional, Type, List
 
 from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD, RDFS
 
 from funowl.base.cast_function import exclude
 from funowl.base.fun_owl_choice import FunOwlChoice
+from funowl.base.rdftriple import SUBJ
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
@@ -53,3 +54,6 @@ class IRI(FunOwlChoice):
             if emit_type_arc or not is_builtin_namespace(fulluri) or not is_builtin_namespace(self.rdf_type):
                 g.add((fulluri, RDF.type, self.rdf_type))
         return fulluri
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return [self.full_uri(g)]

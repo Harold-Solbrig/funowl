@@ -13,7 +13,7 @@ import sys
 from dataclasses import dataclass, MISSING
 from typing import Optional, List, Union, Dict, cast
 
-from rdflib import Graph, RDF, OWL, URIRef, BNode
+from rdflib import Graph, RDF, OWL, URIRef, BNode, Literal as Rdflib_Literal, Namespace
 
 from funowl.annotations import Annotation, AnnotationValue, AnnotationProperty, Annotatable
 from funowl.assertions import DataPropertyAssertion
@@ -36,6 +36,11 @@ from funowl.prefix_declarations import Prefix
 from funowl.terminals.TypingHelper import isinstance_, proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
+# Predicate that references the literal representation of the functional syntax of a subject
+# TODO: Add code that includes the complete definition of this predicate
+FUNOWL_URI = Namespace("http://ontologies-r.us/funowl/")
+FUNOWL_NAMESPACE = "funowl"
+IN_FUNCTIONAL = FUNOWL_URI.functional_definition
 
 @dataclass
 class Import(FunOwlBase):
@@ -199,7 +204,19 @@ class Ontology(Annotatable):
                       iter(self.directlyImportsDocuments, indent=False).iter(self.annotations, indent=False).
                       iter(self.axioms, indent=False), indent=False)
 
-    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> SUBJ:
+    def _add_functional_definition(self, g: Graph, s: SUBJ, n: FunOwlBase) -> None:
+        """ Add a functional definition for n to g """
+        functional_definition = n.to_functional(FunctionalWriter(g=g, tab=' '))
+        g.add( (s, IN_FUNCTIONAL, Rdflib_Literal(functional_definition.getvalue())) )
+
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False, emit_functional_definitions: bool = False) -> SUBJ:
+        """
+        Emit the ontology document in RDF syntax into graph g
+        :param g: target graph
+        :param emit_type_arc:
+        :param emit_functional_definitions: True means add functional definitions of each subject
+        :return:
+        """
         ontology_uri = self.iri.to_rdf(g) if self.iri else BNode()
         version_uri = self.version.to_rdf(g) if self.version else None
         g.add((ontology_uri, RDF.type, OWL.Ontology))
@@ -207,12 +224,20 @@ class Ontology(Annotatable):
             t = (ontology_uri, annotation.property.to_rdf(g), annotation.value.to_rdf(g))
             g.add(t)
             annotation.TANN(g, t)
+            if emit_functional_definitions:
+                self._add_functional_definition(g, ontology_uri, annotation)
         if self.version:
             g.add((ontology_uri, OWL.versionIRI, version_uri))
         for imp in self.directlyImportsDocuments:
             g.add((ontology_uri, OWL.imports, imp.to_rdf(g)))
+            if emit_functional_definitions:
+                self._add_functional_definition(g, ontology_uri, imp)
         for axiom in self.axioms:
             axiom.to_rdf(g)
+            if emit_functional_definitions:
+                subjs = axiom._subjects(g)
+                for subj in subjs:
+                    self._add_functional_definition(g, subj, axiom)
         return ontology_uri
 
 
@@ -257,9 +282,11 @@ class OntologyDocument(FunOwlBase):
     def __str__(self) -> str:
         return self.to_functional().getvalue()
 
-    def add_namespaces(self, g: Graph) -> Graph:
+    def add_namespaces(self, g: Graph, add_funowl_namespace: bool = False) -> Graph:
         for prefix in self.prefixDeclarations:
             g.namespace_manager.bind(str(prefix.prefixName or ''), str(prefix.fullIRI), True, True)
+        if add_funowl_namespace:
+            g.namespace_manager.bind(FUNOWL_NAMESPACE, FUNOWL_URI)
         return g
 
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
@@ -269,9 +296,10 @@ class OntologyDocument(FunOwlBase):
         return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() + \
                (self.ontology or Ontology())
 
-    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> SUBJ:
-        self.add_namespaces(g)
-        return self.ontology.to_rdf(g)
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False, emit_functional_definitions: bool = False) -> SUBJ:
+        """ Convert the ontology document into RDF representation """
+        self.add_namespaces(g, add_funowl_namespace=emit_functional_definitions)
+        return self.ontology.to_rdf(g, emit_type_arc, emit_functional_definitions)
 
 
 proc_forwards(Import, globals())

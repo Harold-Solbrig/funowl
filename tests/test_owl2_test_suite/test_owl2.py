@@ -133,6 +133,11 @@ def validate_owl2(fileloc: str) -> bool:
         if rslts:
             print(rslts)
             return False
+
+    # 5) Test out the to_rdf with the original functional declarations inserted
+    #     At the moment, we just make sure everything runs -- we don't actually make sure that what we've got is complete
+    rdf_w_functional = Graph()
+    ontology_2.to_rdf(rdf_w_functional, emit_functional_definitions=True)
     return True
 
 

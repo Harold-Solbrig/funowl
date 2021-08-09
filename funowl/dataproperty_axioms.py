@@ -5,6 +5,7 @@ from rdflib import Graph, OWL, RDFS, RDF, BNode
 
 from funowl.annotations import Annotation, Annotatable
 from funowl.base.list_support import empty_list_wrapper, ListWrapper
+from funowl.base.rdftriple import SUBJ
 from funowl.class_expressions import ClassExpression
 from funowl.converters.rdf_converter import SEQ
 from funowl.dataproperty_expressions import DataPropertyExpression
@@ -100,6 +101,11 @@ class DisjointDataProperties(Annotatable):
             g.add((x, RDF.type, OWL.AllDisjointProperties))
             self.add_triple(g, x, OWL.members, SEQ(g, self.dataPropertyExpressions))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.dataPropertyExpressions:
+            rval += e._subjects(g)
+        return rval
 
 @dataclass
 class DataPropertyDomain(Annotatable):
@@ -114,6 +120,8 @@ class DataPropertyDomain(Annotatable):
         # T(DPE) rdfs:domain T(CE) .
         self.add_triple(g, self.dataPropertyExpression.to_rdf(g), RDFS.domain, self.classExpression.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 @dataclass
 class DataPropertyRange(Annotatable):
@@ -123,11 +131,13 @@ class DataPropertyRange(Annotatable):
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return self.annots(w, lambda: w + self.dataPropertyExpression + ' ' + self.dataRange)
-    
+
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(DPE) rdfs:range T(DR) .
         return self.add_triple(g, self.dataPropertyExpression.to_rdf(g), RDFS.range, self.dataRange.to_rdf(g))
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 @dataclass
 class FunctionalDataProperty(Annotatable):
@@ -141,6 +151,8 @@ class FunctionalDataProperty(Annotatable):
         # T(DPE) rdf:type owl:FunctionalProperty .
         self.add_triple(g, self.dataPropertyExpression.to_rdf(g), RDF.type, OWL.FunctionalProperty)
 
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.dataPropertyExpression._subjects(g)
 
 @dataclass
 class DatatypeDefinition(Annotatable):

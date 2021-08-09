@@ -1,15 +1,13 @@
 import logging
 from abc import ABCMeta
-from dataclasses import dataclass, field, Field, fields
-from inspect import getmodule
-from typing import List, Any, get_type_hints, Tuple, Type, Optional
+from dataclasses import dataclass, Field, fields
+from typing import List, Any, Tuple, Type, Optional
 
 from rdflib import Graph
 from rdflib.term import URIRef
 
 from funowl.base.cast_function import cast
-from funowl.base.list_support import ListWrapper
-from funowl.terminals.TypingHelper import get_args
+from funowl.base.rdftriple import SUBJ
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -70,6 +68,10 @@ class FunOwlRoot:
         # Note: we use issubclass because we've overloaded isinstance to return true if instance can be coerced into
         # type of self.
         return issubclass(type(instance), cls)
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        """ Return the subject(s) of self """
+        raise NotImplementedError(type(self).__name__)
 
     @classmethod
     def _parse_input(cls, v: Any) -> Tuple[Any]:

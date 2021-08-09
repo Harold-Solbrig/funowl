@@ -108,6 +108,9 @@ class StringLiteralWithLanguage(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.concat(self.literal, self.language)
 
+    def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> rdflib.Literal:
+        return rdflib.Literal(self.literal, lang=str(self.language))
+
     def __str__(self) -> str:
         return str(self.literal) + '@' + str(self.language)
 
