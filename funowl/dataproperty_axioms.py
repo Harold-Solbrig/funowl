@@ -47,8 +47,11 @@ class SubDataPropertyOf(Annotatable):
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> None:
         # T(DPE1) rdfs:subPropertyOf T(DPE2) .
-        self.add_triple(g, self.subrDataPropertyExpression.to_rdf(g), RDFS.subPropertyOf,
+        self.add_triple(g, self.subDataPropertyExpression.to_rdf(g), RDFS.subPropertyOf,
                         self.superDataPropertyExpression.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        return self.superDataPropertyExpression._subjects(g)
 
 
 @dataclass
@@ -71,6 +74,12 @@ class EquivalentDataProperties(Annotatable):
         # T(DPEn-1) owl:equivalentProperty T(DPEn) .
         for t1, t2 in zip(self.dataPropertyExpressions[:-1], self.dataPropertyExpressions[1:]):
             self.add_triple(g, t1.to_rdf(g), OWL.equivalentProperty, t2.to_rdf(g))
+
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        rval = []
+        for e in self.dataPropertyExpressions:
+            rval += e._subjects(g)
+        return rval
 
 @dataclass
 class DisjointDataProperties(Annotatable):
