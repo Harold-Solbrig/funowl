@@ -175,9 +175,10 @@ class Ontology(Annotatable):
         self.axioms.append(ObjectPropertyRange(ope, ce))
         return self
 
-    def imports(self, import_: Union["Ontology", str]) -> "Ontology":
+    def imports(self, import_: Union["Ontology", "OntologyDocument", str]) -> "Ontology":
         self.directlyImportsDocuments.append(
-            Import(import_.iri if isinstance(import_, Ontology) else IRI(str(import_))))
+            Import(import_.iri if isinstance(import_, Ontology) else
+                   import_.ontology.iri if isinstance(import_, OntologyDocument) else IRI(str(import_))))
         return self
 
     def namedIndividuals(self, *individuals: IRI.types()) -> "Ontology":
