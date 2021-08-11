@@ -1,10 +1,11 @@
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional, List, Union
 
 from rdflib import Graph
 from rdflib.namespace import NamespaceManager, OWL
 from rdflib.term import URIRef
 
+from funowl.base.cast_function import exclude
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.general_definitions import PrefixName, FullIRI
 from funowl.writers.FunctionalWriter import FunctionalWriter
@@ -12,8 +13,12 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 
 @dataclass
 class Prefix(FunOwlBase):
-    prefixName: Optional[PrefixName]
+    prefixName: Optional[Union[PrefixName, str]]
     fullIRI: FullIRI
+
+    def __post_init__(self):
+        if self.prefixName is not None and not isinstance(self.prefixName, PrefixName):
+            self.prefixName = PrefixName(self.prefixName)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.concat((self.prefixName or '') + ':', '=',
