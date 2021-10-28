@@ -146,15 +146,26 @@ def nested(s: bytes, start: int) -> Tuple[bytes, int]:
     """
     depth = 1           # Because the function match eats the opening parenthesis
     i = start
+    in_quotes = False
+    esc = False
     try:
         while True:
             m = s[i:i+1]
-            if m == b'(':
+            if in_quotes:
+                if esc:
+                    esc = False
+                elif m == b'\\':
+                    esc = True
+                elif m == b'"':
+                    in_quotes = False
+            elif m == b'(':
                 depth += 1
             elif m == b')':
                 depth -= 1
                 if depth <= 0:
                     return s[start:i], i+1
+            elif m == b'"':
+                in_quotes = True
             i += 1
     except IndexError:
         raise ValueError("Parenthesis mismatch")
