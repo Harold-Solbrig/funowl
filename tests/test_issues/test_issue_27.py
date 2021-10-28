@@ -1,5 +1,6 @@
 import unittest
 from funowl.converters.functional_converter import to_python
+import requests
 
 OWL_1 = """
 Prefix(:=<http://www.biopax.org/release/biopax-level3.owl#>)
@@ -45,6 +46,12 @@ class ParenAsLiteralTestCase(unittest.TestCase):
         with self.assertRaises(ValueError) as e:
             owl = to_python(OWL_ERR)
         self.assertIn('Not expecting a quoted string', str(e.exception))
+
+    @unittest.skip("Use this if there are issues w/ linkml content.  Too slow for general testing")
+    def test_sdo_issue(self):
+        with requests.get("https://raw.githubusercontent.com/linkml/linkml-model-enrichment/infer-from-owl/tests/resources/schemaorg-robot.ofn") as inp:
+            owl = to_python(inp.text)
+        print(str(owl))
 
 
 if __name__ == '__main__':
