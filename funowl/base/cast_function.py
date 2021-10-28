@@ -78,7 +78,11 @@ def cast(cast_to: Union[Type, Field], v: Any, _coercion_allowed: Optional[bool] 
 
     # TODO: this should be a parameterized type for return
     def do_cast(target_type: Type, target_value: Any) -> Any:
-        return target_type(*(getattr(target_type, '_parse_input', lambda e: e))(target_value))
+        # Try to kick out a better error here
+        args = getattr(target_type, '_parse_input', lambda e: e)(target_value)
+        if target_type is str:
+            raise ValueError(f'Not expecting a quoted string in this context: "{target_value}"')
+        return target_type(*args)
 
     # None and empty lists are universal types.  If already cast, we're done
     if v is None or v == [] or (isinstance_(cast_to, Field) and type(v) is cast_to.type) or type(v) is cast_to:
