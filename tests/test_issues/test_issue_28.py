@@ -1,9 +1,7 @@
 import unittest
-from contextlib import redirect_stderr
 from io import StringIO
 
 from funowl.converters.functional_converter import to_python
-import requests
 
 OWL_1 = """
 Prefix(:=<http://www.biopax.org/release/biopax-level3.owl#>)
