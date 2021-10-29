@@ -165,7 +165,7 @@ class Literal(FunOwlChoice):
         v = v.replace("\n", "\\n")
 
         # Add quotes if necessary
-        if v[0] not in ['"', "'"]:
+        if len(v) == 0 or v[0] not in ['"', "'"]:
             v = '"' + v + '"'
         # Create a turtle triple to use the n3 parser
         stmt = f'@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . xsd:f a {v} .'

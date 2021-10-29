@@ -274,39 +274,37 @@ def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None]) -> in
     :param consumer: OWLFunc entry consumer
     :return: final position
     """
-    try:
-        while True:
-            start = skip_comments(inp, start)
-            m = function_re.match(inp, start)
-            if not m:
-                break
-            func = m.group(1).decode()
-            start = m.span()[1]
+    while True:
+        start = skip_comments(inp, start)
+        m = function_re.match(inp, start)
+        if not m:
+            break
+        func = m.group(1).decode()
+        start = m.span()[1]
 
-            # Don't try to pre-parse the arguments for an Ontology
-            if func == "Ontology":
-                o = Ontology()
+        # Don't try to pre-parse the arguments for an Ontology
+        if func == "Ontology":
+            o = Ontology()
+            start = skip_comments(inp, start)
+            uri, start = uri_matcher(inp, start)
+            if uri:
+                o.iri = uri
                 start = skip_comments(inp, start)
-                uri, start = uri_matcher(inp, start)
-                if uri:
-                    o.iri = uri
-                    start = skip_comments(inp, start)
-                    vers, start = uri_matcher(inp, start)
-                    if vers:
-                        o.version = vers
-                start = skip_comments(inp, start)
-                start = fparse(inp, start, lambda f: o.add_arg(f))
-                consumer(o)
-                start = skip_comments(inp, start)
-                m = final_pren.match(inp, start)
-                if not m:
-                    raise ValueError("Missing final parenthesis")
-                break
-            else:
-                body, start = nested(inp, start)
-                consumer(OWLFunc(m.group(1).decode(), parse_args(body.decode())).decl)
-    except IndexError:
-        pass
+                vers, start = uri_matcher(inp, start)
+                if vers:
+                    o.version = vers
+            start = skip_comments(inp, start)
+            start = fparse(inp, start, lambda f: o.add_arg(f))
+            consumer(o)
+            start = skip_comments(inp, start)
+            m = final_pren.match(inp, start)
+            if not m:
+                raise ValueError("Missing final parenthesis")
+            break
+        else:
+            body, start = nested(inp, start)
+            consumer(OWLFunc(m.group(1).decode(), parse_args(body.decode())).decl)
+
     return start
 
 
