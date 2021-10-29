@@ -3,7 +3,7 @@ from dataclasses import dataclass, fields, Field
 from typing import Any, ClassVar, get_type_hints, List, Type, Optional, Union
 
 from rdflib import Graph
-from rdflib.term import URIRef
+from rdflib.term import URIRef, Literal
 
 from funowl.base.cast_function import cast
 from funowl.base.fun_owl_base import FunOwlBase
@@ -88,6 +88,8 @@ class FunOwlChoice(FunOwlBase):
         Determine whether v is a valid instance of v
         :param v: value to test
         """
+        # Quote any literal values to prevent accidental matching
+        v = '"' + str(v) + '"' if isinstance(v, Literal) else v
         for choice_type in cls.real_types():
             if issubclass(type(v), choice_type):
                 return True
