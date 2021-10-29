@@ -8,6 +8,9 @@ import requests
 
 from tests import datadir
 
+# Set this to False if you want to make sure some of the big inputs work
+SKIP_LONG_TESTS = True
+
 OWL_1 = """
 Prefix(:=<http://www.biopax.org/release/biopax-level3.owl#>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
@@ -60,13 +63,13 @@ class ParenAsLiteralTestCase(unittest.TestCase):
             owl = to_python(OWL_ERR)
         self.assertIn('Not expecting a quoted string', str(e.exception))
 
-    @unittest.skip("Use this if there are issues w/ linkml content.  Too slow for general testing")
+    @unittest.skipIf(SKIP_LONG_TESTS, "Use this if there are issues w/ linkml content.  Too slow for general testing")
     def test_sdo_issue(self):
         with requests.get("https://raw.githubusercontent.com/linkml/linkml-model-enrichment/infer-from-owl/tests/resources/schemaorg-robot.ofn") as inp:
             owl = to_python(inp.text)
         print(str(owl))
 
-    # @unittest.skip("uberon image must be present to run this")
+    @unittest.skipIf(SKIP_LONG_TESTS, "uberon image must be present to run this")
     def test_uberon_issue(self):
         # To run this test:
         #   a) Download an image of https://bioportal.bioontology.org/ontologies/UBERON from the owl link
