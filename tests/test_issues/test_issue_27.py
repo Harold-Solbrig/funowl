@@ -6,10 +6,7 @@ from io import StringIO
 from funowl.converters.functional_converter import to_python
 import requests
 
-from tests import datadir
-
-# Set this to False if you want to make sure some of the big inputs work
-SKIP_LONG_TESTS = True
+from tests import datadir, SKIP_LONG_TESTS
 
 OWL_1 = """
 Prefix(:=<http://www.biopax.org/release/biopax-level3.owl#>)
@@ -76,9 +73,6 @@ class ParenAsLiteralTestCase(unittest.TestCase):
         #   b) Use protege to load the downloaded image (ext.owl) and save it in OWL functional syntax (ext.owlf.owl)
         #   c) Save the output in tests/data/ext.owlf
 
-        # TO Complete -- redirect the part of the stdout that kicks out the errors on URI's
-        #  Verify that we don't have an error message in it
-        #  Look up a bit of the OWL that has a PMID in it and make sure that it prints correctly
         txt = StringIO()
         with redirect_stderr(txt):
             with open(os.path.join(datadir, 'ext.owlf')) as f:
