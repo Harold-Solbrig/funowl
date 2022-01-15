@@ -1,5 +1,6 @@
 import logging
-from collections import Iterable, UserList
+from collections.abc import Iterable
+from collections import UserList
 from copy import copy
 from dataclasses import Field, MISSING, field
 from typing import Type, Any, Optional, Union, List, TypeVar

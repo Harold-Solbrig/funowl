@@ -36,6 +36,12 @@ from . axioms import Axiom
 if sys.version_info < (3, 8, 0):
     warn(f"FunOwl needs python 3.8 or later.  Current version: {sys.version_info}")
 
+# Use the rdflib shim
+from rdflib_shim import RDFLIB_SHIM
+x = RDFLIB_SHIM                 # Force import to stay put
+# from rdflib.plugins.serializers.turtle import RecursiveSerializer
+# RecursiveSerializer.roundtrip_prefixes = True
+
 # TODO: Run coverage and test or toss anything that isn't executed
 # TODO: Consider removing the streaming IO feature -- it doesn't seem to do a lot for performance and makes things compicated
 # TODO: Put an official unit test in -- something like rdflib
