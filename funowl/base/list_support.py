@@ -1,4 +1,5 @@
-from collections import UserList, Iterable
+from collections.abc import Iterable
+from collections import UserList
 from copy import copy
 from dataclasses import field
 from typing import Type
