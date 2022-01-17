@@ -100,7 +100,7 @@ def validate_owl2(fileloc: str) -> bool:
     #    g(f(functional_repr) == RDF
     if do_rdf:
         expected_rdf = Graph()
-        expected_rdf.load(fileloc.replace('.func', '.ttl'), format="turtle")
+        expected_rdf.parse(fileloc.replace('.func', '.ttl'), format="turtle")
         actual_rdf_graph = Graph()
         actual_rdf_graph.add = lambda t: add(actual_rdf_graph, t)
         ontology_doc.to_rdf(actual_rdf_graph)
