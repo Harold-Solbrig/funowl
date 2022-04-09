@@ -22,7 +22,11 @@ function_re = re.compile(rb'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
 inner_function_re = re.compile(r'\s*([A-Z][A-Za-z]+)\s*\(', flags=re.DOTALL)
 
 # 1: Prefix ':=' 2: URI
-prefix_re = re.compile(r'\s*(\S*):\s*=\s*(\S*)', flags=re.DOTALL)
+#  Note - the official source of this is https://www.w3.org/TR/2013/REC-sparql11-query-20130321/#rPN_PREFIX, but
+#         we're trying to avoid having to encode all the UTF-16 stuff, so we're generalizing here and letting the
+#         n3 parser cover the final bit
+prefix_re = re.compile(r'\s*([^"]*):\s*=\s*([^"]*)', flags=re.DOTALL)
+# prefix_re = re.compile(r'\s*([^"]*):\s*=\s*([^"]*)', flags=re.DOTALL)
 
 # nodeId
 blank_node_label_re = re.compile(r'\s*(_:\S*)', flags=re.DOTALL)

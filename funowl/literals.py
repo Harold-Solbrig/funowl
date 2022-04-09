@@ -11,7 +11,7 @@ from typing import Optional, Union, Any, Tuple, ClassVar
 
 import rdflib
 from rdflib import Graph, Literal
-from rdflib.namespace import RDFS, XSD, RDF
+from rdflib.namespace import RDFS, XSD, RDF, Namespace
 from rdflib.plugins.parsers.notation3 import BadSyntax
 from rdflib.term import Node
 
@@ -22,6 +22,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 from funowl.general_definitions import QuotedString, LanguageTag
 from funowl.identifiers import IRI
 
+DUMMY_PREFIX = Namespace("http://a/b#")
 
 @dataclass
 class Datatype(IRI):
@@ -168,7 +169,8 @@ class Literal(FunOwlChoice):
         if len(v) == 0 or v[0] not in ['"', "'"]:
             v = '"' + v + '"'
         # Create a turtle triple to use the n3 parser
-        stmt = f'@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . xsd:f a {v} .'
+        # TODO: make the constructor static and use clear
+        stmt = f'@prefix : <{DUMMY_PREFIX}> . @prefix xsd: <{XSD}> . :f a {v} .'
         g = Graph()
         try:
             g.parse(data=stmt, format="turtle")
@@ -177,7 +179,7 @@ class Literal(FunOwlChoice):
         # Probably a bug in rdflib, but "n"^^xsd.integer produces this error
         except IndexError:
             pass
-        l = g.value(XSD.f, RDF.type)
+        l = g.value(DUMMY_PREFIX.f, RDF.type)
         if l is not None:
             if not isinstance(l, rdflib.Literal) or l.value is None:
                 l = None
