@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "00d611f86cf6fb72afd7bc90b90680e2d83fbfe33450779eae90abdc20b87253"
+            "sha256": "c8f2218262cd18a9584b6bfe4dfe8f417789a79d5ab4e45bd5ec3dc898cf034c"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -60,11 +60,11 @@
         },
         "rdflib": {
             "hashes": [
-                "sha256:6136ae056001474ee2aff5fc5b956e62a11c3a9c66bb0f3d9c0aaa5fbb56854e",
-                "sha256:b7642daac8cdad1ba157fecb236f5d1b2aa1de64e714dcee80d65e2b794d88a6"
+                "sha256:8dbfa0af2990b98471dacbc936d6494c997ede92fd8ed693fb84ee700ef6f754",
+                "sha256:fc81cef513cd552d471f2926141396b633207109d0154c8e77926222c70367fe"
             ],
             "index": "pypi",
-            "version": "==6.0.2"
+            "version": "==6.1.1"
         },
         "rdflib-jsonld": {
             "hashes": [

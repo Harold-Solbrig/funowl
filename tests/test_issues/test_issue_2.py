@@ -3,9 +3,11 @@ import unittest
 from rdflib import Namespace, URIRef
 
 from funowl import Ontology, DataProperty, OntologyDocument, Class, ClassAssertion, DataPropertyAssertion
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
 
 
 class Issue2TestCase(unittest.TestCase):
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_cyclic_issue(self):
         # Create relaMath.owl in functional
         RELA = Namespace("http://sweet.jpl.nasa.gov/2.3/relaMath.owl")

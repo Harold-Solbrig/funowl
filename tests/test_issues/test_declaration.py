@@ -5,6 +5,7 @@ from rdflib import Namespace
 from funowl import Declaration, Class
 from funowl.converters.functional_converter import to_python
 from funowl.writers.FunctionalWriter import FunctionalWriter
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
 
 text = """
 Prefix( pizza: = <http://www.co-ode.org/ontologies/pizza/pizza.owl#> )
@@ -23,6 +24,7 @@ class DeclarationTestCase(unittest.TestCase):
         self.assertEqual("Declaration( Class( <http://www.co-ode.org/ontologies/pizza/pizza.owl#American> ) )",
                          str(decl.to_functional(w)))
 
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_declaration(self):
         parsed = to_python(text)
         actual = str(parsed.to_functional())
