@@ -33,8 +33,8 @@ from . ontology_document import OntologyDocument, Ontology, Import
 from . axioms import Axiom
 
 
-if sys.version_info < (3, 8, 0):
-    warn(f"FunOwl needs python 3.8 or later.  Current version: {sys.version_info}")
+if sys.version_info < (3, 7, 9):
+    warn(f"FunOwl needs python 3.7.9 or later.  Current version: {sys.version_info}")
 
 # Use the rdflib shim
 from rdflib_shim import RDFLIB_SHIM
