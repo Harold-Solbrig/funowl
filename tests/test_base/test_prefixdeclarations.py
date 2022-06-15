@@ -3,6 +3,7 @@ import unittest
 from rdflib import RDF, URIRef, RDFS
 
 from funowl.prefix_declarations import Prefix, PrefixDeclarations
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
 from tests.utils.base import TestBase
 
 
@@ -17,6 +18,7 @@ class PrefixTestCase(TestBase):
         with self.assertRaises(TypeError):
             Prefix('http:', RDFS)
 
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_default_prefix(self):
         """ Test that None is the correct default prefix """
         x = Prefix(None, RDFS.Resource)
@@ -34,6 +36,7 @@ Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
 Prefix( : = <http://www.w3.org/2000/01/rdf-schema#label> )''', str(pds.to_functional(self.w.reset())))
 
 
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_prefixDeclarations(self):
         pds = PrefixDeclarations()
         self.assertEqual("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )

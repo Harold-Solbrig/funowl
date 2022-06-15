@@ -4,6 +4,7 @@ from rdflib import Graph, URIRef, Namespace
 
 from funowl import Prefix
 from funowl.ontology_document import Ontology, Import, OntologyDocument
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
 from tests.utils.base import TestBase, A
 
 
@@ -20,6 +21,7 @@ EX = Namespace("http://www.example.com/ontology1#")
 
 class OntologyDocumentTestCase(TestBase):
 
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_ontology_document_prefixes(self):
         doc = OntologyDocument(A, ex=EX)
         self.assertEqual("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
@@ -32,6 +34,7 @@ Prefix( ex: = <http://www.example.com/ontology1#> )
 
 Ontology( )""", doc.to_functional().getvalue())
 
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_use_case_one(self):
         from rdflib import RDFS, OWL
         od = OntologyDocument(ontology=Ontology(iri="http://www.example.com/ontology1"))

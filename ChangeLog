@@ -1,6 +1,52 @@
 CHANGES
 =======
 
+* Minor tweak to make versioning compatible back to 3.7.9
+* Automatically generated requirements and Pipfile.lock
+* Try testing ANY push vs. just main
+* Omit single quotes from prefix parse as well just to be sure
+* Resolve issue #39
+
+v0.1.11
+-------
+
+* Resolve issue #33
+* Fix issue #33
+* Automatically generated requirements and Pipfile.lock
+* rdflibshim. fixes #30
+* Testing issue #24.  Issue appears to have been fixed
+
+v0.1.10
+-------
+
+* Add skip option to tests
+* Fix issue w/ empty ("") literals
+* Fix issue where literals were being parsed as URI's
+* Checking that issue #26 got fixed in the process.  It did
+* Automatically generated requirements and Pipfile.lock
+* Fixed parsing error where parens had priority over quotes
+
+v0.1.9
+------
+
+* Changed the Ontology.imports signature to allow an OntologyDocument. Changed Prefix to accept strings
+* Enable SNOMED test by adding \_\_init\_\_.py to directory
+* Fix (strangely) undetected typo dataproperty\_axioms
+
+v0.1.8
+------
+
+* Finalize test
+* Added emit\_functional\_definition to to\_rdf function
+
+v0.1.7
+------
+
+* Switch to https for the owl converter
+* Force python 3.8 and above and lock to rdflib 5.0
+* Automatically generated requirements and Pipfile.lock
+* Update README.md
+* Bump urllib3 from 1.26.4 to 1.26.5
 * Update dependency on urllib3
 
 v0.1.6
@@ -47,27 +93,11 @@ v0.1.5
 * Implemented to\_rdf for DisjointClasses, DataAllValuesFrom and DisjointDataProperties
 * Added \_\_str\_\_ method to ontology document to simplify serialization
 * Release version 0.1.4
-
-v0.1.4
-------
-
 * Add version badges
 * Don't emit a DataType declaration for literal data types
 * Several fixes on literal representation
-
-v0.1.3
-------
-
 * Update dependencies
-
-v0.1.1
-------
-
 * More work on singleton property
-
-v0.1.0
-------
-
 * Fix issue in SubObjectPropertyOf RDF emission
 * Fix issues where BNode parsing stopped working
 * Implemented to\_rdf for SubObjectPropertyOf, ObjectPropertyDomain, FunctionalObjectProperty and InverseFunctionalObjectProperty

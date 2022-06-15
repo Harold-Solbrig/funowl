@@ -6,6 +6,7 @@ from rdflib.namespace import SKOS
 
 from funowl.annotations import Annotation
 from funowl.ontology_document import Ontology, OntologyDocument
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
 from tests.utils.base import TestBase
 
 
@@ -21,6 +22,7 @@ Ontology({inside} )"""
 
 
 class OwlBasicsTestCase(TestBase):
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_ontology_document(self):
         doc = OntologyDocument()
         self.assertEqual(expected([]), str(doc.to_functional().getvalue()))
