@@ -4,16 +4,16 @@ Helper functions for typing library.  Variation on the version in pyjsg library
 import sys
 from collections import UserList
 from dataclasses import fields
-from typing import Any, Iterable, TypeVar, _eval_type
+from typing import Any, Iterable, TypeVar, _eval_type, Union
 
 if sys.version_info < (3, 8):
     def get_origin(typ):
         return getattr(typ, '__origin__', None)
 
     def get_args(typ):
-        return getattr(typ, '__args__', None)
+        return getattr(typ, '__args__', [])
 else:
-    from typing import get_origin, get_args, Union
+    from typing import get_origin, get_args
 
 
 def proc_forwards(cls, glob_ns) -> None:
