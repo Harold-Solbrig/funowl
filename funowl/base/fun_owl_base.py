@@ -91,4 +91,6 @@ class FunOwlBaseMeta(ABCMeta):
 
 @dataclass
 class FunOwlBase(FunOwlRoot, metaclass=FunOwlBaseMeta):
-    pass
+    def _subjects(self, g: Graph) -> List[SUBJ]:
+        # This should never get called.  If it does, FunOwlRoot will raise a notimplemented error.
+        return super()._subjects(g)
