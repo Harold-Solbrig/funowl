@@ -132,6 +132,33 @@ class RDFLIBNamespaceBindingTestCase(unittest.TestCase):
                 self.assertEqual(1, len(er.result))
                 self.assertEqual({('', EX2)}, set(er.result))
 
+    def test_turtle_two_namespaces(self):
+        """ Examine how rdflib 6.2.0 handles two namespaces w/ same URI """
+        turtle = """@prefix : <http://example.org/ns1#> .
+@prefix NSA: <http://example.org/ns1#> .
+@prefix NSB: <http://example.org/ns1#> .
+NSA:foo NSB:bar :fee ."""
+
+        g = rdflib.Graph()
+        # The n3 (turtle) parser maintains its own namespace system to map the above code to the correct URI's
+        g.parse(data=turtle, format="turtle")
+        # All namespaces get mapped to the LAST namespace entered.  The others are completely gone
+        self.assertEqual("""@prefix NSB: <http://example.org/ns1#> .
+
+NSB:foo NSB:bar NSB:fee .""", g.serialize(format="turtle").strip())
+
+        # NSB exists:
+        self.assertEqual("http://example.org/ns1#test1", str(g.namespace_manager.expand_curie("NSB:test1")))
+        # But NSA is missing
+        with self.assertRaises(ValueError) as e:
+            self.assertEqual("http://example.org/ns1#test2", str(g.namespace_manager.expand_curie("NSA:test2")))
+            self.assertIn('Prefix "NSA" not bound to any namespace', str(e))
+        # And default doesn't work because why?
+        with self.assertRaises(ValueError) as e:
+            g.namespace_manager.expand_curie(":test3")
+            self.assertIn('Malformed curie argument', str(e))
+
+
 
 if __name__ == '__main__':
     unittest.main()
