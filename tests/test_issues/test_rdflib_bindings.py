@@ -3,6 +3,10 @@ from dataclasses import dataclass
 from typing import Tuple, Optional, List, Dict
 
 import rdflib
+import rdflib_shim
+
+# Make sure the import above works
+shimed = rdflib_shim.RDFLIB_SHIM
 
 # Code to evaluate how we can use the rdflib namespace library to manage our namespace behavior.  What we need in
 # funowl is:
@@ -29,8 +33,10 @@ import rdflib
 
 EX = "http://example.org/ns1#"
 EXNS = rdflib.Namespace(EX)
+EXURI = rdflib.URIRef(EX)
 EX2 = "http://example.org/ns2#"
 EX2NS = rdflib.Namespace(EX2)
+EX2URI = rdflib.URIRef(EX2)
 
 PRINT_OUTPUT = True                # Print tabular output
 
@@ -114,25 +120,25 @@ class RDFLIBNamespaceBindingTestCase(unittest.TestCase):
             # We should have two declarations
             if er.override:
                 self.assertEqual(2, len(er.result))
-                self.assertEqual({('EX', EX), ('', EX)}, set(er.result))
+                self.assertEqual({('EX', EXURI), ('', EXURI)}, set(er.result))
 
     def test_decl_default_rev(self):
         """ Test a default followed by a namespace for the same URI """
-        rslt = self.run_test(": ns1, EX: ns1", [(None, EX), ('EX', EX)])
+        rslt = self.run_test(": ns1, EX: ns1", [(None, EXURI), ('EX', EXURI)])
         for er in rslt:
             # We should have two declarations
             if er.override:
                 self.assertEqual(2, len(er.result))
-                self.assertEqual({('EX', EX), ('', EX)}, set(er.result))
+                self.assertEqual({('EX', EXURI), ('', EXURI)}, set(er.result))
 
     def test_two_namespaces(self):
         """ Test two prefixes with the same URI """
-        rslt = self.run_test("EXA: ns1, EXB: ns1", [('EXA', EX), ('EXB', EX)])
+        rslt = self.run_test("EXA: ns1, EXB: ns1", [('EXA', EXURI), ('EXB', EXURI)])
         for er in rslt:
             # We should have two declarations
             if er.override:
                 self.assertEqual(2, len(er.result))
-                self.assertEqual({('EXA', EX), ('EXB', EX)}, set(er.result))
+                self.assertEqual({('EXA', EXURI), ('EXB', EXURI)}, set(er.result))
 
     def test_two_diff_namespaces(self):
         """ Test the same prefix with two different URIs
@@ -147,7 +153,7 @@ class RDFLIBNamespaceBindingTestCase(unittest.TestCase):
             # We should have two declarations
             if er.replace:
                 self.assertEqual(1, len(er.result))
-                self.assertEqual({('EXA', EX2)}, set(er.result))
+                self.assertEqual({('EXA', EX2URI)}, set(er.result))
 
     def test_two_defaults(self):
         """
@@ -163,7 +169,7 @@ class RDFLIBNamespaceBindingTestCase(unittest.TestCase):
             # We should have two declarations
             if evalresult.replace:
                 self.assertEqual(1, len(evalresult.result))
-                self.assertEqual({('', EX2)}, set(evalresult.result))
+                self.assertEqual({('', EX2URI)}, set(evalresult.result))
 
     def test_three_turtle_namespaces(self):
         """ Examine how rdflib handles two namespaces and a default w/ same URI """
@@ -179,8 +185,7 @@ NSA:foo NSB:bar :fee ."""
         output_ttl = g.serialize(format="turtle")
 
         # V6 returns a string, V5 returns a bytearray.  This is NOT backwards compatible
-        if using_rdflib_v5:
-            output_ttl = output_ttl.decode()
+        # rdflib_shim takes care of this issue
 
         # In both versions, only the last version is preserved on output
         self.assertEqual("""@prefix NSB: <http://example.org/ns1#> .
