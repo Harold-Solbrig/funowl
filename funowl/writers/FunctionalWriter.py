@@ -1,23 +1,24 @@
-from typing import List, Optional, Callable, Union, Any
+from typing import List, Optional, Callable, Union, Any, Iterable
 
-from rdflib import Graph, OWL, URIRef
+from rdflib import OWL, URIRef
 
 
 class FunctionalWriter:
     DEFAULT_TAB: str = '    '
 
-    def __init__(self, tab: Optional[str] = None, g: Optional[Graph] = None) -> None:
+    def __init__(self, tab: Optional[str] = None, pd: Optional["PrefixDeclarations"] = None) -> None:
         """ Create a FunctionalWriter instance
 
         :param tab: what to emit for a tab setting.  Default: DEFAULT_TAB
-        :param g: graph to use for IRI resolution.  Default - default rdflib graph
+        :param pd: PrefixDeclarations to use for mapping AbbreviatedIRIs
         """
         self.tab = FunctionalWriter.DEFAULT_TAB if tab is None else tab
-        if g is None:
-            self.g = Graph()
-            self.g.bind('owl', OWL)
+        if pd is None:
+            from funowl.prefix_declarations import PrefixDeclarations
+            self.pd = PrefixDeclarations()
+            self.pd.bind('owl', OWL)
         else:
-            self.g = g
+            self.pd = pd
         self._indent = 0
         self.output: List[str] = []
         self._line = ''
@@ -41,7 +42,8 @@ class FunctionalWriter:
         :param namespace: UIRI
         :return: FunctionalWriter instance
         """
-        self.g.bind(localname, namespace)
+        self.pd.bind(localname, namespace)
+        return self
 
     def __add__(self, other: Any) -> "FunctionalWriter":
         """
@@ -59,7 +61,7 @@ class FunctionalWriter:
         """
         for el in eles:
             if hasattr(el, 'to_functional') and callable(getattr(el, 'to_functional')):
-                w = FunctionalWriter(g=self.g)
+                w = FunctionalWriter()
                 w._inside_function = self._inside_function
                 line = str(el.to_functional(w))
             elif isinstance(el, FunctionalWriter):
@@ -140,7 +142,7 @@ class FunctionalWriter:
              indent: bool = True) -> "FunctionalWriter":
         """
         Generate a functional method in the form of "func( ... )"
-        
+
         :param func_name: Function name or object.  If object, the class name is used
         :param contents: Invoked to generate function contents
         :param indent: Put interior on the same line if False
@@ -156,7 +158,7 @@ class FunctionalWriter:
         self._inside_function = inside
         return self.outdent() if inside and indent else self
 
-    def iter(self, *objs: List[Any], f: Optional[Callable[[Any], "FunctionalWriter"]] = None, indent: bool=True) \
+    def iter(self, *objs: Iterable[Any], f: Optional[Callable[[Any], "FunctionalWriter"]] = None, indent: bool = True) \
             -> "FunctionalWriter":
         """
          Iterate over a list of lists of FunOwlRoot objects, emitting the the values if they are not emtpy
@@ -181,7 +183,7 @@ class FunctionalWriter:
         return self
 
     def opt(self, v: Optional[Any], sep: str = ' ') -> "FunctionalWriter":
-        """ Emit v if it exists 
+        """ Emit v if it exists
         :param v: Optional item to emit
         :param sep: separator
         :return: FunctionWriter instance

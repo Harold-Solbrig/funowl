@@ -6,12 +6,13 @@ from typing import Any
 from funowl import OntologyDocument
 from funowl.converters.functional_converter import to_python
 from tests import datadir, PREFIXES_BROKEN_MESSAGE, RDFLIB_PREFIXES_ARE_BROKEN
+from tests.utils.base import TestBase
 
 pizza = os.path.join(datadir, 'pizza.owl')
 pizza_fun = os.path.join(datadir, 'pizza.owl.out')
 
 
-class FunctionalConverterTestCase(unittest.TestCase):
+class FunctionalConverterTestCase(TestBase):
     def verify(self, loc: Any) -> None:
         self.maxDiff = None
         doc = to_python(loc)
@@ -22,7 +23,7 @@ class FunctionalConverterTestCase(unittest.TestCase):
             if RDFLIB_PREFIXES_ARE_BROKEN:
                 print(f"TEST SKIPPED {PREFIXES_BROKEN_MESSAGE}")
             else:
-                self.assertEqual(expected, str(doc.to_functional()))
+                self.assertEqualOntology(expected, str(doc.to_functional()))
         else:
             with open(pizza_fun, 'w') as f:
                 f.write(str(doc.to_functional()))
