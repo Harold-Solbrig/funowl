@@ -1,6 +1,26 @@
 CHANGES
 =======
 
+* Checkpoint to clean up the main branch
+* Demonstration of some of the issues we face in rdflib 6.2
+* All v6 tests work as intended
+* Added further tests of multiple namespaces in turtle
+* Add \_subjects to FunOwlBase to handle linting issue
+* Formatting repair
+* Add a definitive set of tests expected rdflib behavior
+* Automatically generated requirements and Pipfile.lock
+* Add unit test for issue #45
+* Automatically generated requirements and Pipfile.lock
+
+v0.1.12
+-------
+
+* Automatically generated requirements and Pipfile.lock
+* Automatically generated requirements and Pipfile.lock
+* Automatically generated requirements and Pipfile.lock
+* Bypass any unit tests that fail due to the rdflib 6.1.1 mega-bindings
+* Bypass any unit tests that fail due to the rdflib 6.1.1 mega-bindings
+* Automatically generated requirements and Pipfile.lock
 * Minor tweak to make versioning compatible back to 3.7.9
 * Automatically generated requirements and Pipfile.lock
 * Try testing ANY push vs. just main

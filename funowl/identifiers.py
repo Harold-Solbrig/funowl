@@ -17,36 +17,28 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
     v: Union[AbbreviatedIRI, FullIRI, URIRef, str] = exclude([URIRef, str])
+
     rdf_type: ClassVar[URIRef] = None
-    prefix_declarations: ClassVar[PrefixDeclarations] = None
+    prefix_declarations: ClassVar[PrefixDeclarations] = None        # Link to prefixes section, if declared
 
     # def __post_init__(self):
     #     print(f"Just constructed a {type(self)} value {str(self.v)}")
 
-    def full_uri(self) -> Optional[URIRef]:
-        """
-        Return the fullIRI representation of v, using pd to map the prefix to an IRI
-        :return: URIRef if this is a legitimate URI, else None
-        """
-        if isinstance(self.v, URIRef):
-            return self.v
-        if isinstance(self.v, AbbreviatedIRI) and IRI.prefix_declarations:
-            ns, local = self.v.split(':', 1)
-            for prefix in IRI.prefix_declarations.as_prefixes():
-                if ns == prefix.prefixName:
-                    return Namespace(prefix.fullIRI)[local]
-            logging.warning(f"IRI: {self.v} - {ns} not a valid prefix")
-            return None
-        if isinstance(self.v, FullIRI):
+    def full_uri(self, g: Graph) -> Optional[URIRef]:
+        if not isinstance(self.v, AbbreviatedIRI):
             return URIRef(self.v)
+        prefix, lname = str(self).split(':', 1)
+        if self.prefix_declarations and prefix in self.prefix_declarations:
+            return self.prefix_declarations[prefix] + lname
+        return self.v.to_rdf(g)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        return w + self.v
-        # fulluri = self.full_uri()
-        # return w + (fulluri.n3() if fulluri else self.v)
+        """ Emit an abbreviated URI if possible, otherwise a full one """
+        fulluri = None if isinstance(self.v, AbbreviatedIRI) else self.full_uri(w.g)
+        return w + (fulluri.n3(w.g.namespace_manager) if fulluri else self.v)
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:
-        fulluri = self.full_uri()
+        fulluri = self.full_uri(g)
 
         def is_builtin_namespace(n) -> bool:
             # Never add assertions that consist entirely of builtin types
@@ -62,4 +54,4 @@ class IRI(FunOwlChoice):
         return fulluri
 
     def _subjects(self, g: Graph) -> List[SUBJ]:
-        return [self.full_uri()]
+        return [self.full_uri(g)]

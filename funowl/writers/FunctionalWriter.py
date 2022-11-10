@@ -1,24 +1,23 @@
 from typing import List, Optional, Callable, Union, Any, Iterable
 
-from rdflib import OWL, URIRef
+from rdflib import Graph, OWL, URIRef
 
 
 class FunctionalWriter:
     DEFAULT_TAB: str = '    '
 
-    def __init__(self, tab: Optional[str] = None, pd: Optional["PrefixDeclarations"] = None) -> None:
+    def __init__(self, tab: Optional[str] = None, g: Optional[Graph] = None) -> None:
         """ Create a FunctionalWriter instance
 
         :param tab: what to emit for a tab setting.  Default: DEFAULT_TAB
-        :param pd: PrefixDeclarations to use for mapping AbbreviatedIRIs
+        :param g: graph to use for IRI resolution.  Default - default rdflib graph
         """
         self.tab = FunctionalWriter.DEFAULT_TAB if tab is None else tab
-        if pd is None:
-            from funowl.prefix_declarations import PrefixDeclarations
-            self.pd = PrefixDeclarations()
-            self.pd.bind('owl', OWL)
+        if g is None:
+            self.g = Graph()
+            self.g.bind('owl', OWL)
         else:
-            self.pd = pd
+            self.g = g
         self._indent = 0
         self.output: List[str] = []
         self._line = ''
@@ -42,8 +41,7 @@ class FunctionalWriter:
         :param namespace: UIRI
         :return: FunctionalWriter instance
         """
-        self.pd.bind(localname, namespace)
-        return self
+        self.g.bind(localname, namespace)
 
     def __add__(self, other: Any) -> "FunctionalWriter":
         """
@@ -61,7 +59,7 @@ class FunctionalWriter:
         """
         for el in eles:
             if hasattr(el, 'to_functional') and callable(getattr(el, 'to_functional')):
-                w = FunctionalWriter()
+                w = FunctionalWriter(g=self.g)
                 w._inside_function = self._inside_function
                 line = str(el.to_functional(w))
             elif isinstance(el, FunctionalWriter):

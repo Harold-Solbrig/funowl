@@ -38,7 +38,7 @@ EX2 = "http://example.org/ns2#"
 EX2NS = rdflib.Namespace(EX2)
 EX2URI = rdflib.URIRef(EX2)
 
-PRINT_OUTPUT = True                # Print tabular output
+PRINT_OUTPUT = False                # Print tabular output
 
 using_rdflib_v6 = rdflib.__version__ >= "6.2"
 using_rdflib_v5 = rdflib.__version__.startswith("5.0.0")

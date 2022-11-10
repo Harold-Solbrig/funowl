@@ -1,25 +1,31 @@
 from dataclasses import dataclass
-from typing import Optional, List, Union, Iterable, Dict, OrderedDict
+from typing import Optional, Union, Iterable, Dict
 
-import rdflib.namespace
-from rdflib import Graph, RDF, RDFS, XSD, OWL
+from rdflib import Graph, RDF, RDFS, XSD, OWL, Namespace
+from rdflib.namespace import NamespaceManager
 from rdflib.term import URIRef
 
 from funowl.base.fun_owl_base import FunOwlBase
 from funowl.general_definitions import PrefixName, FullIRI
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
+PREFIX_NAME_TYPE = Optional[Union[PrefixName, str]]
+FULL_IRI_TYPE = Union[FullIRI, Namespace, URIRef, str]
+
 
 @dataclass
 class Prefix(FunOwlBase):
-    prefixName: Optional[Union[PrefixName, str]]    # Always recorded as PrefixName
-    fullIRI: Union[FullIRI, str]                    # Always recorded as FullURI
+    prefixName: PREFIX_NAME_TYPE        # Always recorded as PrefixName
+    fullIRI: FULL_IRI_TYPE              # Always recorded as FullURI
 
     def __post_init__(self):
         if self.prefixName is not None and not isinstance(self.prefixName, PrefixName):
             self.prefixName = PrefixName(self.prefixName)
         if not isinstance(self.fullIRI, FullIRI):
             self.fullIRI = FullIRI(self.fullIRI)
+
+    def __hash__(self):
+        return hash(self.prefixName)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: w.concat((self.prefixName or '') + ':', '=',
@@ -36,124 +42,57 @@ RDF_PREFIX = Prefix('rdf', str(RDF))
 RDFS_PREFIX = Prefix('rdfs', str(RDFS))
 XSD_PREFIX = Prefix('xsd', str(XSD))
 OWL_PREFIX = Prefix('owl', str(OWL))
-DEFAULT_PREFIX = Prefix(None, str(OWL))
+# DEFAULT_PREFIX = Prefix(None, str(OWL))
+
+PREFIX_PRESETS = {RDF_PREFIX, RDFS_PREFIX, XSD_PREFIX, OWL_PREFIX}
 
 
-def prefix_presets() -> List[Prefix]:
-    """
-    The set of prefixes that are assumed without having to declare them. This function can be overridden if
-    special handling is needed
-    """
-    return [RDF_PREFIX, RDFS_PREFIX, XSD_PREFIX, OWL_PREFIX, DEFAULT_PREFIX]
+class PrefixDeclarations(NamespaceManager):
+    def __init__(self, g: Optional[Graph] = None) -> None:
+        self._init = True
+        self._prefixMap: Dict[str, Prefix] = dict()
+        super().__init__(g or Graph())
+        for prefix in PREFIX_PRESETS:
+            self.bind(prefix.prefixName, prefix.fullIRI)
+        self._init = False
 
+    def __contains__(self, item: Union[Prefix, str]) -> bool:
+        return str(item) in self._prefixMap
 
-class PrefixDeclarations(OrderedDict):
-    def __init__(self, g: Optional[Graph] = None, **kwargs) -> None:
-        """
-         Initialize a set of prefix declarations.  If g is supplied, export the prefixes in the graph.
-        :param g: Graph containing a set of prefix declarations
-        """
-        super().__init__(**kwargs)
-
+    def __getitem__(self, item: Union[Prefix, str]) -> URIRef:
+        entry = self._prefixMap.get(str(item))
+        return URIRef(entry.fullIRI)
 
     def as_prefixes(self) -> Iterable[Prefix]:
         """ Return the contents of the manager as a list of Prefixes """
         return self._prefixMap.values()
 
     def __setattr__(self, key, value):
-        key = '' if key is None else key
-        if key.startswith('_') or key in self.__dict__:
+        if key.startswith('_') or self._init or key in self.__dict__:
             super().__setattr__(key, value)
         else:
-            self._prefixMap[key] = Prefix(key, value)
-
-    def __getattr__(self, item):
-        item = str(item)
-        if item.startswith('_') or item in self.__dict__:
-            super().__getattribute__(item)
-        return self._prefixMap[item]
-
+            self.bind(key, value)
 
     def append(self, decl: Prefix) -> None:
         self.bind(decl.prefixName, decl.fullIRI)
 
-    def bind(self, prefix: str, namespace, _=True, __replace=True):
-        """ Bind with override and replace defaults changed """
-        if prefix:
-            self._prefixmap[str(prefix)] = str(namespace)
-        else:
-            self._default = str(namespace)
+    def as_uri(self, prefix: Union[Prefix, str], namespace: str) -> Optional[URIRef]:
+        """
+        Map prefix/namespace into a URI
+        :param prefix:
+        :param namespace:
+        :return:
+        """
+        prefix = str(prefix) if prefix else ''      # Guard against None creeping in
+        if prefix in self._prefixMap:
+            return URIRef(self._prefixMap[prefix].fullIRI + namespace)
+        return None
+
+    def bind(self, prefix: PREFIX_NAME_TYPE, namespace: FULL_IRI_TYPE, _=True, __=True):
+        """ Bind w/ defaults overriden """
+        prefix = str(prefix) if prefix else ''
+        self._prefixMap[prefix] = Prefix(prefix, str(namespace))
+        super().bind(prefix, str(namespace), override=True, replace=True)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.iter(self.as_prefixes(), indent=False)
-
-    def normalizeUri(self, rdfTerm: str) -> str:
-        """
-        Takes an RDF Term and 'normalizes' it into a QName (using the
-        registered prefix) or (unlike compute_qname) the Notation 3
-        form for URIs: <...URI...>
-        """
-        try:
-            namespace, name = split_uri(rdfTerm)
-            if namespace not in self.__strie:
-                insert_strie(self.__strie, self.__trie, str(namespace))
-            namespace = URIRef(str(namespace))
-        except:
-            if isinstance(rdfTerm, Variable):
-                return "?%s" % rdfTerm
-            else:
-                return "<%s>" % rdfTerm
-        prefix = self.store.prefix(namespace)
-        if prefix is None and isinstance(rdfTerm, Variable):
-            return "?%s" % rdfTerm
-        elif prefix is None:
-            return "<%s>" % rdfTerm
-        else:
-            qNameParts = self.compute_qname(rdfTerm)
-            return ":".join([qNameParts[0], qNameParts[-1]])
-
-    def compute_qname(self, uri: str, generate: bool = True) -> Tuple[str, URIRef, str]:
-
-        prefix: Optional[str]
-        if uri not in self.__cache:
-
-            if not _is_valid_uri(uri):
-                raise ValueError(
-                    '"{}" does not look like a valid URI, cannot serialize this. Did you want to urlencode it?'.format(
-                        uri
-                    )
-                )
-
-            try:
-                namespace, name = split_uri(uri)
-            except ValueError as e:
-                namespace = URIRef(uri)
-                prefix = self.store.prefix(namespace)
-                if not prefix:
-                    raise e
-            if namespace not in self.__strie:
-                insert_strie(self.__strie, self.__trie, namespace)
-
-            if self.__strie[namespace]:
-                pl_namespace = get_longest_namespace(self.__strie[namespace], uri)
-                if pl_namespace is not None:
-                    namespace = pl_namespace
-                    name = uri[len(namespace):]
-
-            namespace = URIRef(namespace)
-            prefix = self.store.prefix(namespace)  # warning multiple prefixes problem
-
-            if prefix is None:
-                if not generate:
-                    raise KeyError(
-                        "No known prefix for {} and generate=False".format(namespace)
-                    )
-                num = 1
-                while 1:
-                    prefix = "ns%s" % num
-                    if not self.store.namespace(prefix):
-                        break
-                    num += 1
-                self.bind(prefix, namespace)
-            self.__cache[uri] = (prefix, namespace, name)
-        return self.__cache[uri]

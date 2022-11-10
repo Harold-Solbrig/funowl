@@ -208,7 +208,7 @@ class Ontology(Annotatable):
 
     def _add_functional_definition(self, g: Graph, s: SUBJ, n: FunOwlBase) -> None:
         """ Add a functional definition for n to g """
-        functional_definition = n.to_functional(FunctionalWriter(tab=' '))
+        functional_definition = n.to_functional(FunctionalWriter(g=g, tab=' '))
         g.add( (s, IN_FUNCTIONAL, Rdflib_Literal(functional_definition.getvalue())) )
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False, emit_functional_definitions: bool = False) -> SUBJ:
@@ -308,7 +308,8 @@ class OntologyDocument(FunOwlBase):
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
         """ Return a FunctionalWriter instance with the representation of the OntologyDocument in functional syntax """
         IRI.prefix_declarations = self.prefixDeclarations
-        w = w or FunctionalWriter(pd=self.prefixDeclarations)
+        w = w or FunctionalWriter()
+        self.add_namespaces(w.g)
         return w.iter(self.prefixDeclarations.as_prefixes(), indent=False).hardbr() + \
                (self.ontology or Ontology())
 

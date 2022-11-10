@@ -131,4 +131,14 @@ class PrefixName(OPT_PNAME_NS, FunOwlRoot):
 class AbbreviatedIRI(PNAME_LN, FunOwlRoot):
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:
         prefix, name = self.split(':', 1)
-        return URIRef(g.namespace_manager.store.namespace(prefix or "") + name)
+        namespace = g.namespace_manager.store.namespace(prefix or "")
+        if namespace:
+            return URIRef(namespace + name)
+
+        # RDFLIB 6.2.0 and beyond only allow one namespace, meaning that our NS may no longer be there.
+        # We now keep track of the original declarations to see whether we can find it in a pinch
+        from funowl import IRI
+        rval = IRI.prefix_declarations.as_uri(prefix, name) if IRI.prefix_declarations else None
+        if not rval:
+            raise ValueError(f"Unrecognized prefix: {prefix}")
+        return rval

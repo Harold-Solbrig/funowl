@@ -18,6 +18,7 @@ class TestBase(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.w = FunctionalWriter()
         cls.wa = FunctionalWriter()
+        cls.wa.bind('a', A)
 
     def setUp(self) -> None:
         self.w.reset()
