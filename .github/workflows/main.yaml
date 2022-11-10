@@ -5,6 +5,7 @@ on:
 
 jobs:
   update-requirements:
+    if: False
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
