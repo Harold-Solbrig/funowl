@@ -1,7 +1,7 @@
 """ IRI := fullIRI | abbreviatedIRI """
 import logging
-from dataclasses import dataclass, Field
-from typing import Union, ClassVar, Optional, Type, List
+from dataclasses import dataclass
+from typing import Union, ClassVar, Optional, List
 
 from rdflib import URIRef, Namespace, Graph, RDF, OWL, XSD, RDFS
 
@@ -9,6 +9,7 @@ from funowl.base.cast_function import exclude
 from funowl.base.fun_owl_choice import FunOwlChoice
 from funowl.base.rdftriple import SUBJ
 from funowl.general_definitions import FullIRI, AbbreviatedIRI
+from funowl.prefix_declarations import PrefixDeclarations
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
 
@@ -16,27 +17,24 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 class IRI(FunOwlChoice):
     """ IRI := fullIRI | abbreviatedIRI """
     v: Union[AbbreviatedIRI, FullIRI, URIRef, str] = exclude([URIRef, str])
+
     rdf_type: ClassVar[URIRef] = None
+    prefix_declarations: ClassVar[PrefixDeclarations] = None        # Link to prefixes section, if declared
 
     # def __post_init__(self):
     #     print(f"Just constructed a {type(self)} value {str(self.v)}")
 
     def full_uri(self, g: Graph) -> Optional[URIRef]:
-        if isinstance(self.v, URIRef):
-            return self.v
-        if isinstance(self.v, AbbreviatedIRI):
-            # TODO: find the code in rdflib that does this
-            ns, local = self.v.split(':', 1)
-            for ns1, uri in g.namespaces():
-                if ns == ns1:
-                    return(Namespace(uri)[local])
-            logging.warning(f"IRI: {self.v} - {ns} not a valid prefix")
-            return None
-        if isinstance(self.v, FullIRI):
+        if not isinstance(self.v, AbbreviatedIRI):
             return URIRef(self.v)
+        prefix, lname = str(self).split(':', 1)
+        if self.prefix_declarations and prefix in self.prefix_declarations:
+            return self.prefix_declarations[prefix] + lname
+        return self.v.to_rdf(g)
 
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
-        fulluri = self.full_uri(w.g)
+        """ Emit an abbreviated URI if possible, otherwise a full one """
+        fulluri = None if isinstance(self.v, AbbreviatedIRI) else self.full_uri(w.g)
         return w + (fulluri.n3(w.g.namespace_manager) if fulluri else self.v)
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False) -> URIRef:

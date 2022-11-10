@@ -4,9 +4,10 @@ from rdflib import Namespace, URIRef
 
 from funowl import Ontology, DataProperty, OntologyDocument, Class, ClassAssertion, DataPropertyAssertion
 from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
+from tests.utils.base import TestBase
 
 
-class Issue2TestCase(unittest.TestCase):
+class Issue2TestCase(TestBase):
     @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_cyclic_issue(self):
         # Create relaMath.owl in functional
@@ -15,7 +16,7 @@ class Issue2TestCase(unittest.TestCase):
         o = Ontology(RELA)
         o.imports(REPR)
         o.declarations(DataProperty(RELA['#hasLowerBound']))
-        self.assertEqual("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+        self.assertEqualOntology("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
 Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
 Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
 Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
@@ -33,7 +34,7 @@ Ontology( <http://sweet.jpl.nasa.gov/2.3/relaMath.owl>
         o.declarations(Class(REPR['#Interval']))
         o.axioms.append(DataPropertyAssertion(RELA.hasLowerBound, REPR.NormalizedRange, 0.0))
         o.axioms.append(ClassAssertion(URIRef("Interval"), REPR['#NormalizedRange']))
-        self.assertEqual("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+        self.assertEqualOntology("""Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
 Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
 Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
 Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )

@@ -32,7 +32,7 @@ from funowl.literals import Literal
 from funowl.objectproperty_axioms import SubObjectPropertyOf, SubObjectPropertyExpression, InverseObjectProperties, \
     FunctionalObjectProperty, InverseFunctionalObjectProperty, ObjectPropertyDomain, ObjectPropertyRange
 from funowl.objectproperty_expressions import ObjectPropertyExpression
-from funowl.prefix_declarations import Prefix
+from funowl.prefix_declarations import Prefix, PrefixDeclarations
 from funowl.terminals.TypingHelper import isinstance_, proc_forwards
 from funowl.writers.FunctionalWriter import FunctionalWriter
 
@@ -41,6 +41,7 @@ from funowl.writers.FunctionalWriter import FunctionalWriter
 FUNOWL_URI = Namespace("http://ontologies-r.us/funowl/")
 FUNOWL_NAMESPACE = "funowl"
 IN_FUNCTIONAL = FUNOWL_URI.functional_definition
+
 
 @dataclass
 class Import(FunOwlBase):
@@ -52,7 +53,7 @@ class Import(FunOwlBase):
     def to_functional(self, w: FunctionalWriter) -> FunctionalWriter:
         return w.func(self, lambda: (w + self.iri))
 
-    def to_rdf(self, _: Graph) -> Optional[NODE]:
+    def to_rdf(self, _: Graph, emit_type_arc: Optional[bool] = False) -> Optional[NODE]:
         return URIRef(str(self.ontology_iri()))
 
 
@@ -133,9 +134,9 @@ class Ontology(Annotatable):
 
     def subClassOf(self, sub: Class.types(), sup: Class.types()) -> "Ontology":
         if not issubclass(type(sub), Class) and isinstance(sub, Class):
-            sub = Class(sub)
+            pass
         if not issubclass(type(sup), Class) and isinstance(sup, Class):
-            sup = Class(sup)
+            pass
         self.axioms.append(SubClassOf(sub, sup))
         return self
 
@@ -183,7 +184,7 @@ class Ontology(Annotatable):
 
     def namedIndividuals(self, *individuals: IRI.types()) -> "Ontology":
         for individual in individuals:
-            self.axioms.append(NamedIndividual(individual))
+            self.axioms.append(Declaration(NamedIndividual(individual)))
         return self
 
     def dataPropertyAssertion(self, expr: DataPropertyExpression.types(), sourceIndividual: Individual.types(),
@@ -247,11 +248,12 @@ class OntologyDocument(FunOwlBase):
     """
     prefixDeclarations are
     """
-    prefixDeclarations: List[Prefix] = empty_list_wrapper(Prefix)
+    prefixDeclarations: PrefixDeclarations = None
     ontology: Ontology = None
 
-    def __init__(self, default_prefix: FullIRI = None, ontology: Optional[Ontology] = None, **prefixes: FullIRI):
-        self.prefixDeclarations = []
+    def __init__(self, default_prefix: Union[FullIRI, Namespace, str] = None, ontology: Optional[Ontology] = None,
+                 **prefixes: Union[FullIRI, Namespace, str]):
+        self.prefixDeclarations = PrefixDeclarations()
         self.ontology = ontology if ontology is not None else Ontology()
         if default_prefix:
             self.prefixDeclarations.append(Prefix(None, default_prefix))
@@ -275,7 +277,7 @@ class OntologyDocument(FunOwlBase):
     def __getattr__(self, item):
         # This gets called only when something isn't already in the dictionary
         if isinstance(item, PrefixName):
-            for p in self.prefixDeclarations:
+            for p in self.prefixDeclarations.as_prefixes():
                 if p.prefixName == item:
                     return p.fullIRI
         return super().__getattribute__(item)
@@ -284,21 +286,36 @@ class OntologyDocument(FunOwlBase):
         return self.to_functional().getvalue()
 
     def add_namespaces(self, g: Graph, add_funowl_namespace: bool = False) -> Graph:
-        for prefix in self.prefixDeclarations:
-            g.namespace_manager.bind(str(prefix.prefixName or ''), str(prefix.fullIRI), True, True)
+        """
+        Transfer the namespace declarations included in the prefixDeclarations section into the rdflib Graph.
+
+        Note: rdflib 6.2.0 and up only associates ONE prefix with every unique URI.  Adding a second prefix will
+        delete the first, which can pose real issues for code like this.  You have to use the prefixDeclarations
+        package to transform AbbreviatedIRI's into URI's, as they might disappear in rdflib.  When going from IRIs
+        back to Abbreviated IRIs, we use the _last_prefix declared with one exception: the default prefix is always
+        preferred over a named prefix.
+
+        :param g: rdflib graph to transfer to
+        :param add_funowl_namespace: True means add our own namespace in
+        :return: g with namespaces added.
+        """
+        for prefix in self.prefixDeclarations.as_prefixes():
+            g.namespace_manager.bind(str(prefix.prefixName or ''), str(prefix.fullIRI), override=True, replace=False)
         if add_funowl_namespace:
             g.namespace_manager.bind(FUNOWL_NAMESPACE, FUNOWL_URI)
         return g
 
     def to_functional(self, w: Optional[FunctionalWriter] = None) -> FunctionalWriter:
         """ Return a FunctionalWriter instance with the representation of the OntologyDocument in functional syntax """
+        IRI.prefix_declarations = self.prefixDeclarations
         w = w or FunctionalWriter()
         self.add_namespaces(w.g)
-        return w.iter([Prefix(ns, uri) for ns, uri in w.g.namespaces()], indent=False).hardbr() + \
+        return w.iter(self.prefixDeclarations.as_prefixes(), indent=False).hardbr() + \
                (self.ontology or Ontology())
 
     def to_rdf(self, g: Graph, emit_type_arc: bool = False, emit_functional_definitions: bool = False) -> SUBJ:
         """ Convert the ontology document into RDF representation """
+        IRI.prefix_declarations = self.prefixDeclarations
         self.add_namespaces(g, add_funowl_namespace=emit_functional_definitions)
         return self.ontology.to_rdf(g, emit_type_arc, emit_functional_definitions)
 
