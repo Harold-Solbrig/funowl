@@ -30,7 +30,6 @@ jobs:
           fi
 
   test:
-    needs: update-requirements
     name: Run TOX tests
     runs-on: ubuntu-latest
     strategy:
