@@ -122,6 +122,25 @@ Ontology(
 )
 ```
 
+## Transforming Functional Syntax to RDF
+See: [test_issue_57.py](tests/test_issues/test_issue_57.py) for full example
+```python
+from rdflib import Graph
+from funowl.converters.functional_converter import to_python
+
+# The functional syntax input can be a string, URL, file loc or open file
+function_pizza = "https://github.com/Harold-Solbrig/funowl/blob/main/tests/data/pizza.owl"
+internal_pizza = to_python(function_pizza)
+
+# Emit the internal representation as an rdflib graph
+g = Graph()
+internal_pizza.to_rdf(g)
+
+# Serialize the rdflib graph in your favorite format
+print(g.serialize(format="ttl"))
+```
+
+
 ## Other packages
 
 While we would be happy to be corrected, to the best of our knowledge there is to be minimal support for OWL in python.
