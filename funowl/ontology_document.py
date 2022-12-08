@@ -92,20 +92,21 @@ class Ontology(Annotatable):
             raise ValueError(f"Unrecognized arguments to Ontology: {args}")
         self._naxioms = 0
 
-    def add_arg(self, arg: [IRI.types(), Import, Axiom, Annotation]):
+    def add_arg(self, arg: [IRI.types(), Import, Axiom, Annotation], print_progress: bool = True):
         if isinstance_(arg, Axiom):
             self.axioms.append(arg)
-            self._naxioms += 1
-            if not self._naxioms % 100000:
-                print(self._naxioms)
-            elif not self._naxioms % 10000:
-                print(self._naxioms)
-            elif not self._naxioms % 1000:
-                print('k', end='')
-                sys.stdout.flush()
-            elif not self._naxioms % 100:
-                print('.', end='')
-                sys.stdout.flush()
+            if print_progress:
+                self._naxioms += 1
+                if not self._naxioms % 100000:
+                    print(self._naxioms)
+                elif not self._naxioms % 10000:
+                    print(self._naxioms)
+                elif not self._naxioms % 1000:
+                    print('k', end='')
+                    sys.stdout.flush()
+                elif not self._naxioms % 100:
+                    print('.', end='')
+                    sys.stdout.flush()
         elif isinstance(arg, IRI):
             if not self.iri:
                 self.iri = arg

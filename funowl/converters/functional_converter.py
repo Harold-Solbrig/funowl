@@ -270,12 +270,14 @@ def skip_comments(inp: Union[bytes, str], start: int) -> int:
             m = comments_re.match(inp, start)
     return start
 
-def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None]) -> int:
+
+def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None], print_progress: bool = True) -> int:
     """
     Functional parser - work through inp pulling complete functions out and processing them.
     :param inp: input byte stream
     :param start: current 0 based position in the stream
     :param consumer: OWLFunc entry consumer
+    :param print_progress: Print conversion progress indicator on command line
     :return: final position
     """
     while True:
@@ -298,7 +300,7 @@ def fparse(inp: bytes, start: int, consumer: Callable[[FunOwlBase], None]) -> in
                 if vers:
                     o.version = vers
             start = skip_comments(inp, start)
-            start = fparse(inp, start, lambda f: o.add_arg(f))
+            start = fparse(inp, start, lambda f: o.add_arg(f, print_progress=print_progress))
             consumer(o)
             start = skip_comments(inp, start)
             m = final_pren.match(inp, start)
@@ -335,10 +337,11 @@ def to_bytes_array(defn: Union[str, bytes, IO]) -> Union[bytes, mmap]:
             return mmap(f.fileno(), 0, access=ACCESS_READ)
 
 
-def to_python(defn: Union[str, bytes, IO]) -> Optional[OntologyDocument]:
+def to_python(defn: Union[str, bytes, IO], print_progress: bool = True) -> Optional[OntologyDocument]:
     """
     Convert the functional syntax in defn to a Python representation
     :param defn: The ontology definition
+    :param print_progress: Print progress indicator on command line
     :return: Ontology Document
     """
     def consumer(e: FunOwlBase) -> None:
@@ -350,5 +353,5 @@ def to_python(defn: Union[str, bytes, IO]) -> Optional[OntologyDocument]:
             logging.error("Unrecognized declaration")
 
     ontology_doc = OntologyDocument()
-    fparse(to_bytes_array(defn), 0, consumer)
+    fparse(to_bytes_array(defn), 0, consumer, print_progress=print_progress)
     return ontology_doc
