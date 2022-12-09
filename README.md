@@ -140,6 +140,85 @@ internal_pizza.to_rdf(g)
 print(g.serialize(format="ttl"))
 ```
 
+## Command Line Interface
+`funowl` can be installed with either `pip` or `pipenv`.  
+
+```shell
+> funowl -h 
+usage: funowl [-h]
+              [-f {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}]
+              [-np]
+              input [output]
+
+Convert OWL Functional Syntax to RDF
+
+positional arguments:
+  input                 Input OWL functional syntax. Can be a file name or URL
+  output                Output file. If omitted, output goes to stdout
+
+options:
+  -h, --help            show this help message and exit
+  -f {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}, --format {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}
+                        Output RDF Format. If omitted, guess from output file
+                        suffix. If guessing doesn't work, assume 'turtle'
+  -np, --noProgressBar  Don't output the progress indicators
+```
+
+To convert an OWL functional representation of the pizza ontology to RDF:
+```shell
+> funowl https://raw.githubusercontent.com/Harold-Solbrig/funowl/main/tests/data/pizza.owl
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pizza: <http://www.co-ode.org/ontologies/pizza/pizza.owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix terms: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dc:description a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+terms:contributor a owl:AnnotationProperty .
+
+terms:license a owl:AnnotationProperty .
+
+terms:provenance a owl:AnnotationProperty .
+
+<http://www.co-ode.org/ontologies/pizza> a owl:Ontology ;
+    rdfs:label "pizza"^^xsd:string ;
+    dc:description """An ontology about pizzas and their toppings.
+      ...
+```
+To convert the same ontology into XML, either:
+
+`funowl https://raw.githubusercontent.com/Harold-Solbrig/funowl/main/tests/data/pizza.owl -f xml > pizza.xml`
+   
+or
+
+`funowl https://raw.githubusercontent.com/Harold-Solbrig/funowl/main/tests/data/pizza.owl pizza.xml`
+
+```shell
+> cat pizza.xml
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+   xmlns:terms="http://purl.org/dc/terms/"
+>
+  <rdf:Description rdf:nodeID="Nd1a614092c234a3b90971238bb6550e8">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#hasTopping"/>
+    <owl:someValuesFrom rdf:resource="http://www.co-ode.org/ontologies/pizza/pizza.owl#TomatoTopping"/>
+  </rdf:Description>
+      ...
+      
+</rdf:RDF>
+```
 
 ## Other packages
 

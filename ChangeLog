@@ -1,6 +1,15 @@
 CHANGES
 =======
 
+* Unit tests complete
+* Add the ability to suppress the axiom progress indicator
+* Add examples of how to convert using python
+* Remove Pipfile.lock from distro
+* Disable update-requriements step
+* Disable update-requriements step
+* Attempt to fix pipenv-to-requirements failure
+* Passes both rdflib 5.0.0 and 6.2.0
+* minor formatting in README
 * Checkpoint to clean up the main branch
 * Demonstration of some of the issues we face in rdflib 6.2
 * All v6 tests work as intended

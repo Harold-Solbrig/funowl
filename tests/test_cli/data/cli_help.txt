@@ -1,0 +1,17 @@
+usage: cli [-h]
+           [-f {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}]
+           [-np]
+           input [output]
+
+Convert OWL Functional Syntax to RDF
+
+positional arguments:
+  input                 Input OWL functional syntax. Can be a file name or URL
+  output                Output file. If omitted, output goes to stdout
+
+options:
+  -h, --help            show this help message and exit
+  -f {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}, --format {ttl,hext,json-ld,longturtle,n3,nquads,nt,nt11,ntriples,pretty-xml,trig,trix,ttl,turtle,xml}
+                        Output RDF Format. If omitted, guess from output file
+                        suffix. If guessing doesn't work, assume 'turtle'
+  -np, --noProgressBar  Don't output the progress indicators
