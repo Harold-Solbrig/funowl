@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* Removed packaging import.  Not needed
+* Documentation and official CLI added.  Should be good to go
 * Unit tests complete
 * Add the ability to suppress the axiom progress indicator
 * Add examples of how to convert using python

@@ -10,4 +10,5 @@ if sys.version_info < (3, 8, 0):
 setup(
     setup_requires=['pbr'],
     pbr=True,
+    py_modules=['funowl']
 )
