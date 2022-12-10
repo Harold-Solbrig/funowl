@@ -1,0 +1,13 @@
+@prefix funowl: <http://ontologies-r.us/funowl/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pizza: <http://www.co-ode.org/ontologies/pizza/pizza.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://www.co-ode.org/ontologies/pizza> a owl:Ontology .
+
+pizza:hasIngredient a owl:ObjectProperty ;
+    funowl:functional_definition "ObjectPropertyDomain( pizza:hasIngredient pizza:Food )" ;
+    rdfs:domain pizza:Food .
+
+pizza:Food a owl:Class .
+

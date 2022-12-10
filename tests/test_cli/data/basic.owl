@@ -1,0 +1,6 @@
+Prefix(:=<http://www.co-ode.org/ontologies/pizza#>)
+Prefix(pizza:=<http://www.co-ode.org/ontologies/pizza/pizza.owl#>)
+
+Ontology(<http://www.co-ode.org/ontologies/pizza>
+    ObjectPropertyDomain(pizza:hasIngredient pizza:Food)
+)
