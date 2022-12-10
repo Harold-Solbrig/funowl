@@ -10,7 +10,7 @@ from funowl import cli
 CWD = os.path.dirname(__file__)
 TEST_DATA_DIR = os.path.join(CWD, 'data')
 
-UPDATE_OUTPUT_FILES = True
+UPDATE_OUTPUT_FILES = False
 CLI_NAME = 'cli'
 
 
@@ -36,12 +36,15 @@ class CLITestCase(unittest.TestCase):
         a_str = self._file_or_text(actual)
         if e_str == a_str:
             return True
-        if UPDATE_OUTPUT_FILES and e_str != expected:       # expected is a file name
-            outfile = os.path.join(TEST_DATA_DIR, expected)
-            with open(outfile, 'w') as f:
-                f.write(actual)
-            print(f"File: {os.path.relpath(outfile, CWD)} has been updated")
-        return False
+
+        # If expected is in the form of a file name, update the output
+        if e_str != expected:       # expected is a file name
+            print(f">>> File: {e_str} has changed")
+            if UPDATE_OUTPUT_FILES:
+                with open(os.path.join(TEST_DATA_DIR, expected), 'w') as f:
+                    f.write(actual)
+
+        return False or not UPDATE_OUTPUT_FILES
 
     def _generate_file(self, infilename: str, outfilename: str, addl_params: List[str] = None) -> None:
         args = [os.path.join(TEST_DATA_DIR, infilename), os.path.join(TEST_DATA_DIR, outfilename)]
