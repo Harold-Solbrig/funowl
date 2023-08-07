@@ -79,7 +79,7 @@ def dump_rdf(g: Graph) -> str:
         return nstr(n) if isinstance(n, BNode) else n.n3()
 
     # return '\n'.join(sorted([f"{n_rdf(s)} {n_rdf(p)} {n_rdf(o)} ." for s, p, o in list(g)]))
-    return g.serialize(format="turtle").decode()
+    return g.serialize(format="turtle")
 
 
 def validate_owl2(fileloc: str) -> bool:
@@ -125,7 +125,7 @@ def validate_owl2(fileloc: str) -> bool:
     if do_rdf:
         roundtrip_rdf = Graph()
         ontology_2.to_rdf(roundtrip_rdf)
-        logging.info('\n========== Round Trip RDF =================\n' + roundtrip_rdf.serialize(format="turtle").decode())
+        logging.info('\n========== Round Trip RDF =================\n' + roundtrip_rdf.serialize(format="turtle"))
 
         # 5) Make sure that the RDF representation stll matches
         #    g(f(functional_repr)) == g(f(f**-1(f(functional_repr))

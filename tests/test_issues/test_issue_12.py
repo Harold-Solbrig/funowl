@@ -57,7 +57,7 @@ class ObjectExactCardinalityTestCase(unittest.TestCase):
         clue.to_rdf(g)
         g.bind('skos', SKOS)
         g.bind('dct', DCTERMS)
-        owlrdf = g.serialize(format='turtle').decode().strip()
+        owlrdf = g.serialize(format='turtle').strip()
         # print(owlrdf)
         self.assertEqual(expected.strip(), owlrdf)
 

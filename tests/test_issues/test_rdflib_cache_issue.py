@@ -22,7 +22,7 @@ MYNS:Foo a MYNS:Bar .""", format="turtle")
 
 MYNS:Foo a MYNS:Bar .
 
-YOURNS:SAM YOURNS:SAM YOURNS:SAM .""", g.serialize(format="turtle").decode().strip())
+YOURNS:SAM YOURNS:SAM YOURNS:SAM .""", g.serialize(format="turtle").strip())
 
 
 if __name__ == '__main__':
