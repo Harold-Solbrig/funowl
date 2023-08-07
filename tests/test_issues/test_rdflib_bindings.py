@@ -40,7 +40,7 @@ EX2URI = rdflib.URIRef(EX2)
 
 PRINT_OUTPUT = False                # Print tabular output
 
-using_rdflib_v6 = rdflib.__version__ >= "6.2"
+using_rdflib_v6 = rdflib.__version__ >= "6.2" and rdflib.__version__ < "7.0"
 using_rdflib_v5 = rdflib.__version__.startswith("5.0.0")
 
 ignore_prefixes = ['xml', 'rdf', 'rdfs', 'xsd', 'owl']
