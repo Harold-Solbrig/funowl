@@ -5,6 +5,8 @@ from typing import Tuple, Optional, List, Dict
 import rdflib
 import rdflib_shim
 
+from tests import RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE
+
 # Make sure the import above works
 shimed = rdflib_shim.RDFLIB_SHIM
 
@@ -40,7 +42,7 @@ EX2URI = rdflib.URIRef(EX2)
 
 PRINT_OUTPUT = False                # Print tabular output
 
-using_rdflib_v6 = rdflib.__version__ >= "6.2"
+using_rdflib_v6 = rdflib.__version__ >= "6.2" and rdflib.__version__ < "7.0"
 using_rdflib_v5 = rdflib.__version__.startswith("5.0.0")
 
 ignore_prefixes = ['xml', 'rdf', 'rdfs', 'xsd', 'owl']
@@ -171,6 +173,8 @@ class RDFLIBNamespaceBindingTestCase(unittest.TestCase):
                 self.assertEqual(1, len(evalresult.result))
                 self.assertEqual({('', EX2URI)}, set(evalresult.result))
 
+
+    @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_three_turtle_namespaces(self):
         """ Examine how rdflib handles two namespaces and a default w/ same URI """
 

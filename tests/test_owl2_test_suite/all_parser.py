@@ -114,7 +114,7 @@ for subj, syntax, reprs in TestCases(os.path.join(datadir, 'all.rdf')):
             g = Graph()
             try:
                 g.parse(data=xml_txt)
-                write_conversion(subj, g.serialize(format="turtle").decode(), 'ttl')
+                write_conversion(subj, g.serialize(format="turtle"), 'ttl')
             except ParserError as e:
                 errors[subj] = str(e)
         else:

@@ -47,7 +47,7 @@ class AssertionsTestCase(TestBase):
 <http://example.org/a#Alex> a owl:NamedIndividual ;
     owl:differentFrom <http://example.org/a#Bob> .
 
-<http://example.org/a#Bob> a owl:NamedIndividual .""", g.serialize(format="turtle").decode().strip())
+<http://example.org/a#Bob> a owl:NamedIndividual .""", g.serialize(format="turtle").strip())
 
     def test_classassertion(self):
         self.assertEqual('ClassAssertion( a:GriffinFamilyMember a:Peter_Griffin )',
@@ -79,7 +79,7 @@ ns1:Meg a <http://www.w3.org/2002/07/owl#NamedIndividual> ;
 
 ns1:hasBrother a <http://www.w3.org/2002/07/owl#ObjectProperty> .
 
-ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(format='turtle').decode())
+ns1:Stewie a <http://www.w3.org/2002/07/owl#NamedIndividual> .""", g.serialize(format='turtle'))
         if diff:
             print(diff)
             self.fail()

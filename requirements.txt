@@ -14,5 +14,5 @@ bcp47
 jsonasobj
 pyjsg>=0.11.6
 rdflib-shim
-rdflib==6.2.0
+rdflib>=6.2.0,<7
 rfc3987
