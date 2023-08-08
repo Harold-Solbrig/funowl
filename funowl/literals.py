@@ -171,7 +171,7 @@ class Literal(FunOwlChoice):
         # Create a turtle triple to use the n3 parser
         # TODO: make the constructor static and use clear
         stmt = f'@prefix : <{DUMMY_PREFIX}> . @prefix xsd: <{XSD}> . :f a {v} .'
-        g = Graph()
+        g = Graph(bind_namespaces="core")
         try:
             g.parse(data=stmt, format="turtle")
         except BadSyntax:

@@ -51,7 +51,9 @@ class PrefixDeclarations(NamespaceManager):
     def __init__(self, g: Optional[Graph] = None) -> None:
         self._init = True
         self._prefixMap: Dict[str, Prefix] = dict()
-        super().__init__(g or Graph())
+        if g is None:
+            g = Graph(bind_namespaces="core")
+        super().__init__(g, bind_namespaces="core")
         for prefix in PREFIX_PRESETS:
             self.bind(prefix.prefixName, prefix.fullIRI)
         self._init = False
