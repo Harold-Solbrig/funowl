@@ -14,7 +14,7 @@ class FunctionalWriter:
         """
         self.tab = FunctionalWriter.DEFAULT_TAB if tab is None else tab
         if g is None:
-            self.g = Graph()
+            self.g = Graph(bind_namespaces="core")
             self.g.bind('owl', OWL)
         else:
             self.g = g
