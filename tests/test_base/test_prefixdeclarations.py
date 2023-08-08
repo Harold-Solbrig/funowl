@@ -18,6 +18,40 @@ class PrefixTestCase(TestBase):
         with self.assertRaises(TypeError):
             Prefix('http:', RDFS)
 
+    def test_prefix_append(self):
+        """
+        Test that prefixes can be appended correctly.
+
+        Note that rdflib introduces namespace pollution by default,
+        this checks we instantiate rdf graphs in a way that avoids this.
+        """
+        pds = PrefixDeclarations()
+        pds.append(Prefix("schema", "http://schema.org/"))
+        self.assertEqualOntology('''Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+        Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+        Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+        Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+        Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+        Prefix( schema: = <http://schema.org/> )''', str(pds.to_functional(self.w.reset())))
+        pds = PrefixDeclarations()
+        pds.append(Prefix("schema", "https://schema.org/"))
+        self.assertEqualOntology('''Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+        Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+        Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+        Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+        Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+        Prefix( schema: = <https://schema.org/> )''', str(pds.to_functional(self.w.reset())))
+        pds = PrefixDeclarations()
+        pds.append(Prefix("sdo", "http://schema.org/"))
+        self.assertEqualOntology('''Prefix( xml: = <http://www.w3.org/XML/1998/namespace> )
+        Prefix( rdf: = <http://www.w3.org/1999/02/22-rdf-syntax-ns#> )
+        Prefix( rdfs: = <http://www.w3.org/2000/01/rdf-schema#> )
+        Prefix( xsd: = <http://www.w3.org/2001/XMLSchema#> )
+        Prefix( owl: = <http://www.w3.org/2002/07/owl#> )
+        Prefix( sdo: = <http://schema.org/> )''', str(pds.to_functional(self.w.reset())))
+
+
+
     @unittest.skipIf(RDFLIB_PREFIXES_ARE_BROKEN, PREFIXES_BROKEN_MESSAGE)
     def test_default_prefix(self):
         """ Test that None is the correct default prefix """
