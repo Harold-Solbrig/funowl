@@ -5,6 +5,11 @@
 ![Build](https://github.com/hsolbrig/funowl/workflows/Build/badge.svg)
 ![Publish](https://github.com/hsolbrig/funowl/workflows/Publish%20Python%20Package/badge.svg)
 
+# No longer supported: migrate to py-horned-owl
+
+We recommend users migrate to [py-horned-owl](https://github.com/ontology-tools/py-horned-owl).
+
+We have created a [MIGRATION_GUIDE.md](MIGRATION_GUIDE.md)
 
 # FunOwl - Functional OWL syntax for Python
 [OWL2 Functional Style Syntax](https://www.w3.org/TR/owl2-syntax/) for python.
